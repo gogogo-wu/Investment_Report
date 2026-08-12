@@ -44,6 +44,26 @@
   .nav-item .t { display: block; font-weight: 500; }
   .nav-item .d { display: block; font-size: 11px; color: #475569; margin-top: 2px; }
   .nav-item.active .d { color: #818cf8; opacity: .75; }
+  .nav-item .badge {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    padding: 1px 5px; border-radius: 3px; margin-left: 5px;
+    background: rgba(245,158,11,.18); color: #fbbf24; vertical-align: middle;
+  }
+  .submenu {
+    padding: 0 10px 8px 10px;
+    display: none;
+  }
+  .submenu.open { display: block; }
+  .submenu .sub-item {
+    display: block; width: 100%; text-align: left;
+    background: none; border: none; cursor: pointer;
+    padding: 7px 12px 7px 28px; border-radius: 6px;
+    color: #64748b; font-size: 12px; line-height: 1.4;
+    font-family: inherit;
+    transition: background .15s, color .15s;
+  }
+  .submenu .sub-item:hover { background: #1e293b; color: #e2e8f0; }
+  .submenu .sub-item.active { color: #a5b4fc; background: rgba(99,102,241,.10); }
   .sidebar-footer {
     padding: 12px 18px; border-top: 1px solid #1e293b;
     font-size: 11px; color: #475569; line-height: 1.6;
@@ -92,22 +112,24 @@
 
     <nav class="nav">
       <div class="nav-group-title">金融通识与体系</div>
-      <button class="nav-item" data-file="金融体系蓝图.html">
-        <span class="t">个人金融体系蓝图</span>
-        <span class="d">稳健激进型投资者的知识体系全景图</span>
+      <button class="nav-item" data-toggle="submenu-foundation">
+        <span class="t">金融通识与体系 <span class="badge">未完成</span></span>
+        <span class="d">体系蓝图、学习路线、讲义与视频课程</span>
       </button>
-      <button class="nav-item" data-file="学习路线.html">
-        <span class="t">完整学习路线</span>
-        <span class="d">从入门到进阶的金融学习路径规划</span>
-      </button>
-      <button class="nav-item" data-file="核心学习讲义.html">
-        <span class="t">核心学习讲义</span>
-        <span class="d">关键概念与知识点的系统梳理</span>
-      </button>
-      <button class="nav-item" data-file="金融视频课程-连贯版.html">
-        <span class="t">从小白到能自己管钱</span>
-        <span class="d">视频精讲课 · 连贯版，从零到实操</span>
-      </button>
+      <div class="submenu" id="submenu-foundation">
+        <button class="sub-item" data-file="金融体系蓝图.html">
+          个人金融体系蓝图
+        </button>
+        <button class="sub-item" data-file="学习路线.html">
+          完整学习路线
+        </button>
+        <button class="sub-item" data-file="核心学习讲义.html">
+          核心学习讲义
+        </button>
+        <button class="sub-item" data-file="金融视频课程-连贯版.html">
+          从小白到能自己管钱
+        </button>
+      </div>
 
       <div class="nav-group-title">国际金融分析</div>
       <button class="nav-item" data-file="美日汇率干预与全球金融传导学习笔记.html">
@@ -169,10 +191,10 @@
         </div>
 
         <div class="welcome-grid">
-          <button class="welcome-card" data-file="金融体系蓝图.html">
-            <span class="ct">金融通识与体系</span>
+          <button class="welcome-card" data-toggle="submenu-foundation">
+            <span class="ct">金融通识与体系 <span class="badge">未完成</span></span>
             <span class="cd">从体系蓝图到视频课程的完整入门路径</span>
-            <span class="cn">4 份报告 · 点击进入 &rarr;</span>
+            <span class="cn">4 份报告 · 点击展开 &rarr;</span>
           </button>
           <button class="welcome-card" data-file="美日汇率干预与全球金融传导学习笔记.html">
             <span class="ct">国际金融分析</span>
@@ -202,11 +224,11 @@
   var frame = document.getElementById('frame');
   var welcome = document.getElementById('welcome');
   var items = Array.prototype.slice.call(document.querySelectorAll('.nav-item'));
+  var subItems = Array.prototype.slice.call(document.querySelectorAll('.sub-item'));
 
   function openFile(file) {
-    items.forEach(function (item) {
-      item.classList.toggle('active', item.getAttribute('data-file') === file);
-    });
+    items.forEach(function (item) { item.classList.remove('active'); });
+    subItems.forEach(function (s) { s.classList.toggle('active', s.getAttribute('data-file') === file); });
     welcome.style.display = 'none';
     frame.style.display = 'block';
     frame.src = file;
@@ -214,17 +236,35 @@
 
   items.forEach(function (item) {
     item.addEventListener('click', function () {
-      openFile(item.getAttribute('data-file'));
+      var toggle = item.getAttribute('data-toggle');
+      if (toggle) {
+        var sub = document.getElementById(toggle);
+        sub.classList.toggle('open');
+      } else {
+        var file = item.getAttribute('data-file');
+        if (file) openFile(file);
+      }
+    });
+  });
+
+  subItems.forEach(function (sub) {
+    sub.addEventListener('click', function () {
+      openFile(sub.getAttribute('data-file'));
     });
   });
 
   document.querySelectorAll('.welcome-card').forEach(function (card) {
     card.addEventListener('click', function () {
-      openFile(card.getAttribute('data-file'));
+      var toggle = card.getAttribute('data-toggle');
+      if (toggle) {
+        document.getElementById(toggle).classList.toggle('open');
+      } else {
+        openFile(card.getAttribute('data-file'));
+      }
     });
   });
 
-  document.getElementById('reportCount').textContent = items.length;
+  document.getElementById('reportCount').textContent = items.length + subItems.length;
 </script>
 </body>
 </html>

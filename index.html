@@ -44,26 +44,6 @@
   .nav-item .t { display: block; font-weight: 500; }
   .nav-item .d { display: block; font-size: 11px; color: #94a3b8; margin-top: 2px; }
   .nav-item.active .d { color: #a5b4fc; }
-  .nav-item .badge {
-    display: inline-block; font-size: 10px; font-weight: 500;
-    padding: 1px 5px; border-radius: 3px; margin-left: 5px;
-    background: rgba(245,158,11,.18); color: #fbbf24; vertical-align: middle;
-  }
-  .submenu {
-    padding: 0 10px 8px 10px;
-    display: none;
-  }
-  .submenu.open { display: block; }
-  .submenu .sub-item {
-    display: block; width: 100%; text-align: left;
-    background: none; border: none; cursor: pointer;
-    padding: 7px 12px 7px 28px; border-radius: 6px;
-    color: #a8b3c8; font-size: 12px; line-height: 1.4;
-    font-family: inherit;
-    transition: background .15s, color .15s;
-  }
-  .submenu .sub-item:hover { background: #243049; color: #f1f5f9; }
-  .submenu .sub-item.active { color: #c7d2fe; background: rgba(99,102,241,.12); }
   .sidebar-footer {
     padding: 12px 18px; border-top: 1px solid #1e293b;
     font-size: 11px; color: #7c86a0; line-height: 1.6;
@@ -94,12 +74,6 @@
     font-size: 15px; font-weight: 600; color: #f1f5f9;
     padding-bottom: 10px; margin-bottom: 4px;
     border-bottom: 1px solid #1e293b;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .toc-group-title .badge {
-    display: inline-block; font-size: 10px; font-weight: 500;
-    padding: 1px 5px; border-radius: 3px;
-    background: rgba(245,158,11,.18); color: #fbbf24;
   }
   .toc-row {
     display: grid; grid-template-columns: 52px 190px 1fr 28px;
@@ -132,55 +106,43 @@
   <aside class="sidebar">
     <div class="sidebar-header">
       <h1>投资研究知识库</h1>
-      <p>金融通识 · 国际金融 · 企业案例 · AI 投资</p>
+      <p>国际金融 · 企业案例 · AI 投资</p>
     </div>
 
     <nav class="nav">
-      <div class="nav-group-title">金融通识与体系</div>
-      <button class="nav-item" data-toggle="submenu-foundation">
-        <span class="t">金融通识与体系 <span class="badge">未完成</span></span>
-        <span class="d">体系蓝图、学习路线、讲义与视频课程</span>
-      </button>
-      <div class="submenu" id="submenu-foundation">
-        <button class="sub-item" data-page="page1">个人金融体系蓝图</button>
-        <button class="sub-item" data-page="page2">完整学习路线</button>
-        <button class="sub-item" data-page="page3">核心学习讲义</button>
-        <button class="sub-item" data-page="page4">从小白到能自己管钱</button>
-      </div>
-
       <div class="nav-group-title">国际金融分析</div>
-      <button class="nav-item" data-page="page5">
+      <button class="nav-item" data-page="page1">
         <span class="t">美日汇率干预与全球金融传导</span>
         <span class="d">BOJ政策、套息交易、全球资产联动深度笔记</span>
       </button>
 
       <div class="nav-group-title">企业金融案例分析</div>
-      <button class="nav-item" data-page="page6">
+      <button class="nav-item" data-page="page2">
         <span class="t">Intel $200亿增发案例分析</span>
         <span class="d">融资决策框架 · 5倍超额认购 · ASIC产业链联动 · 投资观察</span>
       </button>
 
       <div class="nav-group-title">AI / 硬件投资研究</div>
-      <button class="nav-item" data-page="page7">
+      <button class="nav-item" data-page="page3">
         <span class="t">AI硬件长期建仓策略</span>
         <span class="d">卖铲人家族全景 + 八大标的双情景建仓区间</span>
       </button>
-      <button class="nav-item" data-page="page8">
+      <button class="nav-item" data-page="page4">
         <span class="t">AI产业链深度研究讲义</span>
         <span class="d">产业链七层拆解、HBM/CoWoS/光模块/液冷等深度分析</span>
       </button>
-      <button class="nav-item" data-page="page9">
+      <button class="nav-item" data-page="page5">
         <span class="t">ASIC四标的深度建仓分析</span>
         <span class="d">AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间</span>
       </button>
-      <button class="nav-item" data-page="page10">
+      <button class="nav-item" data-page="page6">
         <span class="t">AI资本结构风险与泡沫类比分析</span>
         <span class="d">$5000亿融资平台风险瀑布 · SEC豁免 · 2000+2008类比 · 四道关卡</span>
       </button>
     </nav>
 
     <div class="sidebar-footer">
-      共 <span id="reportCount">10</span> 份报告 · 4 大分类<br>
+      共 <span id="reportCount">6</span> 份报告 · 3 大分类<br>
       最后更新 2026-08-12
     </div>
   </aside>
@@ -192,15 +154,15 @@
     <div class="home" id="home">
       <div class="home-inner">
         <h2>投资研究知识库</h2>
-        <p class="home-sub">系统性金融知识体系与投资研究索引，覆盖金融通识、国际金融、企业资本运作案例与 AI 基础设施投资研究。</p>
+        <p class="home-sub">系统性金融知识体系与投资研究索引，覆盖国际金融、企业资本运作案例与 AI 基础设施投资研究。</p>
 
         <div class="stats">
           <div class="stat">
-            <div class="stat-num">10</div>
+            <div class="stat-num">6</div>
             <div class="stat-label">研究资料</div>
           </div>
           <div class="stat">
-            <div class="stat-num">4</div>
+            <div class="stat-num">3</div>
             <div class="stat-label">知识领域</div>
           </div>
           <div class="stat">
@@ -212,37 +174,9 @@
         <div class="toc">
 
           <div class="toc-group">
-            <div class="toc-group-title">一、金融通识与体系 <span class="badge">未完成</span></div>
+            <div class="toc-group-title">一、国际金融分析</div>
             <button class="toc-row" data-page="page1">
               <span class="toc-no">P01</span>
-              <span class="toc-title">个人金融体系蓝图</span>
-              <span class="toc-desc">稳健激进型投资者的知识体系全景图</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page2">
-              <span class="toc-no">P02</span>
-              <span class="toc-title">完整学习路线</span>
-              <span class="toc-desc">从入门到进阶的金融学习路径规划</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page3">
-              <span class="toc-no">P03</span>
-              <span class="toc-title">核心学习讲义</span>
-              <span class="toc-desc">关键概念与知识点的系统梳理</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page4">
-              <span class="toc-no">P04</span>
-              <span class="toc-title">从小白到能自己管钱</span>
-              <span class="toc-desc">视频精讲课 · 连贯版，从零到实操</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-          </div>
-
-          <div class="toc-group">
-            <div class="toc-group-title">二、国际金融分析</div>
-            <button class="toc-row" data-page="page5">
-              <span class="toc-no">P05</span>
               <span class="toc-title">美日汇率干预与全球金融传导</span>
               <span class="toc-desc">BOJ 政策、套息交易与全球资产联动深度笔记</span>
               <span class="toc-arrow">&rarr;</span>
@@ -250,9 +184,9 @@
           </div>
 
           <div class="toc-group">
-            <div class="toc-group-title">三、企业金融案例分析</div>
-            <button class="toc-row" data-page="page6">
-              <span class="toc-no">P06</span>
+            <div class="toc-group-title">二、企业金融案例分析</div>
+            <button class="toc-row" data-page="page2">
+              <span class="toc-no">P02</span>
               <span class="toc-title">Intel $200亿增发案例分析</span>
               <span class="toc-desc">融资决策框架 · 5倍超额认购 · ASIC 产业链联动 · 投资观察</span>
               <span class="toc-arrow">&rarr;</span>
@@ -260,27 +194,27 @@
           </div>
 
           <div class="toc-group">
-            <div class="toc-group-title">四、AI / 硬件投资研究</div>
-            <button class="toc-row" data-page="page7">
-              <span class="toc-no">P07</span>
+            <div class="toc-group-title">三、AI / 硬件投资研究</div>
+            <button class="toc-row" data-page="page3">
+              <span class="toc-no">P03</span>
               <span class="toc-title">AI硬件长期建仓策略</span>
               <span class="toc-desc">卖铲人家族全景 + 八大标的双情景建仓区间</span>
               <span class="toc-arrow">&rarr;</span>
             </button>
-            <button class="toc-row" data-page="page8">
-              <span class="toc-no">P08</span>
+            <button class="toc-row" data-page="page4">
+              <span class="toc-no">P04</span>
               <span class="toc-title">AI产业链深度研究讲义</span>
               <span class="toc-desc">产业链七层拆解、HBM/CoWoS/光模块/液冷等深度分析</span>
               <span class="toc-arrow">&rarr;</span>
             </button>
-            <button class="toc-row" data-page="page9">
-              <span class="toc-no">P09</span>
+            <button class="toc-row" data-page="page5">
+              <span class="toc-no">P05</span>
               <span class="toc-title">ASIC四标的深度建仓分析</span>
               <span class="toc-desc">AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间</span>
               <span class="toc-arrow">&rarr;</span>
             </button>
-            <button class="toc-row" data-page="page10">
-              <span class="toc-no">P10</span>
+            <button class="toc-row" data-page="page6">
+              <span class="toc-no">P06</span>
               <span class="toc-title">AI资本结构风险与泡沫类比分析</span>
               <span class="toc-desc">$5000亿融资平台风险瀑布 · SEC 豁免 · 2000+2008 类比 · 四道关卡</span>
               <span class="toc-arrow">&rarr;</span>
@@ -302,30 +236,23 @@
 
 <script>
   var REPORTS = {
-    page1:  { file: '金融体系蓝图.html',                    title: '个人金融体系蓝图' },
-    page2:  { file: '学习路线.html',                        title: '完整学习路线' },
-    page3:  { file: '核心学习讲义.html',                    title: '核心学习讲义' },
-    page4:  { file: '金融视频课程-连贯版.html',             title: '从小白到能自己管钱' },
-    page5:  { file: '美日汇率干预与全球金融传导学习笔记.html', title: '美日汇率干预与全球金融传导' },
-    page6:  { file: 'Intel增发案例分析.html',               title: 'Intel $200亿增发案例分析' },
-    page7:  { file: 'AI硬件长期建仓策略.html',              title: 'AI硬件长期建仓策略' },
-    page8:  { file: 'AI产业链深度研究讲义.html',            title: 'AI产业链深度研究讲义' },
-    page9:  { file: 'ASIC四标的深度建仓分析.html',          title: 'ASIC四标的深度建仓分析' },
-    page10: { file: 'AI资本结构风险与泡沫类比分析.html',    title: 'AI资本结构风险与泡沫类比分析' }
+    page1: { file: '美日汇率干预与全球金融传导学习笔记.html', title: '美日汇率干预与全球金融传导' },
+    page2: { file: 'Intel增发案例分析.html',               title: 'Intel $200亿增发案例分析' },
+    page3: { file: 'AI硬件长期建仓策略.html',              title: 'AI硬件长期建仓策略' },
+    page4: { file: 'AI产业链深度研究讲义.html',            title: 'AI产业链深度研究讲义' },
+    page5: { file: 'ASIC四标的深度建仓分析.html',          title: 'ASIC四标的深度建仓分析' },
+    page6: { file: 'AI资本结构风险与泡沫类比分析.html',    title: 'AI资本结构风险与泡沫类比分析' }
   };
-  var GROUP_PAGES = { page1: 1, page2: 1, page3: 1, page4: 1 };
 
   var frame = document.getElementById('frame');
   var home = document.getElementById('home');
   var items = Array.prototype.slice.call(document.querySelectorAll('.nav-item'));
-  var subItems = Array.prototype.slice.call(document.querySelectorAll('.sub-item'));
   var tocRows = Array.prototype.slice.call(document.querySelectorAll('.toc-row'));
 
   function showHome() {
     home.style.display = 'flex';
     frame.style.display = 'none';
     items.forEach(function (it) { it.classList.remove('active'); });
-    subItems.forEach(function (s) { s.classList.remove('active'); });
     document.title = '投资研究知识库';
   }
 
@@ -338,18 +265,12 @@
     items.forEach(function (it) {
       it.classList.toggle('active', it.getAttribute('data-page') === page);
     });
-    subItems.forEach(function (s) {
-      s.classList.toggle('active', s.getAttribute('data-page') === page);
-    });
     document.title = r.title + ' · 投资研究知识库';
   }
 
   function route() {
     var h = (location.hash || '').replace('#', '');
     if (h === '' || h === 'home' || !REPORTS[h]) { showHome(); return; }
-    if (GROUP_PAGES[h]) {
-      document.getElementById('submenu-foundation').classList.add('open');
-    }
     openPage(h);
     var target = document.querySelector('[data-page="' + h + '"]');
     if (target && target.scrollIntoView) target.scrollIntoView({ block: 'nearest' });
@@ -361,19 +282,8 @@
 
   items.forEach(function (item) {
     item.addEventListener('click', function () {
-      var toggle = item.getAttribute('data-toggle');
-      if (toggle) {
-        document.getElementById(toggle).classList.toggle('open');
-      } else {
-        var page = item.getAttribute('data-page');
-        if (page) go(page);
-      }
-    });
-  });
-
-  subItems.forEach(function (sub) {
-    sub.addEventListener('click', function () {
-      go(sub.getAttribute('data-page'));
+      var page = item.getAttribute('data-page');
+      if (page) go(page);
     });
   });
 

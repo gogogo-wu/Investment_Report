@@ -22,28 +22,28 @@
   }
   .sidebar-header { padding: 20px 18px 12px; border-bottom: 1px solid #1e293b; }
   .sidebar-header h1 { font-size: 16px; font-weight: 700; color: #f1f5f9; }
-  .sidebar-header p { font-size: 11px; color: #64748b; margin-top: 3px; }
+  .sidebar-header p { font-size: 11px; color: #8b93a7; margin-top: 3px; }
   .nav { flex: 1; overflow-y: auto; padding: 8px 10px 24px; }
   .nav::-webkit-scrollbar { width: 6px; }
   .nav::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
   .nav-group-title {
     font-size: 11px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 1.2px; color: #64748b;
+    letter-spacing: 1.2px; color: #8b93a7;
     padding: 16px 10px 6px;
   }
   .nav-item {
     display: block; width: 100%; text-align: left;
     background: none; border: none; cursor: pointer;
     padding: 9px 12px; border-radius: 8px;
-    color: #94a3b8; font-size: 13px; line-height: 1.45;
+    color: #cbd5e1; font-size: 13px; line-height: 1.45;
     font-family: inherit;
     transition: background .15s, color .15s;
   }
-  .nav-item:hover { background: #1e293b; color: #e2e8f0; }
-  .nav-item.active { background: rgba(99,102,241,.16); color: #a5b4fc; }
+  .nav-item:hover { background: #243049; color: #f1f5f9; }
+  .nav-item.active { background: rgba(99,102,241,.18); color: #c7d2fe; }
   .nav-item .t { display: block; font-weight: 500; }
-  .nav-item .d { display: block; font-size: 11px; color: #475569; margin-top: 2px; }
-  .nav-item.active .d { color: #818cf8; opacity: .75; }
+  .nav-item .d { display: block; font-size: 11px; color: #94a3b8; margin-top: 2px; }
+  .nav-item.active .d { color: #a5b4fc; }
   .nav-item .badge {
     display: inline-block; font-size: 10px; font-weight: 500;
     padding: 1px 5px; border-radius: 3px; margin-left: 5px;
@@ -58,15 +58,15 @@
     display: block; width: 100%; text-align: left;
     background: none; border: none; cursor: pointer;
     padding: 7px 12px 7px 28px; border-radius: 6px;
-    color: #64748b; font-size: 12px; line-height: 1.4;
+    color: #a8b3c8; font-size: 12px; line-height: 1.4;
     font-family: inherit;
     transition: background .15s, color .15s;
   }
-  .submenu .sub-item:hover { background: #1e293b; color: #e2e8f0; }
-  .submenu .sub-item.active { color: #a5b4fc; background: rgba(99,102,241,.10); }
+  .submenu .sub-item:hover { background: #243049; color: #f1f5f9; }
+  .submenu .sub-item.active { color: #c7d2fe; background: rgba(99,102,241,.12); }
   .sidebar-footer {
     padding: 12px 18px; border-top: 1px solid #1e293b;
-    font-size: 11px; color: #475569; line-height: 1.6;
+    font-size: 11px; color: #7c86a0; line-height: 1.6;
   }
 
   /* ===== 右侧内容 ===== */
@@ -173,43 +173,43 @@
     <div class="welcome" id="welcome">
       <div class="welcome-inner">
         <h2>金融学习 · 知识库</h2>
-        <p class="welcome-sub">报告、笔记与策略分析索引 &mdash; 点击左侧分类进入对应报告</p>
+        <p class="welcome-sub">系统性金融知识体系与投资研究索引 &mdash; 点击左侧导航进入对应内容</p>
 
         <div class="stats">
           <div class="stat">
             <div class="stat-num">10</div>
-            <div class="stat-label">份报告</div>
+            <div class="stat-label">份研究资料</div>
           </div>
           <div class="stat">
             <div class="stat-num">4</div>
-            <div class="stat-label">大分类</div>
+            <div class="stat-label">个知识领域</div>
           </div>
           <div class="stat">
             <div class="stat-num">2026-08</div>
-            <div class="stat-label">最后更新</div>
+            <div class="stat-label">最近更新</div>
           </div>
         </div>
 
         <div class="welcome-grid">
           <button class="welcome-card" data-toggle="submenu-foundation">
             <span class="ct">金融通识与体系 <span class="badge">未完成</span></span>
-            <span class="cd">从体系蓝图到视频课程的完整入门路径</span>
-            <span class="cn">4 份报告 · 点击展开 &rarr;</span>
+            <span class="cd">知识框架、学习路径与核心概念的体系化梳理</span>
+            <span class="cn">4 份资料 · 点击展开 &rarr;</span>
           </button>
           <button class="welcome-card" data-file="美日汇率干预与全球金融传导学习笔记.html">
             <span class="ct">国际金融分析</span>
-            <span class="cd">BOJ 政策、套息交易与全球资产传导</span>
-            <span class="cn">1 份报告 · 点击进入 &rarr;</span>
+            <span class="cd">央行政策、汇率机制与全球资本流动研究</span>
+            <span class="cn">1 份资料 · 点击进入 &rarr;</span>
           </button>
           <button class="welcome-card" data-file="Intel增发案例分析.html">
             <span class="ct">企业金融案例分析</span>
-            <span class="cd">融资决策框架与增发案例深度拆解</span>
-            <span class="cn">1 份报告 · 点击进入 &rarr;</span>
+            <span class="cd">上市公司融资决策与资本运作的深度拆解</span>
+            <span class="cn">1 份资料 · 点击进入 &rarr;</span>
           </button>
           <button class="welcome-card" data-file="AI硬件长期建仓策略.html">
             <span class="ct">AI / 硬件投资研究</span>
-            <span class="cd">卖铲人全景、ASIC 标的与泡沫风险</span>
-            <span class="cn">4 份报告 · 点击进入 &rarr;</span>
+            <span class="cd">AI 基础设施产业链、标的分析与风险框架</span>
+            <span class="cn">4 份资料 · 点击进入 &rarr;</span>
           </button>
         </div>
       </div>

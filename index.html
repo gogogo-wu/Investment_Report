@@ -110,6 +110,11 @@
     </div>
 
     <nav class="nav">
+      <button class="nav-item" data-page="home">
+        <span class="t">首页</span>
+        <span class="d">知识库目录</span>
+      </button>
+
       <div class="nav-group-title">国际金融分析</div>
       <button class="nav-item" data-page="page1">
         <span class="t">美日汇率干预与全球金融传导</span>
@@ -252,7 +257,9 @@
   function showHome() {
     home.style.display = 'flex';
     frame.style.display = 'none';
-    items.forEach(function (it) { it.classList.remove('active'); });
+    items.forEach(function (it) {
+      it.classList.toggle('active', it.getAttribute('data-page') === 'home');
+    });
     document.title = '我的金融发散笔记';
   }
 

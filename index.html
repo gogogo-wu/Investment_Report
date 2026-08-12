@@ -3,155 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>金融学习 · 知识库索引</title>
+<title>金融学习 · 知识库</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #0f172a; color: #e2e8f0; min-height:100vh;
-    padding: 40px 24px 80px;
+    background: #0f172a; color: #e2e8f0;
+    height: 100vh; overflow: hidden;
   }
-  .container { max-width: 960px; margin:0 auto; }
-  h1 {
-    font-size: 28px; font-weight: 700; color: #f1f5f9;
-    margin-bottom: 6px;
+  .layout { display: flex; height: 100vh; }
+
+  /* ===== 左侧导航 ===== */
+  .sidebar {
+    width: 272px; flex-shrink: 0;
+    background: #0b1220;
+    border-right: 1px solid #1e293b;
+    display: flex; flex-direction: column;
   }
-  .subtitle { font-size: 14px; color: #64748b; margin-bottom: 40px; }
-  .section { margin-bottom: 44px; }
-  .section-title {
-    font-size: 14px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 1.5px; color: #64748b;
-    margin-bottom: 16px; padding-bottom: 10px;
-    border-bottom: 1px solid #1e293b;
+  .sidebar-header { padding: 20px 18px 12px; border-bottom: 1px solid #1e293b; }
+  .sidebar-header h1 { font-size: 16px; font-weight: 700; color: #f1f5f9; }
+  .sidebar-header p { font-size: 11px; color: #64748b; margin-top: 3px; }
+  .nav { flex: 1; overflow-y: auto; padding: 8px 10px 24px; }
+  .nav::-webkit-scrollbar { width: 6px; }
+  .nav::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+  .nav-group-title {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1.2px; color: #64748b;
+    padding: 16px 10px 6px;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-  .card {
-    display: block; text-decoration: none;
+  .nav-item {
+    display: block; width: 100%; text-align: left;
+    background: none; border: none; cursor: pointer;
+    padding: 9px 12px; border-radius: 8px;
+    color: #94a3b8; font-size: 13px; line-height: 1.45;
+    font-family: inherit;
+    transition: background .15s, color .15s;
+  }
+  .nav-item:hover { background: #1e293b; color: #e2e8f0; }
+  .nav-item.active { background: rgba(99,102,241,.16); color: #a5b4fc; }
+  .nav-item .t { display: block; font-weight: 500; }
+  .nav-item .d { display: block; font-size: 11px; color: #475569; margin-top: 2px; }
+  .nav-item.active .d { color: #818cf8; opacity: .75; }
+  .sidebar-footer {
+    padding: 12px 18px; border-top: 1px solid #1e293b;
+    font-size: 11px; color: #475569; line-height: 1.6;
+  }
+
+  /* ===== 右侧内容 ===== */
+  .main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .welcome {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    overflow-y: auto; padding: 40px 24px;
+  }
+  .welcome-inner { max-width: 760px; width: 100%; }
+  .welcome h2 { font-size: 30px; font-weight: 700; color: #f1f5f9; letter-spacing: .5px; }
+  .welcome-sub { font-size: 14px; color: #64748b; margin-top: 8px; }
+  .stats { display: flex; gap: 12px; margin: 32px 0; }
+  .stat {
+    flex: 1; background: #1e293b; border: 1px solid #334155;
+    border-radius: 12px; padding: 18px 16px;
+  }
+  .stat-num { font-size: 24px; font-weight: 700; color: #a5b4fc; }
+  .stat-label { font-size: 12px; color: #64748b; margin-top: 4px; }
+  .welcome-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; margin-top: 8px; }
+  .welcome-card {
+    display: block; width: 100%; text-align: left;
     background: #1e293b; border: 1px solid #334155;
-    border-radius: 10px; padding: 20px 22px;
-    transition: border-color .2s, background .2s, transform .15s;
+    border-radius: 12px; padding: 16px 18px; cursor: pointer;
+    font-family: inherit; color: inherit;
+    transition: border-color .15s, transform .15s;
   }
-  .card:hover {
-    border-color: #6366f1; background: #1e293b;
-    transform: translateY(-1px);
-  }
-  .card-title {
-    font-size: 16px; font-weight: 600; color: #f1f5f9;
-    margin-bottom: 6px; line-height: 1.4;
-  }
-  .card-desc {
-    font-size: 13px; color: #94a3b8; line-height: 1.5;
-  }
-  .card-date {
-    font-size: 11px; color: #475569; margin-top: 10px;
-  }
-  .tag {
-    display: inline-block; font-size: 11px; font-weight: 500;
-    padding: 2px 8px; border-radius: 4px;
-    margin-right: 6px; margin-top: 8px;
-  }
-  .tag-learn { background: rgba(34,197,94,.15); color: #4ade80; }
-  .tag-research { background: rgba(99,102,241,.15); color: #818cf8; }
-  .tag-note { background: rgba(245,158,11,.15); color: #fbbf24; }
-  .footer {
-    margin-top: 50px; padding-top: 20px; border-top: 1px solid #1e293b;
-    font-size: 12px; color: #475569; text-align: center;
-  }
+  .welcome-card:hover { border-color: #6366f1; transform: translateY(-1px); }
+  .welcome-card .ct { font-size: 14px; font-weight: 600; color: #f1f5f9; }
+  .welcome-card .cd { font-size: 12px; color: #94a3b8; margin-top: 4px; line-height: 1.5; }
+  .welcome-card .cn { font-size: 11px; color: #6366f1; margin-top: 8px; display: block; }
+  #frame { flex: 1; width: 100%; border: none; background: #fff; display: none; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="layout">
 
-  <h1>金融学习 · 知识库</h1>
-  <p class="subtitle">报告、笔记与策略分析索引 &mdash; 持续更新中</p>
-
-  <!-- ==================== 金融基础学习 ==================== -->
-  <div class="section">
-    <div class="section-title">金融基础学习</div>
-    <div class="grid">
-      <a class="card" href="金融体系蓝图.html">
-        <div class="card-title">个人金融体系蓝图</div>
-        <div class="card-desc">稳健激进型投资者的知识体系全景图</div>
-        <span class="tag tag-learn">体系框架</span>
-      </a>
-      <a class="card" href="学习路线.html">
-        <div class="card-title">完整学习路线</div>
-        <div class="card-desc">从入门到进阶的金融学习路径规划</div>
-        <span class="tag tag-learn">路径规划</span>
-      </a>
-      <a class="card" href="核心学习讲义.html">
-        <div class="card-title">核心学习讲义</div>
-        <div class="card-desc">关键概念与知识点的系统梳理</div>
-        <span class="tag tag-learn">概念梳理</span>
-      </a>
-      <a class="card" href="金融视频课程-连贯版.html">
-        <div class="card-title">从小白到能自己管钱</div>
-        <div class="card-desc">视频精讲课 · 连贯版，从零到实操</div>
-        <span class="tag tag-learn">视频课程</span>
-      </a>
+  <!-- ==================== 左侧导航 ==================== -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>金融学习 · 知识库</h1>
+      <p>报告 · 笔记 · 策略分析</p>
     </div>
-  </div>
 
-  <!-- ==================== 国际金融分析 ==================== -->
-  <div class="section">
-    <div class="section-title">国际金融分析</div>
-    <div class="grid">
-      <a class="card" href="美日汇率干预与全球金融传导学习笔记.html">
-        <div class="card-title">美日汇率干预与全球金融传导</div>
-        <div class="card-desc">BOJ政策、套息交易、全球资产联动深度笔记</div>
-        <span class="tag tag-note">学习笔记</span>
-      </a>
+    <nav class="nav">
+      <div class="nav-group-title">金融通识与体系</div>
+      <button class="nav-item" data-file="金融体系蓝图.html">
+        <span class="t">个人金融体系蓝图</span>
+        <span class="d">稳健激进型投资者的知识体系全景图</span>
+      </button>
+      <button class="nav-item" data-file="学习路线.html">
+        <span class="t">完整学习路线</span>
+        <span class="d">从入门到进阶的金融学习路径规划</span>
+      </button>
+      <button class="nav-item" data-file="核心学习讲义.html">
+        <span class="t">核心学习讲义</span>
+        <span class="d">关键概念与知识点的系统梳理</span>
+      </button>
+      <button class="nav-item" data-file="金融视频课程-连贯版.html">
+        <span class="t">从小白到能自己管钱</span>
+        <span class="d">视频精讲课 · 连贯版，从零到实操</span>
+      </button>
+
+      <div class="nav-group-title">国际金融分析</div>
+      <button class="nav-item" data-file="美日汇率干预与全球金融传导学习笔记.html">
+        <span class="t">美日汇率干预与全球金融传导</span>
+        <span class="d">BOJ政策、套息交易、全球资产联动深度笔记</span>
+      </button>
+
+      <div class="nav-group-title">企业金融案例分析</div>
+      <button class="nav-item" data-file="Intel增发案例分析.html">
+        <span class="t">Intel $200亿增发案例分析</span>
+        <span class="d">融资决策框架 · 5倍超额认购 · ASIC产业链联动 · 投资观察</span>
+      </button>
+
+      <div class="nav-group-title">AI / 硬件投资研究</div>
+      <button class="nav-item" data-file="AI硬件长期建仓策略.html">
+        <span class="t">AI硬件长期建仓策略</span>
+        <span class="d">卖铲人家族全景 + 八大标的双情景建仓区间</span>
+      </button>
+      <button class="nav-item" data-file="AI产业链深度研究讲义.html">
+        <span class="t">AI产业链深度研究讲义</span>
+        <span class="d">产业链七层拆解、HBM/CoWoS/光模块/液冷等深度分析</span>
+      </button>
+      <button class="nav-item" data-file="ASIC四标的深度建仓分析.html">
+        <span class="t">ASIC四标的深度建仓分析</span>
+        <span class="d">AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间</span>
+      </button>
+      <button class="nav-item" data-file="AI资本结构风险与泡沫类比分析.html">
+        <span class="t">AI资本结构风险与泡沫类比分析</span>
+        <span class="d">$5000亿融资平台风险瀑布 · SEC豁免 · 2000+2008类比 · 四道关卡</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      共 <span id="reportCount">10</span> 份报告 · 4 大分类<br>
+      最后更新 2026-08-12
     </div>
-  </div>
+  </aside>
 
-  <!-- ==================== 企业金融案例分析 ==================== -->
-  <div class="section">
-    <div class="section-title">企业金融案例分析</div>
-    <div class="grid">
-      <a class="card" href="Intel增发案例分析.html">
-        <div class="card-title">Intel $200亿增发案例分析</div>
-        <div class="card-desc">融资决策框架的反向验证 · 5倍超额认购 · ASIC产业链联动 · 投资观察框架</div>
-        <div class="card-date">2026年8月</div>
-        <span class="tag tag-research">融资决策</span>
-      </a>
+  <!-- ==================== 右侧内容区 ==================== -->
+  <main class="main">
+    <div class="welcome" id="welcome">
+      <div class="welcome-inner">
+        <h2>金融学习 · 知识库</h2>
+        <p class="welcome-sub">报告、笔记与策略分析索引 &mdash; 点击左侧分类进入对应报告</p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num">10</div>
+            <div class="stat-label">份报告</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4</div>
+            <div class="stat-label">大分类</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2026-08</div>
+            <div class="stat-label">最后更新</div>
+          </div>
+        </div>
+
+        <div class="welcome-grid">
+          <button class="welcome-card" data-file="金融体系蓝图.html">
+            <span class="ct">金融通识与体系</span>
+            <span class="cd">从体系蓝图到视频课程的完整入门路径</span>
+            <span class="cn">4 份报告 · 点击进入 &rarr;</span>
+          </button>
+          <button class="welcome-card" data-file="美日汇率干预与全球金融传导学习笔记.html">
+            <span class="ct">国际金融分析</span>
+            <span class="cd">BOJ 政策、套息交易与全球资产传导</span>
+            <span class="cn">1 份报告 · 点击进入 &rarr;</span>
+          </button>
+          <button class="welcome-card" data-file="Intel增发案例分析.html">
+            <span class="ct">企业金融案例分析</span>
+            <span class="cd">融资决策框架与增发案例深度拆解</span>
+            <span class="cn">1 份报告 · 点击进入 &rarr;</span>
+          </button>
+          <button class="welcome-card" data-file="AI硬件长期建仓策略.html">
+            <span class="ct">AI / 硬件投资研究</span>
+            <span class="cd">卖铲人全景、ASIC 标的与泡沫风险</span>
+            <span class="cn">4 份报告 · 点击进入 &rarr;</span>
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- ==================== AI / 硬件投资研究 ==================== -->
-  <div class="section">
-    <div class="section-title">AI / 硬件投资研究</div>
-    <div class="grid">
-      <a class="card" href="AI硬件长期建仓策略.html">
-        <div class="card-title">AI硬件长期建仓策略</div>
-        <div class="card-desc">卖铲人家族全景 + 八大标的双情景建仓区间</div>
-        <div class="card-date">2026年8月</div>
-        <span class="tag tag-research">建仓策略</span>
-      </a>
-      <a class="card" href="AI产业链深度研究讲义.html">
-        <div class="card-title">AI产业链深度研究讲义</div>
-        <div class="card-desc">产业链七层拆解、HBM/CoWoS/光模块/液冷等模块深度分析</div>
-        <div class="card-date">2026年8月</div>
-        <span class="tag tag-research">产业链研究</span>
-      </a>
-      <a class="card" href="ASIC四标的深度建仓分析.html">
-        <div class="card-title">ASIC四标的深度建仓分析</div>
-        <div class="card-desc">AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间</div>
-        <div class="card-date">2026年8月</div>
-        <span class="tag tag-research">个股深度</span>
-      </a>
-      <a class="card" href="AI资本结构风险与泡沫类比分析.html">
-        <div class="card-title">AI资本结构风险与泡沫类比分析</div>
-        <div class="card-desc">$5000亿融资平台风险瀑布 · SEC豁免 · 2000+2008双重类比 · 普通投资者四道关卡</div>
-        <div class="card-date">2026年8月</div>
-        <span class="tag tag-research">泡沫风险</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="footer">
-    金融学习项目 &middot; 持续更新 &middot; 最后更新 2026-08-12 · 共 10 份报告
-  </div>
+    <iframe id="frame" title="报告预览"></iframe>
+  </main>
 
 </div>
+
+<script>
+  var frame = document.getElementById('frame');
+  var welcome = document.getElementById('welcome');
+  var items = Array.prototype.slice.call(document.querySelectorAll('.nav-item'));
+
+  function openFile(file) {
+    items.forEach(function (item) {
+      item.classList.toggle('active', item.getAttribute('data-file') === file);
+    });
+    welcome.style.display = 'none';
+    frame.style.display = 'block';
+    frame.src = file;
+  }
+
+  items.forEach(function (item) {
+    item.addEventListener('click', function () {
+      openFile(item.getAttribute('data-file'));
+    });
+  });
+
+  document.querySelectorAll('.welcome-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      openFile(card.getAttribute('data-file'));
+    });
+  });
+
+  document.getElementById('reportCount').textContent = items.length;
+</script>
 </body>
 </html>

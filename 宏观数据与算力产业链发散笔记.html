@@ -122,15 +122,68 @@
   <ul>
     <li><strong>是什么：</strong>每月第一个周五公布的上月非农就业报告，核心是<span class="blue">新增非农就业人数</span>（剔除农业、私营+政府部门的就业变化），附带失业率与<span class="blue">平均时薪</span>（工资增速，观察通胀传导的第二线索）。</li>
     <li><strong>为什么重要：</strong>就业是经济的"结果变量"——企业只有在景气时才招人。就业好 = 经济韧性；就业差 = 衰退预警 &rarr; 央行需要宽松。</li>
+    <li><strong>与利率决策的关系：</strong>美联储有"双重使命"——<span class="blue">物价稳定</span>（2% 通胀目标）和<span class="blue">最大就业</span>。CPI 告诉你通胀离目标多远，非农告诉你就业离"最大就业"多远。两个数据合在一起，决定了央行该加息、维持还是降息：
+      <ul>
+        <li><strong>非农强劲 + CPI 超标</strong> &rarr; 经济过热 + 通胀未控 &rarr; 央行有底气加息（不怕伤经济）；</li>
+        <li><strong>非农疲软 + CPI 超标</strong> &rarr; 滞胀信号 &rarr; 央行左右为难（最痛苦的组合）；</li>
+        <li><strong>非农疲软 + CPI 达标</strong> &rarr; 衰退风险 &rarr; 央行倾向降息；</li>
+        <li><strong>非农强劲 + CPI 达标</strong> &rarr; 金发姑娘 &rarr; 央行维持，皆大欢喜。</li>
+      </ul>
+    </li>
   </ul>
 
-  <h3>1.3 传导链：数据如何变成行情</h3>
+  <h3>1.3 加息、降息、维持：央行的"三选一"与概率定价</h3>
+  <p>这是最容易混淆的一块——市场常说的"加息预期""降息预期"，到底在预期什么？先把三个选项摆清楚：</p>
+  <table>
+    <thead>
+      <tr><th>政策选项</th><th>含义</th><th>触发条件</th><th>对市场的影响</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="red">加息</span></td>
+        <td>上调联邦基金利率目标区间（如 +25bp）</td>
+        <td>通胀远高于 2% 目标 + 经济/就业强劲</td>
+        <td>无风险利率&uarr; &rarr; 贴现率&uarr; &rarr; 估值&darr;（尤其成长股）</td>
+      </tr>
+      <tr>
+        <td><span class="yellow">维持</span></td>
+        <td>利率不变，"观望"</td>
+        <td>数据好坏参半，或通胀在目标附近</td>
+        <td>中性——不变本身就是一种信号（"还没到动手的时候"）</td>
+      </tr>
+      <tr>
+        <td><span class="green">降息</span></td>
+        <td>下调联邦基金利率目标区间（如 -25bp）</td>
+        <td>通胀达标或低于目标 + 经济走弱/衰退风险</td>
+        <td>无风险利率&darr; &rarr; 贴现率&darr; &rarr; 估值&uarr;（利好长久期资产）</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout callout-warn">
+    <strong>当前背景（2026 年 8 月）&mdash;&mdash;为什么讨论的是"加息 vs 维持"而不是"降息"：</strong>
+    <ul style="margin-top:8px;">
+      <li>CPI 同比 3.4%，<strong>远高于 2% 目标</strong>，通胀压力仍在；</li>
+      <li>新任美联储主席沃什（Warsh）立场鹰派，公开表示"2% 目标无回旋余地"；</li>
+      <li>已有 <strong>3 位鹰派理事</strong>公开支持加息&mdash;&mdash;FOMC 内部加息派已有票数基础；</li>
+      <li>因此市场核心辩论是：<strong>9 月是"加息"还是"维持"</strong>&mdash;&mdash;"降息"在当前环境下基本不在桌面上。</li>
+    </ul>
+  </div>
+  <div class="callout">
+    <strong>概率定价怎么读：</strong>市场工具（如 CME FedWatch）把预期量化为概率。当媒体报道"9 月加息概率 42%"，意思是：市场认为 9 月加息的可能性约 42%，<strong>剩余 58% = 维持</strong>（不是降息）。概率从 46% 降到 42%，意味着：
+    <ul style="margin-top:8px;">
+      <li>加息的<strong>尾部风险</strong>在消退（从"接近五五开"变成"略偏维持"）；</li>
+      <li>这不是"降息预期升温"，而是<strong>"不加息"的概率上升</strong>&mdash;&mdash;两者有本质区别；</li>
+      <li>对市场而言，紧缩担忧缓解 = 无风险利率边际下行 = 利好风险资产（尤其高久期成长股）。</li>
+    </ul>
+  </div>
+
+  <h3>1.4 传导链：数据如何变成行情</h3>
   <div class="flow">
     <span class="flow-step"><b>数据公布</b>实际值 vs 共识预期</span>
     <span class="flow-arrow">&#8594;</span>
     <span class="flow-step"><b>预期差</b>偏离 = 交易信号</span>
     <span class="flow-arrow">&#8594;</span>
-    <span class="flow-step"><b>央行路径</b>加息/降息概率重定价</span>
+    <span class="flow-step"><b>央行路径</b>加息/维持/降息概率重定价</span>
     <span class="flow-arrow">&#8594;</span>
     <span class="flow-step"><b>无风险利率</b>美债收益率变动</span>
     <span class="flow-arrow">&#8594;</span>
@@ -140,7 +193,7 @@
     <strong>预期差框架（核心认知）：</strong>市场交易的从来不是数据本身，而是<strong>实际值与共识预期的偏差</strong>。完全符合预期 = 无信号（甚至利好出尽）；大幅偏离 = 大行情。所以同样的 3.4%，"符合预期"和"超预期"是两回事。
   </div>
 
-  <h3>1.4 对不同行业的影响</h3>
+  <h3>1.5 对不同行业的影响</h3>
   <table>
     <thead>
       <tr><th>行业类型</th><th>受影响机制</th><th>典型代表</th></tr>
@@ -178,27 +231,33 @@
   <h3>2.1 当日数据：紧缩担忧缓解</h3>
   <table>
     <thead>
-      <tr><th>数据</th><th>数值</th><th>市场解读</th></tr>
+      <tr><th>数据</th><th>实际值</th><th>共识预期</th><th>市场解读</th></tr>
     </thead>
     <tbody>
       <tr>
         <td>7 月 CPI 同比</td>
-        <td class="num">3.4%（前值 3.5%）</td>
-        <td><span class="green">完全符合预期</span>，通胀小幅回落</td>
+        <td class="num">3.4%</td>
+        <td class="num">3.4%</td>
+        <td><span class="green">完全符合预期</span>（前值 3.5%，通胀小幅回落）</td>
       </tr>
       <tr>
         <td>核心 CPI</td>
-        <td class="num">2.5%（续降）</td>
-        <td><span class="green">内生通胀继续降温</span></td>
+        <td class="num">2.5%</td>
+        <td class="num">~2.5%</td>
+        <td><span class="green">符合预期</span>，内生通胀继续降温</td>
       </tr>
       <tr>
         <td>9 月加息概率</td>
         <td class="num">46% &rarr; 42%</td>
-        <td><span class="green">紧缩担忧缓解</span>（相当于降息预期边际升温）</td>
+        <td class="num">&mdash;</td>
+        <td><span class="green">紧缩尾部风险消退</span>（加息可能性下降 = 维持概率上升至 58%）</td>
       </tr>
     </tbody>
   </table>
-  <p>关键点：当天不是"降息落空"，而是<span class="green">加息风险下降</span>——此前市场担心 9 月被迫加息（概率 46%），温和的 CPI 把这个担忧压到 42%。<strong>担忧缓解本身，就是利好。</strong></p>
+  <p>用第一章的框架拆解：CPI 3.4% 仍高于 2% 目标，所以"降息"不在桌面上；市场辩论的是<strong>"9 月加不加息"</strong>。数据前，市场给加息的概率是 46%（接近五五开，紧张）；数据后，温和的 CPI 把这个概率压到 42%（略偏维持）。<strong>不是"降息预期升温"，而是"加息概率下降"</strong>——从"可能加息"滑向"更可能维持"，紧缩的尾部风险消退了，这就足以让风险资产松一口气。</p>
+  <div class="callout callout-green">
+    <strong>为什么"不加息"就是利好？</strong>回到贴现率公式：资产价值 = 未来现金流 &divide; (1 + 贴现率)<sup>n</sup>。加息预期强 &rarr; 贴现率高 &rarr; 估值压；加息预期弱 &rarr; 贴现率不用再加码 &rarr; 估值松。8/12 的 CPI 让市场确认"9 月大概率维持"，贴现率边际下行 = <strong>分母端改善</strong>。叠加同日财报利好（分子端改善），分母分子同向 = 行情"最顺风"。
+  </div>
 
   <h3>2.2 财报叠加：算力需求端"实锤"</h3>
   <ul>

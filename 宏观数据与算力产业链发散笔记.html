@@ -177,7 +177,73 @@
     </ul>
   </div>
 
-  <h3>1.4 传导链：数据如何变成行情</h3>
+  <h3>1.4 深入理解：CPI 高 ≠ 经济过热——通胀的两种成因</h3>
+  <p>一个常见的直觉模型是"CPI 高 → 消费强劲 → 经济过热 → 需要加息降温"。方向对，但有一个前提容易被忽略：<strong>CPI 衡量的是"价格变化"，不是"消费量"</strong>。价格涨了，可能是因为需求太旺（你的模型适用），也可能是因为成本被推高了（你的模型失效）——两种情况的政策含义完全不同。</p>
+  <table>
+    <thead>
+      <tr><th>类型</th><th>成因</th><th>消费状态</th><th>加息是否正确</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="blue">需求拉动型</span></td>
+        <td>经济好 → 大家买买买 → 需求超过供给 → 价格被"拉"上去</td>
+        <td>消费确实强劲</td>
+        <td><span class="green">正确</span>——加息压需求，对症</td>
+      </tr>
+      <tr>
+        <td><span class="yellow">成本推动型</span></td>
+        <td>石油涨价 / 供应链断裂 → 生产成本上升 → 企业被迫涨价</td>
+        <td>消费并不强，甚至在走弱</td>
+        <td><span class="red">危险</span>——经济已虚弱，加息等于再踩一脚</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout callout-warn">
+    <strong>成本推动型通胀 + 经济走弱 = 滞胀</strong>（stagflation）——通胀和停滞同时存在，是央行最痛苦的组合：加息会进一步压制本已虚弱的经济，不加息则通胀继续侵蚀购买力。2022 年全球能源危机期间就出现过这种困境。
+  </div>
+  <div class="callout">
+    <strong>怎么区分？看 CPI 分项：</strong>
+    <ul style="margin-top:8px;">
+      <li><strong>住房拉动</strong>（占 CPI 约 1/3 权重）&rarr; 偏需求型（房租是消费能力的直接反映）；</li>
+      <li><strong>能源 / 食品拉动</strong> &rarr; 偏成本型（受国际大宗商品价格和供应链影响，与国内消费强弱无关）。</li>
+    </ul>
+    8/12 的案例：<strong>核心 CPI 2.5%</strong>（剔除食品和能源后继续降），说明食品和能源是额外的成本扰动，<strong>内生通胀其实在降温</strong>——这也是为什么市场松了口气：通胀"看起来"是 3.4%，但"去掉噪音"后在向 2% 目标靠拢。
+  </div>
+
+  <h3>1.5 深入理解：加息降温靠"卡住信贷"而非"鼓励存钱"</h3>
+  <p>另一个直觉模型："加息 → 人们把钱存起来不花了 → 经济降温"。存钱确实是渠道之一，但它是<strong>最弱的一个</strong>。加息降温真正靠的是另外三条更硬的渠道：</p>
+  <table>
+    <thead>
+      <tr><th>渠道</th><th>机制</th><th>强度</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="red">信贷渠道（主渠道）</span></td>
+        <td>加息 &rarr; 房贷利率涨 &rarr; 买房的人少了；企业贷款利率涨 &rarr; 扩产项目停了。<strong>不是人们"选择"不花钱，是借不起钱了</strong></td>
+        <td><span class="red">最强</span></td>
+      </tr>
+      <tr>
+        <td><span class="yellow">债务负担渠道</span></td>
+        <td>信用卡、浮动利率房贷的月供随利率上升 &rarr; 可支配收入被月供吃掉 &rarr; 被迫减少消费。<strong>不是自愿存钱，是没钱花了</strong></td>
+        <td><span class="yellow">强</span></td>
+      </tr>
+      <tr>
+        <td><span class="blue">储蓄渠道</span></td>
+        <td>存款利率涨 &rarr; 一部分人多存少花。但效果弱——多数人的消费习惯不会因为利率变动几个百分点就大幅改变</td>
+        <td>较弱</td>
+      </tr>
+      <tr>
+        <td><span class="blue">汇率渠道</span></td>
+        <td>加息 &rarr; 美元升值 &rarr; 进口商品变便宜 &rarr; 间接压低 CPI。这也是为什么美国加息对全球有外溢效应——美元走强吸走别国资金</td>
+        <td><span class="yellow">中等</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>更准确的说法：</strong>加息不是"让人们去存钱"，而是<strong>"让借钱的人借不起、欠债的人还不起"</strong>——从信用端把经济降温。降息就是反过来：借钱变便宜 &rarr; 企业敢投资、消费者敢贷款买房买车 &rarr; 存钱回报太低不如花掉或投股票 &rarr; 经济被"推"着走。"取钱去刺激消费"方向对，但更准确的说法是<strong>"降低借钱的门槛，让资金从储蓄账户流向投资和消费"</strong>。
+  </div>
+
+  <h3>1.6 传导链：数据如何变成行情</h3>
   <div class="flow">
     <span class="flow-step"><b>数据公布</b>实际值 vs 共识预期</span>
     <span class="flow-arrow">&#8594;</span>
@@ -193,7 +259,7 @@
     <strong>预期差框架（核心认知）：</strong>市场交易的从来不是数据本身，而是<strong>实际值与共识预期的偏差</strong>。完全符合预期 = 无信号（甚至利好出尽）；大幅偏离 = 大行情。所以同样的 3.4%，"符合预期"和"超预期"是两回事。
   </div>
 
-  <h3>1.5 对不同行业的影响</h3>
+  <h3>1.7 对不同行业的影响</h3>
   <table>
     <thead>
       <tr><th>行业类型</th><th>受影响机制</th><th>典型代表</th></tr>

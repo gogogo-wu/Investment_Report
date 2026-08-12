@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美日汇率干预与全球金融传导：学习笔记</title>
+<style>
+:root {
+  --bg: #1a1b26;
+  --bg-card: #24253a;
+  --bg-hover: #2a2b42;
+  --bg-sidebar: #16171f;
+  --text: #c0caf5;
+  --text-dim: #7f87b3;
+  --text-bright: #e0e6ff;
+  --accent: #7aa2f7;
+  --accent2: #bb9af7;
+  --accent3: #9ece6a;
+  --accent4: #e0af68;
+  --accent5: #f7768e;
+  --border: #3b3f54;
+  --code-bg: #1e1e2e;
+  --table-header: #2a2b42;
+  --table-row-alt: #1e1f30;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Segoe UI", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 15px;
+}
+.layout { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  padding: 30px 0;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+}
+.sidebar-title {
+  padding: 0 24px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-bright);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.sidebar-title small { font-weight: 400; font-size: 12px; color: var(--text-dim); display: block; margin-top: 4px; }
+.toc-item {
+  display: block;
+  padding: 8px 24px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.15s;
+  border-left: 3px solid transparent;
+}
+.toc-item:hover { color: var(--accent); background: var(--bg-hover); border-left-color: var(--accent); }
+.toc-item.active { color: var(--accent); border-left-color: var(--accent); background: var(--bg-hover); }
+
+/* Main content */
+.main {
+  margin-left: 280px;
+  padding: 50px 60px;
+  max-width: 900px;
+  width: 100%;
+}
+h1 {
+  font-size: 28px;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.subtitle {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+h2 {
+  font-size: 22px;
+  color: var(--accent);
+  margin-top: 56px;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+h3 {
+  font-size: 17px;
+  color: var(--accent2);
+  margin-top: 32px;
+  margin-bottom: 14px;
+}
+h4 {
+  font-size: 15px;
+  color: var(--accent4);
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+p { margin-bottom: 14px; }
+ul, ol { margin-bottom: 14px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+strong { color: var(--text-bright); }
+em { color: var(--accent3); font-style: normal; font-weight: 600; }
+a { color: var(--accent); text-decoration: none; }
+blockquote {
+  border-left: 4px solid var(--accent2);
+  background: var(--bg-card);
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+  color: var(--text);
+}
+blockquote p { margin-bottom: 0; }
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+th {
+  background: var(--table-header);
+  color: var(--text-bright);
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--border);
+}
+td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--table-row-alt); }
+tr:hover td { background: var(--bg-hover); }
+
+/* Code */
+code {
+  background: var(--code-bg);
+  color: var(--accent4);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+.card-red { border-left: 4px solid var(--accent5); }
+.card-blue { border-left: 4px solid var(--accent); }
+.card-green { border-left: 4px solid var(--accent3); }
+.card-orange { border-left: 4px solid var(--accent4); }
+.card-purple { border-left: 4px solid var(--accent2); }
+
+/* Callout */
+.callout {
+  background: linear-gradient(135deg, rgba(122,162,247,0.1), rgba(187,154,247,0.1));
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+.callout-title { color: var(--accent); font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.badge-red { background: rgba(247,118,142,0.2); color: var(--accent5); }
+.badge-blue { background: rgba(122,162,247,0.2); color: var(--accent); }
+.badge-green { background: rgba(158,206,106,0.2); color: var(--accent3); }
+.badge-orange { background: rgba(224,175,104,0.2); color: var(--accent4); }
+.badge-purple { background: rgba(187,154,247,0.2); color: var(--accent2); }
+
+/* Disclaimer */
+.disclaimer {
+  margin-top: 60px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-dim);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Scrollbar */
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Mobile */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 30px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-title">
+    学习笔记目录
+    <small>美日汇率干预与全球金融传导</small>
+  </div>
+  <a class="toc-item" href="#sec1">1. 事件起点：美日联合干预</a>
+  <a class="toc-item" href="#sec2">2. 核心机制：干预为什么能"买时间"</a>
+  <a class="toc-item" href="#sec3">3. 底层原理：加息与债市崩溃</a>
+  <a class="toc-item" href="#sec4">4. 干预的代价与收益</a>
+  <a class="toc-item" href="#sec5">5. 套息交易机制</a>
+  <a class="toc-item" href="#sec6">6. 美日股市联动</a>
+  <a class="toc-item" href="#sec7">7. 日元升值对美股传导</a>
+  <a class="toc-item" href="#sec8">8. 持续升值的三条"绞索"</a>
+  <a class="toc-item" href="#sec9">9. 全球资产影响</a>
+  <a class="toc-item" href="#sec10">10. 贬值周期见底推演</a>
+  <a class="toc-item" href="#sec11">11. 美国中期选举博弈</a>
+  <a class="toc-item" href="#sec12">12. 伊朗战争动机与悖论</a>
+  <a class="toc-item" href="#sec13">13. 核心结论与概念速查</a>
+</nav>
+
+<!-- Main Content -->
+<div class="main">
+
+<h1>美日汇率干预与全球金融传导：学习笔记</h1>
+<div class="subtitle">
+  整理时间：2026年8月5日<br>
+  涵盖主题：美日联合干预 → 套息交易 → 债市原理 → 美日股市联动 → 全球资产传导 → 美国中期选举 → 伊朗战争
+</div>
+
+<!-- Section 1 -->
+<h2 id="sec1">1. 事件起点：美日联合干预日元汇率</h2>
+
+<h3>1.1 事件时间线</h3>
+<table>
+<tr><th>时间</th><th>事件</th></tr>
+<tr><td><strong>7月30日（东京时间）</strong></td><td>日本财务省和央行率先出手，买入日元、抛售美元，市场推算规模约6.4万亿~9.6万亿日元（约400亿~600亿美元）</td></tr>
+<tr><td><strong>7月31日（美东时间）</strong></td><td>路透社在戴维营内阁会议上拍到财政部长贝森特桌前的记事本，手写："To Do: Buy Japanese Yen (JPY) $5-10 bil"</td></tr>
+<tr><td><strong>7月31日同日</strong></td><td>纽约联储通过高盛、摩根士丹利等机构执行<strong>卖出欧元、买入日元</strong>的操作</td></tr>
+<tr><td><strong>8月2-3日</strong></td><td>贝森特确认"美日协调的外汇干预行动有效遏制了日元汇率的无序波动"，表示"毫不犹豫参与进一步联合干预"</td></tr>
+</table>
+
+<h3>1.2 关键细节</h3>
+<div class="card card-blue">
+<p><strong>"小纸条"是意外还是放风？</strong> 多数分析倾向于<em>故意放风</em>。贝森特作为曾跟随索罗斯做空日元、三个月赚了十多亿美元的"汇市老兵"，不太可能犯这种"低级错误"。更合理的解读是通过"不经意曝光"向市场释放信号。</p>
+<p><strong>美国卖欧元而非卖美元</strong>：美国坚持强势美元政策。但后续仍需将头寸重新配置回欧元，届时可能仍会卖出美元，只是方式更不透明。</p>
+<p><strong>干预结果</strong>：日元从~164（40年低点）反弹至~156-157区间。</p>
+</div>
+
+<h3>1.3 美国为什么"上心"？</h3>
+<div class="card card-red">
+<p>表面上看是帮日本，实际上美国有自己的算盘：</p>
+<ol>
+<li><strong>怕日本抛美债</strong>：日本5月已抛售约667.5亿美元美债。花旗曾预测最坏情况可能触发高达1300亿美元的美债抛售。</li>
+<li><strong>美债自身承压</strong>：30年期国债收益率刚创次贷危机以来新高。</li>
+<li><strong>"抛售日本"演变为"抛售美国"</strong>：日元贬值 → 日本抛美托汇 → 美债暴跌 → 美国金融条件收紧，这条链条是美国最怕的。</li>
+</ol>
+</div>
+
+<h3>1.4 历史坐标</h3>
+<table>
+<tr><th>时间</th><th>事件</th><th>方向</th></tr>
+<tr><td>1985年</td><td>广场协议，美英法德日联合</td><td>抛美元、买日元（升值）</td></tr>
+<tr><td>1998年</td><td>亚洲金融危机</td><td>联合买入日元 ← 距今28年，本次同类</td></tr>
+<tr><td>2011年</td><td>东日本大地震</td><td>联合抛日元（遏制升值）</td></tr>
+<tr><td><strong>2026年7月</strong></td><td><strong>本次联合干预</strong></td><td><strong>联合买入日元</strong></td></tr>
+</table>
+
+<!-- Section 2 -->
+<h2 id="sec2">2. 核心机制：干预为什么能"买时间"</h2>
+
+<h3>2.1 日本央行的"夹缝困境"</h3>
+<div class="card card-orange">
+<p><strong>左边是日元贬值的压力：</strong> 日元跌到164（40年新低）→ 进口物价上涨 → 输入性通胀 → 民生怨声载道 → 政治压力 → 套息交易加码 → "越跌越卖"的负反馈</p>
+<p><strong>右边是加息的代价：</strong> 日本政府负债率GDP的230% → 每加息25bp利息支出增加数万亿日元 → 加息太猛 → 日债崩 → 日股崩 → 经济衰退</p>
+<p style="margin-top:12px;"><strong>死结：不加息，日元继续跌；加息太猛，债市先崩。</strong></p>
+</div>
+
+<h3>2.2 "争取政策调整空间"具体指什么</h3>
+<div class="card card-green">
+<p><strong>第一，打断负反馈循环。</strong> 联合干预在心理上插入一个"不确定性楔子"——做空日元不仅要赌日本央行干预，还要赌美国财政部出手。</p>
+<p><strong>第二，把"被迫紧急加息"变成"计划内加息"。</strong></p>
+<ul>
+<li><span class="badge badge-red">没有干预</span> 日元继续往165、170冲 → 市场恐慌 → BOJ被迫紧急加息 → "被市场逼着走" → 更恐慌 → 恶性循环</li>
+<li><span class="badge badge-green">有干预</span> 日元稳在157-160 → BOJ不需要紧急行动 → 等到9月或10月例会 → 从容加息 → 配以前瞻指引</li>
+</ul>
+<p><strong>第三，减少外汇储备消耗。</strong> 贝森特提到日本可运用美联储的<code>FIMA回购便利工具</code>（以美债做抵押借美元），不需要直接抛售美债。</p>
+</div>
+
+<h3>2.3 国际视角的类比</h3>
+<table>
+<tr><th>案例</th><th>过程</th><th>教训</th></tr>
+<tr><td><strong>正面：1998年</strong></td><td>美日联合买入日元后日元企稳，BOJ后续逐步推进利率正常化</td><td>干预只是买了时间</td></tr>
+<tr><td><strong>反面：2022年英国</strong></td><td>特拉斯财政激进扩张 → 英镑暴跌 → 央行被迫紧急介入 → 被市场"绑架" → 信誉严重受损</td><td>日本央行想避免重蹈覆辙</td></tr>
+</table>
+
+<!-- Section 3 -->
+<h2 id="sec3">3. 底层原理：加息为什么导致债市崩溃</h2>
+
+<h3>3.1 核心原理：债券价格与利率是"跷跷板"</h3>
+<p>债券的票面利率在发行时就固定了。加息后，新发行的债券利率更高，旧债券必须降价才能竞争。</p>
+<div class="card card-purple">
+<p><strong>具体例子：</strong></p>
+<p>日本政府发行了面值100万日元、10年期、票面利率1%的国债。每年付1万日元利息。</p>
+<p>央行加息后，新发行的10年期国债利率变成了1.5%。同样花100万日元，买新债每年拿1.5万，买旧债每年只拿1万。</p>
+<p><strong>旧债必须降价到约95万日元</strong>，使其收益率也能达到1.5%。</p>
+</div>
+
+<h3>3.2 久期效应</h3>
+<p>期限越长的债券，对利率变动越敏感：</p>
+<table>
+<tr><th>债券期限</th><th>利率上升0.5%的价格跌幅</th></tr>
+<tr><td>1年期</td><td>约0.5%</td></tr>
+<tr><td>10年期</td><td>约5%</td></tr>
+<tr><td>30年期</td><td>约<strong>12-15%</strong></td></tr>
+</table>
+
+<h3>3.3 为什么对日本是灾难性的</h3>
+<div class="card card-red">
+<ol>
+<li><strong>债务规模全球第一</strong>：日本政府债务占GDP的230%，市场上存量海量JGB，利率一涨所有存量债券价格同时下跌。</li>
+<li><strong>日本央行自己是最大持有者</strong>：BOJ持有超过50%的流通JGB，加息让它自己的资产负债表出现巨额账面亏损。</li>
+<li><strong>持有者结构脆弱</strong>：商业银行、保险公司、养老金基金大量配置在JGB上，债券价格暴跌会触发"越卖越跌"的死亡螺旋。</li>
+</ol>
+</div>
+
+<h3>3.4 两条传导链</h3>
+<table>
+<tr><th>链条</th><th>机制</th><th>速度</th></tr>
+<tr><td><span class="badge badge-red">主链</span><strong>存量债券价格暴跌</strong></td><td>加息 → 所有存量债券市场价值瞬间缩水 → 持有者巨额浮亏 → 被迫抛售 → 价格进一步下跌</td><td><strong>即时、猛烈</strong></td></tr>
+<tr><td><span class="badge badge-orange">副链</span><strong>财政偿债成本上升</strong></td><td>加息 → 新发行国债必须按更高利率付息 → 政府年度利息支出增加 → 财政赤字扩大 → 发行更多新债</td><td>渐进、慢性</td></tr>
+</table>
+
+<!-- Section 4 -->
+<h2 id="sec4">4. 干预的代价与收益：三方成本分摊</h2>
+
+<h3>4.1 对美元资产的冲击</h3>
+<p>美国刻意把冲击降到了最小——没有直接卖美元买日元，而是卖了欧元买日元。</p>
+<table>
+<tr><th>资产</th><th>影响</th><th>幅度</th></tr>
+<tr><td>美元指数</td><td>短期承压跌破100</td><td>周跌约1.3%</td></tr>
+<tr><td>美国国债</td><td><strong>反而是利好</strong></td><td>收益率从高位回落至4.70%附近</td></tr>
+<tr><td>美元兑其他货币</td><td>轻微走弱</td><td>对G10货币跌幅约0.5%</td></tr>
+</table>
+<div class="callout">
+<div class="callout-title">核心逻辑</div>
+<p style="margin:0;"><strong>美国帮日本买日元，反而保护了美债。</strong> 与其让日本抛1.14万亿美元的美债持仓，不如亲自下场，还能通过FIMA工具让日本用美债做抵押借美元。</p>
+</div>
+
+<h3>4.2 买入日元的潜在亏损</h3>
+<p>大概率会亏损（日元可能从157重新贬值回160以上，账面浮亏约1.5亿~5亿美元）。但美国不在乎——5亿美元是GDP的0.0018%，汇率稳定基金的目标是"应对无序波动"而非"炒外汇赚钱"。</p>
+
+<h3>4.3 对日本股市的冲击</h3>
+<div class="card card-orange">
+<p><strong>第一层：直接利润侵蚀</strong> — 日元每升值1日元，丰田年营业利润减少约450亿日元。从164升到156，仅丰田一家年度利润预期缩水约3600亿日元。</p>
+<p><strong>第二层：套息交易平仓的连锁冲击</strong> — 日元突然急升触发止损 → 卖出日股 → 股价下跌 → 更多止损 → 恐慌性抛售。</p>
+<p><strong>第三层：估值逻辑转变</strong> — 弱日元+企业治理改革+AI需求的三重叙事被逆转。</p>
+</div>
+
+<h3>4.4 成本分摊总览</h3>
+<table>
+<tr><th>参与方</th><th>承担的成本</th><th>换来的收益</th></tr>
+<tr><td><strong>美国</strong></td><td>美元小幅走弱 + 日元头寸潜在亏损（几亿美元级）</td><td>保住美债市场不崩 + 维护美元体系稳定</td></tr>
+<tr><td><strong>日本央行</strong></td><td>日股短期承压 + 外汇储备消耗</td><td>争取到从容加息的时间窗口</td></tr>
+<tr><td><strong>日本政府</strong></td><td>日元升值侵蚀出口企业利润</td><td>缓解输入性通胀和政治压力</td></tr>
+</table>
+<div class="callout">
+<div class="callout-title">本质</div>
+<p style="margin:0;"><strong>双方都在用可控的小痛，交换不可控的大灾。</strong> 如果什么都不做：日元跌穿170 → 日本被迫紧急加息 → 日债崩 → 日股崩 → 抛美债 → 美债崩 → 全球金融风暴。</p>
+</div>
+
+<!-- Section 5 -->
+<h2 id="sec5">5. 套息交易机制：从建仓到级联崩盘</h2>
+
+<h3>5.1 经典套息交易</h3>
+<p><strong>核心逻辑：借低息日元，买高息美元资产，赚利差。</strong></p>
+<div class="card card-blue">
+<p><strong>建仓时（汇率160日元 = 1美元）：</strong></p>
+<ol>
+<li>借入1,600日元（≈ $10），年利率1%</li>
+<li>把1,600日元换成$10</li>
+<li>用$10买入美国国债或美股，收益率4.5%</li>
+<li>赚利差：4.5% - 1% = 3.5%/年</li>
+</ol>
+<p><strong>日元突然升值后（汇率变成150日元 = 1美元）：</strong></p>
+<ol>
+<li>欠的债没变：还是1,600日元</li>
+<li>但1,600日元现在值 1,600 ÷ 150 = <strong>$10.67</strong></li>
+<li>美元资产还是$10</li>
+<li><strong>$10的资产 < $10.67的债务 → 浮亏6.7%</strong></li>
+</ol>
+</div>
+<div class="callout">
+<div class="callout-title">关键理解</div>
+<p style="margin:0;"><strong>不是你欠的日元变多了，而是你手里用来还债的美元资产，换成日元后不够还了。</strong></p>
+</div>
+
+<h3>5.2 "借日元买日股"的不同路径</h3>
+<ul>
+<li>借日元直接买日本股票，不换美元</li>
+<li>欠的是日元，持有的也是日元资产，汇率变动对负债和资产同步影响——没有直接汇率亏损</li>
+<li>真正的杀手是日元升值导致企业利润下降 → 股价下跌 → 资产缩水到不足以还债 → 被迫平仓 → 级联抛售</li>
+</ul>
+
+<h3>5.3 级联崩盘</h3>
+<p>全球套息交易规模估计约4万亿美元（高盛），2026年约为2024年三倍（BCA Research）。当日元急升时：</p>
+<ol>
+<li>几万个仓位同时浮亏 → 券商同时发出追加保证金通知（margin call）</li>
+<li>所有人同时被迫卖出美元资产 → 换回日元还债</li>
+<li>集中抛售 → 美股、美债价格下跌 → 更多仓位触发止损线 → 更多抛售</li>
+</ol>
+<div class="card card-red">
+<p><strong>2024年8月5日"黑色星期一"：</strong></p>
+<ul>
+<li>日经225单日暴跌<strong>12.4%</strong>（1987年以来最大）</li>
+<li>标普500跌3%，纳斯达克跌3.43%</li>
+<li>VIX恐慌指数飙至<strong>65.73</strong></li>
+<li>全球股市蒸发超<strong>1万亿美元</strong></li>
+</ul>
+</div>
+
+<h3>5.4 为什么日股被波及最严重？</h3>
+<p>日股承受了全球套息交易平仓的<strong>四重压力</strong>：</p>
+<ol>
+<li><strong>全球抛售的"牺牲品"</strong> — 平仓时卖掉一切能卖的资产</li>
+<li><strong>基本面直接恶化</strong> — 日元升值侵蚀出口企业利润</li>
+<li><strong>外资补仓需求</strong> — 其他市场亏钱需要卖出日股弥补保证金</li>
+<li><strong>日本国内投资者的镜像操作</strong> — 日本散户"借日元买美股"同样被迫平仓</li>
+</ol>
+
+<!-- Section 6 -->
+<h2 id="sec6">6. 美日股市联动：三条传导通道</h2>
+
+<h3>6.1 三条通道</h3>
+<div class="card card-blue">
+<p><strong>通道一：隔夜情绪输入</strong>（最强、最直接）— 日本比美国早开盘约13小时。标普500前一天的收益显著影响日经225期货次日走势。</p>
+</div>
+<div class="card card-purple">
+<p><strong>通道二：半导体产业链共振</strong> — 费城半导体指数（SOX）与日经225联动性极高。英伟达、AMD大涨时，日本的爱德万测试、东京电子往往同步走强。</p>
+</div>
+<div class="card card-red">
+<p><strong>通道三：套息交易的双向绞索</strong> — 全球约4万亿美元套息交易让美日股市被同一根杠杆绑在一起。平时不活跃，一旦触发就是核弹级。</p>
+</div>
+
+<h3>6.2 相关性数据</h3>
+<table>
+<tr><th>指标</th><th>与标普500相关性</th></tr>
+<tr><td>MSCI欧洲</td><td>0.74-0.82</td></tr>
+<tr><td>MSCI亚洲（除日本）</td><td>0.72-0.81</td></tr>
+<tr><td>MSCI日本</td><td>0.56-0.68</td></tr>
+</table>
+<p>日本是主要市场中与美股相关性最低的之一，提供分散化价值。但在极端事件中，相关性会迅速趋近于1，分散化价值瞬间消失。</p>
+
+<h3>6.3 历史大事件复盘</h3>
+<h4>广场协议（1985）</h4>
+<ul>
+<li>日元在两年半内升值50%（240→120）</li>
+<li>日本央行为应对升值冲击将利率从5%降至2.5%</li>
+<li>超低利率 → 股市和房地产泡沫 → 日经涨468%见顶38,957</li>
+<li>1990年泡沫破裂 → 日经跌62% → "失去的三十年"</li>
+<li><strong>教训：真正驱动日股暴涨的是央行为应对升值而采取的过度宽松货币政策</strong></li>
+</ul>
+<h4>2024年8月5日黑色星期一（三重炸弹）</h4>
+<table>
+<tr><th>因素</th><th>内容</th></tr>
+<tr><td>BOJ加息</td><td>7月31日将利率从0.1%升至0.25%，超预期鹰派</td></tr>
+<tr><td>美国非农爆冷</td><td>失业率触发"萨姆规则"（衰退预测准确率100%）</td></tr>
+<tr><td>巴菲特抛售</td><td>二季度减持苹果近50%，现金储备增至2769亿美元</td></tr>
+</table>
+
+<h4>"日本加息魔咒"的真相</h4>
+<p>市场流传BOJ每次加息后不久就爆发全球金融危机（2000年科网股、2007年次贷、2024年黑色星期一）。但三次危机的核心驱动力都是美联储长期维持高利率后的周期性后果，BOJ加息只是恰好在周期尾声。<strong>相关性不等于因果性。</strong></p>
+
+<!-- Section 7 -->
+<h2 id="sec7">7. 日元升值对美股的三条传导路径</h2>
+
+<div class="card card-red">
+<h3 style="margin-top:0;">路径一：套息交易平仓（最直接、最猛烈）</h3>
+<ul>
+<li>BIS估计2024年平仓前约2500亿美元以上；BCA Research估计2026年规模约为2024年三倍，可能超过7500亿美元</li>
+<li><strong>科技成长股首当其冲</strong>：高Beta+高流动性是首选标的；久期效应使高估值科技股对折现率最敏感</li>
+<li>日元汇率与纳斯达克100指数在30天窗口内的负相关性高达<strong>-0.82</strong></li>
+</ul>
+<p><strong>但本次干预后美股没大跌</strong>：美国主动干预的本质是"防止无序平仓"，让套息交易有序减仓而非恐慌性平仓。</p>
+</div>
+
+<div class="card card-orange">
+<h3 style="margin-top:0;">路径二：流动性收紧（间接但深远）</h3>
+<ul>
+<li>日元是全球风险资产的"隐形供血者"。升值时这台"印钞机"减速</li>
+<li>借日元的成本和风险上升 → 新增套息交易流入减少 → 美股边际买盘减弱</li>
+<li>日元正在取代美元成为新的避险资产，美股失去了一个隐形支撑力量</li>
+</ul>
+</div>
+
+<div class="card card-green">
+<h3 style="margin-top:0;">路径三：企业盈利传导（渐进但结构性）</h3>
+<ul>
+<li>在日美双重上市的跨国企业收入换算回美元后缩水（苹果~8%、宝洁~6%、辉瑞~5%）</li>
+<li>本次5%的升值幅度有限，多数企业汇率对冲能覆盖</li>
+<li>对冲基金和券商的自营盘亏损、客户违约风险上升</li>
+</ul>
+</div>
+
+<h3>板块影响矩阵</h3>
+<table>
+<tr><th>受损板块</th><th>逻辑</th><th>风险</th></tr>
+<tr><td>半导体</td><td>高Beta+套息重仓+产业链联动</td><td><span class="badge badge-red">最高</span></td></tr>
+<tr><td>AI/高估值科技</td><td>久期最长，折现率上升冲击最大</td><td><span class="badge badge-red">高</span></td></tr>
+<tr><td>新兴市场相关</td><td>套息交易撤资直接流出</td><td><span class="badge badge-red">高</span></td></tr>
+<tr><td>加密货币</td><td>纯风险资产，依赖廉价流动性</td><td><span class="badge badge-red">高</span></td></tr>
+</table>
+<table>
+<tr><th>防御/受益板块</th><th>逻辑</th><th>防御性</th></tr>
+<tr><td>公用事业</td><td>不依赖廉价融资，现金流稳定</td><td><span class="badge badge-green">高</span></td></tr>
+<tr><td>医疗保健</td><td>需求刚性，不受全球流动性影响</td><td><span class="badge badge-green">高</span></td></tr>
+<tr><td>必需消费</td><td>国内收入为主，汇率影响小</td><td><span class="badge badge-green">中高</span></td></tr>
+</table>
+
+<div class="callout">
+<div class="callout-title">"短多长空"判断</div>
+<ul style="margin:0;">
+<li><strong>短期（1-4周）</strong>：美股反而是受益方，干预抑制了无序平仓</li>
+<li><strong>中期（1-3个月）</strong>：风险在于日元是否继续升值，若BOJ 9月加息+日元突破150，套息交易面临新一轮平仓</li>
+<li><strong>长期（3个月以上）</strong>：取决于美日利差能否实质性收窄</li>
+</ul>
+</div>
+
+<!-- Section 8 -->
+<h2 id="sec8">8. 持续升值的压力：三条"绞索"</h2>
+
+<div class="card card-red">
+<h3 style="margin-top:0;">第一条绞索：套息交易渐进平仓</h3>
+<ul>
+<li>CFTC数据显示投机性日元净空头约12.4万张合约，接近2024年日元大涨前水平</li>
+<li>BCA Research估计2026年套息交易规模约为2024年三倍，可能超过7500亿美元</li>
+<li>渐进平仓 = 从全球风险资产中持续抽走流动性</li>
+</ul>
+</div>
+
+<div class="card card-orange">
+<h3 style="margin-top:0;">第二条绞索：日本资金回流——美债的结构性卖压</h3>
+<p>日本投资者持有1.19万亿美元美国国债。买美债的逻辑正在逆转：</p>
+<table>
+<tr><th>变量</th><th>过去（2020-2025）</th><th>现在（2026）</th></tr>
+<tr><td>10年JGB收益率</td><td>0.1%-1.1%</td><td><strong>2.7%</strong></td></tr>
+<tr><td>10年美日利差</td><td>~360个基点</td><td><strong>~180个基点</strong></td></tr>
+<tr><td>30年美日利差</td><td>~380个基点</td><td><strong>~120个基点</strong></td></tr>
+<tr><td>日元汇率趋势</td><td>贬值（汇兑收益）</td><td><strong>升值（汇兑损失）</strong></td></tr>
+</table>
+<p>对冲汇率风险后，10年美债的收益率已经低于可比JGB。日本财务大臣已鼓励规模达300万亿日元的GPIF增加国内资产配置。</p>
+</div>
+
+<div class="card card-purple">
+<h3 style="margin-top:0;">第三条绞索：BOJ渐进加息——利差"缓慢收窄"</h3>
+<table>
+<tr><th>机构</th><th>9月加息预期</th><th>年终利率</th><th>远期路径</th></tr>
+<tr><td>Wells Fargo</td><td>9月加息25bp</td><td>1.25%</td><td>—</td></tr>
+<tr><td>Lazard</td><td>隐含~97%概率</td><td>1.25%</td><td>持续正常化</td></tr>
+<tr><td>BNP Paribas</td><td>10月加息25bp</td><td>—</td><td>2027 Q4达到2.0%</td></tr>
+<tr><td>ModelDiplomat</td><td>9月加息（70%已定价）</td><td>1.25%</td><td>2027年3月看向1.50%</td></tr>
+</table>
+</div>
+
+<h3>渐进升值 vs 急升</h3>
+<table>
+<tr><th>场景</th><th>对美股的冲击</th></tr>
+<tr><td><span class="badge badge-green">渐进升值</span>每月2-3日元，156缓升至150</td><td>有序减仓，美股温和承压，不会崩盘</td></tr>
+<tr><td><span class="badge badge-red">急升</span>单周5日元以上，突破150甚至145</td><td>恐慌性平仓，可能重演2024年8月5日剧本</td></tr>
+</table>
+
+<!-- Section 9 -->
+<h2 id="sec9">9. 全球资产影响：超出美日双边范畴</h2>
+
+<h3>9.1 亚洲货币：日元带动"跟涨潮"</h3>
+<p>干预后三个交易日内：韩元、泰铢、菲律宾比索均升值至少0.7%。花旗测算的敏感度排序：<strong>韩元 > 新加坡元 > 新台币</strong> > 泰铢 > 印尼盾/印度卢比。</p>
+
+<h3>9.2 新兴市场：套息资金撤离的"重灾区"</h3>
+<p>最脆弱的是依赖外资流入弥补经常账户赤字、且有大量美元计价债务的国家：<strong>印尼、印度、越南</strong>。</p>
+
+<h3>9.3 大宗商品</h3>
+<table>
+<tr><th>品种</th><th>变动</th><th>原因</th></tr>
+<tr><td>WTI原油</td><td><strong>-6.4%</strong></td><td>套息资金平仓+地缘缓和双击</td></tr>
+<tr><td>布伦特</td><td><strong>-7.7%</strong></td><td>同上，跌破200日均线</td></tr>
+<tr><td>黄金</td><td>-0.7%</td><td>被卖掉筹集保证金（流动性驱动型回调，非趋势逆转）</td></tr>
+</table>
+
+<h3>9.4 加密货币：高杠杆的"崩塌前沿"</h3>
+<p>比特币从12.5万美元高点已腰斩至6.3万美元附近。摩根士丹利估计仍有约5000亿美元未平仓日元融资头寸。</p>
+
+<!-- Section 10 -->
+<h2 id="sec10">10. 日元贬值周期见底推演</h2>
+
+<h3>三阶段路径</h3>
+<div class="card card-red">
+<h3 style="margin-top:0;"><span class="badge badge-red">第一阶段</span>2026下半年：贬值末段</h3>
+<ul>
+<li>高盛看到165，摩根大通认为底部在167-170</li>
+<li>干预效果只能撑几周，大概率回到160+</li>
+<li>核心原因：利差还是2.5%，干预只是暂停键</li>
+</ul>
+</div>
+<div class="card card-orange">
+<h3 style="margin-top:0;"><span class="badge badge-orange">第二阶段</span>2027年：触底窗口</h3>
+<ul>
+<li>各家机构预测集中在140-154区间</li>
+<li>OECD预计BOJ到2027年末升至2.0%</li>
+<li>利差开始实质收窄，但多空还在拉锯</li>
+</ul>
+</div>
+<div class="card card-green">
+<h3 style="margin-top:0;"><span class="badge badge-green">第三阶段</span>2028年+：趋势性反转</h3>
+<ul>
+<li>Westpac看到2028年中142</li>
+<li>美联储降息预期在2028上半年启动</li>
+<li>利差收窄到1.0-1.5%，套息交易的"免费午餐"基本消失</li>
+</ul>
+</div>
+
+<div class="callout">
+<div class="callout-title">核心结论</div>
+<p style="margin:0;">日元趋势性反转的核心条件，是美日利差的不可逆收窄。这个条件，目前看最早也要到2028年上半年才会完全具备。</p>
+</div>
+
+<p>历史参照（当前三条都不具备）：</p>
+<ul>
+<li>1986年五国联合干预 → 有国际协调</li>
+<li>1995年日本加息到6% → 有加息空间</li>
+<li>2022年美联储有明确降息信号 → 有政策转向</li>
+</ul>
+<p>BOJ最多加到2%（受230%债务率约束），美联储降息最早2028年，联合干预只是临时措施。</p>
+
+<!-- Section 11 -->
+<h2 id="sec11">11. 美国中期选举：双刃剑与政策工具箱</h2>
+
+<h3>11.1 选情背景（2026年8月4日数据）</h3>
+<div class="card card-red">
+<ul>
+<li>特朗普支持率跌至<strong>35%</strong>（任期低点附近）</li>
+<li><strong>近十年来首次</strong>：民主党在经济治理评价上反超共和党（37% vs 36%）</li>
+<li>国会投票意向：民主党42% vs 共和党37%</li>
+<li>汽油均价$4.11/加仑，同比涨30%</li>
+<li>60%选民反对伊朗战争</li>
+</ul>
+</div>
+
+<h3>11.2 日元升值对中期选举的三条渠道</h3>
+<table>
+<tr><th>渠道</th><th>方向</th><th>机制</th></tr>
+<tr><td><span class="badge badge-red">渠道一</span>股市回调</td><td>利空</td><td>财富效应 → 选民不满</td></tr>
+<tr><td><span class="badge badge-green">渠道二</span>油价下跌</td><td>利好</td><td>通胀缓解 → 短期选情改善</td></tr>
+<tr><td><span class="badge badge-purple">渠道三</span>美元贬值</td><td>复杂</td><td>贸易摩擦缓解 → 外交加分</td></tr>
+</table>
+
+<h3>11.3 关键时间线</h3>
+<table>
+<tr><th>时间</th><th>事件</th><th>影响</th></tr>
+<tr><td>8月</td><td>各州初选密集进行</td><td>候选人确定，选战正式开启</td></tr>
+<tr><td><strong>9月18日</strong></td><td><strong>BOJ议息会议</strong></td><td>如果加息+日元急升→美股回调→选前恐慌</td></tr>
+<tr><td>10-11月</td><td>套息交易平仓高峰期</td><td>历史上8-10月是高发期</td></tr>
+<tr><td><strong>11月3日</strong></td><td><strong>中期选举投票日</strong></td><td>—</td></tr>
+</table>
+
+<h3>11.4 特朗普的六大拉票策略</h3>
+<div class="card card-green">
+<h4 style="margin-top:0;">1. 减税退税潮（已落地）</h4>
+<ul>
+<li>小费免税、加班免税、老年人额外扣除、车贷利息免税</li>
+<li>退税均值$3,700，同比增加11%</li>
+<li>"特朗普账户"：350万儿童已开户，1000美元联邦补贴</li>
+</ul>
+</div>
+<div class="card card-orange">
+<h4 style="margin-top:0;">2. 压油价</h4>
+<ul>
+<li>释放战略石油储备1.72亿桶（史上第二大SPR出售）</li>
+<li>暂停联邦汽油税18.4美分/加仑</li>
+<li>美伊停火谈判已签谅解备忘录</li>
+<li>放松对俄石油制裁</li>
+</ul>
+</div>
+<div class="card card-blue">
+<h4 style="margin-top:0;">3. 关税定向退坡</h4>
+<ul>
+<li>平均关税从16%降至9.1%</li>
+<li>推动对华关税缓和，力争9月前完成协议书面化</li>
+<li>食品关税豁免：咖啡、香蕉等</li>
+</ul>
+</div>
+<div class="card card-purple">
+<h4 style="margin-top:0;">4-6. 药品定价 / 住房 / 选区重划</h4>
+<ul>
+<li>药品最惠国定价（MFN）：Medicaid药品按国际市场价格供应，综合折扣超80%</li>
+<li>住房：房利美/房地美购$2000亿MBS压低房贷利率，禁止机构投资者收购独栋住宅</li>
+<li>选区重划：10州重划选区，占40%国会席位，共和党或获结构性优势约10席</li>
+</ul>
+</div>
+
+<h3>11.5 关键摇摆州选情</h3>
+<table>
+<tr><th>州</th><th>选情</th><th>民调</th><th>特朗普支持率</th></tr>
+<tr><td>俄亥俄</td><td>Toss-up</td><td>Brown(D) 53% vs Husted(R) 45%</td><td>-13%</td></tr>
+<tr><td>缅因</td><td>Toss-up</td><td>Jackson(D) 49% vs Collins(R) 46%</td><td>-31%（全美最低）</td></tr>
+<tr><td>北卡</td><td>Lean D</td><td>Cooper(D) 53% vs Whatley(R) 44%</td><td>反对阵营</td></tr>
+<tr><td>密歇根</td><td>Toss-up</td><td>开放席位，8月4日初选</td><td>-22%</td></tr>
+<tr><td>德州</td><td>Competitive</td><td>Talarico(D) 51% vs Paxton(R) 48%</td><td>-11%</td></tr>
+<tr><td>佐治亚</td><td>Likely D</td><td>Ossoff(D) 52% vs Collins(R) 43%</td><td>反对阵营</td></tr>
+</table>
+
+<h3>11.6 反常现象与最可能结果</h3>
+<p>特朗普支持率越低的州，共和党候选人反而越抗打——他们回避伊朗话题，专攻生活成本议题。但这个策略有极限：在特朗普支持率最低的缅因（-31%）和北卡，民主党取得了明确领先。</p>
+<p><strong>最可能的结果："扭曲国会"</strong>——众议院归民主党、参议院留共和党。届时特朗普国内立法受阻，大概率转向外交单边行动，全球市场不确定性进一步上升。</p>
+
+<!-- Section 12 -->
+<h2 id="sec12">12. 伊朗战争：动机、悖论与"可控不稳定"</h2>
+
+<h3>12.1 五重动机</h3>
+<div class="card card-red">
+<h4 style="margin-top:0;">1. 核门槛焦虑（最正当的理由）</h4>
+<p>伊朗正在逼近核武器化门槛，2025年6月战争没能摧毁福尔多核设施，此后伊朗切断国际核查通道。美方要求"零浓缩"，伊朗寸步不让。</p>
+</div>
+<div class="card card-orange">
+<h4 style="margin-top:0;">2. 政权更迭诱惑（最致命的误判）</h4>
+<p>华盛顿坚信撞上了"百年一遇"的战略窗口期：哈马斯和真主党遭重创、阿萨德垮台、"抵抗轴心"支离破碎。特朗普被委内瑞拉经验说服，以为伊朗同样脆弱。结果：政权没有崩溃，IRGC反而收紧了内部指挥，民众在外部打击下团结起来。</p>
+</div>
+<div class="card card-purple">
+<h4 style="margin-top:0;">3. 以色列裹挟（最隐蔽的推力）</h4>
+<p>内塔尼亚胡向特朗普推销"斩首打击"方案。但美以分歧越来越大——以色列执着于政权更迭，特朗普更想控制伊朗石油资源。</p>
+</div>
+<div class="card card-blue">
+<h4 style="margin-top:0;">4. 中东霸权（最结构性的动机）</h4>
+<p>伊朗扼守霍尔木兹海峡（全球30%海运石油通过此处），其盟友胡塞武装控制红海航线。</p>
+</div>
+<div class="card card-green">
+<h4 style="margin-top:0;">5. 石油资源控制（最被忽略的动机）</h4>
+<p>特朗普不如以色列那样热衷于政权更迭，他更想掌控伊朗的石油资源。美军从全面打击改为封锁伊朗港口。</p>
+</div>
+
+<h3>12.2 核心悖论</h3>
+<div class="callout" style="border-color: var(--accent5); background: linear-gradient(135deg, rgba(247,118,142,0.1), rgba(247,118,142,0.05));">
+<div class="callout-title" style="color: var(--accent5);">核心悖论</div>
+<p style="margin:0;"><strong>打伊朗 → 油价飙 → 全球性通胀 → 美国汽油破$4.5/加仑 → 选民不满 → 中期选举崩盘</strong></p>
+</div>
+<ul>
+<li>战争以来布伦特油价3次突破$100，峰值$134.96</li>
+<li>美国汽油均价从$3.14飙到$4.11+（+30%）</li>
+<li>仅22%-24%受访者认可特朗普经济治理表现</li>
+<li>60%选民反对伊朗战争</li>
+</ul>
+
+<h3>12.3 "可控不稳定"策略</h3>
+<blockquote>
+<p>美国的目标既不是战争也不是和平，而是<strong>可控的不稳定</strong>——以油价作为主要传输机制。军事施压迫使德黑兰坐到谈判桌前，而外交突破的前景拉动油价下行，缓解通胀。市场响应的不是和平本身，而是<strong>对和平的预期</strong>。</p>
+</blockquote>
+<p>特朗普不需要真正和伊朗达成协议，他只需要让市场相信协议快要达成了。<strong>预期本身就是武器。</strong></p>
+
+<h3>12.4 TACO循环</h3>
+<p>华尔街把这套模式总结为<strong>TACO（Trump Always Chickens Out，特朗普总是临阵退缩）</strong>：</p>
+<ol>
+<li>威胁打击伊朗 → 油价涨</li>
+<li>突然宣布取消军事打击 → 油价跌</li>
+<li>声称外交进展 → 市场降温</li>
+</ol>
+<p>每次获得三重收益：市场降温、军事喘息（补充弹药）、控制幻觉。至少已发生6次。</p>
+
+<h3>12.5 油价最优区间</h3>
+<table>
+<tr><th>油价水平</th><th>后果</th></tr>
+<tr><td><span class="badge badge-red">太高</span>Brent > $100</td><td>汽油破$4.5/加仑 → 通胀飙升 → 选情崩盘</td></tr>
+<tr><td><span class="badge badge-red">太低</span>Brent < $70</td><td>页岩油产业亏损 → 铁锈带票仓失血 → 能源资本不满</td></tr>
+<tr><td><span class="badge badge-green">最优</span>Brent $80-95</td><td>"可控紧张" — 页岩油商有利可图，通胀可控</td></tr>
+</table>
+
+<h3>12.6 战争从"工具"变成"陷阱"</h3>
+<p>白宫无法在三个目标间选择主攻方向：</p>
+<ol>
+<li>摧毁伊朗核设施（需要升级，但升级引爆油价）</li>
+<li>保障霍尔木兹海峡通行（需要伊朗配合，但伊朗要求解除封锁）</li>
+<li>继续削弱伊朗军事力量（需要持久作战，但美军已经打不起）</li>
+</ol>
+<blockquote>
+<p>美国无法以可接受的财政、军事和政治代价赢得这场战争。伊朗可以施加美国无法承受而世界不应承受的代价。</p>
+</blockquote>
+
+<!-- Section 13 -->
+<h2 id="sec13">13. 核心结论与关键概念速查</h2>
+
+<div class="callout">
+<div class="callout-title">一句话核心结论</div>
+<p style="margin-bottom:12px;"><strong>美国帮日本干预日元，不是为了扭转贬值趋势——而是买时间：让BOJ在9-10月从容加息、从容调整政策，避免被迫紧急加息引爆债市。干预本身治不了日元的病——美日利差仍在2.5个百分点，日本债务GDP占比230%——等BOJ渐进加息的窗口期一过，日元大概率重回贬值通道。</strong></p>
+<p style="margin-bottom:12px;"><strong>但这场"买时间"的全球外溢远超美日双边：套息交易平仓这条隐形管道同步向亚洲货币、新兴市场、大宗商品和加密货币施压。对11月3日的美国中期选举，它是一把双刃剑——油价下跌利好选情（降通胀），但股市回调利空选情（财富效应逆转），而9月18日BOJ议息和10-11月套息平仓高发期恰好卡在投票日前。</strong></p>
+<p style="margin:0;"><strong>贝森特说"毫不犹豫进一步干预"的深层含义，不仅是在帮日本稳汇率，更是在为自己的中期选举买保险——他真正管理的不是日元汇率的方向，而是8到10月市场波动的烈度。</strong></p>
+</div>
+
+<h3>关键概念速查表</h3>
+<table>
+<tr><th>术语</th><th>含义</th></tr>
+<tr><td><strong>BOJ</strong></td><td>Bank of Japan，日本银行（日本央行），当前利率1.0%，行长植田和男</td></tr>
+<tr><td><strong>套息交易</strong></td><td>借低息日元买高息美元资产，赚利差。全球规模约4万亿美元</td></tr>
+<tr><td><strong>FIMA回购工具</strong></td><td>美联储提供给外国央行的回购便利，以美债做抵押借美元，不需要直接抛售美债</td></tr>
+<tr><td><strong>久期效应</strong></td><td>债券期限越长，对利率变动越敏感。30年期远超1年期</td></tr>
+<tr><td><strong>TACO循环</strong></td><td>Trump Always Chickens Out。威胁→油价涨→退缩→油价跌→声称外交进展</td></tr>
+<tr><td><strong>可控不稳定</strong></td><td>美国对伊朗的目标既不是战争也不是和平，而是维持"将打未打"状态来管理油价</td></tr>
+<tr><td><strong>扭曲国会</strong></td><td>众议院归民主党、参议院留共和党的分裂局面</td></tr>
+<tr><td><strong>萨姆规则</strong></td><td>失业率从12个月低点上升0.5个百分点，历史上100%准确预测衰退</td></tr>
+<tr><td><strong>SPR</strong></td><td>Strategic Petroleum Reserve，美国战略石油储备，目前仅剩4.15亿桶</td></tr>
+<tr><td><strong>GPIF</strong></td><td>日本政府养老投资基金，规模约300万亿日元（1.9万亿美元）</td></tr>
+</table>
+
+<h3>关键数据一览</h3>
+<table>
+<tr><th>指标</th><th>数值</th><th>备注</th></tr>
+<tr><td>美联储基准利率</td><td>3.5%-3.75%</td><td>远高于BOJ</td></tr>
+<tr><td>BOJ利率</td><td>1.0%</td><td>31年来最高</td></tr>
+<tr><td>美日利差</td><td>~2.5个百分点</td><td>套息交易的核心驱动力</td></tr>
+<tr><td>日本政府债务/GDP</td><td>230%</td><td>全球主要经济体最高</td></tr>
+<tr><td>BOJ持有的流通JGB</td><td>>50%</td><td>加息会让自身账面亏损</td></tr>
+<tr><td>全球套息交易规模</td><td>~4万亿美元</td><td>高盛估计</td></tr>
+<tr><td>2026年套息交易规模</td><td>2024年的~3倍</td><td>BCA Research</td></tr>
+<tr><td>日本持有美债</td><td>1.19万亿美元</td><td>非美投资者中最大</td></tr>
+<tr><td>日本企业汇率假设</td><td>151.49日元/美元</td><td>距当前156还有约5日元缓冲</td></tr>
+<tr><td>日元干预规模（美方部分）</td><td>50-100亿美元</td><td>—</td></tr>
+<tr><td>特朗普支持率</td><td>35%</td><td>任期低点附近</td></tr>
+<tr><td>汽油均价</td><td>$4.11/加仑</td><td>同比+30%</td></tr>
+</table>
+
+<div class="disclaimer">
+  <strong>免责声明：</strong> 本笔记基于公开信息和讨论整理，不构成任何投资建议。市场瞬息万变，数据可能已过时。<br><br>
+  整理时间：2026年8月5日
+</div>
+
+</div>
+</div>
+
+<script>
+// Sidebar active tracking
+const sections = document.querySelectorAll('h2[id]');
+const tocItems = document.querySelectorAll('.toc-item');
+const sidebar = document.getElementById('sidebar');
+
+function updateActive() {
+  let current = '';
+  const scrollPos = window.scrollY + 120;
+  sections.forEach(sec => {
+    if (sec.offsetTop <= scrollPos) current = sec.id;
+  });
+  tocItems.forEach(item => {
+    item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+  });
+  // Keep active item visible in sidebar
+  const activeItem = document.querySelector('.toc-item.active');
+  if (activeItem) {
+    const itemTop = activeItem.offsetTop;
+    const itemBottom = itemTop + activeItem.offsetHeight;
+    const sidebarTop = sidebar.scrollTop;
+    const sidebarBottom = sidebarTop + sidebar.clientHeight;
+    if (itemTop < sidebarTop) sidebar.scrollTop = itemTop - 20;
+    else if (itemBottom > sidebarBottom) sidebar.scrollTop = itemBottom - sidebar.clientHeight + 20;
+  }
+}
+window.addEventListener('scroll', updateActive);
+updateActive();
+
+// Smooth scroll
+tocItems.forEach(item => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(item.getAttribute('href'));
+    if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI硬件长期建仓策略 - 2026年8月</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f6fa;color:#2c3e50;line-height:1.7}
+.container{max-width:960px;margin:0 auto;padding:32px 20px}
+
+.tldr{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#e8e8f0;border-radius:12px;padding:28px 32px;margin-bottom:32px}
+.tldr h2{font-size:18px;color:#5dcae5;margin-bottom:16px}
+.tldr ol{margin-left:20px}
+.tldr li{margin:8px 0;font-size:14px}
+
+.card{background:#fff;border-radius:10px;padding:24px 28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card h3{font-size:17px;color:#1a1a2e;margin-bottom:12px;border-left:4px solid #5dcae5;padding-left:12px}
+.card h4{font-size:14px;color:#555;margin:16px 0 8px}
+
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:12px 0}
+.meta-item{background:#f8f9fc;padding:10px 14px;border-radius:6px}
+.meta-item .label{font-size:11px;color:#888;margin-bottom:2px}
+.meta-item .value{font-size:15px;font-weight:600;color:#2c3e50}
+.meta-item .value.red{color:#e74c3c}
+.meta-item .value.green{color:#27ae60}
+
+.phase-badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600}
+.phase-wash{background:#fff3cd;color:#856404}
+.phase-consolidate{background:#d1ecf1;color:#0c5460}
+.phase-recover{background:#d4edda;color:#155724}
+.phase-strong{background:#cce5ff;color:#004085}
+
+.entry-box{border:1px solid #e0e0e0;border-radius:8px;padding:16px;margin:12px 0}
+.entry-box.continue{border-left:4px solid #27ae60;background:#f0faf4}
+.entry-box.burst{border-left:4px solid #e74c3c;background:#fef5f5}
+.entry-box h5{font-size:14px;margin-bottom:8px}
+.entry-box .price{font-size:20px;font-weight:700;margin:4px 0}
+.entry-box .note{font-size:12px;color:#888}
+
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:#f0f2f5;padding:10px 12px;text-align:left;font-weight:600;color:#555;border-bottom:2px solid #ddd}
+td{padding:10px 12px;border-bottom:1px solid #eee}
+tr:hover td{background:#f8f9fc}
+td.red{color:#e74c3c}
+td.green{color:#27ae60}
+
+.chart-wrap{width:100%;height:420px;margin:16px 0}
+
+.disclaimer{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:16px;margin-top:32px;font-size:12px;color:#856404;line-height:1.8}
+
+h1{font-size:26px;margin-bottom:6px}
+.subtitle{color:#888;font-size:13px;margin-bottom:28px}
+.section-divider{border:none;border-top:1px solid #e0e0e0;margin:32px 0}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>AI硬件产业链 · 长期建仓策略</h1>
+<p class="subtitle">数据截止 2026-08-07 收盘 | 基于 neodata 实时数据 | 面向长期持有者（非日内交易）</p>
+
+<!-- TL;DR -->
+<div class="tldr">
+<h2>核心结论（TL;DR）</h2>
+<ol>
+<li><strong>不是单一"洗盘"</strong>：AVGO/TSM 是高位整理，MRVL/VRT/CEG/中际旭创/新易盛 是深度回调（-25%~-34%），严重程度不同</li>
+<li><strong>AI继续 vs AI泡沫破裂</strong>：当前价在两种情景下的安全边际差异巨大——光模块已回吐大量涨幅但估值仍高，ASIC设计估值合理但散户认知低</li>
+<li><strong>建仓优先顺序（长期持有）</strong>：AVGO > TSM > MRVL > CEG > VRT > GEV > 中际旭创 > 新易盛</li>
+<li><strong>关键原则</strong>：分3-4批建仓、每批次间隔至少2-4周、跌破关键支撑位暂停加仓等待下一档</li>
+</ol>
+</div>
+
+<!-- Market State Assessment -->
+<div class="card">
+<h3>一、当前阶段判断：是"洗盘"吗？</h3>
+<p style="font-size:14px;margin-bottom:16px">所谓<strong>洗盘</strong>（机构震出散户浮筹后继续拉升）和<strong>出货</strong>（机构高位派发给散户）的本质区别在于：AI Capex 叙事是否被证伪。当前北美四大云厂商 Q2 Capex 继续上调全年指引，需求可见度延伸至 2028 年，核心逻辑未破——因此目前更多是<strong>高位获利了结 + 板块轮动</strong>，而非系统性出货。</p>
+
+<div style="overflow-x:auto">
+<table>
+<tr><th>标的</th><th>最新价</th><th>距52周高点</th><th>60日涨跌</th><th>阶段判断</th><th>特征</th></tr>
+<tr>
+  <td><strong>AVGO</strong></td>
+  <td>$427.76</td>
+  <td class="green">-13.4%</td>
+  <td class="green">+2.2%</td>
+  <td><span class="phase-badge phase-strong">高位整理</span></td>
+  <td>最强势，机构抱团最紧（93%买入），回调幅度最小</td>
+</tr>
+<tr>
+  <td><strong>TSM</strong></td>
+  <td>$420.04</td>
+  <td class="green">-12.3%</td>
+  <td class="green">+6.0%</td>
+  <td><span class="phase-badge phase-strong">高位整理</span></td>
+  <td>98%机构买入，CoWoS垄断地位无替代，轻微回调</td>
+</tr>
+<tr>
+  <td><strong>MRVL</strong></td>
+  <td>$218.72</td>
+  <td class="red">-33.7%</td>
+  <td class="red">+33.0%</td>
+  <td><span class="phase-badge phase-recover">深调后反弹</span></td>
+  <td>从$330深跌后反弹，波动极大，估值分歧大（目标价$180-$400）</td>
+</tr>
+<tr>
+  <td><strong>VRT</strong></td>
+  <td>$272.40</td>
+  <td class="red">-28.3%</td>
+  <td class="red">-25.8%</td>
+  <td><span class="phase-badge phase-wash">深度回调</span></td>
+  <td>从$380跌至$272，AI电源/液冷叙事暂未兑现为业绩超预期</td>
+</tr>
+<tr>
+  <td><strong>CEG</strong></td>
+  <td>$269.89</td>
+  <td class="red">-34.4%</td>
+  <td class="red">-7.9%</td>
+  <td><span class="phase-badge phase-wash">深度回调</span></td>
+  <td>核能叙事最远、定价最不充分，YTD -23%，散户零认知</td>
+</tr>
+<tr>
+  <td><strong>GEV</strong></td>
+  <td>$990.32</td>
+  <td class="red">-17.2%</td>
+  <td class="red">-7.6%</td>
+  <td><span class="phase-badge phase-consolidate">中等回调</span></td>
+  <td>电力设备龙头，从$1,196回调，估值合理但增长预期已部分定价</td>
+</tr>
+<tr>
+  <td><strong>中际旭创</strong></td>
+  <td>¥919.87</td>
+  <td class="red">-33.5%</td>
+  <td>—</td>
+  <td><span class="phase-badge phase-wash">深度回调+利空冲击</span></td>
+  <td>AAOI扩产+美国禁令传闻双重打击，8/7放量跳水，但GS目标价¥2,581</td>
+</tr>
+<tr>
+  <td><strong>新易盛</strong></td>
+  <td>¥420.95</td>
+  <td class="red">-32.0%</td>
+  <td class="red">-4.5%</td>
+  <td><span class="phase-badge phase-wash">深度回调</span></td>
+  <td>从¥619跌至¥421，20日-19.5%，波动极大</td>
+</tr>
+</table>
+</div>
+</div>
+
+<!-- Valuation Comparison Chart -->
+<div class="card">
+<h3>二、估值水位对比（动态PE × 机构目标价空间）</h3>
+<div class="chart-wrap" id="chart-valuation"></div>
+<div style="overflow-x:auto;margin-top:16px">
+<table>
+<tr><th>标的</th><th>动态PE</th><th>PEG</th><th>机构目标均价</th><th>潜在空间</th><th>买入评级%</th></tr>
+<tr><td>AVGO</td><td>~26x（前瞻）</td><td>—</td><td>$529.43</td><td class="green">+23.8%</td><td>93%</td></tr>
+<tr><td>TSM</td><td>~20x（前瞻）</td><td>—</td><td>$537.70</td><td class="green">+28.0%</td><td>98%</td></tr>
+<tr><td>MRVL</td><td>~50-65x（前瞻）</td><td>—</td><td>$268.15</td><td class="green">+22.6%</td><td>83%</td></tr>
+<tr><td>VRT</td><td>—</td><td>—</td><td>$340.06</td><td class="green">+24.8%</td><td>79%</td></tr>
+<tr><td>CEG</td><td>—</td><td>—</td><td>$351.55</td><td class="green">+30.2%</td><td>88%</td></tr>
+<tr><td>GEV</td><td>—</td><td>—</td><td>$1,246.37</td><td class="green">+25.9%</td><td>78%</td></tr>
+<tr><td>中际旭创</td><td>46.9x</td><td>68.8</td><td>¥1,777（GS:¥2,581）</td><td class="green">+93.2%~180.6%</td><td>100%</td></tr>
+<tr><td>新易盛</td><td>52.8x</td><td>65.0</td><td>¥628.97</td><td class="green">+49.4%</td><td>100%</td></tr>
+</table>
+</div>
+<p style="font-size:12px;color:#888">PEG>60 意味着当前估值已定价了极其激进的增长预期——光模块两龙头即便回调33%，PEG仍然极高，说明之前涨得更多。美股PE来自前瞻估值（forward P/E），与A股动态PE口径不同。</p>
+</div>
+
+<!-- Entry Zones -->
+<div class="card">
+<h3>三、分批建仓区间（长期持有·非日内套利）</h3>
+<p style="font-size:14px;margin-bottom:16px">以下区间基于双情景推演。<strong>分批策略</strong>：每个标的建议分3-4批建仓，首批不超过目标仓位的20-30%，每批间隔至少2-4周，跌破下一档支撑再加。</p>
+
+<!-- AVGO -->
+<h4>1. AVGO（博通）— ASIC设计寡头 ⭐ 最优先</h4>
+<div class="meta-grid">
+  <div class="meta-item"><div class="label">当前价</div><div class="value">$427.76</div></div>
+  <div class="meta-item"><div class="label">52周区间</div><div class="value">$280-$494</div></div>
+  <div class="meta-item"><div class="label">机构目标均价</div><div class="value green">$529 (+24%)</div></div>
+  <div class="meta-item"><div class="label">机构买入</div><div class="value green">93%</div></div>
+</div>
+<div class="entry-box continue">
+<h5>情景A：AI继续（基准情景）</h5>
+<div class="price" style="color:#27ae60">建仓区间：$380 - $420</div>
+<div class="note">当前$428在区间上沿附近。$400以下 = 理想首批（20%仓位），$380 = 加仓（+30%），$350 = 重仓（+30%）。理由：$380对应~22x前瞻PE，为AVGO近3年估值中枢下沿。</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI泡沫破裂（压力情景）</h5>
+<div class="price" style="color:#e74c3c">建仓区间：$280 - $330</div>
+<div class="note">$280 = 52周低点+ASIC长期逻辑未破但估值回归。$330对应~18x前瞻PE，即便AI Capex腰斩ASIC渗透率仍上升。需等待AI泡沫确认信号（如NVDA连续两季miss）再启动此档。</div>
+</div>
+
+<!-- TSM -->
+<h4>2. TSM（台积电）— CoWoS垄断+AI制造底座</h4>
+<div class="meta-grid">
+  <div class="meta-item"><div class="label">当前价</div><div class="value">$420.04</div></div>
+  <div class="meta-item"><div class="label">52周区间</div><div class="value">$220-$479</div></div>
+  <div class="meta-item"><div class="label">机构目标均价</div><div class="value green">$538 (+28%)</div></div>
+  <div class="meta-item"><div class="label">机构买入</div><div class="value green">98%</div></div>
+</div>
+<div class="entry-box continue">
+<h5>情景A：AI继续</h5>
+<div class="price" style="color:#27ae60">建仓区间：$370 - $410</div>
+<div class="note">当前$420略高于理想区间。$400 = 首批（20%），$380 = 加仓（30%），$350 = 重仓（30%）。$370对应~18x前瞻PE，为全球最优质半导体资产的历史合理估值。</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI泡沫破裂</h5>
+<div class="price" style="color:#e74c3c">建仓区间：$250 - $300</div>
+<div class="note">$250接近52周低点$220但有足够安全边际。即便AI崩盘，TSMC的非AI业务（手机/汽车/HPC）仍支撑$200+底线估值。此档仅在系统性危机中出现。</div>
+</div>
+
+<!-- MRVL -->
+<h4>3. MRVL（迈威尔）— ASIC二号选手·高波动高弹性</h4>
+<div class="meta-grid">
+  <div class="meta-item"><div class="label">当前价</div><div class="value">$218.72</div></div>
+  <div class="meta-item"><div class="label">52周区间</div><div class="value">$61-$330</div></div>
+  <div class="meta-item"><div class="label">机构目标均价</div><div class="value green">$268 (+23%)</div></div>
+  <div class="meta-item"><div class="label">机构买入</div><div class="value">83%</div></div>
+</div>
+<div class="entry-box continue">
+<h5>情景A：AI继续</h5>
+<div class="price" style="color:#27ae60">建仓区间：$170 - $200</div>
+<div class="note"><strong>当前价$219高于理想区间</strong>。MRVL波动极大（60日振幅超40%），$200以下才有安全边际。$200 = 首批（15%小仓），$180 = 加仓（20%），$160 = 重仓（25%）。高波动=小仓位大空间。</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI泡沫破裂</h5>
+<div class="price" style="color:#e74c3c">建仓区间：$80 - $120</div>
+<div class="note">$80-120对应泡沫破裂后估值回归。MRVL在AI泡沫中回撤可能>60%，但长期ASIC+光DSP逻辑存在。仅适合高风险承受能力的长期资金。</div>
+</div>
+
+<!-- VRT -->
+<h4>4. VRT（维谛技术）— AI电力/液冷·最脆弱但弹性最大</h4>
+<div class="meta-grid">
+  <div class="meta-item"><div class="label">当前价</div><div class="value">$272.40</div></div>
+  <div class="meta-item"><div class="label">52周区间</div><div class="value">$119-$380</div></div>
+  <div class="meta-item"><div class="label">机构目标均价</div><div class="value green">$340 (+25%)</div></div>
+  <div class="meta-item"><div class="label">机构买入</div><div class="value">79%</div></div>
+</div>
+<div class="entry-box continue">
+<h5>情景A：AI继续</h5>
+<div class="price" style="color:#27ae60">建仓区间：$220 - $260</div>
+<div class="note">当前$272在区间上沿。这是脆弱度最高的模块（无长期锁单），需要更大的安全边际。$260 = 首批（10%试探仓），$235 = 加仓（15%），$210 = 重仓（20%）。注意：仓位上限控制在组合的20%。</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI泡沫破裂</h5>
+<div class="price" style="color:#e74c3c">建仓区间：$120 - $160</div>
+<div class="note">回到2025年起涨前的估值区间。AI泡沫破裂时液冷/电源小票跌幅最深（可能>60%）。长期投资者可在泡沫破裂后12-18个月、确认行业出清后介入。</div>
+</div>
+
+<!-- CEG -->
+<h4>5. CEG（星座能源）— 核能·最远叙事·最深折价</h4>
+<div class="meta-grid">
+  <div class="meta-item"><div class="label">当前价</div><div class="value">$269.89</div></div>
+  <div class="meta-item"><div class="label">52周区间</div><div class="value">$229-$411</div></div>
+  <div class="meta-item"><div class="label">机构目标均价</div><div class="value green">$352 (+30%)</div></div>
+  <div class="meta-item"><div class="label">机构买入</div><div class="value">88%</div></div>
+</div>
+<div class="entry-box continue">
+<h5>情景A：AI继续</h5>
+<div class="price" style="color:#27ae60">建仓区间：$235 - $265</div>
+<div class="note">当前$270略高于区间。YTD -23%已经定价了部分悲观预期。$265 = 首批（15%），$245 = 加仓（20%），$230接近52周低点=重仓（25%）。Microsoft $16B PPA合同提供收入底线。</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI泡沫破裂</h5>
+<div class="price" style="color:#e74c3c">建仓区间：$180 - $210</div>
+<div class="note">即便AI崩盘，核电站的基荷电力价值不会归零——现有核电站PPA合同提供现金流底线。$180-210对应更保守的DCF估值。</div>
+</div>
+
+<!-- GEV -->
+<h4>6. GEV（GE Vernova）— 电力设备·稳健型</h4>
+<div class="meta-grid">
+  <div class="meta-item"><div class="label">当前价</div><div class="value">$990.32</div></div>
+  <div class="meta-item"><div class="label">52周区间</div><div class="value">$529-$1,196</div></div>
+  <div class="meta-item"><div class="label">机构目标均价</div><div class="value green">$1,246 (+26%)</div></div>
+  <div class="meta-item"><div class="label">机构买入</div><div class="value">78%</div></div>
+</div>
+<div class="entry-box continue">
+<h5>情景A：AI继续</h5>
+<div class="price" style="color:#27ae60">建仓区间：$850 - $950</div>
+<div class="note">当前$990高于区间上沿。$950 = 首批（15%），$880 = 加仓（20%），$830 = 重仓（25%）。GEV业务多元化（天然气+风电+电网），AI电力只是增量之一，下行有底。</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI泡沫破裂</h5>
+<div class="price" style="color:#e74c3c">建仓区间：$550 - $700</div>
+<div class="note">回到2025年拆分上市初期的估值区间。电网更新需求不受AI影响（老化基础设施替换是刚需），$550-700是长期价值底部。</div>
+</div>
+
+<!-- 中际旭创 -->
+<h4>7. 中际旭创（300308）— 光模块龙头·A股定价已充分</h4>
+<div class="meta-grid">
+  <div class="meta-item"><div class="label">当前价</div><div class="value">¥919.87</div></div>
+  <div class="meta-item"><div class="label">52周区间</div><div class="value">—</div></div>
+  <div class="meta-item"><div class="label">动态PE</div><div class="value">46.9x</div></div>
+  <div class="meta-item"><div class="label">PEG</div><div class="value red">68.8</div></div>
+  <div class="meta-item"><div class="label">GS目标价</div><div class="value green">¥2,581</div></div>
+  <div class="meta-item"><div class="label">机构共识目标</div><div class="value green">¥1,777 (+93%)</div></div>
+</div>
+<div class="entry-box continue">
+<h5>情景A：AI继续</h5>
+<div class="price" style="color:#27ae60">建仓区间：¥700 - ¥850</div>
+<div class="note"><strong>当前¥920在区间上方。</strong>光模块已从¥1,382高点回调33%，但PEG仍高达68.8——高盛目标价¥2,581对应2027年仅35.8x PE，说明市场在折价定价。¥850 = 首批（15%），¥750 = 加仓（20%），¥700 = 重仓（25%）。等8月24日中报验证后再行动。</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI泡沫破裂</h5>
+<div class="price" style="color:#e74c3c">建仓区间：¥400 - ¥550</div>
+<div class="note">泡沫破裂时高PE成长股跌幅最大（历史参考：2022年纳指成长股回撤50-70%）。¥400-550对应2027E EPS的~8-10x PE——极度悲观但并非不可能。长期投资者应等泡沫确认破裂后6-12个月再介入。</div>
+</div>
+
+<!-- 新易盛 -->
+<h4>8. 新易盛（300502）— 光模块二号·波动更大</h4>
+<div class="meta-grid">
+  <div class="meta-item"><div class="label">当前价</div><div class="value">¥420.95</div></div>
+  <div class="meta-item"><div class="label">52周区间</div><div class="value">¥128-¥619</div></div>
+  <div class="meta-item"><div class="label">动态PE</div><div class="value">52.8x</div></div>
+  <div class="meta-item"><div class="label">PEG</div><div class="value red">65.0</div></div>
+  <div class="meta-item"><div class="label">机构目标价</div><div class="value green">¥629 (+49%)</div></div>
+  <div class="meta-item"><div class="label">52周涨幅</div><div class="value green">+222.7%</div></div>
+</div>
+<div class="entry-box continue">
+<h5>情景A：AI继续</h5>
+<div class="price" style="color:#27ae60">建仓区间：¥320 - ¥380</div>
+<div class="note"><strong>当前¥421显著高于理想区间。</strong>新易盛是8只标的中波动最大的（52周涨幅+223%），回调风险也最大。¥380 = 首批（10%试探），¥340 = 加仓（15%），¥300 = 重仓（20%）。仓位上限控制在组合的15%。</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI泡沫破裂</h5>
+<div class="price" style="color:#e74c3c">建仓区间：¥180 - ¥250</div>
+<div class="note">对应2027E EPS的~7-10x PE。二线标的在泡沫中回撤可能>70%。仅在确认行业出清后考虑。</div>
+</div>
+</div>
+
+<!-- Position Sizing Summary -->
+<div class="card">
+<h3>四、组合仓位分配建议（长期持有·总仓位=100%）</h3>
+<div class="chart-wrap" id="chart-position"></div>
+<div style="overflow-x:auto;margin-top:12px">
+<table>
+<tr><th>标的</th><th>建议仓位上限</th><th>当前可行动</th><th>等待条件</th><th>泡沫破裂仓位</th></tr>
+<tr><td><strong>AVGO</strong></td><td>25%</td><td>接近区间·等$400</td><td>Q3财报（9月）验证ASIC订单</td><td>20%</td></tr>
+<tr><td><strong>TSM</strong></td><td>20%</td><td>略高·等$400</td><td>月度营收公告趋势确认</td><td>20%</td></tr>
+<tr><td><strong>MRVL</strong></td><td>15%</td><td>偏高·等$200</td><td>Amazon Trainium3量产消息</td><td>10%</td></tr>
+<tr><td><strong>VRT</strong></td><td>12%</td><td>偏高·等$260</td><td>液冷收入占比突破20%</td><td>8%</td></tr>
+<tr><td><strong>CEG</strong></td><td>12%</td><td>略高·等$265</td><td>新核电站PPA签约</td><td>8%</td></tr>
+<tr><td><strong>GEV</strong></td><td>10%</td><td>偏高·等$950</td><td>电网订单增速确认</td><td>10%</td></tr>
+<tr><td><strong>中际旭创</strong></td><td>10%</td><td>等8/24中报</td><td>中报验证+禁令传闻消退</td><td>5%</td></tr>
+<tr><td><strong>新易盛</strong></td><td>6%</td><td>等深调</td><td>等$320区间或行业利空出尽</td><td>4%</td></tr>
+</table>
+</div>
+<p style="font-size:13px;color:#555;margin-top:12px"><strong>关键约束</strong>：美股6只合计86%上限 + A股2只合计16%上限 = 总AI硬件暴露不超过组合的90%（留10%现金）。6只美股中有3只（AVGO/MRVL/TSM）属于半导体，实际半导体集中度约60%——偏高但这是产业链集中的必然结果，需用分批建仓+严格止损来控制集中度风险。</p>
+</div>
+
+<!-- Risk Framework -->
+<div class="card">
+<h3>五、失效条件 & 止损框架</h3>
+<p style="font-size:14px;margin-bottom:12px">长期持有 ≠ 不止损。以下条件触发时<strong>暂停加仓、评估是否需要减仓</strong>：</p>
+<div style="overflow-x:auto">
+<table>
+<tr><th>风险信号</th><th>程度</th><th>触发动作</th></tr>
+<tr><td>北美四大云厂商任一家Capex指引下调</td><td class="red">高危</td><td>减仓AI硬件总暴露至50%以下</td></tr>
+<tr><td>NVDA连续两季营收miss</td><td class="red">高危</td><td>减仓至30%，等待泡沫破裂档建仓区间</td></tr>
+<tr><td>OpenAI/Anthropic任一破产或被收购</td><td class="red">高危</td><td>清仓MRVL+VRT，AVGO/TSM减半</td></tr>
+<tr><td>HBM价格连续两季下跌>15%</td><td>中危</td><td>暂停所有加仓，持有观察</td></tr>
+<tr><td>单只标的跌破建仓区间的下沿</td><td>中危</td><td>该标的暂停加仓，等下一档或减仓50%</td></tr>
+<tr><td>美联储意外加息</td><td>中危</td><td>所有成长股仓位减20%</td></tr>
+<tr><td>中美科技脱钩升级（光模块禁令落地）</td><td>高危（A股）</td><td>清仓中际旭创+新易盛</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Scenario Probability -->
+<div class="card">
+<h3>六、情景概率 & 时间框架</h3>
+<p style="font-size:14px;margin-bottom:16px">基于当前数据和产业链跟踪，两种情景的概率评估：</p>
+<div style="overflow-x:auto">
+<table>
+<tr><th>情景</th><th>概率</th><th>触发条件</th><th>时间窗口</th><th>策略</th></tr>
+<tr>
+  <td><strong>AI继续（软着陆）</strong></td>
+  <td class="green">60%</td>
+  <td>Capex增速放缓但不下滑（从+50%→+20-30%），AI应用开始产生回报</td>
+  <td>2026Q3-2027Q2</td>
+  <td>按情景A区间分批建仓</td>
+</tr>
+<tr>
+  <td><strong>AI泡沫局部破裂</strong></td>
+  <td style="color:#e67e22">25%</td>
+  <td>Capex增速转负、1-2家hyperscaler下调指引、AI应用回报不及预期</td>
+  <td>2027H1-2028</td>
+  <td>已建仓部分减仓至50%，剩余等情景B区间</td>
+</tr>
+<tr>
+  <td><strong>AI泡沫全面破裂</strong></td>
+  <td class="red">15%</td>
+  <td>类似2000年互联网泡沫——AI无法产生足够ROI、大规模债务违约</td>
+  <td>2027-2029</td>
+  <td>清仓等待，按情景B区间在泡沫破裂后12-18个月介入</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="disclaimer">
+<strong>免责声明</strong>：以上内容基于公开数据和量化分析（数据来源：neodata-financial-search，截止2026-08-07收盘），仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。文中所涉建仓区间为基于公开信息的情景推演，不代表对未来股价的预测或保证。
+</div>
+
+</div>
+
+<script>
+// Chart 1: Valuation comparison
+(function(){
+  var d=echarts.init(document.getElementById('chart-valuation'));
+  var names=['AVGO','TSM','MRVL','VRT','CEG','GEV','中际旭创','新易盛'];
+  var targets=[529.43,537.70,268.15,340.06,351.55,1246.37,1777,628.97];
+  var currents=[427.76,420.04,218.72,272.40,269.89,990.32,919.87,420.95];
+  var upsides=targets.map(function(t,i){return ((t/currents[i])-1)*100;});
+  d.setOption({
+    tooltip:{trigger:'axis',formatter:function(p){
+      var i=p[0].dataIndex;
+      return names[i]+'<br/>当前价: $'+currents[i]+'<br/>目标价: $'+targets[i]+'<br/>上涨空间: '+upsides[i].toFixed(1)+'%';
+    }},
+    grid:{left:80,right:40,top:20,bottom:40},
+    xAxis:{type:'category',data:names,axisLabel:{fontSize:11}},
+    yAxis:{type:'value',name:'美元',axisLabel:{formatter:function(v){return '$'+v;}}},
+    series:[
+      {name:'当前价',type:'bar',data:currents,itemStyle:{color:'#5dcae5'},barWidth:'40%',
+       label:{show:true,position:'top',fontSize:10,formatter:function(p){return '最新'}}},
+      {name:'机构目标均价',type:'bar',data:targets,itemStyle:{color:'#97c459',opacity:0.6},barWidth:'40%',
+       label:{show:true,position:'top',fontSize:10,formatter:function(p){return upsides[p.dataIndex].toFixed(0)+'%'}}}
+    ]
+  });
+})();
+
+// Chart 2: Position allocation
+(function(){
+  var d=echarts.init(document.getElementById('chart-position'));
+  var names=['AVGO\n25%','TSM\n20%','MRVL\n15%','VRT\n12%','CEG\n12%','GEV\n10%','中际\n10%','新易盛\n6%'];
+  var sizes=[25,20,15,12,12,10,10,6];
+  var colors=['#5dcae5','#5dcae5','#97c459','#f0c040','#f0c040','#97c459','#f0997b','#f0997b'];
+  d.setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c}%'},
+    series:[{
+      type:'pie',radius:['35%','65%'],center:['50%','50%'],
+      data:names.map(function(n,i){return {name:n,value:sizes[i],itemStyle:{color:colors[i]}};}),
+      label:{fontSize:11,formatter:'{b}'},
+      emphasis:{label:{fontSize:14,fontWeight:'bold'}}
+    }]
+  });
+})();
+</script>
+
+</body>
+</html>

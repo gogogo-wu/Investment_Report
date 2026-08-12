@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>从小白到能自己管钱 · 视频精讲课</title>
+<style>
+  :root{ --blue:#185FA5; --green:#0F6E56; --ink:#1f2733; --muted:#67707d; --line:#e3e8ef; --bg:#f5f7fa; }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Microsoft YaHei","PingFang SC",Segoe UI,Roboto,sans-serif;line-height:1.65;}
+  .wrap{max-width:840px;margin:0 auto;padding:24px 18px 80px;}
+  header.top{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 10px rgba(20,40,80,.05);}
+  header.top h1{margin:0 0 6px;font-size:24px;}
+  header.top p{margin:0;color:var(--muted);font-size:14px;}
+  .progress{margin-top:14px;}
+  .progress-top{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px;}
+  .progress-top b{color:var(--blue);}
+  .bar{height:12px;background:#e9edf2;border-radius:8px;overflow:hidden;}
+  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--green));transition:width .35s;}
+  nav.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:20px;}
+  nav.toc h2{margin:0 0 10px;font-size:15px;color:var(--muted);font-weight:600;}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;font-size:13.5px;}
+  nav.toc a{color:var(--blue);text-decoration:none;}
+  nav.toc a:hover{text-decoration:underline;}
+  .stage{margin:30px 0 8px;padding:14px 18px;border-left:5px solid var(--blue);background:#fff;border-radius:0 12px 12px 0;border:1px solid var(--line);border-left:5px solid var(--blue);}
+  .stage h2{margin:0 0 6px;font-size:19px;}
+  .stage p{margin:0;color:var(--muted);font-size:14px;}
+  .lesson{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0;scroll-margin-top:14px;}
+  .lesson.done{border-color:#bfe3c6;background:#f4faf5;}
+  .lt{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
+  .lnum{font-size:13px;color:#fff;background:var(--blue);border-radius:20px;padding:2px 10px;font-weight:600;white-space:nowrap;}
+  .lt h3{margin:0;font-size:18px;}
+  .bridge{color:#33404f;font-size:15px;margin:12px 0 14px;padding:12px 14px;background:#f3f7fb;border-radius:10px;border:1px solid #e1ecf6;}
+  .frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;}
+  .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .recap{margin:14px 0 6px;font-size:14.5px;padding-left:14px;border-left:3px solid var(--green);}
+  .meta{font-size:13px;color:var(--muted);margin-top:10px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .meta a{color:#fb7299;text-decoration:none;}
+  .meta a.deep{color:var(--blue);}
+  .check{display:inline-flex;align-items:center;gap:7px;font-size:14px;cursor:pointer;margin-top:12px;user-select:none;}
+  .check input{width:17px;height:17px;accent-color:var(--green);cursor:pointer;}
+  .next{display:inline-block;margin-top:14px;font-size:14px;color:#fff;background:var(--blue);text-decoration:none;border-radius:8px;padding:9px 16px;}
+  .next:hover{opacity:.92;}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px;}
+  @media(max-width:600px){ nav.toc ol{columns:1;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>从小白到能自己管钱 · 视频精讲课</h1>
+    <p>16 节 Khan Academy 精选讲解，按四阶排成一条连续路线。建议从上往下看，每节之间已用文字衔接。<br>
+       视频可开中文字幕（播放器右下角 ⚙ → 字幕）。进度自动存在本机浏览器。双击本文件即可学习，无需联网开网站。</p>
+    <div class="progress">
+      <div class="progress-top"><span>学习进度</span><span><b id="doneN">0</b> / 16 节已看完</span></div>
+      <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    </div>
+  </header>
+  <nav class="toc">
+    <h2>目录（点击跳到任意一节）</h2>
+    <ol>
+      <li><a href="#v1">1. 复利是什么：钱怎么靠“利滚利”变多</a></li>
+      <li><a href="#v2">2. 72 法则：钱多久能翻倍</a></li>
+      <li><a href="#v3">3. 风险与回报的直觉</a></li>
+      <li><a href="#v4">4. 什么是风险与回报</a></li>
+      <li><a href="#v5">5. 通胀：钱为什么悄悄变少</a></li>
+      <li><a href="#v6">6. 货币的时间价值</a></li>
+      <li><a href="#v7">7. 现值入门</a></li>
+      <li><a href="#v8">8. 买股票到底买了什么</a></li>
+      <li><a href="#v9">9. 债券入门</a></li>
+      <li><a href="#v10">10. 债券 vs 股票</a></li>
+      <li><a href="#v11">11. 三张财务报表：利润表</a></li>
+      <li><a href="#v12">12. ETF 是什么</a></li>
+      <li><a href="#v13">13. 我该怎么投资（分散+指数基金）</a></li>
+      <li><a href="#v14">14. 开放式共同基金</a></li>
+      <li><a href="#v15">15. 名义回报 vs 真实回报</a></li>
+      <li><a href="#v16">16. 名义与实际回报、通胀的关系</a></li>
+    </ol>
+  </nav>
+  <div class="stage"><h2>第 1 阶 · 起点（为什么要投资）</h2><p>这一阶段不教你具体买什么，先解决“为什么要开始”。看完你会明白：不投资本身就有成本，而投资的第一课是理解“复利”和“风险”。</p></div>
+  <section class="lesson" id="v1">
+    <div class="lt"><span class="lnum">第 1 节</span><h3>复利是什么：钱怎么靠“利滚利”变多</h3></div>
+    <div class="bridge">我们从一个最根本的问题开始：为什么把钱一直放着会悄悄吃亏，而让它“动起来”却能越来越多？这一节给你“复利”最直观的直觉——它是整门课的地基。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/Rm6UdfRs3gw?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>复利是“利息再生利息”，增长是指数级的，不是简单相加。时间越长，差距越夸张。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=复利 是什么意思 通俗讲解" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m1" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v1" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v2">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v2">
+    <div class="lt"><span class="lnum">第 2 节</span><h3>72 法则：钱多久能翻倍</h3></div>
+    <div class="bridge">上节你知道了复利是指数增长。这节给你一个超好用的心算工具——72 法则，让你不用计算器就能估出“钱多久能翻倍”，顺便建立长期视角。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/mec-QpjQMXY?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>翻倍年数 ≈ 72 ÷ 年化收益率%。比如年化 8%，约 9 年翻倍。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=72法则 复利 翻倍 计算" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m1" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v2" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v3">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v3">
+    <div class="lt"><span class="lnum">第 3 节</span><h3>风险与回报的直觉</h3></div>
+    <div class="bridge">钱能变多，但也可能变少。投资里不可能只有“涨”。这节先建立“风险”的直觉：为什么高回报几乎必然伴随高风险，以及“波动”到底意味着什么。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/mv5zucjq60k?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>风险≈波动。回报越高，通常波动越大；别只看“平均赚多少”，要看“可能亏多少”。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=投资风险与回报 关系 通俗" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m2" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v3" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v4">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v4">
+    <div class="lt"><span class="lnum">第 4 节</span><h3>什么是风险与回报</h3></div>
+    <div class="bridge">接着上节，我们把“回报”和“风险”用 ROI 这个具体指标说清楚，看清两者之间的权衡。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/7mo167ohvJw?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>ROI =（赚−本）÷ 本。比较不同投资时，要把“风险”一起算进去，不能只比 ROI。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=ROI 投资回报率 风险回报" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m2" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v4" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v5">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v5">
+    <div class="lt"><span class="lnum">第 5 节</span><h3>通胀：钱为什么悄悄变少</h3></div>
+    <div class="bridge">前面都在说“投资能赚”。但有个看不见的对手一直在偷你的钱——通胀。这节讲清为什么“不投资也在亏”，以及为什么要想“实际收益”。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/-Z5kkfrEc8I?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>通胀让购买力下降。名义赚 8%、通胀 3%，你真实只赚约 5%。长期规划永远用“实际收益”。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=通货膨胀 是什么意思 购买力" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m1" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v5" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v6">下一节 ▶</a>
+  </section>
+  <div class="stage"><h2>第 2 阶 · 概念（搞懂核心）</h2><p>这一阶段搞懂投资的语言：钱的时间价值、股票 / 债券 / ETF 这些工具到底是什么、怎么看一家公司赚不赚钱。这是后面“搭建组合”的地基。</p></div>
+  <section class="lesson" id="v6">
+    <div class="lt"><span class="lnum">第 6 节</span><h3>货币的时间价值</h3></div>
+    <div class="bridge">进入第 2 阶，我们要搞懂“估值”这件事的地基：今天的 100 块，和一年后的 100 块，并不一样值钱。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/733mgqrzNKs?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>货币有时间价值——早拿到手的钱更值钱，因为可以再投资。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=货币的时间价值 通俗讲解" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m5" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v6" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v7">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v7">
+    <div class="lt"><span class="lnum">第 7 节</span><h3>现值入门</h3></div>
+    <div class="bridge">上节建立了时间价值的直觉，这节把它变成可计算的工具——“现值”，把一笔未来的钱折算成“今天值多少”。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/ks33lMoxst0?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>现值 = 未来金额 ÷ (1+折现率)^年数。它是所有估值、债券定价的核心。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=现值 现值计算 通俗" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m5" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v7" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v8">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v8">
+    <div class="lt"><span class="lnum">第 8 节</span><h3>买股票到底买了什么</h3></div>
+    <div class="bridge">现在看具体工具。先说股票：你买一股，到底买了什么？</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/98qfFzqDKR8?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>买股票=成为公司的一小部分主人（股东），收益来自公司成长与分红，价格由供需决定。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=买股票 是什么意思 股东" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m4" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v8" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v9">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v9">
+    <div class="lt"><span class="lnum">第 9 节</span><h3>债券入门</h3></div>
+    <div class="bridge">和股票并列的另一大类资产——债券：你把钱借给公司或政府，拿约定好的固定利息。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/Qh-M3_L4xYk?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>债券=借条。收益较稳定、波动小于股票，但仍有利率与违约风险。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=债券 是什么意思 国债 企业债" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m4" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v9" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v10">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v10">
+    <div class="lt"><span class="lnum">第 10 节</span><h3>债券 vs 股票</h3></div>
+    <div class="bridge">把上两节合起来看：一家公司为什么既发股票又发债券？这两类融资方式的本质区别在哪？</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/rs1md3e4aYU?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>股票=卖所有权（不用还），债券=借债（要还+付息）。风险收益特征完全不同。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=债券和股票 区别 对比" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m4" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v10" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v11">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v11">
+    <div class="lt"><span class="lnum">第 11 节</span><h3>三张财务报表：利润表</h3></div>
+    <div class="bridge">怎么粗略判断一家公司值不值得投？从最基础的财报——利润表开始，看它到底赚不赚钱。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/Z7C4cz2HkeY?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>利润表看“收入−成本=利润”。先看营收趋势和利润率，再深挖。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=利润表 怎么看 通俗易懂" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m4" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v11" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v12">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v12">
+    <div class="lt"><span class="lnum">第 12 节</span><h3>ETF 是什么</h3></div>
+    <div class="bridge">工具层面，对新手最友好的起点往往不是单只股票，而是 ETF——一篮子股票、费率低、省心。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/SFdsY9Rdh6w?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>ETF 像“打包好的一篮子股票”，分散风险、费率低，适合作为核心仓位。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=ETF 是什么 怎么买 小白" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m6" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v12" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v13">下一节 ▶</a>
+  </section>
+  <div class="stage"><h2>第 3 阶 · 搭建（搭出你的第一个组合）</h2><p>零件齐了，开始组装。这一阶段告诉你，对普通人最友好的策略是什么——以及为什么“少折腾”反而是优势。</p></div>
+  <section class="lesson" id="v13">
+    <div class="lt"><span class="lnum">第 13 节</span><h3>我该怎么投资（分散+指数基金）</h3></div>
+    <div class="bridge">前面都是零件，这节开始“组装”：为什么“分散 + 指数基金 + 长期持有”是对新手最友好的策略。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/ro3v84swtZ4?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>别想战胜市场。分散买宽基指数、长期持有、少交易，新手胜率最高。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=怎么投资 分散风险 指数基金 定投" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m3" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v13" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v14">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v14">
+    <div class="lt"><span class="lnum">第 14 节</span><h3>开放式共同基金</h3></div>
+    <div class="bridge">基金到底怎么运作、怎么买卖，和上一节的 ETF 又有什么不同？这节补齐。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/DzYwB3uSU-c?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>共同基金把钱聚起来由经理打理；和 ETF 相比，费率常更高、交易没那么灵活。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=共同基金 怎么运作 是什么" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m6" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v14" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v15">下一节 ▶</a>
+  </section>
+  <div class="stage"><h2>第 4 阶 · 深入（长期主义）</h2><p>最后一阶，把“通胀”这个隐形对手正式算进账里，建立你长期复盘的底层视角。</p></div>
+  <section class="lesson" id="v15">
+    <div class="lt"><span class="lnum">第 15 节</span><h3>名义回报 vs 真实回报</h3></div>
+    <div class="bridge">进入最后一阶，把开头提过的“通胀”正式请回来：账面赚的（名义回报）和扣掉通胀后真赚的（真实回报），差多少？</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/cNm196bVE5A?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>真实回报 ≈ 名义回报 − 通胀。看任何“年化 X%”都要下意识减通胀。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=名义利率 实际利率 真实回报 通胀" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m22" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v15" onchange="toggle(this)"> 标记看完</label>
+    <a class="next" href="#v16">下一节 ▶</a>
+  </section>
+  <section class="lesson" id="v16">
+    <div class="lt"><span class="lnum">第 16 节</span><h3>名义与实际回报、通胀的关系</h3></div>
+    <div class="bridge">用公式把上节的关系钉死，让你以后看到任何收益率都会自动减去通胀这层。</div>
+    <div class="frame"><iframe src="https://www.youtube.com/embed/6ycEasF48zI?rel=0&amp;modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    <div class="recap"><b>记住这几点：</b>费雪方程：名义≈实际+通胀。这是你长期复盘时的底层公式。</div>
+    <div class="meta">
+      <span>YouTube 打不开？ <a href="https://search.bilibili.com/all?keyword=名义回报 实际回报 通胀 关系" target="_blank" rel="noopener">在 B站 搜同类讲解 ↗</a></span>
+      <a class="deep" href="https://finlearn.example.com/#/lectures/m22" target="_blank" rel="noopener">想看更细文字讲义（需联网）↗</a>
+    </div>
+    <label class="check"><input type="checkbox" data-vid="v16" onchange="toggle(this)"> 标记看完</label>
+    <span class="next" style="background:var(--green)">🎉 全部看完，去搭你的第一个组合吧</span>
+  </section>
+  <footer>本视频课程整理自 Khan Academy 公开教学内容，仅供学习，不构成投资建议。</footer>
+</div>
+<script>
+  var KEY='fin_course_progress_v1';
+  var done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  function save(){ localStorage.setItem(KEY, JSON.stringify(done)); }
+  function refresh(){
+    var boxes=document.querySelectorAll('input[data-vid]');
+    var n=0;
+    boxes.forEach(function(b){
+      var v=b.getAttribute('data-vid');
+      if(done[v]){ b.checked=true; b.closest('.lesson').classList.add('done'); n++; }
+      else { b.checked=false; b.closest('.lesson').classList.remove('done'); }
+    });
+    document.getElementById('doneN').textContent=n;
+    document.getElementById('barFill').style.width=(n/boxes.length*100)+'%';
+  }
+  function toggle(el){
+    var v=el.getAttribute('data-vid');
+    if(el.checked) done[v]=1; else delete done[v];
+    save(); refresh();
+  }
+  refresh();
+</script>
+</body>
+</html>

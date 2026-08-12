@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核心学习讲义 · 稳健激进型投资者</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: #1a2b3c; background: #f4f7fb; margin: 0; padding: 32px 16px; line-height: 1.75; }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: #5f5e5a; font-size: 14px; margin-bottom: 18px; }
+  h2 { font-size: 18px; margin: 34px 0 10px; padding-left: 10px; border-left: 4px solid #185FA5; }
+  h3 { font-size: 15px; margin: 16px 0 6px; color:#0C447C; }
+  .card { background:#fff; border:0.5px solid #d3d1c7; border-radius:12px; padding:16px 20px; margin:12px 0; }
+  .mod { background:#fff; border:0.5px solid #d3d1c7; border-left:5px solid #185FA5; border-radius:12px; padding:16px 20px; margin:18px 0; }
+  code { background:#eef2f7; padding:1px 6px; border-radius:5px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size:13px; color:#0C447C; }
+  .ex { background:#f0f9f3; border:0.5px solid #97C459; border-radius:10px; padding:10px 14px; margin:10px 0; }
+  .ex b { color:#27500A; }
+  .test { background:#fff7ed; border:0.5px dashed #ef9f27; border-radius:10px; padding:10px 14px; margin:10px 0; }
+  .test b { color:#854F0B; }
+  ul { margin:6px 0; padding-left:20px; } li { margin:3px 0; font-size:14px; }
+  .note { color:#5f5e5a; font-size:13px; }
+  table { width:100%; border-collapse:collapse; margin:8px 0; font-size:13px; }
+  th,td { border:0.5px solid #d3d1c7; padding:6px 10px; text-align:left; }
+  th { background:#eef2f7; }
+  svg { width:100%; height:auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>核心学习讲义 · 具体学习内容</h1>
+  <div class="sub">配套《学习路线.html》使用 ｜ 覆盖 P0–P1 核心模块，每块含讲解 + 公式 + 例子 + 自测</div>
+
+  <div class="card">
+    <b>怎么用：</b>按模块顺序学，每学完一个模块的「自测」能口述答案，再进下一个。所有计算都用你自己的账户小本子手算一遍，比看十遍都有用。
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 1 · 复利与长期主义</h2>
+    <p><b>复利公式：</b><code>FV = PV × (1 + r)^n</code>　（FV 终值，PV 本金，r 年化收益率，n 年数）</p>
+    <p><b>72 法则（心算翻倍）：</b>本金翻倍所需年数 ≈ <code>72 ÷ 年化收益率%</code>。例：8% → 约 9 年翻倍；15% → 约 4.8 年。</p>
+    <div class="ex"><b>例子：</b>每月定投 ¥3000，年化 10%，30 年后约 ¥650 万（本金仅 ¥108 万，其余是复利）。收益率每差 5%，终点可以差好几倍——参见上面的复利曲线。</div>
+    <p><b>回撤的残酷：</b>亏 50% 需要赚 <b>100%</b> 才回本；亏 20% 需涨 25%。所以"少回撤"比"多赚一点"更重要——这是稳健激进型的底层逻辑。</p>
+    <div class="test"><b>自测：</b>① 年化 12%，本金翻 3 倍大约要几年？（提示：用 72 法则估算再修正）② 亏 30% 后需要涨多少回本？</div>
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 2 · 风险三件套</h2>
+    <ul>
+      <li><b>波动率（标准差 σ）：</b>价格"颠簸"的程度。年化波动率 20% 代表约 2/3 的年份涨跌落在 ±20% 内。越高越刺激，也越考验睡眠。</li>
+      <li><b>最大回撤 MDD：</b>从最高点到最低点的最大跌幅。<code>MDD = (峰值 − 谷值) ÷ 峰值</code>。例：100 → 70，MDD = 30%。这是你"实际会亏多少"的最直观指标。</li>
+      <li><b>相关性 ρ：</b>两资产涨跌的同步程度，范围 −1（完全反向）到 +1（完全同涨同跌）。<code>ρ 越低，分散效果越好</code>。</li>
+    </ul>
+    <div class="ex"><b>例子：</b>美股与日股 ρ 约 0.6–0.7（都不算低，所以日股不是完美分散）；BTC 与美股近年 ρ 上升但长期仍部分独立；黄金常为负相关，是组合里的"减震器"。</div>
+    <p><b>组合意义：</b>把低相关资产拼在一起，能在<b>不牺牲太多收益</b>的前提下降低波动——这正是你跨美股/日股/加密配置的数学理由。</p>
+    <div class="test"><b>自测：</b>① 你的组合里如果全是科技股 + BTC，相关性高还是低？分散到位了吗？② 为什么"跌得少"长期反而赚得多？</div>
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 3 · 资产配置入门</h2>
+    <p><b>顺序：先配"类"，再选"标的"。</b>先决定股/债/现金/另类各占多少，再在每一类里挑具体产品。很多人反过来——先兴奋地买一只股票，再发现全是同类、毫无分散。</p>
+    <p><b>你的映射（稳健激进型）：</b>股为主（美股宽基 + 日股宽基 + 主动个股）+ 加密（高弹性另类）+ 现金弹药（10%）。详见《金融体系蓝图.html》。</p>
+    <p><b>再平衡：</b>设偏离阈值（如 ±5%）。当某类涨到超过基准 5%，卖出一部分补回基准。<b>机械执行，不靠感觉</b>——它强制你"高抛低吸"。</p>
+    <div class="test"><b>自测：</b>若美股从 35% 涨到 42%，你该怎么做？为什么不全留着等它继续涨？</div>
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 4 · 三张财报怎么读</h2>
+    <p>三张表的关系见上图：利润表的净利润进入资产负债表的"留存收益"，并调节为现金流量表的经营现金流；现金流量表的期末现金回到资产负债表。</p>
+    <h3>① 资产负债表（某一时点的"家底"）</h3>
+    <p><code>资产 = 负债 + 股东权益</code>。重点看：<b>现金及等价物</b>（能不能扛过寒冬）、<b>有息负债</b>（利息压力）、<b>应收账款/存货</b>（是否积压）、<b>净资产</b>（真正属于股东的）。</p>
+    <h3>② 利润表（一段时间的"赚钱能力"）</h3>
+    <p>营收 − 营业成本 = <b>毛利</b>；− 三费(销售/管理/研发) = 营业利润；− 税 = <b>净利润</b>。重点看：<b>营收增速</b>、<b>毛利率</b>（护城河）、<b>净利率</b>趋势。</p>
+    <h3>③ 现金流量表（真金白银）</h3>
+    <p>分三块：<b>经营</b>（主业造血）、<b>投资</b>（买资产/理财）、<b>筹资</b>（借钱/分红/回购）。关键：<b>经营现金流持续为正且增长</b>；<b>自由现金流 FCF = 经营现金流 − 资本开支</b>。利润可以修饰，现金流难造假。</p>
+    <div class="ex"><b>红旗：</b>净利润很高但经营现金流长年为负（"纸面富贵"）；应收账款增速远快于营收（货卖了钱没收回来）。</div>
+    <div class="test"><b>自测：</b>一家公司利润年年涨，但经营现金流年年负，这正常吗？该警惕什么？</div>
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 5 · 核心指标字典</h2>
+    <table>
+      <tr><th>指标</th><th>公式</th><th>怎么读</th></tr>
+      <tr><td>PE 市盈率</td><td>市值 ÷ 净利润</td><td>低可能便宜也可能"差"；成长股 PE 高是常态</td></tr>
+      <tr><td>PB 市净率</td><td>市值 ÷ 净资产</td><td>适合银行/重资产；&lt;1 可能被低估</td></tr>
+      <tr><td>PS 市销率</td><td>市值 ÷ 营收</td><td>用于未盈利的高成长公司</td></tr>
+      <tr><td>PEG</td><td>PE ÷ 盈利增速%</td><td>&lt;1 代表成长"性价比"高</td></tr>
+      <tr><td>ROE 净资产收益率</td><td>净利润 ÷ 净资产</td><td>&gt;15% 优秀，但要可持续、非高杠杆堆出</td></tr>
+      <tr><td>负债率</td><td>总负债 ÷ 总资产</td><td>过高 → 抗风险弱</td></tr>
+      <tr><td>FCF 收益率</td><td>自由现金流 ÷ 市值</td><td>类似股息率但更"硬"</td></tr>
+    </table>
+    <div class="ex"><b>例子：</b>A 公司 PE=40 但 ROE=30% 且负债率低、FCF 为正 → 贵得有道理；B 公司 PE=8 但 ROE=3%、负债率 80% → 可能是"价值陷阱"。<b>永远别单看一个指标。</b></div>
+    <div class="test"><b>自测：</b>两只股票 PE 都是 25，一只增速 5%、一只增速 30%，哪只 PEG 更优？这说明什么？</div>
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 6 · ETF 与指数</h2>
+    <ul>
+      <li><b>指数：</b>按规则选一篮子股票（如 S&amp;P500 按市值加权选 500 家美国大公司）。</li>
+      <li><b>ETF：</b>在交易所买卖、跟踪指数的基金。优势：分散、费率低、透明、流动性好。</li>
+      <li><b>费率 ER：</b><code>VTI 约 0.03%</code> vs 主动基金 <code>1%+</code>。看似小，30 年复利下能吞掉一大块收益。</li>
+      <li><b>跟踪误差：</b>ETF 与指数的偏离，越小越好。</li>
+      <li><b>累计 vs 分红型：</b>分红型会发你现金（ taxable），累计型自动再投资（长期更高效）。</li>
+    </ul>
+    <div class="ex"><b>你的核心持仓骨架：</b>美股宽基 <code>VTI/VOO</code>(≈35%) + 日股宽基 <code>TOPIX ETF</code>(≈15%) + 主动个股/行业 ETF(≈25%)。这些是"不靠选股也能赢"的底座。</div>
+    <div class="test"><b>自测：</b>为什么 95% 的主动基金长期跑不赢指数？费率在其中有几成"功劳"？</div>
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 7 · 估值入门</h2>
+    <p><b>相对估值：</b>找业务可比的公司，比 PE/PB/PS，再考虑增速与质量差异。简单但依赖"市场整体没疯"。</p>
+    <p><b>绝对估值（DCF 简化）：</b>把公司未来能产生的自由现金流折现到现在。<code>内在价值 ≈ FCF ÷ (r − g)</code>（r=折现率，g=永续增速）。r 用 8–10%，g 别超过 GDP 长期增速。</p>
+    <p><b>安全边际：</b>只在"内在价值打 7 折"以下买。预留犯错空间——<b>你不需要买在最低点，只需要买得够便宜。</b></p>
+    <div class="test"><b>自测：</b>为什么说"好公司"和"好投资"是两回事？举一个你熟悉的例子。</div>
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 8 · 市场微观结构</h2>
+    <ul>
+      <li><b>市价单 vs 限价单：</b>市价单保证成交、不保价格；限价单保价格、不保成交。新手默认用限价。</li>
+      <li><b>盘前/盘后：</b>流动性差、点差大、波动猛，新手慎碰。</li>
+      <li><b>点差（买卖价差）：</b>隐形成本，频繁交易会被它慢慢吃掉。</li>
+      <li><b>成交量：</b>放量验证趋势可靠性；缩量上涨要警惕。</li>
+    </ul>
+    <div class="test"><b>自测：</b>为什么"频繁用市价单做短线"对散户不利？</div>
+  </div>
+
+  <div class="mod">
+    <h2 style="border:none;margin:0 0 4px;padding:0;">模块 9 · 常见认知偏差</h2>
+    <ul>
+      <li><b>损失厌恶：</b>亏 100 的痛苦 &gt; 赚 100 的快乐 → 导致"捂亏损、卖盈利"。</li>
+      <li><b>锚定效应：</b>盯着买入价而非企业价值做决策。</li>
+      <li><b>幸存者偏差：</b>只看见涨的，忘了退市的。</li>
+      <li><b>追涨杀跌：</b>情绪驱动，高买低卖。</li>
+    </ul>
+    <p><b>解药：</b>写投资日志、预设买卖规则、机械执行、定期复盘。把"人"从决策里摘出来，是稳健激进型能长期赢的关键。</p>
+    <div class="test"><b>自测：</b>回想一次你"割在地板"或"追在高点"的经历，它对应上面哪种偏差？</div>
+  </div>
+
+  <h2>学完这些之后</h2>
+  <div class="card">
+    <ul>
+      <li>你已经具备 P0–P1 的全部基础，可以进入 <b>P2 市场专项</b>（美股/日股/加密三块的具体玩法、开户、税务）。</li>
+      <li>下一步我可以：① 展开 P2 三块的具体讲义；② 带你写"个人投资宣言"和第一份股票初判笔记；③ 拉实时数据做估值练习。</li>
+    </ul>
+    <p class="note">声明：本讲义为学习框架，非投资建议。具体标的与税务请咨询持牌专业人士。</p>
+  </div>
+</div>
+</body>
+</html>

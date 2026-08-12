@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ASIC四标的深度建仓分析 - 2026年8月</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#0f1117;color:#d1d5db;line-height:1.8}
+.container{max-width:1020px;margin:0 auto;padding:32px 20px}
+
+h1{font-size:28px;color:#f0f0f0;margin-bottom:4px}
+.subtitle{color:#6b7280;font-size:13px;margin-bottom:32px}
+
+.tldr{background:linear-gradient(135deg,#1a1f2e,#1e2640);border:1px solid #2a3348;border-radius:12px;padding:28px 32px;margin-bottom:36px}
+.tldr h2{font-size:18px;color:#60a5fa;margin-bottom:16px}
+.tldr ol{margin-left:20px}
+.tldr li{margin:8px 0;font-size:14px;color:#c8cdd5}
+.tldr li strong{color:#f0f0f0}
+
+.card{background:#161b24;border:1px solid #232a36;border-radius:10px;padding:28px 32px;margin-bottom:24px}
+.card h3{font-size:18px;color:#e0e0e0;margin-bottom:16px;border-left:4px solid #60a5fa;padding-left:14px}
+.card h4{font-size:15px;color:#a0aab4;margin:20px 0 10px}
+.card p{font-size:14px;margin:8px 0}
+.card ul,.card ol{margin-left:20px;font-size:14px}
+.card li{margin:6px 0}
+
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+.meta-item{background:#1e2430;padding:10px 14px;border-radius:6px;border:1px solid #2a3240}
+.meta-item .label{font-size:11px;color:#6b7280;margin-bottom:2px}
+.meta-item .value{font-size:16px;font-weight:600;color:#d1d5db}
+.meta-item .value.up{color:#34d399}
+.meta-item .value.down{color:#f87171}
+
+.entry-box{border:1px solid #2a3348;border-radius:8px;padding:18px;margin:14px 0}
+.entry-box.cont{border-left:4px solid #34d399;background:#0f2a1e}
+.entry-box.burst{border-left:4px solid #f87171;background:#2a1414}
+.entry-box h5{font-size:14px;margin-bottom:8px}
+.entry-box .price{font-size:22px;font-weight:700;margin:6px 0}
+.entry-box .note{font-size:13px;color:#8a94a6}
+
+.pro-con{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.pro,.con{padding:16px;border-radius:8px;font-size:13px}
+.pro{background:#0f2a1e;border:1px solid #1a4a30}
+.con{background:#2a1414;border:1px solid #4a1a1a}
+.pro h5{color:#34d399;margin-bottom:8px}
+.con h5{color:#f87171;margin-bottom:8px}
+
+.narrative-box{background:#1a1f2e;border:1px solid #2a3348;border-radius:8px;padding:16px;margin:14px 0;font-size:13px}
+.narrative-box strong{color:#60a5fa}
+
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:#1e2430;padding:10px 14px;text-align:left;font-weight:600;color:#a0aab4;border-bottom:2px solid #2a3348}
+td{padding:10px 14px;border-bottom:1px solid #232a36}
+tr:hover td{background:#1e2430}
+td.up{color:#34d399}
+td.down{color:#f87171}
+
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:4px}
+.tag-t0{background:#1a3a2a;color:#34d399}
+.tag-t1{background:#1a2a3a;color:#60a5fa}
+.tag-t2{background:#2a1a2a;color:#c084fc}
+.tag-warn{background:#3a2a1a;color:#fbbf24}
+
+.chart-wrap{width:100%;height:380px;margin:16px 0}
+
+.disclaimer{background:#1a1a0a;border:1px solid #3a3a1a;border-radius:8px;padding:16px;margin-top:36px;font-size:12px;color:#a0a050;line-height:1.8}
+
+.section-divider{border:none;border-top:1px solid #232a36;margin:32px 0}
+
+.stock-header{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.stock-header .symbol{font-size:22px;font-weight:700;color:#f0f0f0}
+.stock-header .name{font-size:15px;color:#8a94a6}
+.stock-header .priority{font-size:12px;padding:3px 10px;border-radius:4px;font-weight:600}
+.stock-header .p1{background:#1a3a2a;color:#34d399}
+.stock-header .p2{background:#1a2a3a;color:#60a5fa}
+.stock-header .p3{background:#3a2a1a;color:#fbbf24}
+.stock-header .p4{background:#2a1a2a;color:#c084fc}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>ASIC 四标的 · 深度建仓分析</h1>
+<p class="subtitle">数据截止 2026-08-07（美股收盘）/ 2026-08-10（日股盘中） | 基于 neodata 实时财报 | 长期持有策略</p>
+
+<!-- TL;DR -->
+<div class="tldr">
+<h2>核心结论（TL;DR）</h2>
+<ol>
+<li><strong>AVGO = 唯一确定性最高的 ASIC 标的</strong>：ROIC 23%远超 WACC，FCF 每季 $100 亿+，6 大客户多年锁定——即使在 AI 泡沫破裂情景下也有 FCF 底线支撑</li>
+<li><strong>SNPS = 被严重低估的"捡漏"机会</strong>：Ansys 收购摊薄 GAAP 利润 + Elliott 入股施压，短期看起来"贵"但 EDA 双寡头护城河极深（芯片设计者无法换工具），$366-$416 接近 52 周低点区间</li>
+<li><strong>MRVL = 高赔率低确定性</strong>：Amazon Trainium3/4 + Microsoft Maia + 光 DSP 三条腿走路，但 GAAP 几乎不赚钱（Q1 EPS $0.04），50-65x 前瞻 PE 定价了完美执行——跌到 $170 以下才有安全边际</li>
+<li><strong>Socionext = 最被忽视的日本 ASIC 暗马</strong>：Q1 营业亏损但全年指引不变，Custom SoC 模式（非通用芯片）有独特壁垒，¥1,972 对应 34x PE——需等 Q2 验证恢复盈利再行动</li>
+</ol>
+</div>
+
+<!-- ==================== AVGO ==================== -->
+<div class="card">
+<div class="stock-header">
+<span class="symbol">AVGO</span><span class="name">博通 Broadcom</span>
+<span class="priority p1">ASIC 最强王者</span>
+</div>
+<hr class="section-divider" style="margin:16px 0">
+
+<h3>一、最新财报核心数据（Q2 FY2026，截止 2026年5月）</h3>
+<div class="meta-grid">
+<div class="meta-item"><div class="label">最新价 (8/7)</div><div class="value">$427.76</div></div>
+<div class="meta-item"><div class="label">总市值</div><div class="value">$2.04万亿</div></div>
+<div class="meta-item"><div class="label">Q2 营收</div><div class="value up">$221.9亿 (+48%)</div></div>
+<div class="meta-item"><div class="label">Q2 净利</div><div class="value up">$93.1亿 (+88%)</div></div>
+<div class="meta-item"><div class="label">净利率</div><div class="value up">42.0%</div></div>
+<div class="meta-item"><div class="label">ROIC</div><div class="value up">23.0%</div></div>
+<div class="meta-item"><div class="label">Q2 FCF</div><div class="value up">$102.6亿</div></div>
+<div class="meta-item"><div class="label">每股净资产</div><div class="value">$18.00</div></div>
+<div class="meta-item"><div class="label">前瞻 PE（共识）</div><div class="value">~26x</div></div>
+<div class="meta-item"><div class="label">52周区间</div><div class="value">$280 - $494</div></div>
+<div class="meta-item"><div class="label">机构目标均价</div><div class="value up">$529 (+24%)</div></div>
+<div class="meta-item"><div class="label">机构买入</div><div class="value up">93% (48家)</div></div>
+</div>
+
+<h4>双情景建仓区间</h4>
+<div class="entry-box cont">
+<h5>情景A：AI 继续（基准·概率60%）</h5>
+<div class="price" style="color:#34d399">建仓区间：$380 - $420</div>
+<div class="note">
+<strong>当前 $428 在区间上沿附近，略高于理想买点。</strong><br>
+$420 = 首批 20% 仓位（前瞻 PE ~25.5x）<br>
+$400 = 加仓 30%（前瞻 PE ~24.3x，近3年估值中枢）<br>
+$380 = 重仓 30%（前瞻 PE ~23x，接近中枢下沿）<br><br>
+<strong>逻辑</strong>：AVGO 在 2025-2026 年的估值中枢约 23-28x 前瞻 PE。$380 约 23x 提供了充足安全边际。即便 AI Capex 增速放缓至 20-30%（而非腰斩），ASIC 渗透率仍在上升（hyperscaler 自研芯片趋势不可逆），AVGO 作为唯一规模化 ASIC 设计平台，营收不会断崖。
+</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI 泡沫破裂（压力·概率15-25%）</h5>
+<div class="price" style="color:#f87171">建仓区间：$280 - $330</div>
+<div class="note">
+$330 = 首批 20%（前瞻 PE ~20x，即便 AI Capex 腰斩 ASIC 仍有结构增长）<br>
+$300 = 加仓 30%（前瞻 PE ~18x，接近 2024 年 AI 起飞前估值）<br>
+$280 = 重仓 30%（52 周低点，FCF 收益率 >4%）<br><br>
+<strong>底线逻辑</strong>：$280 时 AVGO 年化 FCF $400 亿+，FCF 收益率 >4%，即便没有 AI 增长也有非 AI 半导体 + VMware 软件业务的 FCF 支撑（非 AI 年 FCF 约 $200 亿）。这是 AI 泡沫中"跌不死"的核心原因。
+</div>
+</div>
+
+<div class="pro-con">
+<div class="pro">
+<h5>优势</h5>
+<ul>
+<li><strong>FCF 印钞机</strong>：Q2 FCF $102.6 亿，年化 $410 亿+——全半导体行业最强现金流，不是烧钱换增长</li>
+<li><strong>6 大客户多年锁定</strong>：Google TPU（~80%份额）、Meta MTIA、Anthropic、OpenAI、ByteDance + 1 未披露，GW 级订单积压 $2000 亿+</li>
+<li><strong>ASIC 渗透率不可逆</strong>：hyperscaler 逃离 NVIDIA 定价权的唯一规模化出口，HBM 越贵 ASIC 越受益</li>
+<li><strong>VMware 去杠杆完成</strong>：债务/EBITDA 降至 1.8x，软件业务贡献稳定现金流</li>
+<li><strong>ROIC 23% >> WACC</strong>：我们之前算出经济利差 +13pp，是罕见的"高增长+高回报"组合</li>
+</ul>
+</div>
+<div class="con">
+<h5>风险</h5>
+<ul>
+<li><strong>$2 万亿市值天花板</strong>：即便 AI 继续，从 $2T 再翻倍到 $4T 需要更极端的叙事；上行空间在收窄</li>
+<li><strong>客户自研风险</strong>：Google 已自研 TPU 架构（AVGO 只做物理实现），若客户建立内部 ASIC 团队，AVGO 可能从"必需品"降级为"外包商"</li>
+<li><strong>AI 营收集中度</strong>：Q2 AI 营收 $108 亿占半壁江山，非 AI 增速不到 10%——一旦 AI 退潮，整体增速骤降</li>
+<li><strong>Q2 财报"利好出尽"</strong>：$428 附近横盘近 2 个月，93% 买入=几乎无人可再买，任何利空都可能引发获利了结</li>
+<li><strong>H2 指引"保守"</strong>：管理层给的长期目标被认为偏保守，市场对此反应敏感</li>
+</ul>
+</div>
+</div>
+
+<div class="narrative-box">
+<strong>核心叙事：</strong>AVGO 不是"赌 AI"，是"AI 基础设施的收费站"——不管哪个 hyperscaler 赢、哪个模型胜出，只要 AI 算力继续增长，定制芯片的需求就流向 AVGO。Hock Tan 的并购整合能力（VMware、Broadcom 原体、CA Technologies）已被反复验证。<strong>未来 3 年最可能路径</strong>：AI 营收从 $400 亿年化增长至 $800-1000 亿（渗透率 + hyperscaler Capex 增长），非 AI 稳定在 $250-300 亿，总营收 $1000-1300 亿，净利 $400-500 亿，对应 $3-4T 市值（3-4x 当前）。概率最高的结局是"慢牛"而非"暴涨"。
+</div>
+</div>
+
+<!-- ==================== SNPS ==================== -->
+<div class="card">
+<div class="stock-header">
+<span class="symbol">SNPS</span><span class="name">新思科技 Synopsys</span>
+<span class="priority p2">EDA 双寡头·低估捡漏</span>
+</div>
+<hr class="section-divider" style="margin:16px 0">
+
+<h3>二、最新财报核心数据（Q2 FY2026，截止 2026年4月）</h3>
+<div class="meta-grid">
+<div class="meta-item"><div class="label">最新价 (8/7)</div><div class="value">$415.99</div></div>
+<div class="meta-item"><div class="label">总市值</div><div class="value">$797亿</div></div>
+<div class="meta-item"><div class="label">Q2 营收</div><div class="value up">$22.75亿 (+42%)</div></div>
+<div class="meta-item"><div class="label">GAAP EPS</div><div class="value down">$0.09（收购摊薄）</div></div>
+<div class="meta-item"><div class="label">Q3 指引营收</div><div class="value">$24.1-24.6亿</div></div>
+<div class="meta-item"><div class="label">Q3 指引 Non-GAAP EPS</div><div class="value">$3.63-3.69</div></div>
+<div class="meta-item"><div class="label">YTD 涨跌</div><div class="value down">-11.4%</div></div>
+<div class="meta-item"><div class="label">52周区间</div><div class="value">$366 - $629</div></div>
+<div class="meta-item"><div class="label">机构目标均价</div><div class="value up">$570 (+37%)</div></div>
+<div class="meta-item"><div class="label">机构买入</div><div class="value up">78% (22家)</div></div>
+</div>
+
+<h4>双情景建仓区间</h4>
+<div class="entry-box cont">
+<h5>情景A：AI 继续（基准·概率60%）</h5>
+<div class="price" style="color:#34d399">建仓区间：$360 - $410</div>
+<div class="note">
+<strong>当前 $416 接近区间上沿，已在可行动范围。</strong><br>
+$410 = 首批 20%（Non-GAAP PE ~28x，EDA 历史中枢下沿）<br>
+$385 = 加仓 30%（Non-GAAP PE ~26x）<br>
+$360 = 重仓 30%（接近 52 周低点 $366，Non-GAAP PE ~24x）<br><br>
+<strong>逻辑</strong>：SNPS 从 $629 高点回调 34% 的核心原因是 Ansys 收购后 GAAP 利润被巨额摊销和重组费用吞噬（Q2 GAAP EPS 仅 $0.09），但 Non-GAAP EPS ~$3.65 说明真实盈利能力完好。市场过度关注 GAAP 亏损而忽视了 EDA 双寡头的护城河。Elliott Management 入股后推动成本优化和业务聚焦，2027 年利润率有望显著回升。
+</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI 泡沫破裂（压力·概率15-25%）</h5>
+<div class="price" style="color:#f87171">建仓区间：$280 - $340</div>
+<div class="note">
+$340 = 首批 20%（Non-GAAP PE ~23x）<br>
+$310 = 加仓 30%（Non-GAAP PE ~21x）<br>
+$280 = 重仓 30%（Non-GAAP PE ~19x，即便 AI 崩盘 EDA 仍有芯片设计刚需）<br><br>
+<strong>底线逻辑</strong>：EDA 工具是半导体行业的"卖铲人的卖铲人"——不管芯片需求如何，设计芯片就必须要 EDA 工具。SNPS + CDNS 双寡头市场份额 >80%，切换成本极高（一个芯片设计团队换 EDA 工具 = 3-5 年迁移周期 + 数亿美元成本）。非 AI 半导体（手机/汽车/IoT）的 EDA 需求提供下行保护。
+</div>
+</div>
+
+<div class="pro-con">
+<div class="pro">
+<h5>优势</h5>
+<ul>
+<li><strong>EDA 双寡头，护城河极深</strong>：与 Cadence 合计市占 >80%，芯片设计团队一旦选定 EDA 工具几乎无法迁移——3-5 年转换周期 + 数亿美元成本 = 天然垄断</li>
+<li><strong>Ansys 收购 1+1>2</strong>：Ansys 是多物理场仿真龙头，与 EDA 整合后 SNPS 成为"设计+仿真"一站式平台，客单价可翻倍</li>
+<li><strong>Elliott 推手</strong>：Elliott Management（著名激进投资者）入股后要求降本增效，已推动管理层承诺利润率改善路线图</li>
+<li><strong>AI 芯片设计复杂度暴增 = EDA 需求暴增</strong>：3nm/2nm 芯片设计成本已超 $5 亿/颗，EDA 工具复杂度溢价持续上升</li>
+<li><strong>从 $629 跌 34% = 恐慌过度</strong>：市场因 GAAP 亏损恐慌抛售，但 Non-GAAP 盈利完好，是典型的"会计噪音创造买点"</li>
+</ul>
+</div>
+<div class="con">
+<h5>风险</h5>
+<ul>
+<li><strong>Ansys 整合执行风险</strong>：$350 亿收购是 SNPS 历史上最大交易，交叉销售、成本协同的实际达成需要 2-3 年验证</li>
+<li><strong>债务压力</strong>：为收购 Ansys 大幅举债，虽 EDA 现金流稳定但利息支出侵蚀利润</li>
+<li><strong>Cadence 竞争</strong>：CDNS 也在推 AI 驱动的 EDA 工具（JedAI 平台），双寡头格局可能从"各占山头"变成"全面开战"</li>
+<li><strong>GAAP 利润恢复时间不确定</strong>：摊销和重组费用可能持续到 FY2027 甚至 FY2028</li>
+<li><strong>估值不便宜</strong>：Non-GAAP PE 28x 在软件公司中并非低估——如果整合不及预期、Non-GAAP EPS 低于共识，还有下跌空间</li>
+</ul>
+</div>
+</div>
+
+<div class="narrative-box">
+<strong>核心叙事：</strong>SNPS 是"被会计噪音掩盖的优质资产"。$415 的 SNPS 就像 2023 年的 META——短期利润被一次性因素（收购摊销）压制，但核心业务（EDA 工具）的竞争地位和增长趋势完好。Elliott 的介入是催化剂：历史上 Elliott 推动的科技公司重组（如 Salesforce、Pinterest）平均在 12-18 个月内实现 30-50% 的股价回报。<strong>最可能路径</strong>：FY2027 Non-GAAP EPS $15-16 → PE 28-32x → 目标 $420-510。如果 Elliott 推动的利润率改善超预期（Non-GAAP 运营利润率从 ~35% → 40%+），FY2028 Non-GAAP EPS 可达 $18-20 → 目标 $540-640。这是四只标的中"被错杀"最明显的一只。
+</div>
+</div>
+
+<!-- ==================== MRVL ==================== -->
+<div class="card">
+<div class="stock-header">
+<span class="symbol">MRVL</span><span class="name">迈威尔科技 Marvell Technology</span>
+<span class="priority p3">高赔率·高风险</span>
+</div>
+<hr class="section-divider" style="margin:16px 0">
+
+<h3>三、最新财报核心数据（Q1 FY2027，截止 2026年5月）</h3>
+<div class="meta-grid">
+<div class="meta-item"><div class="label">最新价 (8/7)</div><div class="value">$218.72</div></div>
+<div class="meta-item"><div class="label">总市值</div><div class="value">$1963亿</div></div>
+<div class="meta-item"><div class="label">Q1 营收</div><div class="value up">$24.18亿 (+28%)</div></div>
+<div class="meta-item"><div class="label">Q1 GAAP 净利</div><div class="value down">$3450万</div></div>
+<div class="meta-item"><div class="label">Q1 GAAP EPS</div><div class="value down">$0.04</div></div>
+<div class="meta-item"><div class="label">Q1 毛利率</div><div class="value">52.1%</div></div>
+<div class="meta-item"><div class="label">前瞻 PE（共识）</div><div class="value down">50-65x</div></div>
+<div class="meta-item"><div class="label">52周区间</div><div class="value">$61 - $330</div></div>
+<div class="meta-item"><div class="label">距高点回撤</div><div class="value down">-33.7%</div></div>
+<div class="meta-item"><div class="label">机构目标均价</div><div class="value up">$268 (+23%)</div></div>
+<div class="meta-item"><div class="label">机构买入</div><div class="value up">83% (36家)</div></div>
+</div>
+
+<h4>双情景建仓区间</h4>
+<div class="entry-box cont">
+<h5>情景A：AI 继续（基准·概率60%）</h5>
+<div class="price" style="color:#34d399">建仓区间：$170 - $200</div>
+<div class="note">
+<strong>当前 $219 高于理想区间。</strong><br>
+$200 = 首批 15% 试探仓（前瞻 PE ~50x，MRVL 波动极大，仓位要小）<br>
+$185 = 加仓 20%（前瞻 PE ~46x）<br>
+$170 = 重仓 25%（前瞻 PE ~42x，为 ASIC 老二留有安全边际）<br><br>
+<strong>逻辑</strong>：MRVL 是四只标的中波动最大的（52 周从 $61 到 $330），$200 以下才有足够安全边际。三条业务线（Amazon Trainium ASIC + Microsoft Maia ASIC + 光 DSP）各有爆发潜力，但均未大规模量产验证。等待 Trainium3 量产消息或 Q2 FY2027 财报确认营收加速再加重仓位。
+</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI 泡沫破裂（压力·概率15-25%）</h5>
+<div class="price" style="color:#f87171">建仓区间：$80 - $130</div>
+<div class="note">
+$130 = 首批 15%（回到 2025 年起涨前估值区间上沿）<br>
+$105 = 加仓 20%（光 DSP + 传统网络业务提供 ~$50 亿年营收底线）<br>
+$80 = 重仓 25%（接近 2024 年低点，P/S <2x）<br><br>
+<strong>底线逻辑</strong>：MRVL 在 AI 泡沫破裂中跌幅可能 >60%（参考 2022 年半导体熊市）。但 5G/数据中心网络/汽车以太网业务提供约 $50 亿年营收底线，即便 AI 归零也不归零。仅在 AI 泡沫确认破裂后 6-12 个月、确认行业出清后再介入此档。
+</div>
+</div>
+
+<div class="pro-con">
+<div class="pro">
+<h5>优势</h5>
+<ul>
+<li><strong>ASIC 赛道唯二选手</strong>：AVGO 吃肉 MRVL 喝汤，Amazon Trainium3/4 是目前已知最大单笔 ASIC 合同之一</li>
+<li><strong>光 DSP 差异化壁垒</strong>：MRVL 在数据中心光互联 DSP 市场份额 >50%，800G/1.6T 升级周期 2026-2028 年带来确定性增量</li>
+<li><strong>Microsoft Maia 潜力</strong>：若 Maia 大规模部署（替代部分 NVIDIA GPU），MRVL 可能拿到第二个"Trainium 级别"的合同</li>
+<li><strong>汽车以太网剥离聚焦</strong>：$25 亿出售非核心业务，集中资源在 AI/数据中心——战略聚焦正确</li>
+<li><strong>50+ 设计项目管线</strong>：大量项目在 pipeline 中，任何 1-2 个进入量产都能显著提升营收</li>
+</ul>
+</div>
+<div class="con">
+<h5>风险</h5>
+<ul>
+<li><strong>GAAP 利润几乎为零</strong>：$1963 亿市值、Q1 GAAP 净利仅 $3450 万、EPS $0.04——如果 AI 营收增速放缓，高估值没有利润支撑</li>
+<li><strong>客户自研风险 > AVGO</strong>：Amazon 已有 Annapurna Labs 自研团队，MRVL 只是"加速器"而非"必需品"，Amazon 随时可能收回自研</li>
+<li><strong>Non-GAAP 与 GAAP 差距巨大</strong>：Non-GAAP EPS 约 $0.60 vs GAAP $0.04——差额主要来自股权激励（SBC），是真实的经济成本</li>
+<li><strong>高估值没有犯错空间</strong>：50-65x 前瞻 PE 定价了未来 3 年的完美执行，任何一个季度 miss 都可能暴跌 20-30%</li>
+<li><strong>从 $330 回撤 34% 不意味着便宜</strong>：$330 本身就是泡沫定价，$219 依然极贵</li>
+</ul>
+</div>
+</div>
+
+<div class="narrative-box">
+<strong>核心叙事：</strong>MRVL 是"ASIC 赛道的高风险期权"——赢了（Trainium3 大规模量产 + Maia 放量）可能 3 年 3-5x，输了（Amazon 收回自研 + 光 DSP 竞争加剧）可能跌回 $80-100。它不像 AVGO 有 FCF 底线，更像一个用极高估值交易未来希望的成长股。<strong>关键验证节点</strong>：2026 年 Q3（Amazon Trainium3 量产进展）和 FY2027 Q2 财报（2026 年 8 月发布，营收是否加速至 $25 亿+）。<strong>核心矛盾</strong>：MRVL 在 ASIC 赛道的位置类似 AMD 在 x86 赛道的位置——永远的老二，老二在牛市中弹性最大（涨最快），在熊市中跌幅也最大（没有垄断溢价）。
+</div>
+</div>
+
+<!-- ==================== Socionext ==================== -->
+<div class="card">
+<div class="stock-header">
+<span class="symbol">6526.T</span><span class="name">Socionext Inc.</span>
+<span class="priority p4">日本 ASIC 暗马</span>
+</div>
+<hr class="section-divider" style="margin:16px 0">
+
+<h3>四、最新财报核心数据（Q1 FY2027/3，截止 2026年6月）</h3>
+<div class="meta-grid">
+<div class="meta-item"><div class="label">最新价 (8/10盘中)</div><div class="value">¥1,972.5</div></div>
+<div class="meta-item"><div class="label">市值（估算）</div><div class="value">~¥7000亿</div></div>
+<div class="meta-item"><div class="label">Q1 营收</div><div class="value up">¥390亿 (+13%)</div></div>
+<div class="meta-item"><div class="label">Q1 营业利润</div><div class="value down">-¥6.6亿（亏损）</div></div>
+<div class="meta-item"><div class="label">全年营收指引</div><div class="value">¥2,150亿 (+7.1%)</div></div>
+<div class="meta-item"><div class="label">全年 EPS 指引</div><div class="value">¥57.02</div></div>
+<div class="meta-item"><div class="label">当前 PE（指引）</div><div class="value">~34.6x</div></div>
+<div class="meta-item"><div class="label">Q1 毛利率</div><div class="value down">~43%（承压）</div></div>
+<div class="meta-item"><div class="label">货币</div><div class="value">JPY（日元）</div></div>
+<div class="meta-item"><div class="label">交易所</div><div class="value">东京证券交易所</div></div>
+</div>
+
+<h4>双情景建仓区间</h4>
+<div class="entry-box cont">
+<h5>情景A：AI 继续（基准·概率60%）</h5>
+<div class="price" style="color:#34d399">建仓区间：¥1,600 - ¥1,850</div>
+<div class="note">
+<strong>当前 ¥1,973 高于理想区间。</strong><br>
+¥1,850 = 首批 10% 试探仓（PE ~32.5x，Q1 亏损叠加日元不确定性，仓位必须极小）<br>
+¥1,720 = 加仓 15%（PE ~30x）<br>
+¥1,600 = 重仓 20%（PE ~28x，需等 Q2 确认恢复盈利）<br><br>
+<strong>逻辑</strong>：Socionext 是四只标的中信息最不透明的（日股披露质量低于美股），Q1 营业亏损 ¥6.6 亿但全年指引不变意味着管理层对 H2 恢复盈利有信心。Custom SoC 模式（为客户从零设计定制芯片）与 AVGO/MRVL 的平台化 ASIC 不同——壁垒更高（每颗芯片独一无二）但也更难规模化。等 Q2（2026 年 7-9 月）财报验证恢复盈利后再行动。
+</div>
+</div>
+<div class="entry-box burst">
+<h5>情景B：AI 泡沫破裂（压力·概率15-25%）</h5>
+<div class="price" style="color:#f87171">建仓区间：¥1,100 - ¥1,450</div>
+<div class="note">
+¥1,450 = 首批 10%（PE ~25x，Custom SoC 非 AI 业务提供下行保护）<br>
+¥1,250 = 加仓 15%（PE ~22x）<br>
+¥1,100 = 重仓 20%（PE ~19x，接近 IPO 以来估值低位）<br><br>
+<strong>底线逻辑</strong>：Socionext 的非 AI 业务（汽车/工业/IoT 定制芯片）占营收约 40-50%，AI 泡沫破裂时客户不会取消已 tape-out 的定制芯片（沉没成本极高），营收不会归零。¥1,100 对应 ~19x PE，为日本半导体中等估值。
+</div>
+</div>
+
+<div class="pro-con">
+<div class="pro">
+<h5>优势</h5>
+<ul>
+<li><strong>Custom SoC 独特性</strong>：Socionext 做的是"从零开始为客户设计一颗独一无二的芯片"——不是 AVGO 那种平台化 ASIC——每颗芯片有 IP 归属客户，Socionext 收 NRE（一次性工程费）+ 量产 royalty</li>
+<li><strong>日本半导体复兴叙事</strong>：Rapidus（2nm 代工）+ Socionext（设计服务）+ 政府补贴 $200 亿+——日本政府全力推动半导体自主，Socionext 是设计环节的核心标的</li>
+<li><strong>客户粘性极高</strong>：定制芯片一旦 tape-out（投片），客户几乎不可能中途更换设计服务商——整个芯片的物理设计、验证、DFT 都与 Socionext 工具链深度绑定</li>
+<li><strong>被散户和外资双重忽视</strong>：日股 ASIC 标的中唯一纯设计服务公司，A 股没有对标的、美股投资者不了解日股——意味着定价可能不充分（即"没有被充分研究"的 alpha）</li>
+<li><strong>估值相对合理</strong>：34x PE 在日本半导体中不算极端（东京电子 ~30x，Lasertec ~40x），且有全年指引支撑</li>
+</ul>
+</div>
+<div class="con">
+<h5>风险</h5>
+<ul>
+<li><strong>Q1 营业亏损</strong>：¥6.6 亿亏损（虽然绝对值不大但趋势不好），如果 Q2 继续亏损全年指引必下调</li>
+<li><strong>日元汇率风险</strong>：日元升值（如 USD/JPY 从 150 → 130）会侵蚀海外营收的日元价值，日本出口型科技股的共同风险</li>
+<li><strong>信息披露质量低</strong>：日股财报细节远不如美股——没有分部营收拆分、没有订单积压数据、没有客户集中度披露</li>
+<li><strong>流动性差</strong>：日股中小型科技股流动性不如美股，大额建仓/减仓可能产生冲击成本</li>
+<li><strong>缺乏催化剂</strong>：没有像 AVGO 那样公开披露 GW 级订单、没有像 MRVL 那样明确绑定 hyperscaler——"故事"不够性感</li>
+<li><strong>估值不具吸引力</strong>：34x PE 对应 7% 营收增长（PEG ~4.9x），性价比远不如 AVGO（26x PE 对应 48% 增长）</li>
+</ul>
+</div>
+</div>
+
+<div class="narrative-box">
+<strong>核心叙事：</strong>Socionext 是"日本半导体复兴的看涨期权"。如果 Rapidus 2027 年成功量产 2nm、日本政府持续砸钱、全球 Custom SoC 需求从 AI 扩展到汽车/工业——Socionext 作为日本唯一纯设计服务公司会极大受益。但这是 3-5 年的故事，短期（6-12 个月）缺乏催化剂。<strong>最可能路径</strong>：2026 全年营收 ¥2,150 亿、EPS ¥57 → PE 30-35x → 合理区间 ¥1,700-2,000。若 AI 定制芯片需求加速，FY2028/3 营收 ¥2,500-3,000 亿 → EPS ¥80-100 → PE 25-30x → ¥2,000-3,000。<strong>为什么排在第四</strong>：相比 AVGO 的确定性、SNPS 的错杀机会、MRVL 的赔率——Socionext 四者都不占优（确定性中等、没有被错杀、赔率一般），但它代表了一个独特的"日本 AI"敞口，适合作为组合的卫星仓位（5-8%）。
+</div>
+</div>
+
+<!-- ==================== 横向对比 ==================== -->
+<div class="card">
+<h3>五、四标横向对比矩阵</h3>
+<div style="overflow-x:auto">
+<table>
+<tr><th>维度</th><th>AVGO</th><th>SNPS</th><th>MRVL</th><th>Socionext</th></tr>
+<tr>
+<td><strong>当前价</strong></td>
+<td>$427.76</td><td>$415.99</td><td>$218.72</td><td>¥1,972.5</td>
+</tr>
+<tr>
+<td><strong>前瞻 PE</strong></td>
+<td class="up">~26x</td><td class="up">~28x (Non-GAAP)</td><td class="down">~55x</td><td>~35x</td>
+</tr>
+<tr>
+<td><strong>ROIC</strong></td><td class="up">23%</td><td class="up">~25%+ (Non-GAAP)</td><td class="down">~6% (GAAP)</td><td>~15-20%</td>
+</tr>
+<tr>
+<td><strong>FCF 质量</strong></td><td class="up">极强 ($400亿+/年)</td><td class="up">强（EDA 订阅制）</td><td class="down">弱（GAAP 几乎无）</td><td>中等</td>
+</tr>
+<tr>
+<td><strong>护城河深度</strong></td><td class="up">极深（6大客户锁定）</td><td class="up">极深（双寡头+切换成本）</td><td>中等（客户可自研）</td><td>较深（定制芯片不可逆）</td>
+</tr>
+<tr>
+<td><strong>52周回撤</strong></td><td class="up">-13%（最小）</td><td class="up">-34%（被错杀）</td><td class="down">-34%（但估值仍高）</td><td>数据不足</td>
+</tr>
+<tr>
+<td><strong>AI继续上行空间</strong></td><td>+24%（目标 $529）</td><td class="up">+37%（目标 $570）</td><td>+23%（目标 $268）</td><td>~+15-30%</td>
+</tr>
+<tr>
+<td><strong>泡沫破裂下行风险</strong></td><td class="up">-25%→$320</td><td>-30%→$290</td><td class="down">-55%→$100</td><td>-40%→¥1,200</td>
+</tr>
+<tr>
+<td><strong>机构共识</strong></td><td class="up">93% 买入</td><td>78% 买入</td><td>83% 买入</td><td>无覆盖</td>
+</tr>
+<tr>
+<td><strong>建仓优先级</strong></td><td class="up">1st · 核心仓位</td><td class="up">2nd · 低估机会</td><td>3rd · 高风险弹性</td><td>4th · 卫星仓位</td>
+</tr>
+<tr>
+<td><strong>建议仓位上限</strong></td><td>20-25%</td><td>12-15%</td><td>8-12%</td><td>5-8%</td>
+</tr>
+<tr>
+<td><strong>当前可行动？</strong></td><td>接近·等 $420 以下</td><td class="up">是·已在区间上沿</td><td class="down">否·等 $200 以下</td><td class="down">否·等 Q2 财报</td>
+</tr>
+</table>
+</div>
+
+<div class="chart-wrap" id="chart-compare"></div>
+</div>
+
+<!-- ==================== 组合建议 ==================== -->
+<div class="card">
+<h3>六、ASIC 子组合构建方案</h3>
+<p style="font-size:14px;margin-bottom:16px">如果将 ASIC 四标的作为一个子组合（占总投资组合的 40-50%），建议配置如下：</p>
+
+<table>
+<tr><th>标的</th><th>仓位</th><th>建仓节奏</th><th>触发条件</th><th>退出信号</th></tr>
+<tr>
+<td><strong>AVGO</strong></td><td>20-25%</td><td>分 3 批：$420/$400/$380<br>每批间隔 2-4 周</td><td>当前 $428 等自然回调至 $420 以下启动首批</td><td>ROIC 连续 2 季 <15% 或 AI 营收增速转负</td>
+</tr>
+<tr>
+<td><strong>SNPS</strong></td><td>12-15%</td><td>分 3 批：$410/$385/$360<br>当前可启动首批</td><td>当前 $416 已在区间上沿，可 8 月下旬启动</td><td>Ansys 整合失败（营收增速 <10%）或 Elliott 退出</td>
+</tr>
+<tr>
+<td><strong>MRVL</strong></td><td>8-12%</td><td>分 3 批：$200/$185/$170<br>等待回落</td><td>等 $200 以下（可能需等 Q2 FY2027 财报后）</td><td>Amazon Trainium 合同丢失或连续 2 季营收 miss</td>
+</tr>
+<tr>
+<td><strong>Socionext</strong></td><td>5-8%</td><td>分 3 批：¥1,850/¥1,720/¥1,600<br>等 Q2 财报</td><td>等 2026 年 10-11 月 Q2 财报确认恢复盈利</td><td>全年指引下调或日元大幅升值 >15%</td>
+</tr>
+</table>
+
+<p style="font-size:13px;color:#8a94a6;margin-top:12px"><strong>总 ASIC 暴露</strong>：45-60%（20+15+12+8 = 55% 上限）。考虑到 AVGO+SNPS 合计 35-40% 暴露给半导体设计工具链，集中度风险偏高，但 ASIC 赛道的逻辑一致性（hyperscaler 定制芯片需求）使得这种集中有产业逻辑支撑。<strong>关键风控</strong>：任何一只跌破建仓区间下沿 → 暂停该标的所有加仓 → 重新评估整个 ASIC 子组合的逻辑。</p>
+</div>
+
+<!-- ==================== 情景概率 ==================== -->
+<div class="card">
+<h3>七、ASIC 赛道核心变量 & 催化剂日历</h3>
+<table>
+<tr><th>时间</th><th>事件</th><th>影响标的</th><th>预期影响</th></tr>
+<tr>
+<td>2026年8月下旬</td><td>MRVL Q2 FY2027 财报</td><td>MRVL</td><td>关键：营收是否加速至 $25亿+、Trainium3 进展更新</td>
+</tr>
+<tr>
+<td>2026年8月下旬</td><td>SNPS Q3 FY2026 财报</td><td>SNPS</td><td>验证 Q3 指引 $24.1-24.6亿 + Non-GAAP EPS $3.63-3.69</td>
+</tr>
+<tr>
+<td>2026年9月</td><td>AVGO Q3 FY2026 财报</td><td>AVGO</td><td>AI 营收 QoQ 增长趋势、H2 指引、$2000亿+ 积压更新</td>
+</tr>
+<tr>
+<td>2026年10-11月</td><td>Socionext Q2 FY2027/3 财报</td><td>Socionext</td><td>关键：是否恢复盈利、全年指引是否维持</td>
+</tr>
+<tr>
+<td>2026年Q4</td><td>Amazon Trainium3 量产进展</td><td>MRVL</td><td>若确认量产 MRVL 可能大涨 20-30%</td>
+</tr>
+<tr>
+<td>2027年H1</td><td>Elliott 推动 SNPS 重组计划公布</td><td>SNPS</td><td>利润率改善路线图 → 估值重估催化剂</td>
+</tr>
+<tr>
+<td>2027年H1</td><td>Rapidus 2nm 试产进展</td><td>Socionext</td><td>若成功 → 日本半导体叙事增强 → Socionext 间接受益</td>
+</tr>
+</table>
+</div>
+
+<div class="disclaimer">
+<strong>免责声明</strong>：以上内容基于公开数据和量化分析（数据来源：neodata-financial-search，截止 2026-08-07/08-10），仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。文中所涉建仓区间为基于公开信息的情景推演，不代表对未来股价的预测或保证。
+</div>
+
+</div>
+
+<script>
+// Radar/bar chart comparing 4 stocks
+(function(){
+var d = echarts.init(document.getElementById('chart-compare'));
+d.setOption({
+  title:{text:'四标的多维雷达对比',left:'center',top:8,textStyle:{color:'#a0aab4',fontSize:14}},
+  tooltip:{},
+  legend:{bottom:0,textStyle:{color:'#8a94a6'},data:['AVGO','SNPS','MRVL','Socionext']},
+  radar:{
+    center:['50%','55%'],
+    radius:'62%',
+    indicator:[
+      {name:'护城河深度',max:100},
+      {name:'FCF质量',max:100},
+      {name:'ROIC水平',max:100},
+      {name:'估值合理性',max:100},
+      {name:'上行空间',max:100},
+      {name:'下行保护',max:100}
+    ],
+    axisName:{color:'#8a94a6',fontSize:11}
+  },
+  series:[{
+    type:'radar',
+    data:[
+      {value:[95,95,85,65,55,75],name:'AVGO',
+       areaStyle:{color:'rgba(96,165,250,0.15)'},
+       lineStyle:{color:'#60a5fa'},itemStyle:{color:'#60a5fa'}},
+      {value:[95,80,80,75,80,65],name:'SNPS',
+       areaStyle:{color:'rgba(52,211,153,0.15)'},
+       lineStyle:{color:'#34d399'},itemStyle:{color:'#34d399'}},
+      {value:[50,25,25,35,70,25],name:'MRVL',
+       areaStyle:{color:'rgba(251,191,36,0.15)'},
+       lineStyle:{color:'#fbbf24'},itemStyle:{color:'#fbbf24'}},
+      {value:[55,40,55,45,50,40],name:'Socionext',
+       areaStyle:{color:'rgba(192,132,252,0.15)'},
+       lineStyle:{color:'#c084fc'},itemStyle:{color:'#c084fc'}}
+    ]
+  }]
+});
+})();
+</script>
+
+</body>
+</html>

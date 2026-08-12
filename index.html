@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金融学习 · 知识库索引</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0f172a; color: #e2e8f0; min-height:100vh;
+    padding: 40px 24px 80px;
+  }
+  .container { max-width: 960px; margin:0 auto; }
+  h1 {
+    font-size: 28px; font-weight: 700; color: #f1f5f9;
+    margin-bottom: 6px;
+  }
+  .subtitle { font-size: 14px; color: #64748b; margin-bottom: 40px; }
+  .section { margin-bottom: 44px; }
+  .section-title {
+    font-size: 14px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1.5px; color: #64748b;
+    margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 1px solid #1e293b;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .card {
+    display: block; text-decoration: none;
+    background: #1e293b; border: 1px solid #334155;
+    border-radius: 10px; padding: 20px 22px;
+    transition: border-color .2s, background .2s, transform .15s;
+  }
+  .card:hover {
+    border-color: #6366f1; background: #1e293b;
+    transform: translateY(-1px);
+  }
+  .card-title {
+    font-size: 16px; font-weight: 600; color: #f1f5f9;
+    margin-bottom: 6px; line-height: 1.4;
+  }
+  .card-desc {
+    font-size: 13px; color: #94a3b8; line-height: 1.5;
+  }
+  .card-date {
+    font-size: 11px; color: #475569; margin-top: 10px;
+  }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 500;
+    padding: 2px 8px; border-radius: 4px;
+    margin-right: 6px; margin-top: 8px;
+  }
+  .tag-learn { background: rgba(34,197,94,.15); color: #4ade80; }
+  .tag-research { background: rgba(99,102,241,.15); color: #818cf8; }
+  .tag-note { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid #1e293b;
+    font-size: 12px; color: #475569; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>金融学习 · 知识库</h1>
+  <p class="subtitle">报告、笔记与策略分析索引 &mdash; 持续更新中</p>
+
+  <!-- ==================== 金融基础学习 ==================== -->
+  <div class="section">
+    <div class="section-title">金融基础学习</div>
+    <div class="grid">
+      <a class="card" href="金融体系蓝图.html">
+        <div class="card-title">个人金融体系蓝图</div>
+        <div class="card-desc">稳健激进型投资者的知识体系全景图</div>
+        <span class="tag tag-learn">体系框架</span>
+      </a>
+      <a class="card" href="学习路线.html">
+        <div class="card-title">完整学习路线</div>
+        <div class="card-desc">从入门到进阶的金融学习路径规划</div>
+        <span class="tag tag-learn">路径规划</span>
+      </a>
+      <a class="card" href="核心学习讲义.html">
+        <div class="card-title">核心学习讲义</div>
+        <div class="card-desc">关键概念与知识点的系统梳理</div>
+        <span class="tag tag-learn">概念梳理</span>
+      </a>
+      <a class="card" href="金融视频课程-连贯版.html">
+        <div class="card-title">从小白到能自己管钱</div>
+        <div class="card-desc">视频精讲课 · 连贯版，从零到实操</div>
+        <span class="tag tag-learn">视频课程</span>
+      </a>
+      <a class="card" href="美日汇率干预与全球金融传导学习笔记.html">
+        <div class="card-title">美日汇率干预与全球金融传导</div>
+        <div class="card-desc">BOJ政策、套息交易、全球资产联动深度笔记</div>
+        <span class="tag tag-note">学习笔记</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== 企业金融案例分析 ==================== -->
+  <div class="section">
+    <div class="section-title">企业金融案例分析</div>
+    <div class="grid">
+      <a class="card" href="Intel增发案例分析.html">
+        <div class="card-title">Intel $200亿增发案例分析</div>
+        <div class="card-desc">融资决策框架的反向验证 · 5倍超额认购 · ASIC产业链联动 · 投资观察框架</div>
+        <div class="card-date">2026年8月</div>
+        <span class="tag tag-research">融资决策</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== AI / 硬件投资研究 ==================== -->
+  <div class="section">
+    <div class="section-title">AI / 硬件投资研究</div>
+    <div class="grid">
+      <a class="card" href="AI硬件长期建仓策略.html">
+        <div class="card-title">AI硬件长期建仓策略</div>
+        <div class="card-desc">卖铲人家族全景 + 八大标的双情景建仓区间</div>
+        <div class="card-date">2026年8月</div>
+        <span class="tag tag-research">建仓策略</span>
+      </a>
+      <a class="card" href="AI产业链深度研究讲义.html">
+        <div class="card-title">AI产业链深度研究讲义</div>
+        <div class="card-desc">产业链七层拆解、HBM/CoWoS/光模块/液冷等模块深度分析</div>
+        <div class="card-date">2026年8月</div>
+        <span class="tag tag-research">产业链研究</span>
+      </a>
+      <a class="card" href="ASIC四标的深度建仓分析.html">
+        <div class="card-title">ASIC四标的深度建仓分析</div>
+        <div class="card-desc">AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间</div>
+        <div class="card-date">2026年8月</div>
+        <span class="tag tag-research">个股深度</span>
+      </a>
+      <a class="card" href="AI资本结构风险与泡沫类比分析.html">
+        <div class="card-title">AI资本结构风险与泡沫类比分析</div>
+        <div class="card-desc">$5000亿融资平台风险瀑布 · SEC豁免 · 2000+2008双重类比 · 普通投资者四道关卡</div>
+        <div class="card-date">2026年8月</div>
+        <span class="tag tag-research">泡沫风险</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    金融学习项目 &middot; 持续更新 &middot; 最后更新 2026-08-12 · 共 10 份报告
+  </div>
+
+</div>
+</body>
+</html>

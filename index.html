@@ -17,12 +17,20 @@
   /* ===== 左侧导航（Apple 风格：近黑面板 + 半透明高亮 + 细腻灰阶） ===== */
   .sidebar {
     width: 272px; flex-shrink: 0;
-    background: #1c1c1e;
+    background:
+      radial-gradient(140% 70% at 50% 0%, rgba(41,151,255,.10), transparent 55%),
+      #1c1c1e;
     border-right: 1px solid rgba(255,255,255,.08);
     display: flex; flex-direction: column;
   }
   .sidebar-header { padding: 24px 18px 14px; border-bottom: 1px solid rgba(255,255,255,.06); }
-  .sidebar-header h1 { font-size: 15px; font-weight: 600; color: #f5f5f7; letter-spacing: .2px; }
+  .sidebar-header h1 {
+    font-size: 15px; font-weight: 600; letter-spacing: .2px;
+    color: #f5f5f7;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
   .sidebar-header p { font-size: 11px; color: #86868b; margin-top: 4px; letter-spacing: .2px; }
   .nav { flex: 1; overflow-y: auto; padding: 10px 10px 24px; }
   .nav::-webkit-scrollbar { width: 6px; }
@@ -33,6 +41,7 @@
     padding: 18px 12px 8px;
   }
   .nav-item {
+    position: relative;
     display: block; width: 100%; text-align: left;
     background: none; border: none; cursor: pointer;
     padding: 8px 12px; border-radius: 8px;
@@ -42,9 +51,15 @@
   }
   .nav-item:hover { background: rgba(255,255,255,.06); color: #f5f5f7; }
   .nav-item.active { background: rgba(255,255,255,.12); color: #ffffff; }
+  .nav-item.active::before {
+    content: ''; position: absolute; left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 3px; height: 16px; border-radius: 2px;
+    background: linear-gradient(180deg, #2997ff, #818cf8);
+  }
   .nav-item .t { display: block; font-weight: 500; }
   .nav-item .d { display: block; font-size: 11px; color: #86868b; margin-top: 3px; line-height: 1.45; }
-  .nav-item.active .d { color: #a1a1a6; }
+  .nav-item.active .d { color: #a5b4fc; }
   .sidebar-footer {
     padding: 14px 18px; border-top: 1px solid rgba(255,255,255,.06);
     font-size: 11px; color: #86868b; line-height: 1.7;
@@ -57,9 +72,16 @@
   .home {
     flex: 1; overflow-y: auto; padding: 56px 32px 64px;
     display: flex; justify-content: center;
+    background: radial-gradient(120% 50% at 50% 0%, rgba(41,151,255,.07), transparent 55%);
   }
   .home-inner { max-width: 860px; width: 100%; }
-  .home h2 { font-size: 26px; font-weight: 600; color: #f5f5f7; letter-spacing: .3px; }
+  .home h2 {
+    font-size: 26px; font-weight: 600; letter-spacing: .3px;
+    color: #f5f5f7;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
   .home-sub { font-size: 14px; color: #a1a1a6; margin-top: 10px; line-height: 1.7; }
   .stats { display: flex; gap: 12px; margin: 36px 0 8px; }
   .stat {

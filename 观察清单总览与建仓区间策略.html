@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>观察清单总览与建仓区间策略 · 我的金融发散笔记</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0f172a; color: #e2e8f0; line-height: 1.75;
+    padding: 40px 24px 100px;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 { font-size: 26px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; line-height: 1.4; }
+  .subtitle { font-size: 14px; color: #64748b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px; }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f1f5f9;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid #1e293b;
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #cbd5e1; margin: 18px 0 8px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  thead th {
+    text-align: left; padding: 9px 12px; background: #1e293b;
+    color: #94a3b8; font-weight: 600; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.5px; border-bottom: 1px solid #334155;
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid #1e293b; vertical-align: top; }
+  tbody tr:hover td { background: rgba(99,102,241,.04); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #f87171; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #818cf8; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #6366f1; background: rgba(99,102,241,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2340 100%);
+    border: 1px solid #334155; border-radius: 10px; padding: 22px 24px; margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 14px 0 18px; font-size: 13px; }
+  .flow-step { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 8px 14px; color: #cbd5e1; }
+  .flow-step b { color: #f1f5f9; display: block; font-size: 13px; }
+  .flow-arrow { color: #6366f1; font-size: 16px; font-weight: 700; }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #64748b; margin-top: 8px; text-align: center; }
+
+  .formula {
+    background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+    padding: 14px 18px; margin: 14px 0; font-size: 14px; color: #f1f5f9;
+    font-family: "SF Mono", Consolas, monospace;
+  }
+
+  /* ===== 移动端适配 ===== */
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .subtitle { font-size: 13px; }
+    .section h2 { font-size: 16px; }
+    .section h3 { font-size: 14px; }
+    p, ul, ol, .callout, .quote { font-size: 14px; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead th, tbody td { padding: 8px 10px; white-space: nowrap; }
+    .badge-row { margin-bottom: 22px; }
+    .conclusion { padding: 16px 14px; }
+    .flow-step { padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>观察清单总览与建仓区间策略</h1>
+<p class="subtitle">六条趋势线 · 观察清单分区 · 三批建仓与风险预算 &mdash; 2026 年 8 月 14 日</p>
+<div class="badge-row">
+  <span class="badge badge-blue">观察清单</span>
+  <span class="badge badge-green">建仓区间</span>
+  <span class="badge badge-warn">仓位纪律</span>
+  <span class="badge badge-red">退出与证伪</span>
+</div>
+
+<!-- ====== 第一章：六条趋势线 ====== -->
+<div class="section">
+  <h2>一、六条趋势线：所有讨论的坐标系</h2>
+  <p>先把手头所有讨论收拢成六条趋势线。后面每一个标的的建仓区间，都挂在这张坐标系上&mdash;&mdash;<span class="blue">趋势线变了，建仓区间就要重估</span>。</p>
+  <table>
+    <thead>
+      <tr><th>#</th><th>趋势线</th><th>当前判断</th><th>对建仓的含义</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>美联储利率路径</strong></td>
+        <td>CPI 3.4% 符预期；市场辩论的是「加息 vs 维持」（9 月加息概率 ~42%），降息不在桌上；沃什「2% 无回旋余地」</td>
+        <td>高利率更久 &rarr; 压制高估值成长股；建仓节奏宜慢不宜快</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>日元与套息交易</strong></td>
+        <td>BOJ 1.0%；日元 165-170 见底 &rarr; 2027 回流窗口</td>
+        <td>套息平仓是尾部风险；日股仓位预留汇率冲击余量</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>AI 算力需求</strong></td>
+        <td>真实且强劲（NBIS「2027 产能今天就能卖完」），但靠预付款和融资撑着</td>
+        <td>需求真实 &ne; 股价安全；下游越激进，上游「卖水人」越稳</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>存储周期之争</strong></td>
+        <td>大摩「2026Q4 周期进后段」 vs 陈立武「存储是结构性稀缺」</td>
+        <td>当前最大分歧点；存储仓位必须预设「周期见顶怎么退出」</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>美日半导体投资潮</strong></td>
+        <td>美光广岛 / 台积电熊本 / Tower / Rapidus 四线并进；公告已定价，2027-28 产能未定价</td>
+        <td>日本设备材料涨完了；验证要等 2027 产能爬坡，现在只留观察仓</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>AI = 社会再分配</strong></td>
+        <td>国家间（美国收税）/ 行业间（收税位 vs 交税位）/ 阶级间（资本 &gt; 劳动）</td>
+        <td>选股永远站「收税位」：电力、HBM 咽喉、垄断芯片、必需消耗品</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ====== 第二章：观察清单分区 ====== -->
+<div class="section">
+  <h2>二、观察清单五分区</h2>
+  <table>
+    <thead>
+      <tr><th>分区</th><th>标的</th><th>一句话理由</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="green">低位可建仓</span></td>
+        <td><strong>CEG</strong>（美&middot;核电）、<strong>VST</strong>（美&middot;电力，轻仓）</td>
+        <td>唯一通过三判据的区：被半导体抛售误伤、合同锁定 20 年、盈利不随芯片周期波动</td>
+      </tr>
+      <tr>
+        <td><span class="blue">趋势票（等回踩）</span></td>
+        <td><strong>AVGO</strong>（ASIC 印钞机）、<strong>SKHY</strong>（7/10 纳斯达克上市，Fwd ~5x）</td>
+        <td>逻辑硬但涨幅大；只做趋势跟随，回踩不破位再跟，预设退出条件</td>
+      </tr>
+      <tr>
+        <td><span class="yellow">观察区（触发才动）</span></td>
+        <td><strong>INTC</strong>、<strong>ORCL</strong>（9/14 财报）、<strong>Socionext</strong>（6526.T）</td>
+        <td>叙事真但价格已付大半；等价格回到区间或右侧信号出现</td>
+      </tr>
+      <tr>
+        <td><span class="red">已定价 / 回避</span></td>
+        <td>LITE / COHR / FN / AAOI、东京电子 / Advantest / 信越 / SUMCO、藤仓 / 古河 / 住友、MU / 铠侠、村田 / TDK</td>
+        <td>普遍 +160%~+2000%，叙事已反复定价；等下一轮错杀</td>
+      </tr>
+      <tr>
+        <td><span class="yellow">无通道（看替代）</span></td>
+        <td>三星电子、三星电机、世芯-KY</td>
+        <td>想买没有通道；世芯逻辑 &rarr; AVGO/MRVL，存储折价 &rarr; SKHY</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout callout-red">
+    <strong>单列观察（不买）：</strong>NBIS、CoreWeave&mdash;&mdash;它们是「泡沫温度计」。持有它们的意义是观察违约信号（第一家 CoreWeave 级公司违约 = 泡沫起爆触发器），不是建仓。
+  </div>
+</div>
+
+<!-- ====== 第三章：建仓纪律总纲 ====== -->
+<div class="section">
+  <h2>三、建仓纪律总纲：先定风险，再定价格</h2>
+  <p>建仓区间策略的核心不是「什么价格买」，而是<span class="blue">「每一批买入时，这笔交易输了亏多少、由什么信号证明我错了」</span>。价格区间只是风险预算的输出结果。</p>
+
+  <h3>3.1 单笔风险公式（先算这个，再算买几股）</h3>
+  <div class="formula">
+    仓位市值 = 总资金 &times; 单笔风险%（1%）&divide;（买入均价 &minus; 止损价）&times; 买入均价
+  </div>
+  <ul>
+    <li><strong>单笔风险 1%</strong>：任何一笔交易打止损，总资金回撤不超过 1%。这是底线，行情再好也不放宽。</li>
+    <li><strong>1R 语言</strong>：止损距离 = 1R。买入前先问「第一目标是多少 R」&mdash;&mdash;<span class="green">预期不到 3R 的机会不 做</span>，宁可错过。</li>
+    <li><strong>止损失效即退出</strong>：止损价是「买入逻辑的证伪价」，不是为了舒服设在技术位下方很远的地方。</li>
+  </ul>
+
+  <h3>3.2 三批建仓法：试探 / 主仓 / 机动</h3>
+  <div class="flow">
+    <span class="flow-step"><b>第一批 试探仓 30%</b>区间上沿成交，验证逻辑</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-step"><b>第二批 主仓 40%</b>区间中部成交，逻辑被走势确认</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-step"><b>第三批 机动仓 30%</b>恐慌下沿或右侧突破，二选一</span>
+  </div>
+  <ul>
+    <li><strong>只向下加，不向上追</strong>：三批的成交价必须逐批走低（或第三批在右侧突破确认后市价跟）。越买越贵 = 建仓变成了追高。</li>
+    <li><strong>第一批买入后跌破第一档下沿</strong>：停止加仓，等止损或等企稳重新评估&mdash;&mdash;不许「摊低成本」变成满仓套牢。</li>
+    <li><strong>三批合计 = 该标的的仓位上限</strong>，上限本身受 3.3 的组合约束。</li>
+  </ul>
+
+  <h3>3.3 组合层约束（Kelly 的现实用法）</h3>
+  <ul>
+    <li><strong>AI 主题总仓 &le; 总资金 20-30%</strong>：AI 是「收益前置、风险后置」的链，总敞口必须有上限。</li>
+    <li><strong>单标的 &le; AI 仓的 30%</strong>（约总资金 6-8%）；CEG 这类「卖水人」可放宽到 AI 仓的 40%，SKHY 这类周期赌注砍半。</li>
+    <li><strong>只用半 Kelly</strong>：凯利公式算出来的是「最优赌注」，打对折才是人的仓位&mdash;&mdash;因为参数（胜率、赔率）本身是估计值。</li>
+    <li><strong>同一叙事不加倍</strong>：CEG + VST 是同一个叙事（AI 电力），合计当一个标的算上限。</li>
+  </ul>
+</div>
+
+<!-- ====== 第四章：四标的建仓阶梯 ====== -->
+<div class="section">
+  <h2>四、四个可操作标的的建仓区间（2026-08-14 价位）</h2>
+  <p>下面这张阶梯图是全部核心：每个标的的三档建仓区、止损位、现价位置。<span class="blue">现价都在区间右上方&mdash;&mdash;这是刻意的：纪律就是不追，等价格回到区间</span>。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 440" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="820" height="440" rx="10" fill="#0f172a"/>
+      <text x="150" y="30" fill="#94a3b8" font-size="13" font-weight="600">价格阶梯（每行独立比例）&mdash;&mdash; 现价均在区间右上方，等待回踩</text>
+
+      <!-- ===== CEG row: range 210-380, x = 150 + (p-210)*3.706 ===== -->
+      <text x="150" y="62" fill="#f1f5f9" font-size="14" font-weight="700">CEG 星座能源</text>
+      <text x="290" y="62" fill="#64748b" font-size="11">核电卖水人 &middot; 首选</text>
+      <!-- stop line 215 -> x169 -->
+      <line x1="169" y1="72" x2="169" y2="108" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="169" y="122" fill="#f87171" font-size="11" text-anchor="middle">止损 215</text>
+      <!-- zone3 225-232 -> x206-232 -->
+      <rect x="206" y="75" width="26" height="26" rx="4" fill="rgba(245,158,11,.35)" stroke="#f59e0b" stroke-width="1"/>
+      <text x="219" y="92" fill="#fbbf24" font-size="10" text-anchor="middle">三</text>
+      <!-- zone2 240-252 -> x261-306 -->
+      <rect x="261" y="75" width="45" height="26" rx="4" fill="rgba(99,102,241,.4)" stroke="#818cf8" stroke-width="1"/>
+      <text x="283" y="92" fill="#c7d2fe" font-size="10" text-anchor="middle">二</text>
+      <!-- zone1 260-270 -> x335-372 -->
+      <rect x="335" y="75" width="37" height="26" rx="4" fill="rgba(34,197,94,.35)" stroke="#4ade80" stroke-width="1"/>
+      <text x="353" y="92" fill="#86efac" font-size="10" text-anchor="middle">一</text>
+      <!-- current 282.65 -> x419 -->
+      <path d="M419 66 L413 58 L425 58 Z" fill="#f1f5f9"/>
+      <text x="419" y="54" fill="#f1f5f9" font-size="12" font-weight="600" text-anchor="middle">现价 $282.65</text>
+      <text x="470" y="92" fill="#4ade80" font-size="11">目标 $340-350</text>
+
+      <!-- ===== VST row: range 105-185, x = 150 + (p-105)*7.875 ===== -->
+      <text x="150" y="152" fill="#f1f5f9" font-size="14" font-weight="700">VST 维斯特拉</text>
+      <text x="290" y="152" fill="#64748b" font-size="11">高杠杆 &middot; 半仓纪律</text>
+      <!-- stop 112 -> x205 -->
+      <line x1="205" y1="162" x2="205" y2="198" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="205" y="212" fill="#f87171" font-size="11" text-anchor="middle">止损 112</text>
+      <!-- zone3 115-122 -> x229-284 -->
+      <rect x="229" y="165" width="55" height="26" rx="4" fill="rgba(245,158,11,.35)" stroke="#f59e0b" stroke-width="1"/>
+      <text x="256" y="182" fill="#fbbf24" font-size="10" text-anchor="middle">三</text>
+      <!-- zone2 126-132 -> x315-362 -->
+      <rect x="315" y="165" width="47" height="26" rx="4" fill="rgba(99,102,241,.4)" stroke="#818cf8" stroke-width="1"/>
+      <text x="338" y="182" fill="#c7d2fe" font-size="10" text-anchor="middle">二</text>
+      <!-- zone1 135-142 -> x386-441 -->
+      <rect x="386" y="165" width="55" height="26" rx="4" fill="rgba(34,197,94,.35)" stroke="#4ade80" stroke-width="1"/>
+      <text x="413" y="182" fill="#86efac" font-size="10" text-anchor="middle">一</text>
+      <!-- current 149.2 -> x498 -->
+      <path d="M498 156 L492 148 L504 148 Z" fill="#f1f5f9"/>
+      <text x="498" y="144" fill="#f1f5f9" font-size="12" font-weight="600" text-anchor="middle">现价 $149.20</text>
+      <text x="545" y="182" fill="#4ade80" font-size="11">目标 $175</text>
+
+      <!-- ===== AVGO row: range 280-500, x = 150 + (p-280)*2.864 ===== -->
+      <text x="150" y="242" fill="#f1f5f9" font-size="14" font-weight="700">AVGO 博通</text>
+      <text x="290" y="242" fill="#64748b" font-size="11">ASIC 印钞机 &middot; P05 区间仍有效</text>
+      <!-- stop 345 -> x336 -->
+      <line x1="336" y1="252" x2="336" y2="288" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="336" y="302" fill="#f87171" font-size="11" text-anchor="middle">止损 345</text>
+      <!-- zone3 300-330 -> x207-293 -->
+      <rect x="207" y="255" width="86" height="26" rx="4" fill="rgba(245,158,11,.35)" stroke="#f59e0b" stroke-width="1"/>
+      <text x="250" y="272" fill="#fbbf24" font-size="10" text-anchor="middle">三</text>
+      <!-- zone2 350-370 -> x350-408 -->
+      <rect x="350" y="255" width="58" height="26" rx="4" fill="rgba(99,102,241,.4)" stroke="#818cf8" stroke-width="1"/>
+      <text x="379" y="272" fill="#c7d2fe" font-size="10" text-anchor="middle">二</text>
+      <!-- zone1 380-400 -> x436-493 -->
+      <rect x="436" y="255" width="57" height="26" rx="4" fill="rgba(34,197,94,.35)" stroke="#4ade80" stroke-width="1"/>
+      <text x="464" y="272" fill="#86efac" font-size="10" text-anchor="middle">一</text>
+      <!-- current 408 -> x516 -->
+      <path d="M516 246 L510 238 L522 238 Z" fill="#f1f5f9"/>
+      <text x="516" y="234" fill="#f1f5f9" font-size="12" font-weight="600" text-anchor="middle">现价 $408</text>
+      <text x="560" y="272" fill="#4ade80" font-size="11">目标 $520</text>
+
+      <!-- ===== SKHY row: range 90-175, x = 150 + (p-90)*7.412 ===== -->
+      <text x="150" y="332" fill="#f1f5f9" font-size="14" font-weight="700">SKHY SK海力士</text>
+      <text x="310" y="332" fill="#64748b" font-size="11">周期赌注 &middot; 仅趋势仓 &middot; 上限减半</text>
+      <!-- stop 105 -> x261 -->
+      <line x1="261" y1="342" x2="261" y2="378" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="261" y="392" fill="#f87171" font-size="11" text-anchor="middle">止损 105</text>
+      <!-- zone2 100-110 -> x224-298 -->
+      <rect x="224" y="345" width="74" height="26" rx="4" fill="rgba(99,102,241,.4)" stroke="#818cf8" stroke-width="1"/>
+      <text x="261" y="362" fill="#c7d2fe" font-size="10" text-anchor="middle">二</text>
+      <!-- zone1 120-130 -> x372-446 -->
+      <rect x="372" y="345" width="74" height="26" rx="4" fill="rgba(34,197,94,.35)" stroke="#4ade80" stroke-width="1"/>
+      <text x="409" y="362" fill="#86efac" font-size="10" text-anchor="middle">一</text>
+      <!-- current 141.65 -> x528 -->
+      <path d="M528 336 L522 328 L534 328 Z" fill="#f1f5f9"/>
+      <text x="528" y="324" fill="#f1f5f9" font-size="12" font-weight="600" text-anchor="middle">现价 $141.65</text>
+      <text x="572" y="362" fill="#4ade80" font-size="11">目标 $200+</text>
+
+      <!-- legend -->
+      <rect x="150" y="412" width="14" height="14" rx="3" fill="rgba(34,197,94,.35)" stroke="#4ade80"/>
+      <text x="170" y="423" fill="#94a3b8" font-size="11">档一 试探 30%</text>
+      <rect x="270" y="412" width="14" height="14" rx="3" fill="rgba(99,102,241,.4)" stroke="#818cf8"/>
+      <text x="290" y="423" fill="#94a3b8" font-size="11">档二 主仓 40%</text>
+      <rect x="390" y="412" width="14" height="14" rx="3" fill="rgba(245,158,11,.35)" stroke="#f59e0b"/>
+      <text x="410" y="423" fill="#94a3b8" font-size="11">档三 恐慌/机动 30%</text>
+      <line x1="540" y1="412" x2="540" y2="426" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="548" y="423" fill="#94a3b8" font-size="11">止损/证伪位</text>
+    </svg>
+    <div class="fig-cap">四标的建仓阶梯 &mdash;&mdash; 档位越深价格越低；「只向下加，不向上追」</div>
+  </div>
+
+  <h3>4.1 CEG 星座能源（首选：纯度最高的「卖水人」）</h3>
+  <table>
+    <thead><tr><th>项目</th><th>数值 / 规则</th><th>依据</th></tr></thead>
+    <tbody>
+      <tr><td>现价 / 年内区间</td><td class="num">$282.65 / $228.63&ndash;$377.44</td><td>7/1 见底 $228.63 后反弹 24%</td></tr>
+      <tr><td>档一（30%）</td><td class="num">$260&ndash;270</td><td>支撑 $266 + 20 日线区</td></tr>
+      <tr><td>档二（40%）</td><td class="num">$240&ndash;252</td><td>布林下轨区（~$251）</td></tr>
+      <tr><td>档三（30%）</td><td class="num">$225&ndash;232</td><td>年内低点区，恐慌价</td></tr>
+      <tr><td>止损</td><td class="num red">收盘 &lt; $215</td><td>年内低下方 ~6%，逻辑证伪位</td></tr>
+      <tr><td>第一目标</td><td class="num green">$340&ndash;350</td><td>分析师共识 $349.96</td></tr>
+      <tr><td>仓位上限</td><td class="num">AI 仓 40%</td><td>卖水人属性 + 零地缘，唯一放宽档</td></tr>
+    </tbody>
+  </table>
+  <div class="callout callout-green">
+    <strong>为什么它能放宽上限：</strong>Meta/AWS/Walmart 的 PPA 锁 20 年 = 已签约收入；数据中心 24/7 用电不随芯片周期波动；纯美国本土资产零地缘敞口；FCF +127%。它是清单里唯一「合同在先、叙事在后」的标的。
+  </div>
+
+  <h3>4.2 VST 维斯特拉（次优：同叙事减半仓）</h3>
+  <table>
+    <thead><tr><th>项目</th><th>数值 / 规则</th><th>依据</th></tr></thead>
+    <tbody>
+      <tr><td>现价 / 年内区间</td><td class="num">$149.20 / $132.47&ndash;$182.05</td><td>5/19 见底后箱体震荡</td></tr>
+      <tr><td>档一（30%）</td><td class="num">$135&ndash;142</td><td>8 月低点区 + MA5/MA10</td></tr>
+      <tr><td>档二（40%）</td><td class="num">$126&ndash;132</td><td>年内低 + 关键支撑 $128.49</td></tr>
+      <tr><td>档三（30%）</td><td class="num">$115&ndash;122</td><td>破位恐慌区，需先复核基本面</td></tr>
+      <tr><td>止损</td><td class="num red">收盘 &lt; $112</td><td>档三下沿下方</td></tr>
+      <tr><td>第一目标</td><td class="num green">$175&ndash;180</td><td>前高 $182 下方</td></tr>
+      <tr><td>仓位上限</td><td class="num yellow">CEG 的一半</td><td>D/E 659%，利率敏感；与 CEG 同叙事合并计上限</td></tr>
+    </tbody>
+  </table>
+  <div class="callout callout-warn">
+    <strong>VST 的特别纪律：</strong>高杠杆是它的软肋&mdash;&mdash;若沃什加息落地（9 月概率 ~42%），VST 的回撤会显著大于 CEG。同叙事合并计算：CEG + VST &le; AI 仓 40%，不是各 40%。
+  </div>
+
+  <h3>4.3 AVGO 博通（趋势票：区间恰好就在脚下）</h3>
+  <table>
+    <thead><tr><th>项目</th><th>数值 / 规则</th><th>依据</th></tr></thead>
+    <tbody>
+      <tr><td>现价 / 年内区间</td><td class="num">$408 / $289.50&ndash;$494.21</td><td>6/3 高点回撤 ~17%</td></tr>
+      <tr><td>档一（30%）</td><td class="num">$380&ndash;400</td><td>P05 建仓区上沿 + 卖方最低目标 $380</td></tr>
+      <tr><td>档二（40%）</td><td class="num">$350&ndash;370</td><td>P05 区间中部</td></tr>
+      <tr><td>档三（30%）</td><td class="num">$300&ndash;330</td><td>3 月恐慌区上方</td></tr>
+      <tr><td>止损</td><td class="num red">收盘 &lt; $345</td><td>档二下沿；跌破 = ASIC 叙事被市场否定</td></tr>
+      <tr><td>第一目标</td><td class="num green">$520</td><td>37 位分析师平均目标 $521.52</td></tr>
+      <tr><td>仓位上限</td><td class="num">AI 仓 30%</td><td>ROIC ~24%&rarr;40% 印钞机，但 Fwd PE ~26x 不便宜</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>AVGO 的现状很微妙：</strong>现价 $408 落在 P05 建仓区 $380&ndash;420 之内&mdash;&mdash;严格说「已经在区间里」。但趋势票的纪律是不追当日强势，<strong>等回踩档一 $380&ndash;400 成交第一批</strong>；若直接放量突破 $430（前高平台），允许以不超过半仓做右侧。
+  </div>
+
+  <h3>4.4 SKHY SK海力士（周期赌注：最严格的特别规则）</h3>
+  <table>
+    <thead><tr><th>项目</th><th>数值 / 规则</th><th>依据</th></tr></thead>
+    <tbody>
+      <tr><td>现价 / 上市以来</td><td class="num">$141.65 / 发行 $149 &middot; 首日区 $168</td><td>IPO 后最深回撤 ~20%（$135）</td></tr>
+      <tr><td>档一（30%）</td><td class="num">$120&ndash;130</td><td>8 月恐慌低点延伸区</td></tr>
+      <tr><td>档二（40%）</td><td class="num">$100&ndash;110</td><td>韩股 -52% 对应的深水区</td></tr>
+      <tr><td>档三</td><td class="num red">&lt; $100 只在「周期证伪被排除」后</td><td>跌破 $100 首先怀疑周期见顶，不是便宜</td></tr>
+      <tr><td>止损</td><td class="num red">买入价 -12% 或收盘 &lt; $105</td><td>Beta 2.41，止损必须宽于普通票</td></tr>
+      <tr><td>第一目标</td><td class="num green">$200+（长期共识 $244）</td><td>麦格理最高 $355</td></tr>
+      <tr><td>仓位上限</td><td class="num yellow">AI 仓 15%（砍半再砍半）</td><td>周期赌注 + 韩国地缘 + Fwd 5x 是反指警告</td></tr>
+    </tbody>
+  </table>
+  <div class="callout callout-red">
+    <strong>SKHY 必须预设的两条退出线（写下来，触发就执行）：</strong><br>
+    ① <strong>周期退出</strong>：DRAM 现货价环比转负，或大摩「Q4 周期后段」兑现为订单下修&mdash;&mdash;不看价格直接减半仓；<br>
+    ② <strong>趋势退出</strong>：收盘跌破 60 日线且 3 日内收不回&mdash;&mdash;清趋势仓。<br>
+    买它等于赌「陈立武对、大摩错」（存储是结构性稀缺）；这个赌注的仓位必须小到「赌错了不心疼」。
+  </div>
+</div>
+
+<!-- ====== 第五章：观察区标的 ====== -->
+<div class="section">
+  <h2>五、观察区：触发条件写死，不触发不动手</h2>
+
+  <h3>5.1 INTC 英特尔（左侧区间 + 右侧触发，二选一）</h3>
+  <table>
+    <thead><tr><th>路径</th><th>条件</th><th>动作</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="blue">左侧等待</span></td>
+        <td>回踩 <strong>$85&ndash;90</strong>（90 日线带）或 <strong>$75&ndash;85</strong>（P02 原始入场区）</td>
+        <td>按三批法建仓，止损 &lt; $72</td>
+      </tr>
+      <tr>
+        <td><span class="green">右侧触发</span></td>
+        <td>① 李锡熙内存路线图公开，或 ② 特斯拉之外第二位 14A 标志性客户（苹果转实/英伟达下单）</td>
+        <td>允许半仓右侧跟进，止损 = 触发信号失效（客户撤单/路线图跳票）</td>
+      </tr>
+      <tr>
+        <td><span class="red">不动手的情形</span></td>
+        <td>现价 ~$98 横盘，既不到区间也无触发</td>
+        <td>观察仓（跟踪财报与公告，零仓位）</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>记忆点：四支柱（CPU 复兴已兑现 / 14A 承诺中 / 内存画饼 / 边缘远期）&mdash;&mdash;<span class="yellow">叙事是真的，但 $98 的价格已经把大半叙事付过了</span>。</p>
+
+  <h3>5.2 Socionext（6526.T）与 ORCL</h3>
+  <ul>
+    <li><strong>Socionext</strong>：P05 建仓区 <strong>&yen;1,600&ndash;1,850</strong>（现价 &yen;1,968 未到）；或等 10/29 财报验证营收拐点后右侧。二选一，先到先做。它当前是「下跌原因 = 基本面」的价值陷阱形态，等验证不是等便宜。</li>
+    <li><strong>ORCL 甲骨文</strong>：9/14 盘后 FY27Q1 财报是唯一验证点（RPO 质量 + capex $700-950 亿的偿付路径）。财报前零动作；财报后若 RPO 转实 + FCF 缺口收窄，再按三批法定区间。</li>
+  </ul>
+</div>
+
+<!-- ====== 第六章：组合层分配 ====== -->
+<div class="section">
+  <h2>六、组合层：AI 仓内部的资金地图</h2>
+  <p>把上面所有上限拼起来，AI 仓（&le; 总资金 20-30%）内部的参考分配：</p>
+  <table>
+    <thead><tr><th>方向</th><th>标的</th><th>占 AI 仓</th><th>角色</th></tr></thead>
+    <tbody>
+      <tr><td>电力（防御底仓）</td><td>CEG 30% + VST 10%</td><td class="num">40%</td><td>卖水人：合同锁定、零地缘、被误伤的低位</td></tr>
+      <tr><td>ASIC（进攻趋势）</td><td>AVGO</td><td class="num">30%</td><td>印钞机：ROIC 最高、逻辑最熟的旧行情</td></tr>
+      <tr><td>存储（周期赌注）</td><td>SKHY</td><td class="num">15%</td><td>小注赌「结构性稀缺」；周期退出线写死</td></tr>
+      <tr><td>现金机动</td><td>&mdash;</td><td class="num">15%</td><td>留给 INTC $85-90 / ORCL 财报后 / 板块再错杀</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>这张表的真正含义：</strong>40% 给「赌场门口卖水的」，45% 给趋势和赌注，15% 永远留着现金&mdash;&mdash;<span class="blue">在「收益前置、风险后置」的产业链里，现金是唯一没有后置风险的仓位</span>。
+  </div>
+</div>
+
+<!-- ====== 第七章：事件日历 ====== -->
+<div class="section">
+  <h2>七、未来三个月的验证事件与动作映射</h2>
+  <table>
+    <thead><tr><th>时间</th><th>事件</th><th>验证什么</th><th>触发动作</th></tr></thead>
+    <tbody>
+      <tr><td>8 月底</td><td>三星/海力士股东回报方案（&gt;200 万亿韩元）</td><td>存储周期分歧第一回合</td><td>SKHY 若因此放量走强 &rarr; 档一可提前小量</td></tr>
+      <tr><td>9 月中</td><td>美联储议息（加息概率 ~42%）</td><td>利率路径落锤</td><td>若加息：VST 停止加仓，CEG 档三预算保留</td></tr>
+      <tr><td>9/14</td><td>ORCL FY27Q1 财报</td><td>AI 资本开支链偿付能力</td><td>RPO 转实 &rarr; 进入建仓流程</td></tr>
+      <tr><td>Q3 财报季</td><td>NBIS 拍卖合同 / CEG 新 PPA</td><td>算力定价权 + 电力催化</td><td>NBIS 违约信号 = 全组合减仓警报</td></tr>
+      <tr><td>10 月</td><td>Intel Q3 + 李锡熙内存路线图</td><td>INTC 两个右侧触发</td><td>触发 &rarr; 半仓右侧；未触发继续等 $85-90</td></tr>
+      <tr><td>10/29</td><td>Socionext 财报</td><td>营收拐点</td><td>拐点确认 &rarr; 右侧；否则等 &yen;1,600-1,850</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ====== 第八章：结语 ====== -->
+<div class="conclusion section">
+  <h2>八、一页总结</h2>
+  <ul>
+    <li><strong>先算风险再算价格</strong>：仓位 = 1% 风险预算 &divide; 止损距离；不到 3R 的机会不做。</li>
+    <li><strong>三批建仓，只向下加</strong>：试探 30% / 主仓 40% / 机动 30%；越买越贵 = 建仓变追高。</li>
+    <li><strong>四标的阶梯</strong>：CEG $260/$240/$225 &middot; VST $135/$126/$115（半仓）&middot; AVGO $380/$350/$300 &middot; SKHY $120/$100（周期赌注，退出线写死）。</li>
+    <li><strong>观察区不猜</strong>：INTC 等区间或触发，ORCL 等 9/14，Socionext 等区间或财报。</li>
+    <li><strong>组合留 15% 现金</strong>：在收益前置、风险后置的链上，现金是唯一没有后置风险的仓位。</li>
+  </ul>
+  <p style="margin-top:14px;color:#64748b;font-size:13px;">以上为个人学习与思考的阶段性记录，价位与数据截至 2026-08-14，仅代表本人当前认知范围内的理解，不构成任何投资建议。市场会变，区间会重估&mdash;&mdash;本文档的价值在于纪律框架，而非具体数字。</p>
+</div>
+
+</div>
+</body>
+</html>

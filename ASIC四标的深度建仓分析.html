@@ -77,6 +77,23 @@ td.down{color:#f87171}
 .stock-header .p2{background:#1a2a3a;color:#818cf8}
 .stock-header .p3{background:#3a2a1a;color:#fbbf24}
 .stock-header .p4{background:#2a1a2a;color:#c084fc}
+
+  /* ===== 移动端适配（自动注入） ===== */
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    .main { padding: 24px 14px 80px !important; margin-left: 0 !important; }
+    h1 { font-size: 21px !important; line-height: 1.4 !important; }
+    .subtitle { font-size: 13px !important; }
+    h2 { font-size: 16px !important; }
+    h3 { font-size: 14px !important; }
+    p, ul, ol, li, .callout, .quote { font-size: 14px !important; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead th, tbody td { padding: 8px 10px; white-space: nowrap; }
+    .conclusion { padding: 16px 14px; }
+    .flow-step { padding: 6px 10px; }
+    img, svg { max-width: 100% !important; height: auto !important; }
+  }
+
 </style>
 </head>
 <body>

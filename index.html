@@ -119,9 +119,52 @@
   }
 
   #frame { flex: 1; width: 100%; border: none; background: #000; display: none; }
+
+  /* ===== 移动端：汉堡按钮 + 遮罩 ===== */
+  .menu-btn {
+    position: fixed; top: 12px; left: 12px; z-index: 70;
+    width: 42px; height: 42px; border-radius: 12px;
+    background: rgba(28,28,30,.92); border: 1px solid rgba(255,255,255,.12);
+    color: #f5f5f7; font-size: 17px; cursor: pointer;
+    display: none; align-items: center; justify-content: center;
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    font-family: inherit; line-height: 1;
+  }
+  .mask {
+    position: fixed; inset: 0; z-index: 40;
+    background: rgba(0,0,0,.55); opacity: 0; pointer-events: none;
+    transition: opacity .25s ease;
+  }
+
+  /* ===== 移动端适配（≤768px：抽屉式侧栏） ===== */
+  @media (max-width: 768px) {
+    .menu-btn { display: flex; }
+    .sidebar {
+      position: fixed; z-index: 60; left: 0; top: 0; bottom: 0;
+      width: 284px;
+      transform: translateX(-100%);
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 0 48px rgba(0,0,0,.55);
+    }
+    .layout.sidebar-open .sidebar { transform: translateX(0); }
+    .layout.sidebar-open .mask { opacity: 1; pointer-events: auto; }
+    .home { padding: 70px 16px 56px; }
+    .home h2 { font-size: 22px; }
+    .stats { flex-direction: column; gap: 10px; }
+    .stat { padding: 12px 16px; }
+    .stat-num { font-size: 20px; }
+    .toc-row { grid-template-columns: 46px 1fr 24px; }
+    .toc-no { grid-column: 1; }
+    .toc-title { grid-column: 2; }
+    .toc-arrow { grid-column: 3; text-align: right; }
+    .toc-desc { grid-column: 1 / 4; padding-top: 2px; }
+    .home-foot { margin-top: 30px; }
+  }
 </style>
 </head>
 <body>
+<button class="menu-btn" id="menuBtn" aria-label="打开菜单">&#9776;</button>
+<div class="mask" id="mask"></div>
 <div class="layout">
 
   <!-- ==================== 左侧导航 ==================== -->
@@ -170,11 +213,15 @@
         <span class="t">宏观数据与算力产业链发散笔记</span>
         <span class="d">CPI/非农 · 8/12双轮复盘 · 光模块三层原因 · NBIS大涨 · 卖铲人安全度分层</span>
       </button>
+      <button class="nav-item" data-page="page8">
+        <span class="t">低位挖掘发散比较笔记</span>
+        <span class="d">周期股PE悖论 · CEG/Intel/SKHY三样本 · CEO计划 · 地缘与再分配</span>
+      </button>
     </nav>
 
     <div class="sidebar-footer">
-      共 <span id="reportCount">7</span> 份报告 · 3 大分类<br>
-      最后更新 2026-08-13
+      共 <span id="reportCount">8</span> 份报告 · 3 大分类<br>
+      最后更新 2026-08-14
     </div>
   </aside>
 
@@ -189,7 +236,7 @@
 
         <div class="stats">
           <div class="stat">
-            <div class="stat-num">7</div>
+            <div class="stat-num">8</div>
             <div class="stat-label">研究资料</div>
           </div>
           <div class="stat">
@@ -256,6 +303,12 @@
               <span class="toc-desc">CPI/非农 · 8/12 双轮复盘 · 光模块三层原因 · NBIS 大涨 · 卖铲人安全度分层</span>
               <span class="toc-arrow">&rarr;</span>
             </button>
+            <button class="toc-row" data-page="page8">
+              <span class="toc-no">P08</span>
+              <span class="toc-title">低位挖掘发散比较笔记</span>
+              <span class="toc-desc">低位三判据 · 周期股 PE 悖论 · CEG/Intel/SKHY 三样本对照 · CEO 计划 · 地缘与 AI 再分配</span>
+              <span class="toc-arrow">&rarr;</span>
+            </button>
           </div>
 
         </div>
@@ -279,7 +332,8 @@
     page4: { file: 'AI产业链深度研究讲义.html',            title: 'AI产业链深度研究讲义' },
     page5: { file: 'ASIC四标的深度建仓分析.html',          title: 'ASIC四标的深度建仓分析' },
     page6: { file: 'AI资本结构风险与泡沫类比分析.html',    title: 'AI资本结构风险与泡沫类比分析' },
-    page7: { file: '宏观数据与算力产业链发散笔记.html',      title: '宏观数据与算力产业链发散笔记' }
+    page7: { file: '宏观数据与算力产业链发散笔记.html',      title: '宏观数据与算力产业链发散笔记' },
+    page8: { file: '低位挖掘发散比较笔记.html',               title: '低位挖掘发散比较笔记' }
   };
 
   var frame = document.getElementById('frame');
@@ -294,6 +348,7 @@
       it.classList.toggle('active', it.getAttribute('data-page') === 'home');
     });
     document.title = '我的金融发散笔记';
+    closeSidebar();
   }
 
   function openPage(page) {
@@ -306,6 +361,7 @@
       it.classList.toggle('active', it.getAttribute('data-page') === page);
     });
     document.title = r.title + ' · 我的金融发散笔记';
+    closeSidebar();
   }
 
   function route() {
@@ -337,6 +393,20 @@
   route();
 
   document.getElementById('reportCount').textContent = Object.keys(REPORTS).length;
+
+  /* ===== 移动端抽屉 ===== */
+  var menuBtn = document.getElementById('menuBtn');
+  var mask = document.getElementById('mask');
+  var layout = document.querySelector('.layout');
+
+  function closeSidebar() {
+    layout.classList.remove('sidebar-open');
+  }
+
+  menuBtn.addEventListener('click', function () {
+    layout.classList.toggle('sidebar-open');
+  });
+  mask.addEventListener('click', closeSidebar);
 </script>
 </body>
 </html>

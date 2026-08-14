@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>低位挖掘发散比较笔记 · 从周期股陷阱到三样本对照</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0f172a; color: #e2e8f0; line-height: 1.75;
+    padding: 40px 24px 100px;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 { font-size: 26px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; line-height: 1.4; }
+  .subtitle { font-size: 14px; color: #64748b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f1f5f9;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid #1e293b;
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #cbd5e1; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: #1e293b;
+    color: #94a3b8; font-weight: 600; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.5px; border-bottom: 1px solid #334155;
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid #1e293b; vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(99,102,241,.04); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #f87171; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #818cf8; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #6366f1; background: rgba(99,102,241,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2340 100%);
+    border: 1px solid #334155; border-radius: 10px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #64748b; background: rgba(148,163,184,.06);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 6px 6px 0;
+    font-size: 14px; color: #cbd5e1;
+  }
+
+  .flow {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin: 14px 0 18px; font-size: 13px;
+  }
+  .flow-step {
+    background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+    padding: 8px 14px; color: #cbd5e1;
+  }
+  .flow-step b { color: #f1f5f9; display: block; font-size: 13px; }
+  .flow-arrow { color: #6366f1; font-size: 16px; font-weight: 700; }
+
+  /* ===== 内嵌示意图（块级 SVG，防遮挡） ===== */
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #64748b; margin-top: 8px; text-align: center; }
+
+  /* ===== 移动端适配 ===== */
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .subtitle { font-size: 13px; }
+    .section h2 { font-size: 16px; }
+    .section h3 { font-size: 14px; }
+    p, ul, ol, .callout, .quote { font-size: 14px; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead th, tbody td { padding: 8px 10px; white-space: nowrap; }
+    .badge-row { margin-bottom: 22px; }
+    .conclusion { padding: 16px 14px; }
+    .flow-step { padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>低位挖掘发散比较笔记</h1>
+<p class="subtitle">方法论、周期股陷阱与 CEG / SKHY / Intel 三样本对照 &mdash; 2026 年 8 月</p>
+<div class="badge-row">
+  <span class="badge badge-blue">投资方法论</span>
+  <span class="badge badge-green">三样本对照</span>
+  <span class="badge badge-warn">地缘与经济</span>
+  <span class="badge badge-red">风险纪律</span>
+</div>
+
+<!-- ====== 第一章：低位挖掘的纪律 ====== -->
+<div class="section">
+  <h2>一、先立纪律：低位 ≠ 跌得多</h2>
+  <p>「低位挖掘」是这次讨论的出发点。先把定义钉死：<span class="blue">低位不是「跌得多的票」，而是「涨幅落后于基本面」的票</span>。跌得惨但基本面坏掉的，叫价值陷阱；涨得少但基本面在改善的，才是真洼地。</p>
+  <p>判断一个低位票值不值得挖，四个问题过一遍：</p>
+  <ol>
+    <li><strong>它为什么不涨/跌？</strong>交易因素（杠杆平仓、获利了结、情绪错杀）还是基本面因素（订单/毛利/指引恶化）？</li>
+    <li><strong>估值有没有底？</strong>前瞻 PE 在什么分位、相对全球同业折价多少？</li>
+    <li><strong>催化有没有变？</strong>订单/产能/政策/资金流还在推进吗？</li>
+    <li><strong>什么时候证伪？</strong>下一个财报或事件是什么？错了怎么退出？</li>
+  </ol>
+  <div class="callout callout-green">
+    <strong>三条判据（本笔记反复使用）：</strong>① 涨幅落后于基本面？② 下跌原因不是基本面（错杀而非恶化）？③ 盈利不处在周期顶部？<strong>三条全踩中 = 真低位；踩反任何一条 = 远离。</strong>
+  </div>
+</div>
+
+<!-- ====== 第二章：周期股 PE 悖论 ====== -->
+<div class="section">
+  <h2>二、周期股 PE 悖论：低 PE 是警告牌，不是买入理由</h2>
+  <p>这是本轮讨论里最反直觉、也最致命的一条规律，用 SK 海力士（SKHY）当教材。</p>
+  <ul>
+    <li><strong>PE = 价格 &divide; 盈利。</strong>存储股现在盈利在历史最高位（DRAM 同比涨 700%），分母被撑到最大，PE 被压到 3.6 倍——<span class="red">不是市场觉得它便宜，是市场已经把「盈利见顶」写进价格了</span>。</li>
+    <li><strong>一旦需求下滑：</strong>盈利从峰值砍半甚至砍 70%（历史每轮存储下行都是这个幅度）&rarr; 价格跌，但盈利跌得更快 &rarr; <strong>PE 不是从 3x 涨到 6x，而是直接跳到 30x+</strong> &rarr; 你看着「低 PE」买的，最后变成「高 PE 深套」，这就是戴维斯双杀。</li>
+    <li><strong>彼得·林奇的箴言反过来读：</strong>周期股要在 PE 最高时买（盈利谷底）、PE 最低时卖（盈利高峰）。低 PE 买入周期股，是散户最常见的死法之一。</li>
+  </ul>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gEarn" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4ade80"/><stop offset="1" stop-color="#22c55e"/>
+        </linearGradient>
+        <linearGradient id="gPe" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f87171"/><stop offset="1" stop-color="#ef4444"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="820" height="300" rx="10" fill="#0f172a"/>
+      <rect x="0" y="0" width="820" height="300" rx="10" fill="none" stroke="#1e293b" stroke-width="1"/>
+      <!-- 网格 -->
+      <g stroke="#1e293b" stroke-width="1">
+        <line x1="70" y1="40" x2="70" y2="250"/><line x1="210" y1="40" x2="210" y2="250"/>
+        <line x1="350" y1="40" x2="350" y2="250"/><line x1="490" y1="40" x2="490" y2="250"/>
+        <line x1="630" y1="40" x2="630" y2="250"/><line x1="770" y1="40" x2="770" y2="250"/>
+        <line x1="70" y1="250" x2="770" y2="250"/>
+      </g>
+      <!-- 盈利曲线：抛物线 谷→峰→谷 -->
+      <path d="M70 235 C 150 225, 180 120, 260 80 C 340 42, 380 42, 420 55 C 480 75, 480 90, 540 80 C 600 68, 660 130, 770 200"
+            fill="none" stroke="url(#gEarn)" stroke-width="3" stroke-linecap="round"/>
+      <!-- PE 曲线：反向（谷时高、峰时低） -->
+      <path d="M70 60 C 150 75, 200 200, 260 225 C 330 248, 380 250, 430 248 C 500 244, 520 230, 580 225 C 640 220, 700 130, 770 90"
+            fill="none" stroke="url(#gPe)" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 4"/>
+      <!-- 谷底/峰值标记 -->
+      <circle cx="70" cy="235" r="4" fill="#4ade80"/>
+      <circle cx="70" cy="60" r="4" fill="#f87171"/>
+      <circle cx="420" cy="55" r="4" fill="#4ade80"/>
+      <circle cx="430" cy="248" r="4" fill="#f87171"/>
+      <circle cx="770" cy="200" r="4" fill="#4ade80"/>
+      <circle cx="770" cy="90" r="4" fill="#f87171"/>
+      <!-- 顶部说明文字 -->
+      <text x="70" y="30" fill="#64748b" font-size="13">盈利谷底</text>
+      <text x="200" y="30" fill="#64748b" font-size="13">→ 盈利爬升中</text>
+      <text x="352" y="26" fill="#4ade80" font-size="14" font-weight="700">盈利高峰</text>
+      <text x="340" y="272" fill="#f87171" font-size="13">PE 谷底（3.6x = 市场在定价「盈利见顶」）</text>
+      <text x="600" y="30" fill="#64748b" font-size="13">盈利下行 →</text>
+      <text x="620" y="272" fill="#f87171" font-size="13">PE 飙升（盈利砍半 → PE 跳 30x+）</text>
+      <!-- 图例 -->
+      <g transform="translate(560, 200)">
+        <line x1="0" y1="0" x2="34" y2="0" stroke="#4ade80" stroke-width="3"/>
+        <text x="42" y="5" fill="#94a3b8" font-size="12">盈利（周期）</text>
+        <line x1="0" y1="18" x2="34" y2="18" stroke="#f87171" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <text x="42" y="23" fill="#94a3b8" font-size="12">PE（反指）</text>
+      </g>
+    </svg>
+    <div class="fig-cap">周期股 PE 悖论：盈利在峰值时 PE 最低（最危险），盈利在谷底时 PE 最高（最安全）</div>
+  </div>
+
+  <div class="callout callout-red">
+    <strong>大摩自己的数据证明了这一点：</strong>海力士 NTM P/B 1.3 倍，而历史周期峰值时是 2 倍以上——市场明确按「周期股」定价，<strong>没有给 LTA 锁价锁量的盈利任何成长溢价</strong>。更讽刺的是，大摩 7 月初警示「DRAM 涨价速度的二阶导数即将见顶」，7 月海力士真的跌了 33%。连最看多的分析师都知道这轮周期有顶，只是赌顶来得晚。
+  </div>
+  <p class="quote">「PE 低」从来不是周期股的买点理由，它是市场递给你的「盈利见顶」警告牌。海力士 3.6 倍 PE 的真实含义是：市场说「你明年赚不到这么多」。</p>
+</div>
+
+<!-- ====== 第三章：三样本对照 ====== -->
+<div class="section">
+  <h2>三、三样本对照：同一轮行情里的三种「低位形态」</h2>
+  <p>把候选标的按纪律过滤一遍后，真正有讨论价值的是三个样本——它们恰好代表了「低位」光谱的三个极端：</p>
+  <table>
+    <thead>
+      <tr><th>维度</th><th>CEG 星座能源</th><th>Intel</th><th>SKHY 海力士</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>形态</strong></td>
+        <td class="green">防御型低位：YTD -28%、被误伤</td>
+        <td class="yellow">进攻型回撤：YTD +180%、回调 27%</td>
+        <td class="red">周期陷阱：低 PE 是危险信号</td>
+      </tr>
+      <tr>
+        <td><strong>三判据①涨幅落后</strong></td>
+        <td class="green">✓ 全年下跌</td>
+        <td class="red">✗ 已涨 1.8 倍</td>
+        <td class="red">✗ 已涨 1.4 倍</td>
+      </tr>
+      <tr>
+        <td><strong>②下跌原因</strong></td>
+        <td class="green">✓ 7 月半导体抛售误伤，基本面反而更硬</td>
+        <td class="green">✓ 情绪抛售 + FT 警告，Q2 财报仍 beat</td>
+        <td class="yellow">△ 部分交易因素，但估值已在定价周期见顶</td>
+      </tr>
+      <tr>
+        <td><strong>③盈利位置</strong></td>
+        <td class="green">✓ 合同锁定 20 年，不随周期波动</td>
+        <td class="yellow">△ 修复期，代工外部收入仅 5%</td>
+        <td class="red">✗ 周期峰值，盈利砍半时 PE 跳 30x+</td>
+      </tr>
+      <tr>
+        <td><strong>本质</strong></td>
+        <td>赌场门口卖水的</td>
+        <td>转型中的「第二供应商」</td>
+        <td>周期顶部的存储</td>
+      </tr>
+      <tr>
+        <td><strong>地缘</strong></td>
+        <td class="green">纯美国，零敞口</td>
+        <td class="green">纯美国，友岸旗手</td>
+        <td class="red">工厂在三八线旁 150km</td>
+      </tr>
+      <tr>
+        <td><strong>结论</strong></td>
+        <td class="green">低位可介入</td>
+        <td class="yellow">跟踪观察，等右侧信号</td>
+        <td class="red">不碰（仅趋势回踩资格）</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>一句话：<span class="blue">CEG 是没涨过的防御型低位（现在就符合纪律），Intel 是涨过之后回撤的进攻型回撤（叙事是真的，但价格已付了大半），SKHY 是低 PE 陷阱（看着便宜，实际在周期顶）</span>。三者合起来，就是「低位挖掘」的完整光谱。</p>
+</div>
+
+<!-- ====== 第四章：CEG 为什么是真低位 ====== -->
+<div class="section">
+  <h2>四、CEG：被误伤的最安全「卖水人」</h2>
+  <p>7 月 AI 半导体抛售把所有「AI 相关但非芯片」的股票一起拖下水——这叫<span class="blue">主题误伤</span>。电力恰好站在误伤区，而它的基本面反而是全 AI 链最硬的：</p>
+  <ul>
+    <li><strong>合同是锁 20 年的已签约收入：</strong>Meta 20 年购电协议（Clinton 核电 1121MW）、Walmart 新签、三里岛重启提前、收购 Calpine——不是「预期」，是确定性现金流；</li>
+    <li><strong>需求不随芯片周期波动：</strong>数据中心的 24/7 电力需求，芯片需求下滑电照样要交——上一轮总结过：<strong>最安全的卖铲人是「赌场门口卖水的」，电力就是那个卖水的</strong>；</li>
+    <li><strong>零地缘风险：</strong>纯美国本土资产，不碰台海、不碰三八线；</li>
+    <li><strong>数据：</strong>YTD -28%（$258 vs 52 周高 $413）、前瞻 PE ~22x、FCF +127% YoY、杠杆健康（D/E 66%）。</li>
+  </ul>
+  <p>次优替代 <span class="yellow">VST 维斯特拉</span>：YTD -13%、前瞻 PE ~16.8x、Q1 EPS 大超预期、Meta 2600MW + AWS 20 年合同——但 <span class="red">D/E 659% 杠杆太高</span>，利率敏感，仓位要轻。二选一，CEG 质地更干净。</p>
+  <div class="callout callout-warn">
+    <strong>CEG 的软肋要如实说：</strong>核电政策/监管（补贴退坡或电网审批卡壳）。它的安全建立在「电永远有人买」之上，而不是「政策永远不变」之上。
+  </div>
+</div>
+
+<!-- ====== 第五章：Intel 与 CEO 计划 ====== -->
+<div class="section">
+  <h2>五、Intel：新叙事质变的样本（含 CEO 计划）</h2>
+  <p>Intel 严格说不算低位（YTD +180%、一年 +362%），但它代表「低位挖掘」光谱的另一端——<span class="blue">进攻型回撤</span>，而且它的叙事在 2026 年发生了质变。三判据：① 涨幅落后？✗（已涨 1.8 倍）；② 回撤原因？✓（7/29 低点 $81.88 是板块抛售 + FT《定价完美反转》警告，Q2 财报仍 beat）；③ 盈利位置？△（修复期，连续 7 季超预期，但 DCAI 增长主要靠涨价）。</p>
+
+  <h3>5.1 CEO 计划：战略从「三腿」变「四腿」</h3>
+  <p>陈立武在 <strong>7/23 Q2 财报会</strong>和 <strong>8/11 播客</strong>（3 天前，市场正在消化）里放出的信号，是判断叙事成色的关键变量：</p>
+  <table>
+    <thead>
+      <tr><th>支柱</th><th>内容</th><th>兑现状态</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>① CPU 复兴</strong></td>
+        <td>Xeon 6 史上最快爬坡、DCAI +59%（$62.6 亿）、「每天有 CEO 打电话来要 CPU」、AI-first 转型</td>
+        <td class="green">🟢 已兑现</td>
+      </tr>
+      <tr>
+        <td><strong>② 14A 全量承诺</strong></td>
+        <td>去年「可能放弃 14A」&rarr; Q2 拍板 2028 全量量产；capex 从 $170-180 亿上调至 <strong>$200 亿+</strong>；PDK 0.5 完成、18A 超内部目标 25%</td>
+        <td class="yellow">🟡 承诺中（真金白银下注）</td>
+      </tr>
+      <tr>
+        <td><strong>③ 重返内存（新）</strong></td>
+        <td>挖来 <strong>SK 海力士前 CEO 李锡熙</strong>（6/18 入职，任代工 EVP 主管先进封装+系统集成）；XBM（带宽 HBM4 两倍、取消硅中介层）/ ZAM（2029 商业化）新架构；CPU-内存堆叠</td>
+        <td class="yellow">🟠 画饼阶段</td>
+      </tr>
+      <tr>
+        <td><strong>④ 边缘+物理AI</strong></td>
+        <td>PC 业务改名 CCPG、押注机器人；CFO 称边缘+物理 AI TAM 未来 ≥ 客户端业务</td>
+        <td class="yellow">⚪ 远期</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>为什么第 ③ 条是最大的新信息：</strong>陈立武原话——「我以前总说'别投存储，那是商品业务'，<strong>但现在一切都变了</strong>」。一个公开反对过存储的人，转头挖来 SK 海力士的灵魂人物操盘新内存架构。注意时间点：<span class="blue">李锡熙 6/18 入职当天，特朗普宣布苹果与 Intel 合作设计制造芯片</span>——人事任命和政府背书同一天落地，这是「美国队」组合拳，不是巧合。</p>
+
+  <h3>5.2 与 SKHY 的镜像：这轮存储到底是不是周期？</h3>
+  <ul>
+    <li>你刚把 <strong>SKHY 排除</strong>，理由正是「周期股低 PE 是陷阱、存储有顶」；</li>
+    <li>陈立武却在赌 <strong>「这轮存储不是周期，是结构性稀缺」</strong>（所以才敢下注新架构、挖海力士的人）；</li>
+    <li>而大摩明说 <strong>「2026Q4 存储周期进后段」</strong>——<span class="red">两个观点必有一个错，这个分歧正是 Intel 内存故事的最大风险，也是最值得跟踪的观察点</span>。</li>
+  </ul>
+
+  <h3>5.3 没有改变的落差</h3>
+  <ul>
+    <li><strong>外部客户收入还是 $2.93 亿（占 Foundry 收入 5%）</strong>——「客户兴趣很高」还没变成订单；</li>
+    <li><strong>会计口径的坑：</strong>Q2 GAAP 每股 -$2.16 vs 调整后 +$0.42（政府托管股按市值计损 $12.53 亿）——媒体用调整后数字唱多，但托管股越涨，未来稀释给政府的价值越大；</li>
+    <li><strong>增长的成色：</strong>DCAI +59% 里 ASP +48%、出货量只有 +9%——供给短缺驱动的涨价，不是份额收复；</li>
+    <li><strong>四张牌全是未兑现状态</strong>，承诺时间线最短 2027 H2、最长 2029。</li>
+  </ul>
+
+  <div class="callout callout-green">
+    <strong>操作立场：</strong>Intel 仍是「观察区」不是「买入区」。两个<strong>右侧触发</strong>（出现任何一个，从观察转买入）：<strong>① 李锡熙的内存路线图公开</strong>（叙事落地的第一步）；<strong>② 特斯拉之外的第二位 14A 标志性客户</strong>（苹果转实 / 英伟达下单）。左侧等待：板块再杀一波、跌回 $85-90 带 + Q3 财报（10 月）验证 18A 良率继续爬坡。
+  </div>
+</div>
+
+<!-- ====== 第六章：可买通道映射 ====== -->
+<div class="section">
+  <h2>六、可买性约束：韩台洼地的美日股通道</h2>
+  <p>只能买美股和日股，不等于放弃韩台逻辑——通道是存在的，只是要选对：</p>
+  <table>
+    <thead>
+      <tr><th>想买的</th><th>美日股通道</th><th>状态</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SK 海力士</strong>（韩）</td>
+        <td><span class="green">SKHY（纳斯达克直买）</span>——7/10 刚上市，发行 $149、开盘 $170、市值一度 $1.25 万亿，史上最大外国公司美股 IPO</td>
+        <td>✅ 官方通道，「韩国折价」被制度性消除</td>
+      </tr>
+      <tr>
+        <td><strong>三星电子</strong>（韩）</td>
+        <td>仅 OTC 粉单 SSNGY（流动性差）&rarr; 逻辑最接近的映射是 <span class="blue">MU 美光</span></td>
+        <td>⚠️ MU 已 YTD +163%，不是低位</td>
+      </tr>
+      <tr>
+        <td><strong>三星电机</strong>（韩）</td>
+        <td>日股映射：村田（1Y +201%）、TDK（Q2 纯益 +94%）</td>
+        <td>❌ 洼地已被抢跑——大摩 8/12 点名当天太阳诱电 +7.5%</td>
+      </tr>
+      <tr>
+        <td><strong>世芯-KY</strong>（台）</td>
+        <td><span class="blue">AVGO / MRVL</span>（美股，P05 老朋友）——ASIC 逻辑进化版，设计公司无厂房，地缘敞口小于制造公司</td>
+        <td>✅ 通道最顺、逻辑最熟</td>
+      </tr>
+      <tr>
+        <td><strong>台积电/日月光</strong>（台）</td>
+        <td>TSM / ASX（ADR）</td>
+        <td>❌ 能买但不符合纪律：TSM 估值高企 + 台海 100% 产能在岛上；ASX 1Y +287% 已充分定价</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>关键认知：</strong>美股 ADR 给不了你地理保护——TSM 和 ASX 的实体产能 100% 在台湾岛上，台海有事它们同步崩。设计公司（AVGO/MRVL/世芯）无工厂资产，地缘敞口天然小于制造公司。
+  </div>
+</div>
+
+<!-- ====== 第七章：地缘与经济 ====== -->
+<div class="section">
+  <h2>七、地缘政治与经济面：持仓其实在赌三个火药桶</h2>
+  <p>只买美股日股，不等于躲开了地缘风险——你买的每一张 ADR 背后都是实体资产，风险跟着资产走。</p>
+
+  <h3>7.1 地缘三层</h3>
+  <ul>
+    <li><strong>① 台海（TSM / ASX 的上游）：</strong>全球 92% 先进制程、CoWoS 封装几乎全在岛上，是最大的尾部风险。「友岸外包」（美光广岛、台积电亚利桑那/熊本、Tower 富山）本质是给供应链买保险，保险成本就是几十亿美元补贴。</li>
+    <li><strong>② 朝鲜半岛（SKHY / MU 间接敞口）：</strong>海力士工厂离三八线 100-150 公里，军事风险「永久存在但无法定价」——平时被无视，一旦擦枪走火就是 -30% 级别缺口跳空。「韩国折价」不是纯粹情绪，是真实的地缘成本。</li>
+    <li><strong>③ 美中科技战 / 关税：</strong>出口管制悬在所有 AI 产业链头上。反过来，管制越严，日韩作为「友岸替代」的议价能力越强——这是美日半导体投资潮的政治底层逻辑。</li>
+  </ul>
+
+  <h3>7.2 经济面三件事</h3>
+  <ul>
+    <li><strong>大摩 8/12：「存储行业将在 2026Q4 进入周期后段」。</strong>股票市场会提前 3-6 个月反映——即使业绩还在创新高，股价可能已见顶（利好出尽）。对趋势投资的意义：<span class="red">业绩最漂亮的时候，恰恰是开始警惕的时候</span>。</li>
+    <li><strong>美联储主席沃什「2% 目标无回旋余地」+ 3 位鹰派理事票</strong> &rarr; 高利率环境比预期更长，对 AI 产业链是双重打击：capex 融资成本上升 + 远期现金流贴现率上升。</li>
+    <li><strong>日元套息交易的达摩克利斯：</strong>日元贬值见顶路径（2026 末 165-170 &rarr; 2027 窗口 140-154）意味着套息平仓风险在累积——2024 年 8 月 5 日全球股灾就是套息平仓引发的。买日股高 beta 半导体 = 利率冲击时多一层汇率-杠杆共振风险。</li>
+  </ul>
+</div>
+
+<!-- ====== 第八章：AI = 社会再分配 ====== -->
+<div class="section">
+  <h2>八、AI = 一次新的社会再分配（最高层框架）</h2>
+  <p>「AI 本质上是新的一次社会再分配」——这是过去所有分析里最高的一个框架，三层结构：</p>
+
+  <h3>8.1 国家间再分配（谁收「AI 税」）</h3>
+  <p>美国是唯一的「税官」：它定义模型、卖出算力和 API，全球利润大头流向美国（NVIDIA 一家吃掉产业链利润一半以上）。日韩台是「中间商」：量大、利薄、周期波动，赚辛苦钱。消费国是「交税方」：付使用费、没有定价权。<span class="blue">这就是为什么美股 AI 涨幅远大于日韩台——不是美股公司更优秀，而是再分配的方向就是朝美国倾斜的</span>。只买美股日股，恰好站在再分配链条的上游和中游。</p>
+
+  <h3>8.2 行业间再分配（谁受益、谁被替代）</h3>
+  <p>钱从「被替代的行业」流向「生产替代工具的人」。这一层直接回答低位挖掘问题：<span class="blue">为什么某些环节涨 10 倍、某些还趴着？不是公司好坏，而是它们站在再分配的哪一侧</span>。存储、电力、设备、材料站在收税位；翻译、客服、初级白领站在交税位。</p>
+
+  <h3>8.3 阶级间再分配（资本 vs 劳动）</h3>
+  <p>这是这次和历次技术革命的不同点：工业革命让体力劳动者转移到工厂，<span class="red">AI 直接替代的是脑力劳动者</span>——它让资本所有者用更少的劳动力生产同样的产出，利润率提高 = 劳动收入份额下降。社会总财富没消失，只是分配向资本倾斜。<strong>你作为股东站在受益侧，作为打工人站在受损侧</strong>——这也是监管、征税、反垄断迟早会来的原因（P06「监管俘获」那一章，就是再分配失衡后的必然政治反应）。</p>
+  <div class="callout callout-green">
+    <strong>投资含义：</strong>你的持仓应该站在「收税位」——卖铲人（设备/材料/电力）&gt; 中间商（存储/封装/代工）&gt; 交税位（被替代的服务）。这也是 CEG（电力）入选、而消费电子（三星的非存储业务）被排除的深层原因。
+  </div>
+</div>
+
+<!-- ====== 第九章：操作清单 ====== -->
+<div class="section">
+  <h2>九、修正后的操作清单（按纪律排序）</h2>
+  <table>
+    <thead>
+      <tr><th>标的</th><th>定性</th><th>动作</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CEG</strong></td>
+        <td class="green">真·低位：-28% YTD + 20 年合同锁定 + 最安全卖水人 + 零地缘风险</td>
+        <td class="green">唯一同时满足「低位 + 安全 + 可买」，可介入</td>
+      </tr>
+      <tr>
+        <td><strong>VST</strong></td>
+        <td class="yellow">次优：-13% YTD + FCF yield 3.7% 有真实现金流</td>
+        <td class="yellow">轻仓（D/E 659% 杠杆高）</td>
+      </tr>
+      <tr>
+        <td><strong>AVGO</strong></td>
+        <td class="yellow">不是低位但没透支：YTD +21%、距高点 -18%，ASIC 逻辑还在</td>
+        <td class="yellow">温和介入（P05 建仓区 $380-420）</td>
+      </tr>
+      <tr>
+        <td><strong>Intel</strong></td>
+        <td class="yellow">进攻型回撤：叙事质变但外部收入仅 5%</td>
+        <td class="yellow">观察区，等两个右侧触发</td>
+      </tr>
+      <tr>
+        <td><strong>SKHY</strong></td>
+        <td class="red">周期陷阱：低 PE 是警告牌</td>
+        <td class="red">仅趋势回踩资格，必须设周期见顶退出条件</td>
+      </tr>
+      <tr>
+        <td><strong>MRVL / 日月光 / 村田 / 台积电</strong></td>
+        <td class="red">已充分定价（+161% / +287% / +201% / 估值高企）</td>
+        <td class="red">排除（追高）</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ====== 结论 ====== -->
+<div class="conclusion">
+  <h2>一句话总结</h2>
+  <p>「低位」真正的定义不是「PE 低」，而是 <strong>「涨幅落后于基本面 + 下跌原因不是基本面 + 盈利不在周期顶部」</strong>。海力士三条全踩反，CEG 三条全踩中——而 Intel 站在中间，用 CEO 的四张牌赌一个 2027-2029 的兑现。这轮比较最大的收获是把「低位挖掘」从「看估值」升级到了「看周期位置 + 看再分配站位」。</p>
+  <p style="margin-top:8px;">记住那把尺子：<span class="blue">安全度 = 收益前置 &times; 客户分散 + 清算优先级 &minus; 金融杠杆</span>，再叠加一层 <span class="blue">地缘敞口</span> 和 <span class="blue">周期位置</span>。四个变量过完，能站在「收税位 + 卖水人 + 纯美国」交叉点的，才是这轮行情里真正的低位。</p>
+</div>
+
+</div>
+</body>
+</html>

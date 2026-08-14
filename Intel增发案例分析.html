@@ -89,6 +89,23 @@
     border-radius: 8px; padding: 16px 20px; margin: 20px 0;
   }
   .update-box .title { font-weight:700; color:#4ade80; font-size:14px; margin-bottom:8px; }
+
+  /* ===== 移动端适配（自动注入） ===== */
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    .main { padding: 24px 14px 80px !important; margin-left: 0 !important; }
+    h1 { font-size: 21px !important; line-height: 1.4 !important; }
+    .subtitle { font-size: 13px !important; }
+    h2 { font-size: 16px !important; }
+    h3 { font-size: 14px !important; }
+    p, ul, ol, li, .callout, .quote { font-size: 14px !important; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead th, tbody td { padding: 8px 10px; white-space: nowrap; }
+    .conclusion { padding: 16px 14px; }
+    .flow-step { padding: 6px 10px; }
+    img, svg { max-width: 100% !important; height: auto !important; }
+  }
+
 </style>
 </head>
 <body>

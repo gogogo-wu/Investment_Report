@@ -53,6 +53,23 @@ td.green{color:#27ae60}
 h1{font-size:26px;margin-bottom:6px}
 .subtitle{color:#888;font-size:13px;margin-bottom:28px}
 .section-divider{border:none;border-top:1px solid #e0e0e0;margin:32px 0}
+
+  /* ===== 移动端适配（自动注入） ===== */
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    .main { padding: 24px 14px 80px !important; margin-left: 0 !important; }
+    h1 { font-size: 21px !important; line-height: 1.4 !important; }
+    .subtitle { font-size: 13px !important; }
+    h2 { font-size: 16px !important; }
+    h3 { font-size: 14px !important; }
+    p, ul, ol, li, .callout, .quote { font-size: 14px !important; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead th, tbody td { padding: 8px 10px; white-space: nowrap; }
+    .conclusion { padding: 16px 14px; }
+    .flow-step { padding: 6px 10px; }
+    img, svg { max-width: 100% !important; height: auto !important; }
+  }
+
 </style>
 </head>
 <body>

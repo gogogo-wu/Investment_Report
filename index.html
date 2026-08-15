@@ -122,7 +122,7 @@
 
   /* ===== 移动端：汉堡按钮 + 遮罩 ===== */
   .menu-btn {
-    position: fixed; top: 12px; left: 64px; z-index: 70;
+    position: fixed; top: 12px; left: 12px; z-index: 70;
     width: 42px; height: 42px; border-radius: 12px;
     background: rgba(28,28,30,.92); border: 1px solid rgba(255,255,255,.12);
     color: #f5f5f7; font-size: 17px; cursor: pointer;
@@ -131,11 +131,11 @@
     touch-action: manipulation; -webkit-tap-highlight-color: transparent;
     font-family: inherit; line-height: 1;
   }
-  .back-btn {
-    left: 12px; width: auto; padding: 0 14px; gap: 4px;
+  .menu-btn.back-btn {
+    width: auto; padding: 0 14px; gap: 4px;
     font-size: 14px; font-weight: 500;
   }
-  .back-btn .arrow { font-size: 18px; line-height: 1; }
+  .menu-btn .arrow { font-size: 18px; line-height: 1; }
   .mask {
     position: fixed; inset: 0; z-index: 40;
     background: rgba(0,0,0,.55); opacity: 0; pointer-events: none;
@@ -145,10 +145,6 @@
   /* ===== 移动端适配（≤768px：抽屉式侧栏） ===== */
   @media (max-width: 768px) {
     .menu-btn { display: flex; }
-    #backBtn { display: none; }
-    body.in-report #backBtn { display: flex; }
-    body.in-report #menuBtn { left: 96px; }
-    body:not(.in-report) #menuBtn { left: 12px; }
     .sidebar {
       position: fixed; z-index: 60; left: 0; top: 0; bottom: 0;
       width: 284px;
@@ -175,8 +171,7 @@
 </style>
 </head>
 <body>
-<button class="menu-btn back-btn" id="backBtn" aria-label="返回首页"><span class="arrow">&lsaquo;</span> 首页</button>
-<button class="menu-btn" id="menuBtn" aria-label="打开菜单">&#9776;</button>
+<button class="menu-btn" id="navBtn" aria-label="打开菜单" onclick="onNavBtn(event)">&#9776;</button>
 <div class="mask" id="mask"></div>
 <div class="layout">
 
@@ -375,6 +370,23 @@
   var home = document.getElementById('home');
   var items = Array.prototype.slice.call(document.querySelectorAll('.nav-item'));
   var tocRows = Array.prototype.slice.call(document.querySelectorAll('.toc-row'));
+  /* 关键：layout/navBtn 必须在 route() 首次调用前赋值，
+     否则 showHome() -> closeSidebar() 会因 layout 未定义抛错，
+     导致后面所有按钮事件绑定中断（手机端按钮全部失效的根因） */
+  var navBtn = document.getElementById('navBtn');
+  var layout = document.querySelector('.layout');
+  var mask = document.getElementById('mask');
+
+  function setNavBtnHome() {
+    navBtn.classList.remove('back-btn');
+    navBtn.innerHTML = '&#9776;';
+    navBtn.setAttribute('aria-label', '打开菜单');
+  }
+  function setNavBtnBack() {
+    navBtn.classList.add('back-btn');
+    navBtn.innerHTML = '<span class="arrow">&lsaquo;</span> 首页';
+    navBtn.setAttribute('aria-label', '返回首页');
+  }
 
   function showHome() {
     document.body.classList.remove('in-report');
@@ -384,6 +396,7 @@
       it.classList.toggle('active', it.getAttribute('data-page') === 'home');
     });
     document.title = '我的金融发散笔记';
+    setNavBtnHome();
     closeSidebar();
   }
 
@@ -398,6 +411,7 @@
       it.classList.toggle('active', it.getAttribute('data-page') === page);
     });
     document.title = r.title + ' · 我的金融发散笔记';
+    setNavBtnBack();
     closeSidebar();
   }
 
@@ -436,25 +450,23 @@
 
   document.getElementById('reportCount').textContent = Object.keys(REPORTS).length;
 
-  /* ===== 移动端抽屉 ===== */
-  var menuBtn = document.getElementById('menuBtn');
-  var mask = document.getElementById('mask');
-  var layout = document.querySelector('.layout');
-
+  /* ===== 移动端：单一按钮（首页=打开菜单 / 报告页=返回首页） ===== */
   function closeSidebar() {
-    layout.classList.remove('sidebar-open');
+    if (layout) layout.classList.remove('sidebar-open');
   }
 
-  menuBtn.addEventListener('click', function () {
-    layout.classList.toggle('sidebar-open');
-  });
+  function onNavBtn(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (document.body.classList.contains('in-report')) {
+      closeSidebar();
+      go('home');
+      window.scrollTo(0, 0);
+    } else {
+      layout.classList.toggle('sidebar-open');
+    }
+  }
+  window.onNavBtn = onNavBtn;
   mask.addEventListener('click', closeSidebar);
-  document.getElementById('backBtn').addEventListener('click', function (e) {
-    e.preventDefault();
-    closeSidebar();
-    go('home');
-    window.scrollTo(0, 0);
-  });
 </script>
 </body>
 </html>

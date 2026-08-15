@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASIC竞争格局发散笔记 · 从AVGO暴跌到CPU集成化与中国镜像</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .flow {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin: 14px 0 18px; font-size: 13px;
+  }
+  .flow-step {
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 8px;
+    padding: 8px 14px; color: #d1d1d6;
+  }
+  .flow-step b { color: #f5f5f7; display: block; font-size: 13px; }
+  .flow-arrow { color: #2997ff; font-size: 16px; font-weight: 700; }
+
+  /* ===== 内嵌示意图 ===== */
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  /* ===== 移动端适配 ===== */
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .subtitle { font-size: 13px; }
+    .section h2 { font-size: 16px; }
+    .section h3 { font-size: 14px; }
+    p, ul, ol, .callout, .quote { font-size: 14px; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead th, tbody td { padding: 8px 10px; white-space: nowrap; }
+    .badge-row { margin-bottom: 22px; }
+    .conclusion { padding: 16px 14px; }
+    .flow-step { padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>ASIC 竞争格局发散笔记</h1>
+<p class="subtitle">AVGO 暴跌归因 · Google-AMD TPU v10 · 博通五路反击 · CPU 集成化 · 三路线控制力 · 中国镜像 &mdash; 2026 年 8 月</p>
+<div class="badge-row">
+  <span class="badge badge-red">XPV 表外风险</span>
+  <span class="badge badge-blue">ASIC 三代演进</span>
+  <span class="badge badge-warn">CPU 集成化趋势</span>
+  <span class="badge badge-green">中国镜像链</span>
+</div>
+
+<!-- ====== 第一章：AVGO 暴跌归因 ====== -->
+<div class="section">
+  <h2>一、触发点：AVGO 8/14 暴跌，跌的不是业绩是「表外」</h2>
+  <p>8 月 14 日 AVGO 单日大跌约 <span class="red">-5.94%</span>。拉消息面发现：<strong>不是财报问题，不是订单问题</strong>，而是三件事叠加，其中最重的一记来自一份信用研报。</p>
+  <ul>
+    <li><strong>美银信用研报</strong>：首次系统揭露博通 XPV（XPU 融资平台）的表外风险 &mdash;&mdash; SPV 购买定制 XPU 租给 Anthropic 等客户，博通提供 <strong>残值担保（RVG）</strong>，满载规模标题值 <span class="red">$3,700 亿</span>（2029 年中峰值），届时优先债务可能累积到该量级。</li>
+    <li><strong>Michael Burry 做空 AI 链</strong>：做空 NBIS / ORCL / MU / SOXX，并称英伟达 $5,000 亿融资平台有「安然式操作的影子」。</li>
+    <li><strong>VMware 漏洞事件</strong>：ESXi 沙箱逃逸高危漏洞（CVE-2025-6286），影响 vCenter Server 8.0/9.0，给情绪面添了一层压。</li>
+  </ul>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 360" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g10a" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#2997ff"/><stop offset="1" stop-color="#818cf8"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="820" height="360" rx="12" fill="#111114"/>
+      <text x="410" y="42" text-anchor="middle" fill="#f5f5f7" font-size="20" font-weight="700">AVGO XPV 融资平台：标题风险 vs 实际敞口</text>
+      <rect x="60" y="80" width="320" height="210" rx="10" fill="rgba(239,68,68,.10)" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="220" y="112" text-anchor="middle" fill="#f87171" font-size="17" font-weight="700">标题值（研报口径）</text>
+      <text x="220" y="152" text-anchor="middle" fill="#f5f5f7" font-size="30" font-weight="700">$3,700 亿</text>
+      <text x="220" y="186" text-anchor="middle" fill="#a1a1a6" font-size="14">满载状态峰值优先债务</text>
+      <text x="220" y="214" text-anchor="middle" fill="#a1a1a6" font-size="14">（2029 年中，极端假设）</text>
+      <text x="220" y="252" text-anchor="middle" fill="#f87171" font-size="14" font-weight="600">卖方标题党数字 = 恐慌放大器</text>
+      <rect x="440" y="80" width="320" height="210" rx="10" fill="rgba(34,197,94,.10)" stroke="#22c55e" stroke-width="1.5"/>
+      <text x="600" y="112" text-anchor="middle" fill="#4ade80" font-size="17" font-weight="700">实际敞口（10-Q 口径）</text>
+      <text x="600" y="152" text-anchor="middle" fill="#f5f5f7" font-size="30" font-weight="700">$290 亿</text>
+      <text x="600" y="186" text-anchor="middle" fill="#a1a1a6" font-size="14">当前资产负债表真实担保</text>
+      <text x="600" y="214" text-anchor="middle" fill="#a1a1a6" font-size="14">极端情形 $420 亿 / 25% 违约率 ~$105 亿</text>
+      <text x="600" y="252" text-anchor="middle" fill="#4ade80" font-size="14" font-weight="600">标题值是实际敞口的 ~13 倍</text>
+      <path d="M 385 185 L 435 185" stroke="url(#g10a)" stroke-width="2.5" marker-end="url(#arrow10)"/>
+      <defs><marker id="arrow10" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#818cf8"/></marker></defs>
+      <text x="410" y="322" text-anchor="middle" fill="#98989d" font-size="14">暴跌本质：表外风险「第一次被定价」，而非基本面恶化 &mdash; 美银同时上调收入 +10% / EBITDA +13%，未下调股票评级</text>
+    </svg>
+  </div>
+  <p class="fig-cap">图 1-1 XPV 风险的两种口径：$3,700 亿标题 vs $290 亿实际</p>
+
+  <div class="callout callout-warn">
+    <strong>XPU 融资平台比 GPU 更危险的一点：</strong>XPU 没有二级市场。GPU 违约后还能转卖（残值可估），定制 XPU 违约后残值高度不确定 &mdash;&mdash; RVG 残值担保的「尾部」比英伟达 $5,000 亿平台的更黑。但风险存在恰恰说明这套客户锁定机制在运转。
+  </div>
+  <p>位置上，AVGO 收在 <span class="blue">$393</span> 附近，落在 P09 观察清单档一区间（$380-420）内；<span class="yellow">$386 斐波那契 0.618 支撑</span>是关键技术位，9/2 Q3 财报是下一个验证点。</p>
+</div>
+
+<!-- ====== 第二章：Google-AMD TPU v10 ====== -->
+<div class="section">
+  <h2>二、Google 找 AMD 定制 TPU v10：不是换供应商，是架构代际跳变</h2>
+  <p>同期的另一条消息：Google 与 AMD 达成 TPU v10 合作。初读像是「博通丢了订单」，深读之后结论不同 &mdash;&mdash; <span class="blue">这是 ASIC 架构的第三代演进，不是简单的供应商替换</span>。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 330" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="820" height="330" rx="12" fill="#111114"/>
+      <text x="410" y="40" text-anchor="middle" fill="#f5f5f7" font-size="20" font-weight="700">ASIC 三代演进：张量 → Chiplet → CPU 集成化</text>
+      <rect x="30" y="80" width="230" height="190" rx="10" fill="rgba(41,151,255,.10)" stroke="#2997ff" stroke-width="1.5"/>
+      <text x="145" y="112" text-anchor="middle" fill="#8ab4ff" font-size="16" font-weight="700">第一代 · 纯张量</text>
+      <text x="145" y="142" text-anchor="middle" fill="#e5e5ea" font-size="14">TPU v1 &ndash; v6</text>
+      <text x="145" y="172" text-anchor="middle" fill="#a1a1a6" font-size="13">Broadcom 独家</text>
+      <text x="145" y="200" text-anchor="middle" fill="#a1a1a6" font-size="13">单芯片矩阵运算</text>
+      <text x="145" y="240" text-anchor="middle" fill="#98989d" font-size="12">时代：训练 / 推理</text>
+      <rect x="295" y="80" width="230" height="190" rx="10" fill="rgba(129,140,248,.10)" stroke="#818cf8" stroke-width="1.5"/>
+      <text x="410" y="112" text-anchor="middle" fill="#a5b4fc" font-size="16" font-weight="700">第二代 · Chiplet 异构</text>
+      <text x="410" y="142" text-anchor="middle" fill="#e5e5ea" font-size="14">TPU v7 / Trainium3</text>
+      <text x="410" y="172" text-anchor="middle" fill="#a1a1a6" font-size="13">联发科加入（SerDes/CPU）</text>
+      <text x="410" y="200" text-anchor="middle" fill="#a1a1a6" font-size="13">多 die 拼装降本</text>
+      <text x="410" y="240" text-anchor="middle" fill="#98989d" font-size="12">时代：规模扩展</text>
+      <rect x="560" y="80" width="230" height="190" rx="10" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="675" y="112" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="700">第三代 · CPU 集成化</text>
+      <text x="675" y="142" text-anchor="middle" fill="#e5e5ea" font-size="14">TPU v10 方向</text>
+      <text x="675" y="172" text-anchor="middle" fill="#a1a1a6" font-size="13">AMD 加入（CPU IP + SoIC）</text>
+      <text x="675" y="200" text-anchor="middle" fill="#a1a1a6" font-size="13">CPU die 3D 堆进张量阵列</text>
+      <text x="675" y="240" text-anchor="middle" fill="#98989d" font-size="12">时代：Agent / RL 工作负载</text>
+      <path d="M 262 175 L 293 175" stroke="#5b6b8c" stroke-width="2" marker-end="url(#ar2)"/>
+      <path d="M 527 175 L 558 175" stroke="#5b6b8c" stroke-width="2" marker-end="url(#ar2)"/>
+      <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#5b6b8c"/></marker></defs>
+      <text x="410" y="304" text-anchor="middle" fill="#98989d" font-size="14">Bernstein：2026 年 ASIC 占 CoWoS 出货 45%；Google TPU 占 ASIC 市场 46%</text>
+    </svg>
+  </div>
+  <p class="fig-cap">图 2-1 ASIC 三代演进与各家站位</p>
+
+  <div class="callout">
+    <strong>第三代的核心驱动力是物理规律：</strong>RL / Agent 是多步推理工作负载，任务规划、工具调用、子代理协同都压在 CPU 上。CPU 与加速器之间 PCIe 总线延迟是微秒级，密集往返时成为瓶颈 &mdash;&mdash; 解法只有一个：用 3D 混合键合把 CPU die 堆进张量阵列上方（AMD SoIC），延迟降到纳秒级。Intel CEO 陈立武：「CPU:GPU 配比正从 1:8 向 1:1 甚至 4:1 靠拢。」
+  </div>
+  <p><strong>为什么是 AMD？</strong>AMD 是唯一同时拥有三样东西的公司：高性能 CPU IP（EPYC）+ Chiplet 十年经验 + SoIC 3D 堆叠量产能力。英伟达有 Grace 但不做 ASIC；博通会做 ASIC 但没有 CPU IP；Intel 有 CPU 但 ASIC 设计服务刚起步。</p>
+</div>
+
+<!-- ====== 第三章：博通五路反击 ====== -->
+<div class="section">
+  <h2>三、博通没有看戏：已经打出的五张牌</h2>
+  <p>先厘清一个误解：<strong>Google 并没有「离开」博通</strong>。2026 年 3 月双方签署五年长期协议，锁定 v8/v9/v10/v11 四代 TPU 设计供应商，合作延续至 2031 年。v9 主订单给联发科、v10 引入 AMD，本质是 Google 的「分享而非替换」双供应商策略。CEO 陈福原：「客户在 COT 领域不会看到竞争，因为我们在这方面远远领先。」
+
+  <div class="fig">
+    <svg viewBox="0 0 820 330" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="820" height="330" rx="12" fill="#111114"/>
+      <text x="410" y="40" text-anchor="middle" fill="#f5f5f7" font-size="20" font-weight="700">博通五路反击</text>
+      <rect x="30" y="70" width="240" height="110" rx="10" fill="rgba(41,151,255,.10)" stroke="#2997ff" stroke-width="1.2"/>
+      <text x="150" y="100" text-anchor="middle" fill="#8ab4ff" font-size="15" font-weight="700">① 3.5D XDSiP 封装</text>
+      <text x="150" y="128" text-anchor="middle" fill="#e5e5ea" font-size="13">F2F 堆叠信号密度 14,000/mm²</text>
+      <text x="150" y="152" text-anchor="middle" fill="#a1a1a6" font-size="13">≈ AMD SoIC 的 10 倍 · 2027 出货超百万颗</text>
+      <rect x="550" y="70" width="240" height="110" rx="10" fill="rgba(34,197,94,.10)" stroke="#22c55e" stroke-width="1.2"/>
+      <text x="670" y="100" text-anchor="middle" fill="#4ade80" font-size="15" font-weight="700">② 六大客户锁定</text>
+      <text x="670" y="128" text-anchor="middle" fill="#e5e5ea" font-size="13">Google/OpenAI/Apple/Meta 等</text>
+      <text x="670" y="152" text-anchor="middle" fill="#a1a1a6" font-size="13">Apple 单 &gt;$300 亿 · 积压 $73B</text>
+      <rect x="30" y="200" width="240" height="110" rx="10" fill="rgba(129,140,248,.10)" stroke="#818cf8" stroke-width="1.2"/>
+      <text x="150" y="230" text-anchor="middle" fill="#a5b4fc" font-size="15" font-weight="700">③ 网络层垄断</text>
+      <text x="150" y="258" text-anchor="middle" fill="#e5e5ea" font-size="13">Tomahawk 6 102.4T 唯一供应商</text>
+      <text x="150" y="282" text-anchor="middle" fill="#a1a1a6" font-size="13">AI 营收约 40% 来自网络而非 XPU</text>
+      <rect x="290" y="200" width="240" height="110" rx="10" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="1.2"/>
+      <text x="410" y="230" text-anchor="middle" fill="#fbbf24" font-size="15" font-weight="700">④ 三星 MOU 双保险</text>
+      <text x="410" y="258" text-anchor="middle" fill="#e5e5ea" font-size="13">HBM4 + sub-2nm 代工 + 封装</text>
+      <text x="410" y="282" text-anchor="middle" fill="#a1a1a6" font-size="13">降低台积电单一依赖</text>
+      <rect x="550" y="200" width="240" height="110" rx="10" fill="rgba(239,68,68,.10)" stroke="#ef4444" stroke-width="1.2"/>
+      <text x="670" y="230" text-anchor="middle" fill="#f87171" font-size="15" font-weight="700">⑤ XPV 金融锁定</text>
+      <text x="670" y="258" text-anchor="middle" fill="#e5e5ea" font-size="13">SPV 买 XPU 租给客户 + RVG</text>
+      <text x="670" y="282" text-anchor="middle" fill="#a1a1a6" font-size="13">收费站模式：换供应商沉没成本极高</text>
+    </svg>
+  </div>
+  <p class="fig-cap">图 3-1 博通反击的五个支点（另有 FuriosaAI 等生态扩展）</p>
+
+  <table>
+    <thead><tr><th>客户</th><th>协议</th><th>规模 / 备注</th></tr></thead>
+    <tbody>
+      <tr><td>Google</td><td>TPU v8&ndash;v11，至 2031</td><td>2026 年提供 &gt;1GW 算力</td></tr>
+      <tr><td>OpenAI</td><td>10GW 定制加速器，至 2029</td><td>Jalape&ntilde;o 芯片 9 个月概念到流片</td></tr>
+      <tr><td>Apple</td><td>多年期 ASIC 协议至 2031</td><td><span class="green">&gt;$300 亿</span>，含 Baltra AI 服务器芯片</td></tr>
+      <tr><td>Meta</td><td>MTIA 多代合作</td><td>2028 年底前 3GW</td></tr>
+      <tr><td>Anthropic</td><td>经 Google TPU 获算力</td><td>2027 年起 3.5GW</td></tr>
+      <tr><td>富士通</td><td>3.5D XDSiP 首发客户</td><td>Monaka 144 核 ARM CPU</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>Apple $300 亿大单是关键增量叙事：</strong>它不依赖 Google TPU 生态，是纯粹的博通-苹果双边合作。五大超大规模客户（Google/Meta/字节/OpenAI/Apple）至此全部锁定。网络层（Tomahawk 6 / Jericho 4 / CPO）是被低估的「另一半」&mdash;&mdash; 当集群扩展到 GW 级，网络与计算等量齐观，博通是大多数超大规模厂商的唯一供应商，领先英伟达 Spectrum-X 至少一代。
+  </div>
+</div>
+
+<!-- ====== 第四章：CPU 集成化与博通的裂缝 ====== -->
+<div class="section">
+  <h2>四、CPU 集成化不可逆，博通的结构性裂缝在哪里</h2>
+  <p>三巨头同时押注同一个方向，说明这不是选择而是物理规律：英伟达 Grace+Blackwell（NVLink-C2C）、AMD SoIC、Intel Clearwater Forest 3D 堆叠。但<strong>博通没有高性能 CPU IP</strong> &mdash;&mdash; 这是它最真实的弱点。如果未来每颗加速器都必须包含 CPU die，CPU IP 的价值捕获会流向 Arm / AMD / Intel，博通可能从「唯一设计者」降级为「联合设计者 + 封装商」，压缩毛利率。</p>
+  <p>博通的应对不是补 CPU（那需要十年），而是<strong>把 3.5D XDSiP 做成「任何 CPU 都能塞进去」的通用底盘</strong>，三个已落地案例：</p>
+  <ul>
+    <li><strong>富士通 Monaka</strong>：144 核 ARM CPU（IP 来自 Arm），博通只做封装和 I/O &mdash;&mdash; 证明它不需要拥有 CPU，只需要知道怎么把 CPU 堆好。</li>
+    <li><strong>OpenAI + Arm + 博通「三国同盟」</strong>：Arm 升级为定制 CPU 设计者，博通出 XPU + 3.5D 集成，OpenAI 买单。利润分享 &gt; 股权控制。</li>
+    <li><strong>TPU v9 = MediaTek CPU + 博通 XPU</strong>：Google 的「最佳组件」组合模式，博通仍握封装和 XPU 设计。</li>
+  </ul>
+  <div class="quote">一句话：AMD 卖的是「整车」，博通卖的是「底盘 + 调校」。大客户要的是后者 &mdash;&mdash; 因为第一原则是绝不能把计算基础设施的灵魂交给单一供应商。</div>
+
+  <table>
+    <thead><tr><th>能力</th><th>博通</th><th>AMD</th><th>英伟达</th><th>Intel</th></tr></thead>
+    <tbody>
+      <tr><td>高性能 CPU IP</td><td class="red">没有</td><td>EPYC (x86)</td><td>Grace (ARM)</td><td>Xeon (x86)</td></tr>
+      <tr><td>ASIC 设计能力</td><td class="green">最强</td><td>有（客户仅 Google）</td><td>无</td><td>起步（Fortinet 全栈单）</td></tr>
+      <tr><td>先进封装</td><td class="green">3.5D XDSiP</td><td>SoIC + CoWoS</td><td>NVLink-C2C</td><td>EMIB / Foveros</td></tr>
+      <tr><td>网络芯片</td><td class="green">垄断</td><td>无</td><td>Spectrum-X</td><td>有</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead><tr><th>时间维度</th><th>风险程度</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>短期（2-3 年）</td><td class="green">低</td><td>六客户锁定至 2031，3.5D 领先，网络垄断</td></tr>
+      <tr><td>中期（3-5 年）</td><td class="yellow">中</td><td>若 AMD 拿下 TPU v10/v11 全包合同，份额被侵蚀</td></tr>
+      <tr><td>长期（5 年+）</td><td class="red">中高</td><td>若 SoIC 追上信号密度 + AMD 积累客户基础，封装溢价被压缩</td></tr>
+    </tbody>
+  </table>
+  <div class="callout callout-red">
+    <strong>最需要警惕的情景</strong>：不是「AMD 取代博通」，而是客户逐渐把 CPU + ASIC 都交给 AMD 一站式搞定，博通沦为纯网络芯片供应商。早期信号 = AMD 拿下第二个 ASIC 大客户。
+  </div>
+</div>
+
+<!-- ====== 第五章：三路线客户控制力 ====== -->
+<div class="section">
+  <h2>五、客户视角：一站式 vs 平台 vs 系统代工，谁更可控</h2>
+  <p>把三条路线放回客户（Google / Meta / OpenAI / Apple）的视角下重排，控制力排序是：<span class="blue">博通平台 &gt; Intel 系统代工 &gt; AMD 一站式</span>。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="820" height="300" rx="12" fill="#111114"/>
+      <text x="410" y="40" text-anchor="middle" fill="#f5f5f7" font-size="20" font-weight="700">客户控制力光谱（越右客户越有控制权）</text>
+      <rect x="50" y="80" width="720" height="14" rx="7" fill="rgba(255,255,255,.08)"/>
+      <rect x="50" y="80" width="720" height="14" rx="7" fill="url(#g10b)" opacity=".55"/>
+      <defs><linearGradient id="g10b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ef4444"/><stop offset=".5" stop-color="#f59e0b"/><stop offset="1" stop-color="#22c55e"/></linearGradient></defs>
+      <rect x="70" y="110" width="220" height="120" rx="10" fill="rgba(239,68,68,.10)" stroke="#ef4444" stroke-width="1.2"/>
+      <text x="180" y="140" text-anchor="middle" fill="#f87171" font-size="15" font-weight="700">AMD 一站式「整车」</text>
+      <text x="180" y="166" text-anchor="middle" fill="#e5e5ea" font-size="13">CPU/ASIC/封装全包</text>
+      <text x="180" y="190" text-anchor="middle" fill="#a1a1a6" font-size="13">低控制力 · 锁死 EPYC+SoIC</text>
+      <text x="180" y="214" text-anchor="middle" fill="#98989d" font-size="12">适合不愿自研 CPU 的中型客户</text>
+      <rect x="300" y="110" width="220" height="120" rx="10" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="1.2"/>
+      <text x="410" y="140" text-anchor="middle" fill="#fbbf24" font-size="15" font-weight="700">Intel 系统代工</text>
+      <text x="410" y="166" text-anchor="middle" fill="#e5e5ea" font-size="13">CPU IP + 制造 + EMIB 封装</text>
+      <text x="410" y="190" text-anchor="middle" fill="#a1a1a6" font-size="13">中控制力 · 封装先行很聪明</text>
+      <text x="410" y="214" text-anchor="middle" fill="#98989d" font-size="12">验证期未过（14A 要 2028）</text>
+      <rect x="530" y="110" width="220" height="120" rx="10" fill="rgba(34,197,94,.10)" stroke="#22c55e" stroke-width="1.2"/>
+      <text x="640" y="140" text-anchor="middle" fill="#4ade80" font-size="15" font-weight="700">博通平台「底盘+调校」</text>
+      <text x="640" y="166" text-anchor="middle" fill="#e5e5ea" font-size="13">自带 CPU · 最佳组件组合</text>
+      <text x="640" y="190" text-anchor="middle" fill="#a1a1a6" font-size="13">高控制力 · 每层可换可议价</text>
+      <text x="640" y="214" text-anchor="middle" fill="#98989d" font-size="12">Google 实际做法已验证</text>
+      <text x="410" y="272" text-anchor="middle" fill="#98989d" font-size="14">Google 实际组合：MediaTek CPU die + 博通 XPU + 博通 3.5D 封装 + 博通网络芯片</text>
+    </svg>
+  </div>
+  <p class="fig-cap">图 5-1 三路线客户控制力光谱</p>
+
+  <p><strong>Intel 的「封装先行」为什么聪明</strong>：封装验证周期短（EMIB 良率 90%+，比 CoWoS-L 便宜最多 50%）、痛点最明确（CoWoS 被英伟达占 60%+，其他客户排不上队）、地理分散（美国/韩国/马来西亚）。Google 和 Amazon 正在谈每年数十亿美元的封装合同。但 Foundry 仍亏 $21 亿/季、14A 要 2028 年量产 &mdash;&mdash; <span class="yellow">真实竞争者，时间线在 2027-2028 之后</span>。</p>
+</div>
+
+<!-- ====== 第六章：博通收购 ARM ====== -->
+<div class="section">
+  <h2>六、博通收购 ARM 补 CPU？&mdash;&mdash; 伪命题</h2>
+  <p>直觉上「买 ARM 补短板」很顺，但四堵墙把这条路堵死了：</p>
+  <ol>
+    <li><strong>英伟达先例已定</strong>：2022 年英伟达 $400 亿收购 ARM 被 FTC 起诉阻止。理由：ARM 的核心价值是中立性，被单一芯片公司拥有即失去中立。博通是 ARM 最大的 ASIC 设计客户之一，纵向合并问题完全相同，FTC 直接引用先例即可。</li>
+    <li><strong>ARM 正被 FTC 反垄断调查</strong>（2026 年 5 月启动），节骨眼上被收购等于火上浇油。</li>
+    <li><strong>SoftBank 不卖</strong>：ARM 股价年内近乎翻倍，估值高位，收购溢价会非常惊人。</li>
+    <li><strong>收购 = 毁掉 ARM 的价值</strong>：高通投奔 RISC-V、苹果加速自研、英伟达全力推 Grace 替代 &mdash;&mdash; 花千亿美金买一个所有客户都在逃离的空壳。</li>
+  </ol>
+  <div class="callout callout-green">
+    博通已经在做正确的事：与 Arm 建立合作而非拥有（OpenAI + Arm + 博通三国同盟）。<strong>不需要「拥有」Arm，只需要让 Arm 的 CPU 设计离不开博通的封装平台。</strong>
+  </div>
+</div>
+
+<!-- ====== 第七章：中国镜像产业链 ====== -->
+<div class="section">
+  <h2>七、中国镜像：管制墙内的平行产业链</h2>
+  <p>把中国维度加进来，格局多出一层「地缘镜像」：三条全球路线在中国基本全部缺席（AMD MI 对华禁售、博通在华无 AI 芯片业务、Intel EMIB 曾服务华为后被禁），中国自建了完整镜像链。TrendForce：2026 年中国高端 AI 芯片国产份额约 <span class="blue">90%</span>，英伟达/AMD 合计萎缩至 ~10%。</p>
+
+  <table>
+    <thead><tr><th>全球路线</th><th>中国镜像</th><th>差异</th></tr></thead>
+    <tbody>
+      <tr><td>AMD 一站式 + Intel 制造</td><td class="blue">华为（海思昇腾 + 鲲鹏 CPU + 超节点 + CANN）</td><td>设计 + 制造 + 系统全包的「合体」</td></tr>
+      <tr><td>博通平台化</td><td>无直接对标（最接近：寒武纪、芯原）</td><td>中国缺独立 ASIC 设计平台巨头</td></tr>
+      <tr><td>Intel 系统代工</td><td>中芯国际（N+2 = 7nm 等效）+ 封测四强</td><td>制程被卡，靠封装补</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>两个关键洞察</strong>：其一，CPU 集成化在中国同频发生 &mdash;&mdash; 鲲鹏 CPU + 昇腾超节点（Atlas 950：1024 卡 1 EFLOPS，可扩 52 万卡）就是中国版「CPU + ASIC 集成」。但中国客户没有 Google 那样的控制力选择权，这是管制强制而非市场选择。其二，封装在中国的权重比全球更高：制程被卡 &rarr; 华为「韬定律」用 3D 折叠补制程 &rarr; 2026 年约 300 万张国产推理芯片全部需要 2.5D 封装。A 股已在定价：先进封装板块 YTD +54%，昇腾板块 -11%。</p>
+
+  <table>
+    <thead><tr><th>环节</th><th>代表公司</th><th>要点</th></tr></thead>
+    <tbody>
+      <tr><td>晶圆代工</td><td>中芯国际、华虹</td><td>昇腾独家代工，N+3 爬坡</td></tr>
+      <tr><td>AI 芯片设计</td><td>寒武纪、海光、平头哥</td><td>寒武纪注意 82 亿存货「以产定销」</td></tr>
+      <tr><td>先进封装（权重最高）</td><td>长电科技、通富微电、华天、甬矽</td><td>通富承接 AMD ~80% 封测 + 昇腾，Q1 净利 +224%</td></tr>
+      <tr><td>HBM / 存储</td><td>长鑫存储、深科技、澜起</td><td>长鑫 HBM3 2026 底小批量 &rarr; 2027 月产能 5 万片</td></tr>
+      <tr><td>PCB / 载板</td><td>兴森科技、生益科技</td><td>兴森供华为 ABF 载板约 70%</td></tr>
+      <tr><td>设备</td><td>拓荆、北方华创、中微</td><td>拓荆混合键合打破 EVG 垄断</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>对美日韩持仓的四条传导线：</strong>① AMD &harr; 通富微电是中美利益嵌套点，AMD 出货越多通富越赚；② 长鑫 HBM3 2027 规模化，长期压制海力士/三星在华溢价（管制市场隔离，边际影响有限，盯出口能力）；③ 中国封测扩产 274 亿，日股设备商（东京电子/迪思科/新川）吃成熟封装设备订单；④ 博通在华 AI 缺席 = 反向的「地缘免疫力」。
+  </div>
+  <div class="callout callout-warn">
+    <strong>诚实的提醒：</strong>A 股这条链估值已不便宜（寒武纪 &yen;1,093、先进封装半年 +54%），「以产定销」备货模式意味着业绩兑现依赖客户认证，波动大。对照观察很好，追高不符合低位挖掘纪律。
+  </div>
+</div>
+
+<!-- ====== 第八章：结论 ====== -->
+<div class="section">
+  <h2>八、一页总结与观察指标</h2>
+  <div class="conclusion">
+    <h2>核心结论</h2>
+    <ol>
+      <li><strong>AVGO 暴跌是表外风险首次被定价，不是基本面恶化</strong>：$3,700 亿是满载极端假设，10-Q 实际敞口 $290 亿；美银未下调股票评级。$386 是关键支撑，9/2 Q3 财报验证。</li>
+      <li><strong>Google-AMD TPU v10 是架构代际跳变，不是供应商替换</strong>：第三代 CPU 集成化由 RL/Agent 工作负载和 PCIe 物理瓶颈驱动，不可逆。</li>
+      <li><strong>博通护城河的形状在变</strong>：从「ASIC 设计垄断」变成「封装平台（3.5D）+ 网络垄断 + 六客户锁定 + XPV 金融锁定」。CPU IP 是真实裂缝，但它选择做「装 CPU 的底盘」而非自研 CPU。</li>
+      <li><strong>控制力排序：博通平台 &gt; Intel 系统代工 &gt; AMD 一站式</strong>；大客户第一原则 = 绝不把灵魂交给单一供应商。</li>
+      <li><strong>博通收购 ARM 是伪命题</strong>；中国是地缘镜像市场，先进封装是墙内权重最高环节。</li>
+    </ol>
+    <p style="margin-top:10px"><strong>观察指标（后续跟踪）：</strong>① AMD 是否拿下第二个 ASIC 大客户；② 9/2 AVGO Q3 财报对 XPV 的披露口径；③ Intel 数十亿美元级封装合同是否落地；④ 长鑫 HBM3 出口能力；⑤ TPU v10 量产参数（CPU die 占比 / SoIC vs 3.5D 用量）。</p>
+  </div>
+  <div class="home-foot" style="margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#86868b;line-height:1.8;">
+    以上均为个人发散思考与学习笔记，仅作自我复盘用途，不构成任何投资建议。
+  </div>
+</div>
+
+</div>
+</body>
+</html>

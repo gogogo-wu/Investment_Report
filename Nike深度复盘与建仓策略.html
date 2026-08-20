@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nike深度复盘 · 从$179到$40的崩塌与Win Now改革</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  /* ===== 内嵌示意图 ===== */
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  /* ===== 移动端适配 ===== */
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .subtitle { font-size: 13px; }
+    .section h2 { font-size: 16px; }
+    .section h3 { font-size: 14px; }
+    p, ul, ol, .callout, .quote { font-size: 14px; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .badge { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Nike深度复盘：从 $179 到 $40 的崩塌与 Win Now 改革</h1>
+<p class="subtitle">五重打击 · 恶性循环 · 五路围攻 · Elliott Hill 改革 · 华尔街压力测试 · 建仓区间 · 突发利好 · AI 机会</p>
+<div class="badge-row">
+  <span class="badge badge-blue">NKE</span>
+  <span class="badge badge-red">$600亿市值</span>
+  <span class="badge badge-warn">12年新低</span>
+  <span class="badge badge-green">Win Now</span>
+  <span class="badge badge-blue">Elliott Hill</span>
+  <span class="badge badge-warn">2026-08-20</span>
+</div>
+
+<!-- ==================== 第一章 ==================== -->
+<div class="section">
+<h2>一、崩塌复盘：$179 → $40，五重打击叠加</h2>
+
+<p>2021 年 11 月，Nike 股价见顶 <span class="blue">$179</span>——当时它是全球运动品牌的绝对统治者，营收 $445 亿、市值 $2800 亿。到 2026 年 8 月 17 日，股价盘中跌到 <span class="red">$39.42</span>，创 12 年新低，距历史高点回撤约 75%，市值蒸发约 $2200 亿。这不是一次危机造成的，而是<span class="yellow">五重打击在三年内接连叠加</span>的结果。</p>
+
+<div class="fig">
+<svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="gl1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2997ff"/><stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="glLine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(41,151,255,.55)"/><stop offset="1" stop-color="rgba(41,151,255,.02)"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="860" height="300" rx="12" fill="#121216"/>
+  <!-- 坐标区域 -->
+  <line x1="70" y1="40" x2="70" y2="250" stroke="rgba(255,255,255,.12)"/>
+  <line x1="70" y1="250" x2="830" y2="250" stroke="rgba(255,255,255,.12)"/>
+  <!-- 网格 -->
+  <line x1="70" y1="60" x2="830" y2="60" stroke="rgba(255,255,255,.05)"/>
+  <line x1="70" y1="110" x2="830" y2="110" stroke="rgba(255,255,255,.05)"/>
+  <line x1="70" y1="160" x2="830" y2="160" stroke="rgba(255,255,255,.05)"/>
+  <line x1="70" y1="210" x2="830" y2="210" stroke="rgba(255,255,255,.05)"/>
+  <!-- Y 轴标签：180/120/60/0 -->
+  <text x="58" y="44" fill="#86868b" font-size="12" text-anchor="end">180</text>
+  <text x="58" y="94" fill="#86868b" font-size="12" text-anchor="end">120</text>
+  <text x="58" y="144" fill="#86868b" font-size="12" text-anchor="end">60</text>
+  <text x="58" y="254" fill="#86868b" font-size="12" text-anchor="end">0</text>
+  <!-- X 轴标签 -->
+  <text x="180" y="272" fill="#86868b" font-size="12" text-anchor="middle">2021.11</text>
+  <text x="380" y="272" fill="#86868b" font-size="12" text-anchor="middle">2023</text>
+  <text x="560" y="272" fill="#86868b" font-size="12" text-anchor="middle">2024.10 Hill回归</text>
+  <text x="740" y="272" fill="#86868b" font-size="12" text-anchor="middle">2026.8 新低</text>
+  <!-- 股价路径 -->
+  <polyline points="70,45 150,60 230,80 310,95 390,130 470,150 550,170 630,215 700,235 740,252"
+    fill="none" stroke="url(#gl1)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 顶点标记 -->
+  <circle cx="70" cy="45" r="5" fill="#2997ff"/>
+  <text x="84" y="40" fill="#f5f5f7" font-size="13" font-weight="600">$179 峰值</text>
+  <text x="84" y="58" fill="#86868b" font-size="11">2021.11 市值 $2800亿</text>
+  <!-- 下跌阶段标签 -->
+  <text x="150" y="48" fill="#f87171" font-size="11">①DTC战略失误</text>
+  <text x="240" y="128" fill="#f87171" font-size="11">②创新停滞+③竞对崛起</text>
+  <text x="430" y="178" fill="#f87171" font-size="11">④中国失速</text>
+  <text x="620" y="230" fill="#f87171" font-size="11">⑤关税+盈利质量存疑</text>
+  <!-- 新低标记 -->
+  <circle cx="740" cy="252" r="5" fill="#ef4444"/>
+  <text x="752" y="240" fill="#f5f5f7" font-size="13" font-weight="600">$39.42 新低</text>
+  <text x="752" y="258" fill="#86868b" font-size="11">2026.8.17 12年新低 · 回撤-75%</text>
+  <!-- 底部填充 -->
+  <polygon points="70,45 150,60 230,80 310,95 390,130 470,150 550,170 630,215 700,235 740,252 740,250 70,250"
+    fill="url(#glLine)"/>
+</svg>
+<div class="fig-cap">图1 · Nike 股价崩塌路径：三年半五次打击，每一次都踩实一次下跌</div>
+</div>
+
+<h3>五重打击逐一拆解</h3>
+<table>
+  <thead><tr><th style="width:26px">#</th><th style="width:130px">打击</th><th>核心事实</th><th style="width:90px">定性</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>①</td><td><b>DTC 战略失败</b></td>
+      <td>前任 CEO John Donahoe 砍批发：零售商从 3 万家砍到约 1 万家，把宝押在自营 App 上；结果库存暴涨 44%，2023 年被迫重回批发，三年错失市场节奏</td>
+      <td class="red">自我伤害</td>
+    </tr>
+    <tr>
+      <td>②</td><td><b>产品创新停滞</b></td>
+      <td>依赖 Air Force 1 / Dunk 等经典款复刻，跑步、训练等专业品类多年没有 Air 级突破产品；跑步市场份额被 Brooks / Hoka 系统性抽走</td>
+      <td class="red">核心竞争力</td>
+    </tr>
+    <tr>
+      <td>③</td><td><b>竞争对手崛起</b></td>
+      <td>On（+30%）、Hoka（+18.5%）、Brooks（+23%）多线夹击；Adidas 靠 Samba 复古潮完成文艺复兴，全球份额十年来首次从 Nike 手中夺走 0.1pct</td>
+      <td class="red">群狼围攻</td>
+    </tr>
+    <tr>
+      <td>④</td><td><b>中国失速</b></td>
+      <td>大中华区收入从峰值 $82.9 亿跌到 FY2026 $58.5 亿（五年 -30%）；市占率 25.3% → 14.6%，安踏登顶，国货份额首破 52%</td>
+      <td class="red">结构性失血</td>
+    </tr>
+    <tr>
+      <td>⑤</td><td><b>关税 + 盈利质量</b></td>
+      <td>关税成本侵蚀毛利；FY26 Q4 靠 $986M 关税追回一次性收益"粉饰"EPS（$0.72 中 $0.52 来自退款），市场识破后 8 月继续创新低</td>
+      <td class="red">信任损伤</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>恶性循环：折扣螺旋</h3>
+<p>五重打击不是孤立事件，它们被一个<span class="yellow">自我强化的恶性循环</span>串在一起：</p>
+<div class="quote">库存积压 → 加大折扣清货 → 品牌溢价下降 → 正价新品更难卖 → 库存更重 → 再打更多折……（折扣率从 22% 一路涨到约 35%）</div>
+<p>这个循环的可怕之处在于：它同时侵蚀收入（折扣）、利润（毛利率）、品牌（正价心智）和未来（新品订单被挤压）。Donahoe 时代的 DTC 赌注不仅没有打破循环，反而因为砍掉批发渠道而加剧了库存失衡。</p>
+</div>
+
+<!-- ==================== 第二章 ==================== -->
+<div class="section">
+<h2>二、竞争威胁评估：五路围攻全景</h2>
+
+<p>总判断：<span class="yellow">Nike 今天面对的已经不是"Adidas 一个对手"，而是五个战场、五组完全不同的敌人同时蚕食</span>。过去运动品牌是"赢家通吃"——消费者为品牌 Logo 买单。现在这个模式瓦解了：消费者开始按品类选"最专业的那一个"——跑步选 Brooks/Hoka、通勤选 On、复古选 Adidas、日常场景选安踏——Nike 在每个战场都在失血。</p>
+
+<div class="fig">
+<svg viewBox="0 0 860 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="gCenter" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2997ff"/><stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="860" height="420" rx="12" fill="#121216"/>
+  <!-- 中心 Nike -->
+  <circle cx="430" cy="210" r="72" fill="rgba(41,151,255,.10)" stroke="url(#gCenter)" stroke-width="2"/>
+  <text x="430" y="198" fill="#f5f5f7" font-size="24" font-weight="700" text-anchor="middle">NIKE</text>
+  <text x="430" y="222" fill="#86868b" font-size="12" text-anchor="middle">全线失血</text>
+  <!-- 攻击箭头连线 -->
+  <line x1="380" y1="150" x2="180" y2="70" stroke="rgba(239,68,68,.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="490" y1="150" x2="680" y2="70" stroke="rgba(239,68,68,.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="360" y1="270" x2="160" y2="350" stroke="rgba(239,68,68,.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="500" y1="270" x2="700" y2="350" stroke="rgba(239,68,68,.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="430" y1="282" x2="430" y2="360" stroke="rgba(245,158,11,.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- ①跑步（左上，红） -->
+  <rect x="42" y="28" width="235" height="86" rx="10" fill="rgba(239,68,68,.12)" stroke="rgba(239,68,68,.45)"/>
+  <text x="160" y="52" fill="#f87171" font-size="14" font-weight="700" text-anchor="middle">① 跑步赛道 · 致命</text>
+  <text x="160" y="72" fill="#e5e5ea" font-size="12" text-anchor="middle">Brooks / HOKA / NB / ASICS / On</text>
+  <text x="160" y="90" fill="#98989d" font-size="11" text-anchor="middle">Nike 掉出美国成人跑鞋前五</text>
+  <text x="160" y="106" fill="#f87171" font-size="11" text-anchor="middle">技术信用正在被抽走</text>
+  <!-- ②中国（右上，红） -->
+  <rect x="583" y="28" width="235" height="86" rx="10" fill="rgba(239,68,68,.12)" stroke="rgba(239,68,68,.45)"/>
+  <text x="700" y="52" fill="#f87171" font-size="14" font-weight="700" text-anchor="middle">② 中国战场 · 惨烈</text>
+  <text x="700" y="72" fill="#e5e5ea" font-size="12" text-anchor="middle">安踏 / 李宁 本土军团</text>
+  <text x="700" y="90" fill="#98989d" font-size="11" text-anchor="middle">份额 25.3% → 14.6%，国货破 52%</text>
+  <text x="700" y="106" fill="#f87171" font-size="11" text-anchor="middle">不可逆的失血</text>
+  <!-- ③Adidas（左下，橙） -->
+  <rect x="42" y="308" width="235" height="86" rx="10" fill="rgba(245,158,11,.12)" stroke="rgba(245,158,11,.45)"/>
+  <text x="160" y="332" fill="#fbbf24" font-size="14" font-weight="700" text-anchor="middle">③ Adidas · 文艺复兴</text>
+  <text x="160" y="352" fill="#e5e5ea" font-size="12" text-anchor="middle">Samba / Gazelle 复古浪潮</text>
+  <text x="160" y="370" fill="#98989d" font-size="11" text-anchor="middle">Q1'26 +14%，全球份额十年来首夺</text>
+  <text x="160" y="386" fill="#fbbf24" font-size="11" text-anchor="middle">欧洲与生活方式品类</text>
+  <!-- ④篮球（右下，绿） -->
+  <rect x="583" y="308" width="235" height="86" rx="10" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.45)"/>
+  <text x="700" y="332" fill="#4ade80" font-size="14" font-weight="700" text-anchor="middle">④ 篮球 / 训练 · 稳固</text>
+  <text x="700" y="352" fill="#e5e5ea" font-size="12" text-anchor="middle">Jordan 品牌 + NBA 统治</text>
+  <text x="700" y="370" fill="#98989d" font-size="11" text-anchor="middle">唯一还在赢的战场</text>
+  <text x="700" y="386" fill="#4ade80" font-size="11" text-anchor="middle">护城河仍深</text>
+  <!-- ⑤户外（底部，橙） -->
+  <rect x="313" y="360" width="235" height="50" rx="10" fill="rgba(245,158,11,.10)" stroke="rgba(245,158,11,.4)"/>
+  <text x="430" y="379" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle">⑤ 户外越野 · 边缘失守</text>
+  <text x="430" y="397" fill="#98989d" font-size="11" text-anchor="middle">Hoka / Salomon / Arc'teryx 抢高端心智</text>
+</svg>
+<div class="fig-cap">图2 · 五路围攻：四条战线失血、一条稳固，Nike 正从"全能品牌"退化为"篮球+美国市场的局部强势品牌"</div>
+</div>
+
+<h3>威胁等级评估</h3>
+<table>
+  <thead><tr><th style="width:90px">战场</th><th style="width:70px">威胁等级</th><th style="width:110px">主要对手</th><th>关键数据</th></tr></thead>
+  <tbody>
+    <tr><td><b>跑步</b></td><td class="red">致命</td><td>Brooks / HOKA / On</td><td>美国成人跑鞋市场 Nike 掉出前五；Hoka Bondi+Clifton 是全美单品销冠；On 增速 +30% vs Nike Brand +3%</td></tr>
+    <tr><td><b>中国</b></td><td class="red">惨烈</td><td>安踏 / 李宁</td><td>份额 25.3%→14.6%；自营数字渠道连续 10 季萎缩；2027.1 清退线上经销商再损 $5-10 亿</td></tr>
+    <tr><td><b>欧洲复古</b></td><td class="yellow">中高</td><td>Adidas</td><td>Samba 现象级爆款；Adidas 全球份额十年来首次从 Nike 手中夺走 0.1pct（Nike -0.3pct）</td></tr>
+    <tr><td><b>篮球/训练</b></td><td class="green">稳固</td><td>—</td><td>Jordan 品牌有 NBA 统治力撑着，签名鞋矩阵完整，暂无失守迹象</td></tr>
+    <tr><td><b>户外越野</b></td><td class="yellow">中</td><td>Hoka / Salomon</td><td>高端户外心智被抢走，Nike Trail 品类缺乏存在感</td></tr>
+  </tbody>
+</table>
+
+<div class="callout-red">
+<b>为什么跑步是命门：</b>跑步是运动品牌的技术信用锚点——"能造出最好的跑鞋"这个认知，会外溢到篮球、训练、生活全线。Nike 在跑步失守，等于技术叙事整体崩塌。唯一的亮点是专业跑步渠道销售 +35.4%（前十大品牌里增长最快），说明 Hill 的跑步反击已在专业店生效，但大众渠道货架仍被 Brooks/Hoka 占据。
+</div>
+</div>
+
+<!-- ==================== 第三章 ==================== -->
+<div class="section">
+<h2>三、中国战场：最惨烈、也最不可逆的失血</h2>
+
+<div class="fig">
+<svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(239,68,68,.5)"/><stop offset="1" stop-color="rgba(239,68,68,.08)"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="860" height="300" rx="12" fill="#121216"/>
+  <text x="430" y="30" fill="#f5f5f7" font-size="15" font-weight="600" text-anchor="middle">Nike 大中华区市占率（2020 → 2026）</text>
+  <!-- 柱状图：2020 25.3% / 2022 20% / 2024 16% / 2026 14.6% -->
+  <g>
+    <!-- 2020 -->
+    <rect x="110" y="70" width="110" height="160" rx="6" fill="url(#gRed)"/>
+    <text x="165" y="60" fill="#f5f5f7" font-size="20" font-weight="700" text-anchor="middle">25.3%</text>
+    <text x="165" y="248" fill="#98989d" font-size="13" text-anchor="middle">2020</text>
+    <!-- 2022 -->
+    <rect x="310" y="98" width="110" height="132" rx="6" fill="rgba(239,68,68,.55)"/>
+    <text x="365" y="88" fill="#f5f5f7" font-size="20" font-weight="700" text-anchor="middle">20.0%</text>
+    <text x="365" y="248" fill="#98989d" font-size="13" text-anchor="middle">2022</text>
+    <!-- 2024 -->
+    <rect x="510" y="126" width="110" height="104" rx="6" fill="rgba(239,68,68,.4)"/>
+    <text x="565" y="116" fill="#f5f5f7" font-size="20" font-weight="700" text-anchor="middle">16.0%</text>
+    <text x="565" y="248" fill="#98989d" font-size="13" text-anchor="middle">2024</text>
+    <!-- 2026 -->
+    <rect x="710" y="140" width="110" height="90" rx="6" fill="rgba(239,68,68,.3)"/>
+    <text x="765" y="130" fill="#f5f5f7" font-size="20" font-weight="700" text-anchor="middle">14.6%</text>
+    <text x="765" y="248" fill="#98989d" font-size="13" text-anchor="middle">2026</text>
+    <!-- 基准线 安踏 ~22% -->
+    <line x1="70" y1="88" x2="830" y2="88" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="800" y="80" fill="#fbbf24" font-size="12" text-anchor="end">安踏集团 ~22%（第一）</text>
+  </g>
+  <!-- 底部标注 -->
+  <text x="430" y="282" fill="#86868b" font-size="12" text-anchor="middle">国货整体份额突破 52% · 历史上首次超过在华外资品牌总和</text>
+</svg>
+<div class="fig-cap">图3 · 大中华区市占率持续下滑：从第一跌到第二，且趋势无反转迹象</div>
+</div>
+
+<p>中国战场的细节最触目惊心，因为它最能说明"为什么这轮失血几乎是不可逆的"：</p>
+
+<ul>
+  <li><b>五年收入缩水 30%</b>：峰值 $82.9 亿 → FY2026 $58.5 亿（reported -11% / 固定汇率 -13%），连续 7-8 个季度负增长；FY26 Q4 单季 -12%/-17% CN，<span class="red">Nike 自营数字渠道暴跌 25-29%（连续第 10 个季度萎缩）</span></li>
+  <li><b>市占率被双杀</b>：从 2020 年的 25.3% 一路跌到 14.6%，安踏集团以约 22% 登顶；国货整体份额突破 52%，历史上首次超过在华外资品牌总和</li>
+  <li><b>最伤的一刀是自己砍的</b>：Nike 宣布 2027 年 1 月起清退中国数千家线上经销商——包括合作 27 年的滔搏（线上业务占滔搏收入 22%，消息一出滔搏股价盘中 -25%）。<span class="yellow">Nike 在自己数字渠道最弱的时候，砍掉所有帮它卖货的伙伴</span>。法国巴黎银行分析师评价很直白：<b>"耐克面临的不是经销商问题，而是产品问题"</b>，预计这一刀会再损失 $5-10 亿中国销售</li>
+  <li><b>结构性的东西赢不回来</b>：安踏氮科技 / 李宁䨻科技性能已对标国际一线但价格只有 1/3；300-600 元黄金价格带国货占 70% 以上；加上国潮认同、版型适配——这不是换个 CEO 换个策略能逆转的战场</li>
+</ul>
+
+<div class="callout-warn">
+<b>关键认知：</b>清退中国线上经销商，是 Donahoe 北美 DTC 错误的重演——当年切批发丢了北美主导权，现在在中国本土品牌全面崛起的背景下切渠道，等于自断双臂。渠道动作改变不了需求端，产品问题只能用产品解决。
+</div>
+</div>
+
+<!-- ==================== 第四章 ==================== -->
+<div class="section">
+<h2>四、Elliott Hill 战略改革：Win Now 六支柱</h2>
+
+<p>Elliott Hill 2024 年 10 月回归（32 年 Nike 老兵，退休后被请回救火）。他的判断和前任 John Donahoe 完全相反：<span class="blue">Nike 的病根不是 DTC 做得不够，而是忘了自己是谁</span>——Donahoe 时代把组织从"按运动品类划分"改成"按人群划分"（男/女/儿童），本质是销售数据导向，把 Nike 的运动灵魂让位给了报表。</p>
+
+<p>Hill 的处方是"Win Now"，六个支柱：</p>
+
+<div class="fig">
+<svg viewBox="0 0 860 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="gPillar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(41,151,255,.35)"/><stop offset="1" stop-color="rgba(41,151,255,.05)"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="860" height="380" rx="12" fill="#121216"/>
+  <!-- 顶梁 -->
+  <rect x="70" y="36" width="720" height="54" rx="10" fill="url(#gPillar)" stroke="rgba(41,151,255,.4)"/>
+  <text x="430" y="58" fill="#f5f5f7" font-size="16" font-weight="700" text-anchor="middle">Elliott Hill · Win Now 战略</text>
+  <text x="430" y="78" fill="#98989d" font-size="12" text-anchor="middle">"回归运动内核，让 Nike 重新成为 Nike"</text>
+  <!-- 六根柱子 -->
+  <g>
+    <!-- 柱1 -->
+    <rect x="70" y="120" width="110" height="190" rx="8" fill="rgba(41,151,255,.10)" stroke="rgba(41,151,255,.35)"/>
+    <text x="125" y="146" fill="#8ab4ff" font-size="13" font-weight="700" text-anchor="middle">回归运动</text>
+    <text x="125" y="164" fill="#8ab4ff" font-size="13" font-weight="700" text-anchor="middle">内核</text>
+    <text x="125" y="188" fill="#98989d" font-size="11" text-anchor="middle">组织按运动</text>
+    <text x="125" y="204" fill="#98989d" font-size="11" text-anchor="middle">品类重建</text>
+    <text x="125" y="228" fill="#4ade80" font-size="12" font-weight="600" text-anchor="middle">已见效</text>
+    <!-- 柱2 -->
+    <rect x="196" y="120" width="110" height="190" rx="8" fill="rgba(41,151,255,.10)" stroke="rgba(41,151,255,.35)"/>
+    <text x="251" y="146" fill="#8ab4ff" font-size="13" font-weight="700" text-anchor="middle">重建批发</text>
+    <text x="251" y="188" fill="#98989d" font-size="11" text-anchor="middle">北美批发 +10%</text>
+    <text x="251" y="204" fill="#98989d" font-size="11" text-anchor="middle">Foot Locker 四年</text>
+    <text x="251" y="220" fill="#98989d" font-size="11" text-anchor="middle">首次双正</text>
+    <text x="251" y="244" fill="#4ade80" font-size="12" font-weight="600" text-anchor="middle">已见效</text>
+    <!-- 柱3 -->
+    <rect x="322" y="120" width="110" height="190" rx="8" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.4)"/>
+    <text x="377" y="146" fill="#4ade80" font-size="13" font-weight="700" text-anchor="middle">跑步先行</text>
+    <text x="377" y="188" fill="#98989d" font-size="11" text-anchor="middle">5 季双位数增长</text>
+    <text x="377" y="204" fill="#98989d" font-size="11" text-anchor="middle">新增近 $10 亿</text>
+    <text x="377" y="220" fill="#98989d" font-size="11" text-anchor="middle">跑步份额 +5pct</text>
+    <text x="377" y="244" fill="#4ade80" font-size="12" font-weight="600" text-anchor="middle">最硬证据</text>
+    <!-- 柱4 -->
+    <rect x="448" y="120" width="110" height="190" rx="8" fill="rgba(245,158,11,.10)" stroke="rgba(245,158,11,.35)"/>
+    <text x="503" y="146" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle">清理经典款</text>
+    <text x="503" y="188" fill="#98989d" font-size="11" text-anchor="middle">压 $40亿+ 库存</text>
+    <text x="503" y="204" fill="#98989d" font-size="11" text-anchor="middle">为新款腾出</text>
+    <text x="503" y="220" fill="#98989d" font-size="11" text-anchor="middle">货架空间</text>
+    <text x="503" y="244" fill="#fbbf24" font-size="12" font-weight="600" text-anchor="middle">进行中</text>
+    <!-- 柱5 -->
+    <rect x="574" y="120" width="110" height="190" rx="8" fill="rgba(245,158,11,.10)" stroke="rgba(245,158,11,.35)"/>
+    <text x="629" y="146" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle">Sport</text>
+    <text x="629" y="164" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle">Offense</text>
+    <text x="629" y="188" fill="#98989d" font-size="11" text-anchor="middle">裁员 2000+</text>
+    <text x="629" y="204" fill="#98989d" font-size="11" text-anchor="middle">$20 亿节约</text>
+    <text x="629" y="228" fill="#fbbf24" font-size="12" font-weight="600" text-anchor="middle">进行中</text>
+    <!-- 柱6 -->
+    <rect x="700" y="120" width="110" height="190" rx="8" fill="rgba(245,158,11,.10)" stroke="rgba(245,158,11,.35)"/>
+    <text x="755" y="146" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle">创新补课</text>
+    <text x="755" y="188" fill="#98989d" font-size="11" text-anchor="middle">H2 财年</text>
+    <text x="755" y="204" fill="#98989d" font-size="11" text-anchor="middle">12+ 新款</text>
+    <text x="755" y="220" fill="#98989d" font-size="11" text-anchor="middle">Air Max 1 回归</text>
+    <text x="755" y="244" fill="#fbbf24" font-size="12" font-weight="600" text-anchor="middle">待验证</text>
+  </g>
+  <!-- 基座 -->
+  <rect x="70" y="322" width="740" height="36" rx="8" fill="rgba(255,255,255,.05)"/>
+  <text x="430" y="345" fill="#86868b" font-size="12" text-anchor="middle">方向对了一半：运动内核+批发+跑步 = 对；中国清退+经典款依赖 = 未解决的结构矛盾</text>
+</svg>
+<div class="fig-cap">图4 · Win Now 六支柱框架与当前成效状态</div>
+</div>
+
+<h3>成绩单拆解：真实进展 vs 报表幻觉</h3>
+
+<p><b>确实见效的部分（值得肯定）：</b></p>
+<ul>
+  <li><span class="green">跑步 5 个季度连续双位数增长，累计新增近 $10 亿收入</span>；北美+西欧 statement running 品类份额 +5pct，跑赢所有对手——这是 Win Now 最硬的证据：运动叙事还能赢</li>
+  <li><span class="green">北美转正</span>（Q4 +3%），北美批发 +10%；Foot Locker 四年多来首次营收和 sell-through 双正——批发重建按计划推进</li>
+  <li>库存 $7.5B 持平未恶化，折扣、退货、取消全面减少；批发 +6% 至 $274.5 亿 vs Direct -6%，渠道换轨（从 DTC 极端回归全渠道）没有引发崩盘</li>
+</ul>
+
+<p><b>但报表里藏着两个大问题：</b></p>
+<div class="callout-red">
+<b>1. Q4 的"漂亮 EPS"是假的：</b>Q4 EPS $0.72 中 $0.52 来自一笔 $986M 的关税追回一次性收益——扣除后 EPS 只有 <b>$0.20</b>。毛利率 Q4 飙升 890bp 到 49.2%，其中 900bp 来自关税退款，剔除后毛利率实际基本持平。市场已经识破：8 月中旬股价继续创新低，就是"不再信任报表改善"的投票。
+</div>
+<div class="callout-red">
+<b>2. 占一半营收的发动机还在熄火：</b>Nike Sportswear + Jordan Streetwear 合计约占营收一半，仍在下滑——拖累的不只是当期收入，还有零售商的未来订单簿。跑步赢了，但跑步只是 Nike 的一部分。
+</div>
+
+<h3>结构性矛盾：药方对了一半</h3>
+<p>Hill 的方向对不对？<b>对了一半，且对的那一半正在见效，错的那一半恰好在最难的战场</b>：</p>
+<ul>
+  <li><b>对的部分</b>：回归运动内核 + 重建批发 + 跑步先行，全部得到数据验证——"药物有效"</li>
+  <li><b>不对的部分</b>：
+    <ul>
+      <li><b>用北美逻辑治理中国</b>：清退线上经销商（2027.1 生效）是 Donahoe 北美 DTC 错误的重演——当年切批发丢了北美主导权，现在在中国本土品牌全面崛起的背景下切渠道，等于自断双臂（BNP 直言"产品问题非渠道问题"）</li>
+      <li><b>经典款清理 vs 收入依赖的矛盾</b>：Win Now 要压 $40 亿+ 经典款库存，但 Sportswear/Jordan 还占一半营收——一边去库存一边靠它撑收入，进退两难</li>
+      <li><b>创新是"补课"不是"领先"</b>：H2 财年 12+ 新款是在追 Brooks/Hoka 已经定义的市场，Air 式突破性创新还没出现</li>
+      <li><b>分红压力</b>：$1.64 年化股息占报告 EPS $2.10 的 78%；剔除关税收益后 payout ratio 超过 100%——如果盈利继续下滑，要么砍股息（股价再崩），要么借债维持（信用承压）。这是市场担心的"股息陷阱"</li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<!-- ==================== 第五章 ==================== -->
+<div class="section">
+<h2>五、华尔街多空压力测试</h2>
+
+<p>FY26 Q4 财报后（6 月底）+ 8 月初降级潮之后，<span class="yellow">41 家机构的共识是 9 买 / 25 持 / 2 卖（另有 5 家未评级），平均目标价约 $50</span>，但目标价区间从 JPMorgan 的 <b>$40（Sell，8/4 降级）</b>一路拉到 Jefferies 的 <b>$90</b>。分歧达到历史级。</p>
+
+<div class="fig">
+<svg viewBox="0 0 860 330" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="gBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2997ff"/><stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="860" height="330" rx="12" fill="#121216"/>
+  <text x="430" y="30" fill="#f5f5f7" font-size="15" font-weight="600" text-anchor="middle">华尔街 Nike 目标价分歧（2026.8）</text>
+  <!-- 目标价条（按价格排序） -->
+  <g font-size="13">
+    <!-- JPM 40 -->
+    <text x="150" y="62" fill="#f87171" text-anchor="end">JPMorgan $40</text>
+    <rect x="160" y="50" width="120" height="16" rx="4" fill="rgba(239,68,68,.7)"/>
+    <!-- Stifel 45 -->
+    <text x="150" y="92" fill="#fbbf24" text-anchor="end">Stifel $45</text>
+    <rect x="160" y="80" width="135" height="16" rx="4" fill="rgba(245,158,11,.7)"/>
+    <!-- 共识 50 -->
+    <text x="150" y="122" fill="#f5f5f7" text-anchor="end">共识中位 $50</text>
+    <rect x="160" y="110" width="150" height="16" rx="4" fill="rgba(148,163,184,.7)"/>
+    <!-- Barclays 52 -->
+    <text x="150" y="152" fill="#fbbf24" text-anchor="end">Barclays $52</text>
+    <rect x="160" y="140" width="156" height="16" rx="4" fill="rgba(245,158,11,.7)"/>
+    <!-- Bernstein 68 -->
+    <text x="150" y="182" fill="#4ade80" text-anchor="end">Bernstein $68</text>
+    <rect x="160" y="170" width="204" height="16" rx="4" fill="rgba(34,197,94,.7)"/>
+    <!-- MS 72 -->
+    <text x="150" y="212" fill="#4ade80" text-anchor="end">Morgan Stanley $72</text>
+    <rect x="160" y="200" width="216" height="16" rx="4" fill="rgba(34,197,94,.7)"/>
+    <!-- Jefferies 90 -->
+    <text x="150" y="242" fill="#4ade80" text-anchor="end">Jefferies $90</text>
+    <rect x="160" y="230" width="270" height="16" rx="4" fill="rgba(34,197,94,.7)"/>
+  </g>
+  <!-- 现价参考线 -->
+  <line x1="160" y1="40" x2="160" y2="270" stroke="#2997ff" stroke-width="2"/>
+  <text x="168" y="38" fill="#2997ff" font-size="12" font-weight="600">现价 ~$40</text>
+  <!-- 刻度 -->
+  <g fill="#86868b" font-size="11">
+    <text x="160" y="290" text-anchor="middle">$40</text>
+    <text x="310" y="290" text-anchor="middle">$60</text>
+    <text x="460" y="290" text-anchor="middle">$80</text>
+    <text x="610" y="290" text-anchor="middle">$100</text>
+  </g>
+  <line x1="160" y1="276" x2="160" y2="284" stroke="#86868b"/>
+  <line x1="310" y1="276" x2="310" y2="284" stroke="#86868b"/>
+  <line x1="460" y1="276" x2="460" y2="284" stroke="#86868b"/>
+  <line x1="610" y1="276" x2="610" y2="284" stroke="#86868b"/>
+  <text x="430" y="318" fill="#86868b" font-size="12" text-anchor="middle">评级分布：9 买 / 25 持 / 2 卖 · 共识中位 $49.7 只比现价高 24% · "持有海"=相信能修复但不知道什么时候</text>
+</svg>
+<div class="fig-cap">图5 · 目标价分歧：JPM $40（Sell）到 Jefferies $90，机构内部剧烈分裂</div>
+</div>
+
+<h3>空头阵营（JPMorgan 领衔）</h3>
+<table>
+  <thead><tr><th style="width:44%">论点</th><th style="width:70px">判定</th><th>关键依据</th></tr></thead>
+  <tbody>
+    <tr><td>关税退款粉饰 EPS，盈利质量是假的</td><td class="green">成立</td><td>Q4 $0.72 EPS 中 $0.52（72%）来自 $986M 关税追回；毛利率 +890bp 中 900bp 来自退款。市场已用 8 月新低投票</td></tr>
+    <tr><td>中国重置是自愿选择的逆风，2027.1 起每年 $10 亿+ 收入消失</td><td class="green">成立</td><td>清退线上经销商约占中国收入 20%；BNP："不是经销商问题，而是产品问题"</td></tr>
+    <tr><td>JPM 的 EPS 比共识低 10-20%，Street 太乐观</td><td class="green">高度重视</td><td>JPM 给 FY27 $1.55（共识 ~$1.72）、FY28 $1.72（共识 ~$2.15）。若 JPM 对，现价对应 FY28 的 23x P/E，"便宜"幻觉破灭</td></tr>
+    <tr><td>技术面全是负面信号</td><td class="green">成立</td><td>头肩顶（头 $47、右肩 $42、颈线 $39）8 月确认跌破，量度目标 $34-36、延伸 $30-32；put/call 0.53→1.14；CMF -0.29</td></tr>
+    <tr><td>Converse 自由落体，或追加重组费用</td><td class="yellow">部分成立</td><td>Q3 营收 $264M（-35%）奔 15 年低点；占集团 <5%，财务影响有限但象征"失血是集团性的"</td></tr>
+  </tbody>
+</table>
+
+<h3>多头阵营（Bernstein / BTIG / Jefferies 领衔）</h3>
+<table>
+  <thead><tr><th style="width:44%">论点</th><th style="width:70px">判定</th><th>关键依据</th></tr></thead>
+  <tbody>
+    <tr><td>1.3x P/S 是十年最低，历史上五次转型都在此买入、24 个月回报全正</td><td class="yellow">部分成立</td><td>1994/2001/2008/2017/2020 五次 sub-1.5x P/S 买入都赚，但每次病根不同：2017 是渠道过度分销（修复路径清晰），今天是品牌心智瓦解（修复路径模糊）——<b>2017 是 V 形反转，今天可能是 L 形横盘</b></td></tr>
+    <tr><td>11 月投资者日 + FY30 双位数利润率目标 = 重估催化</td><td class="yellow">部分成立</td><td>催化剂真实存在（JPM 也承认这是唯一能推翻它结论的东西），但"目标"不是"结果"——Donahoe 画过更大的饼最终被撤回</td></tr>
+    <tr><td>23 年股息记录 + 4% 股息率 = 底部支撑</td><td class="red">不成立</td><td>逻辑倒置：剔除关税退款后 payout ratio 超 100%，<b>股息本身是下一个可能被砍的项目，不是支撑</b></td></tr>
+    <tr><td>跑步五季双位数增长 = Win Now 生效</td><td class="yellow">成立但被放大</td><td>北美+西欧跑步份额 +5pct、专业渠道 +35.4% 是真金白银；但占一半营收的 Sportswear+Jordan 还在下滑</td></tr>
+    <tr><td>品牌仍是全球第一 + 最壕赞助组合 = 护城河还在</td><td class="yellow">部分成立</td><td>L.E.K. 热度榜仍第一但差距缩到 9 分内；MS 实习生调查显示运动鞋偏好度连续第 5 年下滑创历史最低——<b>年轻消费者偏好是未来十年的领先指标，已在亮红灯</b></td></tr>
+  </tbody>
+</table>
+
+<div class="callout">
+<b>压力测试结论：</b>分歧的本质不是"能不能修复"，而是"多久修复"。空头在<b>盈利质量</b>和<b>时间</b>上赢了，多头在<b>估值底部</b>和<b>品牌资产</b>上没输。两边都是真数据，但 JPM 是唯一敢把数字拆到底的——在它被证伪之前，现价 $40 不是"地板"，是"中转站"。
+</div>
+</div>
+
+<!-- ==================== 第六章 ==================== -->
+<div class="section">
+<h2>六、建仓区间框架</h2>
+
+<p>先把 Nike 和 Intel 的地板性质对比清楚——这决定了建仓的保守程度：</p>
+<table>
+  <thead><tr><th style="width:110px">维度</th><th>Intel</th><th>Nike</th></tr></thead>
+  <tbody>
+    <tr><td><b>地板性质</b></td><td>国家战略资产 + 技术路线图（<span class="blue">硬地板</span>）</td><td>品牌心智（<span class="yellow">软地板</span>）</td></tr>
+    <tr><td><b>修复可验证性</b></td><td>高（18A 良率 / EMIB 订单 / 季报）</td><td>低（靠财报滞后确认）</td></tr>
+    <tr><td><b>建仓定性</b></td><td>战略观察·分批建仓区</td><td><b>观察区（未到建仓）</b></td></tr>
+    <tr><td><b>时间框架</b></td><td>3-5 年</td><td>3-5 年</td></tr>
+  </tbody>
+</table>
+
+<p>Intel 的地板是"物理的"——18A 良率、EMIB-T 98% 良率、英伟达订单都是可验证的客观事实，政府 $89 亿持股是制度性兜底。<span class="yellow">Nike 的地板是"心理的"</span>——品牌心智不可直接测量，只能靠品牌热度榜、年轻人偏好度这些滞后/模糊指标间接观察。所以 Nike 的建仓必须更保守：仓位上限一样（8%），但触发条件更严、等待更耐心。</p>
+
+<div class="fig">
+<svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="gZone1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(245,158,11,.35)"/><stop offset="1" stop-color="rgba(245,158,11,.08)"/>
+    </linearGradient>
+    <linearGradient id="gZone2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(129,140,248,.4)"/><stop offset="1" stop-color="rgba(129,140,248,.08)"/>
+    </linearGradient>
+    <linearGradient id="gZone3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(34,197,94,.4)"/><stop offset="1" stop-color="rgba(34,197,94,.08)"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="860" height="340" rx="12" fill="#121216"/>
+  <text x="430" y="30" fill="#f5f5f7" font-size="15" font-weight="600" text-anchor="middle">Nike 建仓区间 · 分层框架（2026.8 现价 $39-41）</text>
+  <!-- 价格轴 -->
+  <line x1="120" y1="60" x2="120" y2="300" stroke="rgba(255,255,255,.2)" stroke-width="2"/>
+  <g fill="#98989d" font-size="12" text-anchor="end">
+    <text x="108" y="64">$26</text>
+    <text x="108" y="104">$30</text>
+    <text x="108" y="144">$34</text>
+    <text x="108" y="184">$39</text>
+    <text x="108" y="224">$46</text>
+    <text x="108" y="264">$60</text>
+  </g>
+  <!-- Zone 3 -->
+  <rect x="120" y="50" width="600" height="40" rx="8" fill="url(#gZone3)" stroke="rgba(34,197,94,.5)"/>
+  <text x="730" y="74" fill="#4ade80" font-size="13" font-weight="700">Zone 3 · $26-28 · 最大 5-8%</text>
+  <!-- Zone 2 -->
+  <rect x="120" y="90" width="600" height="40" rx="8" fill="url(#gZone2)" stroke="rgba(129,140,248,.5)"/>
+  <text x="730" y="114" fill="#a5b4fc" font-size="13" font-weight="700">Zone 2 · $30-32 · 核心 3-5%</text>
+  <!-- Zone 1 -->
+  <rect x="120" y="130" width="600" height="40" rx="8" fill="url(#gZone1)" stroke="rgba(245,158,11,.5)"/>
+  <text x="730" y="154" fill="#fbbf24" font-size="13" font-weight="700">Zone 1 · $34-36 · 试探 1-2%</text>
+  <!-- 观察区 -->
+  <rect x="120" y="170" width="600" height="40" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.15)"/>
+  <text x="730" y="194" fill="#e5e5ea" font-size="13" font-weight="700">观察区 · $37-41 · 不建仓</text>
+  <!-- 现价线 -->
+  <line x1="120" y1="184" x2="730" y2="184" stroke="#2997ff" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="134" y="178" fill="#2997ff" font-size="12" font-weight="600">现价 ~$40</text>
+  <!-- 回抽确认线 -->
+  <line x1="120" y1="224" x2="730" y2="224" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="134" y="218" fill="#fbbf24" font-size="12">站稳 $46 = 头肩顶颈线回抽确认，下跌结构破坏</text>
+  <!-- 止损线 -->
+  <line x1="120" y1="270" x2="730" y2="270" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="134" y="264" fill="#f87171" font-size="12">止损 $22（Zone 3 建仓后 -15%）</text>
+  <!-- 底部说明 -->
+  <text x="430" y="318" fill="#86868b" font-size="12" text-anchor="middle">逻辑：头肩顶量度目标 $34-36 → 延伸 $30-32 → P/S 历史支撑 $26-28；每档仓位比 Intel 更轻、等待更久</text>
+</svg>
+<div class="fig-cap">图6 · Nike 建仓区间阶梯：现价不建仓，第一裁决点 9/28 Q1 财报</div>
+</div>
+
+<h3>为什么现价 $39-41 不建仓？</h3>
+<ul>
+  <li>① 头肩顶 8 月刚确认跌破，量度目标 $34-36 未到</li>
+  <li>② 盈利质量被关税退款污染，市场还在重新定价"真实 EPS"</li>
+  <li>③ 中国重置 2027 年 1 月才落地，$10 亿+ 逆风还没开始体现在报表里</li>
+</ul>
+<p class="quote">左侧抄底没问题，但左侧抄底也要等子弹便宜到值得扣扳机。</p>
+
+<h3>触发升级的五个信号（观察区 → Zone 1，或提前行动）</h3>
+<ol>
+  <li><b>Q1 FY27（9/28 财报）</b>：指引收敛（低中个位数下滑 → 转正）或中国止血（跌幅收窄到 -10% 以内）</li>
+  <li><b>11 月投资者日（11/16-17）</b>：给出可验证的季度里程碑 + 具体创新管线（不是 FY30 利润率口号）</li>
+  <li><b>Sportswear / Jordan 转正</b>——占一半营收的发动机重新点火</li>
+  <li><b>股息政策确认维持</b>——消除股息陷阱，payout 回到 &lt;80%</li>
+  <li><b>股价站稳 $46 上方</b>——头肩顶颈线回抽确认，下跌结构破坏</li>
+</ol>
+
+<h3>反向离场信号（任何一条出现，降级处理甚至清仓观察仓）</h3>
+<ul>
+  <li>中国 FY27 继续 -20%（管理层自己承认的下行情形）</li>
+  <li>股息削减</li>
+  <li>Converse 大额重组费用</li>
+  <li>JPM 的 FY28 $1.72 被证实</li>
+</ul>
+
+<div class="callout">
+<b>与 Intel 框架的本质差异：</b>Intel 的 Zone 2（$70-80）背后有 EMIB-T 98% 良率、英伟达 Feynman 订单、政府 $89 亿持股当"检测仪"——可以在 $70-80 重仓，因为修复路径可验证。Nike 的 Zone 2（$30-32）背后只有"品牌心智迟早均值回归"的信仰——修复不可验证，只能等财报事后确认。一句话：<b>Intel 是"技术修复"（确定性相对高，可分批重仓），Nike 是"品牌修复"（确定性低，只能左侧轻仓试探 + 严格止损）</b>。
+</div>
+</div>
+
+<!-- ==================== 第七章 ==================== -->
+<div class="section">
+<h2>七、突发利好地图：有明确时间表的催化剂</h2>
+
+<p>当一只股票把坏消息全部定价（12 年新低、P/S 1.3x 是 1993 年以来最低、41 家机构里 25 家 Hold），任何好消息的边际弹性都异常大——这是"预期已打到底 → 超预期成本极低"的不对称结构。<span class="yellow">问题从来不是"Nike 会不会有突发利好"，而是"哪些利好是时间表明确的、哪些是赌运气"</span>。</p>
+
+<h3>① 官宣型（高概率·高影响）——这是真正能提前埋伏的</h3>
+<ul>
+  <li><b>9/28 Q1 FY27 财报</b>：管理层已预告"毛利率从 Q1 开始扩张（剔除关税一次性收益）、Win Now 2026 年末收官"。市场共识 EPS 只有 $0.45（去年 $0.49），指引收入低至中个位数下滑——<b>预期已被砍到地板，而管理层在毛利率上的指引一向保守且连续 4 个季度兑现</b>。如果 Q1 毛利率转正被证实，这就是第一重估点：市场不为收入付钱，为"盈利轨迹拐点"付钱</li>
+  <li><b>11/16-17 投资者日</b>：这可能是未来半年最硬的催化剂。FY27 全年框架 + 长期利润率目标（管理层反复提"回到双位数营业利润率"）+ <b>回购重启</b>——$18B 回购授权几乎未动用（FY26 只买了 $1.23 亿、180 万股）、现金 $90 亿、新 CFO David Denton（前辉瑞/Lowe's 的 CFO，资本配置老手）8 月 17 日刚上任。<b>在 52 周低点宣布回购重启，等于公司自己用真金白银确认"地板在这里"</b></li>
+</ul>
+
+<h3>② 资金型（低概率·高影响）——只能等信号，不能埋伏</h3>
+<ul>
+  <li><b>激进投资者 13D</b>：Nike 完全符合画像（全球品牌 + 执行问题 + 历史级低估值），但目前没有任何确认的 Schedule 13D。最关键的先例：<b>Ackman 的 Pershing Square 曾建仓 $14 亿（$48-52 区间），2025 年 Q1 全部清仓退出</b>——"聪明钱试过又走了"，说明大资金对"修复时间表"依然没有信心。真出现 13D 会引发 UA 2017 式的重估，但这是不可预测的事件</li>
+  <li><b>私有化</b>：市值 $600 亿，溢价 30-40% 需要 $800-900 亿，PE 几乎不可能，基本可以排除</li>
+</ul>
+
+<h3>③ 事件型（已发生，中性偏正）——世界杯：输决赛，赢日常</h3>
+<p>7/19 决赛西班牙 vs 阿根廷，两队都穿 Adidas——Nike 的勾子第一次缺席世界杯决赛球衣（12 支赞助队里英格兰、法国、巴西三大高商业价值球队全部止步四强）。表面看是惨败，但数据拆开看 Nike 其实赢了"日常"：</p>
+<table>
+  <thead><tr><th>指标</th><th>Nike</th><th>Adidas</th></tr></thead>
+  <tbody>
+    <tr><td>赞助队数</td><td>12 支（含美加东道主）</td><td>14 支</td></tr>
+    <tr><td>球衣销量（vs 2022）</td><td>2.5 倍</td><td>4 倍</td></tr>
+    <tr><td>明星广告 Rip the Script</td><td class="green">首周 15 亿次观看 · YouTube 78M</td><td>YouTube 7M</td></tr>
+    <tr><td>赛事品牌价值（Launchmetrics）</td><td>$119.3M</td><td>$129.5M</td></tr>
+    <tr><td>美国市场售罄率（6 月前两周）</td><td class="green">28% SKU</td><td>7% SKU</td></tr>
+    <tr><td>单品纪录</td><td class="green">Mercurial 刺客：自营渠道最快 24h 销量纪录</td><td>官方用球</td></tr>
+  </tbody>
+</table>
+<p>定性：<b>Nike 输掉了"决赛日的流量峰值"，但赢了"日常的年轻心智"</b>——足球鞋被做成了穿搭单品，Mercurial 创纪录，北美本土主场完成破圈。这对"品牌热度"是真实加分，但短期不构成超预期利好（已反映在股价里），真正的兑现要看 12-2 月的 Q2 足球品类数据。</p>
+
+<h3>④ 产品型（中低概率）</h3>
+<p>Air Max 1 Heritage（9 月回归）、NikeSkims 女性线、Pegasus 41/Vaporfly 4——这些都是"补课"而非"爆款"。Nike 需要的是一个 Air Max 级别的突破性产品，才有重新定价品牌的力量；在那之前，产品型催化剂只能算"预期的组成部分"。</p>
+
+<div class="callout">
+<b>催化剂时间表（主动等待框架）：</b>① 9/28 Q1 财报 = 第一道闸门（毛利率转正兑现 → 提前评估升级；不及预期 → Zone 1 更近）；② 11/16-17 投资者日 = 第二道闸门（回购重启官宣 = 公司自己确认地板）；③ 12-2 月 Q2 数据 = 验证世界杯足球品类延续性；④ 激进投资者 13D = 出现即重估（不可预测）。<b>正确的策略不是"赌它突然反弹"，而是"在两道闸门前保持观察、在价格和时点共振时扣扳机"</b>。
+</div>
+</div>
+
+<!-- ==================== 第八章 ==================== -->
+<div class="section">
+<h2>八、AI 时代对 Nike：机会的本质</h2>
+
+<p><b>先说结论：AI 不会让 Nike 变成"AI 股"（别指望它被重新估值到成长股倍数），但 AI 是 Nike 修复主业的效率杠杆——而且恰好作用在它失血最严重的环节上。</b></p>
+
+<div class="callout-warn">
+<b>甄别提醒：</b>网上流传的"Nike 发布 AI 智能鞋（$249）、疲劳降低 18%、SUN888 数据平台、120 亿参数模型"——大多是软文/生成式假新闻（来源无法交叉验证），不能作为投资论据。Nike 真实的 AI 布局：Nike Fit（2019 脚型扫描）、收购 Celect（2020 零售需求预测）、2024 年收购 AI 设计平台、Project Amplify（2025 末公布的电动自适应跑鞋，仍是概念阶段）、Nike App / SNKRS / NTC 会员数据生态。
+</div>
+
+<p><b>AI 对 Nike 的价值排序 = 库存/折扣管理 &gt; 需求预测 &gt; 个性化定制 &gt; 智能硬件</b>。前三个是真金白银，最后一个是叙事。</p>
+
+<h3>真机会 1：AI 需求预测 → 直接修复毛利率（最值钱，因为可量化）</h3>
+<p>Nike 过去三年最痛的恶性循环是：库存积压 → 加折扣 → 品牌溢价下降 → 正价新品更难卖 → 库存更重（折扣率从 22% 一路涨到 35%）。<b>AI 需求预测（Celect 系）直接攻击这个循环的第一环</b>。对 Nike 的体量（FY26 营收 $464 亿），<span class="yellow">毛利率每修复 1 个百分点就是约 $4.6 亿</span>——比"多卖几双智能鞋"值钱一个数量级。管理层 Q4 已经给出证据：库存金额和件数双位数下降、折扣/退货/取消全面减少，且毛利率从 Q1 起转正——这正是 AI 工具 + 控货纪律共同作用的结果。</p>
+
+<h3>真机会 2：个性化定制 → 把数据资产变现（护城河在数据，不在模型）</h3>
+<p>这才是 Nike 相对 On/Hoka 真正的 AI 差异化：<b>On 和 Hoka 没有 Nike 20 年积累的脚型/运动数据库</b>（Nike Fit 扫描 + 1.5 亿会员 + 2 亿条运动记录）。生成式 AI 让用户设计 1-of-1 球鞋 = 按单生产、零库存风险、高毛利、还能收数据。这是"Nike 作为 AI 时代的数据公司"最合理的想象空间——但要注意，这个叙事 Nike 讲了很多年（Nike By You 定制业务），一直没有成为收入引擎，属于"潜力真实但兑现缓慢"。</p>
+
+<h3>真机会 3：生成式设计 → 缩短创新周期（回应"补课"批评）</h3>
+<p>2024 年收购 AI 设计平台 + 材料仿真，可以把打样迭代从月级压缩到天级。这对 Nike 的意义是：<b>在创新上从"追 Brooks/Hoka 已定义的市场"变成"重新定义市场的速度"</b>。这是 AI 对 Nike 最战略性的价值——但它要在 2027 年的产品管线里兑现才能被市场认可。</p>
+
+<h3>伪机会（要警惕）：智能鞋硬件是叙事，不是收入</h3>
+<p>Project Amplify（电动自适应鞋）这类产品有三个致命问题：① 运动鞋的复购逻辑是"3-6 个月磨坏一双"——加传感器/电池/芯片的鞋变贵了（$249+）但寿命没变，消费逻辑不成立；② 数据会被 Apple Watch / Garmin 截胡——<b>智能穿戴是苹果和佳明的战场，Nike 的硬件没有任何生态优势</b>；③ 消费者买鞋的理由是性能/风格/品牌，不是"AI 标签"——AI 不构成定价权。<b>市场真给 Nike"AI 溢价"的话，应该来自数据货币化（真机会 2），而不是卖几双智能鞋</b>。</p>
+
+<div class="callout">
+<b>AI 部分的结论：</b>AI 不改变仓位决策，但改变"为什么值得等"的理由——AI 让 Nike 的修复路径第一次有了"可量化的效率工具"：毛利率修复从"靠运气"变成"靠算法 + 纪律"，这正是管理层敢在 Q1 就预告毛利率转正的底气来源。<b>AI 时代 Nike 有机会，但机会的本质不是变成 AI 公司，而是用 AI 把修复主业的效率提到对手追不上的速度。</b>
+</div>
+</div>
+
+<!-- ==================== 第九章 ==================== -->
+<div class="section">
+<h2>九、五个观察点（未来 6-12 个月）</h2>
+<table>
+  <thead><tr><th style="width:36px">#</th><th style="width:190px">观察点</th><th>验证内容</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><b>Q1 FY27 财报（9/28）</b></td><td>毛利率转正是否兑现（剔除关税收益）；收入指引低中个位数下滑是否收敛</td></tr>
+    <tr><td>2</td><td><b>11 月投资者日（11/16-17）</b></td><td>FY27 全年框架 + 长期利润率目标 + 回购重启官宣；是否有可验证的季度里程碑</td></tr>
+    <tr><td>3</td><td><b>Sportswear / Jordan</b></td><td>占一半营收的发动机何时转正；经典款清理对收入的拖累何时见底</td></tr>
+    <tr><td>4</td><td><b>分红政策</b></td><td>剔除关税收益后 payout 超 100%——是否调整股息，是"股息陷阱"证伪的关键</td></tr>
+    <tr><td>5</td><td><b>新 CFO David Denton</b></td><td>前辉瑞/Lowe's 资本配置老手 8/17 上任；首个动作是否指向资本回报（回购/派息/重组）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ==================== 第十章 ==================== -->
+<div class="section">
+<h2>十、一页总结</h2>
+
+<div class="conclusion">
+<h2>Nike 定性：修复中的平庸公司，不是价值毁灭</h2>
+<p>ROIC 仍 16.6%（高于 WACC）、资产负债表健康（Altman Z 3.46），但品牌护城河在缓慢流失。和 Intel 类比：<b>Intel 有国家战略价值 + 技术路线图当"地板"，Nike 只有品牌心智当地板——品牌的修复比技术慢，也更依赖消费者情绪</b>。</p>
+<ul>
+  <li><b>崩塌本质</b>：五重打击（DTC 失误 / 创新停滞 / 竞对崛起 / 中国失速 / 关税）+ 折扣螺旋恶性循环，三年半 -75%</li>
+  <li><b>竞争格局</b>：五路围攻——跑步（致命）与中国（惨烈）是两条红线，Adidas 文艺复兴中高威胁，篮球稳固，户外边缘失守</li>
+  <li><b>改革评估</b>：Win Now 药方对了一半——跑步/批发/北美已见效，但中国清退是 Donahoe 重演、Sportswear 发动机未点火、创新仍在补课</li>
+  <li><b>华尔街分歧</b>：JPM 领衔空头在"盈利质量 + 时间"上赢（FY28 EPS 比共识低 20%），Bernstein 领衔多头在"估值底部 + 品牌资产"上没输；共识 9 买 25 持 2 卖</li>
+  <li><b>建仓判断</b>：现价 $39-41 不建仓；Zone 1 $34-36（1-2%）→ Zone 2 $30-32（3-5%）→ Zone 3 $26-28（5-8%）；止损 $22；第一裁决点 9/28，第二 11/16-17</li>
+  <li><b>突发利好</b>：利好大多有明确时间表（9/28 财报、11/16-17 投资者日 + 回购重启），不是随机赌博——"在价格和时点共振时扣扳机"</li>
+  <li><b>AI 机会</b>：AI 是修复主业的效率杠杆（需求预测修毛利率、数据资产变现、生成式设计提速），不是"AI 股"叙事；智能鞋是伪机会</li>
+</ul>
+</div>
+
+<p style="margin-top:28px; font-size:12px; color:#86868b; border-top:1px solid rgba(255,255,255,.08); padding-top:14px;">
+以上仅为个人认知范围内的理解与学习笔记，不构成任何投资建议。数据截至 2026-08-20。
+</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电力与物理AI · 两座时钟、卖铲人地图与建仓区间</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  /* ===== 内嵌示意图 ===== */
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  /* ===== 移动端适配 ===== */
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .subtitle { font-size: 13px; }
+    .section h2 { font-size: 16px; }
+    .section h3 { font-size: 14px; }
+    p, ul, ol, .callout, .quote { font-size: 14px; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .badge { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>电力与物理 AI：两座时钟、卖铲人地图与建仓区间</h1>
+<p class="subtitle">电力=现在进行时 · 物理AI=叙事构建期 · 定价三层反直觉 · 波动分层与收入结构 · 24/7 硬度阶梯 · 卖铲人双保险 · 未扫环节 · 建仓区间总表</p>
+<div class="badge-row">
+  <span class="badge badge-blue">AI 电力链</span>
+  <span class="badge badge-green">物理 AI</span>
+  <span class="badge badge-warn">定价分层</span>
+  <span class="badge badge-red">建仓纪律</span>
+  <span class="badge badge-blue">2026-08-22</span>
+</div>
+
+<!-- ==================== 第一章 ==================== -->
+<div class="section">
+<h2>一、两座时钟：电力是现在进行时，物理 AI 是叙事构建期</h2>
+
+<p>把"电力"和"物理 AI"放在一起谈很容易混为一谈，但它们处在完全不同的时钟上。<span class="blue">电力的瓶颈已经发生</span>——2026 年全球数据中心用电量突破 <span class="yellow">1000 TWh</span>，约等于日本一个国家的全年用电量；在美国，数据中心占电力需求增量的 <span class="yellow">55%</span>。瓶颈不再是 GPU，而是电网本身：并网队列累计 <span class="red">2600+ GW</span>，平均排队 5 年，且约 <span class="red">80% 的排队项目最终退出</span>；PJM 的容量成本一年内从 $2.2B 飙到 $14.7B。这不是预测，是正在发生的事实。</p>
+
+<p><span class="blue">物理 AI 还处在叙事构建期</span>，但部署证据已经开始出现：高盛把 2035 年人形机器人市场规模预测上调 6 倍至 <span class="yellow">$38B</span>；黄仁勋给出的 TAM 是 <span class="yellow">$40 万亿</span>（全球 GDP 量级的叙事）。已落地的证据包括：Figure 在宝马工厂连续工作 11 个月、累计 1,250 小时、99% 精度；GXO 仓储单点处理 10 万箱；AgiBot 累计产量 1.5 万台；整机价格从 $150k 降到 $16k，投资回收期从 5.3 年缩短到 2.8 年。方向可信，但收入曲线还在很早期。</p>
+
+<div class="fig">
+<svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="p15g1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2997ff"/><stop offset="1" stop-color="#818cf8"/></linearGradient>
+  </defs>
+  <rect x="0" y="0" width="860" height="340" rx="12" fill="#121216"/>
+  <text x="430" y="34" fill="#f5f5f7" font-size="16" font-weight="700" text-anchor="middle">两座时钟：同一个 AI 叙事，不同的时间刻度</text>
+  <!-- 时间轴 -->
+  <line x1="60" y1="170" x2="800" y2="170" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+  <polygon points="800,170 788,164 788,176" fill="rgba(255,255,255,.35)"/>
+  <!-- 刻度年份 -->
+  <text x="90" y="200" fill="#86868b" font-size="12" text-anchor="middle">2024</text>
+  <text x="280" y="200" fill="#86868b" font-size="12" text-anchor="middle">2026</text>
+  <text x="470" y="200" fill="#86868b" font-size="12" text-anchor="middle">2027-28</text>
+  <text x="660" y="200" fill="#86868b" font-size="12" text-anchor="middle">2030+</text>
+  <!-- 电力时钟：正在发生 -->
+  <circle cx="280" cy="170" r="10" fill="#2997ff"/>
+  <circle cx="280" cy="170" r="18" fill="none" stroke="#2997ff" stroke-width="1.5" opacity=".5"/>
+  <text x="280" y="90" fill="#8ab4ff" font-size="14" font-weight="700" text-anchor="middle">电力：现在进行时</text>
+  <text x="280" y="114" fill="#d1d1d6" font-size="12" text-anchor="middle">瓶颈已从 GPU 转移到电网</text>
+  <text x="280" y="134" fill="#86868b" font-size="12" text-anchor="middle">1000TWh · 增量占 55% · 队列 2600GW</text>
+  <!-- 物理AI时钟：叙事期 -->
+  <circle cx="560" cy="170" r="7" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="560" cy="170" r="3" fill="#f59e0b"/>
+  <text x="560" y="240" fill="#fbbf24" font-size="14" font-weight="700" text-anchor="middle">物理 AI：叙事构建期</text>
+  <text x="560" y="262" fill="#d1d1d6" font-size="12" text-anchor="middle">部署证据已现，收入曲线很早</text>
+  <text x="560" y="282" fill="#86868b" font-size="12" text-anchor="middle">$150k→$16k · ROI 5.3→2.8 年</text>
+  <!-- 投资含义 -->
+  <rect x="120" y="296" width="620" height="30" rx="8" fill="rgba(41,151,255,.10)" stroke="rgba(41,151,255,.35)"/>
+  <text x="430" y="316" fill="#8ab4ff" font-size="13" font-weight="600" text-anchor="middle">投资含义：电力=继续持有（非新发现）· 物理 AI=2027-30 建观察清单</text>
+  <!-- 左侧已完成区 -->
+  <line x1="60" y1="152" x2="280" y2="152" stroke="#2997ff" stroke-width="3" opacity=".7"/>
+  <text x="160" y="142" fill="#8ab4ff" font-size="12" text-anchor="middle">AI 第一幕延续</text>
+</svg>
+<div class="fig-cap">图 1 · 电力与物理 AI 踩在两个时钟上：前者是现金流事件，后者是期权</div>
+</div>
+
+<h3>巨头在做什么：核电长约锁定潮</h3>
+
+<p>巨头们的行动比任何研报都有说服力。2025-2026 年，科技巨头合计锁定 <span class="yellow">约 9.8GW 核电约束性长约</span>、共 13 笔：</p>
+
+<table>
+<thead><tr><th>巨头</th><th>动作</th><th class="num">规模</th><th>结构亮点</th></tr></thead>
+<tbody>
+<tr><td>微软</td><td>重启三里岛（835MW，提前至 2027）</td><td class="num">$160 亿 / 20 年</td><td>史上最激进的"买断整座电站"</td></tr>
+<tr><td>Meta</td><td>核电多技术组合采购</td><td class="num">6.6 GW</td><td>四技术组合，不押单一路线</td></tr>
+<tr><td>Amazon</td><td>Talen 长约 + 入股 X-energy</td><td class="num">1.92 GW + $7 亿</td><td>长约与股权双绑定</td></tr>
+<tr><td>Google</td><td>Kairos SMR 框架协议</td><td class="num">500 MW</td><td>为 2030 后的增量埋期权</td></tr>
+</tbody>
+</table>
+
+<div class="callout">注意这些合同的结构：<span class="yellow">15-20 年、约束性、锚定核电</span>。巨头不是在买电，是在买"无论 AI 泡沫破裂与否都存在的确定性"。这正是电力作为"第二所有者资产"的定价逻辑——GPU 五年归零，电力资产几十年有效。</div>
+</div>
+
+<!-- ==================== 第二章 ==================== -->
+<div class="section">
+<h2>二、定价的反直觉结构：确定性越高，越被卖出</h2>
+
+<p>直觉上"电力成为确定性"意味着电力股都被买贵了。对了一半——<span class="red">定价是分层的，而且方向反直觉</span>：最直接表达确定性的发电股正在被折价，最间接的设备商被抢筹。</p>
+
+<table>
+<thead><tr><th>层级</th><th>代表标的</th><th class="num">涨跌</th><th>定价状态</th></tr></thead>
+<tbody>
+<tr><td>设备层（卖铲人的铲子）</td><td>GEV / CAT / HWM</td><td class="num red">+55% / +47% / +37%</td><td>满定价</td></tr>
+<tr><td>发电层（电站本身）</td><td>CEG / VST / NRG</td><td class="num green">-23% / -16% / -25%</td><td>刚被折价</td></tr>
+<tr><td>核燃料链</td><td>CCJ / LEU</td><td class="num">回撤</td><td>半定价</td></tr>
+</tbody>
+</table>
+
+<div class="fig">
+<svg viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect x="0" y="0" width="860" height="320" rx="12" fill="#121216"/>
+  <text x="430" y="34" fill="#f5f5f7" font-size="16" font-weight="700" text-anchor="middle">电力产业链定价分层：谁被抢筹、谁被折价</text>
+  <!-- 设备层：高 -->
+  <rect x="80" y="70" width="330" height="52" rx="8" fill="rgba(239,68,68,.16)" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="100" y="92" fill="#f87171" font-size="13" font-weight="700">设备层 GEV/CAT/HWM</text>
+  <text x="100" y="112" fill="#d1d1d6" font-size="12">+37% ~ +55% · 满定价 · 确定性已付全款</text>
+  <!-- 发电层：低 -->
+  <rect x="80" y="140" width="330" height="52" rx="8" fill="rgba(34,197,94,.14)" stroke="#22c55e" stroke-width="1.2"/>
+  <text x="100" y="162" fill="#4ade80" font-size="13" font-weight="700">发电层 CEG/VST/NRG</text>
+  <text x="100" y="182" fill="#d1d1d6" font-size="12">-16% ~ -25% · 刚被折价 · 时点+监管风险重估</text>
+  <!-- 燃料层：中 -->
+  <rect x="80" y="210" width="330" height="52" rx="8" fill="rgba(245,158,11,.13)" stroke="#f59e0b" stroke-width="1"/>
+  <text x="100" y="232" fill="#fbbf24" font-size="13" font-weight="700">核燃料链 CCJ/LEU/铀矿</text>
+  <text x="100" y="252" fill="#d1d1d6" font-size="12">回撤 · 半定价 · 长协 $96 创新高</text>
+  <!-- 右侧解释 -->
+  <text x="460" y="86" fill="#f5f5f7" font-size="13" font-weight="600">为什么反直觉？</text>
+  <text x="460" y="112" fill="#86868b" font-size="12">市场买的是"订单可见性"</text>
+  <text x="460" y="132" fill="#86868b" font-size="12">（GEV backlog 5.8 年）</text>
+  <text x="460" y="160" fill="#86868b" font-size="12">卖的是"回报时点与政治风险"</text>
+  <text x="460" y="180" fill="#86868b" font-size="12">（电站回报要等 5-10 年兑现，</text>
+  <text x="460" y="200" fill="#86868b" font-size="12">期间顶着电价监管的达摩克利斯剑）</text>
+  <rect x="450" y="224" width="330" height="38" rx="8" fill="rgba(41,151,255,.10)" stroke="rgba(41,151,255,.35)"/>
+  <text x="615" y="248" fill="#8ab4ff" font-size="12" font-weight="600" text-anchor="middle">硬度最高的一层，价格最低</text>
+</svg>
+<div class="fig-cap">图 2 · 定价分层地图：市场为"看得见的订单"付溢价，为"等得起的风险"打折</div>
+</div>
+
+<div class="callout callout-warn">发电层被折价的原因不是基本面恶化，而是市场重新定价两件事：①回报兑现的时点风险（核电站扩容以年计）；②监管风险（电价政治敏感，PJM 拍卖新高已经引来政客关注）。<span class="yellow">资产变硬的同时股价变软——这恰恰是错配的来源。</span></div>
+</div>
+
+<!-- ==================== 第三章 ==================== -->
+<div class="section">
+<h2>三、价格会一直存在，但不一定稳定：波动分层</h2>
+
+<p>电力的"确定性"指的是需求会一直存在，不是电价会一直稳定。现货市场的狂野程度远超直觉：ERCOT 曾在同一天内从 <span class="red">-$45/MWh 跌到 $3,500/MWh 飙升</span>——同日 100 倍振幅。PJM 容量拍卖出价 <span class="yellow">$329.17/MW-日</span>创历史新高。鸭子曲线之下，负电价屠杀光伏（中午发电过剩倒贴钱），尖峰奖励 24/7 基荷。</p>
+
+<div class="fig">
+<svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect x="0" y="0" width="860" height="300" rx="12" fill="#121216"/>
+  <text x="430" y="34" fill="#f5f5f7" font-size="16" font-weight="700" text-anchor="middle">同一天的价格过山车：ERCOT 实例</text>
+  <!-- 坐标 -->
+  <line x1="100" y1="240" x2="800" y2="240" stroke="rgba(255,255,255,.15)"/>
+  <line x1="100" y1="240" x2="100" y2="60" stroke="rgba(255,255,255,.15)"/>
+  <!-- 零轴 -->
+  <line x1="100" y1="190" x2="800" y2="190" stroke="rgba(255,255,255,.28)" stroke-dasharray="4 4"/>
+  <text x="94" y="194" fill="#86868b" font-size="11" text-anchor="end">$0</text>
+  <!-- 曲线：凌晨低到负，午后飙到3500 -->
+  <path d="M 110 200 C 150 214, 180 222, 220 224 C 260 226, 300 210, 340 196 C 380 184, 420 168, 460 140 C 500 112, 530 84, 560 76 C 590 70, 640 90, 700 130 C 750 162, 790 186, 800 192"
+        fill="none" stroke="url(#p15g2)" stroke-width="3"/>
+  <defs>
+    <linearGradient id="p15g2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4ade80"/><stop offset=".5" stop-color="#fbbf24"/><stop offset="1" stop-color="#ef4444"/></linearGradient>
+  </defs>
+  <!-- 标注 -->
+  <circle cx="220" cy="224" r="5" fill="#4ade80"/>
+  <text x="220" y="250" fill="#4ade80" font-size="12" font-weight="600" text-anchor="middle">-$45（倒贴）</text>
+  <circle cx="560" cy="76" r="5" fill="#ef4444"/>
+  <text x="560" y="62" fill="#f87171" font-size="13" font-weight="700" text-anchor="middle">$3,500（尖峰）</text>
+  <!-- 鸭子曲线注 -->
+  <rect x="130" y="262" width="600" height="26" rx="6" fill="rgba(255,255,255,.04)"/>
+  <text x="430" y="280" fill="#86868b" font-size="12" text-anchor="middle">鸭子曲线：中午光伏过剩压出负电价，傍晚光伏退出后尖峰暴利奖励 24/7 基荷</text>
+</svg>
+<div class="fig-cap">图 3 · 波动本身不是风险，而是分配机制：它惩罚"形状错"的电源，奖励"形状稳"的电源</div>
+</div>
+
+<h3>关键解耦：现货波动 ≠ 投资者风险</h3>
+
+<p>电价狂野不等于投资者坐过山车——<span class="blue">真正决定冲击程度的是收入结构</span>：</p>
+
+<table>
+<thead><tr><th>收入结构</th><th>代表</th><th>现货冲击</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>纯 merchant（裸奔现货）</td><td>部分独立电厂</td><td class="num red">全暴露</td><td>同日 100 倍振幅全额体验</td></tr>
+<tr><td>对冲 merchant</td><td>VST（2026/27 已 100%/94% 对冲）</td><td class="num yellow">大幅缓冲</td><td>未来两年收入基本锁定</td></tr>
+<tr><td>固定 PPA</td><td>CEG（15-20 年核电长约）</td><td class="num green">免疫</td><td>微软/Meta 合同锁死单价</td></tr>
+<tr><td>受监管公用事业</td><td>传统电网公司</td><td class="num green">免疫</td><td>回报率监管定价，但增长慢</td></tr>
+</tbody>
+</table>
+
+<div class="callout-green callout">反直觉的推论：<span class="green">波动越大，"形状稳定"的核电越值钱</span>。鸭子曲线屠杀的是光伏的边际电价，而 24/7 不停机的核电恰恰在尖峰时段（傍晚光伏退出后）拿到最高的隐性溢价。波动是核电的朋友。</div>
+</div>
+
+<!-- ==================== 第四章 ==================== -->
+<div class="section">
+<h2>四、24/7 可调度硬度：谁的电最硬？</h2>
+
+<p>"AI + 24/7 不间断可调度电力"的关键词是<span class="blue">可调度</span>——不是有电就行，是想什么时候发电就什么时候发。按这个标准排出的硬度阶梯：</p>
+
+<table>
+<thead><tr><th>层级</th><th>标的</th><th>硬度来源</th><th class="num">估值/价格</th></tr></thead>
+<tbody>
+<tr><td><span class="blue">Tier 0</span> 最硬</td><td>CEG</td><td>22GW 核电 + 微软/Meta 20 年 PPA，形状+合同双免疫</td><td class="num">YTD -23%（被折价）</td></tr>
+<tr><td><span class="blue">Tier 1</span></td><td>VST / TLN</td><td>燃气+储能可调度，VST 未来两年近全对冲</td><td class="num">VST 13x EBITDA ≈ CEG 一半</td></tr>
+<tr><td><span class="blue">Tier 3</span></td><td>NRG</td><td>merchant 为主，弹性大、免疫差</td><td class="num">YTD -25%</td></tr>
+<tr><td><span class="blue">Tier 4</span> 期权</td><td>OKLO / NuScale</td><td>SMR 尚无商业化收入</td><td class="num">OKLO YTD -44%；NuScale Q2 收入 $7.5 万</td></tr>
+</tbody>
+</table>
+
+<div class="fig">
+<svg viewBox="0 0 860 330" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect x="0" y="0" width="860" height="330" rx="12" fill="#121216"/>
+  <text x="430" y="34" fill="#f5f5f7" font-size="16" font-weight="700" text-anchor="middle">24/7 可调度硬度阶梯（越高越硬）</text>
+  <!-- 阶梯：从左上到右下 -->
+  <rect x="70" y="60" width="180" height="56" rx="8" fill="rgba(41,151,255,.22)" stroke="#2997ff" stroke-width="1.4"/>
+  <text x="160" y="82" fill="#8ab4ff" font-size="13" font-weight="700" text-anchor="middle">Tier 0 · CEG</text>
+  <text x="160" y="102" fill="#d1d1d6" font-size="11" text-anchor="middle">22GW 核电 + 20 年 PPA</text>
+  <rect x="270" y="112" width="180" height="56" rx="8" fill="rgba(129,140,248,.18)" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="360" y="134" fill="#a5b4fc" font-size="13" font-weight="700" text-anchor="middle">Tier 1 · VST / TLN</text>
+  <text x="360" y="154" fill="#d1d1d6" font-size="11" text-anchor="middle">可调度 + 两年近全对冲</text>
+  <rect x="470" y="164" width="180" height="56" rx="8" fill="rgba(245,158,11,.15)" stroke="#f59e0b" stroke-width="1.1"/>
+  <text x="560" y="186" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle">Tier 3 · NRG</text>
+  <text x="560" y="206" fill="#d1d1d6" font-size="11" text-anchor="middle">merchant 弹性，免疫差</text>
+  <rect x="630" y="216" width="180" height="56" rx="8" fill="rgba(239,68,68,.14)" stroke="#ef4444" stroke-width="1"/>
+  <text x="720" y="238" fill="#f87171" font-size="13" font-weight="700" text-anchor="middle">Tier 4 · SMR</text>
+  <text x="720" y="258" fill="#d1d1d6" font-size="11" text-anchor="middle">电力版"应用层"：纯期权</text>
+  <!-- 右侧注释 -->
+  <text x="160" y="132" fill="#86868b" font-size="11" text-anchor="middle">资产最硬，股价最软（-23%）</text>
+  <text x="720" y="288" fill="#86868b" font-size="11" text-anchor="middle">OKLO -44% · NuScale 季收入 $7.5 万</text>
+  <!-- 底部结论 -->
+  <rect x="120" y="286" width="460" height="32" rx="8" fill="rgba(41,151,255,.10)" stroke="rgba(41,151,255,.35)"/>
+  <text x="350" y="307" fill="#8ab4ff" font-size="12.5" font-weight="600" text-anchor="middle">硬度排序 ≠ 买入排序：硬度与价格的错配才是机会</text>
+</svg>
+<div class="fig-cap">图 4 · 硬度阶梯：CEG 资产最硬但被折价，VST 硬度/价格错配最大，SMR 是电力版的应用层</div>
+</div>
+
+<div class="callout callout-red">Tier 4 的 SMR 开发商要特别警惕：NuScale 单季收入 <span class="red">$7.5 万</span>（不是亿，是万），OKLO 年内腰斩——它们就是电力版的"应用层"，承担着与 P14 里模型层同样的叙事风险。这是长线期权，不是价值投资。</div>
+</div>
+
+<!-- ==================== 第五章 ==================== -->
+<div class="section">
+<h2>五、卖铲人：GEV 的双保险与满定价</h2>
+
+<p>电力的"卖铲人"逻辑成立，但要看清楚卖的是什么铲子。<span class="blue">GEV（GE Vernova）是燃机+电网设备+服务三合一</span>，它的稀缺性在于<span class="yellow">订单簿而非产能</span>：backlog 116GW，而年产能只有约 20GW——<span class="yellow">5.8 年的订单已经排满</span>；燃气轮机价格三年涨了约 300%，且涨价没有吓退客户。</p>
+
+<p>与英伟达相比，GEV 的关键差异是<span class="green">双保险</span>：英伟达的收入几乎全压在 AI 资本开支一件事上（单保险），而 GEV 约 80% 客户是传统公用事业——<span class="green">AI 叙事降温，电网更新与新兴市场电气化的需求还在</span>。这是"趋势友好但非趋势依赖"的结构。</p>
+
+<div class="fig">
+<svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect x="0" y="0" width="860" height="300" rx="12" fill="#121216"/>
+  <text x="430" y="34" fill="#f5f5f7" font-size="16" font-weight="700" text-anchor="middle">卖铲人订单簿：GEV backlog vs 年产能</text>
+  <!-- backlog 大柱 -->
+  <rect x="150" y="70" width="200" height="160" rx="8" fill="rgba(41,151,255,.20)" stroke="#2997ff" stroke-width="1.3"/>
+  <text x="250" y="56" fill="#8ab4ff" font-size="15" font-weight="700" text-anchor="middle">backlog 116 GW</text>
+  <text x="250" y="150" fill="#f5f5f7" font-size="13" text-anchor="middle">已锁定订单</text>
+  <!-- 产能小柱 -->
+  <rect x="500" y="230" width="200" height="20" rx="5" fill="rgba(245,158,11,.30)" stroke="#f59e0b" stroke-width="1.1"/>
+  <text x="600" y="216" fill="#fbbf24" font-size="15" font-weight="700" text-anchor="middle">年产能 ~20 GW</text>
+  <!-- 差值标注 -->
+  <path d="M 360 140 L 490 236" stroke="rgba(255,255,255,.3)" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="430" y="170" fill="#f5f5f7" font-size="13" font-weight="600" text-anchor="middle">5.8 年卖完</text>
+  <!-- 右侧要点 -->
+  <text x="640" y="110" fill="#d1d1d6" font-size="12.5">· 燃机价格 3 年 +300%</text>
+  <text x="640" y="136" fill="#d1d1d6" font-size="12.5">· 涨价未吓退客户</text>
+  <text x="640" y="162" fill="#4ade80" font-size="12.5">· 80% 客户=传统公用事业</text>
+  <text x="640" y="188" fill="#4ade80" font-size="12.5">  （双保险 vs 英伟达单保险）</text>
+  <text x="640" y="222" fill="#f87171" font-size="12.5">· ~40x FCF：满定价</text>
+</svg>
+<div class="fig-cap">图 5 · GEV：机制最硬的卖铲人，但确定性已被付全款——好公司 ≠ 好价格</div>
+</div>
+
+<div class="callout callout-warn">GEV 的结论与 P14 一脉相承：确定性越是被明码标价，留给买入者的安全边际越薄。满定价的 GEV 和亏损的应用层，处在同一条"为确定性付费"光谱的两端。<span class="yellow">机制上双保险，价格上零折扣——纳入纯观察，不建仓。</span></div>
+</div>
+
+<!-- ==================== 第六章 ==================== -->
+<div class="section">
+<h2>六、未被扫描的金矿：韩国重电、承包商与核燃料</h2>
+
+<p>"电力已充分定价"只对被扫过的一层成立。产业链里还有三个明显未被充分扫描的环节：</p>
+
+<h3>① 韩国重电四强：用 -40% 的价格买 +243% 的订单</h3>
+<p>晓星重工业、HD 现代电气、LS 电气的股价从高点回撤 <span class="yellow">40-45%</span>，但基本面在加速——LS 电气 Q2 订单 <span class="green">+243%</span> 创历史纪录。它们与 GEV 做同样的生意（燃机、变压器、开关设备），却挂着"韩国周期股"的标签被打折。这不是基本面恶化，是<span class="blue">同一个趋势、不同市场的定价错配</span>。</p>
+
+<h3>② EME：承包商洼地</h3>
+<p>EMCOR 是电气机械承包商，24x 市盈率配 <span class="green">27.6% 的 ROIC</span>，同样受益于数据中心电气化建设，但被归入"建筑工程"板块而未被 AI 资金扫过。</p>
+
+<h3>③ 核燃料链：价格与股价的背离</h3>
+<p>铀长期合约价创 <span class="yellow">$96/lb 新高</span>，但 CCJ（Cameco）股价回撤，UBS 8 月逆势上调至 Buy。核电长约潮（9.8GW）的下一站必然是燃料采购——<span class="blue">合同先签电站，再签燃料，中间有时滞</span>，这个时滞就是当前背离的原因，也是未来的收敛空间。</p>
+
+<div class="callout-green callout">三个未扫环节的共同特征：<span class="green">基本面在加速（订单/长协/ROIC），价格在打折（板块标签/地域标签/时滞）</span>。这与 P8"低位挖掘"的方法论完全一致——买错配，不买共识。</div>
+</div>
+
+<!-- ==================== 第七章 ==================== -->
+<div class="section">
+<h2>七、建仓区间总表：观察名单与纪律</h2>
+
+<p>综合今天的全部讨论，把观察名单整理成可执行的建仓区间。原则不变：Zone1 试探（1-2%）→ Zone2 核心（3-5%）→ Zone3 最大（5-8%），参考现价回撤 8-13% / 7 月低点附近 / 2024-25 平台。</p>
+
+<table>
+<thead><tr><th>标的</th><th class="num">现价</th><th class="num">Zone1（1-2%）</th><th class="num">Zone2（3-5%）</th><th class="num">Zone3（5-8%）</th><th class="num">止损</th></tr></thead>
+<tbody>
+<tr><td><span class="blue">VST</span></td><td class="num">$136.2</td><td class="num">$120-128</td><td class="num">$105-115</td><td class="num">$90-100</td><td class="num red">$80</td></tr>
+<tr><td>CEG</td><td class="num">$272.9</td><td class="num">$235-250</td><td class="num">$210-225</td><td class="num">$185-200</td><td class="num red">$170</td></tr>
+<tr><td>TLN</td><td class="num">$314.5</td><td class="num">$285-300</td><td class="num">$260-275</td><td class="num">$235-250</td><td class="num red">$220</td></tr>
+<tr><td>CCJ</td><td class="num">$102.5</td><td class="num">$88-93</td><td class="num">$78-84</td><td class="num">$68-75</td><td class="num red">$62</td></tr>
+<tr><td>LEU</td><td class="num">$186.3</td><td class="num">$155-168</td><td class="num">$140-150</td><td class="num">$120-135</td><td class="num red">$105</td></tr>
+<tr><td>EME</td><td class="num">$776.6</td><td class="num">$680-720</td><td class="num">$600-650</td><td class="num">$520-570</td><td class="num red">$480</td></tr>
+</tbody>
+</table>
+
+<div class="fig">
+<svg viewBox="0 0 860 360" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect x="0" y="0" width="860" height="360" rx="12" fill="#121216"/>
+  <text x="430" y="32" fill="#f5f5f7" font-size="16" font-weight="700" text-anchor="middle">建仓区间总览（以现价为 100% 归一化）</text>
+  <!-- 图例 -->
+  <rect x="120" y="50" width="10" height="10" fill="rgba(129,140,248,.5)"/><text x="136" y="60" fill="#86868b" font-size="11">Zone1 试探 1-2%</text>
+  <rect x="270" y="50" width="10" height="10" fill="rgba(41,151,255,.5)"/><text x="286" y="60" fill="#86868b" font-size="11">Zone2 核心 3-5%</text>
+  <rect x="420" y="50" width="10" height="10" fill="rgba(34,197,94,.5)"/><text x="436" y="60" fill="#86868b" font-size="11">Zone3 最大 5-8%</text>
+  <rect x="570" y="50" width="10" height="10" fill="rgba(239,68,68,.6)"/><text x="586" y="60" fill="#86868b" font-size="11">止损</text>
+  <!-- VST 条 -->
+  <text x="90" y="95" fill="#e5e5ea" font-size="12" text-anchor="end">VST</text>
+  <rect x="100" y="82" width="255" height="18" fill="rgba(129,140,248,.5)"/>
+  <rect x="288" y="82" width="223" height="18" fill="rgba(41,151,255,.5)"/>
+  <rect x="511" y="82" width="216" height="18" fill="rgba(34,197,94,.5)"/>
+  <rect x="727" y="82" width="44" height="18" fill="rgba(239,68,68,.6)"/>
+  <text x="790" y="96" fill="#86868b" font-size="11">$80</text>
+  <!-- CEG 条 -->
+  <text x="90" y="140" fill="#e5e5ea" font-size="12" text-anchor="end">CEG</text>
+  <rect x="100" y="127" width="265" height="18" fill="rgba(129,140,248,.5)"/>
+  <rect x="365" y="127" width="230" height="18" fill="rgba(41,151,255,.5)"/>
+  <rect x="595" y="127" width="220" height="18" fill="rgba(34,197,94,.5)"/>
+  <rect x="815" y="127" width="18" height="18" fill="rgba(239,68,68,.6)"/>
+  <!-- TLN 条 -->
+  <text x="90" y="185" fill="#e5e5ea" font-size="12" text-anchor="end">TLN</text>
+  <rect x="100" y="172" width="262" height="18" fill="rgba(129,140,248,.5)"/>
+  <rect x="362" y="172" width="222" height="18" fill="rgba(41,151,255,.5)"/>
+  <rect x="584" y="172" width="212" height="18" fill="rgba(34,197,94,.5)"/>
+  <rect x="796" y="172" width="37" height="18" fill="rgba(239,68,68,.6)"/>
+  <!-- CCJ 条 -->
+  <text x="90" y="230" fill="#e5e5ea" font-size="12" text-anchor="end">CCJ</text>
+  <rect x="100" y="217" width="258" height="18" fill="rgba(129,140,248,.5)"/>
+  <rect x="358" y="217" width="224" height="18" fill="rgba(41,151,255,.5)"/>
+  <rect x="582" y="217" width="222" height="18" fill="rgba(34,197,94,.5)"/>
+  <rect x="804" y="217" width="29" height="18" fill="rgba(239,68,68,.6)"/>
+  <!-- LEU 条 -->
+  <text x="90" y="275" fill="#e5e5ea" font-size="12" text-anchor="end">LEU</text>
+  <rect x="100" y="262" width="268" height="18" fill="rgba(129,140,248,.5)"/>
+  <rect x="368" y="262" width="225" height="18" fill="rgba(41,151,255,.5)"/>
+  <rect x="593" y="262" width="228" height="18" fill="rgba(34,197,94,.5)"/>
+  <rect x="821" y="262" width="12" height="18" fill="rgba(239,68,68,.6)"/>
+  <!-- EME 条 -->
+  <text x="90" y="320" fill="#e5e5ea" font-size="12" text-anchor="end">EME</text>
+  <rect x="100" y="307" width="262" height="18" fill="rgba(129,140,248,.5)"/>
+  <rect x="362" y="307" width="226" height="18" fill="rgba(41,151,255,.5)"/>
+  <rect x="588" y="307" width="220" height="18" fill="rgba(34,197,94,.5)"/>
+  <rect x="808" y="307" width="25" height="18" fill="rgba(239,68,68,.6)"/>
+  <!-- 底注 -->
+  <text x="430" y="348" fill="#86868b" font-size="11.5" text-anchor="middle">左端=现价 · 条段宽度≈区间宽度 · 最右红段=止损位（现价数据截至 2026-08-22）</text>
+</svg>
+<div class="fig-cap">图 6 · 六标的建仓区间：Zone1/2/3 按现价百分比折算，止损一律先于买入确定</div>
+</div>
+
+<h3>优先级与特殊安排</h3>
+<ul>
+<li><span class="blue">优先级排序：VST &gt; 韩国四强 &gt; CCJ/LEU &gt; CEG &gt; TLN &gt; EME</span>。VST 排第一是因为硬度/价格错配最大（13x EBITDA 买 Tier 1 可调度资产）；CEG 资产最硬但 Tier 0 溢价回归需要催化剂。</li>
+<li><span class="blue">韩国四强（晓星/LS/HD 现代电气）= 触发式，不设固定区间</span>：Q3 订单延续加速 → 现价试探；订单失速 + 再跌 10% → 放弃。用基本面加速度而非价格回撤做扳机。</li>
+<li><span class="yellow">MHI / 斗山 = 纯观察</span>（逻辑成立但弹性/透明度不如韩国四强）；<span class="red">GEV / SMR 开发商 = 不建仓</span>（满定价 / 无收入）。</li>
+<li><span class="red">总纪律：AI 相关总仓位 ≤20-30% 不变</span>。电力是 AI 总仓内部的"确定性再平衡"，不是新增独立敞口。</li>
+</ul>
+
+<div class="callout callout-warn">所有区间的意义在于<span class="yellow">提前写下买卖纪律，而不是预测市场会跌到哪里</span>。如果价格不回到 Zone 就不买——错过不是亏损；跌穿止损就执行——犹豫才是亏损。</div>
+</div>
+
+<!-- ==================== 结论 ==================== -->
+<div class="conclusion section">
+<h2>结论：两个时钟，一个纪律</h2>
+
+<ol>
+<li><span class="blue">电力是现在进行时</span>：瓶颈已从 GPU 转移到电网（2600GW 队列 / 5 年等待 / 80% 退出），巨头用 9.8GW 核电长约投票。它不是新发现，是 P14"第二所有者资产"的持有延续。</li>
+<li><span class="yellow">定价是分层的且反直觉</span>：设备层满定价、发电层刚被折价、燃料链半定价。买硬度还是买订单可见性，市场已经给出了自己的答案——而错配恰恰在被卖出的那一层。</li>
+<li><span class="blue">波动是分配机制不是风险本身</span>：同日 100 倍振幅惩罚形状错的电源、奖励 24/7 基荷；投资者的真实敞口由收入结构（PPA/对冲/merchant）决定，与现货波动解耦。</li>
+<li><span class="yellow">物理 AI 是 2027-30 的期权</span>：部署证据（价格 $150k→$16k、ROI 2.8 年）已现但收入曲线很早，先建观察清单（NVDA 大脑 / 中国身体 / 宇树智元 IPO），不抢跑。</li>
+<li><span class="red">纪律高于观点</span>：Zone1/2/3 + 止损 + AI 总仓 ≤20-30%。硬度排序与买入排序是两回事——我们买的从来不是最好的公司，而是最好的错配。</li>
+</ol>
+
+<p style="margin-top:14px; color:#86868b; font-size:13px;">以上均为个人认知范围内的理解与学习笔记，仅作自我复盘用途，不构成任何投资建议。数据截至 2026-08-22，来源包括 Apollo（Torsten Slok）、Sequoia（David Cahn）、高盛、UBS 及公开财报，引用数字以当时检索结果为准。</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>非AI错杀与历史底部收租 · 错杀vs真该杀判据 + 收租标的捡漏地图</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .subtitle { font-size: 13px; }
+    .section h2 { font-size: 16px; }
+    .section h3 { font-size: 14px; }
+    p, ul, ol, .callout { font-size: 13px; }
+    table { font-size: 12px; }
+    thead th, tbody td { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>非AI错杀与历史底部收租</h1>
+<p class="subtitle">错杀 vs 真该杀的分界线 · SaaS末日恐慌解剖 · 资金虹吸下的生物科技 · 历史底部收租四标的 · 价值陷阱排除法 · 收租层 6-9% 配置</p>
+<div class="badge-row">
+  <span class="badge badge-blue">错杀判据矩阵</span>
+  <span class="badge badge-warn">SaaS末日恐慌</span>
+  <span class="badge badge-red">价值陷阱警示</span>
+  <span class="badge badge-green">历史底部收租</span>
+  <span class="badge badge-blue">2026-08-26</span>
+</div>
+
+<!-- ==================== 第一章 ==================== -->
+<div class="section">
+<h2>一、先分清：错杀和真该杀，只差一个问题</h2>
+
+<p>P17 推完了见顶时间窗（2027 Q1-Q3、中枢 Q2）和行业命运三层图。但那套体系解决的是"AI 链条上的公司谁先倒、谁能捡"。这篇笔记回答另一个问题：<strong>AI 火烧起来的时候，隔壁那些跟火没关系的行业，哪些被冤枉了？</strong></p>
+
+<p>不是所有因为 AI 跌的股票都是错杀。判断标准只有两个问题：</p>
+<ol>
+<li><strong>AI 的威胁是"理论的"还是"真实的"</strong>——有人说"AI 会不会有一天替代你"，和 AI 真的已经替代了你，是两回事</li>
+<li><strong>公司基本面有没有变坏</strong>——收入还在涨、客户还在续约、利润还在增，但股价跌了 30%，这才叫被冤枉</li>
+</ol>
+
+<div class="fig">
+<svg viewBox="0 0 840 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g-mine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22c55e" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity=".06"/>
+    </linearGradient>
+    <linearGradient id="g-trap" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ef4444" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ef4444" stop-opacity=".05"/>
+    </linearGradient>
+  </defs>
+  <rect x="60" y="30" width="360" height="150" rx="10" fill="url(#g-mine)" stroke="#22c55e" stroke-opacity=".4"/>
+  <rect x="440" y="30" width="360" height="150" rx="10" fill="url(#g-trap)" stroke="#ef4444" stroke-opacity=".4"/>
+  <rect x="60" y="200" width="360" height="150" rx="10" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.15)"/>
+  <rect x="440" y="200" width="360" height="150" rx="10" fill="rgba(245,158,11,.08)" stroke="#f59e0b" stroke-opacity=".35"/>
+
+  <text x="240" y="60" text-anchor="middle" fill="#4ade80" font-size="15" font-weight="700">错杀金矿区（捡）</text>
+  <text x="240" y="84" text-anchor="middle" fill="#d1d1d6" font-size="12">AI威胁=理论 · 基本面=好 · 跌得多</text>
+  <text x="240" y="110" text-anchor="middle" fill="#e5e5ea" font-size="12">CRM · NOW · CDNS · WDAY</text>
+  <text x="240" y="132" text-anchor="middle" fill="#e5e5ea" font-size="12">XBI生物科技 · 区域银行 · 日本小盘</text>
+  <text x="240" y="154" text-anchor="middle" fill="#e5e5ea" font-size="12">BMY · AT&amp;T · 奔驰 · 金宝汤</text>
+
+  <text x="620" y="60" text-anchor="middle" fill="#f87171" font-size="15" font-weight="700">飞刀区（真该杀，不碰）</text>
+  <text x="620" y="84" text-anchor="middle" fill="#d1d1d6" font-size="12">AI威胁=真实 · 基本面=被侵蚀</text>
+  <text x="620" y="110" text-anchor="middle" fill="#e5e5ea" font-size="12">ADBE · Wix · Figma</text>
+  <text x="620" y="132" text-anchor="middle" fill="#e5e5ea" font-size="12">法律SaaS · Airtable</text>
+  <text x="620" y="154" text-anchor="middle" fill="#86868b" font-size="12">（$110亿 → $13亿 = 合理定价）</text>
+
+  <text x="240" y="230" text-anchor="middle" fill="#98989d" font-size="15" font-weight="700">深度价值（等催化剂）</text>
+  <text x="240" y="254" text-anchor="middle" fill="#d1d1d6" font-size="12">AI威胁=理论 · 基本面=暂时承压</text>
+  <text x="240" y="280" text-anchor="middle" fill="#e5e5ea" font-size="12">欧洲传统工业 · 媒体娱乐</text>
+  <text x="240" y="302" text-anchor="middle" fill="#e5e5ea" font-size="12">（IBM 大型机问题属此类边缘）</text>
+
+  <text x="620" y="230" text-anchor="middle" fill="#fbbf24" font-size="15" font-weight="700">价值陷阱（看着便宜别碰）</text>
+  <text x="620" y="254" text-anchor="middle" fill="#d1d1d6" font-size="12">AI威胁=真实 · 基本面=结构性恶化</text>
+  <text x="620" y="280" text-anchor="middle" fill="#e5e5ea" font-size="12">PFE（分红超利润） · 大众VW</text>
+  <text x="620" y="302" text-anchor="middle" fill="#86868b" font-size="12">（便宜有便宜的道理）</text>
+
+  <text x="30" y="105" text-anchor="middle" fill="#86868b" font-size="12" transform="rotate(-90 30 105)">基本面 好</text>
+  <text x="30" y="275" text-anchor="middle" fill="#86868b" font-size="12" transform="rotate(-90 30 275)">基本面 坏</text>
+  <text x="240" y="385" text-anchor="middle" fill="#86868b" font-size="12">AI 威胁 = 理论的（抢隔壁的饭碗）</text>
+  <text x="620" y="385" text-anchor="middle" fill="#86868b" font-size="12">AI 威胁 = 真实的（抢你的饭碗）</text>
+</svg>
+<p class="fig-cap">图 1 · 错杀分类矩阵：横轴是"AI 是否真在替代你"，纵轴是"公司本身有没有变坏"——左上角才是金矿</p>
+</div>
+
+<p>一句话版本：<strong>AI 是在"抢你的饭碗"还是"抢你隔壁的饭碗"？隔壁被抢，你跟着跌——错杀；你的饭碗被抢——该杀。</strong></p>
+</div>
+
+<!-- ==================== 第二章 ==================== -->
+<div class="section">
+<h2>二、SaaS"末日恐慌"：谁被冤枉，谁真该死</h2>
+
+<p>这是今年最典型的集体错杀。整个 SaaS 指数今年跌了 27%，但很多公司的收入还在双位数增长。Dan Ives（顶级科技分析师）的原话："这是自 1990 年代末以来，<strong>股价和基本面脱节最严重的一次抛售</strong>。"</p>
+
+<p>导火索是 IBM：8 月初 IBM 单日暴跌 26%（1968 年以来最大单日跌幅），CEO 自曝"客户把预算从软件转向了服务器、存储和内存"——AI 基建在抽血软件预算，这是真实的。但 IBM 的问题很大程度是<strong>大型机特有的</strong>（Z 系列收入暴跌 42%），大部分软件公司根本不卖大型机。市场把 IBM 的特定问题过度外推到所有软件公司头上，引发连锁抛售——随后 Salesforce、ServiceNow 的财报都超预期，证明那是错杀。</p>
+
+<h3>被冤枉的（工具型跌、平台型没事）</h3>
+<table>
+<thead><tr><th>标的</th><th class="num">现价</th><th class="num">跌幅</th><th>为什么是错杀</th></tr></thead>
+<tbody>
+<tr><td><strong>CRM</strong> Salesforce</td><td class="num">$196</td><td class="num red">-25%</td><td>P/E 14x 多年最低；Q1 收入 $111 亿 +13%；Agentforce ARR 破 $10 亿。华尔街怕 AI 杀死 CRM，但 Salesforce 自己就是 AI 的卖铲人</td></tr>
+<tr><td><strong>NOW</strong> ServiceNow</td><td class="num">$119</td><td class="num red">-22%</td><td>Q2 订阅收入 $38.8 亿 +23%；续约率 98%；CEO："我们是所有 AI 结果的期权，不是赌任何一个"</td></tr>
+<tr><td><strong>CDNS</strong> Cadence</td><td class="num">$316</td><td class="num">≈持平</td><td>Q2 收入 +24%；芯片 EDA 设计软件基于物理定律，AI 提示词没法复制。CEO："基础事实会赢"</td></tr>
+<tr><td><strong>WDAY</strong> Workday</td><td class="num">$190</td><td class="num red">-30%+</td><td>Silver Lake 传出收购意图，一天从 $172 涨到 $206——私募用真金白银说：公开市场定错价了</td></tr>
+</tbody>
+</table>
+
+<h3>真该杀的（AI 真的在替代）</h3>
+<ul>
+<li><strong>ADBE Adobe</strong>：AI 图像生成真的在抢设计师的活，理论威胁已成现实</li>
+<li><strong>Wix / Figma</strong>：AI 能直接生成网站和界面，建站工具是被替代的一方</li>
+<li><strong>Airtable</strong>：估值从 $110 亿崩到 $13 亿被收购——88% 的跌幅是<strong>合理定价</strong>，不是错杀</li>
+<li><strong>法律 SaaS</strong>：Claude 真的能起草法律文书，这类工具型的先死</li>
+</ul>
+
+<div class="callout">
+<strong>分界线一句话</strong>：做"工具型"的（一个提示词能替代）真该跌；做"平台型"的（嵌入企业核心工作流、续约率 98%、AI 反而增加调用次数）被冤枉了。
+</div>
+</div>
+
+<!-- ==================== 第三章 ==================== -->
+<div class="section">
+<h2>三、被抽血最惨的两块：生物科技 &amp; 无关板块的连带</h2>
+
+<h3>生物科技：不是 AI 威胁它，是 AI 把它的钱吸走了</h3>
+<p>这是<strong>资金虹吸效应</strong>最极端的案例——AI 把所有成长资金吸走，医药板块被"抽干"，尽管 AI 对医药行业本身是利好（降低研发成本、加速管线产出）。</p>
+<ul>
+<li>美股 XBI 生物科技指数今年 +25%，但<strong>资金流入还是负的</strong>——价格涨了，钱没回来</li>
+<li>约 30% 的美国生物科技公司（市值&lt;$100 亿）<strong>股价低于账上现金</strong>——花 $80 万买它账上 $100 万现金外加一堆药管线</li>
+<li>FDA 批准在加速：2026 上半年 23 个新药 vs 去年同期 16 个；IPO 市场重开（15 起 vs 去年全年 8 起）</li>
+<li>A 股/港股更惨：公募医药配置降到约 2%（5 年新低）；创新药 BD 出海上半年 $1100 亿已达去年全年八成；科创生物 PE 处于近 3 年约 14% 分位——"越跌业绩越涨"</li>
+</ul>
+
+<h3>区域银行与国际小盘：AI 零影响的连带受害者</h3>
+<ul>
+<li><strong>区域银行</strong>：AI 对"吸收存款、发放贷款"零影响；收益率曲线正常化直接利好净息差；6 月以来金融板块已回升 10-14%；BofA 明确推荐</li>
+<li><strong>日本</strong>：企业 ROE 创历史新高 12%，但被全球 AI 轮动拖累</li>
+<li><strong>中国/印尼小盘</strong>：P/E 只有 3-5x，跟 AI 泡沫完全脱钩</li>
+<li><strong>Ackman 新建仓 Visa / Mastercard</strong>——纯现金流复利资产，跟 AI 零关系</li>
+</ul>
+
+<div class="callout callout-warn">
+<strong>注意时间节点</strong>：如果 2027 年 AI 泡沫真崩了（P17 六时钟判断），这些错杀标的会<strong>再跌一波</strong>——恐慌性抛售不挑人。那时候才是错杀标的的最好买点。现在可以先小仓位试探，大仓位等那波。
+</div>
+</div>
+
+<!-- ==================== 第四章 ==================== -->
+<div class="section">
+<h2>四、更狠的筛选：历史底部 + 刚需 + 现金流强</h2>
+
+<p>上面的错杀清单是"AI 威胁理论性"的错杀。再往下挖一层，标准加严到四条，找的是另一种东西——</p>
+
+<blockquote class="quote">不是等 AI 崩盘才捡的 C 档，也不是周期反转的 B 档，而是<strong>现在就已经在历史底部躺着、每年稳定吐现金、跌无可跌</strong>的类型："收租股的尸体价格"。</blockquote>
+
+<h3>四条硬标准</h3>
+<ol>
+<li><strong>跌幅够深</strong>——跌进历史底部区间（不是回调，是十年级别的那种底）</li>
+<li><strong>刚需</strong>——人们离不开：药不能停、话费必须交、车要开、饭要吃，AI 替代不了任何一样</li>
+<li><strong>现金流强</strong>——FCF 足以覆盖分红好几轮，不是纸面利润</li>
+<li><strong>分红安全</strong>——派息率在可覆盖区间（这是排除陷阱的关键一条）</li>
+</ol>
+
+<p>这类标的的安全垫逻辑很朴素：<strong>股价再跌，分红率就更高，总有资金（养老金/险资）会来接。</strong>买了基本不用盯盘，用时间换分红，跟"等崩盘捡便宜"的主策略完全不冲突——它们是拿着分红等崩盘的仓位。</p>
+</div>
+
+<!-- ==================== 第五章 ==================== -->
+<div class="section">
+<h2>五、第一档：完美命中四条标准的标的</h2>
+
+<h3>① BMY 施贵宝 —— $67.4｜股息 3.7%｜PE 14.4｜Beta 0.30</h3>
+<ul>
+<li><strong>干嘛的</strong>：血液稀释剂 Eliquis（全球老人离不开）+ 肿瘤药。AI 能写病历，替代不了吃降压药</li>
+<li><strong>为什么在底部</strong>：自 2023 高点跌约 35%，市场担心 Eliquis 专利到期（2026-2028）</li>
+<li><strong>现金流</strong>：P/FCF 仅 8.6x；分红 $50 亿 vs 净利润 $70 亿，派息率 71%，可覆盖</li>
+<li><strong>安全垫</strong>：Beta 0.30——AI 崩盘对它冲击最小的一档</li>
+<li><strong>买点</strong>：现价试探（收租层），$58-62 加仓，止损 $48</li>
+</ul>
+
+<h3>② T 美国电话电报 —— $25.7｜股息 4.3%｜PE 8.5</h3>
+<ul>
+<li><strong>干嘛的</strong>：美国最大光纤+电信运营商，1 亿多用户每月必须交话费</li>
+<li><strong>为什么在底部</strong>：2025 年曾跌到 $19.6（52 周低），市场担心债务和增长；JPMorgan 已列为 2026 电信唯一首选，目标价 $33（+30%）</li>
+<li><strong>现金流</strong>：2026 FCF 预计 $180 亿+，分红支出仅 $76 亿，<strong>派息率 42%</strong>——这个安全度在电信股里很少见</li>
+<li><strong>催化剂</strong>：今年回购 $100 亿（+25%），光纤 EBITDA 增长 6%+</li>
+<li><strong>买点</strong>：$23-24 试探（收租层），$20-21 加仓，止损 $17</li>
+</ul>
+
+<h3>③ MBG.DE 奔驰 —— €45.4｜股息 7.7%｜Forward PE 6.6</h3>
+<ul>
+<li><strong>干嘛的</strong>：全球豪华车第一品牌，均价 €70,000，百年品牌</li>
+<li><strong>为什么在底部</strong>：<strong>这是最极端的错杀</strong>——花旗测算，奔驰市值 ≈ 账上 €300 亿净现金 + 持有的戴姆勒卡车股份。翻译：市场给造车业务的定价是<strong>零</strong>。跌到非疫情期的十年最低</li>
+<li><strong>现金流</strong>：最悲观利润率假设下，年基础 FCF 仍有 €40 亿，支撑约 €60 亿股东回报（含 4-5% 回购）</li>
+<li><strong>风险</strong>：中国份额流失、美国关税、电动转型——这些已全部反映在价格里</li>
+<li><strong>买点</strong>：€42-44 试探，€36-38 加仓，止损 €30</li>
+</ul>
+
+<h3>④ CPB 金宝汤 —— $23｜股息 6.8%｜PE 11</h3>
+<ul>
+<li><strong>干嘛的</strong>：罐头汤、V8、Rao's 意面酱。经济好坏都得吃饭</li>
+<li><strong>为什么在底部</strong>：多年新低，市场担心包装食品销量连年真实下滑</li>
+<li><strong>现金流</strong>：前 9 个月 EPS $1.55 ≈ 全年分红 $1.56——分红刚好被盈利覆盖；Morningstar 测算 P/FV 只有 0.41（全市场最便宜）</li>
+<li><strong>买点</strong>：$20-22 试探，$16-18 加仓，止损 $13</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 840 430" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .lbl { fill:#e5e5ea; font-size:12px; font-weight:600; }
+    .sub { fill:#86868b; font-size:10.5px; }
+    .zone { fill:#22c55e; fill-opacity:.22; }
+    .zone2 { fill:#2997ff; fill-opacity:.16; }
+    .stop { fill:#ef4444; fill-opacity:.16; }
+  </style>
+  <!-- BMY -->
+  <text x="30" y="40" class="lbl">BMY 施贵宝</text>
+  <text x="110" y="40" class="sub">现价 $67.4</text>
+  <rect x="30" y="48" width="780" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+  <rect x="450" y="48" width="360" height="10" rx="5" class="stop"/>
+  <rect x="270" y="48" width="180" height="10" rx="5" class="zone"/>
+  <rect x="400" y="48" width="50" height="10" rx="5" class="zone2"/>
+  <circle cx="620" cy="53" r="6" fill="#e5e5ea"/>
+  <text x="360" y="76" text-anchor="middle" class="sub">加仓 58-62</text>
+  <text x="425" y="76" text-anchor="middle" class="sub">试探</text>
+  <text x="630" y="76" text-anchor="middle" class="sub">止损 48</text>
+  <!-- T -->
+  <text x="30" y="130" class="lbl">T 美国电话电报</text>
+  <text x="160" y="130" class="sub">现价 $25.7</text>
+  <rect x="30" y="138" width="780" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+  <rect x="520" y="138" width="290" height="10" rx="5" class="stop"/>
+  <rect x="330" y="138" width="120" height="10" rx="5" class="zone"/>
+  <rect x="460" y="138" width="60" height="10" rx="5" class="zone2"/>
+  <circle cx="700" cy="143" r="6" fill="#e5e5ea"/>
+  <text x="390" y="166" text-anchor="middle" class="sub">加仓 20-21</text>
+  <text x="490" y="166" text-anchor="middle" class="sub">试探 23-24</text>
+  <text x="665" y="166" text-anchor="middle" class="sub">止损 17</text>
+  <!-- MBG -->
+  <text x="30" y="220" class="lbl">MBG.DE 奔驰</text>
+  <text x="140" y="220" class="sub">现价 €45.4</text>
+  <rect x="30" y="228" width="780" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+  <rect x="470" y="228" width="340" height="10" rx="5" class="stop"/>
+  <rect x="250" y="228" width="140" height="10" rx="5" class="zone"/>
+  <rect x="410" y="228" width="60" height="10" rx="5" class="zone2"/>
+  <circle cx="640" cy="233" r="6" fill="#e5e5ea"/>
+  <text x="320" y="256" text-anchor="middle" class="sub">加仓 36-38</text>
+  <text x="440" y="256" text-anchor="middle" class="sub">试探 42-44</text>
+  <text x="640" y="256" text-anchor="middle" class="sub">止损 30</text>
+  <!-- CPB -->
+  <text x="30" y="310" class="lbl">CPB 金宝汤</text>
+  <text x="130" y="310" class="sub">现价 $23</text>
+  <rect x="30" y="318" width="780" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+  <rect x="510" y="318" width="300" height="10" rx="5" class="stop"/>
+  <rect x="270" y="318" width="120" height="10" rx="5" class="zone"/>
+  <rect x="410" y="318" width="60" height="10" rx="5" class="zone2"/>
+  <circle cx="660" cy="323" r="6" fill="#e5e5ea"/>
+  <text x="330" y="346" text-anchor="middle" class="sub">加仓 16-18</text>
+  <text x="440" y="346" text-anchor="middle" class="sub">试探 20-22</text>
+  <text x="660" y="346" text-anchor="middle" class="sub">止损 13</text>
+
+  <text x="30" y="400" class="sub">绿=加仓区（Zone2） · 蓝=试探区 · 红=止损 · 白点=现价 · 价格轴左低右高（非等比示意）</text>
+</svg>
+<p class="fig-cap">图 2 · 第一档四标的买点阶梯：现价均在试探区上方，等回落分批进，不追</p>
+</div>
+</div>
+
+<!-- ==================== 第六章 ==================== -->
+<div class="section">
+<h2>六、第二档瑕疵品与两个价值陷阱</h2>
+
+<h3>第二档：基本满足但有瑕疵</h3>
+<table>
+<thead><tr><th>标的</th><th class="num">价格</th><th class="num">股息</th><th>亮点</th><th>瑕疵</th></tr></thead>
+<tbody>
+<tr><td><strong>GSK</strong> 葛兰素史克</td><td class="num">$51.9</td><td class="num">3.4%</td><td>疫苗+药刚需；FCF 收益率 6.94%；派息率 57% 健康</td><td>三年分红增速 -5.7%，动能弱。作 BMY 的分散搭配</td></tr>
+<tr><td><strong>O</strong> 房地产收入信托</td><td class="num">$63</td><td class="num">5.2%</td><td>15,600 处物业 99% 出租率；1994 年来月度分红+连续 135 次加息</td><td>表面 P/E 50x（REIT 要看 FFO，实际约 15x 合理）；租约是 10-15 年 triple-net，非数据中心 REIT</td></tr>
+<tr><td><strong>VZ</strong> 威瑞森</td><td class="num">$50.2</td><td class="num">5.6%</td><td>FCF $200 亿 vs 分红 $115 亿，57% 覆盖</td><td>债务偏重，增长故事不如 AT&T 清晰。T 更优</td></tr>
+</tbody>
+</table>
+
+<h3>不要碰的"看起来便宜"（价值陷阱）</h3>
+<div class="callout callout-red">
+<strong>PFE 辉瑞</strong>：股息 6.1% 很诱人，但<strong>派息率 126%——分红超过利润</strong>，不可持续，随时可能砍分红。砍分红当天股价通常再跌 15-20%。派息率降到 80% 以下之前不碰。这是"分红安全"这条标准存在的意义。
+</div>
+<div class="callout callout-red">
+<strong>德国大众 VW</strong>：PE 7.3、PB 0.2 看着便宜，但欧盟排放罚款风险 + 中国市场持续恶化 + 没有奔驰那种"净现金=市值"的安全垫。<strong>便宜有便宜的道理——这是价值陷阱，不是错杀。</strong>
+</div>
+
+<p>区分错杀和价值陷阱的试金石就一条：<strong>便宜的理由是"隔壁着火被疏散"（可逆），还是"自家房子在塌"（不可逆）。</strong>PFE 的分红超支和 VW 的结构恶化都是自家的问题，跌了也不会涨回来。</p>
+</div>
+
+<!-- ==================== 第七章 ==================== -->
+<div class="section">
+<h2>七、体系定位：收租层的第三块拼图</h2>
+
+<table>
+<thead><tr><th>层级</th><th>标的</th><th>定位</th></tr></thead>
+<tbody>
+<tr><td>压舱层</td><td>短债 / BRK.B / 黄金</td><td>已有，不动</td></tr>
+<tr><td><strong>收租层（本轮新增）</strong></td><td><strong>BMY + T + 奔驰</strong>（各 2-3%，合计 6-9%）</td><td>历史底部 + 刚需 + 分红安全垫，拿着等崩盘</td></tr>
+<tr><td>收租层（已有）</td><td>电力 B 档等回调 / XBI 2-3% / 日本小盘</td><td>不动</td></tr>
+<tr><td>抄底清单</td><td>C 档预挂单（NVDA/AVGO/TSM）</td><td>等 2027 见顶后用</td></tr>
+</tbody>
+</table>
+
+<h3>三条操作口径</h3>
+<ol>
+<li><strong>两套体系不混</strong>：这批收租标的 ≠ B/C 档抄底清单。B/C 档是"等 AI 崩再买"的预挂单；这批是"现在已经便宜、可能还会更便宜、用分红扛时间"的仓位</li>
+<li><strong>不追价</strong>：现价都在试探区上方，等回落分批进；每只先 2-3%，砸到加仓区再加</li>
+<li><strong>崩盘情景的预案</strong>：2027 AI 崩时这批也会被无差别抛售砸一波（恐慌不挑人）——届时分红率更高 = 更好买点，<strong>拿住即可，不用止损在恐慌里</strong>；真正的止损信号是分红本身被砍（那说明"自家房子在塌"）</li>
+</ol>
+
+<div class="callout callout-green">
+<strong>体系灵魂再补一句</strong>：原来是"赚'必须建'的钱，等'借钱建的'崩，避开'被抽血的'"；错杀篇加了"捡'被隔壁着火疏散出来的'——前提是隔壁的火不会烧到你家"；今天这条是——<strong>"收租的房子着不了火，等恐慌时把别人的收租房也买下来。"</strong>
+</div>
+</div>
+
+<!-- ==================== 结论 ==================== -->
+<div class="conclusion section">
+<h2>结论：一张捡漏地图</h2>
+
+<ol>
+<li><span class="blue">判据</span>：错杀和真该杀的分界线只有一个问题——AI 是在"抢你的饭碗"还是"抢隔壁的饭碗"。跌得多 + 威胁是理论的 + 基本面还在涨 = 错杀；AI 真在替代你 = 飞刀，不碰。</li>
+<li><span class="yellow">两块最大的错杀区</span>：SaaS 末日恐慌里的平台型公司（CRM/NOW/CDNS/WDAY，IBM 引发的过度外推已被财报证伪）和资金虹吸下的生物科技（30% 公司市值低于账上现金、A 股公募配置 2% 创 5 年新低）。区域银行、国际小盘价值属于 AI 零影响的连带受害者，已在回暖。</li>
+<li><span class="green">收租层新增三只</span>：BMY（Beta 0.3、派息 71%）、AT&amp;T（FCF $180 亿、派息仅 42%）、奔驰（市值≈€300 亿净现金+卡车持股=造车业务定价为零），各 2-3%、合计 6-9%。金宝汤作备选。买了不用盯盘——用分红扛时间，等 2027 崩盘时它们被无差别砸出的坑。</li>
+<li><span class="red">两个陷阱</span>：PFE（派息率 126%=分红超利润）和大众（结构性恶化无安全垫）看着便宜不能碰。试金石：便宜的理由是"隔壁着火被疏散"（可逆）还是"自家房子在塌"（不可逆）。</li>
+<li><span class="blue">时间表</span>：错杀标的现在可小仓试探、大仓位等 2027 AI 崩后的无差别抛售那一波；收租标的拿住分红，真正的离场信号是分红被砍，不是股价下跌。</li>
+</ol>
+
+<p style="margin-top:14px; color:#86868b; font-size:13px;">以上均为个人认知范围内的理解与学习笔记，仅作自我复盘用途，不构成任何投资建议。数据截至 2026-08-25，来源包括彭博、花旗、JPMorgan、BofA、Morningstar、Dan Ives（Wedbush）公开访谈及各公司财报，价格锚定 8/21-25 收盘，引用数字以当时检索结果为准。本篇承接 P17（AI周期见顶与行业命运）的行业命运三层图，可与 P16（AI挤占与防守反击）的三层 4:3:3 与收租层框架配合使用。</p>
+</div>
+
+</div>
+</body>
+</html>

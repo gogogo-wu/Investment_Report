@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>乐天集团转型末段赌注 · 三引擎解剖 + 10/1二元分岔 + 观察清单触发条件</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .subtitle { font-size: 13px; }
+    .section h2 { font-size: 16px; }
+    .section h3 { font-size: 14px; }
+    p, ul, ol, .callout { font-size: 13px; }
+    table { font-size: 12px; }
+    thead th, tbody td { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>乐天集团转型末段赌注</h1>
+<p class="subtitle">4755.T · 三引擎利润解剖 · 债务命门 · 10/1 二元分岔（KDDI断供 × 金融重组） · SOTP 53%折价 · 观察清单触发条件与认输信号</p>
+<div class="badge-row">
+  <span class="badge badge-blue">转型末段二元赌注</span>
+  <span class="badge badge-red">债务命门 BB / 6.2x</span>
+  <span class="badge badge-warn">10/1 裁判日</span>
+  <span class="badge badge-green">飞轮数据验证</span>
+  <span class="badge badge-blue">2026-08-26</span>
+</div>
+
+<!-- ==================== 第一章 ==================== -->
+<div class="section">
+<h2>一、事件矛盾：赚钱了，股价为什么跌</h2>
+
+<p>一年前那次财报，乐天交出"六年来首次单季盈利"，结果当天股价跌了 14%。市场用脚投票的答案翻译过来是：<strong>"利润是真的，但我不信移动那个无底洞的故事。"</strong></p>
+
+<p>这次 Q2（2026 年 4-6 月）是把同一个问题再问一遍：</p>
+
+<table>
+<thead><tr><th>指标</th><th class="num">Q2 数字</th><th>表面看</th></tr></thead>
+<tbody>
+<tr><td>收入</td><td class="num">¥6,655亿（+11.6%）</td><td>不错</td></tr>
+<tr><td>Non-GAAP 营业利润</td><td class="num">¥420亿（+109.6%）</td><td>翻倍，很猛</td></tr>
+<tr><td>EBITDA</td><td class="num">¥1,153亿</td><td>健康</td></tr>
+<tr><td>净利润</td><td class="num">¥272亿</td><td>终于赚了</td></tr>
+</tbody>
+</table>
+
+<p>但拆开看就有三个坑：</p>
+<ol>
+<li><strong>半年还是亏的</strong>。H1 归母净亏 ¥109.4 亿——Q1 计提了 ¥170 亿物流减值（乐天物流是当年移动大战时为压配送成本自己建的，现在认赔），Q2 才刚扭回来。</li>
+<li><strong>税前利润只有 ¥5 亿</strong>。¥272 亿净利里绝大部分是税收优惠（递延税资产转回）撑起来的，不是真金白银的经营利润。</li>
+<li><strong>落到股东手里的只有 ¥77 亿</strong>。集团赚 ¥272 亿，其中 ¥195 亿属于乐天银行、乐天证券的少数股东——最赚钱的金融板块，乐天并不 100% 持有。</li>
+</ol>
+
+<div class="callout">
+<strong>大白话：报表上的"盈利"是三成真、七成化妆。</strong>这不是造假，是会计规则的合法结果，但解释了为什么市场不给面子。
+</div>
+</div>
+
+<!-- ==================== 第二章 ==================== -->
+<div class="section">
+<h2>二、乐天是什么：三台发动机，一个飞轮</h2>
+
+<p>乐天不是一家电商公司，是<strong>一台用移动烧钱买用户、用金融变现赚钱的机器</strong>。三个分部各干各的活：</p>
+
+<ul>
+<li><strong>FinTech（金融）= 利润引擎</strong>：营业利润 ¥692 亿（+60.1%）。乐天银行存款 ¥13.3 万亿（+13.9%）、ROE 高达 22%；乐天证券托管资产 ¥58.7 万亿（+48.3%）、NISA 账户 792 万户。这是全日本零售金融里最能打的玩家之一。</li>
+<li><strong>互联网服务 = 现金牛</strong>：营业利润 ¥231 亿。电商+广告（广告收入 ¥656 亿、+15.6%），稳定但不性感。</li>
+<li><strong>移动 = 出血点（在收窄）</strong>：营业利润 <span class="red">-¥331 亿</span>，但运营商层面 EBITDA 已经连续为正（本季 +¥59 亿）、用户 1,075 万（一年净增 178 万）、解约率 churn 从高位改善到 1.38%、ARPU ¥2,516。</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 840 430" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .lbl { fill:#e5e5ea; font-size:13px; font-weight:600; }
+    .sub { fill:#86868b; font-size:11px; }
+    .val { font-size:14px; font-weight:700; }
+  </style>
+  <text x="30" y="34" class="lbl">三引擎营业利润（Q2 FY2026，2026年4-6月）</text>
+
+  <!-- 零线 -->
+  <line x1="380" y1="60" x2="380" y2="250" stroke="rgba(255,255,255,.25)" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="380" y="272" text-anchor="middle" class="sub">0</text>
+
+  <!-- FinTech bar -->
+  <text x="30" y="86" class="lbl">FinTech 金融</text>
+  <rect x="380" y="70" width="290" height="26" rx="6" fill="#22c55e" fill-opacity=".75"/>
+  <text x="425" y="88" class="val" fill="#052e16">+¥692亿 (+60.1%)</text>
+  <text x="425" y="120" class="sub">银行存款¥13.3万亿 ROE 22% · 证券AUC ¥58.7万亿 · NISA 792万户</text>
+
+  <!-- Internet bar -->
+  <text x="30" y="156" class="lbl">互联网服务</text>
+  <rect x="380" y="140" width="97" height="26" rx="6" fill="#2997ff" fill-opacity=".75"/>
+  <text x="483" y="158" class="val" fill="#8ab4ff">+¥231亿</text>
+  <text x="30" y="190" class="sub">电商+广告（广告收入¥656亿 +15.6%）——现金牛</text>
+
+  <!-- Mobile bar -->
+  <text x="30" y="226" class="lbl">移动</text>
+  <rect x="241" y="210" width="139" height="26" rx="6" fill="#ef4444" fill-opacity=".75"/>
+  <text x="262" y="228" class="val" fill="#fecaca">-¥331亿</text>
+  <text x="30" y="260" class="sub">用户1,075万(+178万) · ARPU ¥2,516 · churn 1.38%改善 · 运营商EBITDA +¥59亿已连续为正</text>
+
+  <!-- 飞轮面板 -->
+  <rect x="30" y="296" width="780" height="112" rx="10" fill="rgba(41,151,255,.06)" stroke="rgba(41,151,255,.3)" stroke-dasharray="5 3"/>
+  <text x="420" y="322" text-anchor="middle" fill="#8ab4ff" font-size="13" font-weight="700">生态飞轮：用得越多，花得越多</text>
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <text x="150" y="356" fill="#e5e5ea">1x</text>
+    <text x="320" y="356" fill="#4ade80">5.4x</text>
+    <text x="510" y="356" fill="#22c55e">13.5x</text>
+    <text x="680" y="356" fill="#8ab4ff">2.43x</text>
+  </g>
+  <g font-size="10.5" fill="#86868b" text-anchor="middle">
+    <text x="150" y="376">用1个乐天服务</text>
+    <text x="150" y="390">的会员年消费</text>
+    <text x="320" y="376">用2个服务的</text>
+    <text x="320" y="390">年消费倍数</text>
+    <text x="510" y="376">用3个服务的</text>
+    <text x="510" y="390">年消费倍数</text>
+    <text x="680" y="376">移动用户对生态</text>
+    <text x="680" y="390">的使用量倍数</text>
+  </g>
+</svg>
+<p class="fig-cap">图 1 · 三引擎利润解剖：FinTech 赚的 ¥692 亿填移动亏的 ¥331 亿还剩一半——移动是获客漏斗，金融是变现端</p>
+</div>
+
+<p>这三台发动机不是并列关系，是<strong>飞轮</strong>：用 1 个乐天服务的会员年消费是 1 倍基准，用 2 个服务是 5.4 倍，用 3 个是 13.5 倍；移动用户对生态的使用量是普通用户的 2.43 倍。<strong>移动亏的每一块钱，本质是买流量的广告费。</strong>这个模式跑通的前提只有一个：移动别再恶化。</p>
+</div>
+
+<!-- ==================== 第三章 ==================== -->
+<div class="section">
+<h2>三、真正的命门：不是业务，是债务</h2>
+
+<p>这是比三引擎更重要的部分。用 P17 那把刀——"债务刚性 × 资产贬值速度"——来切：</p>
+
+<table>
+<thead><tr><th>债务体检项</th><th>乐天读数</th><th>什么概念</th></tr></thead>
+<tbody>
+<tr><td>信用评级</td><td><span class="red">S&amp;P BB（垃圾级）</span></td><td>借钱比三大厂贵一截</td></tr>
+<tr><td>美元债利率</td><td><span class="red">2027年债 11.25% · 2029年债 9.75%</span></td><td>比美国 AI 概念垃圾债还高</td></tr>
+<tr><td>非金融净债务/EBITDA</td><td><span class="yellow">6.2x → 承诺2027年12月前 ≤5x</span></td><td>对比：软银常年被骂也就这个量级</td></tr>
+<tr><td>2026 年到期</td><td class="green">赎回资金已全部锁定</td><td>眼前没事</td></tr>
+<tr><td>2027 年到期</td><td><span class="red">约 ¥4,000亿</span></td><td>下一道坎，和 AI 周期见顶窗口重叠</td></tr>
+<tr><td>股东回报</td><td>零分红</td><td>赚的钱全拿去还债</td></tr>
+</tbody>
+</table>
+
+<div class="callout callout-red">
+<strong>大白话：乐天是"借高利贷开店的老板"。</strong>生意确实在变好，但 6.2 倍的杠杆意味着它没有犯错的余地——移动只要再恶化两年，或者 2027 年那 ¥4,000 亿再融资碰上市场关窗（届时如果 AI 债危机爆发、高收益债冻结，垃圾级的日企美元债是最先被抛的），故事就断了。这也是它被 S&amp;P 按 BB、被市场按住估值的核心原因。
+</div>
+</div>
+
+<!-- ==================== 第四章 ==================== -->
+<div class="section">
+<h2>四、10 月 1 日：一天的裁判，两个剧本</h2>
+
+<p>同一天落地的一对反向事件，一个要它的命，一个给它重生：</p>
+
+<h3>风险事件：KDDI 漫游断供</h3>
+<ul>
+<li>乐天和 KDDI 的漫游协议 9/30 到期，10/1 起城市区域 KDDI 网络对乐天用户断供</li>
+<li>乐天自有基站 10.6 万座，听着多，但 NTT docomo / au / 软银是 30-40 万座量级——覆盖密度差一个身位</li>
+<li>2026 年 ¥2,000 亿的基站补网预算，到 6 月只完成 30%（¥655 亿），进度落后</li>
+<li>KDDI 一边收着乐天的漫游费（每年数百亿日元），一边公开用低价品牌 povo 挖乐天的墙角</li>
+</ul>
+<div class="callout callout-warn">
+<strong>这既是成本问题，更是信号问题</strong>：一旦城市覆盖塌方、churn 恶化，飞轮的入口就漏了。
+</div>
+
+<h3>催化事件：金融控股重组同日生效</h3>
+<ul>
+<li>乐天银行转为控股公司旗下、信用卡公司 + 证券控股纳入同一金融集团架构</li>
+<li>官方协同数字：FY3/28 财务协同约 ¥250 亿 + 营销协同 ¥80 亿，FY3/30 累计 ¥850 亿</li>
+<li>银行集团 FY3/30 经常利益目标 ¥4,000 亿+</li>
+<li>逻辑：把"银行-证券-信用卡-支付"的资金闭环焊死，交叉销售 1 亿会员——乐天最值钱的资产被重新定价的机会</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 840 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22c55e" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity=".04"/>
+    </linearGradient>
+    <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ef4444" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ef4444" stop-opacity=".04"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 剧本盒 -->
+  <rect x="40" y="26" width="290" height="118" rx="10" fill="url(#gA)" stroke="#22c55e" stroke-opacity=".45"/>
+  <text x="185" y="52" text-anchor="middle" fill="#4ade80" font-size="14" font-weight="700">剧本 A · 独立行走成功</text>
+  <text x="185" y="76" text-anchor="middle" fill="#d1d1d6" font-size="11.5">churn 稳在 1.3-1.5% · 全年归母转正</text>
+  <text x="185" y="94" text-anchor="middle" fill="#d1d1d6" font-size="11.5">杠杆按计划降到 5x</text>
+  <text x="185" y="120" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="700">重估 ¥957-1,100（+23%~41%）</text>
+
+  <rect x="510" y="26" width="290" height="118" rx="10" fill="url(#gB)" stroke="#ef4444" stroke-opacity=".45"/>
+  <text x="655" y="52" text-anchor="middle" fill="#f87171" font-size="14" font-weight="700">剧本 B · 网络质量塌方</text>
+  <text x="655" y="76" text-anchor="middle" fill="#d1d1d6" font-size="11.5">churn 破 2% 持续 · 断供区投诉发酵</text>
+  <text x="655" y="94" text-anchor="middle" fill="#d1d1d6" font-size="11.5">再融资利差走阔</text>
+  <text x="655" y="120" text-anchor="middle" fill="#f87171" font-size="13" font-weight="700">下探 ¥575（-26%），不是底</text>
+
+  <!-- 分岔线 -->
+  <path d="M185 144 C 185 200, 320 230, 400 330" stroke="#22c55e" stroke-opacity=".5" stroke-width="1.5" fill="none" stroke-dasharray="5 4"/>
+  <path d="M655 144 C 655 200, 520 230, 440 330" stroke="#ef4444" stroke-opacity=".5" stroke-width="1.5" fill="none" stroke-dasharray="5 4"/>
+
+  <!-- 时间轴 -->
+  <line x1="40" y1="360" x2="800" y2="360" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+  <g>
+    <!-- 10/1 -->
+    <circle cx="130" cy="360" r="9" fill="#fbbf24"/>
+    <circle cx="130" cy="360" r="15" fill="none" stroke="#fbbf24" stroke-opacity=".5" stroke-width="1.5"/>
+    <text x="130" y="336" text-anchor="middle" fill="#fbbf24" font-size="12.5" font-weight="700">9/30-10/1</text>
+    <text x="130" y="390" text-anchor="middle" fill="#e5e5ea" font-size="10.5">KDDI断供落地</text>
+    <text x="130" y="404" text-anchor="middle" fill="#e5e5ea" font-size="10.5">金融重组生效</text>
+    <text x="130" y="424" text-anchor="middle" fill="#fbbf24" font-size="10">裁判日</text>
+    <!-- Q4 AST -->
+    <circle cx="290" cy="360" r="7" fill="#8ab4ff"/>
+    <text x="290" y="336" text-anchor="middle" fill="#8ab4ff" font-size="12" font-weight="600">Q4'26</text>
+    <text x="290" y="390" text-anchor="middle" fill="#e5e5ea" font-size="10.5">AST卫星商用</text>
+    <text x="290" y="404" text-anchor="middle" fill="#e5e5ea" font-size="10.5">J-LEO补贴最高¥1,480亿</text>
+    <!-- Q3财报 -->
+    <circle cx="435" cy="360" r="7" fill="#e5e5ea"/>
+    <text x="435" y="336" text-anchor="middle" fill="#e5e5ea" font-size="12" font-weight="600">11/13</text>
+    <text x="435" y="390" text-anchor="middle" fill="#e5e5ea" font-size="10.5">Q3财报：断供后首个</text>
+    <text x="435" y="404" text-anchor="middle" fill="#e5e5ea" font-size="10.5">完整季度 churn 读数</text>
+    <!-- 全年净利 -->
+    <circle cx="545" cy="360" r="7" fill="#e5e5ea"/>
+    <text x="545" y="336" text-anchor="middle" fill="#e5e5ea" font-size="12" font-weight="600">12月末</text>
+    <text x="545" y="390" text-anchor="middle" fill="#e5e5ea" font-size="10.5">FY26 全年净利</text>
+    <text x="545" y="404" text-anchor="middle" fill="#e5e5ea" font-size="10.5">"真盈利"验收</text>
+    <!-- 2027 -->
+    <circle cx="660" cy="360" r="7" fill="#ff6961"/>
+    <text x="660" y="336" text-anchor="middle" fill="#ff6961" font-size="12" font-weight="600">2027</text>
+    <text x="660" y="390" text-anchor="middle" fill="#e5e5ea" font-size="10.5">杠杆≤5x 验收</text>
+    <text x="660" y="404" text-anchor="middle" fill="#e5e5ea" font-size="10.5">约¥4,000亿债到期=下一坎</text>
+    <!-- 今日 -->
+    <text x="800" y="336" text-anchor="end" fill="#86868b" font-size="11">现在 ¥780</text>
+    <circle cx="800" cy="360" r="5" fill="#86868b"/>
+  </g>
+</svg>
+<p class="fig-cap">图 2 · 15 个月关键节点：10/1 是同日双事件（黄色），11/13 Q3 财报是剧本 A/B 的第一个可验证读数，2027 年债务验收与 AI 周期见顶窗口重叠</p>
+</div>
+
+<p>往后再排：<strong>Q4 AST 卫星商用</strong>（补覆盖的另一半答案，政府 J-LEO 补贴最高 ¥1,480 亿）→ <strong>11/13 Q3 财报</strong>（第一个看到断供后 churn 的窗口）→ <strong>12 月末 FY26 全年净利</strong>（"全年真盈利"能否兑现）→ <strong>2027 杠杆 ≤5x 验收</strong>。</p>
+
+<table>
+<thead><tr><th></th><th>剧本 A：独立行走成功</th><th>剧本 B：网络质量塌方</th></tr></thead>
+<tbody>
+<tr><td><strong>标志</strong></td><td>churn 稳在 1.3-1.5%、全年归母转正、杠杆按计划降</td><td>churn 破 2% 持续、断供区投诉发酵、再融资利差走阔</td></tr>
+<tr><td><strong>估值</strong></td><td class="green">SOTP 重估 ¥957-1,100</td><td class="red">下探分析师低目标 ¥575</td></tr>
+<tr><td><strong>现价 ¥780 的位置</strong></td><td class="green">+23% ~ +41%</td><td class="red">-26%</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ==================== 第五章 ==================== -->
+<div class="section">
+<h2>五、AI 这张牌：受益者和被革命者，一体两面</h2>
+
+<p>这是 P16"智能体经济"的一个活标本：</p>
+
+<h3>受益面</h3>
+<ul>
+<li>乐天自己测试的 AI 导购，把用户购买决策时间缩短 <span class="green">41%</span>、客单价提升 <span class="green">17%</span></li>
+<li>AI 对乐天电商是转化率放大器；对乐天证券，AI 投顾是 NISA 用户的留存工具</li>
+<li><strong>乐天是日本极少数手里有 1 亿真实消费数据 + 金融牌照的公司</strong>——训练场景是现成的</li>
+</ul>
+
+<h3>威胁面</h3>
+<ul>
+<li>一旦代理购物（AI agent 替你比价、下单、绕过平台界面）成为主流，乐天最值钱的"入口+会员"资产就被架空了</li>
+<li>平台靠"逛"赚钱，agent 经济里没人"逛"</li>
+</ul>
+
+<div class="callout">
+<strong>判断</strong>：短期（1-2 年）受益面占主导，长期威胁面取决于它能不能把自己的 agent 做出来。这不是买卖依据，是仓位上限的依据——这类"入口型资产"在 AI 第二幕里天然带不确定性折价。
+</div>
+</div>
+
+<!-- ==================== 第六章 ==================== -->
+<div class="section">
+<h2>六、估值：53% 的折价，买的是什么</h2>
+
+<p>Macquarie 的 SOTP（分部加总估值）：</p>
+
+<table>
+<thead><tr><th>分部</th><th class="num">估值</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>互联网服务</td><td class="num">¥1.8万亿</td><td>电商+广告现金牛</td></tr>
+<tr><td>归属金融板块</td><td class="num">¥1.6万亿</td><td>银行+证券+信用卡（扣少数股东）</td></tr>
+<tr><td>移动</td><td class="num">¥2,590亿</td><td>按改善中的亏损业务给残值</td></tr>
+<tr><td><strong>SOTP 合计</strong></td><td class="num blue">≈¥3.66万亿 → 目标价 ¥1,100</td><td></td></tr>
+<tr><td><strong>当前市值</strong></td><td class="num yellow">¥1.7万亿（¥780/股）</td><td><strong>折价 53%</strong></td></tr>
+</tbody>
+</table>
+
+<p>其他读数：52 周区间 ¥686-1,068、YTD 约 -15%（同期日经 +30%——大牛市里的落后生）；分析师均值 ¥957、高 ¥1,400、低 ¥575；评级 20% 强买 / 33% 买 / 40% 持有 / 6.7% 跑输——<strong>分歧极大，分歧本身就是二元结构的价格表达</strong>。</p>
+
+<p>但便宜要过三道问：</p>
+<ol>
+<li><strong>为什么便宜</strong>：6.2x 杠杆 + BB 评级 + 十年移动烧钱史 + 控制人持股结构复杂——市场给的是"折价买管理层信用"的价，不是错杀。对比 P18 的试金石：<strong>乐天不是"隔壁着火被疏散"，是自家移动那间房还在冒烟</strong>，虽然火势在减弱。</li>
+<li><strong>和历史比</strong>：P/B 1.86、EV/EBITDA 4.52——按电信股看不贵，按互联网公司看很便宜；但 ROE 只有 0.34%，P/B 的分母质量极差，低 EV/EBITDA 是被债务撑出来的（EV ¥2.01 万亿 vs 市值 ¥1.7 万亿）。</li>
+<li><strong>和机会成本比</strong>：日经涨的是通胀回归+治理改革受益的旧经济，乐天的故事不在这个篮子里。同等的观察仓预算，Intel 的赔率结构比它好。</li>
+</ol>
+</div>
+
+<!-- ==================== 第七章 ==================== -->
+<div class="section">
+<h2>七、定位与操作：三个"不进"+ 一个"等着"</h2>
+
+<p><strong>定位：转型末段二元赌注。</strong>和 Intel（P12）、Nike（P13）同属一个案例族——巨亏业务进入收尾验证期、市场将信将疑、赔率不对称。但风险排序上：<strong>乐天 &gt; Nike &gt; Intel</strong>。Intel 底下有政府 $890 亿 + 软银 + 英伟达托底，Nike 有品牌和现金流地板，<strong>乐天只有自己</strong>——BB 评级、零分红、6.2x 杠杆，全靠自救。</p>
+
+<table>
+<thead><tr><th>体系里的篮子</th><th>乐天进不进</th><th>为什么</th></tr></thead>
+<tbody>
+<tr><td>收租层（BMY/T/奔驰/金宝汤）</td><td class="red">不进</td><td>零分红、BB 垃圾级、6.2x 杠杆——收租要的是"买了不用管"，乐天是要天天盯债务表的公司</td></tr>
+<tr><td>B/C 档（等 AI 崩盘捡）</td><td class="red">不进</td><td>它的命运和 AI 周期无关，2027 崩盘只会通过"高收益债冻结"间接砸它</td></tr>
+<tr><td>转型末段赌注（Intel/Nike 案例族）</td><td class="yellow">进，但排最后</td><td>Intel 给了完整 Z1/Z2/Z3 建仓区间；Nike"现价不建仓等裁决"；<strong>乐天连区间都要等裁判先吹哨</strong></td></tr>
+</tbody>
+</table>
+
+<p>排序即：<strong>Intel（可买，等回调）&gt; Nike（观察，等财报）&gt; 乐天（观察，等 10/1 断供落地后的 churn 数据）</strong>。</p>
+
+<h3>操作纪律（按三层体系走）</h3>
+<table>
+<thead><tr><th>动作</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><strong>现在（¥780）</strong></td><td class="red">不追。10/1 双事件未落地，等于裁判还没吹哨就下注</td></tr>
+<tr><td><strong>验证窗口</strong></td><td>10-12 月盯三个数：<strong>churn（稳在 1.5% 以内？）</strong>、11/13 Q3 财报（断供后首个完整季度）、12 月末全年归母能否转正</td></tr>
+<tr><td><strong>Z1 试探区</strong></td><td class="green">¥650-700，仓位 ≤1-2%（剧本 A 确认但被大盘砸下来的情况）</td></tr>
+<tr><td><strong>Z2 核心区</strong></td><td class="green">¥550-600，仓位 2-3%（剧本 B 恐慌但 churn 数据没坏 = 连坐砸坑）</td></tr>
+<tr><td><strong>认输信号</strong></td><td class="red">churn 破 2% 且持续两个月以上 + 全年净利落空——剧本 B 实锤，下探 ¥575 不是底，止损离场不接飞刀</td></tr>
+<tr><td><strong>潜在赔率</strong></td><td class="blue">剧本 A 兑现 → 重估 ¥957-1,100，+23%~41%</td></tr>
+</tbody>
+</table>
+
+<div class="callout callout-warn">
+<strong>为什么"现在不买"比"不买"准确</strong>：Intel 的 Z1 现在就能挂——它的验证点（18A 量产、政府融资）在价格之外，跌下来就是机会；乐天的 Z1 必须等 10 月以后才有效——它便宜的理由（债务+网络覆盖疑云）还没被证伪。现在 ¥780 跌到 ¥650，你分不清是"错杀"还是"剧本 B 开始了"，<strong>接飞刀和捡便宜长得一模一样</strong>。10/1 断供落地 + 11/13 Q3 财报之后，churn 会告诉你这是哪一种。
+</div>
+
+<div class="callout callout-red">
+<strong>2027 重叠警告</strong>：乐天的 2027 再融资墙（约 ¥4,000 亿）和 AI 周期见顶窗口（P17 六时钟：2027 Q1-Q3）正面重叠。如果 CoreWeave 级违约引爆高收益债市场，垃圾级的乐天美元债会被先卖——届时股价砸出的坑会比基本面应得的更深。这对已持仓者是坏消息（会被波及）；对空仓者是好消息（Z2/Z3 的价格可能因此出现）。这也是仓位上限压在 3% 以内的原因。
+</div>
+</div>
+
+<!-- ==================== 结论 ==================== -->
+<div class="conclusion section">
+<h2>结论：好资产，烂资产负债表，等火苗确认熄了再上手</h2>
+
+<ol>
+<li><span class="blue">一句话版本</span>：乐天是一家"用移动业务烧钱买用户、用金融业务赚钱变现"的日本电商巨头，转型走到最后一段路——故事动人、价格不算贵，但债台高筑 + 一个 10 月 1 日的生死裁判点，决定了它<strong>现在只能进观察清单，进不了买入清单</strong>。不是"永不碰"，是"裁判没吹哨不下注"。</li>
+<li><span class="yellow">利润成色</span>：Q2 Non-GAAP 营业利润 ¥420 亿（+109.6%）表面翻倍，但 H1 归母仍净亏 ¥109.4 亿（¥170 亿物流减值）、税前仅 ¥5 亿（税收优惠撑起）、归母仅 ¥77 亿（¥195 亿归金融板块少数股东）——三成真、七成化妆。</li>
+<li><span class="green">飞轮是真的</span>：FinTech +¥692 亿（银行存款 ¥13.3 万亿、ROE 22%、证券 AUC ¥58.7 万亿）填移动 -¥331 亿还剩一半；1/2/3 服务会员消费 1x/5.4x/13.5x 的飞轮数据扎实。移动是获客漏斗、金融是变现端，模式跑通的前提只有一个：churn 别恶化。</li>
+<li><span class="red">命门是债务</span>：S&amp;P BB、美元债 11.25%/9.75%、非金融杠杆 6.2x、2027 年约 ¥4,000 亿到期与 AI 周期见顶窗口重叠。零分红意味着它在收租层、B/C 档、转型赌注族里都排最后——Intel 有政府托底、Nike 有品牌地板，乐天只有自己。</li>
+<li><span class="blue">操作</span>：事件前不追；10-12 月验证三个数（churn ≤1.5%、11/13 Q3、全年归母转正）后再谈仓位——Z1 ¥650-700 试探 ≤1-2%、Z2 ¥550-600 加到 2-3%；认输信号 = churn 破 2% 持续 + 全年净利落空，届时 ¥575 不是底。2027 年高收益债若冻结，它会被先卖——空仓者等的那一刀，可能比基本面应得的更深。</li>
+</ol>
+
+<div class="callout callout-green">
+<strong>体系灵魂再补一句</strong>：在"赚'必须建'的钱，等'借钱建的'崩，避开'被抽血的'"、"收租的房子着不了火"之后，今天这条是——<strong>"二元赌注的钱，等裁判吹哨再上桌；裁判没吹哨前，便宜和飞刀长得一模一样。"</strong>
+</div>
+
+<p style="margin-top:14px; color:#86868b; font-size:13px;">以上均为个人认知范围内的理解与学习笔记，仅作自我复盘用途，不构成任何投资建议。数据截至 2026-08-22，来源包括乐天集团 FY2026 Q2 财报、Macquarie SOTP 估值、S&amp;P 信用报告、KDDI/乐天漫游协议公开报道及各日文财经媒体（minkabu/Edgen/TipRanks 等），价格锚定 8 月中旬收盘（约 ¥780），引用数字以当时检索结果为准。本篇承接 P12（Intel 深度复盘）与 P13（Nike 深度复盘）的"转型末段赌注"案例族，可与 P17（AI 周期见顶）的债务刚性判据、P18（错杀与收租）的试金石配合使用。</p>
+</div>
+
+</div>
+</body>
+</html>

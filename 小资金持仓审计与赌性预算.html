@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小资金持仓审计与赌性预算 · 成本价审计 · 小资金的不同物理 · 压舱层在工资卡里 · 赌性笼子 · 持有过财报三剧本</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .section h2 { font-size: 16px; }
+    table { font-size: 12px; }
+    tbody td, thead th { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>小资金持仓审计与赌性预算</h1>
+<p class="subtitle">一份用大资金尺子量错、又被小资金主人纠正的持仓体检 · 成本价揭示的建仓纪律 · 压舱层原来在工资卡里 · 赌性不用戒但要关进笼子 · 持有过财报的三剧本</p>
+<div class="badge-row">
+  <span class="badge badge-blue">P24 · 持仓方法论</span>
+  <span class="badge badge-warn">组合总浮盈 +1.47% 基本平手</span>
+  <span class="badge badge-red">"区间设了，手比区间快"</span>
+  <span class="badge badge-green">满仓翻案：纪律而非赌博</span>
+  <span class="badge badge-blue">赌性预算 ≤10-20%</span>
+</div>
+
+<div class="callout">
+  <strong>这篇的由来：</strong>P23 用机构组合的尺子（4:3:3、收租层、分散化）量了一份小资金持仓，被主人一句话纠正——"我是小资金的普通投资者，不是那些大资金"。于是有了这篇：一半是<strong>撤回</strong>（那些只对管几个亿的人成立的批评），一半是<strong>保留</strong>（规模改变不了的那几条物理）。分析基准：2026/8/28 收盘。文中持仓为个人示例数字，方法论对任何小资金账户通用。
+</div>
+
+<!-- ============ 一、成本价审计 ============ -->
+<div class="section">
+  <h2>一、成本价审计：+1.47% 的"平手"是什么结构</h2>
+  <p><strong>大白话版本：</strong>把成本价放进公式一算，这个四只票的组合总浮盈只有 <strong>+1.47%——基本平手</strong>。两赚两亏：甲骨文（+10.9%）和 Intel（+3.5%）在赚，AVGO（-6.5%）在亏，耐克（+1.5%）原地踏步。但成本价透露的信息比盈亏本身重要——它暴露了这套仓位是<strong>什么时候、按什么纪律</strong>建起来的。</p>
+
+  <table>
+    <thead><tr><th>持仓</th><th class="num">权重</th><th class="num">成本价</th><th class="num">现价 8/28</th><th class="num">浮动盈亏</th><th class="num">组合贡献</th></tr></thead>
+    <tbody>
+      <tr><td>INTC</td><td class="num">33%</td><td class="num">$86.44</td><td class="num">$89.47</td><td class="green num">+3.51%</td><td class="green num">+1.16pp</td></tr>
+      <tr><td>AVGO</td><td class="num">27%</td><td class="num">$394.23</td><td class="num">$368.79</td><td class="red num">-6.45%</td><td class="red num">-1.74pp</td></tr>
+      <tr><td>NKE</td><td class="num">21%</td><td class="num">$39.03</td><td class="num">$39.60</td><td class="green num">+1.46%</td><td class="green num">+0.31pp</td></tr>
+      <tr><td>ORCL</td><td class="num">16%</td><td class="num">$135.98</td><td class="num">$150.85</td><td class="green num">+10.93%</td><td class="green num">+1.75pp</td></tr>
+      <tr><td><strong>组合合计</strong></td><td class="num">97%</td><td colspan="3"></td><td class="green num"><strong>+1.47%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="fig">
+  <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+    <text x="30" y="26" font-size="14" font-weight="600" fill="#f5f5f7">逐仓盈亏对组合的贡献分解（百分点，0轴在中间）</text>
+    <line x1="300" y1="48" x2="300" y2="292" stroke="#5f5f64" stroke-width="1.5"/>
+    <text x="300" y="40" font-size="10" fill="#86868b" text-anchor="middle">0</text>
+
+    <text x="60" y="83" font-size="12" fill="#d1d1d6" font-weight="600">INTC 33%</text>
+    <rect x="300" y="66" width="93" height="26" rx="4" fill="#4ade80" opacity="0.75"/>
+    <text x="403" y="84" font-size="12" fill="#4ade80" font-weight="600">+1.16pp</text>
+    <text x="403" y="70" font-size="10" fill="#86868b">+3.51% · 成本$86.44</text>
+
+    <text x="60" y="127" font-size="12" fill="#d1d1d6" font-weight="600">AVGO 27%</text>
+    <rect x="161" y="110" width="139" height="26" rx="4" fill="#ff6961" opacity="0.8"/>
+    <text x="153" y="128" font-size="12" fill="#ff6961" font-weight="600" text-anchor="end">-1.74pp</text>
+    <text x="153" y="114" font-size="10" fill="#86868b" text-anchor="end">-6.45% · 成本$394.23</text>
+
+    <text x="60" y="171" font-size="12" fill="#d1d1d6" font-weight="600">NKE 21%</text>
+    <rect x="300" y="154" width="25" height="26" rx="4" fill="#4ade80" opacity="0.5"/>
+    <text x="335" y="172" font-size="12" fill="#4ade80">+0.31pp</text>
+    <text x="335" y="158" font-size="10" fill="#86868b">+1.46%</text>
+
+    <text x="60" y="215" font-size="12" fill="#d1d1d6" font-weight="600">ORCL 16%</text>
+    <rect x="300" y="198" width="140" height="26" rx="4" fill="#4ade80" opacity="0.9"/>
+    <text x="450" y="216" font-size="12" fill="#4ade80" font-weight="600">+1.75pp</text>
+    <text x="450" y="202" font-size="10" fill="#86868b">+10.93% · 组合唯一像样利润</text>
+
+    <line x1="30" y1="238" x2="650" y2="238" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+
+    <text x="60" y="267" font-size="12" fill="#f5f5f7" font-weight="600">组合合计</text>
+    <rect x="300" y="250" width="118" height="26" rx="4" fill="#8ab4ff" opacity="0.85"/>
+    <text x="428" y="268" font-size="12" fill="#8ab4ff" font-weight="600">+1.47pp ≈ 平手</text>
+    <text x="428" y="254" font-size="10" fill="#86868b">ORCL的+1.75 顶掉了AVGO的-1.74</text>
+    <text x="30" y="310" font-size="10.5" fill="#86868b">翻亏敏感度：组合β≈1.55，指数一根-1%阴线即翻亏；INTC再跌3.4%单仓翻亏。满仓承担1.55倍波动，换来的目前是平手——这笔风险暂时是白担的。</text>
+  </svg>
+  <div class="fig-cap">图1 · 盈亏贡献分解：看起来"稳"，实际是两个方向相反的赌注刚好抵消——而这两个赌注一个9/2开牌、一个9/14开牌</div>
+  </div>
+
+  <p>三个由成本价直接暴露的事实：</p>
+  <ul>
+    <li><strong>这是 6-8 月间快速建成的"新仓"，买的全是故事下半场。</strong>INTC 成本距现价仅 3.5%，而它 YTD +142%——买在 6 月 $142 高点回撤之后，不是底部；ORCL 买在 7/28 低点 $114.5 反弹之后；AVGO 买在回撤中段。共同画像：<strong>"区间设了，手比区间快"</strong>。</li>
+    <li><strong>两笔相反的赌注刚好抵消。</strong>ORCL +1.75pp 顶掉 AVGO -1.74pp——"平手"不是"稳"，是一个浮盈赌注和一个浮亏赌注的对冲巧合，且 9 月两周内双双开牌。</li>
+    <li><strong>沉没成本铁律先立住：市场不知道你的成本价。</strong>"AVGO 回本再卖"需要再涨 6.9%；"INTC 我赚了 142%"实际浮盈只有 3.5%——决策依据永远是区间与风险，不是回本。</li>
+  </ul>
+</div>
+
+<!-- ============ 二、成本落点合规审计 ============ -->
+<div class="section">
+  <h2>二、成本落点合规审计：四张体检卡</h2>
+  <p>把每个成本价放回<strong>自己报告里写下的买点区间</strong>上，一眼看出谁合规、谁违规。横轴为各自 52 周价格范围（低→高），绿色区 = 自己报告的加仓/接货区间，黄线 = 实际成本，白点 = 现价。</p>
+
+  <div class="fig">
+  <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+    <text x="30" y="24" font-size="14" font-weight="600" fill="#f5f5f7">成本落点 vs 自家报告区间（横轴 = 各股52周范围，左低右高）</text>
+
+    <!-- INTC -->
+    <text x="30" y="60" font-size="12" fill="#d1d1d6" font-weight="600">INTC</text>
+    <rect x="150" y="62" width="470" height="8" rx="4" fill="#2c2c2e"/>
+    <rect x="220" y="62" width="46" height="8" fill="#4ade80" opacity="0.25"/>
+    <rect x="289" y="62" width="46" height="8" fill="#4ade80" opacity="0.4"/>
+    <rect x="358" y="62" width="46" height="8" fill="#4ade80" opacity="0.6"/>
+    <line x1="366" y1="50" x2="366" y2="82" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="360" y="46" font-size="10.5" fill="#fbbf24" text-anchor="end">成本$86.44</text>
+    <circle cx="380" cy="66" r="4" fill="#f5f5f7"/>
+    <text x="386" y="94" font-size="10.5" fill="#f5f5f7">现价$89.47</text>
+    <text x="220" y="94" font-size="10" fill="#86868b">Z3 $55-65</text>
+    <text x="289" y="94" font-size="10" fill="#86868b">Z2 $70-80</text>
+    <text x="358" y="94" font-size="10" fill="#86868b">Z1 $85-95</text>
+    <text x="150" y="112" font-size="10.5" fill="#4ade80">✔ 成本落在Z1内 = 入场价合规（错的是33%的仓位，不是价格）</text>
+
+    <!-- AVGO -->
+    <text x="30" y="136" font-size="12" fill="#d1d1d6" font-weight="600">AVGO</text>
+    <rect x="150" y="138" width="470" height="8" rx="4" fill="#2c2c2e"/>
+    <rect x="184" y="138" width="79" height="8" fill="#4ade80" opacity="0.5"/>
+    <text x="224" y="166" font-size="10" fill="#86868b" text-anchor="middle">C档接货区 $272 / $222</text>
+    <line x1="375" y1="126" x2="375" y2="158" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="381" y="130" font-size="10.5" fill="#fbbf24">成本$394.23</text>
+    <circle cx="336" cy="142" r="4" fill="#f5f5f7"/>
+    <text x="330" y="130" font-size="10.5" fill="#f5f5f7" text-anchor="end">现价$368.79</text>
+    <text x="150" y="188" font-size="10.5" fill="#ff6961">✘ 成本比自家崩盘接货位$272高45%——买在"回撤20%的舒适区"，规则却写在"回撤45-55%的恐慌区"</text>
+
+    <!-- NKE -->
+    <text x="30" y="212" font-size="12" fill="#d1d1d6" font-weight="600">NKE</text>
+    <rect x="150" y="214" width="470" height="8" rx="4" fill="#2c2c2e"/>
+    <rect x="286" y="214" width="32" height="8" fill="#4ade80" opacity="0.4"/>
+    <rect x="349" y="214" width="32" height="8" fill="#4ade80" opacity="0.6"/>
+    <text x="302" y="242" font-size="10" fill="#86868b" text-anchor="middle">Z2 $30-32</text>
+    <text x="365" y="242" font-size="10" fill="#86868b" text-anchor="middle">Z1 $34-36</text>
+    <line x1="426" y1="202" x2="426" y2="234" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="432" y="206" font-size="10.5" fill="#fbbf24">成本$39.03 / 现价$39.60</text>
+    <circle cx="435" cy="218" r="4" fill="#f5f5f7"/>
+    <text x="150" y="264" font-size="10.5" fill="#fbbf24">△ 成本正压在P13"现价不建仓"那条线上——差3%进Z1，纪律上算"压线"不算违规</text>
+
+    <!-- ORCL -->
+    <text x="30" y="288" font-size="12" fill="#d1d1d6" font-weight="600">ORCL</text>
+    <rect x="150" y="240" width="470" height="8" rx="4" fill="#2c2c2e"/>
+    <rect x="147" y="240" width="55" height="8" fill="#fbbf24" opacity="0.3"/>
+    <text x="175" y="230" font-size="10" fill="#86868b" text-anchor="middle">bear $95 · 7/28低$114.5</text>
+    <line x1="251" y1="228" x2="251" y2="260" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="246" y="224" font-size="10.5" fill="#fbbf24" text-anchor="end">成本$135.98</text>
+    <circle cx="278" cy="244" r="4" fill="#f5f5f7"/>
+    <text x="284" y="264" font-size="10.5" fill="#f5f5f7">现价$150.85</text>
+    <text x="30" y="288" font-size="10.5" fill="#4ade80" text-anchor="end"></text>
+    <text x="330" y="230" font-size="10" fill="#86868b">bull $245 →</text>
+    <text x="420" y="288" font-size="10.5" fill="#4ade80">✔ 唯一按剧本走的时间套利仓（backlog $638B vs FCF -$23.7B，9/14裁决）</text>
+  </svg>
+  <div class="fig-cap">图2 · 成本落点审计：选股入场价只有 AVGO 一只真正"违规"；但组合层面的问题让每只合规的入场都变成了超配的赌注</div>
+  </div>
+</div>
+
+<!-- ============ 三、小资金的不同物理 ============ -->
+<div class="section">
+  <h2>三、小资金的不同物理：哪些批评要撤回</h2>
+  <p><strong>大白话版本：</strong>收租层、压舱层、分散化——那是管几个亿的经理操心的事。小资金有另一套物理：本金小到股息覆盖不了任何开支，但人生最大的资产根本不在账户里——是未来几十年的工资流，教科书把它算作一只<strong>巨型债券</strong>。</p>
+
+  <div class="fig">
+  <svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+    <text x="30" y="26" font-size="14" font-weight="600" fill="#f5f5f7">同一份持仓，两套物理：大资金的尺子 vs 小资金的尺子</text>
+
+    <rect x="20" y="48" width="310" height="230" rx="12" fill="rgba(239,68,68,.05)" stroke="rgba(239,68,68,.3)"/>
+    <text x="36" y="76" font-size="13" font-weight="700" fill="#ff6961">大资金的物理（对本组合≈伪命题）</text>
+    <text x="36" y="102" font-size="11.5" fill="#d1d1d6">· 收租层：用股息现金流覆盖开支，永不割肉</text>
+    <text x="36" y="126" font-size="10.5" fill="#86868b">→ 10万本金×30%×4%股息 = 每年1200块，什么都覆盖不了</text>
+    <text x="36" y="152" font-size="11.5" fill="#d1d1d6">· 压舱层4:3:3：本金就是全部，防守靠仓内债券</text>
+    <text x="36" y="176" font-size="10.5" fill="#86868b">→ 小资金的压舱层在工资卡里，不在持仓里</text>
+    <text x="36" y="202" font-size="11.5" fill="#d1d1d6">· 分散到15只：单票上限、行业上限</text>
+    <text x="36" y="226" font-size="10.5" fill="#86868b">→ 每只仓位小到对结果无意义，还摊薄研究精力</text>
+    <text x="36" y="252" font-size="11.5" fill="#d1d1d6">· 流动性窗口：减仓要挑成交额最大的日子</text>
+    <text x="36" y="276" font-size="10.5" fill="#86868b">→ 小资金买卖零滑点，随时可执行</text>
+
+    <rect x="350" y="48" width="310" height="230" rx="12" fill="rgba(34,197,94,.05)" stroke="rgba(34,197,94,.3)"/>
+    <text x="366" y="76" font-size="13" font-weight="700" fill="#4ade80">小资金的物理（真实的账）</text>
+    <text x="366" y="102" font-size="11.5" fill="#d1d1d6">· 真正的"收租" = 工资：比任何股息都稳定</text>
+    <text x="366" y="126" font-size="10.5" fill="#86868b">→ 每月现金流 = 无限月度弹药，跌市反而是定投便宜月</text>
+    <text x="366" y="152" font-size="11.5" fill="#d1d1d6">· 人力资本 = 巨型债券：人生真实股债比远比账户保守</text>
+    <text x="366" y="176" font-size="10.5" fill="#86868b">→ 年轻人+小资金本来就该高股票仓位，满仓不是罪</text>
+    <text x="366" y="202" font-size="11.5" fill="#d1d1d6">· 少数高置信度 + 严格止损 &gt; 15只平庸分散</text>
+    <text x="366" y="226" font-size="10.5" fill="#86868b">→ 巴菲特早期、林奇规则都对小资金友好</text>
+    <text x="366" y="252" font-size="11.5" fill="#d1d1d6">· 结构性优势：执行零成本、无考核、无赎回</text>
+    <text x="366" y="276" font-size="10.5" fill="#86868b">→ 预挂单体系在小账户上满血运行，机构想学都学不了</text>
+
+    <rect x="20" y="296" width="640" height="52" rx="10" fill="rgba(255,214,10,.06)" stroke="rgba(255,214,10,.3)"/>
+    <text x="36" y="317" font-size="11.5" fill="#ffd60a" font-weight="600">规模不豁免的四条（一块钱和一亿块一样狠）：事件风险照收（9/2、9/14）· 二元赌注照死（18A失败=-33%×账户）</text>
+    <text x="36" y="337" font-size="11.5" fill="#ffd60a">被迫卖出照绞（若账户是全部身家+生活费来源）· 成本价心理照绑（回本再卖/赚了142%的错觉）</text>
+  </svg>
+  <div class="fig-cap">图3 · 分界线：左边那套批评撤回，底下黄条那四条保留——小资金改变的是"结构"，改变不了"物理"</div>
+  </div>
+
+  <table>
+    <thead><tr><th>原处方（大资金版，作废）</th><th>小资金版</th></tr></thead>
+    <tbody>
+      <tr><td>减仓腾出的 30-40% 建 BMY/T 收租层</td><td><strong>留现金</strong>——这就是小资金的收租层+压舱层，等自己盯的标的进 Z2/Z3</td></tr>
+      <tr><td>0:0:10 对齐回 4:3:3</td><td>不对齐。目标改成：账户外 6-12 个月生活费 + 账户内每笔亏得起</td></tr>
+      <tr><td>单票减仓理由 = 分散化</td><td>理由 = 二元事件上限 20-25%（INTC 33% 略超，非紧急）</td></tr>
+      <tr><td>AVGO 9/2、ORCL 9/14 事件建议</td><td><strong>保留不变</strong>——事件风险不认资金规模</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 四、满仓翻案 ============ -->
+<div class="section">
+  <h2>四、满仓翻案：压舱层在工资卡里</h2>
+  <p><strong>大白话版本：</strong>确认两个关键变量——账户里的 97% <strong>不是全部可投资资金</strong>，且<strong>工资持续进账</strong>——之后，"满仓"的性质从"赌博"改判"纪律"。P23 里写得最凶的那条风险（被迫卖出绞死预挂单体系）正式不成立：没有任何机制（考核、赎回、生活费）能逼这个账户在最低点割肉。波动本身已经不再是风险。</p>
+
+  <div class="fig">
+  <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+    <text x="30" y="26" font-size="14" font-weight="600" fill="#f5f5f7">真实资产负债表：账户内外合并之后</text>
+
+    <rect x="30" y="60" width="280" height="130" rx="12" fill="rgba(41,151,255,.06)" stroke="rgba(41,151,255,.35)"/>
+    <text x="46" y="88" font-size="13" font-weight="700" fill="#8ab4ff">账户内（可见的部分）</text>
+    <text x="46" y="114" font-size="11.5" fill="#d1d1d6">高β股票包 97%（β≈1.55）</text>
+    <text x="46" y="138" font-size="10.5" fill="#86868b">INTC 33 · AVGO 27 · NKE 21 · ORCL 16</text>
+    <text x="46" y="162" font-size="10.5" fill="#86868b">表面看：0:0:10，激进到违反自家体系</text>
+
+    <rect x="370" y="60" width="280" height="130" rx="12" fill="rgba(34,197,94,.06)" stroke="rgba(34,197,94,.35)"/>
+    <text x="386" y="88" font-size="13" font-weight="700" fill="#4ade80">账户外（看不见的部分）</text>
+    <text x="386" y="114" font-size="11.5" fill="#d1d1d6">工资流 = 巨型债券，按月付息</text>
+    <text x="386" y="138" font-size="10.5" fill="#86868b">未来几十年的现金流 + 应急现金</text>
+    <text x="386" y="162" font-size="10.5" fill="#86868b">= 无限月度弹药 + 跌不死的生存结构</text>
+
+    <text x="340" y="130" font-size="22" fill="#86868b" text-anchor="middle">+</text>
+
+    <rect x="150" y="212" width="380" height="56" rx="10" fill="rgba(34,197,94,.08)" stroke="rgba(34,197,94,.4)"/>
+    <text x="340" y="236" font-size="12.5" fill="#4ade80" font-weight="600" text-anchor="middle">合并视图：真实股债比远比账户表面保守</text>
+    <text x="340" y="256" font-size="11" fill="#d1d1d6" text-anchor="middle">满仓 = 主动选择的纪律，不是被套的赌博 · 回撤-10%只是账面疼</text>
+  </svg>
+  <div class="fig-cap">图4 · 人力资本对冲：教科书式结论——年轻人+工资流+账户非全部身家 = 付得起学费的玩家</div>
+  </div>
+
+  <ul>
+    <li><strong>翻案后的敌人只剩两个：</strong>①二元事件集中（INTC 33% 略超小资金上限 20-25%，处理窗口在 10/22 财报前后，非紧急）；②建仓纪律（AVGO 式"手比区间快"——这次 9/2 前的决定就是检验这条教训学会了没有）。</li>
+    <li><strong>九月阴跌对小资金工资流反而是好消息：</strong>Z1/Z2 预挂单更容易成交，下月定投买得更便宜——在"赚恐慌者的钱"这件事上，比机构还多一样武器：无限月度现金流。</li>
+  </ul>
+</div>
+
+<!-- ============ 五、赌性预算笼子 ============ -->
+<div class="section">
+  <h2>五、赌性预算：不戒，关进笼子</h2>
+  <p><strong>大白话版本：</strong>敢于承认"我带有赌博成分"这件事本身，已经比大多数账户赢了——赌徒和赌性之间隔的就是这句自知。凯利公式的数学源头就是赌桌，巴菲特早年最赚钱的几笔按今天的标准全是集中豪赌；他们和赌徒的区别只有一条：<strong>只在赔率错的时候下注</strong>。赌性是燃料不是原罪，能做的只有给它划一块"亏光也不心疼"的地盘。</p>
+
+  <div class="fig">
+  <svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+    <text x="30" y="26" font-size="14" font-weight="600" fill="#f5f5f7">赌性预算的笼子结构</text>
+
+    <rect x="20" y="48" width="400" height="252" rx="12" fill="rgba(41,151,255,.04)" stroke="rgba(41,151,255,.25)"/>
+    <text x="36" y="76" font-size="12.5" font-weight="700" fill="#8ab4ff">纪律仓（账户主体，规矩管）</text>
+    <text x="36" y="100" font-size="11" fill="#d1d1d6">· 预挂单：不预测，假设可能跌 → 网提前撒好</text>
+    <text x="36" y="122" font-size="11" fill="#d1d1d6">· 事件前锁一半：时间套利的正确姿势</text>
+    <text x="36" y="144" font-size="11" fill="#d1d1d6">· 止损线只在开注前画，盘中永不移动</text>
+    <text x="36" y="166" font-size="11" fill="#d1d1d6">· 工资弹药按月补，跌市照常执行</text>
+
+    <rect x="50" y="190" width="340" height="90" rx="10" fill="rgba(255,214,10,.06)" stroke="#ffd60a" stroke-width="1.5" stroke-dasharray="7 5"/>
+    <text x="66" y="214" font-size="12" font-weight="700" fill="#ffd60a">赌性预算笼子 ≤10-20% 总资产</text>
+    <text x="66" y="236" font-size="10.5" fill="#d1d1d6">① 预算：亏光也不影响人生的钱，唯一允许"手比区间快"的地方</text>
+    <text x="66" y="256" font-size="10.5" fill="#d1d1d6">② 标的：只买"赔率错"的（价格错 ≠ 你确信它会涨）</text>
+    <text x="66" y="276" font-size="10.5" fill="#d1d1d6">③ 禁令：亏损禁止摊平加注——摊平=双倍赌注证明上注没错</text>
+
+    <rect x="440" y="48" width="220" height="252" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="456" y="76" font-size="12.5" font-weight="700" fill="#f5f5f7">四仓赌性画像</text>
+    <text x="456" y="104" font-size="11" fill="#ff6961" font-weight="600">AVGO · 最纯的赌</text>
+    <text x="456" y="122" font-size="10" fill="#86868b">满定价买入，无赔率优势</text>
+    <text x="456" y="138" font-size="10" fill="#86868b">只有"会涨"的信念</text>
+    <text x="456" y="164" font-size="11" fill="#fbbf24" font-weight="600">INTC / ORCL · 有赔率的赌</text>
+    <text x="456" y="182" font-size="10" fill="#86868b">二元事件 / 时间套利</text>
+    <text x="456" y="198" font-size="10" fill="#86868b">成本都落在逻辑区内</text>
+    <text x="456" y="224" font-size="11" fill="#4ade80" font-weight="600">NKE · 不赌</text>
+    <text x="456" y="242" font-size="10" fill="#86868b">股息+对冲+低于区间不买</text>
+    <text x="456" y="276" font-size="10.5" fill="#ffd60a">让赌性在笼子里发奖金</text>
+    <text x="456" y="294" font-size="10.5" fill="#ffd60a">永远别坐主驾位</text>
+  </svg>
+  <div class="fig-cap">图5 · 笼子三铁律 + 四仓画像：冲动来了别压制，把它关进笼子；笼外纪律仓照旧</div>
+  </div>
+
+  <div class="callout-warn callout">
+    <strong>三问自检</strong>（每次下单前问自己，区分"赌徒"和"带赌性的纪律执行者"）：
+    <ol style="margin-top:8px">
+      <li>买了之后会半夜看盘吗？</li>
+      <li>仓位大小是因为确信，还是因为想赢回上一笔？</li>
+      <li>浮亏时第一反应是加仓摊平，还是按原计划执行？</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ 六、持有过财报三剧本 ============ -->
+<div class="section">
+  <h2>六、持有过财报：把"赌一把"写成剧本</h2>
+  <p><strong>大白话版本：</strong>最终决定是——赌财报，亏了也接受，继续持有，等待加仓。这个决定在"账户非全部身家+工资月月进账+自知在赌"三个前提下成立：这是一次<strong>主动选择</strong>，不是被套后的合理化。但"等待加仓"四个字里最危险的是"等"字后面的空白——等什么价、等什么信号，必须现在写死，否则到了财报夜它会自动变成"跌了就想补、亏了就想赢回来"。</p>
+
+  <div class="fig">
+  <svg viewBox="0 0 680 440" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+    <text x="20" y="28" font-size="14" font-weight="600" fill="#f5f5f7">持有过财报：三剧本决策树（9/2 AVGO · 9/14 ORCL）</text>
+    <text x="20" y="48" font-size="11" fill="#86868b">所有数字来自自家报告区间——任务是开牌前把它们钉死</text>
+
+    <rect x="20" y="62" width="316" height="322" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"/>
+    <text x="36" y="88" font-size="13" font-weight="700" fill="#f5f5f7">AVGO · 9/2 周三盘后</text>
+    <text x="36" y="106" font-size="10.5" fill="#86868b">仓位 27% · 现价 $368.79 · 浮亏 -6.5%</text>
+
+    <rect x="36" y="118" width="284" height="70" rx="8" fill="rgba(48,209,88,.08)" stroke="rgba(48,209,88,.35)"/>
+    <text x="48" y="138" font-size="12" fill="#4ade80" font-weight="600">超预期（~35%）反弹 +5~10%</text>
+    <text x="48" y="156" font-size="10.5" fill="#d1d1d6">动作：不加仓（P/S 24x 仍是满定价）</text>
+    <text x="48" y="172" font-size="10.5" fill="#d1d1d6">站回 $400+ 顺手减 1/3，赌注变回纪律仓</text>
+
+    <rect x="36" y="196" width="284" height="58" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="48" y="216" font-size="12" fill="#d1d1d6" font-weight="600">符合预期（~40%）-3~+3% 震荡</text>
+    <text x="48" y="236" font-size="10.5" fill="#86868b">动作：不动，等 10 月中旬的选举年剧本</text>
+
+    <rect x="36" y="262" width="284" height="70" rx="8" fill="rgba(255,69,58,.08)" stroke="rgba(255,69,58,.35)"/>
+    <text x="48" y="282" font-size="12" fill="#ff6961" font-weight="600">不及预期（~25%）-10~15% → $313-330</text>
+    <text x="48" y="300" font-size="10.5" fill="#d1d1d6">动作：还是不加——距 C 档 $272 还差 15%</text>
+    <text x="48" y="316" font-size="10.5" fill="#d1d1d6">"$330 跌了想补" = 摊平，笼子里禁止的那条</text>
+
+    <text x="36" y="360" font-size="10.5" fill="#ffd60a">盯三个数：AI 半导体收入增速 · backlog · XPU 指引</text>
+
+    <rect x="344" y="62" width="316" height="322" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"/>
+    <text x="360" y="88" font-size="13" font-weight="700" fill="#f5f5f7">ORCL · 9/14 盘后</text>
+    <text x="360" y="106" font-size="10.5" fill="#86868b">仓位 16% · 现价 $150.85 · 浮盈 +10.9%</text>
+
+    <rect x="360" y="118" width="284" height="70" rx="8" fill="rgba(48,209,88,.08)" stroke="rgba(48,209,88,.35)"/>
+    <text x="372" y="138" font-size="12" fill="#4ade80" font-weight="600">超预期（~30%）+15~25% → $170-185</text>
+    <text x="372" y="156" font-size="10.5" fill="#d1d1d6">动作：锁一半浮盈——时间套利的钱</text>
+    <text x="372" y="172" font-size="10.5" fill="#d1d1d6">就该事件后落袋，剩下吃下一季</text>
+
+    <rect x="360" y="196" width="284" height="58" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="372" y="216" font-size="12" fill="#d1d1d6" font-weight="600">符合预期（~45%）温和波动</text>
+    <text x="372" y="236" font-size="10.5" fill="#86868b">动作：同样锁一半——全组合唯一像样的利润</text>
+
+    <rect x="360" y="262" width="284" height="70" rx="8" fill="rgba(255,69,58,.08)" stroke="rgba(255,69,58,.35)"/>
+    <text x="372" y="282" font-size="12" fill="#ff6961" font-weight="600">不及预期（~25%）-10~20% → $120-135</text>
+    <text x="372" y="300" font-size="10.5" fill="#d1d1d6">先查逻辑：RPO 转化 + OCI 增速还活着</text>
+    <text x="372" y="316" font-size="10.5" fill="#d1d1d6">活着→按区间小额加；证伪→不加等下一季</text>
+
+    <text x="360" y="360" font-size="10.5" fill="#ffd60a">盯三个数：OCI 收入增速 · RPO 转化 · capex vs FCF 缺口</text>
+
+    <rect x="20" y="396" width="640" height="40" rx="10" fill="rgba(255,214,10,.06)" stroke="rgba(255,214,10,.3)"/>
+    <text x="36" y="414" font-size="11.5" fill="#ffd60a" font-weight="600">铁律①：财报当晚零操作，第二天白天冷静执行 · 铁律②：加仓必要条件=价格进区间</text>
+    <text x="36" y="430" font-size="11.5" fill="#ffd60a">充分条件=逻辑未证伪——价格到了但故事塌了，那不叫便宜，叫陷阱</text>
+  </svg>
+  <div class="fig-cap">图6 · 三剧本决策树：持有没问题，问题全在"加仓"两个字——那是 9/2 深夜最容易被人性接管的地方</div>
+  </div>
+
+  <table>
+    <thead><tr><th>标的</th><th class="num">现价</th><th>加仓触发区（自家报告）</th><th>附加判据（逻辑未证伪）</th></tr></thead>
+    <tbody>
+      <tr><td>AVGO</td><td class="num">$368.79</td><td><span class="green">Z1 $272 / Z2 $222</span>（P16 C档）</td><td>财报没证伪 XPU 增长故事——若 backlog/指引塌了，$272 也不是买点</td></tr>
+      <tr><td>ORCL</td><td class="num">$150.85</td><td>跌破 $120-135 区间再看</td><td>RPO 转化 + OCI 增速活着，才有"跌出来的便宜"</td></tr>
+      <tr><td>INTC</td><td class="num">$89.47</td><td><span class="green">Z2 $70-80 / Z3 $55-65</span></td><td>$85-95 是持有区不是加仓区；18A 进展没变坏</td></tr>
+      <tr><td>NKE</td><td class="num">$39.60</td><td><span class="green">Z1 $34-36</span></td><td>9/28 财报 + 11 月投资者日没砍股息</td></tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li><strong>最坏剧本预演：</strong>两个财报都翻车（AVGO -12% + ORCL -15%）对账户伤害约 -5~6%，叠加九月阴跌约 -10% 量级——"亏了也接受"这句话本身就是止损预设已在心理上完成的标志。</li>
+    <li><strong>"等待加仓"的钱不用卖仓腾：</strong>弹药是月薪，这个结构比"先减 1/3"的机构式操作更顺——但摊平禁令不变：亏了当晚补仓 = 把"等待加仓"变成"想赢回来"，笼子规则禁止。</li>
+    <li><strong>这是主动选择不是合理化：</strong>最坏剧本算过、学费付得起、退出机制（三剧本）已写死——三个条件齐了才叫"知情赌博"，缺一个都叫"被套"。</li>
+  </ul>
+</div>
+
+<!-- ============ 结论 ============ -->
+<div class="conclusion section">
+  <h2>结论：小资金的一页纸</h2>
+  <p><strong>选股入场价基本合规（只有 AVGO 真正违规），生存结构无虞（工资+账户外身家），满仓性质=纪律。</strong>真正剩下的敌人只有两个：二元事件集中（INTC 33%，10/22 前后处理）和建仓纪律（"手比区间快"）。九月这两周的财报是"知情赌博"的开牌——剧本已写死，当晚零操作，加仓只认区间+逻辑双条件。</p>
+  <p><strong>体系灵魂第九条：小资金的压舱层在工资卡里，不在持仓里；赌性不用戒——关进笼子，只从笼门进场。</strong></p>
+  <p style="font-size:12px;color:#86868b">以上仅为个人认知范围内的理解。文中持仓与成本为个人示例数字，不构成任何投资建议。</p>
+</div>
+
+</div>
+</body>
+</html>

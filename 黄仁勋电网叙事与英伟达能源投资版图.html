@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄仁勋电网叙事与英伟达能源投资版图 · Gavin spot on推文查证 · 俄亥俄8GW超级工厂 · $700亿股权投资 · 利好行业硬度分层</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .section h2 { font-size: 16px; }
+    table { font-size: 12px; }
+    tbody td, thead th { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>黄仁勋电网叙事与英伟达能源投资版图</h1>
+<p class="subtitle">从一条 X 推文挖到 $500 亿股权投资 + 千亿级担保 · "Gavin, spot on" 24小时公关战 · $400B 数字的双刃剑 · 俄亥俄 8GW 超级工厂 · 为什么利好的是核电锚而不是天然气</p>
+<div class="badge-row">
+  <span class="badge badge-blue">P25 · AI 电力版图</span>
+  <span class="badge badge-warn">"Gavin, spot on" 24小时公关战</span>
+  <span class="badge badge-red">$400B 数字真、含义半</span>
+  <span class="badge badge-green">俄亥俄 8GW 超级工厂</span>
+  <span class="badge badge-blue">核电锚 &gt; 天然气</span>
+</div>
+
+<div class="callout">
+  <strong>这篇的由来：</strong>黄仁勋 8/29 在 X 回复 Gavin Baker 的七句话，被拆成三层——事实、叙事、立场。用户连续追问三层：<strong>"继续分析深层次内容，英伟达对此做了哪些投资，利好了哪些行业"</strong> → 于是从"他说了什么"挖到"他真金白银做了什么"：过去 12 个月超 $500 亿股权投资 + 千亿级担保，把"电力瓶颈"从别人的问题买成了自己的资产。文内数据截至 2026/8/31。
+</div>
+
+<!-- ============ 一、24小时公关战 ============ -->
+<div class="section">
+<h2>一、一条推文背后的 24 小时公关战</h2>
+<p>你看到的 "Gavin, spot on" 不是独立发言，而是一场公关危机的第三幕。先还原时间线——它和 8/26 黄仁勋在 CNBC（Jim Cramer 节目）谈电网的那段采访<strong>不是一回事</strong>（本篇作者曾拿采访报道当推文原文，被读者抓包，教训：名人发言必须区分"采访报道"与"X 原帖"）。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC',sans-serif">
+  <line x1="50" y1="125" x2="640" y2="125" stroke="#48484a" stroke-width="2"/>
+  <circle cx="95" cy="125" r="6" fill="#2997ff"/>
+  <text x="95" y="100" font-size="11" fill="#f5f5f7" text-anchor="middle" font-weight="600">8/28 财报夜</text>
+  <text x="95" y="155" font-size="10" fill="#86868b" text-anchor="middle">市值一夜 +$4000亿 · 宣布"已实现AGI"</text>
+  <circle cx="255" cy="125" r="6" fill="#f87171"/>
+  <text x="255" y="100" font-size="11" fill="#f5f5f7" text-anchor="middle" font-weight="600">8/29 09:22 Baker发帖</text>
+  <text x="255" y="155" font-size="10" fill="#86868b" text-anchor="middle">"反对数据中心的政客不配任职"</text>
+  <text x="255" y="170" font-size="10" fill="#86868b" text-anchor="middle">175K赞 · 争议炸锅</text>
+  <circle cx="440" cy="125" r="6" fill="#fbbf24"/>
+  <text x="440" y="100" font-size="11" fill="#f5f5f7" text-anchor="middle" font-weight="600">6小时后 Baker道歉</text>
+  <text x="440" y="155" font-size="10" fill="#86868b" text-anchor="middle">逐条回应18个月前五大担忧</text>
+  <text x="440" y="170" font-size="10" fill="#86868b" text-anchor="middle">水/税/就业/电价/小镇</text>
+  <circle cx="610" cy="125" r="8" fill="#4ade80"/>
+  <text x="610" y="100" font-size="11" fill="#4ade80" text-anchor="middle" font-weight="600">15分钟后 黄仁勋转发</text>
+  <text x="610" y="155" font-size="10" fill="#86868b" text-anchor="middle">"Gavin, spot on." + 七句话</text>
+  <text x="610" y="170" font-size="10" fill="#86868b" text-anchor="middle">收编成"AI再工业化"国家叙事</text>
+  <text x="50" y="215" font-size="11" fill="#86868b">Gavin Baker = Atreides 管理合伙人 · 早期投 SpaceX · 8/15 称英伟达为"AI央行" · 黄仁勋认证"英伟达首位大型机构投资人"</text>
+</svg>
+<div class="fig-cap">图1 · 24小时：投资人骂街 → 翻车道歉 → 被黄仁勋 15 分钟收编成国家叙事</div>
+</div>
+
+<p>关键动作是<strong>背书</strong>：Baker 是刚道歉的争议人物，黄仁勋转发等于把他扶正——舆论战场从"该不该建数据中心"扭到"怎么分好处"。七句话里四句是新武器：</p>
+
+<table>
+<thead><tr><th style="width:26%">原话</th><th style="width:10%">性质</th><th>拆解</th></tr></thead>
+<tbody>
+<tr><td>Gavin, spot on</td><td class="blue">背书</td><td>把一个刚道歉的人扶正——把争议收编为行业统一战线</td></tr>
+<tr><td>制造业回流、再工业化</td><td class="yellow">半真</td><td>台积电亚利桑那/三星德州/Intel 俄亥俄是真的，但"AI 带动"部分仍小；给特朗普议程递话</td></tr>
+<tr><td><strong>market forces, not subsidies</strong></td><td class="yellow">半真</td><td>PPA 企业购电是市场力量，但税收减免/IRA 补贴现实里大量存在——这是政治修辞，说给共和党和选民听的</td></tr>
+<tr><td>电厂/晶圆厂/数据中心蓝领就业</td><td class="green">事实</td><td>就是 WSJ《蓝领岗位是新导火索》的战场；但 Baker 道歉帖自己承认"高薪运维岗本地人未必胜任"</td></tr>
+<tr><td><strong>$400B / 半年 AI 初创投资</strong></td><td class="yellow">数字真、含义半</td><td>PitchBook 证实 $407B，但两家公司拿走一半、deal count 崩了（第二节详拆）</td></tr>
+<tr><td><strong>partner with communities</strong></td><td class="blue">灭火</td><td>直接回应德州 Abbott"他们给自己挖了坟"——等于承认之前没做好</td></tr>
+<tr><td><strong>next industrial revolution</strong></td><td class="blue">拔高</td><td>把数据中心从"电老虎"改写成"国运工程"</td></tr>
+</tbody>
+</table>
+
+<div class="callout-warn"><strong>最值得玩味的是 "not subsidies"：</strong>这句不是给市场听的，是给白宫听的。IRA 补贴是拜登遗产、特朗普要砍，黄仁勋抢在政策落地前表态"AI 电力不需要补贴，市场自己会投"。投资含义：<strong>若去补贴成真，纯风电光伏 IRR 掉几个点，而核电（CEG）、气电（VST/TLN）、铀（CCJ/LEU）靠市场电价也能活——"去补贴"天然利好基荷、利空间歇。</strong></div>
+</div>
+
+<!-- ============ 二、$400B 双刃剑 ============ -->
+<div class="section">
+<h2>二、$400B 这个数字：真的，但被他用成了一半的真相</h2>
+<p>源头是 PitchBook Q2 2026 AI 报告——<strong>数字本身没错</strong>：2026 上半年 AI 初创融资 $407B，超 2025 全年 $264B。但同一份报告里，还有三个他故意不说的数字：</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC',sans-serif">
+  <text x="40" y="34" font-size="14" font-weight="600" fill="#f5f5f7">$400B 的光环与地板（同一份 PitchBook 数据）</text>
+  <text x="340" y="70" font-size="13" fill="#4ade80" text-anchor="middle" font-weight="600">光环：上半年融资 $407B</text>
+  <text x="340" y="90" font-size="11" fill="#86868b" text-anchor="middle">超 2025 全年 $264B · 数字为真</text>
+  <line x1="60" y1="130" x2="620" y2="130" stroke="#48484a" stroke-width="1"/>
+  <text x="340" y="160" font-size="13" fill="#f87171" text-anchor="middle" font-weight="600">地板：三家隐藏事实</text>
+  <rect x="60" y="175" width="180" height="40" rx="8" fill="#161618" stroke="rgba(255,255,255,.12)"/>
+  <text x="150" y="193" font-size="11" fill="#d1d1d6" text-anchor="middle">OpenAI+Anthropic 两家 $217B</text>
+  <text x="150" y="208" font-size="10" fill="#86868b" text-anchor="middle">（超过一半，仅三轮）</text>
+  <rect x="250" y="175" width="180" height="40" rx="8" fill="#161618" stroke="rgba(255,255,255,.12)"/>
+  <text x="340" y="193" font-size="11" fill="#d1d1d6" text-anchor="middle">交易笔数 3,500 vs 去年 8,290</text>
+  <text x="340" y="208" font-size="10" fill="#86868b" text-anchor="middle">（deal count 崩了 58%）</text>
+  <rect x="440" y="175" width="180" height="40" rx="8" fill="#161618" stroke="rgba(255,255,255,.12)"/>
+  <text x="530" y="193" font-size="11" fill="#d1d1d6" text-anchor="middle">87.5% 风投进 $100M+ 大轮</text>
+  <text x="530" y="208" font-size="10" fill="#86868b" text-anchor="middle">"其他所有AI初创"只分 $51.4B</text>
+</svg>
+<div class="fig-cap">图2 · 光环是真的，地板是极端集中——融资额≠产值，它是股权和负债，不是收入</div>
+</div>
+
+<div class="callout">
+<strong>双刃剑含义：</strong>$400B 是融资额不是产值。这和 P20 财报里"净利 $597亿 vs 自由现金流 $213亿"的裂口<strong>同构</strong>——钱在流动，现金没跟上。黄仁勋把同一份数据当武器用，但数据同时是他自己 P20 裂口叙事的弹药。<strong>融资集中到两家头部实验室 = 商业模式头部集中 = 一旦头部翻车，整条链一起翻。</strong>
+</div>
+</div>
+
+<!-- ============ 三、俄亥俄 PORTS-Pike ============ -->
+<div class="section">
+<h2>三、电网发言的真身：俄亥俄 8GW 超级工厂</h2>
+<p>8/26 采访、8/29 推文，背后是 <strong>8/17-18 官宣的 PORTS-Pike 项目</strong>——这才是黄仁勋"电力发言"的真正落点。把它拆开，会看到英伟达的电力战略有多狠：</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC',sans-serif">
+  <text x="340" y="30" font-size="14" font-weight="600" fill="#f5f5f7" text-anchor="middle">俄亥俄 PORTS-Pike：三个角色的三角戏</text>
+  <rect x="30" y="60" width="190" height="150" rx="12" fill="#161618" stroke="rgba(245,158,11,.4)"/>
+  <text x="125" y="88" font-size="13" font-weight="600" fill="#fbbf24" text-anchor="middle">SB Energy（软银子公司）</text>
+  <text x="125" y="110" font-size="11" fill="#d1d1d6" text-anchor="middle">地主+包工头</text>
+  <text x="125" y="132" font-size="10" fill="#86868b" text-anchor="middle">冷战铀浓缩厂废墟→8 IT-GW算力</text>
+  <text x="125" y="148" font-size="10" fill="#86868b" text-anchor="middle">10GW发电（9.2GW天然气）</text>
+  <text x="125" y="164" font-size="10" fill="#86868b" text-anchor="middle">$330亿电厂 + $42亿输电</text>
+  <text x="125" y="180" font-size="10" fill="#fbbf24" text-anchor="middle">最早下月IPO 估值$500亿</text>
+  <rect x="245" y="60" width="190" height="150" rx="12" fill="#161618" stroke="rgba(41,151,255,.4)"/>
+  <text x="340" y="88" font-size="13" font-weight="600" fill="#8ab4ff" text-anchor="middle">OpenAI</text>
+  <text x="340" y="110" font-size="11" fill="#d1d1d6" text-anchor="middle">租客（20年租约）</text>
+  <text x="340" y="132" font-size="10" fill="#86868b" text-anchor="middle">2032建成 · 3.5万建筑岗</text>
+  <text x="340" y="148" font-size="10" fill="#86868b" text-anchor="middle">+2500运营岗 · $120M社区基金</text>
+  <rect x="460" y="60" width="190" height="150" rx="12" fill="#161618" stroke="rgba(34,197,94,.4)"/>
+  <text x="555" y="88" font-size="13" font-weight="600" fill="#4ade80" text-anchor="middle">英伟达</text>
+  <text x="555" y="110" font-size="11" fill="#d1d1d6" text-anchor="middle">信用 + 芯片</text>
+  <text x="555" y="132" font-size="10" fill="#86868b" text-anchor="middle">$15亿入股（独家芯片权）</text>
+  <text x="555" y="148" font-size="10" fill="#86868b" text-anchor="middle">担保最高 $1050亿</text>
+  <text x="555" y="164" font-size="10" fill="#86868b" text-anchor="middle">（OpenAI弃租/转售亏损补差）</text>
+  <text x="555" y="180" font-size="10" fill="#86868b" text-anchor="middle">已投 OpenAI $300亿</text>
+  <line x1="220" y1="130" x2="245" y2="130" stroke="#5f5f64" stroke-width="2"/>
+  <line x1="435" y1="130" x2="460" y2="130" stroke="#5f5f64" stroke-width="2"/>
+  <text x="340" y="240" font-size="12" font-weight="600" fill="#f5f5f7" text-anchor="middle">英伟达买的是"电力+芯片市场"的双重期权</text>
+  <text x="340" y="262" font-size="11" fill="#d1d1d6" text-anchor="middle">$15亿股权撬动：①8GW芯片锁死只能买英伟达（千亿级未来订单期权费）</text>
+  <text x="340" y="280" font-size="11" fill="#d1d1d6" text-anchor="middle">②SB Energy IPO股权增值（$15亿进、$500亿估值起步）③独家扩建权 4.25→8GW</text>
+  <text x="340" y="306" font-size="11" fill="#86868b" text-anchor="middle">= 当年锁台积电产能手法的地产版：花零头的钱，锁最大客户的算力地基</text>
+</svg>
+<div class="fig-cap">图3 · 三方三角戏——OpenAI 当租客，SB Energy 当包工头，英伟达当"信用+芯片"</div>
+</div>
+
+<h3>"not subsidies" 的真相：这恰恰是国家资本主义</h3>
+<p>黄仁勋说"市场力量，不是补贴"——但俄亥俄项目的钱袋子是混合所有制：</p>
+<table>
+<thead><tr><th style="width:45%">钱从哪来</th><th>性质</th></tr></thead>
+<tbody>
+<tr><td>日本政府 $330亿（2025 贸易协议，关税换投资）</td><td class="yellow">主权资金</td></tr>
+<tr><td>联邦旧铀浓缩厂土地（审批便利化）</td><td class="yellow">政府资产</td></tr>
+<tr><td>商务部长 Lutnick 参与电力分配</td><td class="yellow">政府决策</td></tr>
+<tr><td>华尔街 $5000亿平台（六巨头）</td><td class="green">市场资本</td></tr>
+<tr><td>英伟达 $15亿 + 担保 $1050亿</td><td class="blue">企业信用</td></tr>
+</tbody>
+</table>
+<div class="callout-warn"><strong>同一周，NextEra + Brookfield 在肯塔基 Paducah（另一个冷战铀浓缩场址）也启动了 9.2GW 天然气项目</strong>——特朗普政府正在系统性地把冷战核场址改造成 AI 发电园区。所以 "not subsidies" 的真实含义是：<strong>把政府主导的产业政策包装成市场行为</strong>——这句是说给反补贴的共和党听的，也是说给反补贴给大公司的选民听的。它不是谎言，是选择性叙述。</div>
+</div>
+
+<!-- ============ 四、投资版图全景 ============ -->
+<div class="section">
+<h2>四、2026 投资版图全景：$5000亿平台 + $700亿股权投资</h2>
+
+<h3>4.1 华尔街 $5000亿融资平台（8/10 官宣）</h3>
+<p>Apollo / BlackRock / Blackstone / Brookfield / Goldman / KKR 六家参与，为 AI 基建融资。核心机制：<strong>残值担保</strong>——英伟达为 GPU 残值兜底，单笔 ≤25%、上限约 $1250亿。这是把 GPU 变成可证券化资产（Cramer 类比汽车 ABS 的 $1 万亿市场，Baker 类比 MBS），英伟达 6 月已首发 $200亿投资级债（2021 年来首次）。</p>
+<div class="callout-red"><strong>风险侧：</strong>Michael Burry 警告折旧被低估 $1760亿（2026-28）；英格兰银行 7 月警告信贷冲击。GPU 五年归零 vs 担保十年——残值担保把"技术贬值"的风险从买家转给了英伟达自己（P14 第二所有者的资产=电力而非算力，同一个道理）。</div>
+
+<h3>4.2 $700亿股权投资全清单（CFO Kress 8/26 确认超 $500亿）</h3>
+<table>
+<thead><tr><th style="width:16%">类别</th><th style="width:56%">标的（金额）</th><th>逻辑</th></tr></thead>
+<tbody>
+<tr><td class="blue">模型</td><td>OpenAI $300亿（2月，投前$7300亿）· Anthropic ≤$100亿 · xAI（1月E轮）· SSI $50亿 · Mistral €17亿 · Perplexity 洽谈中</td><td>确保自家芯片跑在最前沿模型里</td></tr>
+<tr><td class="yellow">新云商</td><td>CoreWeave $20亿IPO股+$20亿追加+$63亿买闲置算力至2032 · Nebius $20亿（9.3%）· IREN ≤$21亿权证（$70/股）· Nscale $4.33亿 · Cloverleaf 数亿美元</td><td>喂奶给"租算力"的新客户=循环融资</td></tr>
+<tr><td class="green">光通信</td><td>Corning ≤$32亿（建3美国厂）· Marvell $20亿（NVLink Fusion 联合开发）· Lumentum $20亿 · Coherent $20亿 · Synopsys $20亿</td><td>NVLink 生态锁链——卖芯片的同时锁住互连</td></tr>
+</tbody>
+</table>
+<div class="callout"><strong>注意 AVGO 关联：</strong>英伟达投 Marvell $20亿做 NVLink Fusion——互连生态扶持，9/2 AVGO 财报前值得留意：英伟达在给"非 AVGO"的互连路线上加注（P10 ASIC/互连竞争格局的同一条线）。</div>
+
+<h3>4.3 利好行业硬度分层</h3>
+<div class="fig">
+<svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC',sans-serif">
+  <text x="40" y="30" font-size="14" font-weight="600" fill="#f5f5f7">利好分层：越靠近"必须建"的物理层越硬</text>
+  <text x="40" y="52" font-size="11" fill="#86868b">×=英伟达真金白银的动作 · 右列=对应标的（★=硬度）</text>
+
+  <rect x="40" y="66" width="440" height="26" rx="6" fill="#4ade80" opacity="0.85"/>
+  <text x="54" y="83" font-size="11" font-weight="600" fill="#052e12">基荷发电 · 气/核 20年长约</text>
+  <text x="500" y="83" font-size="11" fill="#f5f5f7">CEG / VST / TLN ★★★★★</text>
+
+  <rect x="40" y="100" width="380" height="26" rx="6" fill="#4ade80" opacity="0.7"/>
+  <text x="54" y="117" font-size="11" font-weight="600" fill="#052e12">电网输电 · $42亿订单</text>
+  <text x="500" y="117" font-size="11" fill="#f5f5f7">EME / GEV 电网 ★★★★☆</text>
+
+  <rect x="40" y="134" width="340" height="26" rx="6" fill="#4ade80" opacity="0.55"/>
+  <text x="54" y="151" font-size="11" font-weight="600" fill="#052e12">铀/核燃料 · 选址即旧铀厂</text>
+  <text x="500" y="151" font-size="11" fill="#f5f5f7">CCJ / LEU ★★★★</text>
+
+  <rect x="40" y="168" width="300" height="26" rx="6" fill="#f59e0b" opacity="0.6"/>
+  <text x="54" y="185" font-size="11" font-weight="600" fill="#1c1004">燃气轮机 · 9.2GW气电</text>
+  <text x="500" y="185" font-size="11" fill="#f5f5f7">GEV / 西门子能源 ★★★★</text>
+
+  <rect x="40" y="202" width="220" height="26" rx="6" fill="#f59e0b" opacity="0.45"/>
+  <text x="54" y="219" font-size="11" font-weight="600" fill="#1c1004">新云商 · 循环融资双刃</text>
+  <text x="500" y="219" font-size="11" fill="#f5f5f7">CRWV/NBIS/IREN ★★★</text>
+
+  <rect x="40" y="236" width="150" height="26" rx="6" fill="#8ab4ff" opacity="0.4"/>
+  <text x="54" y="253" font-size="11" font-weight="600" fill="#0b1430">SMR 概念 · 纯叙事</text>
+  <text x="500" y="253" font-size="11" fill="#f5f5f7">OKLO/SMR/BWXT ★</text>
+</svg>
+<div class="fig-cap">图4 · 电建订单确认收入窗口在 2027-2030：卖水人现金流滞后于芯片叙事，但比叙事更硬</div>
+</div>
+</div>
+
+<!-- ============ 五、核电锚澄清 ============ -->
+<div class="section">
+<h2>五、关键澄清：为什么利好的是核电锚，不是天然气</h2>
+<p>读者问："英伟达投资的是天然气发电吗？那为什么利好 CEG/VST/TLN？"——这是全篇最容易误解的一环。<strong>CEG/VST/TLN 没有一家是"天然气股"，其中 CEG 压根不烧气。</strong>三家共同点是"核电锚 + 气电弹性"的组合，而核电锚正是 AI 购电合同唯一敢签 20 年的电源：</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC',sans-serif">
+  <text x="40" y="30" font-size="14" font-weight="600" fill="#f5f5f7">三家资产解剖：核电占比 = P15 硬度阶梯的秘密</text>
+  <rect x="40" y="48" width="160" height="130" rx="10" fill="#161618" stroke="rgba(255,255,255,.12)"/>
+  <text x="120" y="72" font-size="12" font-weight="600" fill="#f5f5f7" text-anchor="middle">CEG 星座能源</text>
+  <rect x="56" y="84" width="128" height="52" rx="6" fill="#4ade80" opacity="0.85"/>
+  <text x="120" y="110" font-size="15" font-weight="700" fill="#052e12" text-anchor="middle">~21GW 核电</text>
+  <text x="120" y="128" font-size="10" fill="#052e12" text-anchor="middle">占比100% · 全美1/5</text>
+  <text x="120" y="166" font-size="10" fill="#86868b" text-anchor="middle">微软三里岛20年PPA</text>
+  <rect x="260" y="48" width="160" height="130" rx="10" fill="#161618" stroke="rgba(255,255,255,.12)"/>
+  <text x="340" y="72" font-size="12" font-weight="600" fill="#f5f5f7" text-anchor="middle">VST 维斯特拉</text>
+  <rect x="276" y="84" width="128" height="30" rx="6" fill="#4ade80" opacity="0.85"/>
+  <text x="340" y="104" font-size="11" font-weight="700" fill="#052e12" text-anchor="middle">核 6.4GW（皇冠）</text>
+  <rect x="276" y="120" width="128" height="26" rx="6" fill="#f59e0b" opacity="0.75"/>
+  <text x="340" y="138" font-size="11" font-weight="700" fill="#1c1004" text-anchor="middle">气 ~26GW（弹性）</text>
+  <text x="340" y="166" font-size="10" fill="#86868b" text-anchor="middle">Meta 2.6 + AWS 1.2GW</text>
+  <rect x="480" y="48" width="160" height="130" rx="10" fill="#161618" stroke="rgba(255,255,255,.12)"/>
+  <text x="560" y="72" font-size="12" font-weight="600" fill="#f5f5f7" text-anchor="middle">TLN 塔伦能源</text>
+  <rect x="496" y="84" width="128" height="40" rx="6" fill="#4ade80" opacity="0.85"/>
+  <text x="560" y="106" font-size="11" font-weight="700" fill="#052e12" text-anchor="middle">核 2.5GW（占50%）</text>
+  <rect x="496" y="130" width="128" height="26" rx="6" fill="#f59e0b" opacity="0.7"/>
+  <text x="560" y="148" font-size="11" font-weight="700" fill="#1c1004" text-anchor="middle">气 ~13GW</text>
+  <text x="560" y="166" font-size="10" fill="#86868b" text-anchor="middle">Amazon 1.92GW 至2042</text>
+</svg>
+<div class="fig-cap">图5 · 核电占比：CEG 100% ＞ TLN ~50% ＞ VST ~15% ＞ NRG 0%——NRG 出局因为一座核电站都没有</div>
+</div>
+
+<h3>三个机制，解释"投天然气为什么利好核电"</h3>
+<table>
+<thead><tr><th style="width:22%">机制</th><th>逻辑</th></tr></thead>
+<tbody>
+<tr><td class="blue">① 成本结构决定谁签得了长约</td><td>气电成本 <strong>70-80% 是燃料</strong>（气价十年波动5-10倍，气电商不敢锁20年）；核电燃料只占 <strong>10-15%</strong>，天然敢锁。AI 客户要的是"确定性+量"不是"便宜"——<strong>四巨头 20 年长约全部落在核电资产上，没有一份给纯气电</strong>（微软×CEG、Meta×VST、AWS×VST/TLN）</td></tr>
+<tr><td class="blue">② 气电越多，核电价差越大</td><td>俄亥俄/Paducah 各 9.2GW 气电投产 → 天然气需求升 → 气价涨 → 气电电价被燃料推高 → 核电燃料近乎免费 → <strong>核电与气电的价差（spread）被拉大</strong>——气电项目是给核电股送利润的</td></tr>
+<tr><td class="blue">③ 气电订单=需求真实的盖章</td><td>英伟达肯担保 $1050亿建电厂，等于把"AI 电力需求"从 PPT 变成签字画押的物理订单——抬升整个基荷板块的估值锚，核电作为基荷顶端资产享受最大溢价</td></tr>
+</tbody>
+</table>
+
+<div class="callout-green"><strong>一句话：英伟达投的确实是天然气（过渡期的桥），但桥的那头通向核电（20年长约的锚）。</strong>CEG/VST/TLN 被点名的真正原因是手里握着"能签 20 年合同的钥匙"——气电订单只是替它们把"需求真实"四个字盖了章。核电线英伟达另押了注：Oklo 核燃料协议（非股权）、旧铀浓缩厂选址（暗示未来上核）、<strong>VST Helix 数据中心电力平台里 NVIDIA 与 KKR、科威特投资局并列</strong>——三家里面，VST 是唯一一个英伟达真金白银间接绑定的。</div>
+</div>
+
+<!-- ============ 六、体系落点 ============ -->
+<div class="section">
+<h2>六、体系落点与结论</h2>
+<ul>
+<li><strong>P15 电力区间一条不用改</strong>——CEG/VST/TLN/CCJ/LEU/EME 的 Z1/Z2/Z3 是 8/21 锚的，这条推文+投资版图只是把"AI 电力必须建"再确认一次，<strong>不构成加仓信号（区间×逻辑双条件，价格没进区间就不动）</strong></li>
+<li><strong>别把黄仁勋当分析师，当"需求叙事方"</strong>——他越用力辩护（8/26 采访→8/29 推文→$1050亿担保），越说明需求端开始需要辩护。这条线和 P20"AI 央行"裂口同源：<strong>卖铲人开始替整个产业链背书了</strong></li>
+<li><strong>新观察点</strong>：SB Energy IPO（最早下月，估值 $500亿）=电力链上第一个可交易的纯标的，但它是循环融资争议最集中的载体（担保方=供应商=最大客户），等租约/负债/担保条款看清楚了再说</li>
+<li><strong>AVGO 9/2 财报前的引线</strong>：英伟达投 Marvell $20亿做 NVLink Fusion——互连生态在给非 AVGO 路线加注，财报当天留意互连/网络部分指引</li>
+<li><strong>电建订单确认收入窗口 2027-2030</strong>——卖水人现金流滞后于芯片叙事，但比叙事更硬；如果 AI 周期 2027Q2 见顶（P17 中枢），电力订单的"滞后性"恰恰是逆周期缓冲</li>
+</ul>
+
+<div class="conclusion">
+<h2>结论 · 体系灵魂第十条</h2>
+<p>黄仁勋在卖"必须建"的故事，你要赚的也是"必须建"的钱——但赚法是他的叙事 + 你的区间纪律：<strong>他负责让故事别塌，你负责等价格进 Z 区再动手。</strong></p>
+<p style="margin-top:10px; font-weight:600; color:#f5f5f7;">灵魂第十条：听发言先问立场——叙事越用力，说明需求越需要辩护；跟着签字画押的订单走，不跟着修辞走。</p>
+</div>
+
+<p style="margin-top:24px; font-size:13px; color:#86868b;">以上仅为个人认知范围内的理解。文中所有金额/产能为公开报道口径，投资动作与区间判断均不构成投资建议。</p>
+
+</div>
+</body>
+</html>

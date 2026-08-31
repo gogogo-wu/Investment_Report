@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年8月 发散笔记月度总结 · 26份报告 · 11条体系灵魂 · 四条主线</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  a { color: #2997ff; text-decoration: none; border-bottom: 1px solid rgba(41,151,255,.35); }
+  a:hover { color: #7aa2ff; border-bottom-color: #7aa2ff; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  .idx { font-size: 12px; color: #2997ff; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .section h2 { font-size: 16px; }
+    table { font-size: 12px; }
+    tbody td, thead th { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>2026年8月 · 发散笔记月度总结</h1>
+<p class="subtitle">从 7 月底的体系搭建到 8 月的 26 份报告连发——AI 产业链、周期判断、宏观央行、持仓纪律四条主线，一个月的脉络、结论与前瞻</p>
+<div class="badge-row">
+  <span class="badge badge-blue">2026-08 · 月度总览</span>
+  <span class="badge badge-blue">26 份报告</span>
+  <span class="badge badge-green">11 条体系灵魂</span>
+  <span class="badge badge-warn">持仓纪律重构</span>
+  <span class="badge badge-red">9 月事件密集</span>
+</div>
+
+<div class="callout">
+  <strong>这份文档是什么：</strong>八月（8/04–8/31）全部发散日记与 26 份 P 系列报告的收束总结。它不是新分析，而是把一个月散落的结论钉在一张地图上——按年月收纳后，每个月初回看上一份，月底封板新的一份，长期脉络一眼可见。文内数据截至 2026/8/31，细节以各 P 报告为准。
+</div>
+
+<!-- ============ 一、本月脉络 ============ -->
+<div class="section">
+<h2>一、这个月发生了什么：从"搭体系"到"十二连发"</h2>
+<p>8 月的前半段在做<strong>地基</strong>（汇率/央行/产业链讲义），中段起开始<strong>连发</strong>：8/22 之后 10 天里连续产出 P14–P26 共 13 份深挖报告，密度惊人。整月的叙事可以压缩成一句话：<strong>一边把"AI 卖水人"的链条越挖越深（算力→电力→内存），一边把"等崩盘捡便宜"的防守框架越修越严（周期时钟→持仓纪律→赌性预算）</strong>。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC',sans-serif">
+  <text x="40" y="26" font-size="14" font-weight="600" fill="#f5f5f7">八月时间线：前半月打地基，后半月十二连发</text>
+  <!-- 轨道 -->
+  <line x1="56" y1="250" x2="646" y2="250" stroke="#48484a" stroke-width="2"/>
+  <polygon points="646,244 660,250 646,256" fill="#48484a"/>
+  <text x="660" y="254" font-size="10" fill="#86868b">时间</text>
+  <!-- 节点 -->
+  <g font-size="10">
+    <circle cx="64" cy="250" r="5" fill="#48484a"/>
+    <text x="64" y="226" font-size="10" fill="#86868b" text-anchor="middle">8/04-08</text>
+    <text x="64" y="272" font-size="10" fill="#86868b" text-anchor="middle">汇率/央行学习</text>
+    <circle cx="140" cy="250" r="5" fill="#48484a"/>
+    <text x="140" y="226" font-size="10" fill="#86868b" text-anchor="middle">8/12</text>
+    <text x="140" y="272" font-size="10" fill="#86868b" text-anchor="middle">仓库初始化·收录10份</text>
+    <circle cx="216" cy="250" r="5" fill="#2997ff"/>
+    <text x="216" y="226" font-size="10" fill="#8ab4ff" text-anchor="middle">8/14-20</text>
+    <text x="216" y="272" font-size="10" fill="#86868b" text-anchor="middle">AI硬件/ASIC/Intel/Nike</text>
+    <circle cx="292" cy="250" r="7" fill="#2997ff"/>
+    <text x="292" y="226" font-size="10" fill="#8ab4ff" text-anchor="middle">8/22</text>
+    <text x="292" y="272" font-size="10" fill="#86868b" text-anchor="middle">P14割裂 + P15电力</text>
+    <circle cx="368" cy="250" r="7" fill="#2997ff"/>
+    <text x="368" y="226" font-size="10" fill="#8ab4ff" text-anchor="middle">8/25-27</text>
+    <text x="368" y="272" font-size="10" fill="#86868b" text-anchor="middle">P17见顶 + P20英伟达裂口</text>
+    <circle cx="444" cy="250" r="7" fill="#fbbf24"/>
+    <text x="444" y="226" font-size="10" fill="#fbbf24" text-anchor="middle">8/29-30</text>
+    <text x="444" y="272" font-size="10" fill="#86868b" text-anchor="middle">P22联储 + P23/P24持仓体检</text>
+    <circle cx="520" cy="250" r="7" fill="#f87171"/>
+    <text x="520" y="226" font-size="10" fill="#f87171" text-anchor="middle">8/31</text>
+    <text x="520" y="272" font-size="10" fill="#86868b" text-anchor="middle">P25电网 + P26内存</text>
+    <circle cx="596" cy="250" r="5" fill="#4ade80"/>
+    <text x="596" y="226" font-size="10" fill="#4ade80" text-anchor="middle">8/31</text>
+    <text x="596" y="272" font-size="10" fill="#86868b" text-anchor="middle">月度总结·收纳归档</text>
+  </g>
+  <rect x="56" y="42" width="584" height="140" rx="10" fill="#161618" stroke="rgba(255,255,255,.1)"/>
+  <text x="76" y="66" font-size="11" font-weight="600" fill="#f5f5f7">四个阶段，一个叙事</text>
+  <text x="76" y="90" font-size="11" fill="#d1d1d6">① 地基（8/04-12）：美日汇率与全球金融传导（P01）、宏观算力笔记（P07）——理解"钱怎么流动"</text>
+  <text x="76" y="110" font-size="11" fill="#d1d1d6">② 产业链（8/14-22）：AI 硬件/ASIC/Intel/Nike（P03-P13）→ 利润倒三角与第二所有者（P14）→ 电力=最硬卖水人（P15）</text>
+  <text x="76" y="130" font-size="11" fill="#d1d1d6">③ 周期与防守（8/23-28）：挤占（P16）→ 见顶时钟 2027Q2（P17）→ 错杀收租（P18）→ 乐天二元赌注（P19）→ 英伟达裂口（P20）→ FEL 期权（P21）</text>
+  <text x="76" y="150" font-size="11" fill="#d1d1d6">④ 宏观与自身（8/29-31）：联储鹰派（P22）→ 双央行挤压（P23）→ 小资金纪律（P24）→ 能源叙事（P25）→ 内存超级周期（P26）</text>
+  <text x="76" y="172" font-size="11" fill="#4ade80" font-weight="600">主线不变：赚"必须建"的钱，等"借钱建的"崩，避开"被抽血的"——八月把每个字都验了一遍</text>
+</svg>
+<div class="fig-cap">图1 · 八月时间线——后半月的密度说明体系从"学习"切换到了"判断"模式</div>
+</div>
+</div>
+
+<!-- ============ 二、四条主线 ============ -->
+<div class="section">
+<h2>二、四条主线：本月结论一句话版</h2>
+
+<table>
+<thead><tr><th style="width:14%">主线</th><th style="width:44%">本月干了什么</th><th>一句话结论</th></tr></thead>
+<tbody>
+<tr><td class="blue">AI 产业链与电力</td><td>P03-P11 产业链全景 → P14 利润倒三角 → P15 电力建仓区间 → P25 英伟达能源版图与核电锚澄清</td><td><strong>最安全的卖水人是电力，且是核电锚（CEG/VST/TLN），不是算力也不是气电</strong>；24/7 需求不随芯片周期，20 年 PPA 只有核电签得起</td></tr>
+<tr><td class="blue">周期判断与防守</td><td>P16 挤占与三档概念 → P17 六时钟见顶 → P18 错杀收租 → P26 内存温度计</td><td><strong>见顶中枢 2027Q2；内存合同价顶（2026Q4-2027）是最诚实的前哨体温计</strong>；崩盘当天只执行预挂单</td></tr>
+<tr><td class="blue">宏观与央行</td><td>P01 汇率传导 → P22 联储鹰派 → P23 九月双央行</td><td><strong>9/15-18 联储×日银 48 小时双端挤压</strong>；股票跌的是"意外"不是加息；方向由债市投票，时间表由政治日历决定</td></tr>
+<tr><td class="blue">持仓与纪律</td><td>P19 乐天赌注 → P20 英伟达裂口 → P23 持仓体检 → P24 成本审计与赌性预算</td><td><strong>97% 满仓 vs 4:3:3 框架是本月最大裂缝；决定=持有过财报赌一把，但上笼子</strong>：财报当晚零操作，加仓双条件（价格进区间×逻辑未证伪）</td></tr>
+</tbody>
+</table>
+
+<div class="callout-green"><strong>四条线的咬合：</strong>宏观线给出 9 月的"时间窗口"（双央行），持仓线给出"人"的位置（67% 仓位在 9 月被两份财报裁决），产业线给出"钱往哪去"（电力/内存），周期线给出"何时撤"（2027Q2 + 内存温度计）。<strong>八月最大的收获不是多知道了几家公司，而是把这四根线焊成了一根。</strong></div>
+</div>
+
+<!-- ============ 三、核心结论快照 ============ -->
+<div class="section">
+<h2>三、核心结论快照：区间、观察篮、灵魂条款</h2>
+
+<h3>3.1 建仓区间总表（Z1/Z2/Z3 分批 + 止损，细节见各报告）</h3>
+<table>
+<thead><tr><th style="width:16%">标的</th><th>Z1（试探）</th><th>Z2（加仓）</th><th>Z3（重仓）</th><th style="width:12%">止损</th></tr></thead>
+<tbody>
+<tr><td class="blue">CEG（核电）</td><td>235-250</td><td>210-225</td><td>185-200</td><td class="red">170</td></tr>
+<tr><td class="blue">VST（核电+气）</td><td>120-128</td><td>105-115</td><td>90-100</td><td class="red">80</td></tr>
+<tr><td class="blue">TLN（核电+气）</td><td>285-300</td><td>260-275</td><td>235-250</td><td class="red">220</td></tr>
+<tr><td class="blue">CCJ（铀）</td><td>88-93</td><td>78-84</td><td>68-75</td><td class="red">62</td></tr>
+<tr><td class="blue">LEU（铀浓缩）</td><td>155-168</td><td>140-150</td><td>120-135</td><td class="red">105</td></tr>
+<tr><td class="blue">EME（输电）</td><td>680-720</td><td>600-650</td><td>520-570</td><td class="red">480</td></tr>
+<tr><td class="green">BMY（收租）</td><td>58-62 加仓</td><td>—</td><td>—</td><td class="red">48</td></tr>
+<tr><td class="green">AT&amp;T（收租）</td><td>23-24 加仓</td><td>—</td><td>—</td><td class="red">17</td></tr>
+<tr><td class="green">奔驰（收租）</td><td>42-44 加仓</td><td>—</td><td>—</td><td class="red">30</td></tr>
+<tr><td class="green">CPB 金宝汤（收租）</td><td>20-22 加仓</td><td>—</td><td>—</td><td class="red">13</td></tr>
+<tr><td class="yellow">NVDA（C档抄底）</td><td>—</td><td>—</td><td>130 / 106</td><td class="red">—</td></tr>
+<tr><td class="yellow">AVGO（C档抄底）</td><td>—</td><td>—</td><td>272 / 222</td><td class="red">—</td></tr>
+<tr><td class="yellow">TSM（C档抄底）</td><td>—</td><td>—</td><td>287 / 240</td><td class="red">—</td></tr>
+<tr><td class="yellow">MCHP（不便宜）</td><td>—</td><td>58-64</td><td>48-54</td><td class="red">42</td></tr>
+<tr><td class="yellow">乐天（二元赌注）</td><td>¥650-700（10-12月验证后）</td><td>—</td><td>—</td><td class="red">¥575 证伪线</td></tr>
+</tbody>
+</table>
+<p style="font-size:12px; color:#86868b;">约束：电力子线 ≤10-12%（Z1 1-2% / Z2 3-5% / Z3 5-8%）；收租四标的各 2-3% 合计 6-9%；GEV/SMR 不建仓；NEM 等回调 108-115；IONQ/宇树/聚变不碰。</p>
+
+<h3>3.2 观察篮快照</h3>
+<table>
+<thead><tr><th style="width:20%">篮子</th><th>内容</th><th>触发逻辑</th></tr></thead>
+<tbody>
+<tr><td class="blue">电力（现在进行时）</td><td>CEG / VST / TLN / CCJ / LEU / EME</td><td>英伟达 $700 亿股权点名 + 四巨头核电长约；回调到区间分批接</td></tr>
+<tr><td class="green">错杀金矿</td><td>CRM / NOW / CDNS / WDAY / XBI / 日本小盘</td><td>AI 抢的是隔壁的饭碗，不是它们的——恐慌错杀可捡</td></tr>
+<tr><td class="yellow">内存（2027-28 路径B）</td><td>MU / SKHY</td><td>周期顶 PE×周期顶利润=赔率差；等产能落地+中国产能+反垄断发酵后林奇反向买，自身历史分位校验</td></tr>
+<tr><td class="yellow">技术期权（零定价）</td><td>FEL 三路线（xLight/KEK/清华SSMB）</td><td>2028 Albany 开奖；反向暴露 COHR / 小松 / 牛尾今天点清</td></tr>
+<tr><td class="red">新观察（不建仓）</td><td>Mount Thor / Namespace Labs / EXO Labs / DGX Spark / SB Energy IPO</td><td>Mac 云新物种看能否进化出护城河；SB Energy=循环融资争议集中，等条款看清楚</td></tr>
+</tbody>
+</table>
+
+<h3>3.3 体系灵魂十一条（八月从 1 攒到 11）</h3>
+<table>
+<thead><tr><th style="width:22%">条款</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td class="blue">第一、二条（P17/P18）</td><td>赚"必须建"的钱，等"借钱建的"崩，避开"被抽血的"；捡"被隔壁着火疏散出来的"——前提是火不烧到你家</td></tr>
+<tr><td class="blue">第三条（P18）</td><td>收租的房子着不了火，恐慌时把别人的收租房也买下来</td></tr>
+<tr><td class="blue">第四条（P19）</td><td>二元赌注的钱，等裁判吹哨再上桌；没吹哨前，便宜和飞刀长得一模一样</td></tr>
+<tr><td class="blue">第五条（P20）</td><td>卖铲人垫钱买铲、担保客户、下场发债——距离"借钱建的崩"只差一个客户违约</td></tr>
+<tr><td class="blue">第六条（P21）</td><td>十倍好的物理，敌不过二十年的工程；技术期权按零定价，反向暴露今天点清</td></tr>
+<tr><td class="blue">第七条（P22）</td><td>方向由债市投票决定，时间表由政治日历决定</td></tr>
+<tr><td class="blue">第八条（P23）</td><td>策略写在笔记里，风险长在账户里——对不上时改的是账户，不是笔记</td></tr>
+<tr><td class="blue">第九条（P24）</td><td>小资金的压舱层在工资卡里；赌性不用戒——关进笼子，只从笼门进场</td></tr>
+<tr><td class="blue">第十条（P25）</td><td>听发言先问立场——叙事越用力，说明需求越需要辩护；跟着签字画押的订单走</td></tr>
+<tr><td class="blue">第十一条（P26）</td><td>体温计不骗人——内存合同价是 AI 周期最诚实的体温计，先于故事见顶；跟着合同价走，不跟着 CEO 的嘴走</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ============ 四、持仓纪律复盘 ============ -->
+<div class="section">
+<h2>四、持仓纪律复盘：本月最重要的一场"照镜子"</h2>
+<p>8/28 的持仓体检（P23）和 8/30 的成本审计与赌性预算（P24），是本月最疼也最值钱的两份报告——它们把"笔记里的策略"和"账户里的风险"第一次摆到了同一边。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC',sans-serif">
+  <text x="40" y="26" font-size="14" font-weight="600" fill="#f5f5f7">照镜子：笔记里的 4:3:3 vs 账户里的 0:0:10</text>
+  <rect x="40" y="44" width="290" height="170" rx="10" fill="#161618" stroke="rgba(255,255,255,.12)"/>
+  <text x="185" y="66" font-size="12" font-weight="600" fill="#8ab4ff" text-anchor="middle">笔记里的三层（4:3:3）</text>
+  <rect x="60" y="82" width="120" height="26" rx="6" fill="rgba(41,151,255,.25)"/>
+  <text x="120" y="99" font-size="11" fill="#8ab4ff" text-anchor="middle">压舱 40%</text>
+  <rect x="190" y="82" width="120" height="26" rx="6" fill="rgba(74,222,128,.25)"/>
+  <text x="250" y="99" font-size="11" fill="#4ade80" text-anchor="middle">收租 30%</text>
+  <rect x="60" y="116" width="250" height="26" rx="6" fill="rgba(251,191,36,.25)"/>
+  <text x="185" y="133" font-size="11" fill="#fbbf24" text-anchor="middle">子弹 30% · 等崩盘捡便宜</text>
+  <text x="185" y="166" font-size="11" fill="#d1d1d6" text-anchor="middle">真崩盘来了：有子弹 + 被套得浅</text>
+  <text x="185" y="186" font-size="11" fill="#4ade80" text-anchor="middle">执行"捡便宜"剧本</text>
+  <rect x="350" y="44" width="290" height="170" rx="10" fill="#161618" stroke="rgba(239,68,68,.14)"/>
+  <text x="495" y="66" font-size="12" font-weight="600" fill="#f87171" text-anchor="middle">账户里的实际（0:0:10）</text>
+  <rect x="370" y="82" width="250" height="26" rx="6" fill="rgba(239,68,68,.3)"/>
+  <text x="495" y="99" font-size="11" fill="#f87171" text-anchor="middle">97% 满仓 · 全高beta故事股</text>
+  <rect x="370" y="116" width="250" height="26" rx="6" fill="rgba(239,68,68,.3)"/>
+  <text x="495" y="133" font-size="11" fill="#f87171" text-anchor="middle">AI 敞口 76% vs 铁律 ≤20-30%</text>
+  <rect x="370" y="150" width="250" height="26" rx="6" fill="rgba(239,68,68,.3)"/>
+  <text x="495" y="167" font-size="11" fill="#f87171" text-anchor="middle">加权 beta≈1.55 · 情景C回撤≈-31%</text>
+  <text x="495" y="200" font-size="11" fill="#f87171" text-anchor="middle">真崩盘来了：深度挨打 + 无子弹</text>
+</svg>
+<div class="fig-cap">图2 · P23 体检结论——为一场自己预言的崩盘，把自己摆在了被崩的那一侧</div>
+</div>
+
+<h3>4.1 审计结果（8/28 收盘 · 8/30 补成本价）</h3>
+<table>
+<thead><tr><th style="width:16%">标的</th><th style="width:10%">仓位</th><th style="width:14%">成本价</th><th style="width:14%">8/28 收盘</th><th>诊断</th></tr></thead>
+<tbody>
+<tr><td class="blue">INTC</td><td>33%</td><td>$86.44</td><td>$89.47</td><td>YTD+142%、距高点-37%、Z1 上沿合规但仓位超 20 倍、TTM 亏损、beta 2.24</td></tr>
+<tr><td class="blue">AVGO</td><td>27%</td><td>$394.23</td><td>$368.79</td><td>距高点-25%、P/S 24x；<strong>唯一真违规：成本比自家 $272 接货位高 45%</strong>；9/2 财报</td></tr>
+<tr><td class="blue">NKE</td><td>21%</td><td>$39.03</td><td>$39.60</td><td>52 周新低、股息 4.27%、压在"不建仓"线上、组合唯一被动对冲；10/1 财报</td></tr>
+<tr><td class="blue">ORCL</td><td>16%</td><td>$135.98</td><td>$150.85</td><td>距峰值-54%、backlog $638B、FCF -$23.7B、唯一合规仓；9/14 财报</td></tr>
+</tbody>
+</table>
+<p><strong>组合浮盈仅 +1.47% 平手</strong>（ORCL +1.75pp 顶掉 AVGO -1.74pp）；6-8 月新仓=买故事下半场，"区间设了，手比区间快"；<strong>生死两周=9/2 AVGO（27%）→ 9/14 ORCL（16%），67% 仓位被两份财报裁决</strong>。</p>
+
+<h3>4.2 八月最重要的决定（P24，用户拍板）</h3>
+<div class="callout">
+  <strong>持有过财报，赌一把——但上笼子。</strong>三剧本钉死：AVGO 9/2 超预期不加仓/站回 $400+ 减 1/3 · 符合不动 · 不及预期 $313-330 仍不加；ORCL 9/14 超/符合锁一半 · 不及预期先查 RPO+OCI 逻辑。<strong>铁律=财报当晚零操作；加仓双条件（价格进区间 × 逻辑未证伪）</strong>。赌性预算笼子 ≤10-20%：亏光不影响人生 / 只买赔率错的 / 禁止亏损摊平。
+</div>
+<p>加仓触发表（P24）：AVGO $272/$222 · ORCL $120-135 看逻辑 · INTC Z2 70-80 / Z3 55-65（85-95 是持有区）· NKE 34-36。市场不知道你的成本价。</p>
+</div>
+
+<!-- ============ 五、9月前瞻 ============ -->
+<div class="section">
+<h2>五、9 月前瞻：事件日历与三情景</h2>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC',sans-serif">
+  <text x="40" y="26" font-size="14" font-weight="600" fill="#f5f5f7">九月日历：前半月被财报和央行占满，67% 仓位在其中被裁决</text>
+  <line x1="56" y1="190" x2="646" y2="190" stroke="#48484a" stroke-width="2"/>
+  <polygon points="646,184 660,190 646,196" fill="#48484a"/>
+  <g font-size="10">
+    <circle cx="96" cy="190" r="7" fill="#f87171"/>
+    <text x="96" y="166" font-size="10" font-weight="600" fill="#f87171" text-anchor="middle">9/2 AVGO财报</text>
+    <text x="96" y="210" font-size="10" fill="#86868b" text-anchor="middle">27%仓位裁决·三剧本</text>
+    <circle cx="192" cy="190" r="6" fill="#fbbf24"/>
+    <text x="192" y="166" font-size="10" font-weight="600" fill="#fbbf24" text-anchor="middle">9/9-10 日银吹风</text>
+    <text x="192" y="210" font-size="10" fill="#86868b" text-anchor="middle">财政部$4000亿回购启动</text>
+    <circle cx="288" cy="190" r="6" fill="#f87171"/>
+    <text x="288" y="166" font-size="10" font-weight="600" fill="#f87171" text-anchor="middle">9/14 ORCL财报</text>
+    <text x="288" y="210" font-size="10" fill="#86868b" text-anchor="middle">16%·先锁一半</text>
+    <circle cx="384" cy="190" r="8" fill="#fbbf24"/>
+    <text x="384" y="160" font-size="10" font-weight="600" fill="#fbbf24" text-anchor="middle">9/15-18 双央行</text>
+    <text x="384" y="174" font-size="10" fill="#86868b" text-anchor="middle">联储55.7%</text>
+    <text x="384" y="210" font-size="10" fill="#86868b" text-anchor="middle">48小时双端挤压</text>
+    <circle cx="480" cy="190" r="6" fill="#fbbf24"/>
+    <text x="480" y="166" font-size="10" font-weight="600" fill="#fbbf24" text-anchor="middle">10/1 NKE+乐天</text>
+    <text x="480" y="210" font-size="10" fill="#86868b" text-anchor="middle">KDDI断供×金融重组</text>
+    <circle cx="576" cy="190" r="6" fill="#fbbf24"/>
+    <text x="576" y="166" font-size="10" font-weight="600" fill="#fbbf24" text-anchor="middle">10/22 INTC</text>
+    <text x="576" y="210" font-size="10" fill="#86868b" text-anchor="middle">减至20%</text>
+  </g>
+  <rect x="56" y="42" width="584" height="92" rx="10" fill="#161618" stroke="rgba(255,255,255,.1)"/>
+  <text x="76" y="64" font-size="11" font-weight="600" fill="#f5f5f7">三情景（P23，60/15-20/25-35 加权）</text>
+  <text x="76" y="86" font-size="11" fill="#d1d1d6">基准 60%：阴跌 5-8%——日银已定价、联储才是意外源，跌的是"意外"不是加息</text>
+  <text x="76" y="104" font-size="11" fill="#fbbf24">尾部 15-20%：套息再崩——触发器=植田"10月再加"级表态；崩的是波动率不是利差（加完息仍225-250bp）</text>
+  <text x="76" y="122" font-size="11" fill="#4ade80">喘息 25-35%：利空出尽——反身性=人挤人的门提前开，预挂单不吃共识择时的亏</text>
+</svg>
+<div class="fig-cap">图3 · 9 月双央行连击 + 财报裁决——预挂单是唯一不需要择时的手段</div>
+</div>
+
+<h3>5.1 减仓路线（事件驱动，P23 设定）</h3>
+<table>
+<thead><tr><th style="width:22%">触发点</th><th style="width:34%">动作</th><th>逻辑</th></tr></thead>
+<tbody>
+<tr><td class="red">9/2 AVGO 财报</td><td>INTC 先至 25%（Z1 上沿落袋）→ AVGO 按三剧本处理</td><td>财报=信息密集窗口，事件驱动减仓而非价格驱动</td></tr>
+<tr><td class="red">9/14 ORCL 财报</td><td>ORCL 按三剧本（超/符合锁一半）→ AVGO 至 15-18%</td><td>67% 仓位裁决结束后，组合风险自动降档</td></tr>
+<tr><td class="yellow">10/1 NKE 财报</td><td>NKE 留存 12-15%（唯一被动对冲）</td><td>乐天 10/1 二元分岔同步验证（KDDI×金融重组）</td></tr>
+<tr><td class="yellow">10/22 INTC 财报</td><td>INTC 至 20%</td><td>腾出 30-40% 先囤现金两周，再按 P18 建收租</td></tr>
+</tbody>
+</table>
+<p style="font-size:12px; color:#86868b;">目标：2027Q1 前对齐 4:3:3。中期哨位：内存合同价顶 2026Q4-2027（温度计）→ P17 见顶中枢 2027Q2 → 11/3 中期选举、12/8-9 选后真窗口。</p>
+</div>
+
+<!-- ============ 六、报告索引 ============ -->
+<div class="section">
+<h2>六、八月报告全索引（26 份 · 点击直达）</h2>
+<table>
+<thead><tr><th style="width:52px">编号</th><th style="width:52%">报告</th><th>一句话要点</th></tr></thead>
+<tbody>
+<tr><td class="idx">P01</td><td><a href="美日汇率干预与全球金融传导学习笔记.html">美日汇率干预与全球金融传导</a></td><td>BOJ 政策、套息交易与全球资产联动</td></tr>
+<tr><td class="idx">P02</td><td><a href="Intel增发案例分析.html">Intel $200亿增发案例分析</a></td><td>融资决策框架 · 5倍超额认购 · ASIC 联动</td></tr>
+<tr><td class="idx">P03</td><td><a href="AI硬件长期建仓策略.html">AI硬件长期建仓策略</a></td><td>卖铲人家族全景 + 八大标的双情景区间</td></tr>
+<tr><td class="idx">P04</td><td><a href="AI产业链深度研究讲义.html">AI产业链深度研究讲义</a></td><td>产业链七层拆解、HBM/CoWoS/光模块/液冷</td></tr>
+<tr><td class="idx">P05</td><td><a href="ASIC四标的深度建仓分析.html">ASIC四标的深度建仓分析</a></td><td>AVGO/SNPS/MRVL/Socionext · 财报+区间</td></tr>
+<tr><td class="idx">P06</td><td><a href="AI资本结构风险与泡沫类比分析.html">AI资本结构风险与泡沫类比分析</a></td><td>$5000亿融资平台风险瀑布 · 2000+2008 类比</td></tr>
+<tr><td class="idx">P07</td><td><a href="宏观数据与算力产业链发散笔记.html">宏观数据与算力产业链发散笔记</a></td><td>CPI/非农 · 光模块三层原因 · 卖铲人安全度分层</td></tr>
+<tr><td class="idx">P08</td><td><a href="低位挖掘发散比较笔记.html">低位挖掘发散比较笔记</a></td><td>周期股 PE 悖论 · CEG/Intel/SKHY 三样本</td></tr>
+<tr><td class="idx">P09</td><td><a href="观察清单总览与建仓区间策略.html">观察清单总览与建仓区间策略</a></td><td>六条趋势线 · 三批建仓法 · 风险预算与退出线</td></tr>
+<tr><td class="idx">P10</td><td><a href="ASIC竞争格局发散笔记.html">ASIC竞争格局发散笔记</a></td><td>AVGO 暴跌 XPV · TPU v10 · 博通五路反击 · 中国镜像</td></tr>
+<tr><td class="idx">P11</td><td><a href="13F持仓信号与Cerebras分析.html">13F持仓信号与Cerebras分析</a></td><td>鲸鱼 Q2 轮动 · Cerebras 晶圆级芯片 · 五大变革线</td></tr>
+<tr><td class="idx">P12</td><td><a href="Intel深度复盘与建仓策略.html">Intel深度复盘与建仓策略</a></td><td>两线战争 · 六大反击 · 美国本土台积电 · 建仓区间更新</td></tr>
+<tr><td class="idx">P13</td><td><a href="Nike深度复盘与建仓策略.html">Nike深度复盘与建仓策略</a></td><td>$179 到 $40 崩塌 · Win Now 改革 · 建仓区间</td></tr>
+<tr><td class="idx">P14</td><td><a href="AI割裂与第二所有者.html">AI割裂与第二所有者</a></td><td>利润倒三角 · $3T 问题 · 电力=第二所有者资产</td></tr>
+<tr><td class="idx">P15</td><td><a href="电力与物理AI.html">电力与物理AI</a></td><td>电力=现在进行时 · 硬度阶梯 · 建仓区间总表</td></tr>
+<tr><td class="idx">P16</td><td><a href="AI挤占与防守反击.html">AI挤占与防守反击</a></td><td>Acemoglu 五分类 · AI 概念三档 · 三阶段手册</td></tr>
+<tr><td class="idx">P17</td><td><a href="AI周期见顶与行业命运.html">AI周期见顶与行业命运</a></td><td>六时钟收敛 2027Q2 · 债务刚性×资产贬值速度</td></tr>
+<tr><td class="idx">P18</td><td><a href="错杀与历史底部收租.html">非AI错杀与历史底部收租</a></td><td>错杀判据 · 收租四标的（BMY/T/奔驰/CPB）</td></tr>
+<tr><td class="idx">P19</td><td><a href="乐天集团转型末段赌注.html">乐天集团转型末段赌注</a></td><td>三引擎解剖 · 10/1 二元分岔 · SOTP 折价</td></tr>
+<tr><td class="idx">P20</td><td><a href="英伟达财报裂口与周期延长.html">英伟达财报裂口与周期延长</a></td><td>净利 $597 vs FCF $213 · 六裂口 · 周期后移</td></tr>
+<tr><td class="idx">P21</td><td><a href="自由电子激光与Terafab技术期权.html">自由电子激光与Terafab技术期权</a></td><td>FEL 效率 5x · 四道鸿沟 · 反向暴露点清</td></tr>
+<tr><td class="idx">P22</td><td><a href="美联储鹰派转向与中期选举时钟.html">美联储鹰派转向与中期选举时钟</a></td><td>沃什首秀 · 9月加息 55.7% · 12/8-9 真窗口</td></tr>
+<tr><td class="idx">P23</td><td><a href="九月双央行连击与持仓体检.html">九月双央行连击与持仓体检</a></td><td>48 小时双端挤压 · 共识悖论 · 持仓体检 · 减仓路线</td></tr>
+<tr><td class="idx">P24</td><td><a href="小资金持仓审计与赌性预算.html">小资金持仓审计与赌性预算</a></td><td>成本价审计 +1.47% · 赌性预算笼子 · 三剧本</td></tr>
+<tr><td class="idx">P25</td><td><a href="黄仁勋电网叙事与英伟达能源投资版图.html">黄仁勋电网叙事与英伟达能源投资版图</a></td><td>24小时公关战 · 俄亥俄 8GW · 核电锚澄清</td></tr>
+<tr><td class="idx">P26</td><td><a href="OpenAI买Mac与内存超级周期.html">OpenAI买Mac与内存超级周期</a></td><td>训练市场裂开 · 许可证围墙 · 内存温度计</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="conclusion">
+<h2>结论 · 八月的收束与九月的开场</h2>
+<p>这个月真正完成的不是 26 份报告，而是<strong>一套自洽的坐标系</strong>：产业线告诉你钱往哪去（电力/内存）、周期线告诉你何时收手（2027Q2 + 内存温度计）、宏观线告诉你时间窗口（9 月双央行）、纪律线告诉你自己站在哪（97% 满仓、67% 待裁决）。八月的最后一个动作——按年月收纳归档——和这份月度总结一起，把"发散"重新收回了"体系"。</p>
+<p style="margin-top:10px; font-weight:600; color:#f5f5f7;">九月就一件事：把八月写下的单子，交给 9/2 之后的自己执行。预挂单不需要勇气，只需要当时写得足够清楚。</p>
+</div>
+
+<p style="margin-top:24px; font-size:13px; color:#86868b;">以上仅为个人认知范围内的理解。文中持仓权重与成本价为个人示例数字，所有区间判断与投资动作均不构成投资建议。</p>
+
+</div>
+</body>
+</html>

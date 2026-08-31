@@ -188,6 +188,12 @@
         <span class="d">知识库目录</span>
       </button>
 
+      <div class="nav-group-title">月度总结</div>
+      <button class="nav-item" data-page="m08">
+        <span class="t">2026年8月 · 月度总结</span>
+        <span class="d">八月26份报告收束 · 四条主线 · 9月前瞻日历</span>
+      </button>
+
       <div class="nav-group-title">国际金融分析</div>
       <button class="nav-item" data-page="page1">
         <span class="t">美日汇率干预与全球金融传导</span>
@@ -300,7 +306,7 @@
     </nav>
 
     <div class="sidebar-footer">
-      共 <span id="reportCount">11</span> 份报告 · 3 大分类<br>
+      共 <span id="reportCount">11</span> 份资料 · 3 大分类<br>
       最后更新 2026-08-31
     </div>
   </aside>
@@ -316,7 +322,7 @@
 
         <div class="stats">
           <div class="stat">
-            <div class="stat-num">26</div>
+            <div class="stat-num">27</div>
             <div class="stat-label">研究资料</div>
           </div>
           <div class="stat">
@@ -330,6 +336,16 @@
         </div>
 
         <div class="toc">
+
+          <div class="toc-group">
+            <div class="toc-group-title">月度总览</div>
+            <button class="toc-row" data-page="m08">
+              <span class="toc-no">M08</span>
+              <span class="toc-title">2026年8月 · 发散笔记月度总结</span>
+              <span class="toc-desc">本月脉络时间线 · 四条主线一句话结论 · 建仓区间/观察篮/灵魂十一条快照 · 持仓纪律复盘 · 9月事件日历与三情景 · 26份报告全索引</span>
+              <span class="toc-arrow">&rarr;</span>
+            </button>
+          </div>
 
           <div class="toc-group">
             <div class="toc-group-title">一、国际金融分析</div>
@@ -514,32 +530,33 @@
 
 <script>
   var REPORTS = {
-    page1: { file: '美日汇率干预与全球金融传导学习笔记.html', title: '美日汇率干预与全球金融传导' },
-    page2: { file: 'Intel增发案例分析.html',               title: 'Intel $200亿增发案例分析' },
-    page3: { file: 'AI硬件长期建仓策略.html',              title: 'AI硬件长期建仓策略' },
-    page4: { file: 'AI产业链深度研究讲义.html',            title: 'AI产业链深度研究讲义' },
-    page5: { file: 'ASIC四标的深度建仓分析.html',          title: 'ASIC四标的深度建仓分析' },
-    page6: { file: 'AI资本结构风险与泡沫类比分析.html',    title: 'AI资本结构风险与泡沫类比分析' },
-    page7: { file: '宏观数据与算力产业链发散笔记.html',      title: '宏观数据与算力产业链发散笔记' },
-    page8: { file: '低位挖掘发散比较笔记.html',               title: '低位挖掘发散比较笔记' },
-    page9: { file: '观察清单总览与建仓区间策略.html',         title: '观察清单总览与建仓区间策略' },
-    page10: { file: 'ASIC竞争格局发散笔记.html',             title: 'ASIC竞争格局发散笔记' },
-    page11: { file: '13F持仓信号与Cerebras分析.html',         title: '13F持仓信号与Cerebras分析' },
-    page12: { file: 'Intel深度复盘与建仓策略.html',           title: 'Intel深度复盘与建仓策略' },
-    page13: { file: 'Nike深度复盘与建仓策略.html',             title: 'Nike深度复盘与建仓策略' },
-    page14: { file: 'AI割裂与第二所有者.html',                  title: 'AI割裂与第二所有者' },
-    page15: { file: '电力与物理AI.html',                        title: '电力与物理AI' },
-    page16: { file: 'AI挤占与防守反击.html',                    title: 'AI挤占与防守反击' },
-    page17: { file: 'AI周期见顶与行业命运.html',                title: 'AI周期见顶与行业命运' },
-    page18: { file: '错杀与历史底部收租.html',                  title: '非AI错杀与历史底部收租' },
-    page19: { file: '乐天集团转型末段赌注.html',                title: '乐天集团转型末段赌注' },
-    page20: { file: '英伟达财报裂口与周期延长.html',            title: '英伟达财报裂口与周期延长' },
-    page21: { file: '自由电子激光与Terafab技术期权.html',      title: '自由电子激光与Terafab技术期权' },
-    page22: { file: '美联储鹰派转向与中期选举时钟.html',        title: '美联储鹰派转向与中期选举时钟' },
-    page23: { file: '九月双央行连击与持仓体检.html',            title: '九月双央行连击与持仓体检' },
-    page24: { file: '小资金持仓审计与赌性预算.html',            title: '小资金持仓审计与赌性预算' },
-    page25: { file: '黄仁勋电网叙事与英伟达能源投资版图.html',   title: '黄仁勋电网叙事与英伟达能源投资版图' },
-    page26: { file: 'OpenAI买Mac与内存超级周期.html',             title: 'OpenAI买Mac与内存超级周期' }
+    m08: { file: '2026/08/2026年8月发散笔记月度总结.html',    title: '2026年8月 · 发散笔记月度总结' },
+    page1: { file: '2026/08/美日汇率干预与全球金融传导学习笔记.html', title: '美日汇率干预与全球金融传导' },
+    page2: { file: '2026/08/Intel增发案例分析.html',               title: 'Intel $200亿增发案例分析' },
+    page3: { file: '2026/08/AI硬件长期建仓策略.html',              title: 'AI硬件长期建仓策略' },
+    page4: { file: '2026/08/AI产业链深度研究讲义.html',            title: 'AI产业链深度研究讲义' },
+    page5: { file: '2026/08/ASIC四标的深度建仓分析.html',          title: 'ASIC四标的深度建仓分析' },
+    page6: { file: '2026/08/AI资本结构风险与泡沫类比分析.html',    title: 'AI资本结构风险与泡沫类比分析' },
+    page7: { file: '2026/08/宏观数据与算力产业链发散笔记.html',      title: '宏观数据与算力产业链发散笔记' },
+    page8: { file: '2026/08/低位挖掘发散比较笔记.html',               title: '低位挖掘发散比较笔记' },
+    page9: { file: '2026/08/观察清单总览与建仓区间策略.html',         title: '观察清单总览与建仓区间策略' },
+    page10: { file: '2026/08/ASIC竞争格局发散笔记.html',             title: 'ASIC竞争格局发散笔记' },
+    page11: { file: '2026/08/13F持仓信号与Cerebras分析.html',         title: '13F持仓信号与Cerebras分析' },
+    page12: { file: '2026/08/Intel深度复盘与建仓策略.html',           title: 'Intel深度复盘与建仓策略' },
+    page13: { file: '2026/08/Nike深度复盘与建仓策略.html',             title: 'Nike深度复盘与建仓策略' },
+    page14: { file: '2026/08/AI割裂与第二所有者.html',                  title: 'AI割裂与第二所有者' },
+    page15: { file: '2026/08/电力与物理AI.html',                        title: '电力与物理AI' },
+    page16: { file: '2026/08/AI挤占与防守反击.html',                    title: 'AI挤占与防守反击' },
+    page17: { file: '2026/08/AI周期见顶与行业命运.html',                title: 'AI周期见顶与行业命运' },
+    page18: { file: '2026/08/错杀与历史底部收租.html',                  title: '非AI错杀与历史底部收租' },
+    page19: { file: '2026/08/乐天集团转型末段赌注.html',                title: '乐天集团转型末段赌注' },
+    page20: { file: '2026/08/英伟达财报裂口与周期延长.html',            title: '英伟达财报裂口与周期延长' },
+    page21: { file: '2026/08/自由电子激光与Terafab技术期权.html',      title: '自由电子激光与Terafab技术期权' },
+    page22: { file: '2026/08/美联储鹰派转向与中期选举时钟.html',        title: '美联储鹰派转向与中期选举时钟' },
+    page23: { file: '2026/08/九月双央行连击与持仓体检.html',            title: '九月双央行连击与持仓体检' },
+    page24: { file: '2026/08/小资金持仓审计与赌性预算.html',            title: '小资金持仓审计与赌性预算' },
+    page25: { file: '2026/08/黄仁勋电网叙事与英伟达能源投资版图.html',   title: '黄仁勋电网叙事与英伟达能源投资版图' },
+    page26: { file: '2026/08/OpenAI买Mac与内存超级周期.html',             title: 'OpenAI买Mac与内存超级周期' }
   };
 
   var frame = document.getElementById('frame');

@@ -13,9 +13,9 @@
 
 | 文件 | 角色 |
 |---|---|
-| `index.html` | 导航壳。多处需同步：月度总结分组（nav/toc）、侧栏 nav（约 L192 起）、首页 toc 目录（约 L450 起）、`REPORTS` 路由表（约 L530 起）、footer 统计与日期 |
+| `index.html` | 导航壳（**数据驱动**：侧栏导航、首页目录、年月筛选器、统计数字全部由 `REPORTS` 表 JS 渲染，只维护这一处） |
 | `2026/08/xxx.html` 等 | 报告按年月收纳，文件名与 `REPORTS` 表 `file` 字段（含目录前缀）逐字一致 |
-| `2026/08/YYYY年M月发散笔记月度总结.html` | 每月月底生成的月度收束总结，登记为 `mYY` 路由，导航分组"月度总结" |
+| `2026/08/YYYY年M月发散笔记月度总结.html` | 每月月底生成的月度收束总结，登记为 `mYY` 路由（`grp: 'monthly'`） |
 | `README.md` | 人类入口 + 目录结构树 + **变更日志（每份新报告必须补一条）** |
 | `update.bat` | 人类用的一键提交（`git add -A`）。智能体**不要用它**，逐文件 add 避免误提交 |
 | `.workbuddy/`、`website/` | 私人数据 / 另一项目，已 gitignore，**禁止提交** |
@@ -32,21 +32,20 @@
 设新编号为 `pageN`（当前最大 26，即下一份 27），报告放入当前月目录（如 `2026/09/报告标题.html`）：
 
 1. 写 `2026/MM/报告标题.html`（规范见 §5）
-2. `index.html` 注册（重点：REPORTS 的 `file` 字段必须带 `2026/MM/` 前缀）：
-   - 侧栏：最后一个 `nav-item` 按钮后追加
-     ```html
-     <button class="nav-item" data-page="pageN">
-       <span class="t">报告标题</span>
-       <span class="d">一句话要点 · 分隔 · 分隔</span>
-     </button>
-     ```
-   - 首页目录：最后一个 `toc-row` 后追加（`toc-no` 显示 `PNN`）
-   - 路由表：最后一行行尾加逗号，追加
-     ```js
-     pageN: { file: '2026/MM/报告标题.html', title: '报告标题' }
-     ```
-   - footer：手动更新 `stat-num` 数字与"最后更新"日期（侧栏 `reportCount` 由 JS 自动统计，仅为冗余初值）
-3. **月度总结登记**：月度总结文件放当月目录（`2026/MM/YYYY年M月发散笔记月度总结.html`），REPORTS 用 `mYY` 做 key（如 9 月为 `m09`），导航/目录登记在"月度总结"分组
+2. `index.html` **只改 `REPORTS` 表一处**——在表内追加一行（key 用 `pageN`）：
+   ```js
+   page27: {
+     file: '2026/09/报告标题.html', title: '报告标题',
+     ym: '2026-09', grp: 'ai', no: 'P27',
+     d: '导航短描述 · 分隔 · 分隔',
+     desc: '首页目录长描述，可写细节'
+   }
+   ```
+   - `ym`：年月（决定筛选器分组与"最近更新"）
+   - `grp`：`monthly` 月度总结 / `base` 基础学习 / `fx` 国际金融 / `corp` 企业案例 / `ai` AI 硬件
+   - `no`：显示编号（P27 / M09 / B01…）
+   - **侧栏导航、首页目录、年月筛选器、统计数字全部由这一行自动生成，无需再改其他位置**
+3. **月度总结登记**：月度总结文件放当月目录（`2026/MM/YYYY年M月发散笔记月度总结.html`），REPORTS 用 `mYY` 做 key（如 9 月为 `m09`）、`grp: 'monthly'`、`no: 'M09'`
 4. `README.md` 两处更新：目录结构树 + 变更日志（**曾连续 6 轮漏掉变更日志，commit fc581f0 才补齐——别重蹈**）
 5. 提交：
    ```bash
@@ -61,7 +60,7 @@
    curl -sL -o /dev/null -w "%{http_code}\n" "https://gogogo-wu.github.io/Investment_Report/$ENC"
    # 200 = 上线成功
    ```
-7. 本地双击 `index.html`，确认 hash 路由 `#pageN` 能打开新报告、侧栏计数正确
+7. 本地双击 `index.html`，确认：hash 路由 `#pageN` 能打开新报告；年月筛选器出现新月份；`#m09` 能打开月度总结
 
 ## 4. 修正既有报告的 SOP
 
@@ -88,7 +87,9 @@
 ## 6. 已知坑
 
 - 中文文件名 URL 必须百分号编码（见 §3 验证命令），且 **2026-08-31 收纳后 URL 必须带 `2026/08/` 目录前缀**——旧根路径链接会 404，属预期
-- `index.html` 注册点共七处（nav / toc / REPORTS / stat-num / 日期 / README / 月度总结分组），漏一处会出现"报告存在但打不开"或"计数不符"
+- `index.html` 已改为**数据驱动**（2026-08-31 起）：nav / toc / 年月筛选器 / 统计数字都由 `REPORTS` 表生成——新增报告只改 REPORTS 一行即可，**不要**再手工往 nav / toc / footer 里加 HTML（改了也会被渲染覆盖，且会造成重复）
+- `matchesFilter` 的坑：`repList()` 返回 key 字符串数组，过滤时必须包一层 `function (k) { return matchesFilter(REPORTS[k]); }`，直接传 `matchesFilter` 会让所有条目通过（曾真实踩坑）
+- 侧栏折叠状态存 `localStorage('sbCollapsed')`；移动端（≤768px）为抽屉式，折叠状态被忽略
 - 报告移动/收纳必须用 `git mv`（保留历史），禁止直接 `mv` 后重新 add（会断 rename 追踪）
 - Windows 下 CRLF 警告无害，忽略
 - iframe + hash 路由：部分手机浏览器 `hashchange` 不可靠，`index.html` 已用同步渲染兜底，不要移除该逻辑

@@ -22,8 +22,11 @@
       #1c1c1e;
     border-right: 1px solid rgba(255,255,255,.08);
     display: flex; flex-direction: column;
+    overflow: hidden;
+    transition: width .28s cubic-bezier(.4,0,.2,1), border-color .28s ease;
   }
-  .sidebar-header { padding: 24px 18px 14px; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .sidebar-header { padding: 20px 18px 14px; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
   .sidebar-header h1 {
     font-size: 15px; font-weight: 600; letter-spacing: .2px;
     color: #f5f5f7;
@@ -32,6 +35,14 @@
     -webkit-text-fill-color: transparent; color: transparent;
   }
   .sidebar-header p { font-size: 11px; color: #86868b; margin-top: 4px; letter-spacing: .2px; }
+  .collapse-btn {
+    width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1);
+    color: #a1a1a6; font-size: 16px; line-height: 1; cursor: pointer;
+    font-family: inherit; transition: background .18s ease, color .18s ease;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .collapse-btn:hover { background: rgba(255,255,255,.16); color: #f5f5f7; }
   .nav { flex: 1; overflow-y: auto; padding: 10px 10px 24px; }
   .nav::-webkit-scrollbar { width: 6px; }
   .nav::-webkit-scrollbar-thumb { background: #3a3a3c; border-radius: 3px; }
@@ -63,7 +74,22 @@
   .sidebar-footer {
     padding: 14px 18px; border-top: 1px solid rgba(255,255,255,.06);
     font-size: 11px; color: #86868b; line-height: 1.7;
+    white-space: nowrap; overflow: hidden;
   }
+
+  /* 侧栏折叠状态 */
+  .layout.sidebar-collapsed .sidebar { width: 0; border-right-color: transparent; }
+  .expand-btn {
+    position: fixed; top: 12px; left: 12px; z-index: 65;
+    width: 42px; height: 42px; border-radius: 12px;
+    background: rgba(28,28,30,.92); border: 1px solid rgba(255,255,255,.12);
+    color: #f5f5f7; font-size: 17px; cursor: pointer;
+    display: none; align-items: center; justify-content: center;
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+    font-family: inherit; line-height: 1;
+  }
+  .layout.sidebar-collapsed .expand-btn { display: flex; }
 
   /* ===== 右侧内容区 ===== */
   .main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
@@ -90,7 +116,34 @@
   .stat-num { font-size: 24px; font-weight: 600; color: #2997ff; font-variant-numeric: tabular-nums; }
   .stat-label { font-size: 12px; color: #98989d; margin-top: 4px; }
 
-  .toc { margin-top: 28px; }
+  /* ---- 年月筛选器 ---- */
+  .filter-bar {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin: 28px 0 4px; padding: 12px 14px;
+    background: #1d1d1f; border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
+  }
+  .filter-label { font-size: 12px; color: #98989d; letter-spacing: .5px; margin-right: 2px; }
+  .filter-bar select {
+    background: #26262a; border: 1px solid rgba(255,255,255,.12); color: #e5e5ea;
+    border-radius: 10px; padding: 8px 12px; font-size: 13px; font-family: inherit; cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+    padding-right: 26px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2386868b' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center;
+    transition: border-color .18s ease;
+  }
+  .filter-bar select option { background: #1d1d1f; color: #e5e5ea; }
+  .filter-bar select:hover { border-color: rgba(255,255,255,.25); }
+  .filter-bar select:focus { outline: none; border-color: #2997ff; }
+  .filter-clear {
+    background: rgba(41,151,255,.12); border: 1px solid rgba(41,151,255,.32);
+    color: #7aa2ff; border-radius: 10px; padding: 8px 16px; font-size: 13px;
+    cursor: pointer; font-family: inherit; transition: background .18s ease;
+  }
+  .filter-clear:hover { background: rgba(41,151,255,.22); }
+  .filter-count { font-size: 12px; color: #86868b; margin-left: auto; font-variant-numeric: tabular-nums; }
+
+  .toc { margin-top: 22px; }
   .toc-group { margin-bottom: 30px; }
   .toc-group-title {
     font-size: 15px; font-weight: 600; color: #f5f5f7;
@@ -112,6 +165,7 @@
   .toc-desc { font-size: 12px; color: #86868b; line-height: 1.5; }
   .toc-arrow { font-size: 14px; color: #48484a; text-align: right; transition: color .18s ease, transform .18s ease; }
   .toc-row:hover .toc-arrow { color: #2997ff; transform: translateX(3px); }
+  .toc-empty { padding: 56px 0; text-align: center; color: #86868b; font-size: 14px; }
 
   .home-foot {
     margin-top: 44px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08);
@@ -154,11 +208,17 @@
     }
     .layout.sidebar-open .sidebar { transform: translateX(0); }
     .layout.sidebar-open .mask { opacity: 1; pointer-events: auto; }
+    /* 移动端忽略折叠状态 */
+    .layout.sidebar-collapsed .sidebar { width: 284px; border-right: 1px solid rgba(255,255,255,.08); }
+    .collapse-btn { display: none; }
+    .expand-btn { display: none !important; }
     .home { padding: 70px 16px 56px; }
     .home h2 { font-size: 22px; }
     .stats { flex-direction: column; gap: 10px; }
     .stat { padding: 12px 16px; }
     .stat-num { font-size: 20px; }
+    .filter-bar { padding: 10px 12px; }
+    .filter-bar select { flex: 1; min-width: 0; }
     .toc-row { grid-template-columns: 46px 1fr 24px; }
     .toc-no { grid-column: 1; }
     .toc-title { grid-column: 2; }
@@ -172,142 +232,27 @@
 </head>
 <body>
 <button class="menu-btn" id="navBtn" aria-label="打开菜单" onclick="onNavBtn(event)">&#9776;</button>
+<button class="expand-btn" id="expandBtn" aria-label="展开导航" onclick="setCollapsed(false)">&#9776;</button>
 <div class="mask" id="mask"></div>
 <div class="layout">
 
   <!-- ==================== 左侧导航 ==================== -->
   <aside class="sidebar">
     <div class="sidebar-header">
-      <h1>我的金融发散笔记</h1>
-      <p>国际金融 · 企业案例 · AI 投资</p>
+      <div class="header-top">
+        <div>
+          <h1>我的金融发散笔记</h1>
+          <p>国际金融 · 企业案例 · AI 投资</p>
+        </div>
+        <button class="collapse-btn" id="collapseBtn" title="收起导航" aria-label="收起导航" onclick="setCollapsed(true)">&#8249;</button>
+      </div>
     </div>
 
-    <nav class="nav">
-      <button class="nav-item" data-page="home">
-        <span class="t">首页</span>
-        <span class="d">知识库目录</span>
-      </button>
-
-      <div class="nav-group-title">月度总结</div>
-      <button class="nav-item" data-page="m08">
-        <span class="t">2026年8月 · 月度总结</span>
-        <span class="d">八月26份报告收束 · 四条主线 · 9月前瞻日历</span>
-      </button>
-
-      <div class="nav-group-title">国际金融分析</div>
-      <button class="nav-item" data-page="page1">
-        <span class="t">美日汇率干预与全球金融传导</span>
-        <span class="d">BOJ政策、套息交易、全球资产联动深度笔记</span>
-      </button>
-
-      <div class="nav-group-title">企业金融案例分析</div>
-      <button class="nav-item" data-page="page2">
-        <span class="t">Intel $200亿增发案例分析</span>
-        <span class="d">融资决策框架 · 5倍超额认购 · ASIC产业链联动 · 投资观察</span>
-      </button>
-
-      <div class="nav-group-title">AI / 硬件投资研究</div>
-      <button class="nav-item" data-page="page3">
-        <span class="t">AI硬件长期建仓策略</span>
-        <span class="d">卖铲人家族全景 + 八大标的双情景建仓区间</span>
-      </button>
-      <button class="nav-item" data-page="page4">
-        <span class="t">AI产业链深度研究讲义</span>
-        <span class="d">产业链七层拆解、HBM/CoWoS/光模块/液冷等深度分析</span>
-      </button>
-      <button class="nav-item" data-page="page5">
-        <span class="t">ASIC四标的深度建仓分析</span>
-        <span class="d">AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间</span>
-      </button>
-      <button class="nav-item" data-page="page6">
-        <span class="t">AI资本结构风险与泡沫类比分析</span>
-        <span class="d">$5000亿融资平台风险瀑布 · SEC豁免 · 2000+2008类比 · 四道关卡</span>
-      </button>
-      <button class="nav-item" data-page="page7">
-        <span class="t">宏观数据与算力产业链发散笔记</span>
-        <span class="d">CPI/非农 · 8/12双轮复盘 · 光模块三层原因 · NBIS大涨 · 卖铲人安全度分层</span>
-      </button>
-      <button class="nav-item" data-page="page8">
-        <span class="t">低位挖掘发散比较笔记</span>
-        <span class="d">周期股PE悖论 · CEG/Intel/SKHY三样本 · CEO计划 · 地缘与再分配</span>
-      </button>
-      <button class="nav-item" data-page="page9">
-        <span class="t">观察清单总览与建仓区间策略</span>
-        <span class="d">六条趋势线 · 三批建仓法 · 四标的阶梯 · 风险预算与退出线</span>
-      </button>
-      <button class="nav-item" data-page="page10">
-        <span class="t">ASIC竞争格局发散笔记</span>
-        <span class="d">AVGO暴跌XPV · Google-AMD TPU v10 · 博通五路反击 · CPU集成化 · 中国镜像</span>
-      </button>
-      <button class="nav-item" data-page="page11">
-        <span class="t">13F持仓信号与Cerebras分析</span>
-        <span class="d">华尔街鲸鱼Q2轮动 · 资金下沉 · Cerebras晶圆级芯片 · 产业链六大板块细分地图</span>
-      </button>
-      <button class="nav-item" data-page="page12">
-        <span class="t">Intel深度复盘与建仓策略</span>
-        <span class="d">两年财报三阶段 · DCAI可持续性 · 两线战争 · 六大反击 · 美国本土台积电 · 华尔街质疑 · 建仓区间更新</span>
-      </button>
-      <button class="nav-item" data-page="page13">
-        <span class="t">Nike深度复盘与建仓策略</span>
-        <span class="d">$179到$40崩塌 · 五重打击 · 五路围攻 · Win Now改革 · 华尔街压力测试 · 建仓区间 · 突发利好 · AI机会</span>
-      </button>
-      <button class="nav-item" data-page="page14">
-        <span class="t">AI割裂与第二所有者</span>
-        <span class="d">利润分配倒三角 · $3万亿问题 · 应用层K型分化 · 基础设施周期铁律 · 第二所有者三层剖析 · 中美两种模式</span>
-      </button>
-      <button class="nav-item" data-page="page15">
-        <span class="t">电力与物理AI</span>
-        <span class="d">两座时钟 · 巨头核电长约 · 定价分层反直觉 · 波动与收入结构 · 24/7硬度阶梯 · 卖铲人GEV · 未扫环节 · 机构真金白银 · 建仓区间总表</span>
-      </button>
-      <button class="nav-item" data-page="page16">
-        <span class="t">AI挤占与防守反击</span>
-        <span class="d">挤占诊断 · Acemoglu五分类 · 三层升维 · 创新五路径 · AI概念三档检讨 · 六行业抄底总账 · 五信号灯 · 三阶段操作手册</span>
-      </button>
-      <button class="nav-item" data-page="page17">
-        <span class="t">AI周期见顶与行业命运</span>
-        <span class="d">六时钟交叉验证 · 见顶窗口2027Q1-Q3 · 三情景与催化剂日历 · 行业命运三层图 · 债务刚性×资产贬值速度判据 · 操作时间表</span>
-      </button>
-      <button class="nav-item" data-page="page18">
-        <span class="t">非AI错杀与历史底部收租</span>
-        <span class="d">错杀vs真该杀判据 · SaaS末日恐慌 · 资金虹吸生物科技 · 收租股尸体价格四标的 · 价值陷阱排除 · 收租层6-9%配置</span>
-      </button>
-      <button class="nav-item" data-page="page19">
-        <span class="t">乐天集团转型末段赌注</span>
-        <span class="d">三引擎利润解剖 · 债务命门BB/6.2x · 10/1二元分岔（KDDI断供×金融重组） · SOTP 53%折价 · 观察清单触发条件与认输信号</span>
-      </button>
-      <button class="nav-item" data-page="page20">
-        <span class="t">英伟达财报裂口与周期延长</span>
-        <span class="d">FY27Q2史上最豪华财报 · 利润与现金裂口 · 应收暴增与毛利率见顶 · AI央行挂牌 · 正面影响传导地图 · 六时钟更新</span>
-      </button>
-      <button class="nav-item" data-page="page21">
-        <span class="t">自由电子激光与Terafab技术期权</span>
-        <span class="d">FEL FTW六字母豪赌 · LPP打锡滴vs FEL甩电子 · 三条路线进度 · 华尔街买灯座不买灯泡 · 观察组合三篮子与反向暴露</span>
-      </button>
-      <button class="nav-item" data-page="page22">
-        <span class="t">美联储鹰派转向与中期选举时钟</span>
-        <span class="d">沃什杰克逊霍尔首秀 · 利率权力三角 · 66天选举倒计时与12月真窗口 · 华尔街选举年剧本 · 防守者裁判日历</span>
-      </button>
-      <button class="nav-item" data-page="page23">
-        <span class="t">九月双央行连击与持仓体检</span>
-        <span class="d">48小时双端挤压 · 跌的是意外不是加息 · 共识悖论四机制 · 一份与自家笔记相反的持仓 · 事件驱动减仓路线</span>
-      </button>
-      <button class="nav-item" data-page="page24">
-        <span class="t">小资金持仓审计与赌性预算</span>
-        <span class="d">成本价审计 · 小资金的不同物理 · 压舱层在工资卡里 · 赌性预算笼子 · 持有过财报三剧本</span>
-      </button>
-      <button class="nav-item" data-page="page25">
-        <span class="t">黄仁勋电网叙事与英伟达能源投资版图</span>
-        <span class="d">Gavin spot on 24小时公关战 · $400B双刃剑 · 俄亥俄8GW超级工厂 · $700亿股权投资 · 核电锚利好逻辑</span>
-      </button>
-      <button class="nav-item" data-page="page26">
-        <span class="t">OpenAI买Mac与内存超级周期</span>
-        <span class="d">训练市场裂成两半 · 许可证围墙 · 内存权力反转 · 周期温度计 · SKHY/MU周期股PE悖论考场 · Mac云新物种</span>
-      </button>
-    </nav>
+    <nav class="nav" id="nav"></nav>
 
     <div class="sidebar-footer">
-      共 <span id="reportCount">11</span> 份资料 · 3 大分类<br>
-      最后更新 2026-08-31
+      共 <span id="reportCount">0</span> 份资料 · <span id="areaCount">0</span> 大分类<br>
+      最后更新 <span id="latestYm">—</span>
     </div>
   </aside>
 
@@ -318,204 +263,32 @@
     <div class="home" id="home">
       <div class="home-inner">
         <h2>我的金融发散笔记</h2>
-        <p class="home-sub">个人对国际金融、企业资本运作与 AI 基础设施投资的一些思考与发散，随手记录、持续更新。</p>
+        <p class="home-sub">个人对国际金融、企业资本运作与 AI 基础设施投资的一些思考与发散，随手记录、持续更新。可按「年份 / 月份」筛选查看，每月底更新月度总结。</p>
 
         <div class="stats">
           <div class="stat">
-            <div class="stat-num">27</div>
+            <div class="stat-num" id="statTotal">0</div>
             <div class="stat-label">研究资料</div>
           </div>
           <div class="stat">
-            <div class="stat-num">3</div>
+            <div class="stat-num" id="statArea">0</div>
             <div class="stat-label">知识领域</div>
           </div>
           <div class="stat">
-            <div class="stat-num">2026-08</div>
+            <div class="stat-num" id="statLatest">—</div>
             <div class="stat-label">最近更新</div>
           </div>
         </div>
 
-        <div class="toc">
-
-          <div class="toc-group">
-            <div class="toc-group-title">月度总览</div>
-            <button class="toc-row" data-page="m08">
-              <span class="toc-no">M08</span>
-              <span class="toc-title">2026年8月 · 发散笔记月度总结</span>
-              <span class="toc-desc">本月脉络时间线 · 四条主线一句话结论 · 建仓区间/观察篮/灵魂十一条快照 · 持仓纪律复盘 · 9月事件日历与三情景 · 26份报告全索引</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-          </div>
-
-          <div class="toc-group">
-            <div class="toc-group-title">一、国际金融分析</div>
-            <button class="toc-row" data-page="page1">
-              <span class="toc-no">P01</span>
-              <span class="toc-title">美日汇率干预与全球金融传导</span>
-              <span class="toc-desc">BOJ 政策、套息交易与全球资产联动深度笔记</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-          </div>
-
-          <div class="toc-group">
-            <div class="toc-group-title">二、企业金融案例分析</div>
-            <button class="toc-row" data-page="page2">
-              <span class="toc-no">P02</span>
-              <span class="toc-title">Intel $200亿增发案例分析</span>
-              <span class="toc-desc">融资决策框架 · 5倍超额认购 · ASIC 产业链联动 · 投资观察</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-          </div>
-
-          <div class="toc-group">
-            <div class="toc-group-title">三、AI / 硬件投资研究</div>
-            <button class="toc-row" data-page="page3">
-              <span class="toc-no">P03</span>
-              <span class="toc-title">AI硬件长期建仓策略</span>
-              <span class="toc-desc">卖铲人家族全景 + 八大标的双情景建仓区间</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page4">
-              <span class="toc-no">P04</span>
-              <span class="toc-title">AI产业链深度研究讲义</span>
-              <span class="toc-desc">产业链七层拆解、HBM/CoWoS/光模块/液冷等深度分析</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page5">
-              <span class="toc-no">P05</span>
-              <span class="toc-title">ASIC四标的深度建仓分析</span>
-              <span class="toc-desc">AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page6">
-              <span class="toc-no">P06</span>
-              <span class="toc-title">AI资本结构风险与泡沫类比分析</span>
-              <span class="toc-desc">$5000亿融资平台风险瀑布 · SEC 豁免 · 2000+2008 类比 · 四道关卡</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page7">
-              <span class="toc-no">P07</span>
-              <span class="toc-title">宏观数据与算力产业链发散笔记</span>
-              <span class="toc-desc">CPI/非农 · 8/12 双轮复盘 · 光模块三层原因 · NBIS 大涨 · 卖铲人安全度分层</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page8">
-              <span class="toc-no">P08</span>
-              <span class="toc-title">低位挖掘发散比较笔记</span>
-              <span class="toc-desc">低位三判据 · 周期股 PE 悖论 · CEG/Intel/SKHY 三样本对照 · CEO 计划 · 地缘与 AI 再分配</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page9">
-              <span class="toc-no">P09</span>
-              <span class="toc-title">观察清单总览与建仓区间策略</span>
-              <span class="toc-desc">六条趋势线 · 观察清单五分区 · 三批建仓法 · CEG/VST/AVGO/SKHY 建仓阶梯 · 退出与证伪</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page10">
-              <span class="toc-no">P10</span>
-              <span class="toc-title">ASIC竞争格局发散笔记</span>
-              <span class="toc-desc">AVGO 暴跌与 XPV 表外风险 · TPU v10 三代演进 · 博通五路反击 · 三路线控制力 · 中国镜像链</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page11">
-              <span class="toc-no">P11</span>
-              <span class="toc-title">13F持仓信号与Cerebras分析</span>
-              <span class="toc-desc">Q2 13F 三派分歧 · 资金下沉 · Cerebras 深度 · 英伟达技术路线五大变革线 · 公司级利好利空映射 · SRAM 供应链 · 市场定价分析</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page12">
-              <span class="toc-no">P12</span>
-              <span class="toc-title">Intel深度复盘与建仓策略</span>
-              <span class="toc-desc">两年财报三阶段 · DCAI可持续性 · AMD+英伟达两线战争 · 六大反击 · 美国本土台积电 · 华尔街七大质疑 · 陈立武执行 · 建仓区间更新</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page13">
-              <span class="toc-no">P13</span>
-              <span class="toc-title">Nike深度复盘与建仓策略</span>
-              <span class="toc-desc">$179到$40崩塌 · 五重打击与折扣螺旋 · 五路围攻 · 中国失速 · Win Now六支柱 · 华尔街多空压力测试 · 建仓区间 · 突发利好地图 · AI机会</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page14">
-              <span class="toc-no">P14</span>
-              <span class="toc-title">AI割裂与第二所有者</span>
-              <span class="toc-desc">硬件与应用利润分配倒三角 · $3万亿问题 · OpenAI vs Anthropic K型分化 · 光纤三幕剧铁律 · 电力=第二所有者资产 · 中美两种模式 · 世界等级</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page15">
-              <span class="toc-no">P15</span>
-              <span class="toc-title">电力与物理AI</span>
-              <span class="toc-desc">电力=现在进行时 vs 物理AI=叙事构建期 · 巨头9.8GW核电长约 · 定价三层反直觉 · 波动分层与收入结构 · 24/7硬度阶梯 · GEV双保险 · 韩国重电/EME/核燃料未扫环节 · 机构与著名投资人真金白银持仓 · 建仓区间总表</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page16">
-              <span class="toc-no">P16</span>
-              <span class="toc-title">AI挤占与防守反击</span>
-              <span class="toc-desc">$4100亿投资GDP贡献≈零 · 关入口不裁在岗 · Acemoglu五分类 · 个人三层升维 · 创新五路径与物理AI交汇 · AI概念三档检讨（A/B/C） · 六行业抄底总账 · 五信号灯预警 · 三阶段崩盘操作手册</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page17">
-              <span class="toc-no">P17</span>
-              <span class="toc-title">AI周期见顶与行业命运</span>
-              <span class="toc-desc">六时钟交叉验证见顶窗口（中枢2027Q2） · 三情景与催化剂日历 · 8/26财报与30Y美债两大分水岭 · 行业命运三层淘汰赛（债务刚性×资产贬值速度） · 谁先倒/谁能救/谁活得好 · 备战-捡货-深捡操作时间表</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page18">
-              <span class="toc-no">P18</span>
-              <span class="toc-title">非AI错杀与历史底部收租</span>
-              <span class="toc-desc">错杀vs真该杀判据（AI抢你的饭碗还是隔壁的） · SaaS末日恐慌解剖（CRM/NOW/CDNS/WDAY被冤枉） · 资金虹吸下的生物科技（30%市值低于现金） · 历史底部收租四标的（BMY/AT&amp;T/奔驰/金宝汤） · PFE与大众价值陷阱 · 收租层6-9%配置</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page19">
-              <span class="toc-no">P19</span>
-              <span class="toc-title">乐天集团转型末段赌注</span>
-              <span class="toc-desc">日股乐天4755.T全面解析 · 三引擎利润解剖（FinTech+¥692亿/移动-¥331亿） · 利润成色三成真七成化妆 · 债务命门（BB/6.2x/2027年¥4,000亿墙） · 10/1二元分岔（KDDI漫游断供×金融重组） · SOTP 53%折价 · 转型赌注排序Intel&gt;Nike&gt;乐天 · Z1 ¥650-700/Z2 ¥550-600与认输信号</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page20">
-              <span class="toc-no">P20</span>
-              <span class="toc-title">英伟达财报裂口与周期延长</span>
-              <span class="toc-desc">NVDA FY27Q2深度解析 · 营收$962亿(+106%)/Backlog $2万亿 vs 利润现金裂口（净利$597亿/现金$241亿） · 应收$385→$631亿 · 毛利率75%→72%见顶 · AI央行挂牌（担保$1,085亿+投资$1,280亿） · 下游FCF先失血 · 正面影响传导地图与六时钟更新 · 周期延长=防守者友好</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page21">
-              <span class="toc-no">P21</span>
-              <span class="toc-title">自由电子激光与Terafab技术期权</span>
-              <span class="toc-desc">FEL×马斯克Terafab豪赌 · LPP打锡滴vs FEL甩电子原理对比 · xLight/KEK/清华SSMB三条路线进度 · 四道工程鸿沟与ASML反制 · 华尔街五笔账（hype不是purchase order） · 观察组合三篮子与反向暴露（COHR/小松/牛尾） · 2028年Albany开奖 · 技术期权按零定价</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page22">
-              <span class="toc-no">P22</span>
-              <span class="toc-title">美联储鹰派转向与中期选举时钟</span>
-              <span class="toc-desc">沃什杰克逊霍尔首秀（金融环境不紧+关死QE救市） · 9月加息概率35%→55.7% · 资产反应：无息资产跌最狠 · 利率权力三角（白宫×联储×债市，加息才是降真利率的悖论） · 66天选举倒计时与12月真窗口 · 华尔街选举年剧本（买保险不清仓、10月中旬回场、选后6个月96% vs 2026例外满分考生） · 防守者裁判日历终版</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page23">
-              <span class="toc-no">P23</span>
-              <span class="toc-title">九月双央行连击与持仓体检</span>
-              <span class="toc-desc">日银被逼入死角（OIS 80-85%）×联储意外源（55.7%）=48小时双端挤压 · 跌的是意外不是加息 · 三情景（阴跌60/套息再崩15-20/利空出尽25-35） · 共识悖论：知道≠能做到，九月照样是唯一月均下跌 · 持仓体检：AI敞口76% vs 铁律≤20-30、单票33%、0:0:10 vs 4:3:3、情景C回撤≈-31% · 事件驱动减仓路线（9/2 AVGO·9/14 ORCL·INTC两步·NKE留存） · 体系灵魂第八条</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page24">
-              <span class="toc-no">P24</span>
-              <span class="toc-title">小资金持仓审计与赌性预算</span>
-              <span class="toc-desc">成本价审计：+1.47%平手的真相（ORCL+1.75pp顶掉AVGO-1.74pp） · 成本落点：只有AVGO真违规（比自家$272接货位高45%），INTC落在Z1内 · 小资金的不同物理（收租=工资/压舱=人力资本/集中+止损/执行零成本） · 满仓翻案：真实股债比远比账户表面保守 · 赌性预算笼子≤10-20%（三铁律+四仓赌性画像+三问自检） · 持有过财报三剧本与加仓触发表（当晚零操作/区间+逻辑双条件） · 体系灵魂第九条</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page25">
-              <span class="toc-no">P25</span>
-              <span class="toc-title">黄仁勋电网叙事与英伟达能源投资版图</span>
-              <span class="toc-desc">"Gavin, spot on" 24小时公关战（Baker骂街→道歉→黄仁勋15分钟收编） · 七句话四新武器 · $400B双刃剑（PitchBook核查：两家拿走$217B、deal count崩58%） · "not subsidies"=国家资本主义包装成市场力量 · 俄亥俄PORTS-Pike 8GW超级工厂（SB Energy/OpenAI/英伟达三角+担保$1050亿） · 2026投资版图：$5000亿平台+$700亿股权投资 · 利好行业硬度分层（基荷＞输电＞铀＞燃机＞新云商＞SMR） · 关键澄清：利好CEG/VST/TLN是因为核电锚不是天然气（20年PPA成本结构三机制） · 灵魂第十条</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-            <button class="toc-row" data-page="page26">
-              <span class="toc-no">P26</span>
-              <span class="toc-title">OpenAI买Mac与内存超级周期</span>
-              <span class="toc-desc">事实链精确化：不是预训练是RL后训练（The Information 8/30） · 训练市场裂成两半：算力密集型归英伟达/内存密集型Mac有结构性优势（5倍采购差/20倍功耗差） · 许可证围墙：macOS EULA+内核锁（一台最多2个VM），Apple收的是平台租金不是硬件毛利 · 内存超级周期：93%产能转HBM/DRAM涨10倍/库克"百年一遇的洪水"/Rubin Ultra降规 · 内存权力反转：SK海力士利润率76.3%超英伟达，Apple被长鑫拒绝+政治堵死=零议价权 · 泡沫辩论双面传导：SKHY利润新高股价跌10%（长约锁弹性） · 周期温度计：内存合同价顶2026Q4-2027早于P17中枢，2027利润率回落=第一张实物确认 · SKHY P/E 7.39/MU P/B 10.46=周期股PE悖论终极考场 · Mac-as-a-Service：托管机房不是新物种（需求三层/没有"爹"） · 观察篮新增MU/SKHY/Mount Thor/Namespace/EXO · 灵魂第十一条</span>
-              <span class="toc-arrow">&rarr;</span>
-            </button>
-          </div>
-
+        <div class="filter-bar">
+          <span class="filter-label">按年月筛选</span>
+          <select id="yearSel" aria-label="选择年份"></select>
+          <select id="monthSel" aria-label="选择月份"></select>
+          <button class="filter-clear" id="filterClear" type="button">显示全部</button>
+          <span class="filter-count" id="filterCount"></span>
         </div>
+
+        <div class="toc" id="toc"></div>
 
         <div class="home-foot">
           以上均为个人发散思考与学习笔记，仅作自我复盘用途，不构成任何投资建议。
@@ -529,46 +302,340 @@
 </div>
 
 <script>
+  /* ============================================================
+     报告数据（新增笔记只需在此加一行，nav 与首页目录自动同步）
+     key 任意唯一即可；ym=年月；grp=分类；no=显示编号；d=导航短描述；desc=目录长描述
+     ============================================================ */
   var REPORTS = {
-    m08: { file: '2026/08/2026年8月发散笔记月度总结.html',    title: '2026年8月 · 发散笔记月度总结' },
-    page1: { file: '2026/08/美日汇率干预与全球金融传导学习笔记.html', title: '美日汇率干预与全球金融传导' },
-    page2: { file: '2026/08/Intel增发案例分析.html',               title: 'Intel $200亿增发案例分析' },
-    page3: { file: '2026/08/AI硬件长期建仓策略.html',              title: 'AI硬件长期建仓策略' },
-    page4: { file: '2026/08/AI产业链深度研究讲义.html',            title: 'AI产业链深度研究讲义' },
-    page5: { file: '2026/08/ASIC四标的深度建仓分析.html',          title: 'ASIC四标的深度建仓分析' },
-    page6: { file: '2026/08/AI资本结构风险与泡沫类比分析.html',    title: 'AI资本结构风险与泡沫类比分析' },
-    page7: { file: '2026/08/宏观数据与算力产业链发散笔记.html',      title: '宏观数据与算力产业链发散笔记' },
-    page8: { file: '2026/08/低位挖掘发散比较笔记.html',               title: '低位挖掘发散比较笔记' },
-    page9: { file: '2026/08/观察清单总览与建仓区间策略.html',         title: '观察清单总览与建仓区间策略' },
-    page10: { file: '2026/08/ASIC竞争格局发散笔记.html',             title: 'ASIC竞争格局发散笔记' },
-    page11: { file: '2026/08/13F持仓信号与Cerebras分析.html',         title: '13F持仓信号与Cerebras分析' },
-    page12: { file: '2026/08/Intel深度复盘与建仓策略.html',           title: 'Intel深度复盘与建仓策略' },
-    page13: { file: '2026/08/Nike深度复盘与建仓策略.html',             title: 'Nike深度复盘与建仓策略' },
-    page14: { file: '2026/08/AI割裂与第二所有者.html',                  title: 'AI割裂与第二所有者' },
-    page15: { file: '2026/08/电力与物理AI.html',                        title: '电力与物理AI' },
-    page16: { file: '2026/08/AI挤占与防守反击.html',                    title: 'AI挤占与防守反击' },
-    page17: { file: '2026/08/AI周期见顶与行业命运.html',                title: 'AI周期见顶与行业命运' },
-    page18: { file: '2026/08/错杀与历史底部收租.html',                  title: '非AI错杀与历史底部收租' },
-    page19: { file: '2026/08/乐天集团转型末段赌注.html',                title: '乐天集团转型末段赌注' },
-    page20: { file: '2026/08/英伟达财报裂口与周期延长.html',            title: '英伟达财报裂口与周期延长' },
-    page21: { file: '2026/08/自由电子激光与Terafab技术期权.html',      title: '自由电子激光与Terafab技术期权' },
-    page22: { file: '2026/08/美联储鹰派转向与中期选举时钟.html',        title: '美联储鹰派转向与中期选举时钟' },
-    page23: { file: '2026/08/九月双央行连击与持仓体检.html',            title: '九月双央行连击与持仓体检' },
-    page24: { file: '2026/08/小资金持仓审计与赌性预算.html',            title: '小资金持仓审计与赌性预算' },
-    page25: { file: '2026/08/黄仁勋电网叙事与英伟达能源投资版图.html',   title: '黄仁勋电网叙事与英伟达能源投资版图' },
-    page26: { file: '2026/08/OpenAI买Mac与内存超级周期.html',             title: 'OpenAI买Mac与内存超级周期' }
+    m08: {
+      file: '2026/08/2026年8月发散笔记月度总结.html', title: '2026年8月 · 发散笔记月度总结',
+      ym: '2026-08', grp: 'monthly', no: 'M08',
+      d: '八月26份报告收束 · 四条主线 · 9月前瞻日历',
+      desc: '本月脉络时间线 · 四条主线一句话结论 · 建仓区间/观察篮/灵魂十一条快照 · 持仓纪律复盘 · 9月事件日历与三情景 · 26份报告全索引'
+    },
+    b01: {
+      file: '2026/07/学习路线.html', title: '完整学习路线',
+      ym: '2026-07', grp: 'base', no: 'B01',
+      d: '稳健激进型 · 从零到系统的学习路径',
+      desc: '个人学习路线规划：从金融基础到宏观/企业分析的分阶段路径，稳健激进型投资风格的体系搭建'
+    },
+    b02: {
+      file: '2026/07/核心学习讲义.html', title: '核心学习讲义',
+      ym: '2026-07', grp: 'base', no: 'B02',
+      d: '财报/估值/周期的基础概念讲义',
+      desc: '核心概念精讲：财报三表、估值方法、行业周期与仓位管理的基础框架'
+    },
+    b03: {
+      file: '2026/07/金融体系蓝图.html', title: '个人金融体系蓝图',
+      ym: '2026-07', grp: 'base', no: 'B03',
+      d: '稳健激进型 · 三层资产结构设计',
+      desc: '个人金融体系的整体设计：压舱/收租/进攻三层结构，风险预算与纪律框架'
+    },
+    b04: {
+      file: '2026/07/金融视频课程-连贯版.html', title: '从小白到能自己管钱 · 视频精讲课',
+      ym: '2026-07', grp: 'base', no: 'B04',
+      d: '视频精讲课 · 体系化入门',
+      desc: '系列视频精讲课程：从零基础到独立管理个人财务与投资决策'
+    },
+    page1: {
+      file: '2026/08/美日汇率干预与全球金融传导学习笔记.html', title: '美日汇率干预与全球金融传导',
+      ym: '2026-08', grp: 'fx', no: 'P01',
+      d: 'BOJ政策、套息交易、全球资产联动深度笔记',
+      desc: 'BOJ 政策、套息交易与全球资产联动深度笔记'
+    },
+    page2: {
+      file: '2026/08/Intel增发案例分析.html', title: 'Intel $200亿增发案例分析',
+      ym: '2026-08', grp: 'corp', no: 'P02',
+      d: '融资决策框架 · 5倍超额认购 · ASIC产业链联动 · 投资观察',
+      desc: '融资决策框架 · 5倍超额认购 · ASIC 产业链联动 · 投资观察'
+    },
+    page3: {
+      file: '2026/08/AI硬件长期建仓策略.html', title: 'AI硬件长期建仓策略',
+      ym: '2026-08', grp: 'ai', no: 'P03',
+      d: '卖铲人家族全景 + 八大标的双情景建仓区间',
+      desc: '卖铲人家族全景 + 八大标的双情景建仓区间'
+    },
+    page4: {
+      file: '2026/08/AI产业链深度研究讲义.html', title: 'AI产业链深度研究讲义',
+      ym: '2026-08', grp: 'ai', no: 'P04',
+      d: '产业链七层拆解、HBM/CoWoS/光模块/液冷等深度分析',
+      desc: '产业链七层拆解、HBM/CoWoS/光模块/液冷等深度分析'
+    },
+    page5: {
+      file: '2026/08/ASIC四标的深度建仓分析.html', title: 'ASIC四标的深度建仓分析',
+      ym: '2026-08', grp: 'ai', no: 'P05',
+      d: 'AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间',
+      desc: 'AVGO/SNPS/MRVL/Socionext · 最新财报 + 双情景建仓区间'
+    },
+    page6: {
+      file: '2026/08/AI资本结构风险与泡沫类比分析.html', title: 'AI资本结构风险与泡沫类比分析',
+      ym: '2026-08', grp: 'ai', no: 'P06',
+      d: '$5000亿融资平台风险瀑布 · SEC豁免 · 2000+2008类比 · 四道关卡',
+      desc: '$5000亿融资平台风险瀑布 · SEC 豁免 · 2000+2008 类比 · 四道关卡'
+    },
+    page7: {
+      file: '2026/08/宏观数据与算力产业链发散笔记.html', title: '宏观数据与算力产业链发散笔记',
+      ym: '2026-08', grp: 'ai', no: 'P07',
+      d: 'CPI/非农 · 8/12双轮复盘 · 光模块三层原因 · NBIS大涨 · 卖铲人安全度分层',
+      desc: 'CPI/非农 · 8/12 双轮复盘 · 光模块三层原因 · NBIS 大涨 · 卖铲人安全度分层'
+    },
+    page8: {
+      file: '2026/08/低位挖掘发散比较笔记.html', title: '低位挖掘发散比较笔记',
+      ym: '2026-08', grp: 'ai', no: 'P08',
+      d: '周期股PE悖论 · CEG/Intel/SKHY三样本 · CEO计划 · 地缘与再分配',
+      desc: '低位三判据 · 周期股 PE 悖论 · CEG/Intel/SKHY 三样本对照 · CEO 计划 · 地缘与 AI 再分配'
+    },
+    page9: {
+      file: '2026/08/观察清单总览与建仓区间策略.html', title: '观察清单总览与建仓区间策略',
+      ym: '2026-08', grp: 'ai', no: 'P09',
+      d: '六条趋势线 · 三批建仓法 · 四标的阶梯 · 风险预算与退出线',
+      desc: '六条趋势线 · 观察清单五分区 · 三批建仓法 · CEG/VST/AVGO/SKHY 建仓阶梯 · 退出与证伪'
+    },
+    page10: {
+      file: '2026/08/ASIC竞争格局发散笔记.html', title: 'ASIC竞争格局发散笔记',
+      ym: '2026-08', grp: 'ai', no: 'P10',
+      d: 'AVGO暴跌XPV · Google-AMD TPU v10 · 博通五路反击 · CPU集成化 · 中国镜像',
+      desc: 'AVGO 暴跌与 XPV 表外风险 · TPU v10 三代演进 · 博通五路反击 · 三路线控制力 · 中国镜像链'
+    },
+    page11: {
+      file: '2026/08/13F持仓信号与Cerebras分析.html', title: '13F持仓信号与Cerebras分析',
+      ym: '2026-08', grp: 'ai', no: 'P11',
+      d: '华尔街鲸鱼Q2轮动 · 资金下沉 · Cerebras晶圆级芯片 · 产业链六大板块细分地图',
+      desc: 'Q2 13F 三派分歧 · 资金下沉 · Cerebras 深度 · 英伟达技术路线五大变革线 · 公司级利好利空映射 · SRAM 供应链 · 市场定价分析'
+    },
+    page12: {
+      file: '2026/08/Intel深度复盘与建仓策略.html', title: 'Intel深度复盘与建仓策略',
+      ym: '2026-08', grp: 'ai', no: 'P12',
+      d: '两年财报三阶段 · DCAI可持续性 · 两线战争 · 六大反击 · 美国本土台积电 · 华尔街质疑 · 建仓区间更新',
+      desc: '两年财报三阶段 · DCAI可持续性 · AMD+英伟达两线战争 · 六大反击 · 美国本土台积电 · 华尔街七大质疑 · 陈立武执行 · 建仓区间更新'
+    },
+    page13: {
+      file: '2026/08/Nike深度复盘与建仓策略.html', title: 'Nike深度复盘与建仓策略',
+      ym: '2026-08', grp: 'ai', no: 'P13',
+      d: '$179到$40崩塌 · 五重打击 · 五路围攻 · Win Now改革 · 华尔街压力测试 · 建仓区间 · 突发利好 · AI机会',
+      desc: '$179到$40崩塌 · 五重打击与折扣螺旋 · 五路围攻 · 中国失速 · Win Now六支柱 · 华尔街多空压力测试 · 建仓区间 · 突发利好地图 · AI机会'
+    },
+    page14: {
+      file: '2026/08/AI割裂与第二所有者.html', title: 'AI割裂与第二所有者',
+      ym: '2026-08', grp: 'ai', no: 'P14',
+      d: '利润分配倒三角 · $3万亿问题 · 应用层K型分化 · 基础设施周期铁律 · 第二所有者三层剖析 · 中美两种模式',
+      desc: '硬件与应用利润分配倒三角 · $3万亿问题 · OpenAI vs Anthropic K型分化 · 光纤三幕剧铁律 · 电力=第二所有者资产 · 中美两种模式 · 世界等级'
+    },
+    page15: {
+      file: '2026/08/电力与物理AI.html', title: '电力与物理AI',
+      ym: '2026-08', grp: 'ai', no: 'P15',
+      d: '两座时钟 · 巨头核电长约 · 定价分层反直觉 · 波动与收入结构 · 24/7硬度阶梯 · 卖铲人GEV · 未扫环节 · 机构真金白银 · 建仓区间总表',
+      desc: '电力=现在进行时 vs 物理AI=叙事构建期 · 巨头9.8GW核电长约 · 定价三层反直觉 · 波动分层与收入结构 · 24/7硬度阶梯 · GEV双保险 · 韩国重电/EME/核燃料未扫环节 · 机构与著名投资人真金白银持仓 · 建仓区间总表'
+    },
+    page16: {
+      file: '2026/08/AI挤占与防守反击.html', title: 'AI挤占与防守反击',
+      ym: '2026-08', grp: 'ai', no: 'P16',
+      d: '挤占诊断 · Acemoglu五分类 · 三层升维 · 创新五路径 · AI概念三档检讨 · 六行业抄底总账 · 五信号灯 · 三阶段操作手册',
+      desc: '$4100亿投资GDP贡献≈零 · 关入口不裁在岗 · Acemoglu五分类 · 个人三层升维 · 创新五路径与物理AI交汇 · AI概念三档检讨（A/B/C） · 六行业抄底总账 · 五信号灯预警 · 三阶段崩盘操作手册'
+    },
+    page17: {
+      file: '2026/08/AI周期见顶与行业命运.html', title: 'AI周期见顶与行业命运',
+      ym: '2026-08', grp: 'ai', no: 'P17',
+      d: '六时钟交叉验证 · 见顶窗口2027Q1-Q3 · 三情景与催化剂日历 · 行业命运三层图 · 债务刚性×资产贬值速度判据 · 操作时间表',
+      desc: '六时钟交叉验证见顶窗口（中枢2027Q2） · 三情景与催化剂日历 · 8/26财报与30Y美债两大分水岭 · 行业命运三层淘汰赛（债务刚性×资产贬值速度） · 谁先倒/谁能救/谁活得好 · 备战-捡货-深捡操作时间表'
+    },
+    page18: {
+      file: '2026/08/错杀与历史底部收租.html', title: '非AI错杀与历史底部收租',
+      ym: '2026-08', grp: 'ai', no: 'P18',
+      d: '错杀vs真该杀判据 · SaaS末日恐慌 · 资金虹吸生物科技 · 收租股尸体价格四标的 · 价值陷阱排除 · 收租层6-9%配置',
+      desc: '错杀vs真该杀判据（AI抢你的饭碗还是隔壁的） · SaaS末日恐慌解剖（CRM/NOW/CDNS/WDAY被冤枉） · 资金虹吸下的生物科技（30%市值低于现金） · 历史底部收租四标的（BMY/AT&amp;T/奔驰/金宝汤） · PFE与大众价值陷阱 · 收租层6-9%配置'
+    },
+    page19: {
+      file: '2026/08/乐天集团转型末段赌注.html', title: '乐天集团转型末段赌注',
+      ym: '2026-08', grp: 'ai', no: 'P19',
+      d: '三引擎利润解剖 · 债务命门BB/6.2x · 10/1二元分岔（KDDI断供×金融重组） · SOTP 53%折价 · 观察清单触发条件与认输信号',
+      desc: '日股乐天4755.T全面解析 · 三引擎利润解剖（FinTech+¥692亿/移动-¥331亿） · 利润成色三成真七成化妆 · 债务命门（BB/6.2x/2027年¥4,000亿墙） · 10/1二元分岔（KDDI漫游断供×金融重组） · SOTP 53%折价 · 转型赌注排序Intel&gt;Nike&gt;乐天 · Z1 ¥650-700/Z2 ¥550-600与认输信号'
+    },
+    page20: {
+      file: '2026/08/英伟达财报裂口与周期延长.html', title: '英伟达财报裂口与周期延长',
+      ym: '2026-08', grp: 'ai', no: 'P20',
+      d: 'FY27Q2史上最豪华财报 · 利润与现金裂口 · 应收暴增与毛利率见顶 · AI央行挂牌 · 正面影响传导地图 · 六时钟更新',
+      desc: 'NVDA FY27Q2深度解析 · 营收$962亿(+106%)/Backlog $2万亿 vs 利润现金裂口（净利$597亿/现金$241亿） · 应收$385→$631亿 · 毛利率75%→72%见顶 · AI央行挂牌（担保$1,085亿+投资$1,280亿） · 下游FCF先失血 · 正面影响传导地图与六时钟更新 · 周期延长=防守者友好'
+    },
+    page21: {
+      file: '2026/08/自由电子激光与Terafab技术期权.html', title: '自由电子激光与Terafab技术期权',
+      ym: '2026-08', grp: 'ai', no: 'P21',
+      d: 'FEL FTW六字母豪赌 · LPP打锡滴vs FEL甩电子 · 三条路线进度 · 华尔街买灯座不买灯泡 · 观察组合三篮子与反向暴露',
+      desc: 'FEL×马斯克Terafab豪赌 · LPP打锡滴vs FEL甩电子原理对比 · xLight/KEK/清华SSMB三条路线进度 · 四道工程鸿沟与ASML反制 · 华尔街五笔账（hype不是purchase order） · 观察组合三篮子与反向暴露（COHR/小松/牛尾） · 2028年Albany开奖 · 技术期权按零定价'
+    },
+    page22: {
+      file: '2026/08/美联储鹰派转向与中期选举时钟.html', title: '美联储鹰派转向与中期选举时钟',
+      ym: '2026-08', grp: 'ai', no: 'P22',
+      d: '沃什杰克逊霍尔首秀 · 利率权力三角 · 66天选举倒计时与12月真窗口 · 华尔街选举年剧本 · 防守者裁判日历',
+      desc: '沃什杰克逊霍尔首秀（金融环境不紧+关死QE救市） · 9月加息概率35%→55.7% · 资产反应：无息资产跌最狠 · 利率权力三角（白宫×联储×债市，加息才是降真利率的悖论） · 66天选举倒计时与12月真窗口 · 华尔街选举年剧本（买保险不清仓、10月中旬回场、选后6个月96% vs 2026例外满分考生） · 防守者裁判日历终版'
+    },
+    page23: {
+      file: '2026/08/九月双央行连击与持仓体检.html', title: '九月双央行连击与持仓体检',
+      ym: '2026-08', grp: 'ai', no: 'P23',
+      d: '48小时双端挤压 · 跌的是意外不是加息 · 共识悖论四机制 · 一份与自家笔记相反的持仓 · 事件驱动减仓路线',
+      desc: '日银被逼入死角（OIS 80-85%）×联储意外源（55.7%）=48小时双端挤压 · 跌的是意外不是加息 · 三情景（阴跌60/套息再崩15-20/利空出尽25-35） · 共识悖论：知道≠能做到，九月照样是唯一月均下跌 · 持仓体检：AI敞口76% vs 铁律≤20-30、单票33%、0:0:10 vs 4:3:3、情景C回撤≈-31% · 事件驱动减仓路线（9/2 AVGO·9/14 ORCL·INTC两步·NKE留存） · 体系灵魂第八条'
+    },
+    page24: {
+      file: '2026/08/小资金持仓审计与赌性预算.html', title: '小资金持仓审计与赌性预算',
+      ym: '2026-08', grp: 'ai', no: 'P24',
+      d: '成本价审计 · 小资金的不同物理 · 压舱层在工资卡里 · 赌性预算笼子 · 持有过财报三剧本',
+      desc: '成本价审计：+1.47%平手的真相（ORCL+1.75pp顶掉AVGO-1.74pp） · 成本落点：只有AVGO真违规（比自家$272接货位高45%），INTC落在Z1内 · 小资金的不同物理（收租=工资/压舱=人力资本/集中+止损/执行零成本） · 满仓翻案：真实股债比远比账户表面保守 · 赌性预算笼子≤10-20%（三铁律+四仓赌性画像+三问自检） · 持有过财报三剧本与加仓触发表（当晚零操作/区间+逻辑双条件） · 体系灵魂第九条'
+    },
+    page25: {
+      file: '2026/08/黄仁勋电网叙事与英伟达能源投资版图.html', title: '黄仁勋电网叙事与英伟达能源投资版图',
+      ym: '2026-08', grp: 'ai', no: 'P25',
+      d: 'Gavin spot on 24小时公关战 · $400B双刃剑 · 俄亥俄8GW超级工厂 · $700亿股权投资 · 核电锚利好逻辑',
+      desc: '"Gavin, spot on" 24小时公关战（Baker骂街→道歉→黄仁勋15分钟收编） · 七句话四新武器 · $400B双刃剑（PitchBook核查：两家拿走$217B、deal count崩58%） · "not subsidies"=国家资本主义包装成市场力量 · 俄亥俄PORTS-Pike 8GW超级工厂（SB Energy/OpenAI/英伟达三角+担保$1050亿） · 2026投资版图：$5000亿平台+$700亿股权投资 · 利好行业硬度分层（基荷＞输电＞铀＞燃机＞新云商＞SMR） · 关键澄清：利好CEG/VST/TLN是因为核电锚不是天然气（20年PPA成本结构三机制） · 灵魂第十条'
+    },
+    page26: {
+      file: '2026/08/OpenAI买Mac与内存超级周期.html', title: 'OpenAI买Mac与内存超级周期',
+      ym: '2026-08', grp: 'ai', no: 'P26',
+      d: '训练市场裂成两半 · 许可证围墙 · 内存权力反转 · 周期温度计 · SKHY/MU周期股PE悖论考场 · Mac云新物种',
+      desc: '事实链精确化：不是预训练是RL后训练（The Information 8/30） · 训练市场裂成两半：算力密集型归英伟达/内存密集型Mac有结构性优势（5倍采购差/20倍功耗差） · 许可证围墙：macOS EULA+内核锁（一台最多2个VM），Apple收的是平台租金不是硬件毛利 · 内存超级周期：93%产能转HBM/DRAM涨10倍/库克"百年一遇的洪水"/Rubin Ultra降规 · 内存权力反转：SK海力士利润率76.3%超英伟达，Apple被长鑫拒绝+政治堵死=零议价权 · 泡沫辩论双面传导：SKHY利润新高股价跌10%（长约锁弹性） · 周期温度计：内存合同价顶2026Q4-2027早于P17中枢，2027利润率回落=第一张实物确认 · SKHY P/E 7.39/MU P/B 10.46=周期股PE悖论终极考场 · Mac-as-a-Service：托管机房不是新物种（需求三层/没有"爹"） · 观察篮新增MU/SKHY/Mount Thor/Namespace/EXO · 灵魂第十一条'
+    }
   };
 
+  /* ============ 分组定义 ============ */
+  var GROUPS = [
+    { key: 'monthly', title: '月度总览' },
+    { key: 'base',    title: '基础学习' },
+    { key: 'fx',      title: '一、国际金融分析' },
+    { key: 'corp',    title: '二、企业金融案例分析' },
+    { key: 'ai',      title: '三、AI / 硬件投资研究' }
+  ];
+  var GRP_NAV = { monthly: '月度总结', base: '基础学习', fx: '国际金融分析', corp: '企业金融案例分析', ai: 'AI / 硬件投资研究' };
+
+  function repList(grp) {
+    return Object.keys(REPORTS).filter(function (k) { return REPORTS[k].grp === grp; });
+  }
+
+  /* ============ DOM ============ */
   var frame = document.getElementById('frame');
   var home = document.getElementById('home');
-  var items = Array.prototype.slice.call(document.querySelectorAll('.nav-item'));
-  var tocRows = Array.prototype.slice.call(document.querySelectorAll('.toc-row'));
-  /* 关键：layout/navBtn 必须在 route() 首次调用前赋值，
-     否则 showHome() -> closeSidebar() 会因 layout 未定义抛错，
-     导致后面所有按钮事件绑定中断（手机端按钮全部失效的根因） */
-  var navBtn = document.getElementById('navBtn');
+  var navEl = document.getElementById('nav');
+  var tocEl = document.getElementById('toc');
+  var yearSel = document.getElementById('yearSel');
+  var monthSel = document.getElementById('monthSel');
+  var filterClear = document.getElementById('filterClear');
+  var filterCount = document.getElementById('filterCount');
   var layout = document.querySelector('.layout');
+  var navBtn = document.getElementById('navBtn');
   var mask = document.getElementById('mask');
+
+  /* ============ 年月选项 ============ */
+  var YMS = [];
+  Object.keys(REPORTS).forEach(function (k) {
+    var ym = REPORTS[k].ym;
+    if (ym && YMS.indexOf(ym) < 0) YMS.push(ym);
+  });
+  YMS.sort();
+
+  function buildYearOptions() {
+    var years = [];
+    YMS.forEach(function (ym) {
+      var y = ym.slice(0, 4);
+      if (years.indexOf(y) < 0) years.push(y);
+    });
+    years.sort();
+    yearSel.innerHTML = '<option value="">全部年份</option>' + years.map(function (y) {
+      return '<option value="' + y + '">' + y + ' 年</option>';
+    }).join('');
+  }
+
+  function buildMonthOptions() {
+    var y = yearSel.value;
+    var months = [];
+    YMS.forEach(function (ym) {
+      if (!y || ym.slice(0, 4) === y) {
+        var m = ym.slice(5);
+        if (months.indexOf(m) < 0) months.push(m);
+      }
+    });
+    months.sort();
+    var cur = monthSel.value;
+    monthSel.innerHTML = '<option value="">全部月份</option>' + months.map(function (m) {
+      return '<option value="' + m + '">' + parseInt(m, 10) + ' 月</option>';
+    }).join('');
+    if (cur && months.indexOf(cur) < 0) monthSel.value = '';
+  }
+
+  function matchesFilter(r) {
+    if (!r.ym) return true;
+    var y = r.ym.slice(0, 4), m = r.ym.slice(5);
+    if (yearSel.value && yearSel.value !== y) return false;
+    if (monthSel.value && monthSel.value !== m) return false;
+    return true;
+  }
+
+  /* ============ 渲染：侧栏导航 ============ */
+  function renderNav() {
+    var html = '';
+    html += '<button class="nav-item" data-page="home"><span class="t">首页</span><span class="d">知识库目录</span></button>';
+    GROUPS.forEach(function (g) {
+      var list = repList(g.key);
+      if (!list.length) return;
+      var title = GRP_NAV[g.key];
+      if (g.key === 'base') title = '2026年7月 · ' + title;
+      html += '<div class="nav-group-title">' + title + '</div>';
+      list.forEach(function (k) {
+        var r = REPORTS[k];
+        html += '<button class="nav-item" data-page="' + k + '"><span class="t">' + r.no + ' · ' + r.title + '</span><span class="d">' + r.d + '</span></button>';
+      });
+    });
+    navEl.innerHTML = html;
+  }
+
+  /* ============ 渲染：首页目录 ============ */
+  function renderToc() {
+    var html = '';
+    var total = 0;
+    var sy = yearSel.value, sm = monthSel.value;
+    var suffix = '';
+    if (sy || sm) {
+      var sp = [];
+      if (sy) sp.push(sy + ' 年');
+      if (sm) sp.push(parseInt(sm, 10) + ' 月');
+      suffix = ' · ' + sp.join(' ');
+    }
+    GROUPS.forEach(function (g) {
+      var list = repList(g.key).filter(function (k) { return matchesFilter(REPORTS[k]); });
+      if (!list.length) return;
+      total += list.length;
+      html += '<div class="toc-group"><div class="toc-group-title">' + g.title + suffix + '</div>';
+      list.forEach(function (k) {
+        var r = REPORTS[k];
+        html += '<button class="toc-row" data-page="' + k + '">' +
+          '<span class="toc-no">' + r.no + '</span>' +
+          '<span class="toc-title">' + r.title + '</span>' +
+          '<span class="toc-desc">' + r.desc + '</span>' +
+          '<span class="toc-arrow">&rarr;</span></button>';
+      });
+      html += '</div>';
+    });
+    tocEl.innerHTML = html || '<div class="toc-empty">该月份暂无笔记，换个年月试试</div>';
+    filterCount.textContent = total ? '当前显示 ' + total + ' 份' : '';
+  }
+
+  /* ============ 筛选器事件 ============ */
+  yearSel.addEventListener('change', function () {
+    buildMonthOptions();
+    renderToc();
+  });
+  monthSel.addEventListener('change', renderToc);
+  filterClear.addEventListener('click', function () {
+    yearSel.value = '';
+    buildMonthOptions();
+    monthSel.value = '';
+    renderToc();
+  });
+
+  /* ============ 路由与状态 ============ */
+  function setActive(page) {
+    var list = navEl.querySelectorAll('.nav-item');
+    for (var i = 0; i < list.length; i++) {
+      list[i].classList.toggle('active', list[i].getAttribute('data-page') === page);
+    }
+  }
 
   function setNavBtnHome() {
     navBtn.classList.remove('back-btn');
@@ -585,9 +652,7 @@
     document.body.classList.remove('in-report');
     home.style.display = 'flex';
     frame.style.display = 'none';
-    items.forEach(function (it) {
-      it.classList.toggle('active', it.getAttribute('data-page') === 'home');
-    });
+    setActive('home');
     document.title = '我的金融发散笔记';
     setNavBtnHome();
     closeSidebar();
@@ -600,9 +665,7 @@
     home.style.display = 'none';
     frame.style.display = 'block';
     if (frame.getAttribute('src') !== r.file) frame.src = r.file;
-    items.forEach(function (it) {
-      it.classList.toggle('active', it.getAttribute('data-page') === page);
-    });
+    setActive(page);
     document.title = r.title + ' · 我的金融发散笔记';
     setNavBtnBack();
     closeSidebar();
@@ -612,38 +675,38 @@
     var h = (location.hash || '').replace('#', '');
     if (h === '' || h === 'home' || !REPORTS[h]) { showHome(); return; }
     openPage(h);
-    var target = document.querySelector('[data-page="' + h + '"]');
+    var target = navEl.querySelector('[data-page="' + h + '"]');
     if (target && target.scrollIntoView) target.scrollIntoView({ block: 'nearest' });
   }
 
   function go(page) {
     if (page !== 'home' && !REPORTS[page]) page = 'home';
-    /* 直接同步渲染，不依赖 hashchange 事件（部分手机浏览器中不可靠） */
     if (page === 'home') { showHome(); } else { openPage(page); }
     if (location.hash !== '#' + page) {
       try { location.hash = page; } catch (e) {}
     }
   }
 
-  items.forEach(function (item) {
-    item.addEventListener('click', function () {
-      var page = item.getAttribute('data-page');
-      if (page) go(page);
-    });
-  });
-
-  tocRows.forEach(function (row) {
-    row.addEventListener('click', function () {
-      go(row.getAttribute('data-page'));
-    });
+  /* 事件委托：动态渲染的 nav-item / toc-row */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    while (t && t !== document && !(t.classList && (t.classList.contains('nav-item') || t.classList.contains('toc-row')))) {
+      t = t.parentNode;
+    }
+    if (!t || t === document) return;
+    var page = t.getAttribute('data-page');
+    if (page) go(page);
   });
 
   window.addEventListener('hashchange', route);
-  route();
 
-  document.getElementById('reportCount').textContent = Object.keys(REPORTS).length;
+  /* ============ 侧栏折叠（桌面端） ============ */
+  function setCollapsed(c) {
+    layout.classList.toggle('sidebar-collapsed', c);
+    try { localStorage.setItem('sbCollapsed', c ? '1' : '0'); } catch (e) {}
+  }
+  window.setCollapsed = setCollapsed;
 
-  /* ===== 移动端：单一按钮（首页=打开菜单 / 报告页=返回首页） ===== */
   function closeSidebar() {
     if (layout) layout.classList.remove('sidebar-open');
   }
@@ -660,6 +723,26 @@
   }
   window.onNavBtn = onNavBtn;
   mask.addEventListener('click', closeSidebar);
+
+  /* ============ 初始化 ============ */
+  buildYearOptions();
+  buildMonthOptions();
+  renderNav();
+  renderToc();
+  route();
+
+  var total = Object.keys(REPORTS).length;
+  var areas = GROUPS.filter(function (g) {
+    return g.key !== 'monthly' && g.key !== 'base' && repList(g.key).length > 0;
+  }).length;
+  document.getElementById('reportCount').textContent = total;
+  document.getElementById('areaCount').textContent = areas;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statArea').textContent = areas;
+  document.getElementById('statLatest').textContent = YMS.length ? YMS[YMS.length - 1] : '—';
+  document.getElementById('latestYm').textContent = YMS.length ? YMS[YMS.length - 1] : '—';
+
+  try { if (localStorage.getItem('sbCollapsed') === '1') setCollapsed(true); } catch (e) {}
 </script>
 </body>
 </html>

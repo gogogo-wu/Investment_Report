@@ -51,6 +51,26 @@
     letter-spacing: .8px; color: #98989d;
     padding: 18px 12px 8px;
   }
+  /* 年月收纳组标题：可点击折叠/展开 */
+  .nav-ym {
+    cursor: pointer; user-select: none;
+    display: flex; align-items: center; gap: 7px;
+    letter-spacing: .4px; transition: color .18s ease;
+  }
+  .nav-ym:hover { color: #f5f5f7; }
+  .nav-ym .ym-arrow {
+    font-size: 9px; color: #636366; width: 12px; flex-shrink: 0;
+    display: inline-block; transition: color .18s ease, transform .18s ease;
+  }
+  .nav-ym:hover .ym-arrow { color: #a1a1a6; }
+  .nav-ym.open .ym-arrow { transform: rotate(90deg); }
+  .nav-ym .ym-count {
+    margin-left: auto; background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 10px; padding: 1px 8px;
+    font-size: 10px; color: #86868b; font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
   .nav-item {
     position: relative;
     display: block; width: 100%; text-align: left;
@@ -503,10 +523,19 @@
     { key: 'corp',    title: '二、企业金融案例分析' },
     { key: 'ai',      title: '三、AI / 硬件投资研究' }
   ];
-  var GRP_NAV = { monthly: '月度总结', base: '基础学习', fx: '国际金融分析', corp: '企业金融案例分析', ai: 'AI / 硬件投资研究' };
-
   function repList(grp) {
     return Object.keys(REPORTS).filter(function (k) { return REPORTS[k].grp === grp; });
+  }
+
+  /* 年月收纳状态：{ '2026-07': true/false } */
+  function readYmState() {
+    try { return JSON.parse(localStorage.getItem('navYmOpen') || '{}') || {}; } catch (e) { return {}; }
+  }
+  function toggleYm(ymKey) {
+    var map = readYmState();
+    map[ymKey] = !map[ymKey];
+    try { localStorage.setItem('navYmOpen', JSON.stringify(map)); } catch (e) {}
+    renderNav();
   }
 
   /* ============ DOM ============ */
@@ -567,22 +596,53 @@
     return true;
   }
 
-  /* ============ 渲染：侧栏导航 ============ */
+  /* ============ 渲染：侧栏导航（按年月收纳分组） ============ */
   function renderNav() {
     var html = '';
     html += '<button class="nav-item" data-page="home"><span class="t">首页</span><span class="d">知识库目录</span></button>';
-    GROUPS.forEach(function (g) {
-      var list = repList(g.key);
-      if (!list.length) return;
-      var title = GRP_NAV[g.key];
-      if (g.key === 'base') title = '2026年7月 · ' + title;
-      html += '<div class="nav-group-title">' + title + '</div>';
-      list.forEach(function (k) {
-        var r = REPORTS[k];
-        html += '<button class="nav-item" data-page="' + k + '"><span class="t">' + r.no + ' · ' + r.title + '</span><span class="d">' + r.d + '</span></button>';
+
+    /* 按 y -> m -> [keys] 归组 */
+    var years = {};
+    Object.keys(REPORTS).forEach(function (k) {
+      var r = REPORTS[k];
+      if (!r.ym) return;
+      var y = r.ym.slice(0, 4), m = r.ym.slice(5);
+      if (!years[y]) years[y] = {};
+      if (!years[y][m]) years[y][m] = [];
+      years[y][m].push(k);
+    });
+    var openMap = readYmState();
+    var latestYm = YMS.length ? YMS[YMS.length - 1] : '';
+
+    Object.keys(years).sort().forEach(function (y) {
+      Object.keys(years[y]).sort().forEach(function (m) {
+        var ymKey = y + '-' + m;
+        var keys = years[y][m].slice();
+        /* 组内排序：月度总结置顶，其余按编号（B01/P01/P10… 自然序） */
+        keys.sort(function (a, b) {
+          var ra = REPORTS[a], rb = REPORTS[b];
+          if (ra.grp === 'monthly' && rb.grp !== 'monthly') return -1;
+          if (rb.grp === 'monthly' && ra.grp !== 'monthly') return 1;
+          return String(ra.no).localeCompare(String(rb.no), 'zh', { numeric: true });
+        });
+        /* 默认：最近月份展开、历史月份收纳（localStorage 可覆盖） */
+        var open = openMap[ymKey] !== undefined ? openMap[ymKey] : (ymKey === latestYm);
+        html += '<div class="nav-group-title nav-ym' + (open ? ' open' : '') + '" data-ym="' + ymKey + '" title="点击展开 / 收起">' +
+          '<span class="ym-arrow">' + (open ? '&#9662;' : '&#9656;') + '</span>' +
+          '<span>' + y + ' 年 ' + parseInt(m, 10) + ' 月</span>' +
+          '<span class="ym-count">' + keys.length + ' 份</span></div>';
+        if (open) {
+          keys.forEach(function (k) {
+            var r = REPORTS[k];
+            html += '<button class="nav-item" data-page="' + k + '"><span class="t">' + r.no + ' · ' + r.title + '</span><span class="d">' + r.d + '</span></button>';
+          });
+        }
       });
     });
     navEl.innerHTML = html;
+    /* 重渲染后恢复当前页高亮 */
+    var cur = (location.hash || '').replace('#', '');
+    setActive(cur && REPORTS[cur] ? cur : 'home');
   }
 
   /* ============ 渲染：首页目录 ============ */
@@ -687,9 +747,17 @@
     }
   }
 
-  /* 事件委托：动态渲染的 nav-item / toc-row */
+  /* 事件委托：动态渲染的 nav-ym（年月折叠）/ nav-item / toc-row */
   document.addEventListener('click', function (e) {
     var t = e.target;
+    /* 年月组标题：展开 / 收起 */
+    var g = t;
+    while (g && g !== document && !(g.classList && g.classList.contains('nav-ym'))) g = g.parentNode;
+    if (g && g !== document) {
+      toggleYm(g.getAttribute('data-ym'));
+      return;
+    }
+    /* 报告条目 */
     while (t && t !== document && !(t.classList && (t.classList.contains('nav-item') || t.classList.contains('toc-row')))) {
       t = t.parentNode;
     }

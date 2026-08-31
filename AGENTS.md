@@ -13,7 +13,7 @@
 
 | 文件 | 角色 |
 |---|---|
-| `index.html` | 导航壳（**数据驱动**：侧栏导航、首页目录、年月筛选器、统计数字全部由 `REPORTS` 表 JS 渲染，只维护这一处） |
+| `index.html` | 导航壳（**数据驱动**：侧栏导航、首页目录、年月筛选器、统计数字全部由 `REPORTS` 表 JS 渲染，只维护这一处；侧栏按年月收纳分组，见 §6） |
 | `2026/08/xxx.html` 等 | 报告按年月收纳，文件名与 `REPORTS` 表 `file` 字段（含目录前缀）逐字一致 |
 | `2026/08/YYYY年M月发散笔记月度总结.html` | 每月月底生成的月度收束总结，登记为 `mYY` 路由（`grp: 'monthly'`） |
 | `README.md` | 人类入口 + 目录结构树 + **变更日志（每份新报告必须补一条）** |
@@ -60,7 +60,7 @@
    curl -sL -o /dev/null -w "%{http_code}\n" "https://gogogo-wu.github.io/Investment_Report/$ENC"
    # 200 = 上线成功
    ```
-7. 本地双击 `index.html`，确认：hash 路由 `#pageN` 能打开新报告；年月筛选器出现新月份；`#m09` 能打开月度总结
+7. 本地双击 `index.html`，确认：hash 路由 `#pageN` 能打开新报告；年月筛选器出现新月份；`#m09` 能打开月度总结；侧栏出现新月份收纳组（**最新月份自动展开，历史月份默认收纳，点击组标题展开**）
 
 ## 4. 修正既有报告的 SOP
 
@@ -89,7 +89,7 @@
 - 中文文件名 URL 必须百分号编码（见 §3 验证命令），且 **2026-08-31 收纳后 URL 必须带 `2026/08/` 目录前缀**——旧根路径链接会 404，属预期
 - `index.html` 已改为**数据驱动**（2026-08-31 起）：nav / toc / 年月筛选器 / 统计数字都由 `REPORTS` 表生成——新增报告只改 REPORTS 一行即可，**不要**再手工往 nav / toc / footer 里加 HTML（改了也会被渲染覆盖，且会造成重复）
 - `matchesFilter` 的坑：`repList()` 返回 key 字符串数组，过滤时必须包一层 `function (k) { return matchesFilter(REPORTS[k]); }`，直接传 `matchesFilter` 会让所有条目通过（曾真实踩坑）
-- 侧栏折叠状态存 `localStorage('sbCollapsed')`；移动端（≤768px）为抽屉式，折叠状态被忽略
+- 侧栏折叠状态存 `localStorage('sbCollapsed')`；**年月收纳组**展开/收起状态存 `localStorage('navYmOpen')`（JSON：`{"2026-07": true}`），最近月份默认展开、历史月份默认收纳，点击组标题切换；移动端（≤768px）为抽屉式，折叠状态被忽略
 - 报告移动/收纳必须用 `git mv`（保留历史），禁止直接 `mv` 后重新 add（会断 rename 追踪）
 - Windows 下 CRLF 警告无害，忽略
 - iframe + hash 路由：部分手机浏览器 `hashchange` 不可靠，`index.html` 已用同步渲染兜底，不要移除该逻辑

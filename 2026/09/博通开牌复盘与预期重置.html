@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>博通开牌复盘：当"全面超预期"只值及格价 · 增量订单三层拆解 · 产业链传导地图 · 灵魂第十四条</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px;
+  }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 20px;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td {
+    padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  @media (max-width: 640px) {
+    body { padding: 22px 14px 80px; }
+    h1 { font-size: 21px; }
+    .section h2 { font-size: 16px; }
+    table { font-size: 12px; }
+    tbody td, thead th { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>博通开牌复盘：当"全面超预期"只值及格价</h1>
+<p class="subtitle">Q3 营收 +86%、AI 半导体 +221%、指引只差 0.7%——然后股价两天跌掉 7%。P24 三剧本的"符合偏超"档挨了一刀：市场重新定义了什么叫"超"。附：增量订单三层拆解 + 产业链传导地图 + 预期重置的操作判据</p>
+<div class="badge-row">
+  <span class="badge badge-blue">P29 · AVGO 财报复盘</span>
+  <span class="badge badge-red">9/3 开盘 -5.3% · 20日 -17.3% · YTD 剩 +0.9%</span>
+  <span class="badge badge-warn">增量订单三层：已签 / 期权 / 瓶颈</span>
+  <span class="badge badge-green">定价货币迁移：业绩 → GW 台阶</span>
+  <span class="badge badge-blue">灵魂第十四条</span>
+</div>
+
+<div class="callout">
+  <strong>这篇的由来：</strong>9/2 美东盘后 AVGO（博通）开牌——这是挂了几天的裁决日（P24 三剧本）。落地当晚做了数字对账与复盘，用户追问"市场只为增量订单储备付钱，那 AVGO 有哪些增量订单"，随后追问"这份财报电话会对其他行业有哪些利好利空"；9/3 美股正常时段开盘即 -5.3%，预期重置实锤。三轮讨论合并沉淀为本文。价格锚：9/2 收盘 $367.24、9/3 开盘快照 $347.8（美东 9:41）。
+</div>
+
+<!-- ============ 一、事实链 ============ -->
+<div class="section">
+<h2>一、先对账：这是一份"什么都没做错"的财报</h2>
+
+<table>
+<thead><tr><th>项目</th><th class="num">实际</th><th class="num">预期</th><th>判定</th></tr></thead>
+<tbody>
+<tr><td>Q3 总营收</td><td class="num">$295.9 亿（+86%）</td><td class="num">$293.6 亿</td><td class="green">小超，创单季纪录</td></tr>
+<tr><td>调整后 EPS</td><td class="num">$3.32（+96%）</td><td class="num">$3.24</td><td class="green">小超</td></tr>
+<tr><td>AI 半导体收入</td><td class="num">$167 亿（+221%，环比 +54%）</td><td class="num">~$152–159 亿</td><td class="green">明显超，占总营收 56%</td></tr>
+<tr><td>自由现金流</td><td class="num">$137 亿（占营收 46%）</td><td class="num">—</td><td class="green">极强</td></tr>
+<tr><td>Q4 总营收指引</td><td class="num">~$348 亿（+93%）</td><td class="num">$350.3 亿</td><td class="red">差 0.7%——唯一瑕疵</td></tr>
+<tr><td>Q4 AI 半导体指引</td><td class="num">$217 亿（+236%）</td><td class="num">更高</td><td class="yellow">量够，但买方要的是"更够"</td></tr>
+<tr><td>Q4 毛利率指引</td><td class="num">~73%（同比 -5pp）</td><td class="num">—</td><td class="red">温度计响了（见下）</td></tr>
+</tbody>
+</table>
+
+<h3>市场反应时间线：一次"企稳幻觉"的破灭</h3>
+<table>
+<thead><tr><th>时点</th><th>价格动作</th><th>解读</th></tr></thead>
+<tbody>
+<tr><td>9/2 美东盘后（开牌）</td><td class="red">-6%</td><td>指引差 0.7% 触发的第一反应</td></tr>
+<tr><td>9/2 电话会中段</td><td class="green">拉回一度 +2%</td><td>FY27/28 翻倍蓝图救场——幻觉</td></tr>
+<tr><td>9/2 盘后收盘</td><td class="red">约 -1.6%</td><td>"企稳"假象：当晚美股已闭市</td></tr>
+<tr><td><strong>9/3 美东开盘（9:41 快照）</strong></td><td class="red"><strong>$347.8（-5.3%），低点 $345.58</strong></td><td><strong>正常时段用真金白银裁决：不买账</strong></td></tr>
+</tbody>
+</table>
+
+<p>两个比单日跌幅更扎眼的背景数字：<strong>20 日累计 -17.3%</strong>（杀估值从 8 月中旬就开始了，财报只是给了个加快的借口）、<strong>YTD 只剩 +0.9%</strong>——营收全年 +86%，股价一年白涨。这就是"预期已满"的定价状态。</p>
+</div>
+
+<!-- ============ 二、三剧本裁决 ============ -->
+<div class="section">
+<h2>二、P24 三剧本复盘：剧本没输，赔率结构变了</h2>
+<p>开牌前（P24）给的三剧本：超 35% / 符合 40% / 不及 25%。实际落在<strong>"符合偏超"档</strong>——Q3 全面小超、AI 收入明显超预期。按剧本，这一档的下场不该是两天 -7%。但市场给出的答案是：<strong>落在哪一档不重要，重要的是"超"的幅度。</strong>为什么？</p>
+
+<ul>
+<li><strong>好消息的门槛每年在抬高。</strong>FY27 AI 指引从 $1000亿上调到 $1150亿（+15%），但大摩的模型早就建在 $1200亿，部分买方定价 $1500亿+——管理层上调了 15%，市场想要的是 50%。<strong>上调了还是"不及预期"，这是"预期已满"的标准机制。</strong></li>
+<li><strong>0.7% 的指引缺口只是借口。</strong>Q4 差 $2.3 亿，对一季收 $348 亿的公司是噪音；真正被杀的是"增长斜率还能不能维持"的疑问（StoneX 原话：对比英伟达的炸裂，你这点超预期"幅度就是不够"）。</li>
+<li><strong>卖方开始撤梯子。</strong>汇丰 9/3 把目标价 $600 → $560——不是看空，是跟着股价降目标价，典型动量资金撤离信号。叠加 Google 扩大与 Marvell 合作的传闻，三股小风一起吹。</li>
+</ul>
+
+<div class="callout-warn callout">
+  <strong>复盘结论（写进纪律）：</strong>这笔"上笼子过财报"（27% 仓位）按剧本计分是及格的操作、按赔率计分是亏损的结果——<strong>不是剧本错了，是市场重新定义了"超"：当预期已满，"超预期"只值及格价。</strong>往后财报前的赌注定价，要用"超预期幅度 × 市场为此付钱的意愿"两维评估，而不是单看"落在哪一档"。
+</div>
+</div>
+
+<!-- ============ 三、增量订单三层 ============ -->
+<div class="section">
+<h2>三、增量订单清单：市场的钱到底在为什么付</h2>
+<p>电话会里真正的干货是一张三层结构的订单清单。市场给 AVGO 的估值，主要押在第二、三层的"期权"上——而 9/3 的下跌，正是市场决定给这些期权打折。</p>
+
+<h3>A 档 · 已签约、已在交付的四大客户（电话会逐家给了 GW 台阶）</h3>
+<table>
+<thead><tr><th>客户</th><th>2026</th><th>2027</th><th>2028</th><th>关键词</th></tr></thead>
+<tbody>
+<tr><td><strong>谷歌</strong></td><td>10GW Ironwood（TPU v7）</td><td>+5GW TPU v8i（已量产交付）</td><td>+10GW</td><td>签长期协议（未来几代 TPU + AI 网络），每年"数百亿美元"级</td></tr>
+<tr><td><strong>Anthropic</strong></td><td>1GW Ironwood</td><td>+5GW TPU v8i</td><td>+10GW</td><td><strong>2027 将超越谷歌成第一大 XPU 客户</strong></td></tr>
+<tr><td><strong>OpenAI</strong></td><td>Jalapeño Q3 已出货</td><td>1.3GW</td><td>&gt;5GW（二、三代研发中）</td><td><strong>2028 成第二大客户</strong>；Hock 称性能超 GB Ultra、比肩 Vera Rubin、成本减半</td></tr>
+<tr><td><strong>Meta</strong></td><td>Q4 启动 MTIA 量产</td><td>16 个月交付三代</td><td>累计 3GW</td><td>推理 + 推荐专用</td></tr>
+</tbody>
+</table>
+<p>换算口径：汇丰按 <strong>每 GW ≈ $100亿收入</strong> 估算，非谷歌客户管道合计约 18GW ≈ $1800亿；四大客户 2026–28 累计部署 &gt;50GW——这就是 FY27 $1150亿 / FY28 $2300亿 指引的物理底座。</p>
+
+<h3>B 档 · 官宣但未定价的"期权"</h3>
+<ul>
+<li><strong>六大客户只亮了四个名字</strong>——Hock 原话："We have six customers — four of them are simply going to be huge." 剩下两个是谁、多大规模，是市场最愿意付钱猜的部分：每多官宣一个百亿级客户都是一次重定价事件。</li>
+<li><strong>苹果</strong>：官宣美国本土芯片生产合作——目前更像制造伙伴而非 XPU 订单，但方向是"把苹果从采购名单变成制造盟友"。</li>
+<li><strong>需求 &gt; 供给</strong>：管理层明说芯片需求超过出货能力——订单不是求来的，是配额制。反面读法：供给紧张期的"订单"可以被客户重新划定范围，<strong>订单 ≠ 收入保障</strong>。</li>
+</ul>
+
+<h3>C 档 · 瓶颈侧订单（最易被忽略、增速最猛）</h3>
+<ul>
+<li><strong>AI 网络收入同比 +2.5 倍</strong>，预计未来与 XPU 同速增长；Tomahawk 6（首款 100Tb/s）领先出货，<strong>Tomahawk 7（200Tb/s）已流片</strong>。</li>
+<li><strong>激光器是隐形瓶颈</strong>：EML/VCSEL/CW 三类产能年内全部翻倍、未来两年继续扩——"激光器需求超出全行业供给"这句话本身就是在给 COHR/Lumentum/Fabrinet 们排队叫号。</li>
+<li><strong>新加坡基板封装厂 FY27 量产</strong>，直指 ABF 基板瓶颈；管理层点名三大瓶颈：尖端硅片、HBM、系统内存——<strong>又是内存</strong>（P26 温度计第三处应验，见第五节）。</li>
+</ul>
+</div>
+
+<!-- ============ 四、审计 ============ -->
+<div class="section">
+<h2>四、审计视角：这份增量订单的"软肋"在哪</h2>
+<p>用 P27 的循环融资审计框架（灵魂第十二条）过一遍这张订单表——四大客户里增量最大的两家，其 GW 台阶本质上是<strong>融资计划的投影</strong>：</p>
+<table>
+<thead><tr><th>客户</th><th>订单性质</th><th>断链风险</th></tr></thead>
+<tbody>
+<tr><td>谷歌 / Meta</td><td class="green">抵押贷款——自有 capex 背书（五大超大规模云厂 capex 已 +40% 至 $7000亿+）</td><td>低</td></tr>
+<tr><td>Anthropic</td><td class="yellow">信用透支——正靠 $1000亿+ IPO 融资养 5GW/10GW 台阶</td><td>高：IPO 定价不及预期 → 台阶打折</td></tr>
+<tr><td>OpenAI</td><td class="yellow">信用透支——承诺 $1.4万亿 vs 现金 $730亿</td><td>高：融资链断裂 → 撤单</td></tr>
+</tbody>
+</table>
+<div class="callout-red callout">
+  <strong>所以 10 月 Anthropic IPO（目标 $1.5–2万亿、融资 $1000亿+）不只是 P27 里的抽血事件，它同时是 AVGO 指引可信度的第一张考卷。</strong>两份报告在同一个事件上交汇——这就是为什么 9/3 市场敢提前对"增量订单储备"打折：考卷还没考，先按最可疑的考生降杠杆。
+</div>
+<p>反过来的护城河也要看清：供给瓶颈（HBM/基板/激光器）反而是 AVGO 的锁位工具——产能锁得越死，后来者（MRVL 们）越难抢。瓶颈期的订单是真订单，<strong>瓶颈解除日的订单要重新审计</strong>。</p>
+</div>
+
+<!-- ============ 五、传导地图 ============ -->
+<div class="section">
+<h2>五、产业链传导地图：这份电话会给全行业"划重点"</h2>
+
+<figure class="fig">
+<svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect x="0" y="0" width="880" height="300" fill="#121214"/>
+  <text x="440" y="30" text-anchor="middle" fill="#e5e5ea" font-size="15" font-weight="bold">AVGO 电话会 → 产业链传导</text>
+  <!-- center node -->
+  <rect x="355" y="55" width="170" height="44" rx="8" fill="#2997ff" opacity="0.22" stroke="#2997ff"/>
+  <text x="440" y="76" text-anchor="middle" fill="#8ab4ff" font-size="13" font-weight="bold">GW 台阶 &gt;50GW</text>
+  <text x="440" y="92" text-anchor="middle" fill="#8ab4ff" font-size="11">毛利率 78%→73%</text>
+  <!-- left beneficiaries -->
+  <g font-size="12">
+    <rect x="40" y="120" width="250" height="30" rx="6" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.4)"/>
+    <text x="52" y="140" fill="#4ade80">↑ 存储/HBM：买家痛点=卖家定价权</text>
+    <rect x="40" y="158" width="250" height="30" rx="6" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.4)"/>
+    <text x="52" y="178" fill="#4ade80">↑ 光器件/激光器：需求超全行业供给</text>
+    <rect x="40" y="196" width="250" height="30" rx="6" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.4)"/>
+    <text x="52" y="216" fill="#4ade80">↑ 代工/先进封装：TSMC+基板厂 FY27</text>
+    <rect x="40" y="234" width="250" height="30" rx="6" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.4)"/>
+    <text x="52" y="254" fill="#4ade80">↑ AI 服务器（戴尔订单 $950亿）· 电力（GW=电站）</text>
+  </g>
+  <!-- right victims -->
+  <g font-size="12">
+    <rect x="590" y="120" width="250" height="30" rx="6" fill="rgba(239,68,68,.12)" stroke="rgba(239,68,68,.4)"/>
+    <text x="602" y="140" fill="#f87171">↓ GPU 独占叙事：Jalapeño 对标 Vera Rubin</text>
+    <rect x="590" y="158" width="250" height="30" rx="6" fill="rgba(239,68,68,.12)" stroke="rgba(239,68,68,.4)"/>
+    <text x="602" y="178" fill="#f87171">↓ 二线 ASIC：MRVL 超预期仍 -10.3%</text>
+    <rect x="590" y="196" width="250" height="30" rx="6" fill="rgba(239,68,68,.12)" stroke="rgba(239,68,68,.4)"/>
+    <text x="602" y="216" fill="#f87171">↓ 无定价权中间环节：内存成本向下挤压</text>
+    <text x="602" y="232" fill="#f87171" font-size="11">（服务器 OEM/板卡厂，除非有订单量对冲）</text>
+    <rect x="590" y="240" width="250" height="30" rx="6" fill="rgba(239,68,68,.12)" stroke="rgba(239,68,68,.4)"/>
+    <text x="602" y="260" fill="#f87171">↓ 韩元升值抽水 · 纯叙事无 GW 小票失宠</text>
+  </g>
+  <!-- arrows -->
+  <line x1="355" y1="77" x2="298" y2="135" stroke="rgba(34,197,94,.5)" stroke-width="1.5"/>
+  <line x1="525" y1="77" x2="582" y2="135" stroke="rgba(239,68,68,.5)" stroke-width="1.5"/>
+  <text x="300" y="108" fill="#4ade80" font-size="12" font-weight="bold">受益</text>
+  <text x="560" y="108" fill="#f87171" font-size="12" font-weight="bold">受损</text>
+  <text x="440" y="290" text-anchor="middle" fill="#86868b" font-size="11">判断口径：AI 行情的定价货币已从"业绩超预期"迁移到"GW 台阶"——每份财报问一句：增量订单折算成 GW 是多少？</text>
+</svg>
+<figcaption class="fig-cap">图：AVGO 电话会向产业链的传导（9/3 亚太实盘已验证方向：三星/SKHY 盘初齐涨后汇率抢戏，MU 盘后 +2%）</figcaption>
+</figure>
+
+<h3>利好清单（按受益确定性排序）</h3>
+<ol>
+<li><strong>存储/HBM（最直接）</strong>：AVGO 自己把毛利率下滑归因于内存成本——买家的痛点就是卖家的定价权。三重盖章：三星 7 月与博通签 <strong>$2000亿、5 年期</strong> 内存+代工 MOU；SK 海力士 "one-team" 合作；戴尔把 DRAM/NAND 点名为 AI 服务器瓶颈。9/3 亚太实盘：三星/SKHY/铠侠盘初齐涨，MU 盘后 +2%。</li>
+<li><strong>光器件/激光器</strong>：EML/VCSEL/CW"需求超出全行业供给"、产能两年翻倍——COHR、Lumentum、Fabrinet 的排队叫号（FEL 三路线里的 COHR 正在这条线上）。</li>
+<li><strong>代工/先进封装</strong>：XPU 在台积电投片 + 新加坡基板厂 FY27 量产——TSM 与 ABF 基板链受益。</li>
+<li><strong>AI 服务器</strong>：戴尔在手订单 $950亿创纪录，财报同周盘后一度 +16%——GW 台阶折算成整机就是服务器厂的装配线。</li>
+<li><strong>电力（P15 观察篮直接受益）</strong>：四大客户 2026–28 累计 &gt;50GW——GW 是功耗单位，每 GW 背后就是一座数据中心电站；CEG/VST/TLN 的核电长约逻辑再添需求注脚。</li>
+<li><strong>联发科</strong>：分到谷歌 TPU v8t（训练版）——ASIC 设计开始外溢，但也是谷歌在刻意养第二供应商（对 AVGO 是根小刺）。</li>
+</ol>
+
+<h3>利空清单</h3>
+<ol>
+<li><strong>GPU 独占叙事（NVDA 边际利空）</strong>：Jalapeño"超 GB Ultra、比肩 Vera Rubin、成本减半"——定制芯片从"省钱备胎"升级为"性能对标"。但蛋糕在变大，这是份额叙事之争，不是需求之争。</li>
+<li><strong>二线 ASIC（MRVL 最尴尬）</strong>：最肥的客户被博通锁死，自身财报超预期仍 -10.3%——<strong>"超预期不涨"已从 AVGO 传染到整个 ASIC 板块，预期拥挤度到顶的典型信号</strong>。</li>
+<li><strong>无定价权的中间环节</strong>：内存成本挤压向下游传导，服务器 OEM、板卡厂毛利承压——除非像戴尔那样有订单量对冲。</li>
+<li><strong>韩国半导体汇率面</strong>：韩元升至 1350（一年两个月新高），花旗当天下调三星（-10%）/SKHY（-3%）盈利预测——基本面利好被汇率吃掉一块；日元见底路径（2026 末）的镜像提醒：亚洲货币升值周期里，出口型半导体财报持续被汇率抽水。</li>
+<li><strong>纯叙事小票失宠</strong>：没有 GW 数字、没有订单背书的故事（具身概念类）在失宠——估值锚正从"叙事倍数"迁向"订单倍数"。</li>
+</ol>
+</div>
+
+<!-- ============ 六、定价货币迁移 ============ -->
+<div class="section">
+<h2>六、这轮下跌真正教的一课：定价货币在迁移</h2>
+<p>把三天的行情连起来读，市场完成了一次教科书级的<strong>定价货币迁移</strong>：</p>
+<ul>
+<li><strong>上个阶段</strong>：为"业绩超预期"付钱——谁 beat 谁涨；</li>
+<li><strong>过渡阶段（8 月中–9/2）</strong>：只为"增量订单储备"付钱——业绩涨 86%、股价 +6%，市场不再为已兑现的增长付钱；</li>
+<li><strong>现在（9/3 起）</strong>：连储备都打折买——因为储备里最大的两个买家是重融资方，市场在提前给 10 月 Anthropic IPO 考卷计价。</li>
+</ul>
+<div class="callout">
+  <strong>推论（往后每份财报的过滤器）：</strong>拿到任何一家 AI 链公司的财报，只问一句——<strong>它的增量订单储备折算成 GW 是多少？</strong>答不上来的，无论涨跌都属于叙事层，不在"市场付钱"的名单里。这与 P26"跟着内存合同价走、不跟 CEO 的嘴走"是同一枚硬币的两面：合同价是存储的温度计，GW 台阶是算力的温度计。
+</div>
+
+<h3>预期重置 ≠ 需求断裂：怎么区分</h3>
+<table>
+<thead><tr><th>判据</th><th>预期重置（当前假设）</th><th>需求断裂（要警惕的）</th></tr></thead>
+<tbody>
+<tr><td>业绩</td><td class="green">创纪录（+86% / AI +221% / FCF $137亿）</td><td class="red">指引下修、订单撤销</td></tr>
+<tr><td>杀的对象</td><td>倍数（估值）</td><td>收入（基本面）</td></tr>
+<tr><td>节奏</td><td>财报前已开始（20 日 -17.3%）</td><td>伴随撤单新闻</td></tr>
+<tr><td>对内存毛利</td><td>挤压但可控（Q4 指引 ~73%）</td><td>跌破 72% = 侵蚀比管理层说的更狠</td></tr>
+<tr><td>操作含义</td><td>按 P23 路线从容减仓，不恐慌</td><td>直接进入 C 档评估流程</td></tr>
+</tbody>
+</table>
+<p><strong>盯梢数：9/3 能不能收住 $345–350</strong>（技术面第一支撑带）。收住 = 预期重置的尾声；跌破 $340 = 把"重置"升级为"重定价"来对待。下一个日历变量：9/4 非农（降息预期压 10Y）→ 9/14 ORCL。</p>
+</div>
+
+<!-- ============ 七、持仓联动 ============ -->
+<div class="section">
+<h2>七、落回你的账户</h2>
+<table>
+<thead><tr><th>项目</th><th>读数</th><th>动作</th></tr></thead>
+<tbody>
+<tr><td><strong>AVGO（27%）</strong></td><td>$347.8 vs 成本 $394.23，<strong>浮亏 ≈ -11.8%</strong>；"上笼子过财报"这一手按剧本及格、按赔率亏损</td><td><strong>9/3 零操作</strong>；9/14 ORCL 后按 P23 减至 15–18%——这轮下跌反而让减仓更从容（按计划下车，不是恐慌割肉）</td></tr>
+<tr><td><strong>C 档</strong></td><td>$272 / $222（P24），现价距 $272 约 -22%</td><td><strong>不上移、不提前动</strong>——那是按基本面算的抄底价，不因情绪杀"顺手"抬高；真跌到那里 = "减仓后用纪律价接回"的机会，<strong>先减后接，顺序不能乱</strong></td></tr>
+<tr><td><strong>ORCL（16%）</strong></td><td>9/2 -5.2% 至 ~$141，软件杀估值波及 + 9/14 财报前波动，距成本 $135.98 很近</td><td>P23"财报后锁一半"不变；9/14 前出检查单</td></tr>
+</tbody>
+</table>
+
+<p><strong>盯梢清单（在 P28 五项温度计上加 2 项）：</strong>⑥ <strong>AVGO Q4 毛利率是否如指引落在 ~73%</strong>——跌破 72% 说明内存侵蚀比管理层口径更狠（链条压力真实读数）；⑦ <strong>六大客户剩下两家的官宣</strong>——任意一次都是重定价事件（向上向下都是）。</p>
+
+<p><strong>日历锚点更新：</strong>9/2 AVGO ✅ → 9/3 预期重置裁决 ✅（-5.3%）→ 9/4 非农 → 9/9 财政部 $4000亿回购 → 9/14 ORCL → 9/15–18 双央行 → 10 月 Anthropic IPO（AVGO 指引考卷）+ GTC Berlin。</p>
+
+<div class="conclusion">
+<h2>一句话收束</h2>
+<p>这份财报什么都没做错，市场也什么都没做错——<strong>错的匹配是：管理层还在用"业绩超预期"的旧货币汇报，市场已经改用"GW 台阶可信度"的新货币计价。</strong>三天跌掉 7% 不是需求的故事变了，是付钱的规则变了。对你这套打法，真正值钱的不是"AVGO 便宜了"（距 C 档还远），而是传导地图上那几条被盖章的线——存储、激光器、电力——它们跌下来的时候，才是"被隔壁着火疏散的"那批筹码。</p>
+</div>
+
+<div class="quote" style="margin-top:22px;">
+<strong>体系灵魂第十四条 · 及格价与 GW 硬通货：</strong>当预期已满，"超预期"只值及格价——业绩的上限是市场早就画好的下限。所以财报的裁判不在财报里：预期重置不等于需求断裂，杀倍数时看订单、杀业绩时才逃命；往后只认两种硬通货——存储的合同价、算力的 GW 台阶，其余都是修辞。
+</div>
+
+<p style="margin-top:20px; font-size:12px; color:#86868b;">以上仅为个人认知范围内的理解，不构成任何投资建议。文中价格为讨论时点抓取（9/2 收盘与 9/3 美东开盘快照），实盘操作前请以实时行情复核。</p>
+
+</div>
+</body>
+</html>

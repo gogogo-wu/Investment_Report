@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>满仓的抉择：A 策略改版与 ORCL 资金期考卷 · 灵魂第十七条</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px; }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top; }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  code {
+    font-family: "SF Mono", Consolas, monospace; font-size: 12.5px;
+    background: rgba(255,255,255,.08); padding: 1px 6px; border-radius: 4px; color: #f5f5f7;
+  }
+  pre {
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px; padding: 14px 18px; font-size: 12.5px; line-height: 1.7;
+    overflow-x: auto; margin: 12px 0 18px;
+    font-family: "SF Mono", Consolas, monospace;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>满仓的抉择：A 策略改版与 ORCL 资金期考卷</h1>
+<div class="subtitle">发散笔记 P32 · 2026 年 9 月 6 日 · 一天决策线的完整复盘：NKE 指数事件 → 减仓三问 → A 策略拍板 → 市场重评 → ORCL 资金期考卷 → 学习方法</div>
+<div class="badge-row">
+  <span class="badge badge-blue">A 策略正式立档</span>
+  <span class="badge badge-red">P23 减仓路线作废</span>
+  <span class="badge badge-warn">ORCL 财报 9/10（日期修正）</span>
+  <span class="badge badge-green">灵魂第十七条</span>
+</div>
+
+<!-- ============ 一、事实链 ============ -->
+<div class="section">
+<h2>一、起点：NKE 被移出标普 100，一条误读引出的一天</h2>
+
+<p>9/4 公布、9/21 生效的季度调仓里，<strong>NKE 被移出的是标普 100（"蓝筹中的蓝筹"，标普 500 里市值前 100），不是标普 500</strong>——自动降级到标普 500，被动资金冲击有限。同批移出：高露洁、霍尼韦尔航空、西蒙地产；移入：戴尔、PANW、Arista、闪迪。</p>
+
+<div class="callout">
+<strong>符号层面的信息：</strong>移出的四家来自四个不同行业（工业/可选消费/地产/日用消费），移入的四家<strong>全是 IT</strong>。标普 100 正在变成科技俱乐部——指数在替市场投票，AI 席卷市值结构，消费蓝筹在缩表。彩蛋：移入的 PANW 正是 P28 物理 AI 五层地图里 AI 安全层的观察标的（Z1 260-290）。
+</div>
+
+<p>顺带记一个温度计读数：掉队是<strong>滞后的确认，不是领先信号</strong>（灵魂第 14 条：价格早已定价过基本面的走弱）。这件事本身不构成 NKE 的新利空，但引出了下面真正的问题——</p>
+</div>
+
+<!-- ============ 二、低位≠压舱石 ============ -->
+<div class="section">
+<h2>二、"历史低位不该加仓当压舱石吗"——低位与压舱石是两个不相关的词</h2>
+
+<p>用户第一问：NKE 处于历史低位，不应该加仓作为压舱石吗？答案：压舱石的定义从来不是"价格低"，而是三条——<strong>与组合其余资产相关性低 + 波动小 + 不带个股事件风险</strong>。NKE 三条全不占：</p>
+
+<ul>
+<li>10/1 财报是标准的二元事件，指引不及预期照样 -15%，与买点多低无关</li>
+<li>走弱有真实基本面原因（大中华区、产品周期待验证），低位是市场对"还没修复"的定价，不是错杀折扣券</li>
+<li>"历史低位还可以更低"——周期股 PE 悖论的反面版本：越跌越"便宜"，直到盈利下修把便宜变成平价</li>
+</ul>
+
+<div class="callout-warn callout">
+<strong>体系里真正的压舱石位置（自己写过）：</strong>P18 收租篮（BMY/T/奔驰/CPB，低波动+高分红+离场信号=分红被砍），以及灵魂第 9 条——小资金的真压舱在工资卡里，不在股票账户里。NKE 是进攻仓位里防守性最好的一个，但它仍是进攻仓位。
+</div>
+
+<p>想加仓的合法姿势（触发器早就写在 P24）：<strong>$34-36 深回带</strong>，或 10/1 财报右侧验证（收入止跌、大中华区企稳）后加——宁可多付 10% 买确定性。</p>
+</div>
+
+<!-- ============ 三、减仓三问与 A 策略拍板 ============ -->
+<div class="section">
+<h2>三、减仓三问与 A 策略拍板（P23 正式作废）</h2>
+
+<h3>第一问：浮亏的为什么也要减？——因为减仓依据从来不是盈亏</h3>
+<p>减仓依据是三件事：<strong>集中度</strong>（AVGO 27%）、<strong>事件日历</strong>（9 月财报窗口）、<strong>目标结构</strong>（4:3:3）。思想实验：今天拿等值现金，你会主动买入 27% 仓位的 AVGO 吗？如果不会，"继续持有 27%"和"用现金买回 27%"在经济上是同一个决定。<strong>持股成本价只存在于心理账本，市场只按明天的风险定价</strong>——这正是"小资金物理"里"成本价心理"条款的定义域。浮亏不是卖出那一刻才发生的，市值就是你的钱；卖不卖改变的不是已发生的亏损，而是这笔剩余的钱未来暴露在什么风险里。</p>
+
+<h3>第二问：新资金 +30% 进来还需要减吗？——分母效应算一遍</h3>
+<table>
+<thead><tr><th>标的</th><th>现在</th><th>新钱到账后（不卖）</th><th>P23 目标</th></tr></thead>
+<tbody>
+<tr><td>INTC</td><td class="num">33%</td><td class="num">~25.4%</td><td class="num">20%</td></tr>
+<tr><td>AVGO</td><td class="num">27%</td><td class="num">~20.8%</td><td class="num">15-18%</td></tr>
+<tr><td>NKE</td><td class="num">21%</td><td class="num">~16.2%</td><td class="num">12-15%</td></tr>
+<tr><td>ORCL</td><td class="num">16%</td><td class="num">~12.3%</td><td class="num">8%</td></tr>
+<tr><td>现金</td><td class="num">~3%</td><td class="num">~23%</td><td class="num">30%</td></tr>
+</tbody>
+</table>
+<p>新钱一进，四个标的全部向目标靠近一大截，NKE 直接落到"免卖金牌"区。但新钱替代不了两件事：<strong>绝对美元风险没降</strong>（崩盘时亏掉的美元数一分不少）；<strong>事件窗口在资金到账之前</strong>。</p>
+
+<h3>第三问：市场重评之后要不要更防守？——三条引线核查（9/6 实证）</h3>
+<ul>
+<li><strong>霍尔木兹：不是"是否开放"，是已半封锁 6 个月</strong>。Kpler 数据 9/1-3 每天仅 5-11 艘过峡（战前 ~100 艘/日、2000 万桶/日）；8/31 沙特 VLCC "Sidr" 被击中 2 名船员死亡；战争险保费 0.40%→1.25%；Brent $91.5 顶进框架区间上沿。<span class="red">关键增量：SPR 降至 2.87 亿桶 = 44 年新低——"生存式干预"三大工具之一的 SPR 压油价已经用光</span>，只剩约谈炼厂和逼伊朗回伊斯兰堡备忘录两条路</li>
+<li><strong>中期选举（11/3，剩 63 天）</strong>：汽油 $4.08/加仑 = 有记录以来最高的 8 月，生活成本是 47% 选民第一议题；特朗普支持率 33%（生涯最低），民主党经济议题十年来首次反超；Polymarket 众院翻盘概率 88%——特朗普必在选前解决油价，分支 A（备忘录回归→油价回落→选后 12/8-9 窗口）与分支 B（升级→Brent>100→提前引爆 AI 回调）构成 9 月后的主分岔</li>
+<li><strong>AI 泡沫的引线已具体化</strong>：沃什联储转鹰，JPM 等定价 9/16 FOMC 可能加息（10Y 多年高位）；结构分化（戴尔 AI 服务器 +15.3%、积压 $950 亿 vs MongoDB -13%、Guidewire -19.9%）= 市场已在杀"无订单的叙事"，只给"有合同的卖铲人"付钱</li>
+</ul>
+
+<h3>拍板：用户三轮讨论后正式选择 A 策略</h3>
+<div class="callout-red callout">
+<strong>A 策略档案（2026-09-06 正式立档）：</strong>满仓持有 + 30% 新资金做子弹。INTC 33 / AVGO 27 / NKE 21 / ORCL 16 全额不动，<strong>P23 减仓路线作废，4:3:3 目标搁置</strong>。成立前提：①崩盘日敢真金白银挂单买入 → C 档预挂单纪律（AVGO $272/$222、INTC $70-80/$55-65、NKE $34-36）；②新钱到账只进预挂单，不因"钱在账上"提前花；③代理人停止劝减，唯一记录在案的不同意见 = 9/10 ORCL 财报前锁一半（未采纳，尊重）。
+</div>
+
+<p>不减仓的自洽逻辑：接受浮亏 + 泡沫终会破 + 新资金提供子弹 + 不付现金仓位的机会成本 + 择时是负和游戏（扛过 -40% 与"卖了再低位买回"长期数学近似，还省两次择时错误的风险）。同时记录反向风险：<strong>A 策略的死穴只有一个——崩盘来了却没买</strong>。所以监督义务 = 若 AVGO 跌进 $272/$222，核对"你自己的单在这"（灵魂第 8 条：言行一致）。</p>
+</div>
+
+<!-- ============ 四、ORCL 评分科目 ============ -->
+<div class="section">
+<h2>四、ORCL 为什么两季财报一喜一悲：评分科目换了</h2>
+
+<table>
+<thead><tr><th></th><th>FY26Q1（2025/9 发布）</th><th>FY26Q4（2026/6 发布）</th></tr></thead>
+<tbody>
+<tr><td>业绩</td><td class="green">$3000 亿 OpenAI 合同、RPO +359%（未知信息）</td><td class="green">EPS $2.11 超 +8%、营收超、RPO $6380 亿再 +$850 亿、OCI +93%——全超</td></tr>
+<tr><td>边际信息</td><td>商业模式重估：软件商 → AI 基础设施卡位者</td><td class="red">全在成本端：FCF -$237 亿 / capex $557 亿（FY27 指引 ~$700 亿）/ 再融 $400 亿（含 $200 亿 ATM）/ 债破千亿 / 8/5 CDS 创纪录</td></tr>
+<tr><td>反应</td><td class="green"><strong>+36%</strong>（1992 年来最大跳空），一路涨到 10 月顶 $345.72</td><td class="red"><strong>次日 -8.5%，一个月 -21.7%</strong></td></tr>
+<tr><td>评分科目</td><td class="blue">叙事发现期：故事就给钱</td><td class="blue">资金期：故事要自证付得起</td></tr>
+</tbody>
+</table>
+
+<p><strong>同一份好成绩单，评分科目换了，得分就反转。</strong>市场给 Oracle 的定价走了三个阶段：2025/9 前看 EPS 和软件增速 → 叙事期看 RPO 和 AI 合同 → 2026/6 起看 FCF、capex、融资、CDS。<strong>"股票是被信用市场重定价的，不是被利润表。"</strong></p>
+
+<h3>"其他公司也一样"——对，但程度和底子不同</h3>
+<p>用户独立分析（第一次"自己先写预期"练习）指出负 FCF 是行业性的——核实属实：谷歌 2026Q2 FCF <span class="red">-59 亿</span>（2004 年 IPO 以来首次转负）、亚马逊 TTM -76 亿、Meta 现金一年 -91% 只剩 7.84 亿，微软是四大里唯一正 FCF（+196 亿）；美银测算八大 hyperscaler 合计 FCF：2025 +1800 亿 → 2026 <span class="red">-640 亿</span> → 2027 -1440 亿。市场 2026 年已不惩罚"负 FCF"本身，惩罚的是<strong>"融资路径的可信度"</strong>：</p>
+
+<table>
+<thead><tr><th></th><th>四大 hyperscaler 入局时</th><th>Oracle</th></tr></thead>
+<tbody>
+<tr><td>杠杆</td><td class="green">debt/EBITDA &lt;1x（几乎无债）</td><td class="red">债务 $1295 亿，评级 BBB-</td></tr>
+<tr><td>capex/OCF</td><td>微软 57% ~ 亚马逊 102%</td><td class="red">~175%，全场最差</td></tr>
+<tr><td>经营现金流</td><td>百亿级/年（微软 1830 亿）</td><td>$320 亿（现金牛未参赌，是退路）</td></tr>
+</tbody>
+</table>
+
+<p>同是借钱建数据中心，底子厚的叫"战略性投入"，底子薄的叫"融资依赖"——市场分开定价。另外"和前几年没大不同"不成立：capex/收入从 ~20% 升到 ~98%（$557 亿 vs 收入 ~$570 亿），商业模式从轻资产软件商换成重资产开发商，这是质变——灵魂第一条"必须建 vs 借钱建"的分野线。</p>
+</div>
+
+<!-- ============ 五、身份之赌 ============ -->
+<div class="section">
+<h2>五、一年收入的豪赌 + 外债：是"身份之赌"，不是孤注一掷</h2>
+
+<p>用一整年收入（$570 亿）外加新债去赌一个 2027 年后才收钱的产能——量级上是豪赌。但赌桌下有三层抵押物：<strong>①订单签了字</strong>（RPO $6380 亿 = 市值 1.4 倍、四客户各预付 >$80 亿、GPU 利用率 97.5%——赌的是"已签约需求按时消化产能"，不是"赌客户上门"）；<strong>②软件现金牛未参赌</strong>（$320 亿/年经营现金流是赌输后的退路）；<strong>③客户含主权级对手</strong>（VA 政府 $270 亿合同，不全靠 OpenAI）。</p>
+
+<div class="callout">
+<strong>赌输的形态不是破产，是"跌回原形"：</strong>AI 需求消化不及预期 → 收入盖不住折旧和利息（2027-29 是折旧压利润表的集中期）→ 评级再降、股权稀释、信用成本上升 → 从"AI 基础设施卡位者"跌回"一家老软件公司"，估值按旧身份重估（$158 往 $114 方向的故事）。赌赢 = 产能填满 → RPO 变现金 → 坐实"AI 基础设施第二极"（$254 目标价的世界）。<strong>杠杆放大器上的身份之赌：输了不死，掉一个估值层级；赢了，翻一个身份。</strong>灵魂第五条画像的标准案例。
+</div>
+
+<h3>$400 亿再融（债 + 股各半）对股价的四条通道</h3>
+<table>
+<thead><tr><th>通道</th><th>量级</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>① 利息</td><td>每年拖 EPS ~5-7%</td><td>$200 亿债 @ ~6.2%（BBB-）≈ 税后 $10 亿/年，永久性</td></tr>
+<tr><td>② 稀释</td><td>一次性 ~4-5%</td><td>$200 亿 ATM @ ~$150 → ~1.3 亿新股 / 28.8 亿股本；若回报跟不上，两项合计摊薄 ~11-12%</td></tr>
+<tr><td>③ 机械抛压</td><td>1-3%</td><td>ATM 滴滴状卖盘，混在日常波动里</td></tr>
+<tr><td>④ 信号</td><td class="red"><strong>最大</strong></td><td>股权融资 = 债市要价太贵的自白；谷歌增发 800 亿照涨（底子厚），同动作读成"扩张"还是"求救"由信用底子决定——6 月 -21.7% 的真凶之一</td></tr>
+</tbody>
+</table>
+
+<h3>ATM 执行现状（SEC 10-Q 实证，截至 2026/2/28）</h3>
+<ul>
+<li><strong>普通股 ATM：0 股未卖</strong>——$200 亿框架 2/2 设立（15 家承销、佣金 ≤0.5%），原文 "we have not sold any shares"</li>
+<li>已发生的股权融资 = <strong>$50 亿强制可转优先股</strong>（2/5 发行，6.5% 股息，2029/1/15 强制转股 → 未来 ~2500-3125 万股）；摊薄股数 28.74 亿 → 29.12 亿（+3800 万）</li>
+<li>债端：FY26 已发 $430 亿（2 月 $250 亿票据认购 $1290 亿，破 Meta 纪录——债市目前还愿意接）</li>
+<li>管理层口径"自然年内不发新债" → 剩余 ~$200 亿缺口大概率只能靠 ATM 滴滴卖股 = <strong>悬顶的 1 亿+ 股潜在供给</strong>；下一份披露 = 9/10 财报随附 10-Q</li>
+</ul>
+</div>
+
+<!-- ============ 六、9/10 考卷 ============ -->
+<div class="section">
+<h2>六、9/10 考卷（日期修正）：新闻流已迁移到信用频道</h2>
+
+<div class="callout-warn callout">
+<strong>★ 日期修正：</strong>Oracle 官方 9/2 通过 PRNewswire 宣布 FY2027 Q1 财报定于 <strong>9/10（周四）盘后 + 电话会</strong>——此前 9/14 为工作假设，主战场提前 4 天。
+</div>
+
+<h3>"最近没什么大新闻"是错觉：新闻流整体迁移</h3>
+<p>ORCL 的新闻不再发在"产品发布会"频道，全在<strong>信用和合同频道</strong>：7/9 标普降级 BBB-（细读原文：FY27 capex 指引上调至 $900-950 亿 / FOCF 赤字扩至 -$420 亿 / 杠杆 mid-4x 超 BBB 触发线 / <strong>OpenAI 占 RPO 一半</strong> / SpaceX 租算力给 Anthropic+谷歌 = 续约竞争 / 裁员 2.1 万人 $18 亿遣散费）；7 月中创 52 周低 $121.50（距高点 -63%）；9/4 VA 合同加码 $170 亿至 ~$270 亿（可延期 2031）。财报前静默期是惯例——真正要看的（ATM 执行 / RPO / capex 口径）按披露规则只会在 9/10 开柜。</p>
+
+<h3>上周四五逆势上涨解码（两天两个故事）</h3>
+<ul>
+<li><strong>9/3（周四）+5.7% 收 $154.04</strong>：不是逆势（指数涨），是跑赢大盘 4 倍。沃勒转鸽"倾向按兵不动" → 加息预期降温 → <strong>全场杠杆最重的名字（已发债 $430 亿 + 计划再融 $400 亿）反弹最猛</strong>——杀它的是利率，救它的也是利率。同日 Snowflake +16.6% 带动软件板块</li>
+<li><strong>9/4（周五）+3.08% 收 $158.78</strong>：真逆势（纳指 -0.29%，Guidewire -19.9%/UiPath -16.6%）。燃料 = VA 合同（资金期评分科目下最硬的答案：主权级客户直接给钱）+ Citi 重申买入 $330 + 8 月底 $139-142 支撑区的吸筹盘</li>
+</ul>
+
+<div class="callout">
+<strong>市场在上一课：</strong>同一周里杀"无订单的叙事软件"（Guidewire/UiPath/Adobe），给"背着千亿债但有签字合同"的 ORCL 付钱。判分标准 = P29 及格价 + P31 采用不等于买币的同一逻辑在美股的投影：<strong>故事期已过，只认签字的合同。</strong>但注意：$115→$158 的 +38% 反弹 + VA 利好 = 好消息又提前消化一层，及格线再抬高。
+</div>
+
+<h3>财报前抢跑 → 财报日一定砸盘吗？——不一定，砸的是"预期差"不是"涨幅"</h3>
+<p>上涨不欠市场一次下跌。sell the news 的唯一条件：<strong>财报公布的内容 ≤ 股价已定价的内容</strong>。ORCL 自己两份样本方向相反：2025/9 涨得更凶照样 +36%（给了没人知道的新叙事）；2026/6 涨得温和照样 -8.5%（没给新叙事还暴露融资缺口）。抢跑上涨唯一确定的作用是<strong>抬高及格线</strong>。三情景：顺风 ~30%（RPO 上台阶 + 融资口径安抚 → 期权上沿 $171 一步到位）/ 平淡 ~40%（全合格无新叙事 → 回 $145-150 找支撑，是"回落"不是"砸盘"）/ 砸盘 ~25-30%（RPO 失速或融资担忧重现 → $137 空头证伪锚，收破才打开 $114 空间）。</p>
+
+<h3>9/10 判分卡（三项 + 一条证伪线）</h3>
+<table>
+<thead><tr><th>判分项</th><th>好</th><th>平</th><th>差</th></tr></thead>
+<tbody>
+<tr><td><strong>RPO 环比</strong>（基数 $6380 亿，Q4 曾 +$850 亿）</td><td class="green">≥ +$500 亿，最好 6GW 新合同确认 + 预付/自备硬件（现 $750 亿）占比升</td><td class="yellow">+$200-500 亿 = 正常节奏，及格价 → 回 $145-150</td><td class="red">&lt;$200 亿或停滞，或 OpenAI 集中度进一步上升</td></tr>
+<tr><td><strong>ATM 执行</strong>（10-Q 披露）</td><td class="green">高位执行 &gt;$50 亿 + 重申年内不发新债</td><td class="yellow">小规模执行，或给出明确股权融资时间表</td><td class="red">0 执行 + 新开融资工具/发新债 = 融资路径存疑</td></tr>
+<tr><td><strong>capex 口径</strong>（管理层 ~$700 亿 vs S&amp;P $900-950 亿）</td><td class="green">维持 ~$700 亿或以下 + 预付覆盖升</td><td class="yellow">$800-900 亿但有新预付款对冲</td><td class="red">&gt;$950 亿且无对冲 = 确认 S&amp;P 悲观情景</td></tr>
+</tbody>
+</table>
+<p><strong>判分规则：</strong>好 ≥2 项 = 顺风；三项全平 = 及格价（概率最高）；任一项差 + <strong>收破 $137 = 复盘触发</strong>（下方重估区 $114）。期权隐含当晚 ±11.2%（$137-171），±10% 内属正常波动，不构成改判理由。当晚先看的不是营收 EPS，是 <strong>RPO 环比和 10-Q 里 ATM 执行那两行字</strong>。</p>
+</div>
+
+<!-- ============ 七、学习方法 ============ -->
+<div class="section">
+<h2>七、方法论沉淀：预测卡、AI 三红线与烧饼式决策</h2>
+
+<h3>为什么"预期→对照"必须自己先写</h3>
+<p>用户自评：长期投资者，"可以少赚，只要还在市场之上总会有机会"——这是一个完整自洽的哲学（错过美股最好的 10 个交易日，长期回报腰斩，而那 10 天都在恐慌最深处）。两大不确定性来源（知识匮乏 + 外界干扰）解法不同：知识用"预测→验证"循环补，噪音用"裁判日清单"滤。AI 辅助可以，但三条红线：</p>
+<ol>
+<li><strong>预期必须自己先写</strong>（哪怕粗糙），AI 只补数据不代写观点——粗糙的自己的预测，价值高于精致的别人的预测</li>
+<li><strong>对照的裁判是市场</strong>（实际 RPO、实际收盘价），不是 AI 的说法——K 线和财报数字才是老师</li>
+<li><strong>警惕回音壁</strong>：AI 会顺着你的框架往下讲，每次要同时要求"反方最强论证"</li>
+</ol>
+
+<pre>ORCL 财报预测卡（2026-09-06 填，9/10 财报后对照）
+0. baseline（用户已写）：生意没变差但变重了；负 FCF 是行业性的，
+   扣分项在杠杆不是亏损；融资口径比业绩更重要
+1. RPO 环比：$6380亿 → ______（增/平/减，幅度）
+2. 融资进展：管理层会说 ______（ATM 执行/新债/暂缓）
+3. 财报次日股价：______（方向 + 幅度）
+4. $137 证伪线：收在上方 / 下方 ______
+5. 三情景我的概率：顺风 __% / 平淡 __% / 砸盘 __%   ← 最值钱的一行</pre>
+
+<h3>烧饼式决策（本日新增黑话）</h3>
+<p>同一决定短时间反复翻转，每次依据不是新事实而是最近几天的行情。三特征：翻转频率高、依据是"最近的价格"、每次都觉得"这次是最后一次"。它比单次亏损更贵——交易成本按次数算，心理账本反复烤糊，且让预挂单、裁判价、C 档纪律全部失效（纪律建立在"决定一旦做出就执行到底"上）。<strong>合法的改主意 ≠ 烧饼</strong>：触发必须是新事实（RPO 结构变化、新合同、评级事件），形式必须是"今天想清楚 → 一次性改 → 写进笔记 → 之后不复盘该不该"。</p>
+
+<h3>信息分级过滤层</h3>
+<table>
+<thead><tr><th>级别</th><th>内容</th><th>处理</th></tr></thead>
+<tbody>
+<tr><td class="red"><strong>能改变决定的</strong></td><td>9/10 RPO 与 ATM 两行字、FOMC 议息、12 月 AVGO Q4、$137 证伪线</td><td>报数 + 判分卡执行</td></tr>
+<tr><td class="blue"><strong>只影响心情的</strong></td><td>盘中涨跌、投行目标价、民调、海峡航运数据、指数调仓</td><td>记一笔，等裁判日验证，<strong>不触发操作</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ============ 收束 ============ -->
+<div class="conclusion">
+<h2>一句话收束</h2>
+<p>这一天从"NKE 掉出标普 100"出发，最后落在两件事上：<strong>账户层面</strong>，A 策略正式立档——满仓持有、新资金做子弹、C 档预挂单是"崩盘敢买"的执行形式，P23 作废后不再劝减也不再劝加，只核对言行一致；<strong>认知层面</strong>，ORCL 教会我们评分科目会换——2025/9 市场按故事付钱，2026/6 起按信用付钱，9/10 这张考卷考的不是它赚多少，是它付不付得起自己的故事。浮盈浮亏决定心情，集中度、事件日历、科目切换才决定答案。</p>
+</div>
+
+<div class="quote" style="margin-top:22px;">
+<strong>体系灵魂第十七条 · 成本价不在定价公式里：</strong>市场不知道你的买入价，而且评分科目还会换——利润表、叙事、信用，一季换一次。所以该不该动仓位，问结构（集中度、事件日历、目标），不问浮盈浮亏；浮盈浮亏只决定心情，不决定答案。决定一旦做出就闭环——今天想清楚、写进笔记、执行到底，烧饼式翻面比任何单次亏损都贵。
+</div>
+
+<p style="margin-top:20px; font-size:12px; color:#86868b;">以上仅为个人认知范围内的理解，不构成任何投资建议。文中价格与数据为讨论时点抓取（2026/9/3–9/6 快照），实盘操作前请以实时行情复核。A 策略为本账户 2026-09-06 拍板的正式决策，作废 P23 减仓路线。</p>
+
+</div>
+</body>
+</html>

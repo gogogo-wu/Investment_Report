@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>注资的剪刀差：中美政策错位与 AI 资金暗线 · 灵魂第十八条</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #e5e5ea; line-height: 1.75;
+    padding: 40px 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin:0 auto; }
+  h1 {
+    font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    background: linear-gradient(120deg, #7aa2ff, #2997ff 55%, #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .subtitle { font-size: 14px; color: #86868b; margin-bottom: 12px; }
+  .badge-row { margin-bottom: 32px; display:flex; gap:8px; flex-wrap:wrap; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 4px; }
+  .badge-warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-red { background: rgba(239,68,68,.15); color: #f87171; }
+  .badge-green { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-blue { background: rgba(99,102,241,.15); color: #818cf8; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; font-weight: 700; color: #f5f5f7;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .section h3 { font-size: 15px; font-weight: 600; color: #d1d1d6; margin: 18px 0 8px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  thead th {
+    text-align: left; padding: 9px 12px; background: rgba(255,255,255,.06);
+    color: #98989d; font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top; }
+  tbody tr:hover td { background: rgba(41,151,255,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .red { color: #ff6961; font-weight: 600; }
+  .green { color: #4ade80; font-weight: 600; }
+  .yellow { color: #fbbf24; font-weight: 600; }
+  .blue { color: #8ab4ff; font-weight: 600; }
+
+  p { font-size: 14px; margin-bottom: 12px; }
+  ul, ol { font-size: 14px; margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; }
+
+  .callout {
+    border-left: 3px solid #2997ff; background: rgba(41,151,255,.08);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.08); }
+  .callout-red { border-left-color: #ef4444; background: rgba(239,68,68,.08); }
+  .callout-green { border-left-color: #22c55e; background: rgba(34,197,94,.08); }
+
+  .conclusion {
+    background: linear-gradient(135deg, rgba(41,151,255,.10) 0%, rgba(129,140,248,.08) 100%);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px 24px;
+    margin-top: 12px;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 10px; }
+
+  .quote {
+    border-left: 3px solid #48484a; background: rgba(255,255,255,.04);
+    padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: #d1d1d6;
+  }
+
+  .fig { margin: 18px 0 22px; }
+  .fig svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fig-cap { font-size: 12px; color: #86868b; margin-top: 8px; text-align: center; }
+
+  code {
+    font-family: "SF Mono", Consolas, monospace; font-size: 12.5px;
+    background: rgba(255,255,255,.08); padding: 1px 6px; border-radius: 4px; color: #f5f5f7;
+  }
+  pre {
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px; padding: 14px 18px; font-size: 12.5px; line-height: 1.7;
+    overflow-x: auto; margin: 12px 0 18px;
+    font-family: "SF Mono", Consolas, monospace;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>注资的剪刀差：中美政策错位与 AI 资金暗线</h1>
+<div class="subtitle">发散笔记 P33 · 2026 年 9 月 7 日 · 一条新闻的三层深挖：3600 亿注资 → 降息铺路与政策剪刀差 → 行业与美日传导 → 核心 AI 与中国版循环融资</div>
+<div class="badge-row">
+  <span class="badge badge-blue">特别国债 3000 亿 + 烟草 600 亿</span>
+  <span class="badge badge-warn">出口信用军备竞赛</span>
+  <span class="badge badge-red">算力贷 · Token 贷 · 中国版循环融资</span>
+  <span class="badge badge-green">灵魂第十八条</span>
+</div>
+
+<!-- ============ 一、事实链 ============ -->
+<div class="section">
+<h2>一、事实链：8 家金融央企，一次性补足 3600 亿</h2>
+
+<p>9/6 盘后，人寿、信保、太平、进出口银行、人保、再保、工商银行、农业银行八家中央金融企业同日公告：财政部注资。资金来源是今年政府工作报告部署的<strong>3000 亿特别国债</strong>（5/22、6/12 已招标），烟草系统配套出资 600 亿，合计 <strong>3600 亿</strong>，全部用于补充核心一级资本。</p>
+
+<table>
+<thead><tr><th>机构</th><th>方式</th><th>金额</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>农业银行</td><td>定增</td><td class="num">≤1600 亿</td><td>财政部 1300 + 烟草 300；核心一级 10.80% 六大行垫底（距 9% 监管线仅 1.8pct）→ 注资后约 11.41%</td></tr>
+<tr><td>工商银行</td><td>定增</td><td class="num">≤1000 亿</td><td>财政部 700 + 烟草 300</td></tr>
+<tr><td>中国人寿集团</td><td>直接注资</td><td class="num">350 亿</td><td>险资服务实体经济存量投资已超 6 万亿</td></tr>
+<tr><td>进出口银行</td><td>直接注资</td><td class="num">300 亿</td><td>总资产 6.06 万亿；前 5 个月外贸贷款投放 4900 亿</td></tr>
+<tr><td>中国人保</td><td>定增</td><td class="num">≤150 亿</td><td>财政部认购</td></tr>
+<tr><td>中国信保</td><td>直接注资</td><td class="num">100 亿</td><td>核心资本充足率 10.3%，<strong>距监管红线仅 0.3pct</strong>——这笔钱是"解封"性的</td></tr>
+<tr><td>中国太平</td><td>直接注资</td><td class="num">70 亿</td><td>—</td></tr>
+<tr><td>中国再保</td><td>内资股认购</td><td class="num">30 亿</td><td>1.33 元/股，较 H 股溢价</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<strong>里程碑</strong>：至此<strong>六大国有大行财政专项注资全覆盖</strong>（2025 年 5000 亿给中行/建行/交行/邮储 + 本轮工行/农行，两轮合计 7800 亿），且<strong>首次把政策性金融机构（进出口行、信保）和保险公司纳入同一注资框架</strong>——扩容本身就是信号。
+</div>
+</div>
+
+<!-- ============ 二、性质判读 ============ -->
+<div class="section">
+<h2>二、性质判读：不是救火，是蓄能；不是降息，是铺路</h2>
+
+<h3>蓄能而非救火</h3>
+<p>八家机构经营总体稳健、监管指标均在健康区间——这是"未雨绸缪"的前瞻性资本加固，与 1998 年（2700 亿特别国债救不良缠身的四大行）性质不同、与 2003 年汇金注资配合股改也不同。功能两端：防守端垫厚<strong>地产/城投转型的风险缓冲垫</strong>；扩张端按资本乘数测算，3000 亿可撬动约 <strong>4 万亿资产增量 ≈ GDP 的 3%</strong>。资金还有半闭环：财政部发债付息 → 但它是银行大股东 → 分红回流财政，成本比看起来低。</p>
+
+<h3>"财政先垫、货币后降"的协同顺序</h3>
+<p>注资是<strong>资本动作</strong>，降息是<strong>货币动作</strong>，公告里没有任何利率信号。但传导链是真实的：</p>
+<pre>降息 → 贷款利率降 → 息差进一步收窄 → 内源资本积累变慢
+→ 资本充足率逼近约束 → 放贷能力受限</pre>
+<p>即<strong>降息的最大障碍不在央行敢不敢降，在银行扛不扛得住</strong>。净息差已在历史低位，所以正确顺序是：财政先垫本钱 → 缓冲垫加厚 → 央行降息的空间才打开。注资不等于降息要来，但它是降息的前置条件之一——1998 年注资为那一轮银行改革和后续宽松铺路，是同构参照。</p>
+</div>
+
+<!-- ============ 三、政策剪刀差 ============ -->
+<div class="section">
+<h2>三、政策剪刀差：美国加息 × 中国放水，对美压力的三层读法</h2>
+
+<table>
+<thead><tr><th>层</th><th>结论</th><th>依据</th></tr></thead>
+<tbody>
+<tr><td class="blue">第一层：当期压力</td><td><strong>基本没有</strong></td><td>GDP 3% 的量级改变不了联储的政策函数；联储只看国内通胀与就业。短期成本反而是中国的——中美利差走阔，人民币承压，剪刀差的第一张账单是中国付的</td></tr>
+<tr><td class="yellow">第二层：贸易筹码</td><td><strong>实在</strong></td><td>进出口行（对外经贸贷款）+ 信保（出口信用保险）双双扩容 = 外贸对冲工具，出口信用保险扩面 = 关税打了还有保底——9/24 访美前先把谈判桌的底气垫厚</td></tr>
+<tr><td class="red">第三层：政策空间不对称</td><td><strong>长期的"压力"</strong></td><td>美国：财政空间受限、企业已高杠杆（ORCL"借钱建"画像）、政策方向收水（9/16 或加息）；中国：中央杠杆低弹药多、银行刚补足本钱、方向放水。若美国加息刺破 AI 泡沫被迫大幅转鸽，而中国宽信用稳住内需——下一阶段全球资本的相对吸引力判断可能翻转</td></tr>
+</tbody>
+</table>
+
+<div class="callout callout-warn">
+一句话：当期的压力可以忽略，<strong>错位竞赛才值得写进笔记</strong>——它接上 P32 时间轴的 9/24 访美与 12 月选后窗口两个节点：中美在谈判桌上的底气对比，正在被两条相反的政策路径改写。
+</div>
+</div>
+
+<!-- ============ 四、国内行业传导 ============ -->
+<div class="section">
+<h2>四、国内行业传导：五个梯队（按受益确定性排序）</h2>
+
+<table>
+<thead><tr><th>梯队</th><th>行业</th><th>传导逻辑</th></tr></thead>
+<tbody>
+<tr><td class="red">① 最直接</td><td><strong>出口制造四赛道</strong></td><td>进出口行 300 亿 + 信保 100 亿是全场信号最强的钱：机电成套设备与工程机械、新能源汽车（整车+海外建厂）、光伏组件、锂电池均在官方重点名录。出海企业同时拿到"资金弹药"（低息中长期信贷）和"风险盾牌"（高国别风险大额保单）</td></tr>
+<tr><td>②</td><td>银行信贷流向</td><td>工行+农行 2600 亿撬数万亿信贷，重点投向科技创新、绿色、普惠小微、县域三农；同时是地产/城投的风险缓冲垫</td></tr>
+<tr><td>③</td><td>保险与长钱</td><td>四家险企承保扩面（巨灾/航运/科技保险）+ <strong>险资入市</strong>——偿付能力提升 = A 股"长钱"供给增加，与"为降息铺路"形成内部闭环</td></tr>
+<tr><td>④</td><td>跨境电商 / 海外仓 / 海外 EPC</td><td>中信保承保与进出口行供应链金融覆盖面扩大，轻资产跨境商家按订单融资；海外建光伏电站的 EPC 有专项出口信贷配套</td></tr>
+<tr><td>⑤</td><td>基建与设备内需链</td><td>宽信用落地 = 开工与设备采购，间接受益但量最大</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ============ 五、出口信用军备竞赛 ============ -->
+<div class="section">
+<h2>五、对美日：这不是普通注资，是出口信用军备竞赛的加码</h2>
+
+<h3>尺度先摆出来</h3>
+<table>
+<thead><tr><th>指标</th><th>中国</th><th>美国</th></tr></thead>
+<tbody>
+<tr><td>中长期出口信贷年度授权（2023）</td><td class="red">$153 亿</td><td>$47 亿（3.3 倍差距）</td></tr>
+<tr><td>一带一路累计承保（Sinosure）</td><td class="red">$1.3 万亿+</td><td>—</td></tr>
+<tr><td>复杂项目融资审批时长</td><td>快</td><td>EXIM 平均 6–18 个月</td></tr>
+</tbody>
+</table>
+<p>EXIM 自己的 2026–2030 战略规划<strong>明确把中国写成基准对手</strong>（CTEP 转型出口计划、Project Vault、2025/10 AI Exports Program 全为此设）。美国商会 2026 年 5 月原话："我们输掉订单不是因为产品不行，是因为我们的融资基础设施在政治僵局里荒废了十年。"这次注资 = 对手刚想爬起来时又压一块砝码。</p>
+
+<h3>对美行业冲击清单</h3>
+<ul>
+<li><strong>工程机械 / 重型设备（卡特彼勒等）</strong>：亚非拉基建招标里"融资条件"常是决定性变量——中国标书背后站着进出口行低息贷款 + Sinosure 保单，美国标书背后只有商业利率</li>
+<li><strong>光伏 / 锂电 / 储能（First Solar 等）</strong>：面对的不是更便宜的中国产品，而是"更便宜 + 带保险 + 带融资"的打包方案——反补贴关税挡得住价格，挡不住融资结构</li>
+<li><strong>商业信用保险业</strong>：Sinosure 扩容压低全球保费定价，Allianz Trade / Coface / Atradius 的利润空间被挤压</li>
+<li><strong>政治层面</strong>：选前众院 88% 翻盘概率的背景下，"中国产能 + 国家融资输出"会成为两党共用的议题 → 更多反补贴调查</li>
+</ul>
+
+<h3>对日行业冲击清单（更痛）</h3>
+<ul>
+<li><strong>汽车是命门，且已在流血</strong>：2025 年中国全球销量 2700 万辆 vs 日本 2500 万辆——<strong>25 年的全球第一被夺走</strong>；中国全年出口超 700 万辆、比亚迪一家海外 104 万辆。公司层面：本田 FY2025 上市以来首次年度亏损（-4239 亿日元）、日产亏 5331 亿日元靠裁员关厂保命、丰田在华销量连续四个月下滑。最刺骨的两个信号：<strong>日产英国桑德兰工厂 2027 年起为中国品牌代工</strong>（竞争者变承包商）；丰田泰国基地采购中国零部件（供应链主导权易手）</li>
+<li><strong>工程机械（小松、日立建机）</strong>：与卡特彼勒同构，在一带一路腹地正面撞上中国融资包</li>
+<li><strong>造船</strong>：中韩日三国杀，中国船厂背后有 Sinosure 承保（散货船、集装箱船都是其官网挂的承保案例）</li>
+<li><strong>日系传统腹地（东南亚/中东/拉美）</strong>：利润奶牛地带正被一口口咬走；日企在华四成明确减投——<strong>中国宽信用惠及的是中国供应链自己，不是外企</strong></li>
+</ul>
+
+<h3>金融层的隐性传导（比行业冲击更根本）</h3>
+<pre>中美利差走阔 → 人民币温和贬值压力 → 中国出口商价格优势再加强一档
+→ 美日制造商被"利率差 + 汇率差"双重挤压</pre>
+<p>美国加息本想压通胀，但中国用宽信用对冲了需求端收缩——美国制造商（尤其资本品）反而承担高利率 + 强美元 + 中国补贴融资的三重压力。</p>
+</div>
+
+<!-- ============ 六、核心AI ============ -->
+<div class="section">
+<h2>六、对核心 AI：注资松绑的是"AI 资金主阀门"</h2>
+
+<h3>中国银行体系已是 AI 基建的主融资方（截至 2026 年 6 月末实证）</h3>
+<ul>
+<li><strong>中国银行一家</strong>：AI 全产业链综合金融资源已投放<strong>超 6600 亿</strong>，承诺未来五年<strong>不低于 1 万亿</strong>；为全国 30 余个大型智算中心新增 200 亿中长期授信（80% 投向八大国家算力枢纽）；摩尔线程（A股国产 GPU 第一股）、壁仞科技（H 股）的 IPO 保荐与股权投资均由其完成</li>
+<li><strong>产品三代进化</strong>：算力贷 → 算力券增信 → <strong>Token 贷</strong>——把 Token 消耗量、算力服务合约、算力应收账款直接变成授信依据（中行广州 Token 贷最高 3000 万/3 年）；上海农商行锁定 <strong>GPU、智算中心、具身机器人</strong>三大赛道、期限最长 10 年；江苏银行"算力算效评分模型"凭算力水平放大额度</li>
+<li>关键：AI 企业<strong>轻资产、无抵押、长周期、快迭代</strong>——正是核心一级资本消耗最大、息差收窄时银行最不敢碰的贷款类型。<strong>注资 2600 亿 → 工行农行资本松绑 → "敢放 10 年期无抵押 AI 贷"的约束解除 → 智算中心与国产 GPU 链资金扩张</strong>。不是补贴谁，是把 AI 基建的资金主阀门拧大一圈</li>
+</ul>
+
+<h3>国产 AI 芯片链：信贷 + IPO + 大基金的资本闭环已在转</h3>
+<ul>
+<li><strong>长鑫存储（CXMT）</strong>：7/27 科创板 IPO 募资 <strong>$86 亿</strong>（亚洲今年最大），295 亿募资 = 75 亿产线升级 + 130 亿 DRAM 17nm + 90 亿 HBM/3D 堆叠，其中约 220 亿直接变成<strong>北方华创、拓荆科技的设备订单</strong></li>
+<li><strong>HBM3E 已于 8 月底/9 月初小批量风险生产</strong>——阿里平头哥与寒武纪正在测试，2027 年放量；腾讯签 $29.4 亿长约；远期 20% 晶圆产能投 HBM；距三大厂（已上 HBM4E 样品）仍差一代产品、3–5 年综合差距</li>
+<li>宏观读数：2026 上半年中国半导体投资 <strong>8002 亿、同比 +72.4%</strong>；国产 AI 芯片需求约 400 万颗、交付 300 万颗，<strong>国产份额今年有望首破 50%</strong>——闭环三路（算力贷信贷 / 科创板 IPO / 大基金）里，注资加压的正是最瓶颈的"信贷"环</li>
+</ul>
+
+<h3>对美国核心 AI（持仓主线）：直接影响 ≈ 零，间接三条</h3>
+<p><strong>直接需求影响约等于零</strong>——美国 2024 年起禁售先进 HBM、GPU 管制持续，中国算力建设买不了 NVIDIA / AVGO / ORCL 的先进产品，两个 AI 宇宙在物理上已经分叉（灵魂 15 的现状）。间接影响三条：</p>
+<table>
+<thead><tr><th>通道</th><th>影响</th><th>对本体系的含义</th></tr></thead>
+<tbody>
+<tr><td class="red">① 存储温度计加中国变量（最重要）</td><td>CXMT 2027 年 HBM3E/DRAM 放量 = 全球 DRAM 供给端多一个国家资本撑腰的玩家</td><td>P26"内存超级周期"温度计加一行批注：<strong>中国信贷越宽 → 长鑫扩产越快 → 全球内存合同价见顶可能提前</strong>；MU+SKHY 路径 B（2027–28）的判断要加"长鑫良率爬坡"变量</td></tr>
+<tr><td>② 设备层卡点租金继续</td><td>长鑫 220 亿设备采购流向本土龙头——ASML/AMAT 拿不到也进不来</td><td>P30 双向卡点在 AI 层延续：EUV 天堑仍在（差 3–5 年），租金没收，但中国自给比例每季度都在爬</td></tr>
+<tr><td>③ AI 出口战开打</td><td>中行已为 260 余家 AI 出海企业授信超 730 亿——华为云、智算中心整套方案带中国融资去新兴市场</td><td>出口信贷军备竞赛剧本复制到 AI 基建；传统行业（汽车/工程机械）的今天，就是 AI 基建的明天</td></tr>
+</tbody>
+</table>
+
+<div class="callout callout-red">
+<strong>中国版循环融资审计（灵魂 18）</strong>：美国 AI 的循环融资长在<strong>企业债与表外</strong>（ORCL 发债建数据中心、投资人=供应商）；中国的长在<strong>银行表内</strong>——算力贷以 Token 消耗量为信用、智算中心以政府算力券增信，"需求"同样在被金融化。监管端已有人提醒：Token 调用量 ≠ 盈利，需防虚假流量。<strong>泡沫换宿主，审计不换问题</strong>：美国版问"单是客户下的，还是股东自己下的"；中国版问"Token 是真实业务烧的，还是为了贷款烧的"。
+</div>
+</div>
+
+<!-- ============ 七、持仓联动 ============ -->
+<div class="section">
+<h2>七、落回账户：联动与新增哨位</h2>
+
+<ul>
+<li><strong>INTC / AVGO / ORCL：无直接影响</strong>，不改变 9/10 ORCL 判分卡与 A 策略；间接通过内存温度计（CXMT 放量）和利率引线（美国侧）传导</li>
+<li><strong>大 A 国产算力链</strong>：注资传导确定性最高的方向（设备/存储/国产 GPU），但寒武纪们早就不在"及格价"——这是国家队叙事，不是收租标的；真要碰只配笼子仓 1–2% 等深回</li>
+<li><strong>新增哨位三个</strong>：① CXMT HBM3E 良率与 2027 放量节奏；② 全球 DRAM 合同价拐点（P26 温度计叠加中国供给读数）；③ 算力贷不良率的首份披露（中国版循环融资的体检报告）</li>
+<li><strong>观察篮校准</strong>：日本零件层标的（发那科/基恩士/尼得科）的下游日系整车与机械客户正在失血——尼得科撤资中国本身就是注脚，判断时加"下游失血"变量</li>
+</ul>
+</div>
+
+<!-- ============ 收束 ============ -->
+<div class="conclusion">
+<h2>一句话收束</h2>
+<p>3600 亿没有直接给任何行业一分钱，但它同时做了三件事：给中国金融舰队垫厚了本钱（蓄能），给未来的降息扫清了银行端的障碍（铺路），给 9/24 谈判桌装满了外贸弹药（筹码）。对美日的冲击不在当期汇率，在出口信用军备竞赛的尺度和政策空间的不对称；对核心 AI，它把中国宇宙的资金主阀门拧大一档——而两个宇宙各自的泡沫，宿主不同、审计问题相同。</p>
+</div>
+
+<div class="quote" style="margin-top:22px;">
+<strong>体系灵魂第十八条 · 泡沫会换宿主，审计不换问题：</strong>同一轮 AI 建设，美国的杠杆长在企业债与表外（发债建数据中心、投资人=供应商），中国的杠杆长在银行表内（算力贷以 Token 为信、算力券增信）。宿主可以换国家、换报表科目，但审计的问题永远只有一个——需求是真实客户下的，还是信贷自己下的；Token 是业务烧出来的，还是贷款烧出来的。看懂宿主在哪里，才知道下一张多米诺在谁手里。
+</div>
+
+<p style="margin-top:20px; font-size:12px; color:#86868b;">以上仅为个人认知范围内的理解，不构成任何投资建议。文中数据为讨论时点抓取（2026/9/6–9/7 快照），实盘操作前请以实时行情与官方公告复核。</p>
+
+</div>
+</body>
+</html>

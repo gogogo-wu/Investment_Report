@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>概率的摩擦日：全球加息共振、利率敏感度与预挂单的物理学</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #d1d1d6;
+    line-height: 1.85; font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
+  h1 {
+    font-size: 30px; font-weight: 700; line-height: 1.35; letter-spacing: .3px;
+    background: linear-gradient(120deg, #f5f5f7, #a5b4fc 60%, #7aa2ff);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    margin-bottom: 14px;
+  }
+  .meta { font-size: 12.5px; color: #86868b; margin-bottom: 26px; letter-spacing: .3px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 34px; }
+  .badge {
+    font-size: 11.5px; color: #a1a1a6; letter-spacing: .4px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
+    border-radius: 999px; padding: 3px 12px;
+  }
+  h2 {
+    font-size: 20px; font-weight: 600; color: #f5f5f7; letter-spacing: .3px;
+    margin: 46px 0 18px; padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  h3 { font-size: 16px; font-weight: 600; color: #e8e8ed; margin: 26px 0 10px; letter-spacing: .3px; }
+  p { margin: 0 0 14px; }
+  p b, li b { color: #f5f5f7; }
+  ul, ol { margin: 0 0 14px 22px; }
+  li { margin-bottom: 7px; }
+  .callout {
+    background: rgba(41,151,255,.07); border: 1px solid rgba(41,151,255,.22);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px;
+    font-size: 14.5px;
+  }
+  .callout .t { color: #7aa2ff; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .warn {
+    background: rgba(255,159,10,.07); border: 1px solid rgba(255,159,10,.28);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .warn .t { color: #ff9f0a; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .fix {
+    background: rgba(255,107,96,.07); border: 1px solid rgba(255,107,96,.30);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .fix .t { color: #ff6b60; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .soul {
+    background: linear-gradient(135deg, rgba(129,140,248,.10), rgba(41,151,255,.06));
+    border: 1px solid rgba(129,140,248,.30);
+    border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+  }
+  .soul .t { color: #a5b4fc; font-weight: 700; letter-spacing: 1px; font-size: 13px; margin-bottom: 8px; }
+  .soul p { margin: 0; font-size: 15.5px; color: #e8e8ed; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13.5px; }
+  th {
+    text-align: left; color: #86868b; font-weight: 600; font-size: 12px;
+    letter-spacing: .5px; padding: 8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.16); white-space: nowrap;
+  }
+  td { padding: 9px 10px; border-bottom: 1px solid rgba(255,255,255,.07); vertical-align: top; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .up { color: #ff6b60; } .down { color: #32d74b; }
+  .fig { margin: 20px 0 26px; }
+  .figcap { font-size: 12px; color: #6e6e73; text-align: center; margin-top: 6px; letter-spacing: .3px; }
+  .conclusion {
+    background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.10);
+    border-left: 3px solid #2997ff;
+    border-radius: 10px; padding: 18px 20px; margin: 24px 0; font-size: 15px;
+  }
+  .conclusion .t { color: #2997ff; font-weight: 600; font-size: 13px; letter-spacing: .6px; margin-bottom: 8px; }
+  .disc {
+    margin-top: 52px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08);
+    font-size: 12.5px; color: #6e6e73; text-align: center; letter-spacing: .5px;
+  }
+  svg { display: block; width: 100%; height: auto; }
+  code { background: rgba(255,255,255,.08); border-radius: 5px; padding: 1px 6px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>概率的摩擦日：全球加息共振、利率敏感度与预挂单的物理学</h1>
+<div class="meta">P36 · 2026 年 9 月 10 日 · 覆盖欧央行加息、美联储重定价、战争通胀引线点燃、利率敏感度原理拆解</div>
+<div class="badge-row">
+  <span class="badge">欧央行加息</span>
+  <span class="badge">PPI 5.4%</span>
+  <span class="badge">美联储 60%</span>
+  <span class="badge">战争通胀引线</span>
+  <span class="badge">分母与久期</span>
+  <span class="badge">预期摩擦</span>
+  <span class="badge">预挂单</span>
+</div>
+
+<h2>〇、大白话总评</h2>
+<p>今天盘前的下跌，欧央行加息只是"背锅的"——那次加息市场提前一周就定价了 99%，本身不构成新信息。<b>真正的驱动是三件事叠在一起</b>：美国 8 月 PPI 超预期（5.4%）把美联储 9/16 加息概率推到 60.2%、中东战火把布伦特推破 105 美元、10 年期美债收益率冲上 4.857%（2023 年 11 月以来最高）。我们一直担心的"9/16-18 双端挤压"，市场提前一周开始预演了。</p>
+<p>而"市场为什么对加息预期这么敏感、为什么感觉反复摩擦"——答案是两个物理机制：<b>利率是所有资产定价公式里的分母</b>，分母一动，所有资产都要重算一遍；而市场<b>交易的不是加息这个事实，是"加息概率"这个数字</b>——概率被每个数据揉来揉去，价格就跟着来回摩擦。摩擦期对小资金是噪音，对写好的预挂单是礼物。</p>
+<div class="callout"><div class="t">一句话版本</div>
+欧央行加的是已经定价的息；PPI 点的是美联储的概率；中东点的是 P34 里被我们标"降温"的战争通胀引线。三根针一起扎在同一个分母上——而分母上站着的，全是久期最长的 AI 股和中概。今晚只报数，9/16-18 才是裁判日。</div>
+
+<h2>一、今天盘前发生了什么：分清三层原因</h2>
+<table>
+  <tr><th>层</th><th>内容</th><th>是不是新信息</th></tr>
+  <tr><td><b>表面</b></td><td>欧央行加息 25bp：存款利率 2.50%、主要再融资 2.65%、边际贷款 2.90%</td><td>不是——期货此前定价 99%；掉期市场已定价欧英到 2027 年底各再加息约 90bp</td></tr>
+  <tr><td><b>真实一</b></td><td>美国 8 月 PPI 同比 +5.4%（预期 5.3%、前值 4.7%），环比 +0.4% 符合——数据公布后交易员已充分定价美联储 10 月加息</td><td><b>是——今天最锋利的一根针</b>。CME：9 月加息概率 60.2%，10 月累计 25bp 概率 54.3%、50bp 概率 17.3%</td></tr>
+  <tr><td><b>真实二</b></td><td>美军袭击哈尔克岛附近目标、沙特向 OPEC 通报产量骤降至 1990 年以来最低 → WTI 破 100（+4.78%）、布伦特破 105（+4.43%，5 月 21 日以来新高）</td><td><b>是——通胀重新点火</b>，而压油价的工具（SPR 2.87 亿桶、44 年新低）早已用光</td></tr>
+</table>
+<p>美股已经三连跌（道指 -0.77% 收 52380.66 创一个多月新低），今天盘前期指继续下挫：道指期货 <span class="down">-0.29%</span>、标普期货 <span class="down">-0.56%</span>、纳指期货 <span class="down">-1.19%</span>——纳指领跌本身就是"久期最长的先挨打"的盘面签名。</p>
+
+<h2>二、关键数据板（9/10 盘前快照）</h2>
+<table>
+  <tr><th>指标</th><th>读数</th><th>含义</th></tr>
+  <tr><td>10 年期美债收益率</td><td class="num"><span class="up">4.857%</span></td><td>2023 年 11 月以来最高；财政部把长债回购扩至 60 亿美元（平时的 3 倍），Wolfe Research 评价"规模远不足以实质影响长端，信号大于实质"</td></tr>
+  <tr><td>日银 9/18 加息概率</td><td class="num">97%</td><td>48 小时双端挤压的另一端照旧（P34 判断不变）</td></tr>
+  <tr><td>英国央行</td><td class="num">~90bp / 至 2027</td><td>掉期定价与欧央行同构——能源进口国的集体紧缩</td></tr>
+  <tr><td>现货黄金 / 白银</td><td class="num"><span class="down">4328（-1.66%）</span> / <span class="down">63.97（-4.89%）</span></td><td><b>金银铜齐跌 = 流动性挤压签名（2022 式），不是避险恐慌（2020 式）</b>——连避险资产都被抽血，钱在往国债和现金跑</td></tr>
+  <tr><td>纳斯达克中国金龙指数</td><td class="num"><span class="down">-2.09%</span></td><td>中概 = risk-off 首选出血口（对 TME 的预演）</td></tr>
+  <tr><td>英伟达</td><td class="num">美司法部反垄断调查</td><td>纽约时报：调查与 Groq 的 170 亿美元授权交易是否刻意设计规避审查——高久期 + 监管两条腿挨打</td></tr>
+  <tr><td>UBS 研报</td><td class="num">美股 = "久期最长"</td><td>美债收益率已至全球金融危机前水平，AI 股隐含创纪录现金流预期、对资本成本最敏感——与我们"借钱建的 AI"框架同款结论</td></tr>
+</table>
+
+<h2>三、全球央行共振：同一个星期的四个考场</h2>
+<table>
+  <tr><th>央行</th><th>状态</th><th>加息原因（各自不同）</th></tr>
+  <tr><td><b>欧央行</b>（9/10 已落）</td><td>+25bp 至 2.50%，年内或再加一次</td><td>能源进口通胀：8 月欧元区 HICP 3.3%，其中能源 +14.3%、核心仅 2.2%——通胀全是进口油气管子里灌进来的</td></tr>
+  <tr><td><b>美联储</b>（9/16）</td><td>加息概率 60.2%（一周前还不足一半）</td><td>油价反弹 + PPI 5.4%——同一个能源冲击的美国读法</td></tr>
+  <tr><td><b>日银</b>（9/18）</td><td>加息概率 97%，连续加息预期已定价</td><td>正常化：工资 3.9%、通胀超标、10Y JGB 破 3%（1996 年来首次）</td></tr>
+  <tr><td><b>英国央行</b></td><td>掉期定价 ~90bp / 至 2027</td><td>与欧元区同构：天然气进口依赖</td></tr>
+</table>
+<div class="callout"><div class="t">读法</div>
+四家央行加息的理由各不相同（能源冲击 / 油价反弹 / 正常化 / 天然气），但<b>方向第一次全部指向同一头：收紧</b>。对全球美元流动性而言，四台抽水机同时开动。这不是 2024 年那种"一家紧一家松"的分化行情，是共振——共振的杀伤力在于没有任何一家央行能提供缓冲。</div>
+<p>财政端还在火上浇油：特朗普承诺"共和党守住国会就给每名成年人发 5000 美元"——<b>更多国债供给 + 更多需求刺激，正好撞在收益率两年新高的枪口上</b>。财政和货币同时在给债市上压力，这就是"选前不确定"引线越来越热的具体形态。</p>
+
+<h2>四、原理一：分母与久期——利率怎么打进股价</h2>
+<p>股票的定价公式是大白话就是：<b>股价 ≈ 未来每一笔现金流 ÷（1+利率）^年数</b>。利率站在分母上，所以利率一动，全市场所有资产的价格都要重算一遍——不需要公司出任何坏消息。</p>
+<table>
+  <tr><th>一笔 100 美元的现金流</th><th class="num">折现率 3%</th><th class="num">折现率 5%</th><th class="num">折现率 7%</th><th class="num">3%→7% 跌幅</th></tr>
+  <tr><td><b>明年到期</b>（银行/能源/收租股的钱落点）</td><td class="num">97.1</td><td class="num">95.2</td><td class="num">93.5</td><td class="num"><span class="down">-3.7%</span></td></tr>
+  <tr><td><b>2028 年到期</b>（AI 变现首期的钱落点）</td><td class="num">91.5</td><td class="num">86.4</td><td class="num">81.6</td><td class="num"><span class="down">-10.8%</span></td></tr>
+  <tr><td><b>2035 年到期</b>（AI 叙事的钱落点）</td><td class="num">76.6</td><td class="num">64.5</td><td class="num">54.4</td><td class="num"><span class="down">-29.0%</span></td></tr>
+</table>
+<div class="fig">
+<svg viewBox="0 0 680 372" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>同一笔 100 美元现金流在不同折现率下的现值</title>
+<desc>三组柱状图：明年到期的 100 美元在三种折现率下几乎一样高，2035 年到期的 100 美元在 7% 折现率下只剩一半——钱的落点越远，被利率压得越狠</desc>
+<rect x="80" y="24" width="14" height="14" rx="3" fill="#5ac8fa"/><text x="102" y="36" font-size="12.5" fill="#d1d1d6">折现率 3%</text>
+<rect x="230" y="24" width="14" height="14" rx="3" fill="#ffd60a"/><text x="252" y="36" font-size="12.5" fill="#d1d1d6">折现率 5%</text>
+<rect x="380" y="24" width="14" height="14" rx="3" fill="#ff6b60"/><text x="402" y="36" font-size="12.5" fill="#d1d1d6">折现率 7%</text>
+<rect x="110" y="222.9" width="36" height="97.1" fill="#5ac8fa" opacity="0.85"/>
+<rect x="154" y="224.8" width="36" height="95.2" fill="#ffd60a" opacity="0.85"/>
+<rect x="198" y="226.5" width="36" height="93.5" fill="#ff6b60" opacity="0.85"/>
+<rect x="280" y="228.5" width="36" height="91.5" fill="#5ac8fa" opacity="0.85"/>
+<rect x="324" y="233.6" width="36" height="86.4" fill="#ffd60a" opacity="0.85"/>
+<rect x="368" y="238.4" width="36" height="81.6" fill="#ff6b60" opacity="0.85"/>
+<rect x="450" y="243.4" width="36" height="76.6" fill="#5ac8fa" opacity="0.85"/>
+<rect x="494" y="255.5" width="36" height="64.5" fill="#ffd60a" opacity="0.85"/>
+<rect x="538" y="265.6" width="36" height="54.4" fill="#ff6b60" opacity="0.85"/>
+<text x="128" y="214" font-size="11" fill="#d1d1d6" text-anchor="middle">97.1</text>
+<text x="172" y="216" font-size="11" fill="#d1d1d6" text-anchor="middle">95.2</text>
+<text x="216" y="218" font-size="11" fill="#d1d1d6" text-anchor="middle">93.5</text>
+<text x="298" y="220" font-size="11" fill="#d1d1d6" text-anchor="middle">91.5</text>
+<text x="342" y="225" font-size="11" fill="#d1d1d6" text-anchor="middle">86.4</text>
+<text x="386" y="230" font-size="11" fill="#d1d1d6" text-anchor="middle">81.6</text>
+<text x="468" y="235" font-size="11" fill="#d1d1d6" text-anchor="middle">76.6</text>
+<text x="512" y="247" font-size="11" fill="#d1d1d6" text-anchor="middle">64.5</text>
+<text x="556" y="257" font-size="11" fill="#d1d1d6" text-anchor="middle">54.4</text>
+<rect x="70" y="320" width="530" height="1.5" fill="rgba(255,255,255,.25)"/>
+<text x="172" y="344" font-size="13" fill="#86868b" text-anchor="middle">明年到期</text>
+<text x="342" y="344" font-size="13" fill="#86868b" text-anchor="middle">2028 年到期</text>
+<text x="512" y="344" font-size="13" fill="#86868b" text-anchor="middle">2035 年到期</text>
+</svg>
+<div class="figcap">图：同一笔 100 美元，到期越远、折现率越高，今天的现值被压得越扁（这就是"久期"）</div>
+</div>
+<p><b>"久期"的大白话：钱的落点越远，被分母压得越狠。</b>这直接解释了这轮挤压迫害名单的排序——AI/成长股（钱在 2028-2035）＞ 大盘 ＞ 防守股（钱在明年）。也解释了隔夜盘面：银行股、能源股逆势上涨，不是基本面变好了，是它们的钱落得近，分母对它们下手轻。而 AI 股的钱远、估值又高、筹码又挤——全场最敏感的人站在最拥挤的房间里。</p>
+
+<h2>五、原理二：市场交易的是概率，不是事件——摩擦的物理学</h2>
+<p>关键机制：<b>市场价格里早就包含了"60% 概率加息"这个预期</b>。所以让价格跳动的从来不是"加还是不加"这个结果，而是概率从 60% 变到 70% 的那一下。而概率是个连续变量，每个数据都能掰动它：</p>
+<table>
+  <tr><th>时间</th><th>事件</th><th>对加息概率的作用</th><th>市场动作</th></tr>
+  <tr><td>上周</td><td>沃勒转鸽、弱数据</td><td>概率往下压</td><td class="up">反弹</td></tr>
+  <tr><td>9/9</td><td>PPI 5.4% 超预期</td><td>概率抬到 60%+</td><td class="down">下挫</td></tr>
+  <tr><td>9/10 盘后</td><td>ORCL FY27Q1（对市场 = 风险偏好读数）</td><td>情绪重估</td><td class="down">±%</td></tr>
+  <tr><td>9/11（周五）</td><td>8 月 CPI——本周最大变量</td><td>概率再次重估</td><td class="down">±%</td></tr>
+  <tr><td>9/16 × 9/18</td><td>FOMC × 日银 48 小时</td><td><b>概率坍缩成 0 或 100</b></td><td>方向定音</td></tr>
+</table>
+<p>每次数据发布 = 概率重估一次 = 仓位调整一次 = 价格摩擦一次。<b>你觉得"反复"，是因为概率本来就在被反复摩擦</b>——这就是为什么 9/16 FOMC 是裁判日：只有事件落地，概率才能坍缩，摩擦才会停一轮。</p>
+<h3>三个放大器（为什么现在比以前更敏感）</h3>
+<ol>
+  <li><b>估值在高位</b>：同样的分母冲击，打在 25 倍 PE 上是 -4%，打在 40 倍 PE 上是 -7%——估值越高，分母弹性越大。UBS 点名 AI 股"隐含创纪录现金流预期"。</li>
+  <li><b>资金挤在同一个房间</b>：AI 是过去两年唯一的共识聚集地，被动与主动资金叠加，方向一致时没有对冲盘。</li>
+  <li><b>期权杠杆</b>：ORCL 财报隐含 ±11% 波动，说明市场用杠杆在交易事件——杠杆把概率的每一点变化放大成价格的大动作。</li>
+</ol>
+
+<h2>六、更正与升级：战争通胀引线点燃</h2>
+<div class="fix"><div class="t">判断更正（记录在案）</div>
+P34 里我们基于"伊朗阿曼安全航道协议"把战争通胀这条引线标成了<b>降温</b>，并推演"12/8-9 选后窗口概率升"。今天美军袭击哈尔克岛附近目标、沙特产量骤降至 1990 年以来最低、布伦特破 105——<b>这条判断被推翻，我收回"降温"的读法</b>。引线清单四条的新状态：</div>
+<table>
+  <tr><th>引线</th><th>状态</th><th>读数</th></tr>
+  <tr><td>① 战争通胀</td><td><b>点燃</b></td><td>Brent &gt;105 / WTI &gt;100；SPR 2.87 亿桶 = 压油价工具用光的判断开始兑现</td></tr>
+  <tr><td>② 选前不确定</td><td>热</td><td>5000 美元支票 + 11/3 中期选举；财政扩张 → 发债 → 收益率</td></tr>
+  <tr><td>③ 套息平仓与日元</td><td>9/18 兑现点</td><td>日银加息 97%；CFTC 净空 9.2 万手未平 = 赌的是路径（P34）</td></tr>
+  <tr><td>④ Anthropic 抽血</td><td>未到</td><td>10 月 IPO；mega-IPO 合计 &gt;$2400 亿</td></tr>
+</table>
+<p>四条引线<b>三条是热的</b>，而且 ①② 通过"油价→通胀→加息概率"这条链互相咬合。9/16-18 不再只是"利率事件"——它是三条热引线的第一次同时承压。</p>
+
+<h2>七、赢家输家地图（隔夜盘面实证）</h2>
+<table>
+  <tr><th>位置</th><th>谁</th><th>隔夜读数</th><th>逻辑</th></tr>
+  <tr><td class="up">赢</td><td>银行股</td><td>富国 +2%，摩根大通/花旗/美银齐涨</td><td>加息扩大净息差——标准加息交易</td></tr>
+  <tr><td class="up">赢</td><td>能源股</td><td>埃克森 +2%，雪佛龙/康菲/西方石油 +1%+</td><td>油价破 105 的直接受益人</td></tr>
+  <tr><td class="up">赢</td><td>存储链</td><td>SK 海力士 +7% 创历史新高、美光走强（但铠侠 CEO 警告 NAND 涨价已足）</td><td>内存超级周期仍在压过利率逆风——体温计读数</td></tr>
+  <tr><td class="down">输</td><td>高久期科技</td><td>谷歌 -2%+、亚马逊 -1%+，纳指期货 -1.19% 领跌</td><td>分母 + 久期，第四节公式的直接兑现</td></tr>
+  <tr><td class="down">输</td><td>中概</td><td>金龙指数 -2.09%，小马智行 -5%、理想 -4%+</td><td>risk-off 首选出血口（对 TME 的预演）</td></tr>
+  <tr><td class="down">输</td><td>金银铜</td><td>-1.66% / -4.89% / -3.55%</td><td>流动性挤压：不是恐慌，是抽水</td></tr>
+  <tr><td>复杂</td><td>脸书 / Meta</td><td class="up">+6.55%（两个月新高）</td><td>发布个人 AI 智能体 Muse 逆势大涨——个股叙事可以暂时跑赢分母，但跑不赢趋势</td></tr>
+</table>
+
+<h2>八、落回账户：摩擦期做什么、不做什么</h2>
+<table>
+  <tr><th>持仓</th><th>读法</th><th>动作</th></tr>
+  <tr><td>TME 25%</td><td>金龙 -2.09% = "进攻的波动"那一半正在兑现；risk-off 时中概是首选出血口</td><td>不动。盯 $7.94 观测线——有效跌破收不回 = "便宜的理由比想象的硬"</td></tr>
+  <tr><td>AVGO 27%</td><td>高久期 + NVDA 被调查拖累板块情绪，短期压力组合里最大</td><td>不动。272/222 挂单在下面接着</td></tr>
+  <tr><td>NKE 21%</td><td>防守属性，资金躲藏的去处</td><td>不动</td></tr>
+  <tr><td>现金 27%</td><td>全组合防守形态——9/8 重组的红利</td><td>别急着花。9/16-18 双加息若兑现，C 档挂单才真正进入有意义的世界</td></tr>
+</table>
+<p><b>不要做的两个动作</b>：一是恐慌抛售——中期选举前的 risk-off 往往是错窗口，你的体系是等裁判吹哨（灵魂四条）；二是觉得"欧央行都加了美联储肯定加"就提前下注——60% 不是 100%，今晚 ORCL 财报和周五 CPI 都可能改写概率。<b>可以做的唯一动作</b>：检查预挂单价格还挂着（AVGO 272/222、NKE 34-36），然后让摩擦去干活。</p>
+<div class="conclusion"><div class="t">一句话收束</div>
+市场被概率揉来揉去的时候，主动参与摩擦的那部分钱，就是在给预挂单送筹码。分母由央行定价，方向只在裁判日坍缩——9/16-18，48 小时，三条热引线的第一次同时承压。</div>
+
+<div class="soul"><div class="t">体系灵魂 · 第二十一条</div>
+<p>市场不为事实付钱，只为概率的抖动付钱——利率是所有资产的分母，分母天天被数据摩擦，方向只在裁判日坍缩。摩擦是噪音，预挂单是让噪音给自己打工的方式。</p></div>
+
+<div class="disc">以上仅为个人认知范围内的理解。</div>
+
+</div>
+</body>
+</html>

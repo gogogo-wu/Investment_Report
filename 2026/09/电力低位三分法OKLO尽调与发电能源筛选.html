@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>低位的三种成色：OKLO 尽调与发电能源低位标的筛选</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #d1d1d6;
+    line-height: 1.85; font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
+  h1 {
+    font-size: 30px; font-weight: 700; line-height: 1.35; letter-spacing: .3px;
+    background: linear-gradient(120deg, #f5f5f7, #a5b4fc 60%, #7aa2ff);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    margin-bottom: 14px;
+  }
+  .meta { font-size: 12.5px; color: #86868b; margin-bottom: 26px; letter-spacing: .3px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 34px; }
+  .badge {
+    font-size: 11.5px; color: #a1a1a6; letter-spacing: .4px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
+    border-radius: 999px; padding: 3px 12px;
+  }
+  h2 {
+    font-size: 20px; font-weight: 600; color: #f5f5f7; letter-spacing: .3px;
+    margin: 46px 0 18px; padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  h3 { font-size: 16px; font-weight: 600; color: #e8e8ed; margin: 26px 0 10px; letter-spacing: .3px; }
+  p { margin: 0 0 14px; }
+  p b, li b { color: #f5f5f7; }
+  ul, ol { margin: 0 0 14px 22px; }
+  li { margin-bottom: 7px; }
+  .callout {
+    background: rgba(41,151,255,.07); border: 1px solid rgba(41,151,255,.22);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px;
+    font-size: 14.5px;
+  }
+  .callout .t { color: #7aa2ff; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .warn {
+    background: rgba(255,159,10,.07); border: 1px solid rgba(255,159,10,.28);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .warn .t { color: #ff9f0a; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .fix {
+    background: rgba(255,107,96,.07); border: 1px solid rgba(255,107,96,.30);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .fix .t { color: #ff6b60; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .soul {
+    background: linear-gradient(135deg, rgba(129,140,248,.10), rgba(41,151,255,.06));
+    border: 1px solid rgba(129,140,248,.30);
+    border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+  }
+  .soul .t { color: #a5b4fc; font-weight: 700; letter-spacing: 1px; font-size: 13px; margin-bottom: 8px; }
+  .soul p { margin: 0; font-size: 15.5px; color: #e8e8ed; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13.5px; }
+  th {
+    text-align: left; color: #86868b; font-weight: 600; font-size: 12px;
+    letter-spacing: .5px; padding: 8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.16); white-space: nowrap;
+  }
+  td { padding: 9px 10px; border-bottom: 1px solid rgba(255,255,255,.07); vertical-align: top; }
+  td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+  .up { color: #ff6b60; } .down { color: #32d74b; }
+  .fig { margin: 20px 0 26px; }
+  .figcap { font-size: 12px; color: #6e6e73; text-align: center; margin-top: 6px; letter-spacing: .3px; }
+  .conclusion {
+    background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.10);
+    border-left: 3px solid #2997ff;
+    border-radius: 10px; padding: 18px 20px; margin: 24px 0; font-size: 15px;
+  }
+  .conclusion .t { color: #2997ff; font-weight: 600; font-size: 13px; letter-spacing: .6px; margin-bottom: 8px; }
+  .disc {
+    margin-top: 52px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08);
+    font-size: 12.5px; color: #6e6e73; text-align: center; letter-spacing: .5px;
+  }
+  svg { display: block; width: 100%; height: auto; }
+  code { background: rgba(255,255,255,.08); border-radius: 5px; padding: 1px 6px; font-size: 13px; }
+  .tier { border-radius: 12px; padding: 16px 18px; margin: 16px 0 22px; }
+  .tier .t { font-weight: 700; font-size: 13.5px; letter-spacing: .5px; margin-bottom: 8px; }
+  .tier1 { background: rgba(50,215,75,.06); border: 1px solid rgba(50,215,75,.24); }
+  .tier1 .t { color: #32d74b; }
+  .tier2 { background: rgba(255,159,10,.07); border: 1px solid rgba(255,159,10,.26); }
+  .tier2 .t { color: #ff9f0a; }
+  .tier3 { background: rgba(255,107,96,.07); border: 1px solid rgba(255,107,96,.28); }
+  .tier3 .t { color: #ff6b60; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>低位的三种成色：OKLO 尽调与发电能源低位标的筛选</h1>
+<div class="meta">P42 · 2026 年 9 月 14 日 · 从 OKLO 的两次腰斩出发，把「跌得多」拆成三种性质完全相反的原因，并给出电力板块的低位标的筛选 · 全部价格按 9/11 美东收盘标注</div>
+<div class="badge-row">
+  <span class="badge">OKLO</span>
+  <span class="badge">SMR</span>
+  <span class="badge">CEG · VST · TLN</span>
+  <span class="badge">灵魂 2 · 必须建 / 借钱建</span>
+  <span class="badge">灵魂 20 · 便宜的原因</span>
+  <span class="badge">低位三分法</span>
+</div>
+
+<h2>〇、大白话总评</h2>
+<p>OKLO 从 2025 年 10 月的高点 $193.84 跌到 9/11 的 $36.22，<b>腰斩再腰斩（-81.3%）</b>。跌成这样，第一反应自然是「能不能抄底」。但把下跌的原因拆开之后，结论很清楚：<b>这不是错杀，是公司在持续卖自己的股票</b>。</p>
+<p>而顺着这条线看整个发电能源板块，会发现一个更普遍的规律：<b>这一轮「跌得多」和「值得买」几乎不重叠</b>。板块里跌得最惨的是核电主题（-40% ~ -49%），但它们的估值仍然不低；真正便宜的是受监管公用事业——它们年内几乎没跌，只是横盘，而那个「便宜」是可以套框架看的。本篇把这个规律固化成三分法。</p>
+<div class="callout"><div class="t">一句话版本</div>
+<b>「低位」是三种完全不同的东西</b>：① 估值型低位（原因=资金抽离，基本面没坏）→ 可买；② 叙事杀估值型（原因=从叙事定价跌向下一档，价格低但估值不低）→ 等裁判日；③ 基本面恶化型（原因=真实风险）→ 低估值是风险补偿，不是折价。OKLO 属于第 ② 类里最坏的一种变体：<b>下跌的原因是公司自己在稀释股东</b>。
+</div>
+
+<h2>一、OKLO 尽调：三层原因与三关判分</h2>
+
+<h3>1.1 价格轨迹</h3>
+<table>
+  <tr><th>时间</th><th class="num">价格</th><th>说明</th></tr>
+  <tr><td>2025-10（盘中高点）</td><td class="num">$193.84</td><td>核电主题最热时</td></tr>
+  <tr><td>2026-09-09</td><td class="num">$42.57</td><td>—</td></tr>
+  <tr><td>2026-09-10</td><td class="num">$39.88</td><td class="down">-6.32%</td></tr>
+  <tr><td><b>2026-09-11（最近完整收盘）</b></td><td class="num"><b>$36.22</b></td><td class="down">-9.18%，换手 12.15%、成交 2,259 万股</td></tr>
+  <tr><td>2026 年内</td><td class="num down">-49.5%</td><td>距高点约 <b>-81.3%</b></td></tr>
+</table>
+
+<h3>1.2 跌因分三层</h3>
+<div class="fix"><div class="t">第一层 · 直接催化：新一轮 $10 亿 ATM 股权增发（这才是 9/11 -9.18% 的原因）</div>
+<ul>
+  <li>文件：8-K，<b>2026-09-11 签署</b>；内容：新一轮 <b>$10 亿 ATM（at-the-market，随市发行）</b>。</li>
+  <li>代理方：高盛 / BofA / Citi / JPM / 摩根士丹利等 <b>10 家投行</b>，佣金上限 1.5%。</li>
+  <li>前情：取代 5/13 那轮<b>已用尽</b>的 $10 亿 ATM（上一轮实际卖出 17,971,448 股）。</li>
+  <li>冲击：按市值约 $63 亿计算，潜在新增供给约 <b>16%</b>——<b>稀释是立即定价的，股票还没发出去，价格先跌</b>。</li>
+</ul>
+</div>
+<div class="warn"><div class="t">第二层 · 中期积压</div>
+<ul>
+  <li><b>PJM 把俄亥俄 750 MW 混合项目踢出并网研究队列</b>（150 MW 先进核 + 300 MW 燃料电池 + 300 MW 天然气），理由是电压骤变时的稳定性顾虑。Oklo 已向 FERC 提紧急投诉，但公司自己承认商业化可能<b>延迟至少 14 个月</b>。</li>
+  <li><b>高利率</b>抬升长周期项目资本成本——对零收入公司伤害加倍。</li>
+  <li><b>内部人 12 个月 60 笔卖出、0 笔买入</b>（CEO Dewitte 卖 8 万股，CPO Renner 卖约 $7.4 万）。</li>
+  <li>Holtec 入场加剧竞争。</li>
+</ul>
+</div>
+<div class="callout"><div class="t">第三层 · 机制：负反身性螺旋（这才是关键）</div>
+ATM 让股价变成公司的融资工具 —— <b>股价跌 → 同样要 $10 亿就得多发股 → 摊薄更多 → 再跌</b>。这不是「别人恐慌我贪婪」的场景，<b>恐慌的卖家就是公司自己</b>。
+</div>
+
+<h3>1.3 家底（2026 Q2，8/7 披露，截至 6/30）</h3>
+<table>
+  <tr><th>项目</th><th class="num">数值</th></tr>
+  <tr><td>现金 + 有价证券</td><td class="num"><b>$30 亿</b>（$16 亿现金 + $14 亿有价证券）</td></tr>
+  <tr><td>单季净亏损 / EPS</td><td class="num">-$48.54M / -$0.28</td></tr>
+  <tr><td>年内经营现金流出</td><td class="num">$65.5M（<b>指引上调</b>至全年 $120–150M，原 80–100M）</td></tr>
+  <tr><td>年内 capex</td><td class="num">$126.9M（<b>指引上调</b>至全年 $400–500M，原 350–450M）</td></tr>
+  <tr><td>收入</td><td class="num">Q1 为 $0；Q3 预测 $26.18 万；同位素收入要等 2027 初</td></tr>
+  <tr><td>总股本 / 市值 / EV</td><td class="num">1.74 亿股 / 约 $63 亿 / 约 <b>$33 亿</b>（净现金占市值约 48%）</td></tr>
+</table>
+<p><b>指引两个方向都在往上调</b>（烧钱加速），这是它此刻还要发 $10 亿的核心原因。</p>
+
+<h3>1.4 用体系判分：三关一关都过不了</h3>
+<table>
+  <tr><th>关卡（灵魂二十条）</th><th>OKLO</th></tr>
+  <tr><td><b>① 便宜吗</b>（灵魂 2 / 14）</td><td>✗ 剔掉净现金，EV $33 亿买一个 0 收入、2028 才可能发电的公司 = <b>无锚定价</b></td></tr>
+  <tr><td><b>② 为什么便宜</b>（灵魂 20）</td><td>✗ 答案不是「叙事退潮」，是<b>公司自己在持续供给股票</b>。这个原因不会因为「价值被发现」消失，只会在融资需求消失时停止</td></tr>
+  <tr><td><b>③ 火灾时谁先跑</b>（灵魂 20 后半）</td><td>✗ 答案极其清楚：<b>内部人先跑，公司自己先跑</b></td></tr>
+</table>
+<div class="fix"><div class="t">与 CHKP 的对照（同一板块的两种「跌」）</div>
+同样是「跌很多」，性质完全相反：<b>CHKP 便宜的原因是叙事退潮 + 公司在回购分红</b>（P40）；<b>OKLO 便宜的原因是公司在增发</b>。<b>判别的唯一方法就是看「谁在卖」</b>——市场在卖、公司在买 = 可以研究；市场在卖、公司也在卖 = 直接排除。
+</div>
+
+<h3>1.5 公平起见：多头逻辑也不弱</h3>
+<p>Groves 同位素设施 11 个月首次临界（私营绿地反应堆最快记录）、DOE 批准 Aurora-INL 的 PDSA、$60M Genesis 奖、Centrus 的 HALEU 燃料 LOI（2029 交付）、收购 ARMEC / Creative Engineers、探索 Meta / Equinix 预付款、与 NVIDIA 和洛斯阿拉莫斯合作。卖方：Piper Sandler 9 月初首次覆盖给 Overweight / 目标 $55，卖方均值目标约 <b>$86.20</b>（最低 $14 / 最高 $140）；但 Barchart 技术面意见是 <b>100% SELL</b>，两派完全对冲。</p>
+<div class="warn"><div class="t">目标价不是 12 个月路径</div>
+那是把 2028 的假设折回来的数字，贴现率一动就全变——<b>灵魂第十七条：成本价不在定价公式里</b>。
+</div>
+
+<h3>1.6 该怎么办</h3>
+<p><b>不建议抄。</b>若要留在观察篮，只盯三个变量（都是二元触发，不是价格触发）：</p>
+<ul>
+  <li><b>FERC 对俄亥俄项目的裁决</b> —— 近期唯一真变量。胜诉并恢复并网队列 = 真利好。</li>
+  <li><b>新一轮 $10 亿 ATM 的使用速度</b> —— 若在 $36 以下仍被快速用掉，说明现金需求急、继续看空；若季度报显示几乎没用，说明公司不急，才是见底信号。</li>
+  <li><b>第一份有约束力（binding）的售电协议</b> —— 现在手上都是 LOI 和非绑定意向。</li>
+</ul>
+<p><b>若仍然想参与</b>：按灵魂第九条关进笼子，单标的 <b>≤1%</b>，且定性为<b>彩票而非配置</b>。电力敞口你的 P15 六标的（CEG / VST / TLN / CCJ / LEU / EME）是更优解——<b>人家已经在发电、有现金流和 ROIC，OKLO 连反应堆都还在图纸阶段</b>。</p>
+
+<h2>二、从 OKLO 到整个板块：低位的三种成色</h2>
+<p>把 OKLO 这个案例放大到整个发电能源板块，规律就出来了。板块里 60+ 只标的按<b>下跌的原因</b>分三档，性质完全不同：</p>
+
+<div class="tier tier1"><div class="t">第一档 · 估值型低位 —— 真便宜（唯一能用框架看的）</div>
+受监管公用事业与燃气分销：PE 9–18 倍、PB 1.1–2.1 倍、股息率 3.6%–5.4%。现金流是<b>监管核准的「收费公路」模型</b>（州公用事业委员会核准的 ROE），不是周期品。跌的原因不是基本面，是<b>资金被 AI 叙事抽走 + 利率压制</b>——与 P40 的 CHKP 同一个结构：叙事退潮、基本面没坏。
+</div>
+
+<div class="tier tier2"><div class="t">第二档 · 叙事杀估值型 —— 价格低、估值不低</div>
+核电与 SMR 主题。它们不是「跌到便宜」，是<b>从叙事定价跌回叙事定价的下一档，从来没有便宜过</b>。这一档要等的是裁判日（FERC 裁决、NRC 许可、首份有约束力售电协议），不是价格。<b>OKLO 属于这一档里最坏的变体</b>——别人是等裁判，它是边等边稀释。
+</div>
+
+<div class="tier tier3"><div class="t">第三档 · 基本面恶化型 —— 便宜有硬理由</div>
+加州两家电力公司。全板块估值最低，但低估值来自<b>野火责任与监管不确定性</b>，不是市场错判。<b>低估值在这里是风险的补偿，不是折价</b>。
+</div>
+
+<div class="warn"><div class="t">反面提醒</div>
+这个板块里「跌得多」最容易被误读成「便宜」。正确的做法是把两件事拆开看——<b>横轴是年内涨跌幅，纵轴是 PE</b>。左下角才是真正的低位候选；右下角是「跌了很多但依然贵」；右上角是「已经不便宜但基本面最好」。
+</div>
+
+<h2>三、第一档清单：估值型低位（基准 2026-09-11 收盘）</h2>
+<p style="font-size:13px;color:#a1a1a6;">筛选条件：PE(TTM) &lt; 18 倍、PB &lt; 2.2 倍、股息率 ≥ 3.5%。</p>
+<table>
+  <tr><th>代码</th><th>名称</th><th class="num">收盘价</th><th class="num">PE(TTM)</th><th class="num">PB</th><th class="num">股息率</th><th class="num">距52周低点</th><th class="num">年内</th><th class="num">近60日</th></tr>
+  <tr><td><code>SR</code></td><td>Spire（燃气分销）</td><td class="num">80.20</td><td class="num">8.97</td><td class="num">1.32</td><td class="num">4.11%</td><td class="num">+11.5%</td><td class="num down">-0.11%</td><td class="num up">+3.37%</td></tr>
+  <tr><td><code>AVA</code></td><td>Avista（电+气）</td><td class="num">36.79</td><td class="num">13.28</td><td class="num">1.09</td><td class="num">5.35%</td><td class="num">+8.8%</td><td class="num down">-1.01%</td><td class="num down">-9.17%</td></tr>
+  <tr><td><code>UGI</code></td><td>UGI（燃气分销）</td><td class="num">37.99</td><td class="num">12.62</td><td class="num">1.56</td><td class="num">3.95%</td><td class="num">+23.9%</td><td class="num up">+3.64%</td><td class="num up">+10.89%</td></tr>
+  <tr><td><code>EXC</code></td><td>Exelon 爱克斯龙（输配电垄断）</td><td class="num">43.16</td><td class="num">15.87</td><td class="num">1.50</td><td class="num">3.85%</td><td class="num">+5.1%</td><td class="num up">+1.76%</td><td class="num down">-6.48%</td></tr>
+  <tr><td><code>ES</code></td><td>Eversource（电+气）</td><td class="num">68.52</td><td class="num">17.80</td><td class="num">1.56</td><td class="num">4.50%</td><td class="num">+13.9%</td><td class="num up">+4.06%</td><td class="num down">-1.82%</td></tr>
+  <tr><td><code>DUK</code></td><td>杜克能源（受监管）</td><td class="num">119.42</td><td class="num">17.93</td><td class="num">1.73</td><td class="num">3.58%</td><td class="num">+7.6%</td><td class="num up">+4.55%</td><td class="num down">-4.44%</td></tr>
+  <tr><td><code>PEG</code></td><td>PSEG 公务集团</td><td class="num">72.39</td><td class="num">18.01</td><td class="num">2.08</td><td class="num">3.65%</td><td class="num">+0.7%</td><td class="num down">-7.50%</td><td class="num down">-9.68%</td></tr>
+  <tr><td><code>AES</code></td><td>AES 爱依斯电力（含可再生）</td><td class="num">14.79</td><td class="num">5.65</td><td class="num">2.14</td><td class="num">4.76%</td><td class="num">+25.9%</td><td class="num up">+6.91%</td><td class="num up">+2.23%</td></tr>
+</table>
+<p style="font-size:13px;color:#6e6e73;">AES 的 PE 虽最低（5.65 倍），但 PB 2.14、且含高杠杆可再生资产，风险高于纯受监管型，故列同组末位。<b>估值必用自身历史分位校验</b>——低 PE 不等于便宜，需确认不在盈利周期顶部（本表为公用事业，属监管定价，风险相对可控）。</p>
+
+<h2>四、第二档清单：叙事杀估值型</h2>
+<table>
+  <tr><th>代码</th><th>名称</th><th class="num">年内</th><th class="num">PE(TTM)</th><th class="num">PB</th><th>等的是什么</th></tr>
+  <tr><td><code>OKLO</code></td><td>Oklo（SMR）</td><td class="num down">-49.5%</td><td class="num">负</td><td class="num">—</td><td>FERC 裁决 + ATM 使用速度 + 首份 binding 售电协议（<b>三家全等</b>）</td></tr>
+  <tr><td><code>SMR</code></td><td>NuScale</td><td class="num down">-39.2%</td><td class="num">负</td><td class="num">—</td><td>NRC 许可进展、订单落地</td></tr>
+  <tr><td><code>LEU</code></td><td>Centrus Energy</td><td class="num down">-37.3%</td><td class="num">80.59</td><td class="num">—</td><td>HALEU 产能与政府订单</td></tr>
+  <tr><td><code>NRG</code></td><td>NRG Energy</td><td class="num down">-28.05%</td><td class="num">29.55</td><td class="num">—</td><td>数据中心直供合同</td></tr>
+  <tr><td><code>TLN</code></td><td>Talen Energy</td><td class="num down">-16.6%</td><td class="num">—</td><td class="num">9.27</td><td>核电 PPA 续约</td></tr>
+  <tr><td><code>BWXT</code></td><td>BWX Technologies</td><td class="num down">-12.8%</td><td class="num">38.89</td><td class="num">10.31</td><td>海军核动力 + 商用订单</td></tr>
+  <tr><td><code>CEG</code></td><td>Constellation 星座能源</td><td class="num down">-19.05%</td><td class="num">—</td><td class="num">—</td><td><b>距 52 周低点 +24.7%</b>——基本面最好、位置最高，属「好资产不便宜」</td></tr>
+</table>
+<div class="callout"><div class="t">注意 CEG 的位置</div>
+板块基本面最好（19–23 家机构覆盖、9 月买入占比 87%、目标均价 $349.89），但距 52 周低点仍有 +24.7%。<b>好资产不便宜，这正是灵魂第二条「赚必须建的钱，等借钱建的崩」的另一面</b>——必须建的资产不会给你低价，只能等系统性回调。
+</div>
+
+<h2>五、第三档清单：基本面恶化型（回避）</h2>
+<table>
+  <tr><th>代码</th><th>名称</th><th class="num">收盘价</th><th class="num">PE(TTM)</th><th class="num">PB</th><th class="num">股息率</th><th>为什么便宜</th></tr>
+  <tr><td><code>EIX</code></td><td>Edison International</td><td class="num">56.00</td><td class="num">5.78</td><td class="num">—</td><td class="num">6.18%</td><td>加州野火责任 + 监管不确定性；近 20 日 -24.00%</td></tr>
+  <tr><td><code>PCG</code></td><td>PG&amp;E</td><td class="num">13.80</td><td class="num">9.93</td><td class="num">0.94</td><td class="num">—</td><td>PB 已破净；野火责任与重组历史</td></tr>
+</table>
+<p style="font-size:13px;color:#a1a1a6;">全板块估值最低的两只都在这一档。低估值在这里是<b>风险的补偿</b>，不是折价——<b>便宜要能回答「为什么便宜」，而这里的答案是不可控的监管与法律责任</b>。</p>
+
+<div class="soul"><div class="t">灵魂第二十七条：低位的三种成色（跌得多 ≠ 便宜）</div>
+<p>「低位」不是一种状态，是三种完全不同的原因，对应三种完全不同的动作：<b>① 估值型低位</b>——下跌原因是资金抽离 / 利率压制，基本面未变，可以套「验证型挑低估」的四筛子买入；<b>② 叙事杀估值型</b>——下跌原因是定价锚从叙事跌向下一档，价格低但估值仍高，要等的是裁判日而非价格；<b>③ 基本面恶化型</b>——下跌原因是真实风险暴露，低估值是风险补偿不是折价，应当回避。<b>判别方法只有一个动作：问「谁在卖」</b>。市场在卖、公司在回购分红 = 第 ① 类；市场在卖、公司中立 = 第 ② 类（等裁判）；市场在卖、公司也在增发 = 最坏变体（如 OKLO 的 ATM 负反身性螺旋），此时恐慌的卖家就是公司自己。</p>
+</div>
+
+<div class="conclusion"><div class="t">落回账户</div>
+<ul>
+  <li><b>中期第一优先</b>：<code>EXC</code> / <code>PEG</code> / <code>DUK</code> / <code>SR</code> / <code>AVA</code>——第一档里距 52 周低点最近、股息最高的组合。<code>PEG</code> 距低点仅 +0.7%、<code>EXC</code> 仅 +5.1%。</li>
+  <li><b>中期第二优先（等回调）</b>：<code>CEG</code> / <code>VST</code>——基本面最好但位置最高。</li>
+  <li><b>短期：全板块不追</b>——<b>9/16 FOMC</b> 是最近裁判日，利率敏感度对该板块是头号变量。</li>
+  <li><b>OKLO：不建议抄</b>。若坚持参与，按灵魂第九条关笼子，单标的 ≤1%，定性为彩票。观察三个二元变量（FERC / ATM 速度 / binding PPA），不是观察价格。</li>
+  <li><b>回避</b>：<code>EIX</code> / <code>PCG</code>。</li>
+  <li><b>电力敞口的最优解仍是 P15 六标的</b>（CEG / VST / TLN / CCJ / LEU / EME）——已在发电、有现金流与 ROIC，不需要在「图纸阶段」的公司上下注。</li>
+</ul>
+</div>
+
+<div class="disc">
+数据口径：全部价格为 2026-09-11（周五）美东收盘（9/12、9/13 休市，9/14 美东未开盘，故无 9/14 收盘价；文中提及的 9/14 盘前价为美东当日早间快照，非收盘价）。估值与涨跌幅来自 westock-data / agentic_search，PE 为 TTM 口径。<b>「—」表示该数据未取到或口径不适用，不做推测填补。</b> OKLO 财务与文件信息来自公司 8-K 与 2026Q2 财报（2026-08-07 披露）；卖方目标价为研报引用，属非一手来源、需核实原文。<br><br>
+以上仅为个人认知范围内的理解，非投资建议。所有数字与判断随市场演化可能迅速失效，请独立思考并自负盈亏。
+</div>
+</div>
+</body>
+</html>

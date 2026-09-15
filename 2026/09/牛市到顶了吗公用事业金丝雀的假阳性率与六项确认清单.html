@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>牛市到顶了吗：公用事业金丝雀的假阳性率与六项确认清单</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #d1d1d6;
+    line-height: 1.85; font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
+  h1 {
+    font-size: 30px; font-weight: 700; line-height: 1.35; letter-spacing: .3px;
+    background: linear-gradient(120deg, #f5f5f7, #a5b4fc 60%, #7aa2ff);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    margin-bottom: 14px;
+  }
+  .meta { font-size: 12.5px; color: #86868b; margin-bottom: 26px; letter-spacing: .3px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 34px; }
+  .badge {
+    font-size: 11.5px; color: #a1a1a6; letter-spacing: .4px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
+    border-radius: 999px; padding: 3px 12px;
+  }
+  h2 {
+    font-size: 20px; font-weight: 600; color: #f5f5f7; letter-spacing: .3px;
+    margin: 46px 0 18px; padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  h3 { font-size: 16px; font-weight: 600; color: #e8e8ed; margin: 26px 0 10px; letter-spacing: .3px; }
+  p { margin: 0 0 14px; }
+  p b, li b { color: #f5f5f7; }
+  ul, ol { margin: 0 0 14px 22px; }
+  li { margin-bottom: 7px; }
+  .callout {
+    background: rgba(41,151,255,.07); border: 1px solid rgba(41,151,255,.22);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px;
+    font-size: 14.5px;
+  }
+  .callout .t { color: #7aa2ff; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .warn {
+    background: rgba(255,159,10,.07); border: 1px solid rgba(255,159,10,.28);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .warn .t { color: #ff9f0a; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .fix {
+    background: rgba(255,107,96,.07); border: 1px solid rgba(255,107,96,.30);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .fix .t { color: #ff6b60; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .good {
+    background: rgba(50,215,75,.06); border: 1px solid rgba(50,215,75,.24);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .good .t { color: #32d74b; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .soul {
+    background: linear-gradient(135deg, rgba(129,140,248,.10), rgba(41,151,255,.06));
+    border: 1px solid rgba(129,140,248,.30);
+    border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+  }
+  .soul .t { color: #a5b4fc; font-weight: 700; letter-spacing: 1px; font-size: 13px; margin-bottom: 8px; }
+  .soul p { margin: 0; font-size: 15.5px; color: #e8e8ed; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13.5px; }
+  th {
+    text-align: left; color: #86868b; font-weight: 600; font-size: 12px;
+    letter-spacing: .5px; padding: 8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.16); white-space: nowrap;
+  }
+  td { padding: 9px 10px; border-bottom: 1px solid rgba(255,255,255,.07); vertical-align: top; }
+  td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+  .up { color: #ff6b60; } .down { color: #32d74b; }
+  .fig { margin: 20px 0 26px; }
+  .figcap { font-size: 12px; color: #6e6e73; text-align: center; margin-top: 6px; letter-spacing: .3px; }
+  .conclusion {
+    background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.10);
+    border-left: 3px solid #2997ff;
+    border-radius: 10px; padding: 18px 20px; margin: 24px 0; font-size: 15px;
+  }
+  .conclusion .t { color: #2997ff; font-weight: 600; font-size: 13px; letter-spacing: .6px; margin-bottom: 8px; }
+  .disc {
+    margin-top: 52px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08);
+    font-size: 12.5px; color: #6e6e73; text-align: center; letter-spacing: .5px;
+  }
+  svg { display: block; width: 100%; height: auto; }
+  code { background: rgba(255,255,255,.08); border-radius: 5px; padding: 1px 6px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>牛市到顶了吗：公用事业金丝雀的假阳性率与六项确认清单</h1>
+<div class="meta">P45 · 2026 年 9 月 15 日 · 从一个流传很广的统计出发，先检验它有没有资格下判决，再用六项指标给当前市场做一次体检 · 基准 9/14 美股收盘</div>
+<div class="badge-row">
+  <span class="badge">道指公用事业 · 21/30</span>
+  <span class="badge">标普 7,619.98</span>
+  <span class="badge">广度 38.1% / 58.7%</span>
+  <span class="badge">IG OAS 78bp</span>
+  <span class="badge">灵魂 4 · 等裁判吹哨</span>
+  <span class="badge">灵魂 21 · 概率的抖动</span>
+  <span class="badge">灵魂第三十条</span>
+</div>
+
+<h2>〇、大白话总评</h2>
+<p>结论先给：<b>不是「到顶」，是「没有安全垫」。</b>而且更重要的是——<b>那个统计本身没有资格单独下判决，它缺一半的关键数字。</b></p>
+<p>「1930 年以来 30 次牛市见顶，道指公用事业指数 21 次早于大盘见顶，且之后大盘平均跌超 29%」——这个数字听起来很有说服力（70% 的命中率）。但它是在<b>事后已知的顶部</b>上取样算出来的，回答的是「顶部之前公用事业是否先见顶」；我们需要的是反过来的条件概率「<b>公用事业见顶之后，N 个月内大盘见顶的概率是多少</b>」。<b>这两个数完全不同，而后者没人给。</b></p>
+<p>真正有用的做法不是相信或否定这条规律，而是<b>把它当作六项体检指标中的一项</b>，然后看当前的完整读数是亮了几盏、灭了几盏——<b>亮在哪里、灭在哪里，比亮了几盏更有信息量</b>。</p>
+<div class="callout"><div class="t">一句话版本</div>
+<b>没有假阳性计数的规律，不能当纪律用。</b>凡是「历史上 N 次里有 M 次如此」的说法，都要加问一句：<b>那么「如此」之后没发生该结果的有几次？</b>少了这个分母，命中率只是被挑选出来的故事。
+</div>
+
+<h2>一、先拆统计：三个洞</h2>
+<h3>1.1 它在因变量上取样（最重要的方法学问题）</h3>
+<p>那 30 次顶部是<b>事后确认</b>的。这个数字能说的只是：在已经知道是顶部的那些时点往前看，公用事业先转了。它<b>不能</b>告诉你：现在公用事业转了，所以顶部要来了。前者是「已知结果找前兆」，后者才是「已知前兆推结果」——<b>统计上完全不等价</b>。</p>
+
+<h3>1.2 没有假阳性分母</h3>
+<p>公用事业<b>每一次</b>紧缩周期都会先破位——因为它的机制就是久期最长 + 杠杆最高（见 P44 第五节）。但 <b>1994、2015-16、2018、2022-23</b> 这些「紧缩了、但没走成熊市」的周期，同样会让金丝雀先叫。<b>这是必要非充分信号</b>——不加假阳性率，70% 这个数字没有可用性。</p>
+
+<h3>1.3 样本结构不可比 + 领先时长未知</h3>
+<p>96 年里 30 个样本；而且当年公用事业是<b>受监管垄断</b>、在指数里权重更高、利率还受管制的环境——和今天的结构不是一回事。更关键的是：<b>如果历史领先时长在 6–18 个月之间波动，那「它今天转了」几乎不提供关于「现在」的信息</b>。</p>
+<div class="warn"><div class="t">但机制是真的，别因方法学问题就丢掉它</div>
+公用事业是最利率敏感的板块，所以紧缩最先咬到它——这说明<b>它测的是「分母」（贴现率），不是「顶」</b>。它的正确用法是：<b>当作贴现率压力的温度计，而不是当作见顶的倒计时器。</b>
+</div>
+
+<h2>二、体检：六项确认清单（基准 9/14 收盘）</h2>
+<div class="fig">
+<svg viewBox="0 0 680 356" role="img" aria-label="牛市见顶六项确认清单状态图">
+  <text x="0" y="16" fill="#f5f5f7" font-size="13.5" font-weight="700">牛市见顶确认清单 · 2026-09-14 状态</text>
+  <text x="0" y="34" fill="#86868b" font-size="10.5">配色说明：红＝警示（已触发）　橙＝部分　绿＝良性（未触发）</text>
+
+  <text x="0" y="62" fill="#ff6b60" font-size="11" font-weight="700">分母端（贴现率 / 技术面）</text>
+
+  <circle cx="10" cy="82" r="5" fill="#ff6b60"/>
+  <text x="26" y="86" fill="#d1d1d6" font-size="11.5">公用事业先破位</text>
+  <text x="170" y="86" fill="#ff6b60" font-size="10.5">已触发</text>
+  <text x="242" y="86" fill="#86868b" font-size="10">XLU 年内 -1.5%，破 50/200 日线，仅 25–26% 成分股在 200 日线上</text>
+
+  <circle cx="10" cy="108" r="5" fill="#ff6b60"/>
+  <text x="26" y="112" fill="#d1d1d6" font-size="11.5">大盘广度恶化</text>
+  <text x="170" y="112" fill="#ff6b60" font-size="10.5">已触发</text>
+  <text x="242" y="112" fill="#86868b" font-size="10">仅 38.1% 在 50 日线上（分位 20）· 58.7% 在 200 日线上 · NYSE A/D 破位</text>
+
+  <circle cx="10" cy="134" r="5" fill="#ff9f0a"/>
+  <text x="26" y="138" fill="#d1d1d6" font-size="11.5">收益率曲线压缩</text>
+  <text x="170" y="138" fill="#ff9f0a" font-size="10.5">部分</text>
+  <text x="242" y="138" fill="#86868b" font-size="10">2s10s 压缩至 4bp、6 个月前瞻 -1bp（衰退预警区）</text>
+
+  <circle cx="10" cy="160" r="5" fill="#ff9f0a"/>
+  <text x="26" y="164" fill="#d1d1d6" font-size="11.5">资金与内部人</text>
+  <text x="170" y="164" fill="#ff9f0a" font-size="10.5">部分</text>
+  <text x="242" y="164" fill="#86868b" font-size="10">截至 9/9 单周美股基金 -$322.7 亿；内部人卖 &gt; 买</text>
+
+  <text x="0" y="196" fill="#32d74b" font-size="11" font-weight="700">分子端（信用 / 盈利）</text>
+
+  <circle cx="10" cy="216" r="5" fill="#32d74b"/>
+  <text x="26" y="220" fill="#d1d1d6" font-size="11.5">信用利差走阔</text>
+  <text x="170" y="220" fill="#32d74b" font-size="10.5">未触发</text>
+  <text x="242" y="220" fill="#86868b" font-size="10">IG OAS 78bp，70–80bp 区间横盘 6 个月；IG 年内发行 &gt;$1.5T</text>
+
+  <circle cx="10" cy="242" r="5" fill="#32d74b"/>
+  <text x="26" y="246" fill="#d1d1d6" font-size="11.5">盈利预期下修</text>
+  <text x="170" y="246" fill="#32d74b" font-size="10.5">未触发</text>
+  <text x="242" y="246" fill="#86868b" font-size="10">EPS 预期在<tspan fill="#32d74b" font-weight="700">上修</tspan>；前瞻 PE 降至约 19.2（2025/4 以来最低）</text>
+
+  <rect x="0" y="272" width="680" height="72" rx="10" fill="rgba(41,151,255,0.07)" stroke="rgba(41,151,255,0.28)"/>
+  <text x="14" y="294" fill="#7aa2ff" font-size="11.5" font-weight="700">清单真正的信息在「分流」上</text>
+  <text x="14" y="314" fill="#d1d1d6" font-size="10.5">亮的两盏都在<tspan fill="#ff6b60" font-weight="700">分母端</tspan>（贴现率 + 技术面）；灭的两盏都在<tspan fill="#32d74b" font-weight="700">分子端</tspan>（信用 + 盈利）。</text>
+  <text x="14" y="334" fill="#a1a1a6" font-size="10.5">而历史上杀死牛市的是分子端——信用事件 + 盈利恶化。这两盏目前都没亮。</text>
+</svg>
+<div class="figcap">六项确认清单：亮 2（分母端）+ 部分 2 + 灭 2（分子端）</div>
+</div>
+
+<h3>2.1 分母端的两盏红灯怎么读</h3>
+<table>
+  <tr><th>指标</th><th class="num">当前</th><th>含义</th></tr>
+  <tr><td>成分股在 50 日线上</td><td class="num">仅 <b>38.1%</b></td><td>分位 20，异常弱</td></tr>
+  <tr><td>成分股在 200 日线上</td><td class="num"><b>58.7%</b></td><td>分位 38，低于均值</td></tr>
+  <tr><td>净新高 − 新低（10 日均值）</td><td class="num">-0.8%</td><td>分位 18；NYSE 年内新低 <b>331 家</b></td></tr>
+  <tr><td>NYSE A/D 线</td><td class="num">已破前支撑</td><td>广度确认转弱</td></tr>
+  <tr><td>分布日</td><td class="num">8 天</td><td>分位 96（机构派发信号密集）</td></tr>
+  <tr><td>领导度</td><td class="num"><b>14.7</b>（防御型）</td><td>仅 <b>3/11</b> 板块跑赢 SPY</td></tr>
+  <tr><td>小盘 vs 大盘 RS 分位</td><td class="num"><b>2</b></td><td>QQQ vs SPY 60 日 -3.91%</td></tr>
+</table>
+<p><b>这一栏的读法是：技术面已经进入晚周期。</b>但注意——<b>广度恶化本身不区分「崩盘前兆」与「洗盘末端」</b>（见第四节）。</p>
+
+<h3>2.2 分子端的两盏绿灯怎么读（这是关键的对冲）</h3>
+<div class="good"><div class="t">信用市场一声不响，反而在抢着发债</div>
+IG 公司债 OAS <b>78bp</b>，在 70–80bp 区间<b>横盘 6 个月</b>——无视油价与地缘剧震。IG 年内发行 <b>&gt;$1.5 万亿</b>、领先 2025 年约 30%；IG 指数 YTM 5.71%（2024/4 以来最高）；HY 年内为正收益。<b>如果真有大麻烦要来，信用市场通常是第一个报警的——现在它不但没报警，还在抢着融资。</b>
+</div>
+<p>盈利端同理：<b>前瞻 PE 掉到约 19.2</b>（2025/4 以来最低）——不是股价跌出来的，是<b>盈利预期在上修</b>，涨得比股价快。指数创名义新高、估值倍数反而在降，这是分子健康的表现。</p>
+
+<h2>三、指数在什么位置</h2>
+<table>
+  <tr><th>项目</th><th class="num">数值</th></tr>
+  <tr><td>标普 500</td><td class="num"><b>7,619.98</b></td></tr>
+  <tr><td>年内涨幅</td><td class="num up">+11.31%</td></tr>
+  <tr><td>距年内高点（8/13 的 7,816.70）</td><td class="num">-2.4%</td></tr>
+  <tr><td>相对 200 日线（7,167.13）</td><td class="num">约 <b>+6.3%</b></td></tr>
+  <tr><td>50 日线（7,610.08）</td><td class="num">勉强站上</td></tr>
+  <tr><td>RSI</td><td class="num">46.9</td></tr>
+  <tr><td><b>近 3 个月涨幅</b></td><td class="num"><b>+0.87%</b></td></tr>
+</table>
+<div class="callout"><div class="t">这个结构的准确描述：指数在高位，平均股票在洗盘</div>
+近 3 个月只涨 0.87%，却创了名义新高——说明指数被极少数名字托住（SPY 里 NVDA 7.58% / AAPL 6.66% / MSFT 4.91%）。<b>这是 2023-24 型的结构（集中度高、广度差、但分子在改善），不是 2000 或 2007 型的结构（分子也在恶化）。</b>集中度本身是脆弱性——但它同时也是「分子没坏」的证据。
+</div>
+
+<h2>四、一个反直觉的事实（最该记住的一条）</h2>
+<div class="warn"><div class="t">NYSE 新低放量 + McClellan 超卖，历史上更常出现在<b>底部</b></div>
+Schwab 的观察：NYSE 新低名单放量 + McClellan 振荡指标超卖，历史上更常与标普的<b>「底部」</b>同时出现，而不是顶部。而当前恰好两者都在。<br><br>
+翻译成大白话：<b>「平均股票先崩、指数还撑着」这件事，既可能是崩盘前兆，也可能是洗盘末端。单看广度，它分不出来。</b>
+</div>
+<p>这就是为什么不能只拿一条广度指标下结论——<b>必须把它和信用、盈利放在一起看</b>。这也是本篇与 9/14 那条「金丝雀规律」的区别：那个统计只提供了一个维度的信息，却假装能给出一个判决。</p>
+
+<h2>五、真正的红灯（建议挂这几个监控位）</h2>
+<p>按可靠性从高到低：</p>
+<table>
+  <tr><th>#</th><th>触发条件</th><th>为什么可靠</th></tr>
+  <tr><td>1</td><td><b>标普跌破 200 日线 7,167</b></td><td>比公用事业金丝雀可靠得多——<b>它就是市场本身</b></td></tr>
+  <tr><td>2</td><td><b>IG OAS 从 78bp 破 120–150bp；HY OAS 破 400bp</b></td><td>信用先说话；现在横盘 6 个月</td></tr>
+  <tr><td>3</td><td><b>前瞻 EPS 由「上修」转「下修」</b></td><td>分子端转向——这是历史上真正杀死牛市的东西</td></tr>
+  <tr><td>4</td><td>回购规模明显缩水</td><td>企业端买盘撤出</td></tr>
+  <tr><td>5</td><td>权益基金流出<b>连续多周</b></td><td>现在只有 1 周（-$322.7 亿）</td></tr>
+  <tr><td>6</td><td>分布日持续累积（现 8 天）</td><td>机构派发的持续性信号</td></tr>
+</table>
+<div class="conclusion"><div class="t">判定规则</div>
+<b>任何一个没出现之前，「到顶」都只是概率抖动。</b>反过来——如果 1、2、3 同时出现，那就不需要问「是不是顶」了，行动本身会告诉你答案。
+</div>
+
+<h2>六、落回体系与账户</h2>
+<table>
+  <tr><th>灵魂条款</th><th>在这个问题上的意思</th></tr>
+  <tr><td><b>灵魂 21</b></td><td>市场不为事实付钱，只为概率的抖动付钱——<b>这个金丝雀统计就是典型的「概率抖动」</b>，方向只在裁判日坍缩</td></tr>
+  <tr><td><b>灵魂 4</b></td><td>二元赌注等裁判吹哨。<b>现在不是裁判日</b>（裁判日是 9/16 FOMC、11/3 选举）</td></tr>
+  <tr><td><b>灵魂 20</b></td><td>火灾时谁先跑？答案已经有了：<b>小盘（分位 2）、防御板块、公用事业已经先跑了</b></td></tr>
+  <tr><td><b>灵魂 7</b></td><td>方向由债市投票（10Y 正指向 5%），时间表由政治日历决定（9/16、11/3）</td></tr>
+</table>
+<div class="conclusion"><div class="t">落回账户</div>
+<ul>
+  <li><b>市场没有安全垫，但账户有</b>——现金约 30.2% 就是安全垫。</li>
+  <li><b>A 策略 v2（满仓持有 + 新资金做子弹）在这个环境下的正确动作</b>：预挂单不动，<b>不因为一只金丝雀手动进场，也不因为一只金丝雀手动清仓</b>。</li>
+  <li><b>如果真出现抽水</b>，C 档（AVGO 272 / 222、NKE 34-36）才是接货的地方——<b>那才是这套设计的用武之地</b>。</li>
+  <li><b>P42 第一档（受监管公用事业）</b>恰好是「已经被抽过水」的那一档，其机制与错杀特征见 P44。</li>
+</ul>
+</div>
+
+<div class="soul"><div class="t">灵魂第三十条：领先指标的假阳性率</div>
+<p><b>信号与结果的相关性 ≠ 信号的可用性。</b>任何「历史上 N 次里有 M 次如此」的说法，都必须先补上一个分母：<b>「如此」之后<b>没有</b>发生该结果的有几次</b>。缺了这个分母，70% 的命中率只是被挑选出来的故事——因为样本是在<b>已知结果</b>上取的（因变量取样），而你需要的是反过来的条件概率。<b>判断一条规律能否当纪律用，只有三个动作</b>：① 问它的假阳性率（分母）；② 问它有没有机制（还是纯统计巧合）；③ 问它的领先时长是否稳定。<b>三问过不了，它就只能当温度计用，不能当倒计时器用</b>——温度计告诉你现在多热，不告诉你还有多久下雨。</p>
+</div>
+
+<div class="disc">
+数据口径：全部为 <b>2026-09-14（周一）美东收盘</b>基准（标普 7,619.98）。广度、分布日、领导度等由数据源口径计算，分位数为相对历史区间的位置；IG OAS 为 9/10 口径（78bp）。「公用事业 21/30」统计来自 Ned Davis Research 引用（非一手源，且为事后取样口径，本篇第一节已就其方法学局限展开）。**本篇所有监控位均为条件触发规则，不构成择时建议。**<br><br>
+以上仅为个人认知范围内的理解，非投资建议。所有数字与判断随市场演化可能迅速失效，请独立思考并自负盈亏。
+</div>
+</div>
+</body>
+</html>

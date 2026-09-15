@@ -93,3 +93,4 @@
 - 报告移动/收纳必须用 `git mv`（保留历史），禁止直接 `mv` 后重新 add（会断 rename 追踪）
 - Windows 下 CRLF 警告无害，忽略
 - iframe + hash 路由：部分手机浏览器 `hashchange` 不可靠，`index.html` 已用同步渲染兜底，不要移除该逻辑
+- **内联 SVG 的 `<text>` 内禁止放 HTML 标签**（`<b>` / `<i>` / `<strong>`）——SVG 不识别，标签内的文字会**整段丢失渲染**。强调与着色一律改用 `<tspan font-weight="700" fill="#...">`。（P45 曾踩 3 处，自检脚本可加一条：`<svg>` 片段内出现 HTML 标签即报错）

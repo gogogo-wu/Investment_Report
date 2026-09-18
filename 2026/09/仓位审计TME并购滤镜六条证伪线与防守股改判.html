@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仓位审计：TME 的并购滤镜、六条证伪线与「防守股」的称呼改判</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0a0c; color: #d1d1d6;
+    line-height: 1.85; font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
+  h1 {
+    font-size: 30px; font-weight: 700; line-height: 1.35; letter-spacing: .3px;
+    background: linear-gradient(120deg, #f5f5f7, #a5b4fc 60%, #7aa2ff);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    margin-bottom: 14px;
+  }
+  .meta { font-size: 12.5px; color: #86868b; margin-bottom: 26px; letter-spacing: .3px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 34px; }
+  .badge {
+    font-size: 11.5px; color: #a1a1a6; letter-spacing: .4px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
+    border-radius: 999px; padding: 3px 12px;
+  }
+  h2 {
+    font-size: 20px; font-weight: 600; color: #f5f5f7; letter-spacing: .3px;
+    margin: 46px 0 18px; padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  h3 { font-size: 16px; font-weight: 600; color: #e8e8ed; margin: 26px 0 10px; letter-spacing: .3px; }
+  p { margin: 0 0 14px; }
+  p b, li b { color: #f5f5f7; }
+  ul, ol { margin: 0 0 14px 22px; }
+  li { margin-bottom: 7px; }
+  .callout {
+    background: rgba(41,151,255,.07); border: 1px solid rgba(41,151,255,.22);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px;
+    font-size: 14.5px;
+  }
+  .callout .t { color: #7aa2ff; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .warn {
+    background: rgba(255,159,10,.07); border: 1px solid rgba(255,159,10,.28);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .warn .t { color: #ff9f0a; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .fix {
+    background: rgba(255,107,96,.07); border: 1px solid rgba(255,107,96,.30);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .fix .t { color: #ff6b60; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .good {
+    background: rgba(50,215,75,.06); border: 1px solid rgba(50,215,75,.24);
+    border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; font-size: 14.5px;
+  }
+  .good .t { color: #32d74b; font-weight: 600; margin-bottom: 6px; font-size: 13px; letter-spacing: .6px; }
+  .soul {
+    background: linear-gradient(135deg, rgba(129,140,248,.10), rgba(41,151,255,.06));
+    border: 1px solid rgba(129,140,248,.30);
+    border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+  }
+  .soul .t { color: #a5b4fc; font-weight: 700; letter-spacing: 1px; font-size: 13px; margin-bottom: 8px; }
+  .soul p { margin: 0; font-size: 15.5px; color: #e8e8ed; }
+  .soul p + p { margin-top: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13.5px; }
+  th {
+    text-align: left; color: #86868b; font-weight: 600; font-size: 12px;
+    letter-spacing: .5px; padding: 8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.16); white-space: nowrap;
+  }
+  td { padding: 9px 10px; border-bottom: 1px solid rgba(255,255,255,.07); vertical-align: top; }
+  td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+  .up { color: #ff6b60; } .down { color: #32d74b; }
+  .mut { color: #86868b; }
+  .fig { margin: 20px 0 26px; }
+  .figcap { font-size: 12px; color: #6e6e73; text-align: center; margin-top: 6px; letter-spacing: .3px; }
+  .conclusion {
+    background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.10);
+    border-left: 3px solid #2997ff;
+    border-radius: 10px; padding: 18px 20px; margin: 24px 0; font-size: 15px;
+  }
+  .conclusion .t { color: #2997ff; font-weight: 600; font-size: 13px; letter-spacing: .6px; margin-bottom: 8px; }
+  .disc {
+    margin-top: 52px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08);
+    font-size: 12.5px; color: #6e6e73; text-align: center; letter-spacing: .5px;
+  }
+  svg { display: block; width: 100%; height: auto; }
+  code { background: rgba(255,255,255,.08); border-radius: 5px; padding: 1px 6px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>仓位审计：TME 的并购滤镜、六条证伪线与「防守股」的称呼改判</h1>
+<div class="meta">P50 · 2026 年 9 月 19 日 · 全组合唯一没有立档纪律的持仓，补上它缺失的那一层 · 基准 2026-09-18（周五）美股收盘</div>
+<div class="badge-row">
+  <span class="badge">TME $7.74 · 52 周新低</span>
+  <span class="badge">YTD −55.57%</span>
+  <span class="badge">持仓 24.31%（成本 $8.08）</span>
+  <span class="badge">内生增长 ≈ +1%</span>
+  <span class="badge">净现金 $6.52B</span>
+  <span class="badge">回购年化 &gt;10%</span>
+  <span class="badge">灵魂 39 · 并购滤镜</span>
+  <span class="badge">灵魂 40 · 仓位先于价格</span>
+</div>
+
+<h2>〇、大白话总评</h2>
+<p>这一篇审的不是「TME 现在贵不贵」。它要回答的是一个更靠里的问题：<b>一只你已经放了 24.31% 的股票，它到底是什么？</b></p>
+<p>如果用「跌了多少」来判断要不要止损，会得出一个很奇怪的结论——TME 现价 $7.74，相对 $8.08 的成本只跌 <b>4.2%</b>。<b>任何一套止损体系里，4% 都不构成一个动作。</b>所以这一轮的起点不是价格，是三个更靠里的问题，一个比一个深：</p>
+<ol>
+  <li><b>称呼错了</b>——它被当成「半个防守股」，但防守股的试纸一测就露馅（第一节）</li>
+  <li><b>增长是买来的</b>——Q2 收入增量的 83% 来自一次并购，内生只有约 +1%（第三节，灵魂 39）</li>
+  <li><b>仓位配不上确定性</b>——一个需要六条证伪线才守得住的标的，配了 24.31%（第七节，灵魂 40）</li>
+</ol>
+<div class="callout"><div class="t">一句话版本</div>
+<b>跌 4% 不用止损，配 24% 才要。</b>这只股票的困难不在于它的价格，而在于它的<b>不确定性预算</b>——它需要的证伪清单长度，已经超过了它应得的仓位。价格止损只能保护「买错了」，保护不了「买太重了」。
+</div>
+
+<h2>一、先改称呼：它是不是「半个防守股」</h2>
+<p>「防守」这个标签不是看行业，是看行为。灵魂 20 给的判据是「<b>火灾时谁先跑</b>」——而测这句话最便宜的试纸，是<b>看它自己的财报日</b>。真正靠现金流支撑的资产，不会因为自己的财报跌两位数；会的那一只，是自家起火。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 208" role="img" aria-label="腾讯音乐财报日跌幅与同日中国金龙指数对比">
+  <text x="0" y="16" fill="#f5f5f7" font-size="13.5" font-weight="700">图 1 · 「防守资产」的试纸：看它自己的财报日</text>
+  <text x="0" y="34" fill="#86868b" font-size="10.5">绿＝当日下跌（沿用中文市场配色）</text>
+
+  <text x="240" y="75" text-anchor="end" fill="#d1d1d6" font-size="12">TME 美股（8/11 财报日）</text>
+  <rect x="252" y="62" width="298" height="26" rx="5" fill="rgba(50,215,75,.20)" stroke="rgba(50,215,75,.45)" stroke-width="0.5"/>
+  <text x="560" y="75" fill="#32d74b" font-size="12" font-weight="700">-11.92%</text>
+
+  <text x="240" y="113" text-anchor="end" fill="#d1d1d6" font-size="12">TME 港股（8/12 次日）</text>
+  <rect x="252" y="100" width="314" height="26" rx="5" fill="rgba(50,215,75,.20)" stroke="rgba(50,215,75,.45)" stroke-width="0.5"/>
+  <text x="576" y="113" fill="#32d74b" font-size="12" font-weight="700">-12.55%</text>
+
+  <text x="240" y="151" text-anchor="end" fill="#86868b" font-size="12">中国金龙指数（同日）</text>
+  <rect x="252" y="138" width="74" height="26" rx="5" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.20)" stroke-width="0.5"/>
+  <text x="336" y="151" fill="#a1a1a6" font-size="12">-2.94%</text>
+
+  <line x1="252" y1="180" x2="640" y2="180" stroke="rgba(255,255,255,.10)" stroke-width="0.5"/>
+  <text x="0" y="197" fill="#86868b" font-size="10.5">同一批交易日指数只跌 2.94% —— 差额不是「大盘拖累」，是它自己的增长叙事被重写。</text>
+</svg>
+<div class="figcap">图 1 · 跌幅差 4 倍：卖的不是板块，是它自己的定价逻辑</div>
+</div>
+
+<p>所以称呼要改。它更像<b>「被拆掉护城河之后的现金牛，外加一个还没解决的用户流失问题」</b>。而这个重新定性，正好是灵魂 17 说的那件事——<b>市场给它定价用的科目正在换</b>：从「增长」换成「现金流 / 信用」。三家机构的动作就是这句话的注脚：里昂把估值倍数从 15 倍直接下调到 10 倍，大和下调未来三年 EPS 预测 8–12%，野村从「买入」降到「中性」并把目标价从 $12.5 砍到 $10。这不是「跌多了」，这是<b>估值锚被换掉了</b>。</p>
+
+<h3>1.1 三张纸的方向不一致</h3>
+<table>
+  <tr><th>账本</th><th>最新数字</th><th>方向</th></tr>
+  <tr><td><b>利润表</b></td><td>非 IFRS 净利 26.9 亿元（+4.4%）、毛利率 44.2%（同比 −0.2pt）</td><td class="mut">完好但走平</td></tr>
+  <tr><td><b>收入表</b></td><td>总收入 89.3 亿元（+5.8%）、音乐相关服务 76.1 亿元（+11.0%）</td><td class="up">在涨 —— 靠并购</td></tr>
+  <tr><td><b>用户表</b></td><td>在线音乐 MAU 5.76 亿（2023）→ 5.28 亿（2025），两年 −4,800 万</td><td class="down">在退</td></tr>
+</table>
+<p>这张表是灵魂 33 的又一次复用：<b>两张表方向相反时，最后记账的是弱的那张。</b>管理层自己在电话会上承认，用户流失集中在<b>轻度 / 随性用户</b>上（SVIP 与高价值用户相对稳定）——这句话的含义是：<b>被抢走的是流量的入口层，而入口层决定五年后你还有多少人可提价。</b></p>
+
+<h2>二、跌因三层：一间房的三面墙</h2>
+<p>灵魂 20 说「便宜要能回答为什么便宜」。TME 能答，而且答案有三层——<b>关键区别不在哪一层更深，而在哪一层还可能被反转</b>。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 288" role="img" aria-label="腾讯音乐下跌原因的三层结构：制度层、竞争层、会计层">
+  <text x="0" y="16" fill="#f5f5f7" font-size="13.5" font-weight="700">图 2 · 三层跌因：一层不可逆、一层进行中、一层刚被财报暴露</text>
+  <text x="0" y="34" fill="#86868b" font-size="10.5">三层都要答得出来才算「真便宜」；只有第二层可能靠执行力反转</text>
+
+  <rect x="0" y="50" width="680" height="62" rx="10" fill="rgba(255,107,96,.06)" stroke="rgba(255,107,96,.28)" stroke-width="0.5"/>
+  <text x="16" y="72" fill="#ff6b60" font-size="12.5" font-weight="700">① 制度层</text>
+  <text x="92" y="72" fill="#86868b" font-size="10.5">不可逆</text>
+  <text x="16" y="93" fill="#d1d1d6" font-size="11.5">2021 年反垄断拆掉独家版权协议，2026 年 5 月彻底放弃 —— 护城河从「内容」退回「渠道」，</text>
+  <text x="16" y="108" fill="#d1d1d6" font-size="11.5">而渠道的入口握在抖音手里。</text>
+
+  <rect x="0" y="122" width="680" height="62" rx="10" fill="rgba(255,159,10,.06)" stroke="rgba(255,159,10,.26)" stroke-width="0.5"/>
+  <text x="16" y="144" fill="#ff9f0a" font-size="12.5" font-weight="700">② 竞争层</text>
+  <text x="92" y="144" fill="#86868b" font-size="10.5">进行中</text>
+  <text x="16" y="165" fill="#d1d1d6" font-size="11.5">字节旗下汽水音乐 MAU 1.67 亿、同比 +68.7%，逾 80% 流量来自抖音；以 AI 混音 + 低变现</text>
+  <text x="16" y="180" fill="#d1d1d6" font-size="11.5">蚕食价格敏感用户。AI 生成音乐同时削弱版权本身的稀缺价值。</text>
+
+  <rect x="0" y="194" width="680" height="62" rx="10" fill="rgba(41,151,255,.06)" stroke="rgba(41,151,255,.24)" stroke-width="0.5"/>
+  <text x="16" y="216" fill="#7aa2ff" font-size="12.5" font-weight="700">③ 会计层</text>
+  <text x="92" y="216" fill="#86868b" font-size="10.5">2027Q3 红利吃完</text>
+  <text x="16" y="237" fill="#d1d1d6" font-size="11.5">Q2 收入增量 4.91 亿元里，4.07 亿元来自喜马拉雅并表 —— 剔除后内生只有约 +1%。</text>
+  <text x="16" y="252" fill="#d1d1d6" font-size="11.5">管理层自己说：喜马拉雅的低基数红利到 2027 年三季度就会吃完。</text>
+</svg>
+<div class="figcap">图 2 · 第一层已写进制度，第三层已写进报表，能反转的只剩第二层</div>
+</div>
+
+<p>还要加一条行业证据，用来判断这是「一家公司的问题」还是「一个行业的问题」：<b>网易云音乐同期从高点跌近 70%，2026 上半年利润同比 −57%。</b>两家头部一起崩，说明这不是经营失误，是<b>价值链上的位置被重排</b>——音乐消费的钱没有消失，它换到了两个地方：短视频平台的流量入口，和唱片公司的内容端。</p>
+<p>这正是灵魂 28 的又一次现身：<b>叙事冲击的钱不退场、只换宿主。</b>十年来的分配是「渠道为王」——谁握着版权谁收租；现在正在回到「内容为王」，而 TME 既不是最强的内容方（唱片公司才是），也不是最强的渠道（抖音才是）。</p>
+
+<h2>三、并购滤镜：把买来的增量减掉再看</h2>
+<p>这一节是本轮最有信息量的地方，也是「业绩超预期、股价却跌 12%」这个矛盾的解法。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 202" role="img" aria-label="腾讯音乐二季度收入增量拆解：并购贡献八成三，内生仅一成七">
+  <text x="0" y="16" fill="#f5f5f7" font-size="13.5" font-weight="700">图 3 · 并购滤镜：把买来的增量减掉再看</text>
+  <text x="0" y="34" fill="#86868b" font-size="10.5">Q2 总收入 89.3 亿元（同比 +5.8%），其中全部增量只有 4.91 亿元</text>
+
+  <rect x="0" y="62" width="497" height="38" rx="8" fill="rgba(255,107,96,.16)" stroke="rgba(255,107,96,.42)" stroke-width="0.5"/>
+  <text x="16" y="85" fill="#ff6b60" font-size="12" font-weight="700">喜马拉雅并表 +4.07 亿元</text>
+  <rect x="501" y="62" width="103" height="38" rx="8" fill="rgba(50,215,75,.16)" stroke="rgba(50,215,75,.42)" stroke-width="0.5"/>
+  <text x="511" y="85" fill="#32d74b" font-size="12" font-weight="700">内生 +0.84</text>
+
+  <text x="0" y="120" fill="#86868b" font-size="10.5">并购贡献 83%（一个半月并表）</text>
+  <text x="640" y="120" text-anchor="end" fill="#86868b" font-size="10.5">内生贡献 17%</text>
+
+  <line x1="0" y1="140" x2="640" y2="140" stroke="rgba(255,255,255,.10)" stroke-width="0.5"/>
+
+  <text x="0" y="165" fill="#d1d1d6" font-size="12">剔除并购后的内生增速</text>
+  <text x="640" y="165" text-anchor="end" fill="#ff9f0a" font-size="15" font-weight="700">约 +1%</text>
+  <text x="0" y="189" fill="#86868b" font-size="10.5">同一份财报：社交娱乐服务及其他 13.3 亿元、同比 -16.4%；全年收入与净利率指引双双下调。</text>
+</svg>
+<div class="figcap">图 3 · 收购金额 186 亿元；它买到了一份增长的财报，买不到让对手慢下来</div>
+</div>
+
+<p>把这笔账摊开：Q2 收入同比多了 <b>4.91 亿元</b>，其中刚完成收购的喜马拉雅一个半月就贡献了 <b>4.07 亿元</b>——剩下 <b>0.84 亿元</b>才是原有业务的增长，对应内生增速<b>约 1%</b>。所以「+5.8%」这个数字不是引擎的转速，是<b>滤镜头</b>的厚度。</p>
+<p>而更该记进本子的是时间表：<b>喜马拉雅的低基数红利，到 2027 年三季度就会吃完。</b>那句话是管理层自己说的。翻译过来就是——<b>到那时增长必须自己长出来，而现在的内生是 1%。</b></p>
+
+<div class="soul"><div class="t">灵魂第三十九条：并购滤镜</div>
+<p><b>买来的增长要减掉再看。</b>判据极其具体：从收入增量里减去并购贡献，剩下的才是内生。若内生长期低于 2%、而并购持续发生，那这家公司的「增长」就不是成长，<b>是资产置换</b>——它只是把股东的钱从现金换成了别人公司的收入，换来一条更好看的收入曲线。</p>
+<p>配套两问：① <b>并购的钱从哪来</b>（自有现金、借债，还是增发）② <b>买来的收入毛利率是多少</b>。第一问决定它是花存款还是加杠杆；第二问决定这份「增长」会不会同时稀释利润率。<b>只看合并报表的增速，等于把两张不同的成绩单加在一起算总分。</b></p>
+<p>与灵魂 33（转型不看增速、看利润率之差）的分工：33 看<b>方向</b>（两张表是否相反），39 看<b>来源</b>（增量是自己长的还是买来的）。两个一起用，才能把「增长」这个词拆到可核对。</p>
+</div>
+
+<h2>四、价格阶梯与五个估值锚</h2>
+<p>把可以独立核对的五个锚摆到同一根价格轴上，位置感就出来了。<b>注意：这张图不是买卖建议，是把「便宜」这个词量化成可比的刻度。</b></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 420" role="img" aria-label="TME 价格阶梯：从现金地板到分析师均值的五个估值锚">
+  <text x="0" y="16" fill="#f5f5f7" font-size="13.5" font-weight="700">图 4 · 五个估值锚：从现金地板到分析师均值</text>
+  <text x="0" y="34" fill="#86868b" font-size="10.5">现价 $7.74（9/18 收盘）标在价格轴上的琥珀色刻度处</text>
+
+  <line x1="104" y1="84" x2="104" y2="404" stroke="rgba(255,255,255,.16)" stroke-width="0.5"/>
+  <line x1="104" y1="90" x2="116" y2="90" stroke="rgba(255,255,255,.16)" stroke-width="0.5"/>
+  <line x1="104" y1="174.6" x2="116" y2="174.6" stroke="rgba(255,255,255,.16)" stroke-width="0.5"/>
+  <line x1="104" y1="216.8" x2="116" y2="216.8" stroke="rgba(255,255,255,.16)" stroke-width="0.5"/>
+  <line x1="104" y1="252.3" x2="116" y2="252.3" stroke="#ff9f0a" stroke-width="1"/>
+  <line x1="104" y1="306.2" x2="116" y2="306.2" stroke="rgba(255,255,255,.16)" stroke-width="0.5"/>
+  <line x1="104" y1="352.4" x2="116" y2="352.4" stroke="rgba(255,255,255,.16)" stroke-width="0.5"/>
+  <line x1="104" y1="400" x2="116" y2="400" stroke="rgba(255,255,255,.16)" stroke-width="0.5"/>
+
+  <text x="96" y="90" text-anchor="end" dominant-baseline="central" fill="#86868b" font-size="11.5">$13.50</text>
+  <text x="96" y="174.6" text-anchor="end" dominant-baseline="central" fill="#86868b" font-size="11.5">$10.50</text>
+  <text x="96" y="216.8" text-anchor="end" dominant-baseline="central" fill="#86868b" font-size="11.5">$9.00</text>
+  <text x="96" y="252.3" text-anchor="end" dominant-baseline="central" fill="#ff9f0a" font-size="12" font-weight="700">$7.74</text>
+  <text x="96" y="306.2" text-anchor="end" dominant-baseline="central" fill="#86868b" font-size="11.5">$5.83</text>
+  <text x="96" y="352.4" text-anchor="end" dominant-baseline="central" fill="#86868b" font-size="11.5">$4.19</text>
+  <text x="96" y="400" text-anchor="end" dominant-baseline="central" fill="#86868b" font-size="11.5">$2.50</text>
+
+  <rect x="120" y="90" width="520" height="84.6" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)" stroke-width="0.5"/>
+  <text x="136" y="114" fill="#d1d1d6" font-size="13" font-weight="700">减仓 / 再平衡区　$10.50 – $13.50</text>
+  <text x="136" y="137" fill="#86868b" font-size="11">分析师均值约 $13.2（29 家：18 买入 / 11 持有 / 0 卖出）</text>
+  <text x="136" y="158" fill="#86868b" font-size="11">但下调后的尾部已经到 $9–10：野村 $10、瑞银 $9.5、华兴 $9</text>
+
+  <rect x="120" y="174.6" width="520" height="42.2" rx="8" fill="rgba(41,151,255,.09)" stroke="rgba(41,151,255,.35)" stroke-width="0.5"/>
+  <text x="136" y="190" fill="#7aa2ff" font-size="13" font-weight="700">公允价值区　$9.00 – $10.50</text>
+  <text x="136" y="207" fill="#86868b" font-size="11">第三方 DCF（6% 折现）低估约 16–26% —— 这是「便宜」最硬的一条论据</text>
+
+  <rect x="120" y="216.8" width="520" height="89.4" rx="8" fill="rgba(255,159,10,.09)" stroke="rgba(255,159,10,.36)" stroke-width="0.5"/>
+  <text x="136" y="240" fill="#ff9f0a" font-size="13" font-weight="700">现价区　$5.83 – $9.00</text>
+  <text x="136" y="262" fill="#86868b" font-size="11">8/11 财报后连续走弱，9/18 创 52 周新低 $7.74；市盈率约 9.4 倍、市净率约 1.1 倍</text>
+  <text x="136" y="283" fill="#86868b" font-size="11">下方支撑不是估值，是回购 —— 所以下一条要看的线是回购，不是价格</text>
+
+  <rect x="120" y="306.2" width="520" height="46.2" rx="8" fill="rgba(50,215,75,.07)" stroke="rgba(50,215,75,.28)" stroke-width="0.5"/>
+  <text x="136" y="323" fill="#32d74b" font-size="13" font-weight="700">收租成立区　$4.19 – $5.83</text>
+  <text x="136" y="341" fill="#86868b" font-size="11">股息率 ≥4% —— 对标你现有收租篮里 T 与 BMY 的门槛</text>
+
+  <rect x="120" y="352.4" width="520" height="47.6" rx="8" fill="rgba(50,215,75,.12)" stroke="rgba(50,215,75,.40)" stroke-width="0.5"/>
+  <text x="136" y="369" fill="#32d74b" font-size="13" font-weight="700">现金地板区　$2.50 – $4.19</text>
+  <text x="136" y="387" fill="#86868b" font-size="11">市值＝现金总额 $6.52B（$4.19/ADS）；扣银行借款 $1.94B 后净现金约 $2.95</text>
+</svg>
+<div class="figcap">图 4 · 现价已经跌进「现价区」的下半段，但距「收租成立」还有一段距离</div>
+</div>
+
+<table>
+  <tr><th>锚</th><th class="num">对应价格</th><th>口径</th></tr>
+  <tr><td>现金地板（总额口径）</td><td class="num">$4.19</td><td>现金及等价物 + 定期存款 + 短期投资 442.2 亿元 ÷ 15.55 亿 ADS</td></tr>
+  <tr><td>现金地板（扣债口径）</td><td class="num">$2.95</td><td>再扣银行借款余额 131.4 亿元（2026/8）</td></tr>
+  <tr><td>4% 股息率</td><td class="num">$5.83</td><td>$0.233/ADS ÷ 4%</td></tr>
+  <tr><td><b>现价（9/18）</b></td><td class="num"><b>$7.74</b></td><td>52 周新低；股息率约 3.0%、市盈率约 9.4 倍</td></tr>
+  <tr><td>DCF 公允区</td><td class="num">$9.00 – 10.50</td><td>第三方 6% 折现模型，低估 16–26%</td></tr>
+  <tr><td>分析师均值</td><td class="num">$13.20</td><td>29 家；但下调后尾部 $9–10，均值含大量未更新报价</td></tr>
+</table>
+
+<div class="warn"><div class="t">这张表要怎么读</div>
+「现价 vs 分析师的 $13.2」看起来有 70% 空间，但<b>均值是个滞后指标</b>——它的构成里混着大量尚未下调的旧报价。真正有信息量的是<b>尾部</b>：最激进的三家（野村 $10、瑞银 $9.5、华兴 $9）都已降到两位数以下。<b>看分歧的边界，不看分歧的中心。</b>
+</div>
+
+<h2>五、公司在买什么：一台真金白银的投票机</h2>
+<p>这一节用灵魂 24 的尺子——<b>真伪靠愿意付的代价</b>。在所有信号里，最难以伪造的是「拿自己的现金和信用去买自己的股票」，因为它要付真金白银，还要付利息。</p>
+<table>
+  <tr><th>动作</th><th>数字</th><th>含义</th></tr>
+  <tr><td><b>季度回购</b></td><td>4,350 万股 ADS、约 <b>$4.0 亿</b>、均价 $9.2</td><td>单季约 2.8% 股本，<b>年化超过 10%</b></td></tr>
+  <tr><td><b>分红</b></td><td>$0.233/ADS，股息率约 3.0%</td><td>年度派现机制维持，中概股里少见</td></tr>
+  <tr><td><b>发债</b></td><td>10 亿美元：$5 亿 @ 5.050%（2031）+ $5 亿 @ 5.650%（2036），净额 $9.919 亿</td><td>用途明写「再融资境外债 + 股份回购」</td></tr>
+  <tr><td><b>现金弹药</b></td><td>442.2 亿元 ≈ $6.52B，占市值约 55%</td><td>回购与并购的燃料都在自己账上</td></tr>
+</table>
+<p>所以「谁在卖」这个问题有干净的答案（灵魂 27）：<b>公司自己在买，卖掉的是「成长叙事」那一类资金。</b>TME 没有 ATM 增发、没有创始人减持套现，这与 OKLO 那种最坏情形（公司自己增发 + 内部人先跑）是两回事——它是「①估值型」与「②叙事杀估值型」的混合。</p>
+<p>但反面也务必写清：<b>股息率约 3.0%，而借债成本 5.05% —— 纯股息角度这是负 carry。</b>它借钱的真实赌注是<b>回购的隐含收益率 1/PE ≈ 10%</b>：只要盈利不塌，用 5% 的钱买回收益率 10% 的股权就是增值的。这句话反过来读就是风险——<b>一旦盈利那条线断了，借来的钱就从套利变成了杠杆。</b></p>
+<div class="callout"><div class="t">僵局的正式名字</div>
+<b>公司在买、叙事在卖。</b>两句话可以同时为真，而且这个僵局不会靠「再等一个季度」自动解开——它只有两个出口：<b>内生增长回来</b>（叙事认输），或者<b>回购停下来</b>（公司认输）。所以下面六条线的第 5 条，权重比第 1–4 条更重。
+</div>
+
+<h2>六、六条数据证伪线</h2>
+<p>止损线分成两层才有用：<b>价格层管的是「我买错了」，数据层管的是「我看错了」。</b>对一个 24.31% 的持仓来说，第二层更重要。以下六条全部取公开财报口径，任何人可以独立核对。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 288" role="img" aria-label="TME 六条数据证伪线卡片">
+  <text x="0" y="16" fill="#f5f5f7" font-size="13.5" font-weight="700">图 5 · 六条数据证伪线（当前 0 / 6 触发）</text>
+  <text x="0" y="34" fill="#86868b" font-size="10.5">任意 2 条同时触发 → 改判「基本面恶化型」，暂停一切加仓</text>
+
+  <rect x="0" y="50" width="312" height="66" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)" stroke-width="0.5"/>
+  <circle cx="20" cy="70" r="9" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.22)" stroke-width="0.5"/>
+  <text x="20" y="70" text-anchor="middle" dominant-baseline="central" fill="#a1a1a6" font-size="10.5">1</text>
+  <text x="40" y="70" fill="#e8e8ed" font-size="12" font-weight="700">在线音乐付费用户数</text>
+  <text x="40" y="88" fill="#86868b" font-size="10.5">1.274 亿（三年 +2,070 万，仍在增）</text>
+  <text x="40" y="105" fill="#ff9f0a" font-size="10.5">触发：同比转负 → 提价也到顶</text>
+
+  <rect x="328" y="50" width="312" height="66" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)" stroke-width="0.5"/>
+  <circle cx="348" cy="70" r="9" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.22)" stroke-width="0.5"/>
+  <text x="348" y="70" text-anchor="middle" dominant-baseline="central" fill="#a1a1a6" font-size="10.5">2</text>
+  <text x="368" y="70" fill="#e8e8ed" font-size="12" font-weight="700">剔除并购的内生增长</text>
+  <text x="368" y="88" fill="#86868b" font-size="10.5">约 +1%（含并购口径才 +5.8%）</text>
+  <text x="368" y="105" fill="#ff9f0a" font-size="10.5">触发：连续两季 &lt;2% → 增长靠买</text>
+
+  <rect x="0" y="124" width="312" height="66" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)" stroke-width="0.5"/>
+  <circle cx="20" cy="144" r="9" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.22)" stroke-width="0.5"/>
+  <text x="20" y="144" text-anchor="middle" dominant-baseline="central" fill="#a1a1a6" font-size="10.5">3</text>
+  <text x="40" y="144" fill="#e8e8ed" font-size="12" font-weight="700">毛利率</text>
+  <text x="40" y="162" fill="#86868b" font-size="10.5">44.2%（同比 −0.2pt，H2 指引续降）</text>
+  <text x="40" y="179" fill="#ff9f0a" font-size="10.5">触发：跌破 40% → 利润表转坏</text>
+
+  <rect x="328" y="124" width="312" height="66" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)" stroke-width="0.5"/>
+  <circle cx="348" cy="144" r="9" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.22)" stroke-width="0.5"/>
+  <text x="348" y="144" text-anchor="middle" dominant-baseline="central" fill="#a1a1a6" font-size="10.5">4</text>
+  <text x="368" y="144" fill="#e8e8ed" font-size="12" font-weight="700">会员服务收入增速</text>
+  <text x="368" y="162" fill="#86868b" font-size="10.5">+8.1%（卖方预警 Q3 回落到 3%）</text>
+  <text x="368" y="179" fill="#ff9f0a" font-size="10.5">触发：跌破 5% → 主业失速</text>
+
+  <rect x="0" y="198" width="312" height="66" rx="9" fill="rgba(255,159,10,.07)" stroke="rgba(255,159,10,.30)" stroke-width="0.5"/>
+  <circle cx="20" cy="218" r="9" fill="rgba(255,159,10,.18)" stroke="rgba(255,159,10,.45)" stroke-width="0.5"/>
+  <text x="20" y="218" text-anchor="middle" dominant-baseline="central" fill="#ff9f0a" font-size="10.5">5</text>
+  <text x="40" y="218" fill="#e8e8ed" font-size="12" font-weight="700">季度回购额（权重最重）</text>
+  <text x="40" y="236" fill="#86868b" font-size="10.5">4.0 亿美元 / 4,350 万股 @ $9.2</text>
+  <text x="40" y="253" fill="#ff9f0a" font-size="10.5">触发：降到 2 亿以下或停 → 管理层收手</text>
+
+  <rect x="328" y="198" width="312" height="66" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)" stroke-width="0.5"/>
+  <circle cx="348" cy="218" r="9" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.22)" stroke-width="0.5"/>
+  <text x="348" y="218" text-anchor="middle" dominant-baseline="central" fill="#a1a1a6" font-size="10.5">6</text>
+  <text x="368" y="218" fill="#e8e8ed" font-size="12" font-weight="700">新增大额并购</text>
+  <text x="368" y="236" fill="#86868b" font-size="10.5">喜马拉雅 186 亿元已落地</text>
+  <text x="368" y="253" fill="#ff9f0a" font-size="10.5">触发：再买「补增长」标的 → 内生已失败</text>
+</svg>
+<div class="figcap">图 5 · 第 5 条与第 6 条是同一问题的两面：一个说「还在买」，一个说「只能靠买」</div>
+</div>
+
+<table>
+  <tr><th>层</th><th>看什么</th><th>现值（基准日）</th><th>触发线</th></tr>
+  <tr><td rowspan="2"><b>数据层</b><br><span class="mut">改判基本面</span></td><td>付费用户数</td><td>1.274 亿（2026Q2）</td><td class="up">同比转负</td></tr>
+  <tr><td>内生增长（剔并购）</td><td>约 +1%（2026Q2）</td><td class="up">连续两季 &lt;2%</td></tr>
+  <tr><td rowspan="2"><b>利润层</b><br><span class="mut">改判盈利能力</span></td><td>毛利率</td><td>44.2%（2026Q2）</td><td class="up">跌破 40%</td></tr>
+  <tr><td>会员服务收入增速</td><td>+8.1%（2026Q2）</td><td class="up">跌破 5%</td></tr>
+  <tr><td rowspan="2"><b>意愿层</b><br><span class="mut">改判管理层判断</span></td><td>季度回购额</td><td>$4.0 亿（2026Q2）</td><td class="up">低于 $2 亿或停止</td></tr>
+  <tr><td>新增大额并购</td><td>喜马拉雅 186 亿元</td><td class="up">再买「补增长」标的</td></tr>
+  <tr><td><b>价格层</b><br><span class="mut">改判仓位</span></td><td>股息率 / 现金地板</td><td>$7.74（9/18）</td><td class="up">$5.83 跌破 <b>且</b> 回购同时停 → 全退</td></tr>
+</table>
+
+<div class="soul"><div class="t">灵魂第四十条：证伪清单的长度就是仓位信号</div>
+<p><b>止损线的第一道不是价格，是仓位。</b>当一只标的要六条线才能覆盖风险、且其中两条要靠并购口径才算得清时，说明它的<b>不确定性已经超过了它应得的仓位</b>。这时候把线画得更细没有用——问题不在线的精度，在仓位的尺寸。</p>
+<p>判据是一个反向的问法：不问「这只股票会怎样」，而问「<b>如果这条线被触发，我的组合会怎样</b>」。先算出最坏情形下的组合损失，再决定是<b>减仓</b>还是<b>设线</b>。<b>价格止损保护「买错」，保护不了「买太重」。</b></p>
+<p>推论：仓位不是自信的表达，是<b>不确定性的定价</b>。同一只股票，在证伪清单只有两条时可以给 20%，在清单有六条时只配 10%——不是因为看空，是因为<b>你需要的容错空间变大了</b>。</p>
+</div>
+
+<h2>七、把仓位算一遍</h2>
+<p>把上面的线落成一个可执行的账。先说清一个前提：<b>以下不是卖出建议</b>，是把「24.31% 这个数字意味着什么」算给你看。</p>
+<table>
+  <tr><th>项目</th><th>内容</th></tr>
+  <tr><td><b>现状</b></td><td>TME 24.31%（成本 $8.08）+ NKE 19.67% ＝ <b>43.98%</b>，同属「消费者钱包」因子</td></tr>
+  <tr><td><b>最坏情形测算</b></td><td>跌到 $5.83（收租门槛）＝ −24.7% → 组合影响 <b>−6.0%</b>；跌到 $4.19（现金地板）＝ −45.9% → 组合影响 <b>−11.2%</b></td></tr>
+  <tr><td><b>仓位上限</b></td><td>并入收租篮，但额度低于 T 与 BMY（因为它的「租金」来自回购而非纯股息，且用户表在退）→ <b>12–15%</b></td></tr>
+  <tr><td><b>减仓位置</b></td><td>反弹到 <b>$9–10</b>（公允价值下沿）分批减，<b>不是在破位下跌中砸</b></td></tr>
+  <tr><td><b>硬止损</b></td><td>$5.83 跌破 <b>且</b> 季度回购同时降到 $2 亿以下 → 全退（两个条件必须同时成立）</td></tr>
+  <tr><td><b>暂停加仓</b></td><td>六条数据线任意 2 条同时触发</td></tr>
+  <tr><td><b>重新加仓的前提</b></td><td>付费用户重回同比正增长 <b>且</b> 内生回到 5%+ <b>且</b> 汽水音乐 MAU 增速降到 20% 以下 <b>且</b> 毛利率不再下调指引</td></tr>
+</table>
+<p>为什么要给「减仓位置」和「硬止损」分两个层次？因为这两个动作针对的是不同的东西：<b>前者处理的是「仓位错了」，后者处理的是「标的错了」。</b>把两者混成一条价格线，就会在「其实只是买多了」的时候误判成「已经看错了」，然后在破位处砸掉一个其实没问题的东西——或者反过来，在真的看错时因为「还没跌破」而一直拿着。</p>
+
+<div class="fix"><div class="t">本轮最需要记住的一句</div>
+对这只股票，<b>价格不是主要矛盾</b>。$7.74 相对成本只跌 4.2%，任何止损体系都不会在这里动作；真正的杠杆点在那个 <b>24.31%</b>。把它压到一个「证伪清单长度配得上」的尺寸，比预测它会不会跌到 $5.83 重要得多。
+</div>
+
+<h2>八、落回体系与账户</h2>
+<table>
+  <tr><th>灵魂条款</th><th>在这个问题上的意思</th></tr>
+  <tr><td><b>灵魂 17</b></td><td>成本价不在定价公式里——评分科目会换：TME 的科目正从「增长」换成「现金流 / 信用」，里昂把倍数从 15x 下调到 10x 就是换科目的动作</td></tr>
+  <tr><td><b>灵魂 20</b></td><td>便宜要能回答为什么便宜（三层都答得出）；防守要问「火灾时谁先跑」——财报日跌 12% 的资产不是防守资产</td></tr>
+  <tr><td><b>灵魂 24</b></td><td>真伪靠愿意付的代价——管理层用 10 亿美元借债 + 每季 $4 亿回购投票，比任何指引可信</td></tr>
+  <tr><td><b>灵魂 26</b></td><td>重资产生意的钱从哪来——这里要反着用：TME 是 FCF 正、现金厚的公司，借钱不是缺钱，是<b>用 5% 的成本去买 1/PE ≈ 10% 的股权</b>；盈利一旦断，套利变杠杆</td></tr>
+  <tr><td><b>灵魂 27</b></td><td>低位的三种成色——问「谁在卖」：<b>公司是买家</b>（回购 + 分红 + 借债），卖的是成长叙事退出的资金 → ①估值型 + ②叙事杀估值型的混合，与 OKLO 型干净分开</td></tr>
+  <tr><td><b>灵魂 28</b></td><td>叙事冲击的钱不退场、只换宿主——音乐消费的钱换了两个宿主：短视频流量入口与唱片公司内容端</td></tr>
+  <tr><td><b>灵魂 33</b></td><td>转型不看增速、看利润率之差——收入表在涨、用户表在退；两张表方向相反时最后记账的是弱的那张</td></tr>
+  <tr><td><b>灵魂 39</b></td><td>并购滤镜——Q2 增量 4.91 亿元中 4.07 亿元来自并购，内生仅 +1%</td></tr>
+  <tr><td><b>灵魂 40</b></td><td>证伪清单的长度就是仓位信号——六条线意味着它只配 12–15%，而不是 24.31%</td></tr>
+</table>
+
+<div class="conclusion"><div class="t">落回账户</div>
+<ul>
+  <li><b>先改称呼，再改仓位。</b>它不放进「防守 / 收租」的自留地，而是并入收租篮统一算额度，上限 12–15%。这不是看空，是给它现在的不确定性定一个价。</li>
+  <li><b>动作分两步，不要合并：</b>仓位错 → 在 $9–10 分批减；标的错 → $5.83 跌破且回购同停则全退。中间那一段<b>什么都不做</b>，是最需要的定力。</li>
+  <li><b>真正要盯的是第 5 条：回购。</b>它是唯一一条「用真钱写出来」的报表科目，也是这个「公司在买、叙事在卖」僵局的唯一出口。回购停 = 公司认输；内生回到 5% = 叙事认输。</li>
+  <li><b>顺手取一条通用规则：</b>任何持仓在加仓之前，先数一遍它的证伪清单有几条。<b>清单越长，仓位上限越低</b>——这条规则不需要预测，只需要诚实。</li>
+  <li><b>组合层的提醒：</b>TME + NKE 已占 44% 同一个「消费者钱包」因子。这只股票的任何加仓动作，都要先回答「我是在分散，还是在同一张彩票上加注」。</li>
+</ul>
+</div>
+
+<div class="disc">
+数据口径：TME 价格与变动为 <b>2026-09-18（周五）美股收盘</b>口径（$7.74、YTD −55.57%、52 周区间 $7.74–18.73）；财报为 2026 年二季度（8/11 披露，截至 6/30）；现金余额、回购金额、票据条款取公司披露口径；内生增速、现金地板价、最坏情形组合影响为<b>依据公开口径的估算，用于比较量级而非精确预测</b>；DCF 低估区间与分析师生均值引自第三方汇总（口径 $12.0–13.2 存在差异）。<b>ADS 口径按 2 股普通股 = 1 ADS、约 3.11 亿股普通股折算。</b><br><br>
+<b>本篇所有价格阶梯、证伪线与仓位上限均为条件触发规则，不构成买卖建议，也不构成择时建议。</b>中概股受监管环境、汇率与跨境资金流动影响显著，波动可能远超预期。<br><br>
+以上仅为个人认知范围内的理解，非投资建议。所有数字与判断随市场演化可能迅速失效，请独立思考并自负盈亏。
+</div>
+</div>
+</body>
+</html>

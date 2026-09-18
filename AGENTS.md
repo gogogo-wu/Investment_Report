@@ -95,3 +95,4 @@
 - iframe + hash 路由：部分手机浏览器 `hashchange` 不可靠，`index.html` 已用同步渲染兜底，不要移除该逻辑
 - **内联 SVG 的 `<text>` 内禁止放 HTML 标签**（`<b>` / `<i>` / `<strong>`）——SVG 不识别，标签内的文字会**整段丢失渲染**。强调与着色一律改用 `<tspan font-weight="700" fill="#...">`。（P45 曾踩 3 处）
 - **发布前跑自检脚本**：`python C:\Users\wuxia\.workbuddy\binaries\node\workspace\check_report.py "<报告绝对路径>" [--souls 39,40]`（传目录则批量检查）。覆盖：SVG 内 HTML 标签、标签配对、`</html>` 收尾、免责声明、h2 章节数、灵魂块是否存在，以及 `--souls` 指定的条款编号是否齐全（缺省时不校验指定编号，只列出报告里出现的灵魂条款）。退出码 0 = 全通过，非 0 会逐条列出失败项。灵魂块编号用中文数字（`灵魂第三十九条`），脚本会自行解析。
+- **批量改测试基线/文档的补丁脚本直接用字面中文**（Python 3 源码默认 UTF-8）。不要手写 `\uXXXX` 转义，也不要对转义串做 `.replace()` 拼接——极易写出 `\u9ed8` 之类的截断/含空格转义，报 `SyntaxError: (unicode error) truncated \uXXXX escape`（P50 曾踩）。若确实需要转义（如写入含特殊字符的 JS 字符串），整串完整转义后校验一遍再落盘。

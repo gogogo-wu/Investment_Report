@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本数字基建的瓶颈迁移：JICT 期限延长与「电与冷」六层尽调</title>
+<style>
+:root{
+  --bg:#0a0a0c; --panel:#101013; --panel2:#141417; --line:#1f1f23;
+  --tx:#d1d1d6; --tx2:#86868b; --hd:#f5f5f7;
+  --up:#ff453a; --dn:#30d158; --blue:#5ac8fa; --amber:#ff9f0a; --purple:#bf5af2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans','Yu Gothic',sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:48px 26px 90px}
+h1{font-size:30px;line-height:1.35;margin:0 0 14px;color:var(--hd);font-weight:700;letter-spacing:-.4px}
+h1 .g{background:linear-gradient(96deg,#f5f5f7 12%,#8e8e93 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 20px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.badge{display:inline-block;padding:4px 11px;border:1px solid var(--line);border-radius:20px;
+  font-size:12px;color:var(--tx2);background:var(--panel);white-space:nowrap}
+.badge.k{color:var(--hd);border-color:#2c2c31}
+.badge.up{color:var(--up);border-color:rgba(255,69,58,.35)}
+.badge.dn{color:var(--dn);border-color:rgba(48,209,88,.35)}
+.badge.b{color:var(--blue);border-color:rgba(90,200,250,.35)}
+h2{font-size:20px;color:var(--hd);margin:52px 0 16px;font-weight:600;letter-spacing:-.2px;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;color:var(--hd);margin:30px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+strong{color:var(--hd);font-weight:600}
+em{font-style:normal;color:var(--amber);font-weight:600}
+code{background:#17171b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px;color:#e5e5ea}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:0 0 10px}
+.lead p:last-child{margin-bottom:0}
+.verdict{background:var(--panel2);border-left:3px solid var(--hd);border-radius:0 10px 10px 0;
+  padding:13px 18px;margin:0 0 22px;font-size:14.5px;color:var(--hd)}
+.verdict b{color:var(--amber)}
+.callout{background:var(--panel2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;font-size:14.5px}
+.callout.red{border-left-color:var(--up)}
+.callout.green{border-left-color:var(--dn)}
+.callout.blue{border-left-color:var(--blue)}
+.callout p:last-child{margin-bottom:0}
+.conclusion{background:linear-gradient(180deg,#131317,#0f0f12);border:1px solid #2c2c31;border-radius:14px;
+  padding:26px 28px;margin:34px 0}
+.conclusion h3{margin-top:0;color:var(--amber)}
+.soul{background:#0f0f12;border:1px dashed #3a3a40;border-radius:12px;padding:22px 24px;margin:26px 0}
+.soul .tag{display:inline-block;font-size:11px;color:var(--purple);border:1px solid rgba(191,90,242,.4);
+  border-radius:14px;padding:2px 10px;margin-bottom:12px;letter-spacing:.5px}
+.soul .t{color:var(--purple);font-weight:700;font-size:12px;letter-spacing:.6px;margin-bottom:10px}
+.soul .q{color:var(--hd);font-size:15.5px;font-weight:600;line-height:1.7}
+.soul .q + .q{margin-top:10px;font-weight:400;color:var(--tx);font-size:14.5px}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+.tbl th{text-align:left;color:var(--tx2);font-weight:500;font-size:12px;letter-spacing:.3px;
+  padding:9px 10px;border-bottom:1px solid #2c2c31;white-space:nowrap}
+.tbl td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td.num,.tbl th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl .up{color:var(--up)} .tbl .dn{color:var(--dn)} .tbl .hl{color:var(--hd);font-weight:600}
+.tbl .mute{color:var(--tx2)}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fig{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px}
+.fig svg{display:block;width:100%;height:auto}
+.note{color:var(--tx2);font-size:12.5px;margin:8px 2px 0;line-height:1.6}
+ol,ul{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:8px}
+li::marker{color:var(--tx2)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.kv .cell{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:15px 17px}
+.kv .cell .lbl{font-size:11.5px;color:var(--tx2);margin-bottom:5px}
+.kv .cell .val{font-size:23px;color:var(--hd);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.kv .cell .val small{font-size:12px;color:var(--tx2);font-weight:400;margin-left:3px}
+@media(max-width:640px){.kv{grid-template-columns:1fr}.wrap{padding:32px 18px 70px}h1{font-size:24px}}
+.disc{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--tx2);font-size:12.5px;line-height:1.75}
+.disc p{margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span class="g">日本数字基建的瓶颈迁移：JICT 期限延长与「电与冷」六层尽调</span></h1>
+<p class="sub">P51 · 2026 年 9 月 19 日 · 从一条只改了一句话的修正案出发，落到真正卡点的六层价值链 · 价格基准 2026-09-18 / 09-19（周五收盘，9/19 周六日股休市）</p>
+
+<div class="badge-row">
+  <span class="badge k">JICT 期限 2035 → 2045 年度末</span>
+  <span class="badge">累计支援 28 件 · 1,535 亿日元</span>
+  <span class="badge">大型变压器交期 48 月</span>
+  <span class="badge">燃气轮机交期 42 月</span>
+  <span class="badge b">Rubin 平台 100% 全液冷</span>
+  <span class="badge up">古河 5801 一年 +320%</span>
+  <span class="badge dn">高砂熱学 1969 一年 +3.0%</span>
+</div>
+
+<div class="lead">
+<p><strong>一句话总评：这条新闻的信息量不在「日本要多建海缆和数据中心」，而在它暴露了政策的三个真实约束——钱是「期限」性质的、工具本身是亏的、卡点不在钱在电。</strong></p>
+<p>事情本身很小：日本把 JICT（海外通信・放送・郵便事業支援機構）的<em>投资退出期限</em>从 2035 年度末延到 2045 年度末，法案全文只改了一句话。但顺着这句话往下查三层，得到的是一张比新闻本身有用得多的地图：</p>
+<p><strong>第一层，期限本身就是政策工具。</strong>总务省自己写的理由是：数字基础设施「从开发到回收约需 10 年」，而距原来的 2035 年度末也只剩约 10 年——于是「期限内收不回投资」的案件开始批不下来。所以这次修的<em>不是预算，是时钟</em>：把国家信用的覆盖期拉长到资产的完整生命周期。判据可以留下：问「工具还剩几年、资产要几年」。</p>
+<p><strong>第二层，政策改写的是份额表，不是价格表。</strong>海缆系统供应商的全球份额在 2025–2027 窗口里的变化是：SubCom 26% → 41%，NEC 18% → 21%，ASN 44% → 31%，华海通信 9% → 4%（腰斩）。<em>最大赢家是美国 SubCom，不是日本的 NEC。</em>政策最擅长做的事情是重新分配订单，不是抬高价格。</p>
+<p><strong>第三层，也是本轮最重要的一层：真正的卡点不在「钱」这一侧，在「电与冷」这一侧——而且冷不是卡点，电才是。</strong>大型电力变压器交期 48 个月、燃气轮机 42 个月、开关柜 15 个月；交期越长、产能越难加，越能涨价（涡轮机价格自 2019 年累计 +195%）。冷却恰恰是这一层里唯一能在 24 个月内把产能加上去的环节——Rubin 平台的「100% 全液冷」让需求变成必然，但 CDU 产线一年能加好几条。</p>
+<p>于是操作上的结论是一句有点反直觉的话：<strong>这个叙事里被资金扫过的是光缆线材（古河 +320%、藤仓 +155%、住友电工 +98%），真正的卡点层几乎没动（高砂熱学 +3.0%、NEC +6.1%、三菱重工 +6.1%、大金 +20%）。</strong>政策受益最直接的那家公司（NEC）恰好是唯一没被 AI 光通信叙事炒过的一家——但它的海缆收入被 3.58 万亿日元的营收体量稀释掉了。</p>
+</div>
+
+<h2>一、起点：一条只改了一句话的修正案</h2>
+
+<div class="verdict">这条法案的全部内容，是把法条里的一个日期换掉。但它换掉的那个日期，决定了「哪些项目还有资格被批准」。</div>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>项目</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td class="hl">议案</td><td>第 221 回国会 第 32 号《株式会社海外通信・放送・郵便事業支援機構法の一部を改正する法律案》——<strong>成立</strong></td></tr>
+<tr><td class="hl">条文改动</td><td>仅一句：第 27 条第 2・3 项中「令和十八年三月三十一日」→「令和二十八年三月三十一日」</td></tr>
+<tr><td class="hl">口径换算</td><td>2035 年度末 → <strong>2045 年度末</strong>（令和 28 年 3 月 31 日 = 2046/3/31；新闻说的「2045」是年度口径）</td></tr>
+<tr><td class="hl">施行</td><td>公布之日</td></tr>
+<tr><td class="hl">延长对象</td><td>① JICT 保有股份等及债权的<strong>处分期限</strong> ② 债务保证对象贷付金的<strong>偿还期限</strong>——即<em>投资退出 / 回收窗口</em>，不是 JICT 这家机构的存续期</td></tr>
+<tr><td class="hl">动因（总务省原文）</td><td>受支援的数字基础设施「<strong>从开发到回收约需 10 年</strong>」，距 2035 年度末只剩约 10 年 → 出现「期限内收不回投资」的案件，开始无法获批</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout">
+<p><strong>要留下的是一个判据，而不是一条新闻：期限本身就是政策工具。</strong></p>
+<p>当一类资产的回收周期长于政策工具的存续期时，这个工具在结构上就无法支持该类资产——不是钱不够，是时钟不够。延长存续期，等于让国家信用覆盖资产的<em>完整生命周期</em>。<br>
+所以以后看到「某基金/某补贴期限延长」，第一个要问的不是「支持力度加大了？」而是：<strong>工具还剩几年？被支持的资产要几年？</strong>如果这两个数本来就不匹配，那么延期不是加分项，是补上一个原本就缺的零件。</p>
+</div>
+
+<h2>二、JICT 是谁，以及它自己赚不赚钱</h2>
+
+<p>JICT 是 2015 年 11 月设立的官民基金，法律依据是《海外通信・放送・郵便事業支援機構法》（平成 27 年法律第 35 号）。它的特殊之处在于治理：<strong>政府必须始终持有 50% 以上表决权</strong>，总务省监管，财务省是最大股东，现任社长是前瑞穗银行的大岛周。</p>
+
+<div class="kv">
+<div class="cell"><div class="lbl">累计支援</div><div class="val">28 <small>件</small></div></div>
+<div class="cell"><div class="lbl">累计支援额（2025/3 末）</div><div class="val">1,535 <small>亿日元</small></div></div>
+<div class="cell"><div class="lbl">总资产（400 亿增资后）</div><div class="val">2,015 <small>亿日元</small></div></div>
+<div class="cell"><div class="lbl">累计损失（2025 年度末）</div><div class="val" style="color:var(--up)">▲114 <small>亿日元</small></div></div>
+</div>
+
+<p>28 件的结构是：硬件基础设施 15 件、ICT 服务 6 件、LP 出资 7 件。三个代表性项目：</p>
+<ul>
+<li><strong>I-AM Cable</strong>（日・马・新海底光缆）：总投资 1,500 亿日元，JICT 出资上限 7,300 万美元，2029 年度初完工；</li>
+<li><strong>印度 NAV2 数据中心</strong>：累计约 1.77 亿美元；</li>
+<li><strong>美国数据中心</strong>（NTT ＋ 东京世纪）：上限 3.4 亿美元，2026 年 1 月 20 日认可。</li>
+</ul>
+
+<h3>反面证据：这个工具自己是亏的</h3>
+<p>这是最容易被忽略、但必须放在显眼位置的一组数字——<strong>JICT 累计损失 ▲114 亿日元</strong>（2025 年度末）。单年度收支的走势是：2022 年度 ▲15.0 → 2023 年度 +3.8 → 2024 年度 +1.1 → 2025 年度 <em>+8.0 亿日元</em>。看起来最近三期连黑、2025 年度的 8 亿日元纯利还是历史最高——但这一点都不改变「累计仍深水 114 亿」的事实。</p>
+
+<div class="callout red">
+<p><strong>延期是附条件的，不是纯加分。</strong>附则里列了 8 项义务，措辞全部是「<em>努める</em>」（努力义务），不是「する」（强制义务）。其中第 7 项要求检讨「评价机构的存废，并定期向国会报告」——也就是说，<strong>国会给自己留了一个「这套东西到底有没有用」的年度追问机制</strong>。总务省文件中也自认存在「損失計上案件」。</p>
+<p>更值得注意的是总务省自己的那句话：民间金融「<em>难以对海外数字基础设施持续提供长期大规模风险资金</em>」。<strong>这句话是官方对缺口的承认书</strong>——它说明这条赛道的问题是期限错配和风险收益不匹配，不是缺一个新闻标题。</p>
+</div>
+
+<div class="callout blue">
+<p><strong>体系落点：</strong>海缆和数据中心都是自持型重资产、FCF 长期为负（灵魂第二十六条：重资产生意的钱从哪来——自持 ＞ 证券化 ＞ 循环融资，看 FCF 符号）。JICT 的存在，本身就是「这类资产靠纯商业资金跑不通」的官方承认。而经济安保叙事做的事情，是把一部分「借钱建」改写成「必须建」——但政府写的是理由，出的是<em>借钱性质的钱</em>（灵魂第一、二条）。</p>
+<p>与灵魂第三十四条（行政补位给方向不给耐久性）对照：<strong>这次是立法给的，比 SEC 那种「签名给的」强一档</strong>——法律能扛过选举。但附则是努力义务 + 存废评价机制，所以耐久性要打折。</p>
+</div>
+
+<h2>三、政策真正改写的是份额表</h2>
+
+<div class="verdict">把这份份额表放在最前面，是因为它一句话回答了「政策利好谁」：<b>政策最擅长的是重新分配订单，不是抬高价格。</b>而这份表里的赢家和你预期的可能不一样。</div>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>海缆系统供应商</th><th>国别 / 归属</th><th class="num">2010–2024</th><th class="num">2025–2027</th><th class="num">变化</th></tr></thead>
+<tbody>
+<tr><td class="hl">SubCom</td><td>美国（Cerberus 私有）</td><td class="num">26%</td><td class="num up">41%</td><td class="num up">+15</td></tr>
+<tr><td class="hl">ASN</td><td>法国（诺基亚持 20%）</td><td class="num">44%</td><td class="num dn">31%</td><td class="num dn">−13</td></tr>
+<tr><td class="hl">NEC</td><td>日本（6701.T）</td><td class="num">18%</td><td class="num">21%</td><td class="num up">+3</td></tr>
+<tr><td class="hl">华海通信 HMN</td><td><strong>中国</strong>（亨通光电控股 64.26%，前华为海洋）</td><td class="num">9%</td><td class="num dn">4%</td><td class="num dn">−5（腰斩）</td></tr>
+<tr><td class="hl">其他</td><td>—</td><td class="num">3%</td><td class="num">3%</td><td class="num">0</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">数据来源：TeleGeography（美国众议院 2025 年 11 月听证会引用）。四家合计占 98%。</p>
+
+<p>三个读法：</p>
+<ul>
+<li><strong>最大赢家是美国的 SubCom（+15pt），不是日本的 NEC（+3pt）。</strong>这一点决定了这条线的性质：它是<em>去中国化</em>政策，不是<em>日本产业</em>政策。日本的受益是「从中分到一份」，不是「主导」。所以对日本标的的期待值要相应下调。</li>
+<li><strong>最直接受害的是华海通信（9% → 4%）。</strong>它的母体是亨通光电（600487.SH，持 64.26%），2023–2025 年亨通华海的营收是 37.22 / 42.35 / 27.17 亿元人民币、归母净利 1.60 / 3.73 / 3.65 亿元——<em>2025 年营收已经掉下来了</em>。美国 denial 策略 + 日本补贴本国，形成双向挤压。</li>
+<li><strong>日本自己的口径更紧：</strong>落地日本国内的 25 条海缆里，只有 <strong>10 条</strong>不经「威权国家」，其中 2 条有中国企业投资。政策的目标就是把后面这两类换成前面那一类。</li>
+</ul>
+
+<div class="callout red">
+<p><strong>口径更正（一条容易被抄错的）：</strong>AInvest、新浪等聚合源把 HMN（HMN Tech）标为「韩国的 HMN 电信」，<strong>这是错的</strong>。华海通信前身是华为海洋网络（2008 年华为与英国 Global Marine 合资），2020 年被亨通光电收购、华为不再持股，现由亨通光电持股 <strong>64.26%</strong>，是中国公司。按 SOUL 的口径优先级（一手源 &gt; 本土源 &gt; 聚合源），这种国别归属错误会直接颠倒受益/受害判断，必须用一手股权结构核对。</p>
+</div>
+
+<h2>四、利好与利空：落到行业与公司</h2>
+
+<h3>利好七层（按「政策钱的直接程度」排序）</h3>
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>层</th><th>标的（含代码）</th><th>要点</th></tr></thead>
+<tbody>
+<tr><td class="hl">① 系统集成</td><td>NEC 6701.T · OCC（未上市）· SubCom（未上市）· ASN（诺基亚持 20%）</td><td><strong>NEC 是日本唯一全链条</strong>；目标份额 20% → 35%；5 年自投 1,000 亿日元；已锁定 5 艘作业船。OCC 约占全球成品 20%</td></tr>
+<tr><td class="hl">② 光纤光缆材料</td><td>藤仓 5803.T · 住友电工 5802.T · 古河电工 5801.T</td><td>藤仓熔接机全球第一，2024/10 被白宫选入 200 亿美元光纤电缆计划，投 450 亿日元扩产</td></tr>
+<tr><td class="hl">③ 铺缆船 / 海洋工程<br><span class="mute">政策最直接的钱在这</span></td><td>NTT 9432.T（3 艘）· KDDI 9433.T（2 艘）· NEC（拟自建）· 三菱重工 7011.T · 川崎重工 7012.T</td><td>政府拟投约 <strong>1,000 亿日元补贴建造费的 50%</strong>（2027 年度预算概算要求）。日本仅有 5 艘 &gt;5,000 吨铺缆船，部分船龄 &gt;30 年；全球约 60 艘</td></tr>
+<tr><td class="hl">④ 数据中心侧</td><td>NTT 9432.T（TKY12 200MW）· KDDI 9433.T（堺、原夏普厂、GB200 NVL72 + 直液冷）· <strong>Sakura Internet 3778.T（METI 补贴 501 亿，最大）</strong>· GMO 9449.T · ソフトバンク 9434.T · 東京世紀 8439.T</td><td>需求端比供给端更实：项目有具体站点与容量</td></tr>
+<tr><td class="hl">⑤ 电气与冷却</td><td>日立 6501.T · 三菱电机 6503.T · 富士电机 6504.T · 高砂熱学 1969.T · 荏原 6361.T · 大金 6367.T · 村田 6981.T · TDK 6762.T · GS Yuasa 6674.T</td><td>Nikkei xTECH 统计：24 家 / 38 个项目、5 个 &gt;100MW、<strong>超半数采用液冷</strong></td></tr>
+<tr><td class="hl">⑥ 建设与电力工程</td><td>鹿島 1812.T · 大林 1802.T · 清水 1803.T · 関電工 1942.T · 九電工 1959.T（→ Kraftia）</td><td>関電工营业利润 5 年从 327 亿增至 831 亿日元（2.5 倍），FY27 指引 900 亿</td></tr>
+<tr><td class="hl">⑦ 电（需求被官方量化）</td><td>—</td><td>OCCTO 预测：数据中心单一项到 <strong>FY2034 新增约 6.16 GW</strong> 峰值需求</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">已被排除的两只：<strong>東芝 6502.T</strong> 已于 2023/12/20 从东交所退市（JIP 财团约 2 万亿日元私有化，每股 4,620，拟最早 2028 财年重新上市）——一切「东芝受変電 / UPS」标的都不成立。</p>
+
+<h3>利空五条</h3>
+<ul>
+<li><strong>华海通信 / 亨通光电 600487.SH</strong>（华海曾拟拆科创板）：双向挤压，2025 年营收已从 42.35 亿掉到 27.17 亿元。</li>
+<li><strong>ASN（诺基亚持 20%）与 SubCom：</strong>在「日本支援的项目」里被排除，亚太订单被 NEC 分走。注意 SubCom 未上市，二级市场买不到——所以这条线上「最大赢家」反而是不可投资的。</li>
+<li><strong>没有补贴的日本国内算力商：</strong>GX 战略特区的 9 区 10 点之外，失去成本竞争力。</li>
+<li><strong>项目参与方自己的利润率：</strong>政府兜底的项目毛利偏薄——<em>订单 ≠ 利润</em>。这一条与灵魂第三十九、四十条呼应：拿到订单和赚到钱是两件事。</li>
+<li><strong>日本国内电力用户：</strong>数据中心挤占电网容量（见第六节的备用率）。</li>
+</ul>
+
+<h2>五、三个关键洞察</h2>
+
+<h3>洞察一：受益的公司已经涨完了</h3>
+<p>这是本轮最不舒服、但必须放在最前面的发现。<strong>光缆线材三家过去一年的涨幅是：古河电工 +320.3%、藤仓 +155.3%、住友电工 +97.7%</strong>，而它们目前距 52 周高点分别只有 −39.7% / −39% / −43.9%。也就是说，现在的价格形态是<em>高位回调中的再定价</em>，不是<em>低位捡便宜</em>。</p>
+<div class="callout">
+<p>按灵魂第二十条（便宜要能回答「为什么便宜」）与第二十七条（低位的三种成色：估值型 / 叙事杀估值型 / 基本面恶化型，判据是「谁在卖」），这三家一个条件都不满足——它们是<strong>已经完成重估、且正在被获利盘和高估值同时施压</strong>的状态。政策方向对，不代表此刻是入场点。</p>
+</div>
+
+<h3>洞察二：NEC 是唯一没被 AI 光通信叙事炒过的那家</h3>
+<p>NEC 一年只涨 6.1%（同期日经涨幅远高于此），P/E 21.4 倍，而它恰恰是政策最直接的受益方（日本唯一全链条海缆系统集成商）。但代价同样清楚：</p>
+<ul>
+<li><strong>海缆在 3.58 万亿日元的营收里被稀释掉了</strong>——政策受益最直接 ≠ 利润重估；</li>
+<li>FY2027 营收指引 <em>−2.3%</em>（大型政府项目结束）；</li>
+<li>结构上与诺基亚的 ASN 20% 权益同构：<em>你看好的是海缆，你买到的是整家公司</em>。</li>
+</ul>
+<p>这条也是灵魂第三十五条（价值捕获阀门）的一个日本版应用：<strong>采用率上升与股东回报之间，必须存在一个「强制转换阀门」</strong>。海缆份额从 18% 到 21%，摊到 3.58 万亿营收上是小数点后面的变化——没有阀门，就没有重估。</p>
+
+<h3>洞察三：同一个交易的邻市场在做什么</h3>
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>标的</th><th>动作</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td class="hl">LS Cable &amp; System / 大韩电线 001440.KS</td><td>同日 +11.1%，但距 52 周高点 75,900 KRW 仍低 58.6%</td><td>韩国线缆股同向异动 → 这是<strong>区域性的政策交易</strong>，不只是一国的事</td></tr>
+<tr><td class="hl">康宁 GLW</td><td>$150.11、YTD +91%，但上周因 <strong>20 亿美元 ATM 增发</strong>跌 14%</td><td><em>公司在卖，而叙事在买</em>——灵魂第二十七条的标准对照样本</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>六、硬约束：不在钱，在电</h2>
+
+<div class="verdict">日本这条政策线最反常识的一点是：<b>它给的是钱，但真正卡住项目的是电和许可。</b>补贴能解决资本金，解决不了并网队列和变压器交期。</div>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>维度</th><th>数字</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td class="hl">东京 DC 市场</td><td>1,240 MW 已投运；至 2027 年新增管线 1.2 GW+</td><td>存量集中在两大都市圈</td></tr>
+<tr><td class="hl">TEPCO 并网队列</td><td><strong>48 个月</strong></td><td>与大型变压器交期同量级 → 并网是双重等待</td></tr>
+<tr><td class="hl">备用率</td><td><strong>12.0%</strong>（低于 NERC 门槛 13%）</td><td>裕度已经在门槛之下</td></tr>
+<tr><td class="hl">核电</td><td>33 座可运行机组<strong>仅 14 座</strong>在发电</td><td>福岛后遗症；LNG 进口依赖使批发电价结构性偏高</td></tr>
+<tr><td class="hl">变电站</td><td>计划新建 / 改造<strong>约 30 座</strong></td><td>电网侧要动的是物理设施，周期以年计</td></tr>
+<tr><td class="hl">企业 PPA</td><td>累计约 <strong>2.4 GW</strong>（2026 年中）</td><td>「瓦特-比特协同」这个名字本身，就承认瓶颈在瓦特侧</td></tr>
+<tr><td class="hl">建设成本</td><td>东京 <strong>$13.0–13.5M/MW</strong>（全球均值 $11.3M）</td><td>抗震（M7+ 基底隔震）加价 12–18%</td></tr>
+<tr><td class="hl">许可周期</td><td>从 14–18 个月拉长到 <strong>20–24 个月</strong></td><td>流程本身在变慢</td></tr>
+<tr><td class="hl">补贴有效性（反面）</td><td>过去两年宣布的超大规模项目里 <strong>&lt;8%</strong> 落在东京 / 大阪之外</td><td>METI 自 2023 年投的超 <strong>1,800 亿日元</strong>补贴<em>没能分散化选址</em></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout red">
+<p><strong>最后一行是本节的结论，也是最容易被忽略的一句：</strong>日本政府花了 1,800 亿日元以上想让算力离开两大都市圈，结果过去两年新增的超大规模项目里不到 8% 落在圈外。<strong>补贴能改变收益表，改不动物理约束</strong>（电力余量、抗震地质、人才、客户距离）。看到「某地获补贴建 DC」这类新闻时，这一行数字应该被当作默认的怀疑基准。</p>
+</div>
+
+<h2>七、电与冷六层：真正的卡点在哪</h2>
+
+<p>把「电与冷」单独拆出来之后，可以得到一个相当干净的判断：<strong>卡点已从芯片迁到「发电 → 电网 → 电气人力」，而冷却环节的产能在扩，已经不构成卡点。</strong>驱动这个判断的是交期数据。</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>环节</th><th class="num">交期</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td class="hl">大型电力变压器 LPT</td><td class="num">48 月<span class="mute">（36–60，部分 &gt;160 周）</span></td><td>美国 2025 年预计 30% 供给缺口、80% 依赖进口；核心材料 GOES 电工钢全美仅 1 家厂</td></tr>
+<tr><td class="hl">燃气轮机</td><td class="num">42 月</td><td>MHI 欠单 23 → 35GW；2027 年前产能售罄；交付集中 2028–2030；GEV Q1 订单 $183 亿 +71%</td></tr>
+<tr><td class="hl">发电机升压变 GSU</td><td class="num">42 月</td><td>PJM 并网队列的主因</td></tr>
+<tr><td class="hl">开关柜 switchgear</td><td class="num">15 月<span class="mute">（&gt;60 周）</span></td><td>部分供应商已排到 2028 年</td></tr>
+<tr><td class="hl">配电变压器</td><td class="num">15 月<span class="mute">（12–18）</span></td><td>美国 2025 年预计 10% 缺口</td></tr>
+<tr><td class="hl">冷却 CDU</td><td class="num">6–12 月<span class="mute">（产能正在加）</span></td><td>technotrans 已建到第 4 条 CDU 产线；三星投 $1.7 亿在广州建 CDU 厂（2028 初投产）</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">日本侧变压器交期同样约 36 个月。官方口径：美国数据中心电气设备支出 2025 年约 $200 亿 → 2030 年 $650 亿。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 340" role="img" aria-label="关键电力设备交期与二十四个月分界线">
+  <text x="24" y="30" font-size="15" font-weight="700" fill="#f5f5f7">关键电力设备的交期（月）：24 个月是定价权分界线</text>
+  <text x="24" y="50" font-size="11.5" fill="#86868b">交期越长、产能越难加 → 越能涨价；扩产快的环节，需求再猛也只能拿量</text>
+  <line x1="150" y1="72" x2="150" y2="288" stroke="#3a3a40" stroke-width="1"/>
+  <line x1="366" y1="72" x2="366" y2="288" stroke="#ff9f0a" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="366" y="66" font-size="11" fill="#ff9f0a" text-anchor="middle">24 个月</text>
+
+  <text x="142" y="99" font-size="12" fill="#d1d1d6" text-anchor="end">大型电力变压器</text>
+  <rect x="150" y="86" width="432" height="18" rx="3" fill="#ff453a"/>
+  <text x="590" y="99" font-size="11.5" fill="#ff453a">48</text>
+
+  <text x="142" y="133" font-size="12" fill="#d1d1d6" text-anchor="end">燃气轮机</text>
+  <rect x="150" y="120" width="378" height="18" rx="3" fill="#ff453a"/>
+  <text x="536" y="133" font-size="11.5" fill="#ff453a">42</text>
+
+  <text x="142" y="167" font-size="12" fill="#d1d1d6" text-anchor="end">发电机升压变 GSU</text>
+  <rect x="150" y="154" width="378" height="18" rx="3" fill="#ff453a"/>
+  <text x="536" y="167" font-size="11.5" fill="#ff453a">42</text>
+
+  <text x="142" y="201" font-size="12" fill="#d1d1d6" text-anchor="end">开关柜</text>
+  <rect x="150" y="188" width="135" height="18" rx="3" fill="#ff9f0a"/>
+  <text x="293" y="201" font-size="11.5" fill="#ff9f0a">15</text>
+
+  <text x="142" y="235" font-size="12" fill="#d1d1d6" text-anchor="end">配电变压器</text>
+  <rect x="150" y="222" width="135" height="18" rx="3" fill="#ff9f0a"/>
+  <text x="293" y="235" font-size="11.5" fill="#ff9f0a">15</text>
+
+  <text x="142" y="269" font-size="12" fill="#d1d1d6" text-anchor="end">冷却 CDU</text>
+  <rect x="150" y="256" width="108" height="18" rx="3" fill="#5ac8fa"/>
+  <text x="266" y="269" font-size="11.5" fill="#5ac8fa">6–12</text>
+
+  <rect x="24" y="302" width="10" height="10" rx="2" fill="#ff453a"/>
+  <text x="40" y="311" font-size="11" fill="#86868b">交期 &gt; 24 个月：扩产慢，能涨价</text>
+  <rect x="256" y="302" width="10" height="10" rx="2" fill="#ff9f0a"/>
+  <text x="272" y="311" font-size="11" fill="#86868b">12–24 个月：部分重估</text>
+  <rect x="440" y="302" width="10" height="10" rx="2" fill="#5ac8fa"/>
+  <text x="456" y="311" font-size="11" fill="#86868b">≤12 个月：扩产快，只能拿量</text>
+</svg>
+</div>
+<p class="note">图一：交期长度与产能可扩性的分层。红色两档（变压器、燃气轮机）是当前真正的卡点；蓝色一档（冷却）恰恰是需求必然发生、但供给能跟上的环节。</p>
+
+<p>两个补充数字：<strong>涡轮机价格自 2019 年累计 +195%</strong>；全球三巨头（MHI / GE Vernova / 西门子能源）合计占设备＋服务收入约 <strong>73%</strong>。</p>
+
+<div class="callout">
+<p><strong>反面（必须并列写出来）：分析界警告「重复下单」会夸大欠单深度。</strong>当同一买方同时向多家供应商锁产能（为了避免排不到队）时，公布的 backlog 会被系统性高估——这是「交期＝定价权」这个机制目前最大的已知噪音来源。判断订单质量的正确方式不是看 backlog 绝对额，而是看<strong>有多少转成了不可撤销的预付款和已开工产能</strong>。</p>
+</div>
+
+<h2>八、液冷：路线已定型，但产能能扩</h2>
+
+<h3>路线为什么定型了</h3>
+<ul>
+<li><strong>NVIDIA Rubin 平台 100% 全液冷、无风扇</strong>：单芯片 &gt;2,300W，NVL72 机架 <strong>132kW+</strong>；而风冷的经济极限只有约 <strong>15kW/柜</strong>——这不是「液冷更好」，是<em>物理上不可能风冷</em>；</li>
+<li>谷歌 TPU v7 / v8（980W / 1300W）同样全面液冷；</li>
+<li>结论：液冷从 GB200 时代的「选配」变成 Rubin 时代的「标配」。<strong>需求端是必然，不是可能。</strong></li>
+</ul>
+
+<h3>但供给端能跟上——这就是冷却不是卡点的原因</h3>
+<ul>
+<li><strong>CDU（冷量分配单元）是液冷系统的心脏</strong>，价值量核心是<em>电子水泵 + 板式换热器</em>。电子泵替代机械泵的动因很实在：GB200 / GB300 早期的机械泵方案运行两年后普遍漏液（动态密封磨损）；</li>
+<li>市场规模：全球 CDU 2025 年 <strong>$16 亿</strong> → 2033 年 <strong>$71 亿</strong>，CAGR 21.4%，亚太占 37.9%；</li>
+<li>份额：Vertiv 2025 年液冷份额 &gt;11% 居首；施耐德 2025 年初收购 Motivair；LiquidStack / CoolIT / Alfa Laval 参与；</li>
+<li><strong>产能可扩的硬证据</strong>：technotrans 建到第 4 条 CDU 产线；三星投 2,400 亿韩元（$1.7 亿）在广州建 CDU 厂，2028 年初投产（FläktGroup 第 15 个基地）；</li>
+<li>日本液冷渗透率：2025 年 18% → 2028 年预计 45%；已部署的液冷中 DLC（直接液冷）占 72%。</li>
+</ul>
+
+<div class="callout red">
+<p><strong>口径冲突警告：日本液冷 / 热管理的「市场规模」不要用。</strong>各家数字差 3–10 倍：MarketsandMarkets 给的是日本液冷 2026 年 <strong>$6,890 万</strong> → 2031 年 $4.607 亿；而中文行业报告写的是日本液冷 2025 年<strong>突破 1,200 亿日元</strong>（≈$8 亿）→ 2028 年超 2,800 亿日元。这两个数不可比。</p>
+<p><strong>处理方法：只用订单、交期、单价这三个口径，不用市场规模。</strong>市场规模在早期渗透阶段的分歧通常来自「口径边界」（是否含 CDU、是否含管路、是否含机房侧）而不是数据错误。</p>
+</div>
+
+<h2>九、价格位置错位：本轮最重要的发现</h2>
+
+<div class="verdict">同一套政策、同一条叙事，<b>被资金扫过的是光缆线材，真正的卡点层几乎没动</b>。这张表是整份报告最该被记住的一页。</div>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>分档</th><th>公司</th><th>代码</th><th class="num">现价</th><th class="num">距 52 周高</th><th class="num">近 1 年</th><th class="num">P/E</th></tr></thead>
+<tbody>
+<tr><td class="hl" rowspan="3">已重估<br><span class="mute">光缆线材</span></td><td class="hl">古河电工</td><td>5801.T</td><td class="num">¥3,763</td><td class="num dn">−39.7%</td><td class="num up">+320.3%</td><td class="num">36.1</td></tr>
+<tr><td class="hl">藤仓</td><td>5803.T</td><td class="num">¥4,952</td><td class="num dn">约 −39%</td><td class="num up">+155.3%</td><td class="num">约 51</td></tr>
+<tr><td class="hl">住友电工</td><td>5802.T</td><td class="num">约 ¥2,081</td><td class="num">—</td><td class="num up">+97.7%</td><td class="num">17.6</td></tr>
+<tr><td class="hl" rowspan="3">部分重估</td><td class="hl">ダイヘン</td><td>6622.T</td><td class="num">¥12,720</td><td class="num dn">−35.7%</td><td class="num up">+52.7%</td><td class="num">21.5</td></tr>
+<tr><td class="hl">三菱电机</td><td>6503.T</td><td class="num">¥5,145</td><td class="num dn">−23.0%</td><td class="num up">+38.4%</td><td class="num">25.4</td></tr>
+<tr><td class="hl">日立</td><td>6501.T</td><td class="num">¥5,524</td><td class="num dn">−8.5%</td><td class="num up">+28.7%</td><td class="num">29.8</td></tr>
+<tr><td class="hl" rowspan="4">几乎没动<br><span class="mute">真正的卡点层</span></td><td class="hl">大金</td><td>6367.T</td><td class="num">约 ¥20,460</td><td class="num dn">−22.6%</td><td class="num up">+20.0%</td><td class="num">21.0</td></tr>
+<tr><td class="hl">三菱重工</td><td>7011.T</td><td class="num">¥3,887</td><td class="num dn">−25.4%</td><td class="num up">+6.1%</td><td class="num">55.6</td></tr>
+<tr><td class="hl">NEC</td><td>6701.T</td><td class="num">¥4,733</td><td class="num">—</td><td class="num up">+6.1%</td><td class="num">21.4</td></tr>
+<tr><td class="hl">高砂熱学工業</td><td><strong>1969.T</strong></td><td class="num">¥4,418</td><td class="num dn">−23.2%</td><td class="num up">+3.0%</td><td class="num">15.5</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">价格基准：2026-09-18 收盘 / 部分盘后（9/19、9/20 日股休市）。1 年涨幅为 2025-09 至 2026-09 区间。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 420" role="img" aria-label="电与冷相关标的近一年涨幅分档">
+  <text x="24" y="30" font-size="15" font-weight="700" fill="#f5f5f7">近一年涨幅分档：涨完的与没动的，是两个世界</text>
+  <text x="24" y="50" font-size="11.5" fill="#86868b">被资金扫过的是光缆线材；真正的卡点层（重电设备、工程、冷却）几乎原地不动</text>
+  <line x1="160" y1="76" x2="160" y2="368" stroke="#3a3a40" stroke-width="1"/>
+
+  <text x="152" y="97" font-size="12" fill="#d1d1d6" text-anchor="end">古河电工 5801.T</text>
+  <rect x="160" y="84" width="400" height="18" rx="3" fill="#ff453a"/>
+  <text x="568" y="97" font-size="11.5" fill="#ff453a">+320.3%</text>
+
+  <text x="152" y="126" font-size="12" fill="#d1d1d6" text-anchor="end">藤仓 5803.T</text>
+  <rect x="160" y="113" width="194" height="18" rx="3" fill="#ff453a"/>
+  <text x="362" y="126" font-size="11.5" fill="#ff453a">+155.3%</text>
+
+  <text x="152" y="155" font-size="12" fill="#d1d1d6" text-anchor="end">住友电工 5802.T</text>
+  <rect x="160" y="142" width="122" height="18" rx="3" fill="#ff453a"/>
+  <text x="290" y="155" font-size="11.5" fill="#ff453a">+97.7%</text>
+
+  <text x="152" y="184" font-size="12" fill="#d1d1d6" text-anchor="end">ダイヘン 6622.T</text>
+  <rect x="160" y="171" width="66" height="18" rx="3" fill="#ff9f0a"/>
+  <text x="234" y="184" font-size="11.5" fill="#ff9f0a">+52.7%</text>
+
+  <text x="152" y="213" font-size="12" fill="#d1d1d6" text-anchor="end">三菱电机 6503.T</text>
+  <rect x="160" y="200" width="48" height="18" rx="3" fill="#ff9f0a"/>
+  <text x="216" y="213" font-size="11.5" fill="#ff9f0a">+38.4%</text>
+
+  <text x="152" y="242" font-size="12" fill="#d1d1d6" text-anchor="end">日立 6501.T</text>
+  <rect x="160" y="229" width="36" height="18" rx="3" fill="#ff9f0a"/>
+  <text x="204" y="242" font-size="11.5" fill="#ff9f0a">+28.7%</text>
+
+  <text x="152" y="271" font-size="12" fill="#d1d1d6" text-anchor="end">大金 6367.T</text>
+  <rect x="160" y="258" width="25" height="18" rx="3" fill="#5ac8fa"/>
+  <text x="193" y="271" font-size="11.5" fill="#5ac8fa">+20.0%</text>
+
+  <text x="152" y="300" font-size="12" fill="#d1d1d6" text-anchor="end">三菱重工 7011.T</text>
+  <rect x="160" y="287" width="8" height="18" rx="3" fill="#5ac8fa"/>
+  <text x="176" y="300" font-size="11.5" fill="#5ac8fa">+6.1%</text>
+
+  <text x="152" y="329" font-size="12" fill="#d1d1d6" text-anchor="end">NEC 6701.T</text>
+  <rect x="160" y="316" width="8" height="18" rx="3" fill="#5ac8fa"/>
+  <text x="176" y="329" font-size="11.5" fill="#5ac8fa">+6.1%</text>
+
+  <text x="152" y="358" font-size="12" fill="#d1d1d6" text-anchor="end">高砂熱学 1969.T</text>
+  <rect x="160" y="345" width="4" height="18" rx="2" fill="#5ac8fa"/>
+  <text x="172" y="358" font-size="11.5" fill="#5ac8fa">+3.0%</text>
+
+  <rect x="24" y="387" width="10" height="10" rx="2" fill="#ff453a"/>
+  <text x="40" y="396" font-size="11" fill="#86868b">已重估</text>
+  <rect x="130" y="387" width="10" height="10" rx="2" fill="#ff9f0a"/>
+  <text x="146" y="396" font-size="11" fill="#86868b">部分重估</text>
+  <rect x="248" y="387" width="10" height="10" rx="2" fill="#5ac8fa"/>
+  <text x="264" y="396" font-size="11" fill="#86868b">几乎没动（真正的卡点层）</text>
+</svg>
+</div>
+<p class="note">图二：涨幅分档。注意「几乎没动」这一档里既有真正的好资产（高砂熱学 P/E 15.5、ROE 19.2%），也有纯粹的贵（三菱重工 P/E 55.6）——「没涨」不等于「便宜」。</p>
+
+<h3>三个值得单独记的细节</h3>
+<ul>
+<li><strong>大金 6367：5 年 +23%，而日经 5 年 +105%。</strong>被彻底遗忘的原因很直接——数据中心冷却不是它的主业，所以它既没进 AI 主题 ETF 的篮子，也没进卖方推荐名单。股息率 1.7%；FY2027 Q1 营收 +17.5% 但纯利 −1.7%。</li>
+<li><strong>高砂熱学工業 1969：P/E 15.5、ROE 19.2%、自己资本比率 55%、股息率 2.8%。</strong>FY2026 营收 ¥4,239 亿（+11.1%）/ 营业利润 +47.3%。最值得注意的是订单结构已经切换：<em>新建 −56% / 改造 +56%</em>——短周期、高毛利的改造订单（数据中心既有楼宇的冷却升级）成了主力。但 Q1 营收 −9.9%、毛利率 22.5% 创同期新高，是「量缩价升」的典型形态。</li>
+<li><strong>ニデック 6594</strong>（DC 水冷模块 + 应急电源）：17 位分析师中 12 位买入，目标价 ¥3,468（+29.8%），距 52 周高 −5.6%——估值洼地三家之一，但它是「有覆盖、有目标价」的那种洼地，与完全没人管的两家不同。</li>
+</ul>
+
+<h2>十、五个反面证据</h2>
+
+<ol>
+<li><strong>口径不一致：</strong>日本液冷市场规模各家差 3–10 倍（见第八节）→ <em>市场规模数字不可用</em>，只能用订单 / 交期 / 单价。</li>
+<li><strong>关键订单在缩：</strong>三菱电机 26Q1 能源系统新增订单 <strong>−12%</strong>；高砂熱学 Q1 营收 −9.9%（营业利润 −16.2%）；新晃工業 Q1 营业利润 −29.1%。这一点与「交期 48 个月 = 满产」的叙事并不矛盾，但说明<em>订单和收入之间存在时间差，且部分环节的订单已经在边际转弱</em>。</li>
+<li><strong>技术路线风险：</strong>机械泵 → 电子泵的切换会重新分配赢家；冷板式 vs 浸没式尚未最终定型。押注单一技术路线的公司，可能在两年内被规格变更洗掉。</li>
+<li><strong>项目延期与建设成本通胀：</strong>日本许可周期从 14–18 个月拉长到 20–24 个月；东京建造成本比全球均值高 15–20%；美国分析称最多<strong>一半的规划项目</strong>已延期或取消（部分就是因为拿不到设备与并网）。</li>
+<li><strong>补贴无效的证据：</strong>&lt;8% 的超大规模项目落在两大都市圈之外（见第六节）——补贴没能改变选址。</li>
+<li><strong>估值已经高的三家：</strong>日立 P/E 29.8x（同业 12.4x）、三菱重工 55.6x、藤仓约 51x。<em>「卡点」这件事本身已经被市场在部分标的上定价过了。</em></li>
+</ol>
+
+<h2>十一、两个必须记住的口径更正</h2>
+
+<div class="callout red">
+<p><strong>① 高砂熱学工業的代码是 1969.T，不是 1966.T。</strong>1966.T 是 Takada Corporation（另一家公司）。上一轮做海缆/DC 清单时写错了，本轮更正。这类错误在日股清单里极容易发生，因为日股代码是 4 位且相邻代码常属同一行业分类——代入估值数据前必须先核对公司名与代码的一一对应。</p>
+<p><strong>② 東芝 6502 已于 2023/12/20 从东交所退市。</strong>JIP 财团以约 2 万亿日元完成私有化、每股 4,620 日元，拟最早 2028 财年重新上市。所以一切「东芝受変電 / UPS 受益」的标的都不成立——它现在<em>不可投资</em>。</p>
+<p><strong>③ 日股目标价的聚合源经常混入拆股前的旧值。</strong>古河电工曾出现 ¥61,500 的目标价（拆股前口径，现价 ¥3,763 量级）。<strong>取均值之前先核对日期与股本口径</strong>，否则会得出荒谬的「上涨空间」。</p>
+</div>
+
+<h2>十二、放回账户：这一层怎么用</h2>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>动作</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td class="hl">不进收租档</td><td>这一层的四只收租标的仍然是 BMY 58–62 / T 23–24 / 奔驰 42–44 / CPB 20–22（P18）。日本电与冷不参与那 6–9% 的份额竞争</td></tr>
+<tr><td class="hl">并入观察篮</td><td>并入 P41（AIDC 卡点）观察篮，与美国侧的 VRT / ETN / 伊戈尔 002922 并列观察——关注的是「交期是否继续拉长」这一个变量</td></tr>
+<tr><td class="hl">等订单，不等新闻</td><td>政策方向已经清楚（这是立法给的，耐久性比 SEC 那种「签名给的」强一档）。但<strong>方向不是理由，订单才是</strong>——用「公告成色五级阶梯」量：①新闻稿 → ②产品化 → ③具名客户 + 期限 → ④有金额的订单 → ⑤财报确认。目前日本侧多数项目停在 ②–③ 级</td></tr>
+<tr><td class="hl">不追已涨完的</td><td>古河 / 藤仓 / 住友电工都在「高位回调再定价」形态，不符合「等崩盘捡便宜」的入场条件</td></tr>
+<tr><td class="hl">真正值得持续跟踪的</td><td>「几乎没动」那一档里的<em>高砂熱学 1969</em>（改造订单 +56% 的结构切换）与<em>大金 6367</em>（被遗忘的冷却主业）——但注意「没涨 ≠ 便宜」，要逐个过估值三问</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>四个观察位</h3>
+<ul>
+<li><strong>TEPCO 并网队列与变压器交期</strong>（现 48 个月）——这是「电是卡点」这个判断的直接读数，一旦缩短，说明瓶颈开始迁移；</li>
+<li><strong>铺缆船补贴 1,000 亿日元是否落地进 2027 年度预算</strong>——政策最直接的钱在这一格；</li>
+<li><strong>GX 战略特区第二轮申请（2026 年 10 月中）</strong>——看 9 区 10 点之外是否出现新的中标地，即补贴有没有开始改变选址；</li>
+<li><strong>NEC 的海缆订单披露</strong>——份额从 18% → 21% 是否伴随有金额、有期限的合同（把「份额」变成「收入」的那一步）。</li>
+</ul>
+
+<div class="soul">
+<div class="t">灵魂第四十一条</div>
+<div class="q">交期就是定价权。</div>
+<div class="q">一个环节的利润不取决于需求有多猛，取决于<strong>供给能不能在 24 个月内增加</strong>。判据＝问两个问题：「交期多长」「产能能不能扩」。交期越长、扩产越慢，涨价能力越强（燃气轮机价格自 2019 年累计 +195%）；扩产快的环节，需求再猛也只能拿量不能拿价（冷却 CDU 一年能加好几条产线）。推论：<strong>订单可见性是必要条件，不是充分条件</strong>——有 backlog 不等于有利润，因为扩产会吃掉价格；瓶颈会迁移，押注要押在<em>下一个</em>卡点，而不是当前叙事最热的那一层。</div>
+</div>
+
+<div class="conclusion">
+<h3>结语：一句话把三件事串起来</h3>
+<p><strong>① 政策层：</strong>JICT 期限从 2035 延到 2045 年度末，修的不是预算而是时钟——它承认了「数字基建从开发到回收约需 10 年」这个算术。判据留下：<em>问工具还剩几年、资产要几年</em>。</p>
+<p><strong>② 分配层：</strong>政策改写的是份额表（SubCom +15pt、华海 −5pt），不是价格表。所以受益是<strong>订单级</strong>的，不是估值级的；而且日本是「分到一份」，不是主导。</p>
+<p><strong>③ 物理层（最重要）：</strong>真正的卡点在「发电 → 电网 → 电气人力」，交期 48 / 42 个月；冷却反而是能扩产的那一环。而市场把资金给了光缆线材（+98% 到 +320%），把真正的卡点层留在了原地（+3.0% 到 +20.0%）。</p>
+<p>所以这一层的正确用法不是「买什么」，而是<strong>「等什么、看哪个数字」</strong>——等具体订单（用成色阶梯量），看并网队列与交期是否开始缩短（那才是瓶颈迁移的信号）。</p>
+</div>
+
+<h2>关键数据与来源</h2>
+<ul>
+<li><strong>法条级一手：</strong>第 221 回国会 第 32 号《株式会社海外通信・放送・郵便事業支援機構法の一部を改正する法律案》；总务省相关说明文件；JICT 有价证券报告书与支援实绩页</li>
+<li><strong>份额数据：</strong>TeleGeography（美国众议院 2025 年 11 月听证会引用）</li>
+<li><strong>企业与价格：</strong>各公司 IR 披露、决算短信、说明会资料；日股价格基准 2026-09-18 收盘</li>
+<li><strong>电力与并网：</strong>TEPCO 并网队列公开资料、OCCTO 需求预测、日经（变电站与建设成本）、NERC 备用率门槛</li>
+<li><strong>液冷：</strong>Nikkei xTECH（24 家 / 38 个项目统计）、NVIDIA Rubin 平台规格、MarketsandMarkets 与中文行业报告（用于口径冲突对照，不作为判断依据）</li>
+<li><strong>口径冲突处理原则：</strong>一手源 &gt; 本土源 &gt; 聚合源；市场规模分歧过大时只用订单 / 交期 / 单价</li>
+</ul>
+
+<div class="disc">
+<p><strong>免责声明：</strong>以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

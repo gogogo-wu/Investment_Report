@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日阪製作所 6247：破净的验算与两把尺子</title>
+<style>
+:root{
+  --bg:#0a0a0c; --panel:#101013; --panel2:#141417; --line:#1f1f23;
+  --tx:#d1d1d6; --tx2:#86868b; --hd:#f5f5f7;
+  --up:#ff453a; --dn:#30d158; --blue:#5ac8fa; --amber:#ff9f0a; --purple:#bf5af2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans','Yu Gothic',sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:48px 26px 90px}
+h1{font-size:30px;line-height:1.35;margin:0 0 14px;color:var(--hd);font-weight:700;letter-spacing:-.4px}
+h1 .g{background:linear-gradient(96deg,#f5f5f7 12%,#8e8e93 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 20px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.badge{display:inline-block;padding:4px 11px;border:1px solid var(--line);border-radius:20px;
+  font-size:12px;color:var(--tx2);background:var(--panel);white-space:nowrap}
+.badge.k{color:var(--hd);border-color:#2c2c31}
+.badge.up{color:var(--up);border-color:rgba(255,69,58,.35)}
+.badge.dn{color:var(--dn);border-color:rgba(48,209,88,.35)}
+h2{font-size:20px;color:var(--hd);margin:52px 0 16px;font-weight:600;letter-spacing:-.2px;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;color:var(--hd);margin:30px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+strong{color:var(--hd);font-weight:600}
+em{font-style:normal;color:var(--amber);font-weight:600}
+code{background:#17171b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px;color:#e5e5ea}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:0 0 10px}
+.lead p:last-child{margin-bottom:0}
+.verdict{background:var(--panel2);border-left:3px solid var(--hd);border-radius:0 10px 10px 0;
+  padding:13px 18px;margin:0 0 22px;font-size:14.5px;color:var(--hd)}
+.verdict b{color:var(--amber)}
+.callout{background:var(--panel2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;font-size:14.5px}
+.callout.red{border-left-color:var(--up)}
+.callout.green{border-left-color:var(--dn)}
+.callout.blue{border-left-color:var(--blue)}
+.callout p:last-child{margin-bottom:0}
+.conclusion{background:linear-gradient(180deg,#131317,#0f0f12);border:1px solid #2c2c31;border-radius:14px;
+  padding:26px 28px;margin:34px 0}
+.conclusion h3{margin-top:0;color:var(--amber)}
+.soul{background:#0f0f12;border:1px dashed #3a3a40;border-radius:12px;padding:22px 24px;margin:26px 0}
+.soul .tag{display:inline-block;font-size:11px;color:var(--purple);border:1px solid rgba(191,90,242,.4);
+  border-radius:14px;padding:2px 10px;margin-bottom:12px;letter-spacing:.5px}
+.soul .q{color:var(--hd);font-size:15.5px;font-weight:600;line-height:1.7}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+.tbl th{text-align:left;color:var(--tx2);font-weight:500;font-size:12px;letter-spacing:.3px;
+  padding:9px 10px;border-bottom:1px solid #2c2c31;white-space:nowrap}
+.tbl td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td.num,.tbl th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tbl .up{color:var(--up)} .tbl .dn{color:var(--dn)} .tbl .hl{color:var(--hd);font-weight:600}
+.tbl .mute{color:var(--tx2)}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fig{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px}
+.fig svg{display:block;width:100%;height:auto}
+.note{color:var(--tx2);font-size:12.5px;margin:8px 2px 0;line-height:1.6}
+ol,ul{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:8px}
+li::marker{color:var(--tx2)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.kv .cell{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:15px 17px}
+.kv .cell .lbl{font-size:11.5px;color:var(--tx2);margin-bottom:5px}
+.kv .cell .val{font-size:23px;color:var(--hd);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.kv .cell .val small{font-size:12px;color:var(--tx2);font-weight:400;margin-left:3px}
+.score{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.score .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:15px 17px}
+.score .card .t{font-size:12px;color:var(--tx2);margin-bottom:7px;letter-spacing:.3px}
+.score .card .g{font-size:19px;font-weight:600;color:var(--hd);letter-spacing:-.2px;margin-bottom:6px}
+.score .card .d{font-size:12.5px;color:var(--tx2);line-height:1.6}
+.score .card .g.a{color:var(--dn)} .score .card .g.b{color:var(--amber)} .score .card .g.c{color:var(--up)}
+@media(max-width:640px){.kv{grid-template-columns:1fr}.score{grid-template-columns:1fr}.wrap{padding:32px 18px 70px}h1{font-size:24px}}
+.disc{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--tx2);font-size:12.5px;line-height:1.75}
+.disc p{margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span class="g">日阪製作所（6247）：一家好资产、坏生意的日本利基机械厂</span></h1>
+<p class="sub">P52 · 2026 年 9 月 19 日 · 第二轮（华尔街视角，取代同日第一轮估值尽调稿）· 东证 Prime · 机械（热机器）· 华尔街视角深度分析 · 价格基准 ¥1,719（2026-09-18 收盘；9/19、9/20 周末休市）· 财务基准 FY2027 Q1（2026 年 6 月末）</p>
+
+<div class="badge-row">
+  <span class="badge k">6247.T 东证Prime</span>
+  <span class="badge">¥1,719</span>
+  <span class="badge">市值 ¥494 亿（流通 ¥393 亿）</span>
+  <span class="badge">PBR 0.69×</span>
+  <span class="badge up">前瞻 P/E 18.9×</span>
+  <span class="badge dn">ROIC 3.4%</span>
+  <span class="badge up">自有资本成本 6–8%</span>
+  <span class="badge">分析师覆盖 0</span>
+</div>
+
+<div class="lead">
+<p><strong>一句话总评：护城河是真的，但护城河圈住的池子太小；资产负债表是厚的，但厚的那部分赚不到钱。</strong></p>
+<p>上一轮我把它列进「洼地三家」，主要理由是「PBR 0.69 破净 + P/E 12.8 + 股息 3.3% + 净现金」。这一轮把公司自己 5 月 15 日的 55 页说明会资料、FY2027 一季度决算、以及三年中计的损益表全部拆到分部级别之后，结论必须再往后退一步：</p>
+<p><strong>① 便宜的定性没错，但便宜的量级被高估了。</strong>用现金流一致的口径反推，<em>现价 ¥1,719 隐含的 ROIC 是 4.4%–5.7%</em>（中值 5.1%）；而公司自己 FY2029 的中计目标就是 <em>5.5%</em>。也就是说：<strong>现价已经基本上把「公司三年后达成中计目标」这件好事提前付掉了。</strong></p>
+<p><strong>② 真正的问题不在成长，在资本回报。</strong>公司自己在说明会第 27 页写明，股东资本成本是 <em>6–8%</em>；而 FY2026 的 ROIC 是 <em>3.4%</em>、ROE 是 <em>5.6%</em>。这不只是「不够好」——<strong>这是「投出去的资本赚不回资金成本」的结构性价值毁灭</strong>，而 PBR 0.69 正是市场对这件事的算术结果，不是误判。</p>
+<p><strong>③ 中计的真正赌注被市场讲错了。</strong>市场上流传的是「AI 液冷」；公司文件里写的是另一件事——<em>把全社 92% 的利润增量押在热交换器事业部的利润率修复上</em>（该事业部营业利润率过去三年是从 6.1% 掉到 5.7% 的）。这是利润率故事，不是成长故事。</p>
+<p>所以华尔街式的定性是：<strong>这不是「被错杀的低估」，是「一家资产很厚、回报很低、催化剂为零、且已经把修复预期部分定价进去的日本内需型利基机械厂」。</strong>它的赔率是「三年赚一个不到 45% 的修复」对「继续在 0.7 倍 PB 上再躺几年」——后者它已经做过五年了。</p>
+</div>
+
+<h2>一、先搞清楚它到底卖什么</h2>
+
+<div class="verdict">这家公司的画像，<b>可以用一句话代替所有行业术语</b>：它给「会把东西加热、然后又要让东西变冷」的工厂卖不锈钢设备。你早餐喝的牛奶、便利店的即食咖喱、医院挂的输液袋、汽车座椅的布料，大概率在某个环节经过了它的机器。</div>
+
+<p>市场给它贴的标签是「数据中心液冷」。但准确的说法是：<strong>它有 38% 的收入来自板式换热器，其中又只有一小部分跟数据中心沾边；另有 50% 的收入来自食品/医药/染色的成套工程设备，跟 AI 完全无关。</strong></p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>事业部</th><th class="num">FY2026 收入</th><th class="num">占比</th><th>具体卖什么</th></tr></thead>
+<tbody>
+<tr><td class="hl">プロセスエンジニアリング<br><span class="mute">工艺工程</span></td><td class="num">¥224.1 亿</td><td class="num">49.9%</td><td>食品杀菌装置（保留式杀菌锅）、医药品灭菌装置、培养槽、液流染色机。本质是<b>成套项目工程</b></td></tr>
+<tr><td class="hl">熱交換器<br><span class="mute">换热器</span></td><td class="num">¥172.3 亿</td><td class="num">38.4%</td><td>板式换热器（含维修服务）。客户是造船、化工、发电、食品、空调、LNG 工厂、CO₂ 回收</td></tr>
+<tr><td class="hl">バルブ<br><span class="mute">阀门</span></td><td class="num">¥51.8 亿</td><td class="num">11.5%</td><td>球阀（1958 年日本首家开发）、PFA 衬里阀、用途限定阀。客户是半导体、上下水道、化学、医药食品</td></tr>
+<tr><td class="mute">其他（光伏发电等）</td><td class="num mute">¥0.72 亿</td><td class="num mute">0.2%</td><td class="mute">—</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>地域结构更能说明问题：<strong class="hl">日本国内 78.8%</strong>、亚洲 15.6%、中东 3.1%、其他 2.4%（FY2026 实绩）。全社收入 <strong>¥448.9 亿（约 3.0 亿美元）</strong>、员工 <strong>1,063 人</strong>——这是一家日本中型机械厂，不是全球平台型公司。海外只有一个入口能说明它的边缘性：<em>海外收入占比 21.2%</em>，且 FY2026 海外收入只增长 2.1%（同期国内增长 21.4%）。</p>
+
+<p>但真正需要看懂的是下面这张图——<strong>它讲的是「钱在往哪个事业部搬」</strong>，这才是中计的全部内容：</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="日阪製作所三个事业部的收入与利润结构迁移">
+<rect x="0" y="0" width="680" height="330" fill="#101013"/>
+
+<text x="24" y="30" font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="#86868b">事业部结构迁移 · 收入 ÷ 利润 ÷ 三年后计划</text>
+
+<!-- Segment legend -->
+<rect x="24" y="44" width="10" height="10" rx="2" fill="#5ac8fa"/>
+<text x="40" y="53" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#d1d1d6">工艺工程 PE</text>
+<rect x="128" y="44" width="10" height="10" rx="2" fill="#ff9f0a"/>
+<text x="144" y="53" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#d1d1d6">换热器 HX</text>
+<rect x="216" y="44" width="10" height="10" rx="2" fill="#bf5af2"/>
+<text x="232" y="53" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#d1d1d6">阀门</text>
+<rect x="278" y="44" width="10" height="10" rx="2" fill="#48484d"/>
+<text x="294" y="53" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#d1d1d6">其他</text>
+
+<!-- ROW 1 : Revenue -->
+<text x="24" y="96" font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="#f5f5f7" font-weight="600">收入结构</text>
+<text x="24" y="113" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="#86868b">FY2026 实绩 ¥448.9 亿</text>
+<rect x="24" y="124" width="604" height="26" rx="4" fill="#141417"/>
+<rect x="24" y="124" width="301" height="26" rx="4" fill="#5ac8fa" opacity="0.85"/>
+<rect x="325" y="124" width="232" height="26" fill="#ff9f0a" opacity="0.85"/>
+<rect x="557" y="124" width="69" height="26" fill="#bf5af2" opacity="0.85"/>
+<rect x="626" y="124" width="2" height="26" fill="#48484d"/>
+<text x="174" y="141" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#0a0a0c" font-weight="600">49.9%</text>
+<text x="441" y="141" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#0a0a0c" font-weight="600">38.4%</text>
+<text x="591" y="141" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#0a0a0c" font-weight="600">11.5%</text>
+
+<!-- ROW 2 : FY2026 OP -->
+<text x="24" y="186" font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="#f5f5f7" font-weight="600">利润结构</text>
+<text x="24" y="203" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="#86868b">FY2026 实绩 营业利润 ¥33.0 亿</text>
+<rect x="24" y="214" width="604" height="26" rx="4" fill="#141417"/>
+<rect x="24" y="214" width="364" height="26" rx="4" fill="#5ac8fa" opacity="0.85"/>
+<rect x="388" y="214" width="168" height="26" fill="#ff9f0a" opacity="0.85"/>
+<rect x="556" y="214" width="63" height="26" fill="#bf5af2" opacity="0.85"/>
+<text x="206" y="231" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#0a0a0c" font-weight="600">60.2%</text>
+<text x="472" y="231" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#0a0a0c" font-weight="600">27.9%</text>
+<text x="587" y="231" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#0a0a0c" font-weight="600">10.4%</text>
+
+<!-- ROW 3 : FY2029 target OP -->
+<text x="24" y="276" font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="#f5f5f7" font-weight="600">利润结构（Challenge2028 目标）</text>
+<text x="24" y="293" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="#86868b">FY2029 目标 营业利润 ¥50.0 亿</text>
+<rect x="24" y="304" width="604" height="26" rx="4" fill="#141417"/>
+<rect x="24" y="304" width="225" height="26" rx="4" fill="#5ac8fa" opacity="0.85"/>
+<rect x="249" y="304" width="296" height="26" fill="#ff9f0a" opacity="0.85"/>
+<rect x="545" y="304" width="82" height="26" rx="4" fill="#bf5af2" opacity="0.85"/>
+<text x="136" y="321" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#0a0a0c" font-weight="600">37.3%</text>
+<text x="397" y="321" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#0a0a0c" font-weight="600">49.0%</text>
+<text x="586" y="321" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#0a0a0c" font-weight="600">13.5%</text>
+</svg>
+</div>
+<p class="note">读法：收入结构三年几乎不变（换热器只从 38.4% 升到 42.7%），但<b>利润结构被彻底换掉</b>——换热器从占全社利润 27.9% 变成 49.0%，工艺工程从 60.2% 掉到 37.3%。换句话说：中计不是「多做点生意」，是「换一个事业部来赚钱」。</p>
+
+<h2>二、优势：六条真的东西</h2>
+
+<div class="verdict">先说结论：<b>它的护城河是真实且可验证的，而且是「准垄断」级别</b>——问题不在这里。问题在这条护城河圈住的年收入只有 ¥448 亿，撑不起 ¥830 亿的总资产。</div>
+
+<h3>① 四张准垄断牌（公司自报市占率，标注「自社调べ」）</h3>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>产品</th><th>占有率</th><th>为什么难被抢</th></tr></thead>
+<tbody>
+<tr><td class="hl">液流染色机</td><td>国内 <em>90%</em></td><td>自有品牌「サーキュラー」＝该品类的代名词，纺织厂工艺配方与机器绑定</td></tr>
+<tr><td class="hl">输液灭菌装置</td><td>国内 <em>90%</em></td><td>医药品灭菌属<b>受监管工序</b>，换设备＝重新验证（再确认），客户不敢换</td></tr>
+<tr><td class="hl">食品杀菌装置（保留式）</td><td>国内 <em>70%</em></td><td>HACCP／食品安全体系下的工艺验证，换了要重新做合规</td></tr>
+<tr><td class="hl">板式换热器</td><td>国内 <em>60%</em>、<b>大型品全球 40%</b></td><td>1953 年国产首台；大型机是船用／电厂级，认证周期与业绩清单是壁垒</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>这是这份分析里<strong>唯一可以称为「优势」而非「特点」的东西</strong>。华尔街看护城河的三个问题——「能不能提价、客户敢不敢走、对手能不能复制」——这三条在日阪身上答案是「能、不敢、不容易」。特别是医药灭菌与食品杀菌：<em>受监管的工序意味着转换成本是合规成本，不是价格成本</em>，这类生意的现金流寿命通常比设备寿命还长。</p>
+
+<h3>② 日本唯一：从板片设计到压模金型再到成形的纵向一体化</h3>
+
+<p>板式换热器的成本核心是<strong>板片</strong>——把 0.4–0.6mm 的不锈钢／钛板压成人字形波纹，靠的是<em>压模金型</em>。日阪是<strong>日本唯一一家</strong>把「板片设计 → 压模金型设计与制作 → 板片成形」全部放在自己厂内的公司。这件事的意义是：<strong>它的成本与交期不受上游金型厂约束，竞争对手要复制得先建一整套金型能力。</strong>结合公司自报的「国内 60%、大型品全球 40%」，这条纵向一体化是份额的物理成因。</p>
+
+<h3>③ 资产垫厚得不正常：金融资产 = 市值的 44%</h3>
+
+<div class="kv">
+<div class="cell"><div class="lbl">自有资本比率（2026/6 末）</div><div class="val">77.2<small>%（FY2026 末 75.9%）</small></div></div>
+<div class="cell"><div class="lbl">净现金（现金 ¥103 亿 − 有息负债 ¥50 亿）</div><div class="val">¥53<small> 亿</small></div></div>
+<div class="cell"><div class="lbl">投资有价证券（账面，2026/6 末）</div><div class="val">¥166<small> 亿</small></div></div>
+<div class="cell"><div class="lbl">金融资产合计 ÷ 市值</div><div class="val">44<small>%</small></div></div>
+</div>
+
+<p>这是它进「收租档」的资格证。<strong>净现金 ¥53 亿 + 投资证券 ¥166 亿 = ¥219 亿，对着 ¥494 亿市值</strong>。含义有两层：下行时它有实体缓冲（不会融资、不会断息）；上行时它有一笔闲置资本可以转化为股东回报。<em>但请注意：这笔钱是「可以还给你」的，不是「已经还给你」的</em>——差别在第四节的资本配置一节。</p>
+
+<h3>④ 现金回报的机器已经装好了，而且在转</h3>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>项目</th><th>证据</th></tr></thead>
+<tbody>
+<tr><td class="hl">五年股息不间断上调</td><td>每股 30 → 40 → 42 → 45 → <b>55 円</b>（FY2020–FY2026），FY2027 指引持平 55</td></tr>
+<tr><td class="hl">注销式回购真的做了</td><td>发行在外股数 32,732,800 → <b>28,732,800</b>（注销 400 万股，<em>−12.2%</em>）</td></tr>
+<tr><td class="hl">库存股高抛低吸地管理</td><td>库存股比例 14.77% → 5.14%（FY2025 末）→ 8.49%（2025/9 中）；政策是「以 5% 为基准、超 10% 就注销」</td></tr>
+<tr><td class="hl">政策持股在减</td><td>三年卖出 <b>¥48 亿</b>；占净资产比 <b>22.4% → 18.9%</b>；目标 2031/3 前降到 15% 以下</td></tr>
+<tr><td class="hl">下三年回报计划</td><td>Challenge2028 计划股东回报总额 <b>¥80–110 亿</b>（前三年的 ¥60 亿之上再加）</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>这一条很关键，因为它回答了一个常见质疑——「日本小盘股破净就是因为管理层不还钱」。日阪的情况不是：<strong>它有一个正在运行的还钱机制</strong>。三年 ¥80–110 亿对 ¥494 亿市值＝16–22%，年均 <em>5.4–7.4%</em> 的总股东回报率（股息＋回购）。这是一个可以拿来和 T、BMY、CPB 直接比较的数字。</p>
+
+<h3>⑤ 订单能见度与「服务化」的迁移</h3>
+
+<p>FY2027 一季度（2026 年 4–6 月）是这一轮最好的证据：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>FY2027 Q1</th><th class="num">受注高</th><th class="num">同比</th><th class="num">其中海外</th><th class="num">同比</th><th class="num">利润率</th></tr></thead>
+<tbody>
+<tr><td class="hl">换热器事业</td><td class="num">¥52.80 亿</td><td class="num up">+32.2%</td><td class="num">¥19.13 亿</td><td class="num up">+75.0%</td><td class="num up">8.7%（+2.7pt）</td></tr>
+<tr><td class="hl">阀门事业</td><td class="num">¥13.41 亿</td><td class="num up">+5.3%</td><td class="num">¥0.88 亿</td><td class="num dn">−31.1%</td><td class="num up">11.6%（+4.3pt）</td></tr>
+<tr><td class="hl">工艺工程事业</td><td class="num">¥44.84 亿</td><td class="num dn">−10.9%</td><td class="num">¥11.49 亿</td><td class="num dn">−25.8%</td><td class="num dn">6.4%（−3.4pt）</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>公司自己对换热器订单 +32.2% 的解释是三个词：<strong>「维修服务顺利」「海外船舶的大单」「海外工厂的大额部件订单」</strong>。这三个词比任何宏观叙事都有价值——<em>维修服务</em>是复购型现金流，<em>船舶</em>是中日韩造船周期的位置，<em>海外工厂部件</em>是备件生意。这三条都不是一次性收入。</p>
+
+<h3>⑥ 零杠杆 + 零商誉 = 没有隐藏负债</h3>
+
+<p>自有资本比率 77.2%、有息负债仅 ¥50 亿（其中公司债 ¥40 亿、借款 ¥10 亿）、无重大商誉减值风险。这在「破净股」里是罕见的干净——很多日本破净股的净资产里塞着商誉、递延税资产、关系公司股权。日阪的 ¥643 亿净资产里，<em>¥219 亿是可以立刻变现的金融资产</em>。所以它的账面价值<strong>不是注水的账面价值</strong>。这一点必须给它加分。</p>
+
+<h2>三、劣势：六条同样是真的</h2>
+
+<div class="verdict">如果优势是「护城河」，那么劣势就是——<b>这条护城河里流的是低回报的水</b>。而且中计文件自己承认了这件事，并把解决时间定在了五年后。</div>
+
+<h3>① 最致命的一条：ROIC 3.4%，资本成本 6–8%——公司自己说的</h3>
+
+<p>这不是我的估算。公司 2026/5/15 的《资本成本与股价意识经营》进展报告原文：</p>
+
+<div class="callout red">
+<p>「PBR 仍低于 1 倍。其要因之一，是 <strong>ROE 相对于股东资本成本处于低水平、股权利差（equity spread）有限</strong>。」<br>
+<span class="mute">（原文：PBR は依然として 1 倍を下回る水準にとどまっております。その要因として、ROE が株主資本コストに対して低水準にあり、エクイティ・スプレッドが限定的であることが要因のひとつと認識しております。）</span></p>
+</div>
+
+<p><strong>这句话的分量在于：它把「破净」从「市场的错」改判成了「公司的读数」。</strong>一家公司如果 ROIC 高于资本成本，破净就是错杀；如果低于，破净就是正确的估值结果。日阪属于后者，而且管理层自己同意这个诊断。</p>
+
+<p>再看公司自己给的 ROE 三因子分解（说明会第 29 页）：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>ROE 三因子</th><th class="num">FY2022</th><th class="num">FY2023</th><th class="num">FY2024</th><th class="num">FY2025</th><th class="num">FY2026</th><th>评价</th></tr></thead>
+<tbody>
+<tr><td class="hl">销售净利率</td><td class="num">6.8%</td><td class="num">6.0%</td><td class="num">7.1%</td><td class="num">9.9%</td><td class="num">7.7%</td><td class="mute">薄（同业 15.9%）</td></tr>
+<tr><td class="hl">总资产周转率</td><td class="num">0.45</td><td class="num">0.49</td><td class="num">0.45</td><td class="num">0.47</td><td class="num">0.54</td><td class="mute">低（重资产）</td></tr>
+<tr><td class="hl">财务杠杆</td><td class="num">1.23</td><td class="num">1.25</td><td class="num">1.32</td><td class="num">1.38</td><td class="num">1.32</td><td class="mute">几乎无杠杆</td></tr>
+<tr><td class="hl">＝ ROE</td><td class="num">3.8%</td><td class="num">3.7%</td><td class="num">4.2%</td><td class="num">6.3%</td><td class="num">5.6%</td><td class="mute">低于成本 6–8%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>三个因子同时偏低，这是最难修的一种。</strong>净利率要靠提价或产品结构；周转率要靠减少闲置资产；杠杆要靠财务政策。日阪的净资产是「厚」的——但在这个语境里，「厚」不是优点，<em>是它 ROE 低的原因本身</em>：¥643 亿净资产托着 ¥33 亿营业利润，杠杆只有 1.32 倍。</p>
+
+<h3>② 中计的目标不是「创造价值」，是「五五年后不再毁灭价值」</h3>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="日阪製作所 资本回报：实际、现价隐含、中计目标与资本成本">
+<rect x="0" y="0" width="680" height="320" fill="#101013"/>
+<text x="24" y="26" font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="#86868b">资本回报的四个刻度：公司实际 · 现价隐含 · 三年目标 · 五年目标</text>
+
+<!-- cost of capital band 6-8% : 0%=y242 , 10%=y46 , 1%=19.6px -->
+<rect x="90" y="85.2" width="566" height="39.2" fill="#ff453a" opacity="0.12"/>
+<line x1="90" y1="85.2" x2="656" y2="85.2" stroke="#ff453a" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<line x1="90" y1="124.4" x2="656" y2="124.4" stroke="#ff453a" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/>
+<text x="652" y="79" text-anchor="end" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="#ff453a" font-weight="600">股东资本成本 6–8%（公司自认）</text>
+
+<!-- axis -->
+<line x1="90" y1="242" x2="656" y2="242" stroke="#2c2c31" stroke-width="1"/>
+<line x1="90" y1="46" x2="90" y2="242" stroke="#2c2c31" stroke-width="1"/>
+<text x="80" y="246" text-anchor="end" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#6e6e73">0%</text>
+<text x="80" y="206.8" text-anchor="end" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#6e6e73">2%</text>
+<text x="80" y="167.6" text-anchor="end" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#6e6e73">4%</text>
+<text x="80" y="128.4" text-anchor="end" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#6e6e73">6%</text>
+<text x="80" y="89.2" text-anchor="end" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#6e6e73">8%</text>
+<text x="80" y="50" text-anchor="end" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="#6e6e73">10%</text>
+<line x1="90" y1="202.8" x2="656" y2="202.8" stroke="#1f1f23" stroke-width="1"/>
+<line x1="90" y1="163.6" x2="656" y2="163.6" stroke="#1f1f23" stroke-width="1"/>
+<line x1="90" y1="46" x2="656" y2="46" stroke="#1f1f23" stroke-width="1"/>
+
+<!-- bars : x=126 w=96 gap 44 -->
+<!-- 3.4% h=66.6 y=175.4 -->
+<rect x="126" y="175.4" width="96" height="66.6" rx="3" fill="#ff453a" opacity="0.92"/>
+<text x="174" y="167" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="18" fill="#ff453a" font-weight="700">3.4%</text>
+<text x="174" y="262" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#f5f5f7">ROIC 实际</text>
+<text x="174" y="278" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10" fill="#6e6e73">FY2026 实绩</text>
+<text x="174" y="293" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10" fill="#ff453a">毁灭价值</text>
+
+<!-- 5.1% h=100 y=142 -->
+<rect x="266" y="142" width="96" height="100" rx="3" fill="#ff9f0a" opacity="0.92"/>
+<text x="314" y="133" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="18" fill="#ff9f0a" font-weight="700">5.1%</text>
+<text x="314" y="262" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#f5f5f7">现价隐含</text>
+<text x="314" y="278" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10" fill="#6e6e73">¥1,719</text>
+<text x="314" y="293" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10" fill="#ff9f0a">市场已付的钱</text>
+
+<!-- 5.5% h=107.8 y=134.2 -->
+<rect x="406" y="134.2" width="96" height="107.8" rx="3" fill="#ff9f0a" opacity="0.5"/>
+<text x="454" y="125" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="18" fill="#ff9f0a" font-weight="700">5.5%</text>
+<text x="454" y="262" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#f5f5f7">ROIC 目标</text>
+<text x="454" y="278" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10" fill="#6e6e73">FY2029/3 中计</text>
+<text x="454" y="293" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10" fill="#86868b">仍低于成本下限</text>
+
+<!-- 8.0% h=156.8 y=85.2 -->
+<rect x="546" y="85.2" width="96" height="156.8" rx="3" fill="#30d158" opacity="0.42"/>
+<text x="594" y="76" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="18" fill="#30d158" font-weight="700">8.0%</text>
+<text x="594" y="262" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11.5" fill="#f5f5f7">ROE 目标</text>
+<text x="594" y="278" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10" fill="#6e6e73">FY2031/3</text>
+<text x="594" y="293" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="10" fill="#86868b">刚好打平价值</text>
+
+<text x="90" y="313" font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="#86868b">公司给自己定的长期目标（FY2031 ROE 8%）只是「刚好不再毁灭价值」；而市场已经先付了「FY2029 达标」的钱。</text>
+</svg>
+</div>
+<p class="note">柱子只画了区间对比，纵轴不严格按比例（3.4/5.1/5.5 三根差异太小，按比例画会看不清）；红色带是公司自认的股东资本成本 6–8%。</p>
+
+<p>这段要说清楚，因为它最容易被「有目标就是好事」的直觉带偏：</p>
+
+<ul>
+<li><strong>FY2029/3（三年后）目标：ROIC 3.4% → 5.5%，ROE 5.6% → 7.0%，营业利润率 7.4% → 9.1%。</strong>但它的资本成本自己说是 6–8%。<em>5.5% 的 ROIC 目标，落在资本成本区间之下。</em></li>
+<li><strong>FY2031/3（五年后）目标：ROE 8% 以上，「并尽快实现 PBR 1 倍以上」。</strong>8% 正好是它自认资本成本区间的<em>上限</em>。也就是说：<strong>公司给自己定的长期目标，是「五年后做到刚好不毁灭价值」。</strong></li>
+</ul>
+
+<div class="callout">
+<p>用最直白的话：<strong>你问一家公司「你打算什么时候开始为股东创造价值」，它回答「五年后，做到打平」。</strong>这不是管理层不努力——这是这门生意的物理属性。而衡量这类公司，唯一正确的尺子是「它打平的速度」，不是「它便宜多少」。</p>
+</div>
+
+<h3>③ 92% 的利润增量，押在过去三年利润率在跌的那个事业部上</h3>
+
+<p>这是我看完中计分事业部目标后最意外的一条。把 FY2026 实绩和 FY2029 目标并排放：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>事业部</th><th class="num">FY2026 营业利润</th><th class="num">FY2029 目标</th><th class="num">增减</th><th class="num">利润率变化</th><th>评价</th></tr></thead>
+<tbody>
+<tr><td class="hl">换热器</td><td class="num">¥9.88 亿</td><td class="num">¥25.50 亿</td><td class="num up">+158.1%</td><td class="num">5.7% → <b>10.9%</b></td><td class="hl">全社利润增量的 92%</td></tr>
+<tr><td class="hl">阀门</td><td class="num">¥3.66 亿</td><td class="num">¥7.00 亿</td><td class="num up">+91.3%</td><td class="num">7.1% → 10.8%</td><td class="mute">基数小</td></tr>
+<tr><td class="hl">工艺工程</td><td class="num">¥21.29 亿</td><td class="num">¥19.40 亿</td><td class="num dn">−8.9%</td><td class="num">9.5% → 7.8%</td><td class="mute">主动下调</td></tr>
+<tr><td class="hl">合计营业利润</td><td class="num">¥33.03 亿</td><td class="num">¥50.00 亿</td><td class="num up">+51.4%</td><td class="num">7.4% → 9.1%</td><td class="mute">—</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>为什么说这条是劣势？因为<strong>换热器事业部的利润率，在前一个三年计划里是<em>往下走</em>的</strong>：</p>
+
+<ul>
+<li>FY2023 → FY2026：换热器收入 <em>+28.4%</em>（¥134.2 亿 → ¥172.3 亿），营业利润只 <em>+21.4%</em>（¥8.14 亿 → ¥9.88 亿），<strong>利润率从 6.1% 掉到 5.7%</strong>。公司自己的说法是「コスト増の影響で利益率は低下」（成本上升导致利润率下滑）。</li>
+<li>同期全社营业利润的增量几乎全部来自<strong>工艺工程</strong>（¥8.33 亿 → ¥21.29 亿，<em>+155.6%</em>，占全社利润增量的 87%）。</li>
+</ul>
+
+<p>换句话说：<strong>过去三年真正救了公司业绩的，是那个「跟 AI 无关」的食品医药工程事业部；而现在中计要求这个事业部<em>主动让出利润</em>（目标下调 8.9%），把全社的赌注换到过去三年跑输的换热器上。</strong></p>
+
+<p>再拆一下这 ¥15.62 亿的增量从哪来：</p>
+
+<ul>
+<li>换热器收入目标 ¥172.3 → ¥234.7 亿（+36.2%）。若利润率维持 5.7%，利润只到 ¥13.4 亿，<strong>即「多做生意」只贡献 ¥3.6 亿</strong>。</li>
+<li>剩下 <strong>¥12.2 亿（占增量的 78%）必须来自利润率从 5.7% 提到 10.9%</strong>。</li>
+</ul>
+
+<div class="callout red">
+<p><strong>所以这是一个「利润率修复」故事，不是「增长」故事。</strong>而利润率修复的证据链目前只有一段：FY2027 Q1 换热器利润率 8.7%（+2.7pt），公司归因于「国内外维修服务收入增长带来的销售结构改善」。这段证据是真的、方向是对的——但一个季度、2.7pt，距离三年 5.2pt 还很远。</p>
+</div>
+
+<h3>④ 上一个三年计划的利润目标，全数未达成</h3>
+
+<p>这是评估管理层执行力最硬的证据，而且同样是<strong>公司自己在说明会第 26 页列出来的</strong>（前中计 G-23 复盘）：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>G-23（FY2024–FY2026）</th><th class="num">当初目标</th><th class="num">实际达成</th><th class="num">达成率</th></tr></thead>
+<tbody>
+<tr><td class="hl">受注高</td><td class="num">¥410 亿</td><td class="num">¥425.91 亿</td><td class="num up">103.9%</td></tr>
+<tr><td class="hl">卖上高</td><td class="num">¥400 亿</td><td class="num">¥448.90 亿</td><td class="num up">112.2%</td></tr>
+<tr><td class="hl">营业利润</td><td class="num">¥36.0 亿</td><td class="num">¥33.03 亿</td><td class="num dn">91.8%</td></tr>
+<tr><td class="hl">营业利润率</td><td class="num">9.0%</td><td class="num">7.4%</td><td class="num dn">差 1.6pt</td></tr>
+<tr><td class="hl">经常利润</td><td class="num">¥38.0 亿</td><td class="num">¥36.20 亿</td><td class="num dn">95.3%</td></tr>
+<tr><td class="hl">纯利润</td><td class="num">¥26.0 亿</td><td class="num">¥34.49 亿</td><td class="num up">132.7%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>模式非常清楚：收入类目标全部超额完成，利润类目标全部未达成。</strong>而唯一大幅超额完成的纯利润，公司的解释是——「<em>政策保有株式の縮減に伴う株式の売却益が発生し</em>」（因减持政策持股产生了股票出售收益）。</p>
+
+<div class="callout red">
+<p><strong>这条对中计的杀伤力在于：中计要求的是利润率的质变（7.4% → 9.1%），而上一版中计恰恰是在同一个指标上失败了（目标 9.0%，实际 7.4%）。</strong>看到「新中计营业利润率 9.1%」时，第一反应应该是「这不就是上一版没做到的那个数吗」，而不是「终于要改善了」。</p>
+</div>
+
+<h3>⑤ 「AI 液冷」是散户的语言，公司的语言是「碳中和」</h3>
+
+<p>这一条是这一轮最重要的纠偏。市场上（包括上一轮的我）把日阪当作「AI 液冷概念股」，但公司自己的文件里，故事的骨架完全是另一套：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>核对待查项</th><th>公司一手文件的说法</th></tr></thead>
+<tbody>
+<tr><td class="hl">经营愿景（中计标题）</td><td>「<strong>気候変動への挑戦</strong>」（挑战气候变化）——不是 AI，不是数字基建</td></tr>
+<tr><td class="hl">换热器事业重点市场（说明会 P38）</td><td><strong>CO₂ 回收</strong>、LNG 工厂、船舶、发电厂（含核电重启与革新轻水堆）、数据中心——<em>数据中心是五个里的第四个，排在碳中和叙事之后</em></td></tr>
+<tr><td class="hl">前中计换热器事业的实绩归因</td><td>「カーボンニュートラル市場における実績（<strong>CO₂ 回収、原子力案件</strong>など）」——点名的成果是 CO₂ 回收与核电，<em>未提数据中心</em></td></tr>
+<tr><td class="hl">FY2027 Q1 订单 +32.2% 的归因</td><td>「<strong>维修服务顺利</strong>」「<strong>海外船舶的大单</strong>」「<strong>海外工厂的大额部件订单</strong>」——<em>造船与海外工厂，未提 AI</em></td></tr>
+<tr><td class="hl">有无 DC 专用产品线</td><td>无。产品是液-液板式换热器，用在冷机／空调箱回路。<strong>不产 CDU、不产冷板、不做浸没槽</strong></td></tr>
+<tr><td class="hl">有无 DC 量化订单</td><td>公司披露中无金额、无台数、无客户名单、<strong>无 NVIDIA 认证</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>更值得注意的反向证据面：<strong>数据中心冷却这条赛道上，日本大厂已经在用「产品 ＋ 合作」的方式占了位，而日阪一个都没有。</strong></p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>公司</th><th>动作</th><th>时间</th></tr></thead>
+<tbody>
+<tr><td class="hl">SWEP（Dover 系）</td><td>推出 <strong>DC 冷却专用</strong>钎焊板换 B327／B224，支持 1,000kW 热回收</td><td>2025/12</td></tr>
+<tr><td class="hl">Alfa Laval</td><td>扩产半焊板换 TS25，专攻电解槽冷却、工业热泵</td><td>2025/4</td></tr>
+<tr><td class="hl">大金 × 台达电子</td><td>签 MOU，联合做 AI 机房 <strong>CDU</strong>，覆盖 100kW–3,000kW 机架</td><td>2026/4/22</td></tr>
+<tr><td class="hl">Panasonic（Tecnair）</td><td>推出 400kW／800kW <strong>CDU</strong>，在研发 1.2MW 以上机型</td><td>2026/3</td></tr>
+<tr><td class="hl">古河電工</td><td>投 ¥550 亿在菲律宾／泰国／中国扩水冷模块产能；2024 财年以来累计 ¥740 亿</td><td>2026/3</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>把这些放在一起看：<strong>日阪在数据中心这件事上的位置，是「可能给 CDU 厂商供应板式换热器」的二级供应商——而 CDU 这个位置的玩家，已经是大金、Panasonic、台达这个量级。</strong>这不是「错杀的液冷股」，这是「液冷产业链上的一个可能供应商，且面临 SWEP／Alfa Laval 的专用产品竞争」。</p>
+
+<h3>⑥ 没有催化剂机制：零覆盖、八千股东、日成交 ¥1.1 亿</h3>
+
+<div class="kv">
+<div class="cell"><div class="lbl">卖方分析师覆盖</div><div class="val">0<small> 家</small></div></div>
+<div class="cell"><div class="lbl">股东户数（单元）</div><div class="val">8,330<small> 名</small></div></div>
+<div class="cell"><div class="lbl">日均成交额</div><div class="val">¥1.1<small> 亿日元</small></div></div>
+<div class="cell"><div class="lbl">库存股 + 稳定股东占比</div><div class="val">~28<small>%</small></div></div>
+</div>
+
+<p>公司在这方面其实很努力——FY2026 开了 <strong>49 场</strong>分析师／机构一对一会议、2 次决算说明会、办了机构投资者工厂见学会和<b>个人股东</b>工厂见学会。结果是：<em>零覆盖</em>。</p>
+
+<p>原因不在公司态度，在结构：<strong>流通股只有 2,287.6 万股（流通市值 ¥393 亿），日成交额 ¥1.1 亿日元（约 500 万人民币）。</strong>对卖方的商业模式而言，一只机构买不进、也卖不出的股票，写报告是没有意义的。对机构而言，这个流动性连小额建仓都不成立。</p>
+
+<div class="callout">
+<p><strong>这一条是双向的：它既是「无人问津＝可能便宜的来源」，也是「无人推动＝价值可能永远不兑现」的原因。</strong>按灵魂第二十七条的分类，日阪的低位成色是「<em>估值型／被遗忘型</em>」——卖的人不是知道内情的人（这点好）；但反过来说，<strong>没有任何外部力量在逼它重估</strong>。它 2022–2025 年已经在 0.41–0.48 倍 PBR 上躺了四年。</p>
+</div>
+
+<h2>四、华尔街记分卡</h2>
+
+<div class="verdict">如果按卖方首次覆盖（initiation）的模板打分，日阪的画像是：<b>资产负债表 A、护城河 B+、盈利能力 D、资本配置 B、成长 D、催化剂 F</b>。这种组合在华尔街有个专门的叫法——<b>「deep value with no catalyst」</b>，翻译过来是「便宜，但不知道什么时候会不便宜」。</div>
+
+<div class="score">
+<div class="card"><div class="t">商业模式</div><div class="g b">B</div><div class="d">受监管工序 ＋ 复购型维修服务，现金流寿命长；但 50% 收入是低毛利的成套工程项目，周期性重、能见度低</div></div>
+<div class="card"><div class="t">护城河</div><div class="g a">B+</div><div class="d">四张准垄断牌（60–90% 国内份额）＋ 日本唯一板片纵向一体化。真实且可验证，但圈住的池子只有 ¥448 亿收入</div></div>
+<div class="card"><div class="t">盈利能力</div><div class="g c">D</div><div class="d">ROIC 3.4% vs 资本成本 6–8%；ROE 5.6%；营业利润率 7.4%（同业新晃 15.9%）。三因子全低，属结构性</div></div>
+<div class="card"><div class="t">资产质量</div><div class="g a">A−</div><div class="d">自有资本比率 77.2%、净现金 ¥53 亿、投资证券 ¥166 亿、无商誉。¥643 亿净资产里 ¥219 亿可立即变现</div></div>
+<div class="card"><div class="t">资本配置</div><div class="g b">B</div><div class="d">五年连续增配、注销 400 万股、三年卖政策持股 ¥48 亿、已建 ROIC 树 KPI。但下三年成长投资（¥95–125 亿）仍高于股东回报（¥80–110 亿）</div></div>
+<div class="card"><div class="t">成长性</div><div class="g c">D+</div><div class="d">长期愿景：2043/3 期收入 ¥1,000 亿＝17 年 CAGR 4.1%（管理层自己的野心刻度）。FY2027 指引收入 −2.0%</div></div>
+<div class="card"><div class="t">催化剂</div><div class="g c">F</div><div class="d">零覆盖、8,330 名股东、日成交 ¥1.1 亿、无维权股东、无并购传闻。PBR 修复目标定在「早日」（无日期）</div></div>
+<div class="card"><div class="t">估值吸引力</div><div class="g b">C+</div><div class="d">PBR 0.69 看起来便宜，但因 ROIC &lt; WACC 而作废；前瞻 P/E 18.9× 是三家同业最贵。详见第六节</div></div>
+</div>
+
+<h2>五、残酷的那张表：和同业比</h2>
+
+<div class="verdict">这张表是全文最有信息量的一页。<b>如果只允许看一个数字，看「前瞻 P/E」那一列</b>——日阪是三家日本同业里最贵的一家，而它的 ROE 是三家最低的。</div>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr>
+<th>指标</th><th class="num">日阪製作所<br>6247</th><th class="num">新晃工業<br>6458</th><th class="num">高砂熱学<br>1969</th><th class="num">Alfa Laval<br>（全球龙头）</th>
+</tr></thead>
+<tbody>
+<tr><td class="hl">市值</td><td class="num">¥494 亿</td><td class="num">¥830–880 亿</td><td class="num">¥5,990 亿</td><td class="num">SEK 2,266 亿</td></tr>
+<tr><td class="hl">收入</td><td class="num">¥448.9 亿</td><td class="num">¥593 亿</td><td class="num">¥3,816.6 亿</td><td class="num">SEK ~700 亿</td></tr>
+<tr><td class="hl">营业利润率</td><td class="num up">7.4%</td><td class="num dn">15.9%</td><td class="num dn">8.5%</td><td class="num dn">18.4%</td></tr>
+<tr><td class="hl">ROE</td><td class="num up">5.6%</td><td class="num dn">11.0%</td><td class="num dn">16.0%</td><td class="num dn">19.1%</td></tr>
+<tr><td class="hl">ROIC / ROCE</td><td class="num up">3.4%</td><td class="num mute">—</td><td class="num mute">—</td><td class="num dn">ROCE 29.2%</td></tr>
+<tr><td class="hl">P/E（实绩）</td><td class="num">12.8×</td><td class="num">12.2×</td><td class="num">16.5×</td><td class="num">27.4×</td></tr>
+<tr><td class="hl"><strong>P/E（前瞻）</strong></td><td class="num up"><strong>16.6–18.9×</strong></td><td class="num dn"><strong>11.5×</strong></td><td class="num"><strong>14.0–16.3×</strong></td><td class="num">~25×</td></tr>
+<tr><td class="hl">PBR</td><td class="num dn">0.69×</td><td class="num">1.25×</td><td class="num up">2.94×</td><td class="num up">4.4–5.2×</td></tr>
+<tr><td class="hl">PBR ÷ ROE</td><td class="num">12.3</td><td class="num dn">11.4</td><td class="num">18.4</td><td class="num">~24</td></tr>
+<tr><td class="hl">股息率</td><td class="num">3.31%</td><td class="num dn">4.11%</td><td class="num">~3.9%</td><td class="num">1.55%</td></tr>
+<tr><td class="hl">自有资本比率</td><td class="num dn">77.2%</td><td class="num">67.9%</td><td class="num">53.9%</td><td class="num">~40%</td></tr>
+<tr><td class="hl">员工数</td><td class="num">1,063</td><td class="num">1,740</td><td class="num">7,287</td><td class="num">24,399</td></tr>
+<tr><td class="hl">DC 产品</td><td class="num up">无专用产品</td><td class="num dn">数据中心用空调机组</td><td class="num dn">DC 精密空调工程</td><td class="num dn">DC 专用板换 TS25</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">日阪前瞻 P/E 区间取两个口径：FISCO 按公司指引 EPS ¥91.66 算 18.87×；东洋经济四季报按自身预估算 16.58×。<b>即使取乐观端 16.6×，仍高于新晃的 11.5× 与高砂熱学的 14.0×。</b>日阪 PBR÷ROE＝0.69÷5.6%＝12.3，高于新晃的 1.25÷11.0%＝11.4——意味着「每单位 ROE 的 PBR 价格」上，日阪并不比新晃便宜。</p>
+
+<h3>为什么日阪 PBR 便宜而 P/E 贵？——这恰恰是全部答案</h3>
+
+<p>PBR 便宜是因为<em>分母（净资产）太大了</em>：¥643 亿净资产托着 ¥33 亿营业利润。P/E 贵是因为<em>分子（利润）太小了</em>，而且 FY2027 还要再降 30%（去掉上一年卖股票的一次性收益）。</p>
+
+<div class="callout red">
+<p><strong>同一件事的两面：资本过剩，所以 PBR 低；资本过剩导致回报低，所以 P/E 高。</strong>这不是「错杀的估值」，这是「低回报的正确读数」。想靠 PBR 赚钱，必须先把 ROE 抬上去——而公司给的时间表是五年。</p>
+</div>
+
+<h2>六、估值：两把尺子打架，ROIC 是裁判</h2>
+
+<div class="verdict">华尔街估值的第一原则是「两把尺子必须互校」。<b>日阪正好是一个经典案例：资产法说它便宜 40%，盈利法说它是同业最贵。</b>本节给出裁判方法，并反推现价隐含的假设。</div>
+
+<h3>尺子 A（资产法）：看起来便宜 40%</h3>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>项目</th><th class="num">金额</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>市值（总股本口径）</td><td class="num">¥494 亿</td><td>¥1,719 × 28,732,800 股</td></tr>
+<tr><td>减：净现金</td><td class="num">−¥53 亿</td><td>现金 ¥103 亿 − 有息负债 ¥50 亿</td></tr>
+<tr><td class="hl">＝ 企业价值 EV</td><td class="num hl">¥441 亿</td><td class="mute">只用净现金扣减</td></tr>
+<tr><td>再减：投资有价证券（账面）</td><td class="num">−¥166 亿</td><td class="mute">政策持股等，账面值</td></tr>
+<tr><td class="hl">＝ 经营性 EV（「调整后」）</td><td class="num hl">¥275 亿</td><td class="mute">只买业务本体要付的钱</td></tr>
+<tr><td>÷ 营业利润（FY2027 指引 ¥33 亿）</td><td class="num up">8.3×</td><td class="hl">EV/EBIT 8.3 倍，看起来便宜</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>按这把尺子，<strong>你为「业务本体」付 8.3 倍 EBIT，而 Alfa Laval 的 EV/EBIT 是 18.2 倍。</strong>如果认同这个口径，结论会是「便宜 40% 以上」。这是上一轮我把它放进「洼地」的算法。</p>
+
+<h3>尺子 B（盈利法）：同业最贵</h3>
+
+<p>前瞻 P/E 16.6–18.9 倍，高于新晃工業 11.5 倍与高砂熱学 14.0–16.3 倍；<strong>同时处在它自己的历史区间上沿</strong>——FISCO 记录的 FY2027/3 期 PER 区间是 15.17–19.67 倍，现价对应 18.87 倍。</p>
+
+<h3>裁判：ROIC − WACC 的符号</h3>
+
+<p>两把尺子的冲突有一个标准解法，而且它给出的答案很干脆：</p>
+
+<div class="callout blue">
+<p><strong>资产法只在「ROIC ≥ WACC」时才成立。</strong>当一家公司的资本回报高于资金成本，它的资产每一块钱都在创造超额价值，于是「账面资产打七折」就是真的安全边际。<br>
+<strong>但当 ROIC &lt; WACC 时，逻辑反过来：这家公司投在业务里的每一块钱，市场都认为它值不回一块钱。</strong>此时「EV/EBIT 只有 8.3 倍」不是便宜，而是市场对低资本回报的正确折扣。</p>
+</div>
+
+<p>日阪的正负号是明确的负数：<strong>ROIC 3.4%（公司口径）vs 自有资本成本 6–8%（公司口径）。</strong>所以尺子 A 作废，以尺子 B 为准——<em>这也是为什么 PBR 0.69 与 P/E 18.9 不是矛盾，而是同一件事的两种表达</em>。</p>
+
+<h3>反推：现价隐含了什么</h3>
+
+<p>用与现金流一致的估值公式（价值 ＝ 投入资本 × (ROIC − g) ÷ (WACC − g)，再加回金融资产）：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>投入资本（经营）</th><th>净资产 ¥643.5 亿 ＋ 有息负债 ¥50.1 亿 − 现金 ¥103 亿 − 投资证券 ¥166 亿</th><th class="num">¥424.6 亿</th></tr></thead>
+<tbody>
+<tr><td class="hl">加回金融资产</td><td>净现金 ¥53 亿 ＋ 投资证券 ¥166 亿</td><td class="num">＋¥219 亿</td></tr>
+<tr><td class="mute">长期增长 g（假设）</td><td class="mute">1.5%（对应管理层 2043 愿景的 4% 收入 CAGR 打三折）</td><td class="num mute">—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>情景</th><th class="num">ROIC 假设</th><th class="num">权益价值</th><th class="num">每股</th><th class="num">相对现价 ¥1,719</th></tr></thead>
+<tbody>
+<tr><td class="hl">公司当前实际</td><td class="num">3.4%</td><td class="num">¥366 亿</td><td class="num">¥1,272</td><td class="num dn">−26%</td></tr>
+<tr><td class="hl">现价隐含（WACC 6–8% 区间）</td><td class="num up">4.4–5.7%</td><td class="num">—</td><td class="num up">¥1,719</td><td class="num mute">±0%</td></tr>
+<tr><td class="hl">FY2029 中计目标</td><td class="num">5.5%</td><td class="num">¥528 亿</td><td class="num">¥1,837</td><td class="num up">+7%</td></tr>
+<tr><td class="hl">达到资本成本（价值创造临界）</td><td class="num">7.0%</td><td class="num">¥644 亿</td><td class="num">¥2,240</td><td class="num up">+30%</td></tr>
+<tr><td class="hl">FY2031 ROE 目标对应</td><td class="num">8.0%</td><td class="num">¥721 亿</td><td class="num">¥2,509</td><td class="num up">+46%</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">假设 WACC ＝ 7%（公司自认 6–8% 取中值）、长期增长 1.5%。WACC 取 6% 或 8% 时，现价隐含 ROIC 分别是 4.4% 与 5.7%——无论取哪端，都落在「公司 FY2029 目标 5.5%」附近。</p>
+
+<div class="conclusion">
+<h3>这张表就是全文的结论</h3>
+<p><strong>现价 ¥1,719 隐含的 ROIC 是 4.4%–5.7%，而公司 FY2029/3 的中计目标正好是 5.5%。</strong></p>
+<p>换句话说：<strong>你现在付的价格，已经基本等于「公司三年后达成它自己的中计目标」的现值。</strong>你不是在买一个「廉价的资产 ＋ 免费的修复期权」，你是在买一个<em>已经被部分定价的修复预期</em>——而且要赚到那 +7%，公司必须三年一毫不差地走完中计。</p>
+<p>再往前看：<strong>要到 +30% 那一栏（即真正开始为股东创造价值），ROIC 必须从 3.4% 提到 7.0%，而公司自己说这件事要到 <em>FY2031 之后</em>。</strong>从 0.69 倍 PBR 到 1.0 倍 PBR 的这 46%，时钟握在管理层手里，而且上了五年发条。</p>
+</div>
+
+<h2>七、所以，什么情况下该买、什么情况下该跑</h2>
+
+<h3>升级触发（要看到这些才值得重估）</h3>
+
+<ol>
+<li><strong>换热器事业部利润率连续两个季度 ≥ 9.0%</strong>（FY2027 Q1 是 8.7%，+2.7pt；中计要求 FY2029 到 10.9%）。这是整份中计唯一真正要证伪／证实的变量。</li>
+<li><strong>FY2027 全期营业利润超过指引 ¥33 亿</strong>（Q1 已 +35.9%，H1 计划完成 58%，存在上修空间）。</li>
+<li><strong>出现大额注销式回购</strong>，特别是与政策持股出售（计划 ¥40 亿以上）配对出现。每 ¥10 亿回购在 0.69 倍 PBR 上注销约 1.9% 股本。</li>
+<li><strong>首次出现卖方覆盖</strong>，或 MSCI／TOPIX 相关指数纳入带来的被动买盘。</li>
+<li><strong>换热器事业部拿下具名的数据中心／液冷项目</strong>——有客户名、有金额、有期限。</li>
+</ol>
+
+<h3>降级触发（出现就走）</h3>
+
+<ol>
+<li><strong>FY2027 通期营业利润低于 ¥33 亿</strong>——意味着连「持平」都做不到，中计的 9.1% 利润率目标直接破产。</li>
+<li><strong>换热器事业部订单增速回落到 5% 以下</strong>（FY2027 Q1 是 +32.2%，海外 +75%）。</li>
+<li><strong>股息率被动上升而股息不变</strong>：FY2027 派息率已达 <em>60%</em>（纯利润 ¥24.1 亿 ÷ 派息 ¥14.5 亿）。若利润再降，55 円的股息将不可持续。</li>
+<li><strong>换热器事业部利润率回落到 6% 以下</strong>——设备投资与折旧却在增加（FY2027 折旧计划 ¥21 亿，比 FY2026 的 ¥17.5 亿增 20%），固定成本压力是实打实的。</li>
+<li><strong>投资有价证券的账面值大幅波动</strong>：其「其他净资产」科目一年内增加 ¥26.9 亿，主要来自持股浮盈——<em>它的净资产在变相变成股票组合</em>，这会同时抬高 PBR 的分母质量风险。</li>
+</ol>
+
+<h2>八、如果还是要买：修正后的档位</h2>
+
+<div class="verdict">上一轮我给的档位（Z2 主仓 ¥1,470–1,560）<b>隐含「现价偏高 10–15%」的判断，但反推法显示现价基本公允</b>。所以档位要整体下调，且必须承认：<b>往下走的每一档，买的都是「更厚的资产垫」，不是「更高的回报」。</b></div>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>档位</th><th class="num">价格区间</th><th class="num">对应 PBR</th><th class="num">股息率</th><th class="num">隐含 ROIC</th><th>仓位</th></tr></thead>
+<tbody>
+<tr><td class="hl">观察（不买）</td><td class="num">¥1,700–1,800</td><td class="num">0.70–0.74×</td><td class="num">3.06–3.24%</td><td class="num">~5.1%</td><td class="mute">＝已经完全定价中计目标</td></tr>
+<tr><td class="hl">Z1 试探</td><td class="num">¥1,500–1,600</td><td class="num">0.62–0.66×</td><td class="num">3.44–3.67%</td><td class="num up">~4.0%</td><td class="num">≤1%</td></tr>
+<tr><td class="hl">Z2 主仓</td><td class="num">¥1,320–1,420</td><td class="num">0.54–0.58×</td><td class="num">3.88–4.17%</td><td class="num up">~3.0%</td><td class="num">1–2%</td></tr>
+<tr><td class="hl">Z3 加仓</td><td class="num">¥1,180–1,270</td><td class="num">0.48–0.52×</td><td class="num">4.33–4.66%</td><td class="num up">~1.9%</td><td class="num">+1%</td></tr>
+<tr><td class="hl">止损</td><td class="num">¥1,120 收盘破</td><td class="num">0.46×</td><td class="num">4.91%</td><td class="num mute">—</td><td class="mute">此时资产垫仍厚但催化为零</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">隐含 ROIC 按 WACC 7%、g 1.5% 反推。注意现价所在的 ¥1,700–1,800 一档，按这套框架的定性是「观察」而非「买入」。</p>
+
+<h3>一个必须说出口的替代结论</h3>
+
+<div class="callout green">
+<p><strong>如果你要在日本「电与冷」这一层选一个收租标的，新晃工業（6458）在几乎每个维度上都优于日阪：</strong>前瞻 P/E 11.5× 对 18.9×、营业利润率 15.9% 对 7.4%、ROE 11.0% 对 5.6%、股息率 4.11% 对 3.31%，而且它有真正的数据中心产品（数据中心用空调机组）与精密空调工程能力。</p>
+<p>它的劣势我也要说清楚：PBR 1.25 倍（无资产垫）、FY2026 营业利润 −5.4%、净利润 −12.8%、日本国内中央空调机器销售减少，而且它的 DC 敞口同样还没有在数字上兑现。</p>
+<p><strong>所以这两家的选择不是「谁更便宜」，而是「你要资产垫还是要回报率」。</strong>日阪给你 44% 市值的金融资产和 77.2% 的自有资本比率，代价是 3.4% 的 ROIC；新晃给你 15.9% 的营业利润率，代价是没有任何缓冲垫。</p>
+</div>
+
+<h3>放回组合里：它抢的是哪个钱包</h3>
+
+<p>按灵魂第三／第二十条的分类，日阪属于<strong>收租档</strong>（债券替代类型），应该和 T 23–24 ／ BMY 58–62 ／ 奔驰 42–44 ／ CPB 20–22 竞争同一个 <em>6–9%</em> 的份额，而不是新增一个钱包。放进这个队列里，它的相对位置是：</p>
+
+<ul>
+<li><strong>资产垫最厚</strong>（44% 市值的金融资产、77.2% 自有资本比率、无商誉）——优于 T、BMY、CPB。</li>
+<li><strong>股息最低</strong>（3.31%）——低于 T 与 BMY 的档位，也低于新晃的 4.11%。</li>
+<li><strong>总股东回报率中等偏上</strong>（三年 ¥80–110 亿＝年均 5.4–7.4%，含回购）。</li>
+<li><strong>最独特的</strong>是那张 +46% 的 PBR 修复期权——但它是<em>五年期、无到期日、发行人可选择不履约</em>的期权。</li>
+</ul>
+
+<h3>附：破净的验算——PBR 0.70 是算出来的（灵魂第四十二条）</h3>
+
+<p>PBR 的合理值近似等于 <code>ROE ÷ 股东资本成本</code>。把日阪的五年轨迹摊开看，这条等式每一格都对得上：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>年度</th><th class="num">ROE</th><th class="num">PBR</th><th>读法</th></tr></thead>
+<tbody>
+<tr><td>FY2022</td><td class="num">3.8%</td><td class="num">0.41×</td><td>回报远低于资本成本，市场给深度折价</td></tr>
+<tr><td>FY2023</td><td class="num">3.7%</td><td class="num">0.45×</td><td>—</td></tr>
+<tr><td>FY2024</td><td class="num">4.2%</td><td class="num">0.47×</td><td>—</td></tr>
+<tr><td>FY2025</td><td class="num">6.3%</td><td class="num">0.45×</td><td>ROE 跳升但 PBR 没动（含卖出上市股的一次性贡献）</td></tr>
+<tr><td class="hl">FY2026</td><td class="num hl">5.6%</td><td class="num hl">0.64–0.70×</td><td class="hl">PBR 修复到 0.7 倍，恰好等于 5.6% ÷ 8%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>代入式：<strong>PBR 0.70 ≈ ROE 5.6% ÷ 股东资本成本 8%</strong>。这个商与市场实际给的 PBR 几乎完全吻合——<em>市场给的折价不是情绪，是算术。</em></p>
+
+<div class="callout">
+<p><strong>而且这句话是公司自己说的。</strong>日阪在 2026/5/15《资本成本や株価を意識した経営の実現に向けた対応について（進捗報告）》里的原话是：PBR 在 FY2026 达到 0.64 倍、从过去的 0.4 倍台上升，「<em>一方で、PBR は依然として 1 倍を下回る水準にとどまっており、その要因として、ROE が株主資本コストに対して低水準にあり、エクイティ・スプレッドが限定的であること</em>」——即「PBR 仍低于 1 倍，原因之一是 <strong>ROE 相对股东资本成本处于低水平、股权利差（equity spread）有限</strong>」。</p>
+<p>配套的时间表是 <strong>2031 年 3 月期 ROE 8%+</strong>。而 8% 是公司自认股东资本成本 6–8% 区间的<em>上限</em>——所以这条路径的终点不是「变成一门好生意」，而是「五年后不再毁灭价值」。</p>
+</div>
+
+<div class="soul">
+<span class="tag">体系灵魂第四十二条 · 破净的验算</span>
+<p class="q">破净不是期权，是 ROE 的读数。</p>
+<p style="margin-top:12px">P/B&lt;1 不含任何免费的估值期权——先算 <code>ROE ÷ 股东资本成本</code>，若这个商刚好等于当前的 PBR，说明<strong>安全垫为零</strong>（日阪：5.6% ÷ 8% = 0.70 = 市场实际给的 PBR）。要赚重估的钱，必须先让 ROE 上去。</p>
+<p style="margin-bottom:0">推论：<strong>资产垫只有在「能被转化为股东回报」时才计入价值</strong>；转化权不在买家手里的时候，它只是一个好看的数字。与第二十条（便宜要能回答「为什么便宜」）、第二十七条（低位的三种成色）分工：二十条问原因、二十七条问谁在卖、四十二条给验算方法。</p>
+</div>
+
+<div class="soul">
+<span class="tag">体系灵魂第四十三条 · 两把尺子打架时的裁判</span>
+<p class="q">两把尺子打架时，用 ROIC − WACC 的符号做裁判。</p>
+<p style="margin-top:12px">资产法（PBR、EV/EBIT）与盈利法（P/E）经常给出相反的答案。判别式只有一个——资本回报率减资金成本的<strong>符号</strong>：</p>
+<ul style="margin-top:8px">
+<li><strong>为正</strong> → 账面资产的折价是<strong>错杀</strong>，折价就是安全边际（此时的 PBR&lt;1 值得买）。</li>
+<li><strong>为负</strong> → 折价是<strong>真实的价值差异</strong>，公司投在业务里的每一块钱市场都认为值不回一块钱（此时的 PBR&lt;1 不是便宜）。</li>
+</ul>
+<p>推论一：看到破净，先不要问「便宜多少」，先问「这些资产的回报率高过它的资金成本吗」。<br>
+推论二：ROIC&lt;WACC 的公司，估值的主导变量不是「折价幅度」，而是「打平所需的时间」——所以要算的是年月，不是倍数。日阪给出的是五年。<br>
+推论三：把这条和第四十二条连起来用——第四十二条问「破净是不是 ROE 的读数」，第四十三条回答「这个读数算出来的折价，该不该付钱」。</p>
+</div>
+
+<h2>九、关键数据与来源</h2>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>数据</th><th>来源与口径</th></tr></thead>
+<tbody>
+<tr><td>FY2026 决算、FY2027 指引、分部数据、中计目标、股东资本成本 6–8%、ROE 三因子、政策持股 22.4%→18.9%、资金分配表</td><td>日阪製作所《2026 年 3 月期决算 新中期经营计划 说明会》资料（2026/5/15，共 55 页）+ 决算短信</td></tr>
+<tr><td>FY2027 Q1（2026/4–6）决算与分事业部受注高／利润率／受注残高／资产负债表</td><td>日阪製作所《2027 年 3 月期 第 1 四半期决算の概要》（2026/8/7，共 17 页）</td></tr>
+<tr><td>PBR 低于 1 倍的要因（ROE vs 股东资本成本、equity spread）</td><td>日阪製作所《资本成本与股价意识经营 进展报告》（2026/5/15）</td></tr>
+<tr><td>市占率（板换国内 60%／大型全球 40%／杀菌 70%／输液灭菌 90%／染色 90%）、日本唯一板片一体化</td><td>日阪製作所官方招聘资料页（自社调べ口径，非第三方验证）</td></tr>
+<tr><td>价格 ¥1,719（9/18 收盘）、¥1,730（FISCO 最新）、PBR 0.69–0.72、PER 18.87／16.58、PER 区间 15.17–19.67</td><td>stooq 日线；FISCO 株価指标；东洋经济四季报；富途；株探</td></tr>
+<tr><td>同业：新晃工業 6458（PER 12.2／PBR 1.25／ROE 11.0%／OPM 15.9%／股息 4.11%）；高砂熱学 1969（PER 16.5 实绩、13.97 予想／PBR 2.94／ROE 16.0%）</td><td>EDINET DB、FISCO、Yahoo Finance Japan、Eulerpool、株予報</td></tr>
+<tr><td>Alfa Laval（P/E 27.4／PBR 5.22／ROE 19.1%／EBIT 18.4%／ROCE 29.2%／EV/EBIT 18.24）</td><td>Eulerpool、MarketWatch、Yahoo Finance（单位 SEK）</td></tr>
+<tr><td>DC 冷却竞争动作：SWEP B327／B224、Alfa Laval TS25、大金 × 台达 MOU、Panasonic/Tecnair CDU、古河電工扩产</td><td>GM Insights 板式换热器市场报告；Data Center Dynamics；Data Centre Review；Technode Global；Refindustry</td></tr>
+<tr><td>股东结构（8,330 名单元股东、外资 13.3%、个人 37.9%、大株主名单）</td><td>FISCO 株主情报；日阪製作所 Shareholder Information（2025/3/31 基准）</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout">
+<p><strong>口径提示：</strong>① 本文中「市值 ¥494 亿」按发行在外总股数 28,732,800 股计算；若按扣除库存股的口径，市值约 ¥452 亿、流通市值约 ¥393 亿。② 企业价值与每股价值的换算统一用总股数，以便和 FISCO／日股惯例一致。③ 投资有价证券 ¥166 亿为 2026/6 末账面值，未做税负折价；若按税后 75% 折算，金融资产回加额会从 ¥219 亿降至约 ¥178 亿，对应各情景每股价值下移约 9%。④ 9/29 为除息日（中间配当 27 円），股价将机械下移约 1.6%，<strong>不要误读为下跌</strong>。</p>
+</div>
+
+<div class="disc">
+<p><strong>免责声明</strong>：本文基于公开数据与量化分析，仅供参考，不构成投资建议。文中所涉个股仅作为方法演示与逻辑推演的样本，不代表推荐买入或卖出。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。汇率、会计准则与数据源口径差异可能导致数字不一致，请以各公司原始披露文件为准。</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

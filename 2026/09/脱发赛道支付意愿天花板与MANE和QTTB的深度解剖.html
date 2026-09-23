@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脱发不是减肥药：自费市场的天花板由支付意愿决定，兼十家美股标的与 MANE / QTTB 深度解剖</title>
+<style>
+:root{
+  --bg:#0a0a0c; --panel:#101013; --panel2:#141417; --line:#1f1f23;
+  --tx:#d1d1d6; --tx2:#86868b; --hd:#f5f5f7;
+  --up:#ff453a; --dn:#30d158; --blue:#5ac8fa; --amber:#ff9f0a; --purple:#bf5af2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans','Yu Gothic',sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:48px 26px 90px}
+h1{font-size:30px;line-height:1.35;margin:0 0 14px;color:var(--hd);font-weight:700;letter-spacing:-.4px}
+h1 .g{background:linear-gradient(96deg,#f5f5f7 12%,#8e8e93 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 20px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.badge{display:inline-block;padding:4px 11px;border:1px solid var(--line);border-radius:20px;
+  font-size:12px;color:var(--tx2);background:var(--panel);white-space:nowrap}
+.badge.k{color:var(--hd);border-color:#2c2c31}
+.badge.up{color:var(--up);border-color:rgba(255,69,58,.35)}
+.badge.dn{color:var(--dn);border-color:rgba(48,209,88,.35)}
+.badge.b{color:var(--blue);border-color:rgba(90,200,250,.35)}
+.badge.a{color:var(--amber);border-color:rgba(255,159,10,.35)}
+h2{font-size:20px;color:var(--hd);margin:52px 0 16px;font-weight:600;letter-spacing:-.2px;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;color:var(--hd);margin:30px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+strong{color:var(--hd);font-weight:600}
+em{font-style:normal;color:var(--amber);font-weight:600}
+code{background:#17171b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px;color:#e5e5ea}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:0 0 10px}
+.lead p:last-child{margin-bottom:0}
+.verdict{background:var(--panel2);border-left:3px solid var(--hd);border-radius:0 10px 10px 0;
+  padding:13px 18px;margin:0 0 22px;font-size:14.5px;color:var(--hd)}
+.verdict b{color:var(--amber)}
+.callout{background:var(--panel2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;font-size:14.5px}
+.callout.red{border-left-color:var(--up)}
+.callout.green{border-left-color:var(--dn)}
+.callout.blue{border-left-color:var(--blue)}
+.callout p:last-child{margin-bottom:0}
+.conclusion{background:linear-gradient(180deg,#131317,#0f0f12);border:1px solid #2c2c31;border-radius:14px;
+  padding:26px 28px;margin:34px 0}
+.conclusion h3{margin-top:0;color:var(--amber)}
+.soul{background:#0f0f12;border:1px dashed #3a3a40;border-radius:12px;padding:22px 24px;margin:26px 0}
+.soul .tag{display:inline-block;font-size:11px;color:var(--purple);border:1px solid rgba(191,90,242,.4);
+  border-radius:14px;padding:2px 10px;margin-bottom:12px;letter-spacing:.5px}
+.soul .q{color:var(--hd);font-size:15.5px;font-weight:600;line-height:1.7}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+.tbl th{text-align:left;color:var(--tx2);font-weight:500;font-size:12px;letter-spacing:.3px;
+  padding:9px 10px;border-bottom:1px solid #2c2c31;white-space:nowrap}
+.tbl td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td.num,.tbl th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tbl .up{color:var(--up)} .tbl .dn{color:var(--dn)} .tbl .hl{color:var(--hd);font-weight:600}
+.tbl .mute{color:var(--tx2)}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fig{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px}
+.fig svg{display:block;width:100%;height:auto}
+.note{color:var(--tx2);font-size:12.5px;margin:8px 2px 0;line-height:1.6}
+ol,ul{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:8px}
+li::marker{color:var(--tx2)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.kv .cell{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:15px 17px}
+.kv .cell .lbl{font-size:11.5px;color:var(--tx2);margin-bottom:5px}
+.kv .cell .val{font-size:23px;color:var(--hd);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.kv .cell .val small{font-size:12px;color:var(--tx2);font-weight:400;margin-left:3px}
+@media(max-width:640px){.kv{grid-template-columns:1fr}.wrap{padding:32px 18px 70px}h1{font-size:24px}}
+.disc{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--tx2);font-size:12.5px;line-height:1.75}
+.disc p{margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span class="g">脱发不是减肥药：自费市场的天花板，由支付意愿而不是疗效决定</span></h1>
+<p class="sub">P58 · 2026 年 9 月 23 日 · 价格基准 美股 2026-09-23 收盘 · 财务基准 各公司最新已披露季报（MANE / QTTB / NKTR / ACRS / HIMS 为 2026Q2，LLY / PFE / ABBV / INCY 为 2026Q2）· 临床基准 Study 302（2026-04-27 顶线）/ SIGNAL-AA Part B（2026 年年中）/ REZOLVE-AA 52 周 · 最近的裁判日 2026H2（MANE Study 304 顶线）→ 2027Q1（女性 306 顶线 + 三家 NDA 提交）→ 2029–2030（QTTB Ph3）</p>
+
+<div class="badge-row">
+  <span class="badge k">MANE $116.26</span>
+  <span class="badge k">QTTB $10.45</span>
+  <span class="badge k">INCY $126.93</span>
+  <span class="badge k">HIMS $30.43</span>
+  <span class="badge b">MANE EV ÷ 峰值销售 1.35–2.0×</span>
+  <span class="badge a">QTTB EV 约 $0.3–0.9 亿</span>
+  <span class="badge dn">非那雄胺患者自付 $4.8/月</span>
+  <span class="badge up">定价假设高出支付意愿 2–4 倍</span>
+</div>
+
+<div class="lead">
+<p><strong>一句话定性：这个赛道最反直觉的一点，是它的定价前提被搞错了。</strong>市场把"脱发"当成"下一个 GLP-1"在炒（MANE 上市以来 +595%、ABSI 年内 +207%）。但 GLP-1 起飞靠三个引擎，脱发<strong>一个都没有</strong>：不是健康危机（FDA 与支付方不会被逼介入）、没有保险覆盖（纯自费现金市场）、没有剧烈的未满足需求（通用名只要 $15–20 一个月）。</p>
+<p>这份报告要回答四个问题：<strong>① 疗效与"患者能感知"之间那道鸿沟有多宽，它怎么决定天花板；② 支付结构到底长什么样，为什么 8,000 万患者养不出重磅药；③ 十家里谁在什么位置，MANE 与 QTTB 这两家最值得深挖的到底在赌什么；④ 如果要参与，动作该绑在价格上还是绑在读数上。</strong></p>
+<p>先给结论：<strong>质地最好是 MANE（Veradermics, MANE.N），但它最脆弱的一环是从未与即释米诺地尔做过头对头；QTTB（Q32 Bio, QTTB.O）的"EV 极低"不是便宜，而是市场在为"必须自己烧钱走完 Ph3、且结果不确定"定价；真正符合"收费口"逻辑的是 INCY（INCY.O）。</strong><em>而按项目一贯的框架，"稳健防守等崩盘捡便宜"这条路上，十家里一家都不合格——它们不是"等价格"的标的，是"等读数"的标的。</em></p>
+</div>
+
+<div class="verdict">
+结论：<b>没有保险覆盖的赛道，天花板由支付意愿决定，不由疗效决定。</b>一个更好的分子，既不能把患者从 $4.8/月 拉到 $300/月，也不能让 Medicare 破例报销。<b>所以在这个赛道上，判断估值的正确分界线不是"疗效有多好"，而是"监管路径有多省事"——因为监管上最省事的那条路，恰恰也是商业化上最没定价依据的那条路。</b>
+</div>
+
+<h2>一、先把定价前提校准：脱发不是减肥药</h2>
+
+<p>市场习惯用"GLP-1 复制品"的模板套脱发。这个模板错了。GLP-1 的起飞靠三个引擎，脱发一个都没有：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>引擎</th><th>GLP-1 减重</th><th>脱发</th></tr></thead>
+<tbody>
+<tr><td>是不是健康危机</td><td class="up">是（医保被迫介入）</td><td class="dn">否</td></tr>
+<tr><td>保险覆盖</td><td class="up">逐步覆盖</td><td class="dn">几乎全靠自费</td></tr>
+<tr><td>未满足需求</td><td class="up">巨大且无替代</td><td>有替代：通用名 $15–20/月</td></tr>
+<tr><td>市场量级</td><td>千亿美元级</td><td class="mute">美国 AGA 2030E 仅约 $14 亿；全球斑秃 JAK 类 2025 年 $20.44 亿</td></tr>
+<tr><td>支付方</td><td>保险 + 政府</td><td class="hl">患者本人（现金）</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>这个差别决定了三件事：<strong>第一，天花板由"消费者愿意掏多少"决定，不由"医生开多少"决定；第二，护城河不在分子，在制剂与递送（缓释、渗透、给药频率）和渠道复购；第三，价值判断的分界线从"疗效"移到了"合规身份"。</strong></p>
+
+<p>第三条最容易被忽略，但它贯穿整份报告。<em>当分子本身不能证明更优时，公司手里剩下的只有"身份"——FDA 批准、首个适应症、给药频率差异化。而身份带来的溢价，远小于优效带来的溢价。</em></p>
+
+<h2>二、十家名单：同一句"脱发公司"，四种完全不同的生意</h2>
+
+<p>先把名单放到四层结构里。这一步不做，后面所有比较都是无效的——因为"零收入的临床期公司"和"收特许权费的卖铲人"根本不该用同一把尺子量。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 400" role="img" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="400" fill="#101013"/>
+  <text x="24" y="26" fill="#86868b" font-size="12">脱发赛道四层结构：谁在赌分子，谁在收租金</text>
+
+  <rect x="20" y="40" width="640" height="80" rx="10" fill="#141417" stroke="#2c2c31"/>
+  <text x="36" y="66" fill="#f5f5f7" font-size="14" font-weight="600">第一层 · 制剂改良</text>
+  <text x="36" y="86" fill="#30d158" font-size="11.5">风险最低，价值最实</text>
+  <text x="36" y="104" fill="#86868b" font-size="11">A 级数据 + 现金充裕</text>
+  <rect x="248" y="58" width="394" height="46" rx="8" fill="#0f0f12" stroke="#3a3a40"/>
+  <text x="264" y="78" fill="#f5f5f7" font-size="12.5">MANE $116.26 · VDPHL01 缓释口服米诺地尔</text>
+  <text x="264" y="95" fill="#86868b" font-size="11">Ph3 确证性 Study 304 读数 2026H2 = 最近的裁判日</text>
+
+  <rect x="20" y="132" width="640" height="80" rx="10" fill="#141417" stroke="#2c2c31"/>
+  <text x="36" y="158" fill="#f5f5f7" font-size="14" font-weight="600">第二层 · 全新机制</text>
+  <text x="36" y="178" fill="#ff9f0a" font-size="11.5">零收入，赌的是读数</text>
+  <text x="36" y="196" fill="#86868b" font-size="11">数据等级从 A 到 D 全都有</text>
+  <rect x="248" y="150" width="394" height="46" rx="8" fill="#0f0f12" stroke="#3a3a40"/>
+  <text x="264" y="170" fill="#f5f5f7" font-size="12.5">ABSI 10.71 · QTTB 10.45 · NKTR 60.97 · ACRS 约 5.9</text>
+  <text x="264" y="187" fill="#86868b" font-size="11">抗 PRLR / 抗 IL-7Rα / IL-2 Treg / 口服 ITK-JAK3</text>
+
+  <rect x="20" y="224" width="640" height="80" rx="10" fill="#141417" stroke="#2c2c31"/>
+  <text x="36" y="250" fill="#f5f5f7" font-size="14" font-weight="600">第三层 · 已获批 JAK</text>
+  <text x="36" y="270" fill="#ff453a" font-size="11.5">脱发对它们是噪音</text>
+  <text x="36" y="288" fill="#86868b" font-size="11">不会抵抗，只会降价</text>
+  <rect x="248" y="242" width="394" height="46" rx="8" fill="#0f0f12" stroke="#3a3a40"/>
+  <text x="264" y="262" fill="#f5f5f7" font-size="12.5">LLY 1,170.14 · PFE 27.93 · ABBV 265.21</text>
+  <text x="264" y="279" fill="#86868b" font-size="11">Litfulo 2026E 约 $2.03 亿 = 辉瑞营收的 0.3%，未达单列门槛</text>
+
+  <rect x="20" y="316" width="640" height="80" rx="10" fill="#141417" stroke="#2c2c31"/>
+  <text x="36" y="342" fill="#f5f5f7" font-size="14" font-weight="600">第四层 · 卖铲与渠道</text>
+  <text x="36" y="362" fill="#5ac8fa" font-size="11.5">收租的在两头</text>
+  <text x="36" y="380" fill="#86868b" font-size="11">不担商业化费用</text>
+  <rect x="248" y="334" width="394" height="46" rx="8" fill="#0f0f12" stroke="#3a3a40"/>
+  <text x="264" y="354" fill="#f5f5f7" font-size="12.5">INCY 126.93 · HIMS 30.43</text>
+  <text x="264" y="371" fill="#86868b" font-size="11">收巴瑞替尼特许权 / 自建订阅渠道</text>
+</svg>
+</div>
+<p class="note">价格为 2026-09-23 美股收盘。ACRS 现价为按市值 ÷ 加权股本推算，非直接报价，须核实。</p>
+
+<h3>横评表（价格 = 2026-09-23 美股收盘）</h3>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>#</th><th>标的</th><th>核心资产</th><th>阶段</th><th class="num">现价</th><th class="num">市值</th><th class="num">PE(TTM)</th><th class="num">52 周位置</th></tr></thead>
+<tbody>
+<tr><td>1</td><td class="hl">Veradermics (MANE.N)</td><td>VDPHL01 缓释口服米诺地尔</td><td>Ph3（304 顶线 2026H2）</td><td class="num">$116.26</td><td class="num">约 $48.6 亿</td><td class="num mute">负</td><td class="num">87%</td></tr>
+<tr><td>2</td><td class="hl">Absci (ABSI.O)</td><td>ABS-201 抗 PRLR 单抗</td><td>Ph1/2a（PoC 2026H2）</td><td class="num">$10.71</td><td class="num">约 $18.4 亿</td><td class="num mute">负</td><td class="num">86%</td></tr>
+<tr><td>3</td><td class="hl">Q32 Bio (QTTB.O)</td><td>bempikibart 抗 IL-7Rα</td><td>Ph2a 阳性（注册项目 2027H1 启动）</td><td class="num">$10.45</td><td class="num">约 $3.11 亿</td><td class="num mute">负</td><td class="num">39%</td></tr>
+<tr><td>4</td><td class="hl">Nektar (NKTR.O)</td><td>rezpegaldesleukin（IL-2 / Treg）</td><td>Ph2b（Ph3 读 2029H2）</td><td class="num">$60.97</td><td class="num">约 $20.8 亿</td><td class="num mute">负</td><td class="num">37%</td></tr>
+<tr><td>5</td><td class="hl">Aclaris (ACRS.O)</td><td>ATI-2138 口服 ITK / JAK3</td><td>临床前</td><td class="num">约 $5.9</td><td class="num">约 $8.4 亿</td><td class="num mute">负</td><td class="num">86%</td></tr>
+<tr><td>6</td><td>Eli Lilly (LLY.N)</td><td>Olumiant 巴瑞替尼</td><td>已上市（2022 首个）</td><td class="num">$1,170.14</td><td class="num">约 $1.043 万亿</td><td class="num">39.3×</td><td class="num">79%</td></tr>
+<tr><td>7</td><td>Pfizer (PFE.N)</td><td>Litfulo 利特昔替尼</td><td>已上市（2023）</td><td class="num">$27.93</td><td class="num">约 $1,592 亿</td><td class="num">36.8×</td><td class="num">82%</td></tr>
+<tr><td>8</td><td>AbbVie (ABBV.N)</td><td>Rinvoq 乌帕替尼</td><td>EU 已批 / US 待批</td><td class="num">$265.21</td><td class="num">约 $4,687 亿</td><td class="num">74.9×<span class="mute">（前瞻约 16×）</span></td><td class="num">97%</td></tr>
+<tr><td>9</td><td class="hl">Incyte (INCY.O)</td><td>巴瑞替尼原研（收特许权）</td><td>已上市</td><td class="num">$126.93</td><td class="num">约 $257 亿</td><td class="num">16.2×</td><td class="num">89%</td></tr>
+<tr><td>10</td><td class="hl">Hims &amp; Hers (HIMS.N)</td><td>男士皮肤科（脱发为主）</td><td>商业化（年化 &gt;$10 亿）</td><td class="num">$30.43</td><td class="num">约 $71 亿</td><td class="num mute">负</td><td class="num">32%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout">
+<p><strong>注意第 6–9 行。</strong>你以为"低估"的大市值那几家（LLY 79%、PFE 82%、INCY 89%、ABBV 97%）<strong>全部落在 52 周区间的上沿</strong>；而你直觉里"已经涨疯"的纯玩家（MANE 87%、ABSI 86%、ACRS 86%）也一样高。<em>这条赛道上没有便宜货，只有"已经涨了"和"还没涨"。</em>真正跌到区间下方的只有三家：QTTB、NKTR、HIMS。</p>
+</div>
+
+<h2>三、为什么天花板低（一）：疗效与"可感知"之间隔着一道鸿沟</h2>
+
+<p>这是决定整条赛道天花板的地方，也是最容易被跳过的地方。TAHC（目标区毛发计数）测的是头皮上<strong>一个 1 cm² 的固定圆区</strong>，而头皮总面积约 500–600 cm²——<em>被测面积只有 0.2%</em>。数字图像分析的变异系数约 ±8%，意味着 3% 级别的"改善"完全落在测量误差之内。</p>
+
+<p>更重要的是：视觉上脱发要在<strong>原密度损失约 50%</strong> 之后才被察觉。所以"客观数据变好"和"患者照镜子觉得变好"是两个不同的量。文献里有直接的反例：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>证据</th><th>客观读数</th><th>主观读数</th></tr></thead>
+<tbody>
+<tr><td>米诺地尔 2% 女性 48 周试验</td><td class="hl">非毳毛计数显著优于安慰剂</td><td class="up">患者自评毛发增长与安慰剂无显著差异</td></tr>
+<tr><td>非那雄胺系统综述</td><td class="mute">—</td><td>NNT 短期 5.6 / 长期 3.4 才有 1 人主观感到改善</td></tr>
+<tr><td>非那雄胺默克 5 年试验</td><td>第 2 年顶部 +107 根/inch²、83–87% 维持或增加</td><td class="up">5 年 66% 出现可见改善、仅 48% 达"有临床意义的再生"</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>关于流传很广的"20 根/cm² 是可感知阈值"，必须澄清：<strong>那是统计设计上的最小可检测差异假设（用于算样本量），FDA 从未设定过这个数。</strong>但分析师确实拿它当商业化门槛——"15–20 根足以支撑十亿美元级商业存在"。换句话说，<em>这是市场共识门槛，不是监管门槛。</em></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="330" fill="#101013"/>
+  <text x="24" y="24" fill="#86868b" font-size="12">VDPHL01 Study 302：TAHC 第 6 个月增量（根/cm²）与商业化门槛</text>
+
+  <rect x="90" y="135" width="550" height="24" fill="#ff9f0a" opacity="0.13"/>
+  <text x="636" y="151" fill="#ff9f0a" font-size="11" text-anchor="end">市场共识门槛 15–20 根</text>
+
+  <line x1="80" y1="230" x2="650" y2="230" stroke="#3a3a40" stroke-width="1"/>
+  <text x="74" y="234" fill="#86868b" font-size="10.5" text-anchor="end">0</text>
+  <line x1="80" y1="135" x2="650" y2="135" stroke="#2c2c31" stroke-dasharray="3 4"/>
+  <line x1="80" y1="40" x2="650" y2="40" stroke="#2c2c31" stroke-dasharray="3 4"/>
+
+  <rect x="170" y="195" width="90" height="35" rx="4" fill="#48484d"/>
+  <text x="215" y="187" fill="#d1d1d6" font-size="13" text-anchor="middle">+7.3</text>
+
+  <rect x="330" y="86" width="90" height="144" rx="4" fill="#5ac8fa"/>
+  <text x="375" y="78" fill="#f5f5f7" font-size="13.5" text-anchor="middle">+30.3</text>
+
+  <rect x="490" y="73" width="90" height="157" rx="4" fill="#bf5af2"/>
+  <text x="535" y="65" fill="#f5f5f7" font-size="13.5" text-anchor="middle">+33.0</text>
+
+  <text x="215" y="250" fill="#86868b" font-size="11.5" text-anchor="middle">安慰剂</text>
+  <text x="375" y="250" fill="#5ac8fa" font-size="11.5" text-anchor="middle">VDPHL01 8.5mg QD</text>
+  <text x="535" y="250" fill="#bf5af2" font-size="11.5" text-anchor="middle">VDPHL01 8.5mg BID</text>
+
+  <text x="24" y="282" fill="#d1d1d6" font-size="11.5">PRO（AAIRS ≥ +2）：QD 48.4% / BID 62.9% vs 安慰剂 13.4%</text>
+  <text x="24" y="301" fill="#d1d1d6" font-size="11.5">IGA 中重度改善：QD 39.5% / BID 56.0% vs 安慰剂 10.7%</text>
+  <text x="24" y="320" fill="#30d158" font-size="11.5">安全性：零治疗相关 SAE、零心源性 AESI；因 AE 脱落率 BID 3.4% 低于安慰剂 3.5%</text>
+</svg>
+</div>
+<p class="note">n=519、随机双盲安慰剂对照、4 臂（含安慰剂交叉）。第 2 个月即与安慰剂显著分离——该领域通常需要 4–12 个月。剂量反应单调（BID &gt; QD &gt; 安慰剂），是机制可信的正面证据。</p>
+
+<p><strong>这就是 VDPHL01 真正值钱的地方：它是这一批里少数同时跨过"客观显著"和"主观可感"两条线的。</strong>对照一下第一轮挖出的失败案例——Samumed 的 SM04554 在早期出现过 <em>低剂量优于高剂量</em>的反常信号（非线性＝机制存疑），而 VDPHL01 的剂量反应是单调的。</p>
+
+<h2>四、为什么天花板低（二）：支付结构比想象的更极端</h2>
+
+<p>跨过疗效门槛不等于卖得出去。决定天花板的是下一层——谁付钱、付多少。</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>事实</th><th>数值</th><th>来源 / 口径</th></tr></thead>
+<tbody>
+<tr><td>治疗渗透率</td><td class="hl">18–44 岁男性全部处方中仅 0.7% 是脱发药</td><td class="mute">GoodRx 2024/8–2025/9（不含外用米诺地尔）</td></tr>
+<tr><td>非那雄胺规模</td><td>2024 年 884.5 万张处方、约 250.6 万患者（含 5mg）</td><td class="mute">ClinCalc / MEPS</td></tr>
+<tr><td>患者自付</td><td class="hl">日均 $0.16，约 $4.8/月</td><td class="mute">同上；总成本 $25.13/张</td></tr>
+<tr><td>开方科室</td><td>泌尿科 190 万、内科 150 万、家庭医生 140 万、皮肤科仅 6.2 万</td><td class="mute">说明主要不由皮肤科开具</td></tr>
+<tr><td>Medicare 覆盖</td><td class="up">近 90% 不覆盖仿制、近 99% 不覆盖品牌 Propecia</td><td class="mute">医保明确排除"美容目的"药物</td></tr>
+<tr><td>州际渗透差</td><td class="hl">DC 3.7% vs 西弗吉尼亚 0.18%（20 倍）</td><td class="mute">患病率各州几乎一样，差别是收入与可及性</td></tr>
+<tr><td>市场增速</td><td>美国脱发治疗市场 2025 约 $43 亿，年增仅 0.5–0.7%</td><td class="mute">IBISWorld（含治疗 + 脱毛）</td></tr>
+<tr><td>治疗率</td><td>8,000 万患者中仅约 1,500 万接受治疗</td><td class="mute">Needham 首次覆盖</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>各州脱发患病率几乎一样（50 岁前男性 30–50%），<strong>20 倍的州际差不是遗传差异，是收入与可及性差异</strong>。这条数据本身就说明：这个市场的规模由支付能力决定，不由患病率决定。而 VDPHL01 要面对的替代品价格是这样的：</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="290" fill="#101013"/>
+  <text x="24" y="22" fill="#86868b" font-size="12">每月治疗成本（对数刻度）：从通用名到定价假设，跨了 60 倍</text>
+
+  <text x="20" y="50" fill="#d1d1d6" font-size="11.5">非那雄胺仿制（患者自付）</text>
+  <rect x="20" y="56" width="44" height="22" rx="4" fill="#30d158"/>
+  <text x="72" y="72" fill="#30d158" font-size="12">$4.8</text>
+
+  <text x="20" y="98" fill="#d1d1d6" font-size="11.5">仿制米诺地尔（外用 OTC / 口服超说明书）</text>
+  <rect x="20" y="104" width="178" height="22" rx="4" fill="#30d158" opacity="0.72"/>
+  <text x="206" y="120" fill="#30d158" font-size="12">$15–20</text>
+
+  <text x="20" y="146" fill="#d1d1d6" font-size="11.5">远程医疗打包（Hims / Keeps / Ro）</text>
+  <rect x="20" y="152" width="259" height="22" rx="4" fill="#5ac8fa"/>
+  <text x="287" y="168" fill="#5ac8fa" font-size="12">$22–55</text>
+
+  <text x="20" y="194" fill="#d1d1d6" font-size="11.5">患者支付意愿（公司调研 n=153 医生 / 190 患者）</text>
+  <rect x="20" y="200" width="360" height="22" rx="4" fill="#bf5af2"/>
+  <text x="388" y="216" fill="#bf5af2" font-size="12">$100+</text>
+
+  <text x="20" y="242" fill="#f5f5f7" font-size="11.5" font-weight="600">分析师对 VDPHL01 的定价假设</text>
+  <rect x="20" y="248" width="475" height="22" rx="4" fill="#ff9f0a"/>
+  <text x="503" y="264" fill="#ff9f0a" font-size="12" font-weight="600">$200–400</text>
+
+  <line x1="390" y1="30" x2="390" y2="276" stroke="#ff453a" stroke-dasharray="4 4" opacity="0.6"/>
+  <text x="396" y="38" fill="#ff453a" font-size="11">← 2–4 倍缺口</text>
+</svg>
+</div>
+<p class="note">植发一次性成本常超 $10,000（约合 $300/月 × 33 个月）。也就是说，VDPHL01 若按分析师假设定价，33 个月总成本约等于做一次植发——这是它必须回答的价值命题。</p>
+
+<div class="callout red">
+<p><strong>2–4 倍缺口是这条赛道最硬的约束。</strong>公司自己的调研给出患者支付意愿 $100+/月，而卖方模型的定价假设是 $200–400/月。<em>如果实际定价落在 $100–150，峰值销售模型要打对折。</em>这不是"执行力问题"，是市场结构问题：一个没有保险覆盖、有 $4.8/月替代品的赛道，靠什么让患者每月多掏 40 倍的钱？</p>
+</div>
+
+<h2>五、诚实交代：第一轮的两个方向性错误</h2>
+
+<p>这份报告建立在对同一问题的第二轮深挖上。第二轮推翻了第一轮的两个结论，把错误记在这里，因为它比新结论更有教育意义。</p>
+
+<div class="callout red">
+<p><strong>错误一：分母口径混淆。</strong>第一轮写的是"MANE 市值 $49.4 亿<em>已超其 $20 亿市场</em> 2.5×"。真相是：Jefferies 的 $20 亿是<strong>峰值销售预测（peak sales）</strong>，不是市场规模。</p>
+<p>换成正确口径：<strong>EV ÷ 峰值销售预测 = $40.5 亿 ÷ $20–30 亿 = 1.35–2.0×</strong>。参照系是——已获批专科药通常交易在 <strong>3–5×</strong> 峰值销售，未获批但风险已大幅降低的通常在 <strong>1–2×</strong>。<em>⇒ MANE 处在合理区间的上沿，不是"荒谬贵"。口径一换，结论方向就反了。</em></p>
+</div>
+
+<div class="callout red">
+<p><strong>错误二：把"启动"当成了"读数"。</strong>第一轮说"QTTB 裁判日最近、赔率最好"。真相是：<strong>2027H1 只是"启动"注册导向项目，Ph3 顶线要到 2029–2030。</strong>这是一个"伪近裁判日"。真正当下的裁判日是 MANE 的 Study 304。</p>
+</div>
+
+<p>这两条错误的共同点值得单独提一句：<em>它们都不是数据不足造成的，而是"分母是什么"与"动词是什么"没有追问到底造成的。</em>第一轮的数据其实都在手上，错在读法。</p>
+
+<h2>六、MANE（Veradermics, MANE.N）：质地最好，也最脆弱</h2>
+
+<h3>1. 生意本质与财务</h3>
+
+<p>19 名全职员工（S-1 口径，现约 21 人）的临床期公司，创始人 CEO Reid Waldman 与总裁 Tim Durso 都是皮肤科医生，<strong>礼来是 IPO 锚定投资者</strong>。早期管线（寻常疣、斑秃、传染性软疣）全部主动暂停，资源全压在 VDPHL01 上。</p>
+
+<div class="kv">
+<div class="cell"><div class="lbl">现金及短期投资（2026-06-30）</div><div class="val">$8.199<small>亿</small></div></div>
+<div class="cell"><div class="lbl">总负债（净现金约 $8.08 亿）</div><div class="val">$1,212<small>万</small></div></div>
+<div class="cell"><div class="lbl">2026Q2 经营现金流</div><div class="val" style="color:var(--dn)">−$1,449<small>万</small></div></div>
+<div class="cell"><div class="lbl">两年股本扩张</div><div class="val" style="color:var(--up)">逾 10<small>倍</small></div></div>
+</div>
+
+<p>跑道口径不一：年报/8-K 称至 <strong>2029 年</strong>，Q1/Q2 材料（含 IPO + 私募）称至 <strong>2030 年</strong>。不论哪个口径，<strong>短期没有融资压力</strong>——这是它和多数小市值生物科技最大的不同。</p>
+
+<h3>2. 最脆弱的一环：它从未做过头对头</h3>
+
+<p>VDPHL01 的剂量是 <strong>8.5mg QD 或 8.5mg BID（最高 17mg/日）</strong>。而超说明书低剂量口服米诺地尔（LDOM）男性用 <strong>2.5–5mg/日</strong>——<em>也就是说，它的每日两次剂量是常规超说明书上限的 3.4 倍。</em></p>
+
+<p>但 Study 302 的三个臂是：<strong>VDPHL01 8.5mg QD / VDPHL01 8.5mg BID / 安慰剂</strong>。<em>没有即释米诺地尔组、没有外用米诺地尔组、没有非那雄胺组。</em>公司官方与研究者（哈佛 Michael Gold、Maryanne Makredes Senna）都明确声明 302 <strong>不是</strong>头对头研究。</p>
+
+<p>它拿来比较的是别的东西——在 EADV 2025、AAD 2026、Music City SCALE 2026 上报的<strong>回顾性盲法 IGA 图像与已发表文献数据的跨试验比较</strong>：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>组别</th><th class="num">IGA 额部 / 顶部</th><th class="num">≥2 分改善率</th></tr></thead>
+<tbody>
+<tr><td class="hl">VDPHL01（4 个月）</td><td class="num">2.02 / 2.05</td><td class="num">82.8% / 82.1%</td></tr>
+<tr><td>即释口服米诺地尔 5mg QD（33 例，6 个月）</td><td class="num">0.59 / 0.53</td><td class="num">21.6% / 23.3%</td></tr>
+<tr><td>外用 5% 米诺地尔 BID（34 例，6 个月）</td><td class="num">0.29 / 0.02</td><td class="num">19.2% / 14.3%</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">判定 p&lt;0.001、由 5–9 名独立皮肤科医生盲评。但仍是间接比较：跨试验、跨人群、剂量不同、终点时点也不同（4 个月 vs 6 个月）。公司自己的措辞是 "comparative analysis"，不是 head-to-head trial。</p>
+
+<p>PK 层面倒是有直接对照：缓释 8.5mg BID 能维持治疗阈值以上 <strong>15–24 小时</strong>，而即释 5mg QD 只有 <strong>4–6 小时</strong>；缓释能避免峰浓度超过心脏活动阈值（约 20–29 ng/mL）。</p>
+
+<div class="callout">
+<p><strong>由此推出的核心矛盾（本报告最重要的一条推论）：</strong></p>
+<p><em>505(b)(2) 免去监管重复研究的同时，也免去了"我比参照药好"的证明。</em>监管上越省事，商业上就越没有定价依据。</p>
+<p>所以真正的问题是：<strong>医生凭什么不开 $17/月的即释版？</strong>公司能拿出的答案只有三条，而硬度完全不同——</p>
+<p><strong>① FDA 批准</strong>（合规、可营销、可远程医疗规模化）：硬，但只值"合规溢价"。<br>
+<strong>② 缓释降低心脏风险</strong>：软。因为 302 的"零心脏 AESI"是相对安慰剂，而安慰剂本来就没有心脏事件——它从未证明优于即释版。<br>
+<strong>③ 女性首个获批口服药</strong>：最硬的一条。因为女性型脱发目前<strong>没有任何 FDA 批准的口服治疗</strong>。</p>
+</div>
+
+<h3>3. 真实价值锚在女性市场，不在男性</h3>
+
+<p>男性市场有 $17/月的即释替代品（92% 的皮肤科处方者已在超说明书使用）；女性市场则完全不同：非那雄胺 / 度他雄胺<strong>女性禁用</strong>（致畸）、外用米诺地尔约 <strong>40% 女性因头皮刺激停用</strong>、<strong>无任何 FDA 批准的口服疗法</strong>。</p>
+
+<ul>
+<li><strong>Citi 敏感性测算：每 $10 亿风险调整后的女性峰值销售 = +$50/股</strong>，隐含仅约 5% 的女性峰值渗透</li>
+<li>KOL 反馈：女性已占脱发就诊量的 <strong>2/3 到 3/4</strong>（"新冠后显著上升，社交媒体认知与 GLP-1 相关减重可能是推手"）</li>
+<li><strong>但 KOL #3 的反向声音</strong>："若不能在女性中证明显著优于通用口服米诺地尔、且副作用不更差，<em>价格是关键障碍</em>"</li>
+</ul>
+
+<p>所以 Study 306（女性，计划约 552 例，<strong>全球首个针对女性型脱发的口服治疗注册导向试验</strong>，顶线 2027Q1）比很多人以为的更重要——<em>它是这条价值锚的验证，也是它的风险点。</em></p>
+
+<h3>4. 博弈结构：最扭曲的一点</h3>
+
+<p>锁定期 2026-08-03 到期后，8/12 至 8/19 之间内部人合计卖出 961,000 股、套现约 <strong>$1.0312 亿</strong>，<strong>买入为零</strong>；同期机构在 Q2 大幅净增持：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>阵营</th><th>动作</th></tr></thead>
+<tbody>
+<tr><td class="up">内部人（8/12–8/19）</td><td>CEO Waldman <strong>−28.32%</strong>（持股降至 170,824 股）、CTO Durso <strong>−35.76%</strong>、<strong>第一大股东 Mantanova −61.93%</strong>；近 12 个月内部人买入 $0</td></tr>
+<tr><td class="dn">机构（Q2 13F）</td><td>FMR +141 万股、BlackRock +131 万股、Deep Track +300%、<strong>D.E. Shaw +655%</strong>、Jennison +428%、<strong>Maverick Capital 新建 79 万股</strong>；机构持股约 89.9%</td></tr>
+<tr><td>机构（8 月）</td><td>IPO 私募参与者 <strong>Suvretta Capital 减持 10.79%</strong></td></tr>
+<tr><td>做空</td><td>11.47% of float（8/31 结算），但<strong>借券费率仅 0.4%</strong>、可借仅 55 万股 ⇒ <em>没有真正的空头对抗，多为对冲盘</em></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>三点值得单独记住：</p>
+
+<ul>
+<li><strong>现价 $116.26 高于内部人全部卖出价（$106–111）。</strong>这不是"信息优势卖出"（否则股价该跌），更像锁定期到期后的标准兑现。</li>
+<li><strong>但"零买入"这个事实仍在。</strong>CEO 只持 17.08 万股，约占市值 <strong>0.04%</strong>——一家要养 100+ 人销售队伍的 19 人公司，CEO 的利益绑定是 0.04%。</li>
+<li><strong>稀释极端：</strong>两年股本从 736,900 股增至 4,178 万股，扩张逾 10 倍，位列该统计口径 3,441 只个股稀释最严重的<strong>前 1%</strong>。</li>
+</ul>
+
+<h3>5. 估值：正确口径与错误口径差出一倍</h3>
+
+<div class="kv">
+<div class="cell"><div class="lbl">EV = 市值 − 净现金</div><div class="val">$40.5<small>亿</small></div></div>
+<div class="cell"><div class="lbl">EV ÷ 峰值销售共识（$20–30 亿）</div><div class="val">1.35–2.0<small>×</small></div></div>
+</div>
+
+<ul>
+<li><strong>Citi（Geoff Meacham）$30 亿</strong>（2035 年、风险调整），成功率由 50% 上调至 75%；7 月因女性适应症再上调，额外计入女性 $5 亿</li>
+<li><strong>Needham（Serge Belanger）$20–25 亿</strong>（从处方药与 OTC 两端抢份额）</li>
+<li><strong>Jefferies（Roger Song）约 $20 亿</strong>，自称"相对保守"；并明确说"商业化上可接受的产品画像<em>不需要更优疗效</em>"——这句话本身就承认了它的软肋</li>
+</ul>
+
+<div class="callout red">
+<p><strong>一个必须点破的时间陷阱：</strong>Jefferies 首次覆盖时股价 $45.85、目标价 $75；现在股价 $116、目标价 $182。<em>卖方是追涨上调，不是独立锚。</em>目标价区间 $75（Leerink）到 $182（Jefferies），均价口径在 $153–169 之间，跨度超过一倍。</p>
+</div>
+
+<h3>6. 商业化的另一种风险：渠道利润归属</h3>
+
+<p>公司计划自建 <strong>100+ 人皮肤科销售队伍</strong>（19 人公司要养 100 人销售）。若改走 DTC 平台（Hims / Ro / Keeps），<em>平台会拿走大部分利润</em>——HIMS 男士皮肤科毛利率约 68%，意味着给厂商的采购价很低。⇒ <strong>MANE 要么烧钱自建渠道，要么把利润率让给掌握客户关系的平台。</strong></p>
+
+<h2>七、QTTB（Q32 Bio, QTTB.O）："EV 极低"不是便宜，是定价</h2>
+
+<p>这是全表最反直觉的一组数字。市值约 $3.11 亿（29,769,466 股 × $10.45），现金 $1.063 亿 + 2026 年 7 月增发净额 $1.876 亿 ≈ <strong>$2.94 亿</strong>，总负债仅 $996 万 ⇒ <strong>企业价值约 $0.3–0.9 亿</strong>（含 493 万份预融资权证摊薄后约 $0.7–0.9 亿）。</p>
+
+<div class="callout">
+<p><strong>一家有 FDA Fast Track、SALT-20 应答率 40%、安全性无黑框的资产，企业价值不到 1 亿美元。</strong>这不正常——除非市场认为它接下来的路要走很久、要烧很多钱、而且结果不确定。下面五个原因，缺一不可。</p>
+</div>
+
+<ol>
+<li><strong>C 级数据。</strong>SIGNAL-AA Part B 是 33 例、单臂、开放标签、无对照。它<em>不能</em>与已获批 JAK 的随机双盲 III 期数据横向比较。</li>
+<li><strong>人群富集。</strong><strong>40% 的患者有过口服 JAK 用药史</strong>——应答率被系统性抬高，Ph3 复制风险大。</li>
+<li><strong>必须自费走 Ph3。</strong>斑秃的注册性试验通常 800–1,000 例，成本可能 $3–5 亿 &gt; 现有现金 $2.94 亿 ⇒ <strong>必然再大额摊薄</strong>。</li>
+<li><strong>没有收购方。</strong>美国约 70 万患者、2025 年全球斑秃 JAK 类市场仅 $20.44 亿——对任何大药企都是噪音。</li>
+<li><strong>裁判日在 2029–2030。</strong>时间成本极高。</li>
+</ol>
+
+<p>而且横向比一下会更清楚：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>对照</th><th class="num">SALT≤20 达标率</th><th>数据等级</th></tr></thead>
+<tbody>
+<tr><td>baricitinib（礼来，已获批）</td><td class="num">约 35%（第 36 周）</td><td>随机双盲 III 期</td></tr>
+<tr><td>upadacitinib（乌帕替尼，已递交）</td><td class="num">59.3%–63.8%（52 周）</td><td>随机双盲 III 期</td></tr>
+<tr><td class="hl">bempikibart / QTTB</td><td class="num hl">40.0%（mITT，30.3% ITT）</td><td class="up">单臂开放标签</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout red">
+<p><strong>结论：QTTB 的 40% 并不优于已上市 JAK 的随机双盲数据。它真正的差异化只有"没有黑框警告"</strong>（JAK 类普遍带黑框：严重感染、恶性肿瘤、主要心血管事件、血栓；且停药易复发）。而"没有黑框"是一个<em>安全性</em>卖点，不是<em>疗效</em>卖点——在市场调研里，它换不来溢价，只能换来"不被排除"。</p>
+</div>
+
+<p>另外两个融资层面的信号值得记住：<strong>7 月公开增发定价 $18.25，现价 $10.45 ⇒ 7 月买入的机构已经亏了约 43%</strong>；7 个月内股本从 1,285.80 万股扩张到 2,976.95 万股（<strong>2.3 倍</strong>），做空占流通 <strong>16.94%</strong>（高于 MANE）。</p>
+
+<h2>八、把三家的数据等级摆在一起：跨等级比较是无效的</h2>
+
+<p>这是临床期标的分析里最容易被忽略的一条纪律。公司拿出的数字看起来都是"SALT 降了多少""毛发增加了多少根"，但<strong>不同设计强度的试验，数字之间不能直接比</strong>。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 340" role="img" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="340" fill="#101013"/>
+  <text x="24" y="24" fill="#86868b" font-size="12">临床数据等级阶梯：同一个数字，可信度差一个数量级</text>
+
+  <rect x="30" y="40" width="620" height="60" rx="8" fill="#141417" stroke="#30d158"/>
+  <text x="46" y="64" fill="#30d158" font-size="12.5" font-weight="600">A 级 · 随机双盲对照 · 500 例以上</text>
+  <text x="46" y="86" fill="#d1d1d6" font-size="11.5">MANE Study 302（519 例）· Cosmo SCALP-1/2（1,465 例）· 已获批 JAK 的 III 期</text>
+
+  <rect x="110" y="112" width="460" height="60" rx="8" fill="#141417" stroke="#5ac8fa"/>
+  <text x="126" y="136" fill="#5ac8fa" font-size="12.5" font-weight="600">B 级 · 随机双盲 · 小样本或终点存疑</text>
+  <text x="126" y="158" fill="#d1d1d6" font-size="11.5">NKTR Ph2b（主终点在原始 mITT 未达显著，剔除违规例后达标）</text>
+
+  <rect x="190" y="184" width="300" height="60" rx="8" fill="#141417" stroke="#ff9f0a"/>
+  <text x="206" y="208" fill="#ff9f0a" font-size="12.5" font-weight="600">C 级 · 单臂 · 开放标签 · 无对照</text>
+  <text x="206" y="230" fill="#d1d1d6" font-size="11.5">QTTB Part B（33 例，40% 有 JAK 用药史）</text>
+
+  <rect x="270" y="256" width="140" height="60" rx="8" fill="#141417" stroke="#ff453a"/>
+  <text x="286" y="280" fill="#ff453a" font-size="12.5" font-weight="600">D 级 · 临床前</text>
+  <text x="286" y="302" fill="#d1d1d6" font-size="11.5">ACRS ATI-2138（仅小鼠）</text>
+</svg>
+</div>
+<p class="note">横向比较只可同级进行。第一轮把 QTTB 的 40%（C 级）与已上市 JAK 的 35%–64%（A 级）并排，是本报告要主动纠正的做法。</p>
+
+<h2>九、失败史：三条规律比成功案例更有用</h2>
+
+<p>这条赛道自米诺地尔（1988 外用）、非那雄胺（1997 口服）之后，<strong>近 30 年零批准</strong>。中间的失败案例构成了一份很有价值的清单：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>案例</th><th>最高阶段</th><th>结局</th><th>性质</th></tr></thead>
+<tbody>
+<tr><td class="hl">Samumed / Biosplice（SM04554）</td><td>Ph3（2021-01 完成）</td><td>2023 年终止脱发开发、<strong>结果从未公布</strong>；2026 年裁员 41 人、砍管线</td><td>临床失败 + 管线砍掉</td></tr>
+<tr><td class="hl">Histogen（HSC-660）</td><td>Ph1/2（2021-06 暂停）</td><td>2023-12 终止；<strong>2024-04-18 申请破产法第 11 章清算</strong>、退市</td><td>临床失败 + 公司清算</td></tr>
+<tr><td class="hl">Follica（微针 + 外用）</td><td>Ph2 完成、拟启动 Ph3</td><td>2023 年"失活"（PureTech 年报披露），仅剩 1 名员工</td><td>研发停滞 + 公司失活</td></tr>
+<tr><td>Cassiopea / Cosmo（clascoterone）</td><td>Ph3（2025-12-03 达终点）</td><td class="dn">未失败，2027Q1 递交 NDA</td><td>仍在推进，最接近成功</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>三条规律：</strong></p>
+
+<ol>
+<li><strong>机制新颖 ≠ 临床有效。</strong>Wnt 激活、生长因子鸡尾酒都有扎实的假说，早期小样本"看起来有效"，倒在更大规模验证上。</li>
+<li><strong>沉默是关键信号。</strong>关键 Ph3 完成后长期不公布结果 = 近乎等同临床失败（Samumed 的 Ph3 完成于 2021-01，结果至今未公布）。</li>
+<li><strong>失败分三档：</strong>临床终止但公司存活（Samumed 转型）／临床终止且清算（Histogen 破产）／研发停滞但公司失活（Follica）。<em>第二档说明：即使是纯玩家，下行也不是零，而是接近零。</em></li>
+</ol>
+
+<p class="note">一处必要纠正：Kybella（ATX-101 脱氧胆酸）<strong>不是脱发药</strong>——它是溶脂针，副作用才是"注射部位脱发"；其真正的脱发项目是 setipiprint（未上市）。</p>
+
+<h2>十、门槛之外还有一个变量：监管路径决定独占期</h2>
+
+<p>同一个"获批"，含金量可以差一倍。这是灵魂第四十九条的直接来源：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>路径</th><th>典型独占期</th><th>隐含代价</th></tr></thead>
+<tbody>
+<tr><td><strong>NCE（新分子实体）</strong></td><td class="hl">5 年</td><td class="mute">—</td></tr>
+<tr><td><strong>505(b)(2)</strong>（活性成分已批准，只改剂型 / 给药 / 适应症）</td><td class="up">典型仅 3 年</td><td>免去对已确立要素的重复研究（省时省钱、降监管风险），<em>但同时免去了"我比参照药好"的证明</em></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>落到具体公司上：<strong>MANE 的 VDPHL01 走 505(b)(2)（米诺地尔已批准）⇒ 典型 3 年独占，专利保护至 2043 但主要是制剂类专利；Cosmo 的 clascoterone 是新分子 NCE ⇒ 5 年独占。</strong>而两家的 NDA 提交时间几乎同期（2027Q1 vs 2027 年初）。</p>
+
+<div class="callout blue">
+<p>还有一层叙事上的稀释：<strong>两个"30 年首个新机制"会互相稀释叙事。</strong>不过机制与给药方式不同（外用雄激素受体阻断 vs 口服血管扩张），更可能共存于联合疗法，而不是直接互斥。Cosmo 的意义因此在整条链上——<em>它的 NDA 时点是这条赛道的定价锚</em>。</p>
+</div>
+
+<h2>十一、排序与裁判日：两种不同性质的赌注</h2>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="240" fill="#101013"/>
+  <text x="24" y="24" fill="#86868b" font-size="12">裁判日时间轴：MANE 与 QTTB 不在同一根轴上</text>
+
+  <line x1="40" y1="120" x2="650" y2="120" stroke="#3a3a40" stroke-width="1.5"/>
+
+  <circle cx="120" cy="120" r="7" fill="#30d158"/>
+  <text x="120" y="96" fill="#30d158" font-size="12" text-anchor="middle" font-weight="600">2026H2</text>
+  <text x="120" y="82" fill="#86868b" font-size="10.5" text-anchor="middle">当下</text>
+  <text x="120" y="144" fill="#d1d1d6" font-size="11" text-anchor="middle">MANE 304 顶线</text>
+  <text x="120" y="160" fill="#86868b" font-size="10.5" text-anchor="middle">男性确证性 · 536 例</text>
+
+  <circle cx="260" cy="120" r="6" fill="#5ac8fa"/>
+  <text x="260" y="96" fill="#5ac8fa" font-size="12" text-anchor="middle" font-weight="600">2027Q1</text>
+  <text x="260" y="144" fill="#d1d1d6" font-size="11" text-anchor="middle">MANE 306 顶线（女）</text>
+  <text x="260" y="160" fill="#86868b" font-size="10.5" text-anchor="middle">MANE NDA · Cosmo NDA</text>
+
+  <circle cx="400" cy="120" r="5" fill="#ff9f0a"/>
+  <text x="400" y="96" fill="#ff9f0a" font-size="12" text-anchor="middle" font-weight="600">2027H1</text>
+  <text x="400" y="144" fill="#d1d1d6" font-size="11" text-anchor="middle">QTTB 注册项目启动</text>
+  <text x="400" y="160" fill="#ff453a" font-size="10.5" text-anchor="middle">只是启动，不是读数</text>
+
+  <circle cx="400" cy="196" r="4" fill="#86868b"/>
+  <text x="400" y="214" fill="#86868b" font-size="10.5" text-anchor="middle">2027H2：QTTB OLE 数据</text>
+
+  <circle cx="600" cy="120" r="7" fill="#ff453a"/>
+  <text x="600" y="96" fill="#ff453a" font-size="12" text-anchor="middle" font-weight="600">2029–2030</text>
+  <text x="600" y="144" fill="#d1d1d6" font-size="11" text-anchor="middle">QTTB Ph3 顶线</text>
+  <text x="600" y="160" fill="#86868b" font-size="10.5" text-anchor="middle">850 例以上 · 自费</text>
+</svg>
+</div>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>维度</th><th>结论</th><th>依据</th></tr></thead>
+<tbody>
+<tr><td class="hl">质地最好</td><td>MANE（MANE.N）</td><td>A 级数据（519 例双盲安慰剂对照）、剂量反应单调、客观与主观一致、女性市场真空、现金 $8.2 亿无融资压力、<strong>最近的裁判日就在当下（2026H2）</strong></td></tr>
+<tr><td class="hl">赔率最好</td><td>不能与 MANE 直接排序</td><td>QTTB 的 EV 极低（$0.3–0.9 亿），但<strong>裁判日在 2029–2030</strong>；MANE 的 EV ÷ 峰值销售 1.35–2.0×，但裁判日在数周内。<em>两者是不同性质的赌注：一个是当下定生死，一个是便宜但时间成本极高的看涨期权。</em></td></tr>
+<tr><td class="hl">最符收费口逻辑</td><td>INCY（INCY.O）</td><td>PE(TTM) 16.2×（四家已获批里最低）、<strong>收特许权不承担商业化费用</strong>、Opzelura 2026Q2 $4.50 亿（+173%）；代价是 Jakafi 2027 年后专利到期</td></tr>
+<tr><td class="hl">符合"稳健防守等崩盘"</td><td class="up">没有一家</td><td>全部是二元事件 ⇒ 灵魂 4：等裁判吹哨再上桌</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>关于 HIMS（HIMS.N）单独一句：它确实是这条链上唯一的规模化现金渠道（男士皮肤科年化 &gt;$10 亿、订阅 289.1 万、每用户月均 $92），<strong>但它被减重业务绑架了</strong>——毛利率 76% → 64%、GAAP 由盈转亏 −$8,629 万、资产负债率 91.07%、自由现金流 −$6,820 万。<em>用"渠道"逻辑看它是对的，用"脱发"逻辑看它是错的。</em></p>
+
+<h2>十二、如果要参与：动作绑在读数上，不绑在价格上</h2>
+
+<p>这类标的与传统价值股的动作方式根本不同。价格阶梯对它们的作用有限，因为<strong>价格在读数公布前不反映任何新信息</strong>。按 52 周区间的斐波那契回撤位机械给出（不是价值判断）：</p>
+
+<div class="tblwrap">
+<table class="tbl">
+<thead><tr><th>标的</th><th class="num">现价</th><th class="num">Z1</th><th class="num">Z2</th><th class="num">Z3</th><th class="num">止损</th></tr></thead>
+<tbody>
+<tr><td class="hl">MANE (MANE.N)</td><td class="num">$116.26</td><td class="num">107–108</td><td class="num">92–94</td><td class="num">82–84</td><td class="num">70</td></tr>
+<tr><td class="hl">QTTB (QTTB.O)</td><td class="num">$10.45</td><td class="num">9.5–10.5</td><td class="num">7.5–8.5</td><td class="num">5.5–6.5</td><td class="num">4.5</td></tr>
+<tr><td>ABSI (ABSI.O)</td><td class="num">$10.71</td><td class="num">9.7–10.0</td><td class="num">8.2–8.5</td><td class="num">7.1–7.4</td><td class="num">6.0</td></tr>
+<tr><td>NKTR (NKTR.O)</td><td class="num">$60.97</td><td class="num">57–62</td><td class="num">48–54</td><td class="num">38–44</td><td class="num">33</td></tr>
+<tr><td>INCY (INCY.O)</td><td class="num">$126.93</td><td class="num">115–120</td><td class="num">105–112</td><td class="num">95–102</td><td class="num">88</td></tr>
+<tr><td>HIMS (HIMS.N)</td><td class="num">$30.43</td><td class="num">27–29</td><td class="num">22–25</td><td class="num">17–20</td><td class="num">13.5</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout">
+<p><strong>但对这类标的，价格阶梯不如"事件日历 + 仓位上限"有用。</strong>如果真要参与，只能按"笼子"处理——<strong>单标的 1–2% 上限</strong>，且先回答一个问题：<em>这笔钱在读数公布前会不会需要动？</em></p>
+<p>节奏建议绑在三件事上，而不是绑在价格上：<strong>① MANE 的 Study 304 顶线</strong>（2026H2，这是第一个真正的二元裁判日）；<strong>② QTTB 与 FDA 的监管讨论结果</strong>（2026Q4，决定它是否必须做随机对照——这直接决定成本是 $3 亿还是 $6 亿）；<strong>③ 内部人是否恢复净买入</strong>（目前零买入状态延续）。</p>
+</div>
+
+<h3>与现有组合的关系</h3>
+
+<p>你手上 AVGO（AI 资本开支）+ TME / NKE（消费者钱包，合计 44%）。<strong>脱发这条链与两者因子都不同</strong>——它挂的是"自费医疗支出"，既不是企业资本开支，也不是可选消费。<em>但必须说清楚：因子不同 ≠ 应该参与。</em>"因子分散"解决的是相关性问题，解决不了"这是不是一个好赌注"的问题。</p>
+
+<p>而且有一条更需要警惕的：<strong>INCY 与 HIMS 都不够"纯"</strong>——INCY 是制药 + 特许权组合（Jakafi LOE 压制），HIMS 是减重业务主导的渠道方。<em>如果目的是"获得脱发敞口"，这两家给的是打了折的敞口。</em></p>
+
+<h2>十三、证伪线</h2>
+
+<h3>MANE</h3>
+<ol>
+<li><strong>Study 304 未能复制 302</strong>（TAHC 净增 &lt;15 根，或 PRO 未显著）</li>
+<li>FDA 要求额外安全性数据或更大的确证性试验（时间表滑出 2027）</li>
+<li><strong>女性 Study 306 数据偏弱</strong>（＝真实价值锚失效）</li>
+<li><strong>实际定价落在 $100–150/月</strong>（＝2–4 倍缺口兑现，峰值销售模型打对折）</li>
+<li>内部人继续净卖出（零买入状态延续）</li>
+</ol>
+
+<h3>QTTB</h3>
+<ol>
+<li>监管讨论要求<strong>随机对照</strong>设计（成本翻倍，必须有合作方）</li>
+<li>Ph3 启动推迟到 2027H2 之后</li>
+<li>SALT-20 在 Ph3 复核掉到 <strong>30% 以下</strong></li>
+<li>再次大额增发（摊薄 &gt;30%）</li>
+</ol>
+
+<h3>共同</h3>
+<ul>
+<li>出现"主要终点未达显著、剔除若干违规例后达标" ⇒ <strong>黄灯不是绿灯</strong></li>
+<li>关键 Ph3 完成后<strong>结果长期不公布</strong> ⇒ 近乎等同失败（Samumed 模式）</li>
+</ul>
+
+<h2>十四、边界（诚实交代）</h2>
+
+<ol>
+<li><strong>MANE 现价与市值多源分歧</strong>：$116.26（9/23 收）／$108.64（9/17）／$102.42（9/16）；市值口径 $41–48.6 亿，差异来自抓取时点与股本是否含预融资权证。本报告以最新（9/23）为准并标注。</li>
+<li><strong>QTTB 的 EV 计算含未审计假设</strong>：预融资权证是否计入市值、7 月增发实际净额（$187.6M 还是超额配售后 $215.8M）。</li>
+<li><strong>卖方峰值销售全部为分析师预测</strong>，非公司指引；Citi 的 $30 亿含女性适应症，Jefferies 的 $20 亿仅美国口径。</li>
+<li><strong>十家全部未单独披露脱发适应症收入</strong>，任何"脱发相关收入"均为推算或代理指标。</li>
+<li><strong>美国市场规模的三个口径互斥</strong>：IBISWorld $43 亿（实际支出，含治疗 + 脱毛）／MANE 招股书 $90 亿（美国 PHL 市场）／Cosmo 自估 $200 亿（美国 AGA 潜在市场）。<em>引用必须写明分母，且不可跨标的混用。</em></li>
+<li><strong>"20 根/cm² 可感知阈值"是统计设计参考，不是 FDA 标准</strong>，不可在正式场合当监管依据引用。FDA 从未发布过 AGA 药物开发指南。</li>
+<li><strong>无公开源单列"口服米诺地尔用于脱发的年处方张数"</strong>，相关规模均为估算。</li>
+<li><strong>价格数据为第三方聚合源口径</strong>（多数来自财经媒体与聚合平台），非交易所一手；ACRS 现价为推算，须核实。</li>
+<li><strong>未做 DCF</strong>——临床期标的无收入、无稳定现金流，模型间能差 2–3 倍，属自欺；也未做自身历史估值分位校验（临床期亏损标的 PE 分位不适用，属合理豁免，但需说明）。</li>
+<li><strong>Cosmo（COPN.SW）是瑞士 SIX 上市，美股仅粉单 CMOPF，不属于本题"美股"范围</strong>，本报告仅作整链定价锚引用。已剔除：开拓药业（09939.HK）、ARQT（已退出脱发研发）、OGN（已被 Sun Pharma 以 $14/股现金收购，属套利标的）。</li>
+</ol>
+
+<div class="conclusion">
+<h3>结语：一句话本质</h3>
+<p><strong>这条赛道真正的分界线不是疗效，是监管路径。</strong>因为在一个没有保险覆盖、有 $4.8/月替代品的市场里，疗效只能决定"能不能获批"，而定价权来自"能不能证明比老药好"——<em>而最省事的监管路径恰恰免去了这个证明。</em></p>
+<p>这句话里有三个可证伪的部分：<strong>① 支付意愿的天花板</strong>（患者调研 $100+/月 vs 分析师假设 $200–400/月，缺口的兑现方式决定峰值销售）；<strong>② 价值锚的位置</strong>（MANE 的真实价值锚在女性市场——那里没有口服替代品；男性市场有）；<strong>③ 数据等级的可比性</strong>（A 级、C 级、D 级的数字不能并排放，也不能拿临床前的 93% 去对已上市药的 78%）。</p>
+<p>三家候选的差别不在"谁更便宜"，而在<em>站在哪一类赌注里、以及裁判日离现在多远</em>：MANE 数周内定生死（质地最好、估值在上沿、内部人零买入）；QTTB 便宜但有 3–4 年时间成本且必须先烧掉一轮融资；INCY 是唯一有当期现金流与收费口结构的，代价是 2027 年专利悬崖。<strong>所以这不是一道"哪家最好"的题，是一道"你愿意等多久"的题。</strong></p>
+</div>
+
+<div class="soul">
+<div class="tag">灵魂第四十九条</div>
+<div class="q">审批路径越省事，商业化依据就越薄。<br><br>505(b)(2) 免去对已确立要素的重复研究，这是它的全部优点；而同一枚硬币的背面是——<strong>它同时免去了"我比参照药好"的证明</strong>。于是当医生问"为什么不给患者开那个 $17/月的老药"时，公司手里只剩三样东西：监管批准本身（合规溢价）、剂型带来的安全性改善（往往软化，因为"无不良事件"若只相对安慰剂得出，就不构成优势证明）、以及<strong>真正的差异化人群</strong>（老药被禁用或无适应症的那群人——这往往才是真价值锚）。<br><br>推论一：<strong>判据不是问"疗效好不好"，而是问"定价权来自优效证据还是合规身份"。</strong>若只有后者，峰值销售模型必须按"份额可以高、但价格会被老药压住"重做，并单列"支付意愿 vs 定价假设"的缺口。<br><br>推论二：<strong>独占期也是路径的函数。</strong>NCE 典型 5 年，505(b)(2) 典型 3 年——同一句"获批"，含金量可以差一倍。<br><br>推论三：<strong>与灵魂 20 / 47 连读。</strong>20 问"为什么便宜"，47 问"这一层按什么计费"；49 补的是第三问：<em>这家公司的定价权，是买来的资格，还是挣来的证据？</em></div>
+</div>
+
+<div class="disc">
+<p><strong>免责声明</strong>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。</p>
+<p>以上仅为个人认知范围内的理解。</p>
+<p><strong>数据来源与口径</strong>：价格、市值与 52 周区间为 <strong>美股 2026-09-23 收盘</strong>口径（westock 行情 + 第三方聚合源，含 neodata）。临床数据来自公司公告与学术会议披露：VDPHL01 Study 302（2026-04-27 顶线，EADV 2025 / AAD 2026 / Music City SCALE 2026）、SIGNAL-AA Part B（2026 年年中）、REZOLVE-AA 52 周、SCALP-1/SCALP-2。财务数据来自各公司最新季报：MANE / QTTB / NKTR / ACRS / HIMS 为 2026Q2，LLY / PFE / ABBV / INCY 为 2026Q2。支付结构数据来自 GoodRx、ClinCalc、MEPS、IBISWorld、Needham 首次覆盖。卖方预测来自 Citi、Needham、Jefferies、Leerink、LifeSci、B.Riley、UBS 等公开研报引用。<em>上述第三方数据均属非一手来源，需核实原文。</em></p>
+<p><strong>数据缺口与分歧</strong>：① MANE 现价与市值多源分歧（$102.42–$116.26，市值 $41–48.6 亿）；② QTTB 的 EV 含未审计假设；③ 卖方峰值销售为分析师预测而非公司指引；④ 十家均未单独披露脱发适应症收入；⑤ 美国市场规模三个口径互斥（$43 亿 / $90 亿 / $200 亿）；⑥ ACRS 现价为推算；⑦ 本报告未做 DCF，价位为区间与分档，不是精确目标价；⑧ 临床期标的的"自身历史估值分位"不适用，已作合理豁免说明。</p>
+<p style="margin-top:18px;color:#5a5a60">P58 · 完 · 上一份 P57《52 周低位不是买点：把"周期逆风"和"结构逆风"分开》· 下一份 P59（灵魂接第五十条）</p>
+</div>
+
+</div>
+</body>
+</html>

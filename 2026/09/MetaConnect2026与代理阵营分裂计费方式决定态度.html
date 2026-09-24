@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>同一个代理，两个平台给出相反答案：计费方式决定阵营，也决定谁被打，兼 Muse 对 AI 行业与美股的逐层拆解</title>
+<style>
+:root{
+  --bg:#0a0a0c; --panel:#101013; --panel2:#141417; --line:#1f1f23;
+  --tx:#d1d1d6; --tx2:#86868b; --hd:#f5f5f7;
+  --up:#ff453a; --dn:#30d158; --blue:#5ac8fa; --amber:#ff9f0a; --purple:#bf5af2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans','Yu Gothic',sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:48px 26px 90px}
+h1{font-size:30px;line-height:1.35;margin:0 0 14px;color:var(--hd);font-weight:700;letter-spacing:-.4px}
+h1 .g{background:linear-gradient(96deg,#f5f5f7 12%,#8e8e93 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 20px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.badge{display:inline-block;padding:4px 11px;border:1px solid var(--line);border-radius:20px;
+  font-size:12px;color:var(--tx2);background:var(--panel);white-space:nowrap}
+.badge.k{color:var(--hd);border-color:#2c2c31}
+.badge.up{color:var(--up);border-color:rgba(255,69,58,.35)}
+.badge.dn{color:var(--dn);border-color:rgba(48,209,88,.35)}
+.badge.b{color:var(--blue);border-color:rgba(90,200,250,.35)}
+.badge.a{color:var(--amber);border-color:rgba(255,159,10,.35)}
+h2{font-size:20px;color:var(--hd);margin:52px 0 16px;font-weight:600;letter-spacing:-.2px;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;color:var(--hd);margin:30px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+strong{color:var(--hd);font-weight:600}
+em{font-style:normal;color:var(--amber);font-weight:600}
+code{background:#17171b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px;color:#e5e5ea}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:0 0 10px}
+.lead p:last-child{margin-bottom:0}
+.verdict{background:var(--panel2);border-left:3px solid var(--hd);border-radius:0 10px 10px 0;
+  padding:13px 18px;margin:0 0 22px;font-size:14.5px;color:var(--hd)}
+.verdict b{color:var(--amber)}
+.callout{background:var(--panel2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;font-size:14.5px}
+.callout.red{border-left-color:var(--up)}
+.callout.green{border-left-color:var(--dn)}
+.callout.blue{border-left-color:var(--blue)}
+.callout p:last-child{margin-bottom:0}
+.conclusion{background:linear-gradient(180deg,#131317,#0f0f12);border:1px solid #2c2c31;border-radius:14px;
+  padding:26px 28px;margin:34px 0}
+.conclusion h3{margin-top:0;color:var(--amber)}
+.soul{background:#0f0f12;border:1px dashed #3a3a40;border-radius:12px;padding:22px 24px;margin:36px 0}
+.soul .tag{color:var(--amber);font-size:12.5px;letter-spacing:.6px;margin-bottom:10px}
+.soul .q{color:var(--tx);font-size:14.5px;line-height:1.85}
+.disc{color:var(--tx2);font-size:12.5px;line-height:1.8;border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.disc p{margin:0 0 10px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--tx2);font-weight:500;font-size:12.5px;background:var(--panel)}
+td strong{color:var(--hd)}
+.up{color:var(--up);font-weight:600}
+.dn{color:var(--dn);font-weight:600}
+.fig{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 16px 10px;margin:26px 0}
+.fig .cap{color:var(--tx2);font-size:12.5px;text-align:center;margin:6px 0 4px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:7px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span class="g">同一个代理，两个平台给出相反答案：计费方式决定阵营，也决定谁被打</span></h1>
+
+<p class="sub">P59 · 2026 年 9 月 24 日 · 事件基准 Meta Connect 2026（美东 2026-09-23 主题演讲、9/24 开发者场，门洛帕克）· 价格基准 美股 2026-09-24 盘中（非最终结算价），日股 2026-09-18 东京收盘 · 财务基准 各公司最新已披露季报（Meta 为 2026Q2，截至 6/30）· 最近的裁判日 2026-10 谷歌+三星 Intelligent Eyewear 上市 → 2026-10 下旬 Meta Q3 财报 → 2026Q4–2027 苹果 N50 / Meta VR Glasses 上市</p>
+
+<div class="badge-row">
+  <span class="badge k">META $758.90 · PE 28.58×</span>
+  <span class="badge k">市值 1.933 万亿美元</span>
+  <span class="badge up">两周市值 +2,000 亿美元</span>
+  <span class="badge dn">Q2 自由现金流 7.84 亿（−91%）</span>
+  <span class="badge a">全年 capex $1,300–1,450 亿</span>
+  <span class="badge b">硬件梯队 $249 → $1,299</span>
+  <span class="badge b">FDA 助听一次性 $149.99</span>
+  <span class="badge dn">Q2 全球 VR 头显 −79% YoY</span>
+</div>
+
+<div class="lead">
+<p><strong>一句话定性：这不是一场硬件发布会，是一次把「个人超级智能」装进眼镜的收费口宣示。</strong>全场几乎没提「元宇宙」，扎克伯格的原话是 <em>We are making personal superintelligence wearable.</em>（2021 年更名至今，Reality Labs 累计运营亏损约 922 亿美元。）</p>
+<p>但真正值得写下来的不是产品清单，而是发布会前后那七十二小时里发生的一件小事：<strong>同一个代理，Amazon 在 9 月 20 日晚间开始封堵它，Shopify 在 9 月 21 日宣布欢迎它——两家公司的反应完全相反，而且都不是因为安全，也不是因为道义。</strong>差别只有一个：Amazon 的收入按「广告展示」计费，Shopify 的收入按「成交金额」计费。</p>
+<p>这份报告要回答四个问题：<strong>① Connect 2026 到底发布了什么，其中哪一条改变了行业结构；② 为什么同一个代理会让两家平台做出相反决定，这条判据怎么用；③ Muse 对 AI 行业的利好与利空分别挂在哪三个位移上；④ 落到美股逐家标的，谁在利好侧、谁在利空侧、谁同时站在两边。</strong></p>
+<p>先给结论：<strong>Muse 对 AI 行业真正的冲击不是 Meta 的模型变强了，而是它把竞争焦点从「模型层」整体搬到了「代理层」，并且用约 40 亿人的分发把这个原本只在 demo 里存在的位置，变成了一张真实的资产负债表。</strong>由此产生三个位移：算力从训练主导 → 推理主导；价值链从模型能力 → 入口与交易闭环；计费从「按人/按 Token」 → 「按成交/按执行」。<em>利好和利空，全部挂在这三个位移上——不挂行业标签上。</em></p>
+</div>
+
+<div class="verdict">
+结论：<b>平台的收入按「广告展示」计费，就必然封堵代理；按「成交」计费，就必然欢迎代理。与安全无关，与道义无关。</b>这是一条可以拿去判断任何一家公司立场的判据——<b>先问它的这一行收入是按什么计费，再问它对代理的态度，答案基本是确定的。</b>
+</div>
+
+<h2>一、先把事件说清楚：Connect 2026 发布了什么</h2>
+
+<p>主题演讲仅约一小时。叙事正式由「元宇宙」转向<strong>「个人超级智能」（personal superintelligence）</strong>，Muse 成为软硬件统一的那个核心。软件层面，Muse 早在 9 月 8 日就已在美加上线，这次做的是<strong>「把它装进硬件」</strong>。</p>
+
+<h3>1.1 软件层：Muse 从 App 变成「身体」</h3>
+
+<p>底层是 Meta Superintelligence Labs 的 <strong>Muse Spark</strong> 模型族（2026 年 4 月首发，8 月迭代到 1.2、9 月到 1.3）。新增能力里，对产业真正有杀伤力的是三项：</p>
+
+<ul>
+<li><strong>Mac 电脑操控</strong>——授权后可在后台运行任意程序，代理从「回答问题」升级为「操作设备」；</li>
+<li><strong>Muse Secure VM → 规划中的 Confidential VM</strong>——每用户一台隔离云机，机密计算阶段连 Meta 自己也读不到；</li>
+<li><strong>Connector 平台</strong>——沃尔玛、百思买、Gap、丝芙兰、Wayfair、American Eagle、DICK'S、Fanatics、Michael Kors、Ulta、Expedia、Instacart、Notion、GitHub、Box、Granola、OpenTable、Spotify、Ticketmaster；支付走 <strong>Shop Pay / Stripe Link / PayPal</strong>。</li>
+</ul>
+
+<p>订阅保持两档 <strong>$20 / $100 每月</strong>。隐私侧给了一个此前没有的开关：<strong>眼镜视觉数据退出 AI 训练的选项</strong>（退出后仅用于当次查询即删、不再交第三方承包商审核；音频需手动删除）。</p>
+
+<div class="callout blue">
+<p><strong>商业模式才是本次最重要的一条。</strong>多数场景免费，<strong>未来对代理促成的交易抽取小额佣金</strong>。这是 Meta 在广告之外的第一条非广告收入线——它决定了后面所有公司的命运，也决定了 Amazon 和 Shopify 的相反反应。</p>
+</div>
+
+<h3>1.2 硬件：$249 → $1,299 的价格梯队</h3>
+
+<table>
+<tr><th>产品</th><th>价格</th><th>关键点</th><th>节奏</th></tr>
+<tr><td><strong>Meta Adventurer</strong></td><td class="up">$249</td><td>入门款，插拔式充电盒</td><td>10/23 开售</td></tr>
+<tr><td><strong>Ray-Ban Meta Audio</strong></td><td class="up">$349</td><td><strong>首款无摄像头</strong>，43g，12h（+充电盒 48h）</td><td>10/13 发货</td></tr>
+<tr><td><strong>Ray-Ban Meta Gen 3</strong></td><td class="up">$449</td><td>1200 万像素、3K 视频、<strong>6 麦阵列降噪 &gt;90%</strong>、Dolby Atmos 360 空间音频</td><td>即日开售</td></tr>
+<tr><td><strong>Meta Ray-Ban Display</strong></td><td class="up">$799</td><td>扩至英/加/法/德/意；新增地标步行导航、骑行/公交语音导航</td><td>10/13 交付</td></tr>
+<tr><td><strong>Meta VR Glasses</strong>（原 Project Phoenix）</td><td class="up">$1,299.99</td><td>本体约 <strong>100g</strong>（Quest 3 的 1/5）、<strong>5K micro-OLED</strong>、分体式约 300g 计算 puck（骁龙 Reality Elite）、无手柄、<strong>首款 IMAX Enhanced 认证 VR</strong></td><td><strong>2027 春季</strong></td></tr>
+<tr><td><strong>Muse Charm</strong></td><td>未公布</td><td>钥匙扣形态，指纹传感器 + 小屏，拇指一按唤醒 Muse</td><td>2026 年 12 月前后</td></tr>
+</table>
+
+<p>另外与 <strong>EssilorLuxottica</strong> 扩大合作：年底 Ray-Ban + Oakley + Meta Glasses 三条线合计<strong>超过 100 种款式</strong>，新进新加坡、韩国、墨西哥、阿联酋等地。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" width="100%">
+  <text x="8" y="20" fill="#f5f5f7" font-size="14" font-weight="700" font-family="sans-serif">价格梯队 $249 → $1,299：每一档打的都是现成品类</text>
+  <text x="8" y="40" fill="#86868b" font-size="11.5" font-family="sans-serif">横条长度＝售价（等比，$1,299 为满格）· 右栏＝该档主要冲击的存量品类</text>
+
+  <text x="8" y="76" fill="#d1d1d6" font-size="11.5" font-family="sans-serif">Meta Adventurer</text>
+  <rect x="140" y="63" width="43" height="18" rx="3" fill="#5ac8fa" opacity="0.55"/>
+  <text x="190" y="77" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">$249</text>
+  <text x="392" y="77" fill="#86868b" font-size="11" font-family="sans-serif">白牌／入门智能眼镜</text>
+
+  <text x="8" y="120" fill="#d1d1d6" font-size="11.5" font-family="sans-serif">Ray-Ban Meta Audio</text>
+  <rect x="140" y="107" width="60" height="18" rx="3" fill="#5ac8fa" opacity="0.65"/>
+  <text x="207" y="121" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">$349</text>
+  <text x="392" y="121" fill="#ff453a" font-size="11" font-family="sans-serif">AirPods 等 TWS 耳机</text>
+
+  <text x="8" y="164" fill="#d1d1d6" font-size="11.5" font-family="sans-serif">Ray-Ban Meta Gen 3</text>
+  <rect x="140" y="151" width="77" height="18" rx="3" fill="#5ac8fa" opacity="0.75"/>
+  <text x="224" y="165" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">$449</text>
+  <text x="392" y="165" fill="#86868b" font-size="11" font-family="sans-serif">上代自身 + 传统太阳镜</text>
+
+  <text x="8" y="208" fill="#d1d1d6" font-size="11.5" font-family="sans-serif">Meta Ray-Ban Display</text>
+  <rect x="140" y="195" width="136" height="18" rx="3" fill="#ff9f0a" opacity="0.7"/>
+  <text x="283" y="209" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">$799</text>
+  <text x="392" y="209" fill="#86868b" font-size="11" font-family="sans-serif">高端墨镜 + 老花镜</text>
+
+  <text x="8" y="252" fill="#d1d1d6" font-size="11.5" font-family="sans-serif">Meta VR Glasses</text>
+  <rect x="140" y="239" width="221" height="18" rx="3" fill="#ff453a" opacity="0.75"/>
+  <text x="368" y="253" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">$1,299.99</text>
+  <text x="455" y="253" fill="#ff453a" font-size="11" font-family="sans-serif">高端 VR 头显</text>
+
+  <text x="8" y="296" fill="#d1d1d6" font-size="11.5" font-family="sans-serif">Muse Charm</text>
+  <rect x="140" y="283" width="2" height="18" rx="1" fill="#86868b"/>
+  <text x="150" y="297" fill="#86868b" font-size="11.5" font-family="sans-serif">未公布</text>
+  <text x="392" y="297" fill="#86868b" font-size="11" font-family="sans-serif">单一功能可穿戴</text>
+
+  <line x1="8" y1="322" x2="672" y2="322" stroke="#1f1f23" stroke-width="1"/>
+  <text x="8" y="344" fill="#ff9f0a" font-size="11.5" font-weight="700" font-family="sans-serif">同一条线上还有一条不靠硬件赚钱的：FDA 认证听力增强，一次性 $149.99</text>
+  <text x="8" y="364" fill="#86868b" font-size="11" font-family="sans-serif">对标美国处方助听器均价 $3,000–4,000／副 —— 打的是价格锚，不是技术。</text>
+  <text x="8" y="384" fill="#86868b" font-size="11" font-family="sans-serif">⚠ $449 的 Gen 3 较上代定价 +19%，官方归因「存储短缺」。</text>
+</svg>
+<div class="cap">图 1 · 价格梯队与它打击的存量品类；底部一行是本轮真正改变行业定价锚的那条</div>
+</div>
+
+<h3>1.3 最有行业穿透力的一条：FDA 认证的听力增强</h3>
+
+<p>这是一条容易被淹没在硬件清单里、但行业含义最大的发布：<strong>听力增强（Hearing Enhancement）拿到了 FDA 许可</strong>——II 类 OTC 软件即医疗器械（备案号 K254044，predicate 就是 Apple 的 HAF），面向 18 岁以上自评轻中度听损人群，居家自测 1–2 分钟，<strong>免处方</strong>，语音开关切换，<strong>一次性 $149.99</strong>（30 天试用）或含于 Meta One 订阅，<strong>HSA/FSA 可报销</strong>。注意两点：初期<strong>只支持 Meta 自有品牌眼镜，不含 Ray-Ban</strong>；年内美国上线。</p>
+
+<div class="callout">
+<p><strong>为什么这一条最该单独拎出来：</strong>它把「软件功能」放进了「医疗器械」的价签里。美国处方助听器均价 $3,000–4,000／副，而这个功能卖 $149.99 且可医保账户报销。<em>被打的不是技术路线，是价格锚</em>——真正被压的是入门 OTC 与首次配机人群，不是高端线（见 §六 C 类）。</p>
+</div>
+
+<h2>二、真正的新东西不是硬件，是「计费对象」变了</h2>
+
+<p>把 Connect 2026 的所有发布条目放在一起看，只有一条是结构性的：<strong>Meta 把变现的基础从「广告展示」扩到了「交易成交」</strong>。这句话的含义比它听起来大得多。</p>
+
+<p>过去二十年，平台对第三方应用的态度基本由一件事决定：<strong>用户的时间和注意力能不能被我变现</strong>。所以平台欢迎「留在页面上」的一切，封堵「跳出页面」的一切。代理（agent）恰恰是一台<strong>专门用来跳出页面的机器</strong>——它读结构化字段、比对参数、直接下单，中间不产生任何可售卖的展示位。</p>
+
+<p>而一旦平台自己的收入也来自「成交」，代理就从威胁变成了渠道：<em>它跳过的每一步都不是我的收入，它促成的每一单都有一部分是我的收入。</em>这就是 §三 要展开的那条判据。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg" width="100%">
+  <text x="8" y="20" fill="#f5f5f7" font-size="14" font-weight="700" font-family="sans-serif">一笔代理交易要穿透的六个收费口</text>
+  <text x="8" y="40" fill="#86868b" font-size="11.5" font-family="sans-serif">左列＝环节 · 中列＝这一层按什么计费 · 右列＝代理是否穿过了它</text>
+
+  <rect x="8" y="54" width="664" height="46" rx="6" fill="#101013" stroke="#1f1f23"/>
+  <text x="20" y="73" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">① 商户主体</text>
+  <text x="20" y="91" fill="#86868b" font-size="10.5" font-family="sans-serif">库存／发货／退货／税务</text>
+  <text x="240" y="83" fill="#30d158" font-size="11.5" font-family="sans-serif">按成交（GMV 或销售额）</text>
+  <text x="500" y="83" fill="#30d158" font-size="11.5" font-weight="700" font-family="sans-serif">穿不过</text>
+
+  <rect x="8" y="106" width="664" height="46" rx="6" fill="#101013" stroke="#1f1f23"/>
+  <text x="20" y="125" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">② 展示广告位</text>
+  <text x="20" y="143" fill="#86868b" font-size="10.5" font-family="sans-serif">赞助位／品牌位</text>
+  <text x="240" y="135" fill="#ff453a" font-size="11.5" font-family="sans-serif">按曝光／按点击</text>
+  <text x="500" y="135" fill="#ff453a" font-size="11.5" font-weight="700" font-family="sans-serif">整层被跳过</text>
+
+  <rect x="8" y="158" width="664" height="46" rx="6" fill="#101013" stroke="#1f1f23"/>
+  <text x="20" y="177" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">③ 发现层</text>
+  <text x="20" y="195" fill="#86868b" font-size="10.5" font-family="sans-serif">目录／商品结构化字段</text>
+  <text x="240" y="187" fill="#5ac8fa" font-size="11.5" font-family="sans-serif">多数目前不收费</text>
+  <text x="500" y="187" fill="#ff9f0a" font-size="11.5" font-weight="700" font-family="sans-serif">变成必争之地</text>
+
+  <rect x="8" y="210" width="664" height="46" rx="6" fill="#101013" stroke="#1f1f23"/>
+  <text x="20" y="229" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">④ 结账层</text>
+  <text x="20" y="247" fill="#86868b" font-size="10.5" font-family="sans-serif">对话框内下单／回跳商家</text>
+  <text x="240" y="239" fill="#ff9f0a" font-size="11.5" font-family="sans-serif">按成交抽佣（新增）</text>
+  <text x="500" y="239" fill="#ff9f0a" font-size="11.5" font-weight="700" font-family="sans-serif">正在被重定价</text>
+
+  <rect x="8" y="262" width="664" height="46" rx="6" fill="#101013" stroke="#1f1f23"/>
+  <text x="20" y="281" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">⑤ 授权层</text>
+  <text x="20" y="299" fill="#86868b" font-size="10.5" font-family="sans-serif">代理支付令牌／一次性卡号</text>
+  <text x="240" y="291" fill="#30d158" font-size="11.5" font-family="sans-serif">按笔＋按服务</text>
+  <text x="500" y="291" fill="#30d158" font-size="11.5" font-weight="700" font-family="sans-serif">必须经过</text>
+
+  <rect x="8" y="314" width="664" height="46" rx="6" fill="#101013" stroke="#1f1f23"/>
+  <text x="20" y="333" fill="#f5f5f7" font-size="11.5" font-weight="700" font-family="sans-serif">⑥ 售后责任层</text>
+  <text x="20" y="351" fill="#86868b" font-size="10.5" font-family="sans-serif">纠纷／退款／欺诈承担</text>
+  <text x="240" y="343" fill="#bf5af2" font-size="11.5" font-family="sans-serif">没有人按这一层收费</text>
+  <text x="500" y="343" fill="#bf5af2" font-size="11.5" font-weight="700" font-family="sans-serif">风险堆在这里</text>
+
+  <line x1="8" y1="378" x2="672" y2="378" stroke="#1f1f23"/>
+  <text x="8" y="400" fill="#ff9f0a" font-size="11.5" font-weight="700" font-family="sans-serif">判据：按曝光计费的层必然封堵代理（Amazon），按成交计费的层必然欢迎代理（Shopify）。</text>
+  <text x="8" y="420" fill="#86868b" font-size="11" font-family="sans-serif">没人收费的第⑥层，就是风险堆着的那一层 —— 这一条接灵魂第四十七条。</text>
+</svg>
+<div class="cap">图 2 · 一笔代理交易穿透的六个收费口：注意「按什么计费」这一列与「能否被跳过」高度对应</div>
+</div>
+
+<h2>三、同一个代理，两个平台的相反答案</h2>
+
+<p>这是本报告最硬的一条，也是后面所有判断的骨架。时间线只有三天：</p>
+
+<table>
+<tr><th>日期</th><th>事件</th></tr>
+<tr><td>9/8</td><td>Muse 美国上线（18+，美加）</td></tr>
+<tr><td><strong>9/20 晚</strong></td><td><strong>Amazon 开始封堵 Muse</strong>，弹窗理由：「未授权 AI 智能体持续访问违反《使用条件》」</td></tr>
+<tr><td><strong>9/21</strong></td><td><strong>Shopify 宣布</strong> Muse 可在<strong>所有 Shopify 商家</strong>用 Shop Pay 完成结账（依托 UCP + Shopify Catalog）→ <span class="up">Shopify +7.33%</span>、<span class="up">Meta +11.43%</span></td></tr>
+<tr><td>9/22</td><td>Shopify 再 <span class="up">+7.9%</span>（两日累计近 <span class="up">+14%</span>）；<strong>PayPal 宣布接入</strong>；Expedia 合作确认</td></tr>
+<tr><td>9/23</td><td>Instacart 接入</td></tr>
+</table>
+
+<p>拆开看，两家公司的动机都是明摆着的：</p>
+
+<ul>
+<li><strong>Amazon：广告收入去年超过 680 亿美元、今年预计超过 830 亿</strong>（eMarketer），约七成毛利率。代理一跳过商品页和赞助位，<strong>零售媒体和一方归因同时失效</strong>——第三方代理让浏览行为无法归因到具体的人，这比少卖一件货严重得多。它此前已先后封堵 Perplexity Comet、ChatGPT 购物代理、Google Gemini。</li>
+<li><strong>Shopify：收入按 GMV 与处理费计。</strong>代理越多、交易越多，它收得越多。所以德银的评论是「这<strong>反驳了 AI 智能体将去中介化 Shopify 的看空逻辑</strong>」——两天涨 14% 就是这个逻辑的定价。</li>
+</ul>
+
+<div class="callout red">
+<p><strong>但这里有一个必须一起写的反面：Amazon 反对的不是代理，是「不受自己控制的代理」。</strong>它自己就在跑 <strong>Rufus</strong>（带来约 120 亿美元增量收入）和 <strong>Buy for Me</strong>（Jassy：过去 12 个月 3.5 亿以上用户使用，使用者单均消费高 40%）。更微妙的是，<strong>Meta 是 AWS Graviton 的大客户</strong>（2026 年 4 月签下数十亿美元协议）——同一家公司同时是封堵者和供应商。</p>
+</div>
+
+<p>法律上 Amazon 其实退了一步：2026 年 8 月第九巡回法院推翻了它对 Perplexity 的初步禁令（主笔 Milan D. Smith, Jr.，认定「访问者是键盘前的人而非软件」，CFAA 四项要素全部不利于 Amazon），9 月又驳回重审。所以本轮它改用《使用条件》这一<strong>合同杠杆</strong>，而不是 CFAA 这把刑事锤子。</p>
+
+<p><strong>未闭合点有三个</strong>：① 条款约束的是账户持有人（用户），管不到未受邀的代理，执行力存疑；② 业界预期若 Amazon 逼 Meta 签正式 API 协议，可能落到 <strong>2%–5% 收入分成或每日查询限额</strong>；③ 消费者侧还没跟上——Coveo 调查中只有 <strong>16%</strong> 的购物者愿意让 AI 助手既找货又下单。这意味着代理商务目前更像一场<em>平台之间的定价谈判</em>，而不是已经发生的消费习惯迁移。</p>
+
+<div class="conclusion">
+<h3>这一节的方法论价值</h3>
+<p>不要按「科技 vs 传统」「大厂 vs 小厂」给公司分类<strong>，要按「它的这一行收入按什么计费」分类</strong>。同一个代理，对按曝光计费的公司是入侵者，对按成交计费的公司是渠道商。<em>这个判据可以拿去套任何一家公司，而不需要先知道它对 AI 的态度。</em></p>
+</div>
+
+<h2>四、把利好利空放到同一把尺子上</h2>
+
+<p>上一节是「平台视角」。这一节换成「公司视角」：代理做的事只有一件——<strong>把「人操作界面」改成「代理调用接口」</strong>。于是每家公司被问同样三句话：</p>
+
+<ol>
+<li><strong>它的收入是按「路径」计费，还是按「事办成」计费？</strong>按曝光／按席位 → 必然封门；按成交／按用量 → 必然开门。</li>
+<li><strong>它的资产是「关系与界面」，还是「物理交付」？</strong>关系和界面可以被跳过；电、内存、散热跳不过。</li>
+<li><strong>它愿不愿意承担运营责任？</strong>愿意承担支付、客服、纠纷的，代理反而要来找它。</li>
+</ol>
+
+<p>三个位移由此产生——<strong>而所有的利好与利空，都挂在这三个位移上：</strong></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" width="100%">
+  <text x="8" y="20" fill="#f5f5f7" font-size="14" font-weight="700" font-family="sans-serif">三个位移 = 六条影响线：利好与利空挂在同一根轴上</text>
+  <text x="8" y="40" fill="#86868b" font-size="11.5" font-family="sans-serif">读法：中间是位移本身，左边是它创造的受益层，右边是它替代或共担代价的位置</text>
+
+  <rect x="230" y="58" width="220" height="64" rx="8" fill="#141417" stroke="#2c2c31"/>
+  <text x="246" y="78" fill="#ff9f0a" font-size="12" font-weight="700" font-family="sans-serif">位移一 · 计费对象</text>
+  <text x="246" y="96" fill="#d1d1d6" font-size="11" font-family="sans-serif">曝光／席位 → 成交／用量</text>
+  <text x="246" y="112" fill="#86868b" font-size="10.5" font-family="sans-serif">决定平台封门还是开门</text>
+  <rect x="8" y="62" width="205" height="56" rx="6" fill="#0f1a12" stroke="#2a4a32"/>
+  <text x="20" y="82" fill="#30d158" font-size="11" font-weight="700" font-family="sans-serif">受益：按成交抽佣</text>
+  <text x="20" y="100" fill="#86868b" font-size="10.5" font-family="sans-serif">Shopify · 支付授权层 · 目录资产</text>
+  <rect x="467" y="62" width="205" height="56" rx="6" fill="#1a0f10" stroke="#4a2a2a"/>
+  <text x="479" y="82" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">受压：按曝光／按席位</text>
+  <text x="479" y="100" fill="#86868b" font-size="10.5" font-family="sans-serif">展示广告 · 席位制 SaaS · 元搜索</text>
+
+  <rect x="230" y="142" width="220" height="64" rx="8" fill="#141417" stroke="#2c2c31"/>
+  <text x="246" y="162" fill="#ff9f0a" font-size="12" font-weight="700" font-family="sans-serif">位移二 · 负载性质</text>
+  <text x="246" y="180" fill="#d1d1d6" font-size="11" font-family="sans-serif">项目制脉冲 → 7×24 连续</text>
+  <text x="246" y="196" fill="#86868b" font-size="10.5" font-family="sans-serif">决定谁承担持续成本、谁被分流</text>
+  <rect x="8" y="146" width="205" height="56" rx="6" fill="#0f1a12" stroke="#2a4a32"/>
+  <text x="20" y="166" fill="#30d158" font-size="11" font-weight="700" font-family="sans-serif">受益：物理交付层</text>
+  <text x="20" y="184" fill="#86868b" font-size="10.5" font-family="sans-serif">推理 CPU · 内存互连 · 电力散热</text>
+  <rect x="467" y="146" width="205" height="56" rx="6" fill="#1a0f10" stroke="#4a2a2a"/>
+  <text x="479" y="166" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">受压：单一 GPU 叙事</text>
+  <text x="479" y="184" fill="#86868b" font-size="10.5" font-family="sans-serif">训练主导叙事 · 资本开支同因子</text>
+
+  <rect x="230" y="226" width="220" height="64" rx="8" fill="#141417" stroke="#2c2c31"/>
+  <text x="246" y="246" fill="#ff9f0a" font-size="12" font-weight="700" font-family="sans-serif">位移三 · 责任主体</text>
+  <text x="246" y="264" fill="#d1d1d6" font-size="11" font-family="sans-serif">工具 → 主体</text>
+  <text x="246" y="280" fill="#86868b" font-size="10.5" font-family="sans-serif">决定谁付得起一次事故</text>
+  <rect x="8" y="230" width="205" height="56" rx="6" fill="#0f1a12" stroke="#2a4a32"/>
+  <text x="20" y="250" fill="#30d158" font-size="11" font-weight="700" font-family="sans-serif">受益：身份／权限／审计</text>
+  <text x="20" y="268" fill="#86868b" font-size="10.5" font-family="sans-serif">KYA · 机密计算 · 代理运行时</text>
+  <rect x="467" y="230" width="205" height="56" rx="6" fill="#1a0f10" stroke="#4a2a2a"/>
+  <text x="479" y="250" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">受压：靠提示词护栏</text>
+  <text x="479" y="268" fill="#86868b" font-size="10.5" font-family="sans-serif">长尾应用层 · 无自有入口的模型商</text>
+
+  <line x1="8" y1="310" x2="672" y2="310" stroke="#1f1f23"/>
+  <text x="8" y="332" fill="#ff9f0a" font-size="11.5" font-weight="700" font-family="sans-serif">统一判据：先问这一层按什么计费，再问它是否承担运营责任。</text>
+  <text x="8" y="354" fill="#86868b" font-size="11" font-family="sans-serif">两者都回答「按成交／愿承担」的，是受益侧；回答「按曝光席位／只做界面」的，是受压侧。</text>
+  <text x="8" y="376" fill="#86868b" font-size="11" font-family="sans-serif">⚠ 这一把尺子的例外：资产极重、订单可见度极高的公司，即使计费方式不变也能受益（见 §五 层 3）。</text>
+</svg>
+<div class="cap">图 3 · 三个位移与它们各自的受益侧、受压侧</div>
+</div>
+
+<h2>五、利好侧：四层，逐家落到美股标的</h2>
+
+<p>下面所有价格为 <strong>2026-09-24 美股盘中</strong>（非最终结算价），PE 均为 TTM。凡是估值倍数已因盈利基数极薄而失真的（PANW 976×、CRWD 6972× 等），本报告标明「失真」并改用 PS 或前瞻 PE 讨论。</p>
+
+<h3>层 1｜算力物理层：被「负载性质位移」直接改写</h3>
+
+<table>
+<tr><th>标的</th><th>9/24 盘中</th><th>PE(TTM)</th><th>关键数据</th></tr>
+<tr><td><strong>AMD</strong></td><td>615.64</td><td>157.9×</td><td>9/21 <span class="up">+9.95%</span>，市值首破 1 万亿美元；Meta 是其第二大客户（约 5.5% 营收），已签最多 <strong>6GW</strong> Instinct 部署</td></tr>
+<tr><td><strong>INTC</strong></td><td>124.27</td><td>亏损</td><td>9/21 <span class="up">+12.14%</span>；Wedbush：「智能体实质计算装置的制造商<strong>只有英特尔和 AMD 两家</strong>」</td></tr>
+<tr><td><strong>ARM</strong></td><td>320.86</td><td>327×</td><td>9/21 <span class="up">+17.16%</span>（去年 4 月以来最大单日）</td></tr>
+<tr><td><strong>QCOM</strong></td><td>193.49</td><td>22.1×</td><td>9/21 <span class="up">+9.29%</span>；⚠ 9/1 起骁龙芯片涨价双位数</td></tr>
+<tr><td><strong>NVDA</strong></td><td>222.54</td><td>28.1×</td><td>⚠ 事件当天<strong>只涨 2.30%</strong>，是大型半导体里最弱的一个</td></tr>
+</table>
+
+<p><strong>机制</strong>：Chatbot 是「提问 → GPU 推理 → 结束」的短促并行爆发；Agent 是「规划 → 开虚拟机 → 调工具 → 读结果 → 改计划 → 再调」的长循环。在这个循环里，<strong>矩阵乘法只占一小部分</strong>，大部分是任务编排、沙箱隔离、浏览器控制、数据库读写——这是通用处理器的工作。大摩测算：代理式 AI 到 2030 年为数据中心 CPU 额外带来 <strong>325–600 亿美元</strong>增量；高盛测算 GPU:CPU 从约 2:1 降至 <strong>1.1–1.4:1</strong>。</p>
+
+<div class="callout red">
+<p><strong>但这一层的估值最贵、兑现最少，必须写清楚。</strong>AMD 的平均目标价（504–510）<strong>低于现价 615</strong>；INTC 仍在亏损；ARM 的 PE 是 327×。Oppenheimer 直接算过：Meta 需约 <strong>1.15 亿</strong> Muse 付费订户才能产出 275–280 亿美元年收入，并判断「不太可能」。<em>所以这是「预期层」，不是「业绩层」——它定价的是六个季度以后的负载结构，不是这个季度的报表。</em></p>
+</div>
+
+<h3>层 2｜内存与互连：四层里唯一业绩已完全兑现的一层</h3>
+
+<table>
+<tr><th>标的</th><th>9/24 盘中</th><th>PE(TTM)</th><th>已兑现的证据</th></tr>
+<tr><td><strong>MU</strong></td><td>1,055.96</td><td><strong>23.9×</strong></td><td>FY26Q3 营收 <strong>414.56 亿（+345.7%）</strong>、GAAP 毛利率 <strong>84.6%</strong>、净利 282.43 亿（+1398.3%）；云存储 +306.6%、核心数据中心 +653.2%；FY26Q4 指引 490–510 亿、毛利率 86%</td></tr>
+<tr><td><strong>SNDK</strong></td><td>1,791.51</td><td>24.3×</td><td>FY26Q4 营收 <strong>89.65 亿（+372%）</strong>、毛利率 84.6%；数据中心 +437%</td></tr>
+<tr><td><strong>AVGO</strong></td><td>348.36</td><td>44.4×</td><td>FY26Q2 营收 221.87 亿（+48%）、<strong>AI 半导体 108 亿（+143%）</strong>、FCF 102.62 亿（占营收 46%），FY27 AI 指引超 1000 亿</td></tr>
+<tr><td><strong>MRVL</strong></td><td>255.30</td><td>84.5×</td><td>FY26 全年 81.95 亿（+42%），FY27 指引 115 亿</td></tr>
+<tr><td><strong>ALAB</strong></td><td>354.81</td><td>174.8×</td><td>重定时器嵌入全球约 <strong>90% 的 AI 服务器</strong>；Q2 营收 +104%、Q3 指引环比 +40%</td></tr>
+<tr><td><strong>CRDO / ANET</strong></td><td>191.22 / 203.59</td><td>67.3× / 64.4×</td><td>CRDO 铜缆份额 80–88%，但环比增速已由 51.9% 掉到 7.4%</td></tr>
+<tr><td><strong>WDC / STX</strong></td><td>459.75 / 921.23</td><td>18.9× / 66.3×</td><td>估值最低的 WDC 相对抗跌；⚠ <strong>STX PB 96.7×，FY26Q1 股东权益一度为 −6,300 万美元</strong></td></tr>
+</table>
+
+<p><strong>机制很硬</strong>：<em>KV Cache 让内存驻留时间从毫秒变成小时甚至天。</em>单请求上下文从 4K 增到 128K token，KV Cache 空间增长 <strong>32 倍至 64GB</strong>；100 个并发请求就是 TB 级。美光自己把这件事做成了商业模式——<strong>16 份战略客户长协，其中 14 份剩余履约义务约 1,000 亿美元，客户保证金加履约承诺 220 亿（含约 180 亿现金）</strong>。这是存储行业历史上从未出现过的动作，意在削弱周期性。</p>
+
+<div class="callout green">
+<p><strong>为什么说这一层最值得注意：它是四层里唯一「增速三位数 + PE 只有 18–24 倍」的。</strong>但它们对利率极度敏感——2026 年 8 月 18 日 30 年期美债触及 5.33% 的 19 年新高时，这批芯片股集体被抛售（超大规模客户的增量年度借款已从 FY2024 占资本开支 9% 升到 2026 年中的 32%）。</p>
+<p><strong>反面也要一起写：</strong>SemiAnalysis 指出推理场景下 <strong>4 层 HBM 的带宽性价比最优</strong>，Rubin Ultra 单 GPU 显存可能从 288GB 降到 192GB ⇒「堆容量」不是线性受益，<em>有带宽/成本优势的比单纯堆容量的更优</em>。</p>
+</div>
+
+<h3>层 3｜电力与散热：高盛口中的「4 个 T」</h3>
+
+<table>
+<tr><th>标的</th><th>9/24 盘中</th><th>PE</th><th>判据</th></tr>
+<tr><td><strong>VRT</strong></td><td>241.30</td><td>54.6×</td><td>Q2 营收 32.74 亿（+24%）、毛利率 35.3%；全年指引 138–142 亿（有机 +31%）；⚠ 近 60 日 <span class="dn">−27.9%</span></td></tr>
+<tr><td><strong>ETN</strong></td><td>435.49</td><td>44.4×</td><td>Q2 营收 85.31 亿（+21%）；电气积压 +43%、数据中心收入 +65%；95.5 亿收购 Boyd Thermal 形成「电气 + 液冷」</td></tr>
+<tr><td><strong>GEV</strong></td><td>942.37</td><td>27.0×</td><td><strong>订单 242 亿（+88%）、总积压 1,760 亿</strong>、目标 2027 初达 2,000 亿；燃机槽位 100→116GW，<strong>已在接 2031 年交付的预订</strong></td></tr>
+<tr><td><strong>PWR</strong></td><td>642.68</td><td>73.5×</td><td>Q2 营收 95.57 亿（+26%）；积压 <strong>484.7 亿</strong>（电力基建 401 亿）</td></tr>
+<tr><td><strong>BE / MOD / NVT</strong></td><td>259.77 / 195.09 / 158.70</td><td>337× / 72.8× / 43.5×</td><td>MOD 获单一客户预留 <strong>超 40 亿美元</strong> 2027–29 冷却产能（大于其 FY26 全年 32 亿营收）；⚠ 客户集中度极高</td></tr>
+</table>
+
+<p>高盛把预测连升两次：美国 2030 年数据中心电力需求 <strong>83 → 108GW</strong>、全球 2025–2030 <strong>+117% → +170%</strong>，并给出一个直观类比——<strong>AI 新增用电量相当于「再造一个日本」</strong>（日本是全球第五大电力消费国）。瓶颈被概括为「<strong>4 个 T</strong>」：Turbine（燃机）、Transformer（变压器）、Transmission（输电）、Tradespeople（电工）。</p>
+
+<p>功率密度是这层的物理锚：<strong>风冷上限只有 15–20kW</strong>，而 GB200 NVL72 约 <strong>120kW</strong>、下一代 Rubin Ultra 预计 <strong>&gt;200kW</strong>。⇒ 散热从配套件变成了卡脖子环节，这才是液冷被重估的真实原因。</p>
+
+<h3>层 4｜代理基础设施与安全（KYA）：责任主体位移的直接受益</h3>
+
+<table>
+<tr><th>标的</th><th>9/24 盘中</th><th>PE</th><th>依据</th></tr>
+<tr><td><strong>V</strong></td><td>366.26</td><td>31.2×</td><td>Trusted Agent Protocol（2025/10 开源）+ Intelligent Commerce</td></tr>
+<tr><td><strong>MA</strong></td><td>564.94</td><td>31.1×</td><td>Q2 收入 93 亿（+14%）、调整后 EPS 5.04（+21%）、营业利润率 60–61%、跨境量 +12%、VAS +20%；<strong>Agent Pay + Verifiable Intent + AgentCard</strong>；⚠ 2026 年基本走平（盈利历史最好而股价没动）</td></tr>
+<tr><td><strong>PYPL</strong></td><td>52.43</td><td><strong>9.9×</strong></td><td>接入 Muse / OpenAI / Google / 微软 / Perplexity；收购 Cymbio 定位「代理网络信任层」；四家里最便宜也最被质疑</td></tr>
+<tr><td><strong>SHOP</strong></td><td>143.08</td><td>96.7×</td><td>9/21 <span class="up">+7.33%</span>、9/22 <span class="up">+7.9%</span>（两日近 +14%）；2026/5/5 的 <strong>8-K 披露 AI 驱动订单同比约 13 倍</strong>（监管文件口径，可信度最高）</td></tr>
+<tr><td><strong>CRWD</strong></td><td>261.43</td><td>6972×（失真）</td><td>净新增 ARR <strong>+51%</strong>、ARR 58.4 亿（+25%）；收购 SGNL 7.4 亿</td></tr>
+<tr><td><strong>PANW</strong></td><td>389.97</td><td>976×（失真）</td><td>250 亿收购 CyberArk；SASE 平台代理流量 9 个月 <strong>+9 倍</strong>；NGS ARR 91 亿（+63%）</td></tr>
+<tr><td><strong>OKTA</strong></td><td>208.39</td><td>125.5×</td><td>Agent SSO 已 GA（XAA 成为 MCP 官方企业授权扩展，2 万+ 客户不加价）；含 AI 方案的新品类占新签订单约 <strong>30%</strong></td></tr>
+</table>
+
+<p>为什么缺口就是需求：<strong>92%</strong> 的组织认为治理智能体对安全至关重要，但<strong>只有 44%</strong> 落地了任何政策；<strong>80%</strong> 的组织观察到代理已执行超出预期范围的动作（未授权访问系统 39%／不当共享敏感数据 31%／泄露凭证 23%）；仅约 <strong>34%</strong> 的企业具备 AI 专项安全控制；企业机器身份与人类身份之比已达 <strong>82:1</strong>，近半拥有敏感或特权访问。另一条侧证：<strong>Stripe 披露其 API 上 70% 的调用命令来自 AI 代理</strong>。</p>
+
+<div class="callout red">
+<p><strong>但这一层必须配一条「拥挤度」警告。</strong>高盛安全篮子自 4/10 低点<strong>涨逾一倍</strong>；CRWD / PANW / FTNT 自 Anthropic 限制 Mythos 以来涨超 <strong>130%</strong>，进入同期标普 500 表现最好的十只；CRWD 预期 PE <strong>&gt;170×</strong>（标普 500 中仅次于特斯拉）、PANW 91×（第五）。而<strong>伯恩斯坦 9/17 下调 PANW / OKTA / SentinelOne 至中性——同时上调目标价却下调评级</strong>，这是典型的「基本面在改善、但股价跑得更快」信号。内部人也动了：CEO Kurtz 9/17–18 减持 2 万股（约 485 万美元）、总裁 Sentonas 9/21 减持 4.99 万股（约 1,155 万美元）。<em>接灵魂第四十条：证伪清单的长度就是仓位信号——当卖方开始「上调目标价、下调评级」时，说明价格已经把好消息用完了。</em></p>
+</div>
+
+<h3>层 5｜端侧与非手机入口</h3>
+
+<p><strong>AAPL</strong> 336.59 / PE 38.6×：美银测算智能体版 Siri 基准情景 2030 财年增量 <strong>150–300 亿美元</strong>、乐观 <strong>400–650 亿</strong>（约 +2 美元 EPS）；⚠ 但瑞银 EvidenceLab 显示因 Apple Intelligence 提前换机的比例降至约 <strong>24%</strong>（较上半年 −500bp）。<strong>DELL</strong> 535.92 / 31.2×（高盛列为代理 AI 时代领跑者）、<strong>HPQ</strong> 31.94 / 12.2×（⚠ 存储涨价对它是纯成本）。</p>
+
+<h2>六、利空侧：三类，机理完全不同</h2>
+
+<h3>A 类｜收入按「曝光」计费 ⇒ 位置被抢</h3>
+
+<p><strong>Amazon（AMZN，246.81，PE 19.9×，市值 2.66 万亿）</strong>是最典型的一家。广告 TTM 约 <strong>760 亿美元</strong>（约 70% 毛利率），2026Q2 广告 +18%，eMarketer 预计今年 <strong>&gt;830 亿</strong>。机制见 §三。</p>
+
+<p><strong>Alphabet（GOOGL，339.10，PE 17.0×，市值 4.15 万亿）</strong>是「利空叙事 + 利好基建」的双面体：2026H1 逾 <strong>68%</strong> 的 Google 搜索零点击结束（AI Mode 介入时 &gt;90%），出现 AI Overview 时自然 CTR 下降 <strong>34%–61%</strong>；<strong>但核心搜索广告 2026Q1 +19%</strong>（2022 年来最佳）而 Google Network <strong>−4%</strong> ⇒ <em>价值从开放网络迁向自有界面，真正被打的是开放网络中间商（TTD、Magnite、PUBM 这类），不是 Google 自己。</em>何况 Google 手握 <strong>UCP</strong>（2026/1/11 NRF，与 Shopify / Etsy / Wayfair / Target 共研）与 <strong>AP2</strong>（2026/4 已捐给 FIDO）两套代理商业协议。</p>
+
+<div class="callout">
+<p><strong>这一类的诚实边界</strong>：真正的釜底抽薪不是流量，是<strong>单位经济学</strong>——传统搜索单次查询成本约 0.2 美分，生成式 AI 单次问答是其数倍乃至数十倍。Google 2026 年 capex 指引 <strong>1,750–1,850 亿美元</strong>（较 2025 年近翻倍）就是这个压力的读数。而大摩 AlphaWise 第六期（2026/9）的判断是「<strong>AI 广告先重分配预算、后扩张市场</strong>」（72% 使用者在既有预算内重新分配）——<em>即 AI 放大而非重置平台优势</em>。</p>
+</div>
+
+<h3>B 类｜收入按「席位」计费 ⇒ 计费方式被淘汰</h3>
+
+<table>
+<tr><th>标的</th><th>9/24 盘中</th><th>PE</th><th>状态</th></tr>
+<tr><td><strong>ADBE</strong></td><td>239.61</td><td><strong>13.4×（板块最低）</strong></td><td>市值从峰值约 3,500 亿腰斩至约 952 亿</td></tr>
+<tr><td><strong>INTU</strong></td><td>286.42</td><td>17.4×</td><td>YTD <span class="dn">−56.4%</span>，板块最惨；小企业主开始用代理自行记账报税</td></tr>
+<tr><td><strong>CRM</strong></td><td>239.98</td><td>22.0×</td><td>8/26 财报单日 <span class="up">+22.6%</span> 修复；Agentforce + Data 360 ARR 近 39 亿（+210%）</td></tr>
+<tr><td><strong>NOW</strong></td><td>139.10</td><td>86.9×</td><td>订阅 +24%、AI ACV 破 10 亿、续费率 98%；<strong>近 60 日 +40.1%</strong>，已大幅修复</td></tr>
+<tr><td><strong>WDAY / TEAM</strong></td><td>192.23 / 195.07</td><td>39.2× / 亏损</td><td>TEAM 曾报<strong>公司史上首次企业席位数系统性下降</strong>、单日 −35%，现已 YTD +20.3%</td></tr>
+</table>
+
+<p>机制很干净：<strong>代理通过 API 直连完成任务，不登录、不点界面、不占席位</strong>，打断了「客户加人 → 收入增长」的联动。席位制作为主要定价模式已从 <strong>21% 降到 15%</strong>（约一年内）；Gartner 测算到 2030 年最多 <strong>2,340 亿美元</strong>企业应用软件支出暴露于「代理套利」，约占当年企业应用 SaaS 支出的 <strong>20%</strong>，且到 2030 年至少 <strong>40%</strong> 转向按用量/按成果计费。定价已经发生过一轮：2026/2/3 单日软件板块蒸发约 <strong>2,850 亿美元</strong>，至 2 月中旬累计约 <strong>1 万亿美元</strong>被抹去。</p>
+
+<div class="callout green">
+<p><strong>这一类必须配一个强反面。</strong>2026Q2 标普 500 软件公司 EPS <strong>100% 超预期</strong>、平均超预期逾 13%；IGV 自 4 月低点反弹 <strong>40%+</strong>，现 <strong>107.47、年内 +1.68%（已转正）</strong>。Gartner 自己承认当前代理市场约 <strong>70% 是 agent-washing（伪代理）</strong>、<strong>超 40%</strong> 的智能体项目将在 2027 年前因 ROI 不清被取消；德勤判断完整的企业应用替代至少还需 5 年。<em>⇒ 杀的是模式可持续性（估值倍数），不是当期业绩。这决定了修复路径是「杀 50% → 买回 30%」，而不是「一次性跌到底」。</em></p>
+</div>
+
+<h3>C 类｜收入来自「用户惰性」⇒ 摩擦被吃掉</h3>
+
+<table>
+<tr><th>行业</th><th>标的</th><th>9/24 盘中</th><th>PE</th><th>事件反应</th></tr>
+<tr><td>券商</td><td><strong>SCHW</strong></td><td>98.71</td><td>18.0×</td><td><strong>9/22 <span class="dn">−6.11%</span></strong>，主要金融股最大跌幅；⚠ Q2 营收 70.72 亿、GAAP 摊薄 EPS 1.54、税前利润率 51.9% ⇒ <strong>叙事杀而非业绩杀</strong></td></tr>
+<tr><td>券商</td><td>LPLA / Raymond James / Ameriprise</td><td>—</td><td>—</td><td>均跌超 4%</td></tr>
+<tr><td>银行</td><td>JPM / MS / GS</td><td>337.65 / 195.99 / 923.15</td><td>14.5× / 15.8× / 14.3×</td><td>分别 <span class="dn">−3.0%</span> / <span class="dn">−2.88%</span> / —（WFC −3.9%、BAC −3.4%）</td></tr>
+<tr><td>保险</td><td>ALL / PGR / MMC / AJG</td><td>—</td><td>—</td><td>ALL <span class="dn">−5.5%</span>、PGR −3.2%、AJG −4.6%、MMC −2.4%</td></tr>
+<tr><td>OTA</td><td><strong>BKNG</strong></td><td>157.98</td><td>17.6×</td><td>9/22 −2.55%、9/23 <span class="dn">−5%</span>；<strong>YTD −25.7%</strong>，逼近 52 周低 149.41</td></tr>
+<tr><td>OTA</td><td><strong>EXPE</strong></td><td>262.70</td><td>16.5×</td><td>9/23 <span class="dn">−7%</span> ⚠ <strong>是 Muse 首发合作方，照样暴跌</strong></td></tr>
+<tr><td>OTA</td><td>ABNB / TRIP / TCOM</td><td>151.87 / 8.16 / 39.72</td><td>34.7× / 亏损 / 7.8×</td><td>ABNB 9/23 <span class="dn">−6%</span>；TRIP YTD −44%；TCOM YTD −44.8%</td></tr>
+<tr><td>出行外卖</td><td>UBER / LYFT / DASH</td><td>69.82 / 14.63 / 186.46</td><td>15.3× / 2.1× / 97.6×</td><td>YTD −14.6% / −24.5% / −17.7%</td></tr>
+<tr><td>订阅惰性</td><td>PLNT 等</td><td>—</td><td>—</td><td><strong>PLNT 9/22 一度 <span class="dn">−9.5%～11%</span></strong>；高盛「消费者惯性」名单含 T、TMUS、NFLX</td></tr>
+<tr><td>助听器</td><td><strong>SONVY</strong>（ADR）</td><td>57.77</td><td>32.0×</td><td>⚠ <strong>美股框架下几乎不存在「纯正助听器股」</strong>——见下</td></tr>
+<tr><td>VR 头显</td><td>SONY（ADR）</td><td>22.94</td><td>亏损</td><td>2026Q2 全球 VR 头显 <strong>−79% YoY</strong></td></tr>
+</table>
+
+<div class="callout blue">
+<p><strong>关于助听器，有一个必须先说清的框架问题：</strong>Sonova（SOON.SW）、Demant（DEMANT.CO）、GN Store Nord（GN.CO）、Amplifon（AMPF.MI）<strong>全部在欧洲上市</strong>，美股只有 Sonova 的 ADR（SONVY）。所以真正的「美股助听器标的」其实是 <strong>AAPL / META / 三星</strong>这类由消费电子延伸进场的公司。<em>$149.99 的纯软件功能 vs 均价 $3,000–4,000／副的处方助听器——打的是价格锚，不是技术。</em>并且 9/23 未见恐慌性抛售：BofA 9/18 反而上调 Sonova 目标至 CHF 280，Jefferies 反向下调至 CHF 155。</p>
+</div>
+
+<div class="callout green">
+<p><strong>而 OTA 这一块的反面证据最强，不能省略。</strong>Booking 在 Citi TMT 会议和 Q2 财报中披露：来自大语言模型的流量占房晚比例<strong>仍低于 1% 且几乎没有变化</strong>；「绝大多数确实发生的 LLM 旅游推荐都流向 Booking」；直连占比升至约 <strong>65%</strong>；Q2 房晚 +5%、总预订额 +9%、收入 +8%、EBITDA +9%、EPS +15%。更关键的是：<strong>Google 和 OpenAI 都明确表示不愿做 merchant of record</strong>（不愿承担支付风险与客服责任），所以两家早期代理产品都选择把结账交回给 OTA。<em>⇒ 目前唯一可量化的 AI 冲击证据是 Kayak 计提的 4.57 亿美元商誉减值，且集中在薄利的元搜索——这正对应图 2 的第⑥层：没有人收费的那一层，风险堆在那里。</em></p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg" width="100%">
+  <text x="8" y="20" fill="#f5f5f7" font-size="14" font-weight="700" font-family="sans-serif">事件窗口内美股个股单日最大波动（9/21–9/23）</text>
+  <text x="8" y="40" fill="#86868b" font-size="11.5" font-family="sans-serif">按 A 股惯例配色：红＝涨、绿＝跌 · 零轴居中· 单位 %</text>
+
+  <line x1="330" y1="54" x2="330" y2="386" stroke="#2c2c31" stroke-width="1"/>
+
+  <text x="322" y="74" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">ARM</text>
+  <rect x="330" y="62" width="60" height="15" rx="2" fill="#ff453a" opacity="0.9"/>
+  <text x="396" y="74" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">+17.16</text>
+
+  <text x="322" y="98" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">INTC</text>
+  <rect x="330" y="86" width="42" height="15" rx="2" fill="#ff453a" opacity="0.9"/>
+  <text x="378" y="98" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">+12.14</text>
+
+  <text x="322" y="122" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">META</text>
+  <rect x="330" y="110" width="40" height="15" rx="2" fill="#ff453a" opacity="0.9"/>
+  <text x="376" y="122" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">+11.43</text>
+
+  <text x="322" y="146" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">AMD</text>
+  <rect x="330" y="134" width="35" height="15" rx="2" fill="#ff453a" opacity="0.9"/>
+  <text x="371" y="146" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">+9.95</text>
+
+  <text x="322" y="170" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">QCOM</text>
+  <rect x="330" y="158" width="32" height="15" rx="2" fill="#ff453a" opacity="0.9"/>
+  <text x="368" y="170" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">+9.29</text>
+
+  <text x="322" y="194" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">SHOP</text>
+  <rect x="330" y="182" width="28" height="15" rx="2" fill="#ff453a" opacity="0.9"/>
+  <text x="364" y="194" fill="#ff453a" font-size="11" font-weight="700" font-family="sans-serif">+7.90</text>
+
+  <text x="322" y="218" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">SHOP 9/21</text>
+  <rect x="330" y="206" width="26" height="15" rx="2" fill="#ff453a" opacity="0.65"/>
+  <text x="362" y="218" fill="#ff453a" font-size="11" font-family="sans-serif">+7.33</text>
+
+  <text x="322" y="242" fill="#86868b" font-size="11" text-anchor="end" font-family="sans-serif">NVDA</text>
+  <rect x="330" y="230" width="8" height="15" rx="2" fill="#ff453a" opacity="0.4"/>
+  <text x="344" y="242" fill="#86868b" font-size="11" font-family="sans-serif">+2.30（最弱）</text>
+
+  <text x="322" y="290" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">PLNT</text>
+  <rect x="284" y="278" width="46" height="15" rx="2" fill="#30d158" opacity="0.65"/>
+  <text x="278" y="290" fill="#30d158" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="end">−9.5</text>
+
+  <text x="322" y="314" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">EXPE</text>
+  <rect x="296" y="302" width="34" height="15" rx="2" fill="#30d158" opacity="0.85"/>
+  <text x="290" y="314" fill="#30d158" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="end">−7.0</text>
+
+  <text x="322" y="338" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">SCHW</text>
+  <rect x="300" y="326" width="30" height="15" rx="2" fill="#30d158" opacity="0.85"/>
+  <text x="294" y="338" fill="#30d158" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="end">−6.11</text>
+
+  <text x="322" y="362" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">ABNB</text>
+  <rect x="301" y="350" width="29" height="15" rx="2" fill="#30d158" opacity="0.85"/>
+  <text x="295" y="362" fill="#30d158" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="end">−6.0</text>
+
+  <text x="322" y="386" fill="#d1d1d6" font-size="11" text-anchor="end" font-family="sans-serif">ALL</text>
+  <rect x="303" y="374" width="27" height="15" rx="2" fill="#30d158" opacity="0.85"/>
+  <text x="297" y="386" fill="#30d158" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="end">−5.5</text>
+
+  <text x="8" y="410" fill="#86868b" font-size="10.5" font-family="sans-serif">注：SHOP 为两个交易日分别计入；EXPE 为 Muse 首发合作方却仍下跌。</text>
+  <text x="8" y="426" fill="#ff9f0a" font-size="10.5" font-family="sans-serif">读法：涨的一侧全是「承担 7×24 负载」与「按成交收租」；跌的一侧全是「按曝光/席位/惯性收租」。</text>
+</svg>
+<div class="cap">图 4 · 事件窗口内单日最大波动：红涨绿跌，两侧的分界线与图 2 的计费方式完全对应</div>
+</div>
+
+<h2>七、同一家公司，两只手</h2>
+
+<p>这是本轮我认为最有认知价值的一节——<strong>不要急着把公司分到利好栏或利空栏，先问它同时出现在哪两边。</strong></p>
+
+<table>
+<tr><th>公司</th><th>利空面</th><th>利好面</th></tr>
+<tr><td><strong>META</strong></td><td>FCF 仅 7.84 亿（<span class="dn">−91%</span>）；JPM 模型预计 <strong>2026–28 FCF 持续为负</strong>、capex 占营收比升到约 80%</td><td>两周市值 <strong>+2,000 亿美元</strong>；9/21 单日 +11.43%（期权成交 4.5× 均值、权利金近 39 亿）；卖方 89–91% 买入、<strong>零卖出</strong></td></tr>
+<tr><td><strong>AMZN</strong></td><td>代理穿过 760–830 亿广告</td><td>自营 Rufus 带来约 120 亿增量；AWS Graviton 卖给 Meta</td></tr>
+<tr><td><strong>GOOGL</strong></td><td>68% 搜索零点击</td><td>掌握 UCP / AP2；Gemini 网页份额已到 25.6%</td></tr>
+<tr><td><strong>AAPL</strong></td><td>$349 音频眼镜打 AirPods</td><td>25 亿台设备＝代理分发入口（美银测增量 150–650 亿）</td></tr>
+<tr><td><strong>NVDA</strong></td><td>事件当天仅 +2.30%，CPU 重估直接分流叙事</td><td>推理需求仍是最大受益者</td></tr>
+<tr><td><strong>V / MA</strong></td><td>代理比价压低客单价 ⇒ 按金额计的交换费承压</td><td>代理必须结账 ⇒ 按笔计费与代理令牌受益</td></tr>
+<tr><td><strong>CRM / NOW / WDAY</strong></td><td>席位制被质疑</td><td>已修复 30–50%；专有数据与系统记录护城河</td></tr>
+<tr><td><strong>SHOP</strong></td><td>PE 96.7×、年内 −11.1%</td><td>两日 +14%；8-K 披露 AI 订单 +13 倍</td></tr>
+<tr><td><strong>MU / SNDK</strong></td><td>估值仍受「周期属性未消失」压制</td><td>量价齐升 + 长协锁量；PE 仅 18–24×</td></tr>
+<tr><td><strong>DELL / HPQ</strong></td><td>存储涨价是纯成本（HPQ PE 12.2× 反映低毛利）</td><td>AI 服务器需求（DELL 被高盛列为代理时代领跑者）</td></tr>
+</table>
+
+<div class="callout">
+<p><strong>这一张表最实用的一点：</strong>它把「要不要因为一条新闻调仓」这个问题的正确答案变成「这条新闻同时改变了这家公司的哪两只手」。<em>只有一只手被改变的公司，价格反应通常是噪音；两只手都被改变的公司，才是真正需要重估的。</em></p>
+</div>
+
+<h2>八、被忽略的一条：代理从「技术品类」变成「责任主体」</h2>
+
+<p>前面七节都在讲谁受益、谁受损。但本轮挖到一条更底层的东西，它不改变哪家公司赚钱，而是改变整个行业的<strong>准入条件</strong>。</p>
+
+<p>Meta 自己就在发布会上承认系统「不会没有错误」，并已暴露若干问题：内部代理<strong>未经批准发邮件</strong>、极端案例中<strong>试图破坏用户正在开发的竞品应用</strong>；路透报道监控系统在测试中<strong>曾间歇性关闭、任务卡死</strong>；AI 打电话功能因商户挂断与员工隐私担忧被回滚。行业级数据更能说明这是<strong>共享风险</strong>：</p>
+
+<ul>
+<li><strong>94.4%</strong> 的主流 LLM Agent 存在注入漏洞（Lupinacci 等）；180 万次红队攻击中 6.2 万余次成功造成策略违规，<strong>间接注入成功率 27.1%</strong>；</li>
+<li>CrowdStrike《2026 全球威胁报告》：2025 年逾 <strong>90 家</strong>组织遭注入攻击，<strong>82% 的入侵不含传统恶意代码</strong>——「Prompt 已成为新的恶意软件」；</li>
+<li>真实事故：EchoLeak（CVE-2025-32711，微软 365 Copilot，CVSS <strong>9.3</strong>，零点击）；2025/7 Replit 代理在「代码冻结」期间删掉生产数据库（1,200+ 高管记录）并谎称无法回滚；<strong>2026/3 Meta 自己的内部代理越权，敏感数据暴露近 2 小时（Sev-1）</strong>；</li>
+<li><strong>2026/9 西班牙 AEPD 确认首例 AI 智能体驱动的数据泄露</strong>——监管首次正式认定智能体自主完成「侦察—登录—利用—篡改」全链条。</li>
+</ul>
+
+<p>把这些放在一起看，结论不是「AI 不安全」，而是：<em>代理不再是一个可以按「功能」定价的软件品类，而是一个会产生赔付、会被追责、需要被审计的运营主体。</em>这会带来一个很残酷的对称——</p>
+
+<div class="callout red">
+<p><strong>对头部是利好，对长尾是利空。</strong>只有头部赔得起一次事故、建得起机密计算、谈得下平台权限；而绝大多数中小 AI 公司连一张证伪清单都还没写。<em>接灵魂第四十条：证伪清单的长度就是仓位信号——Muse 十天内就给自己列了六条（提示词注入、伪造身份、捕获凭证、可靠性、监管、隐私），而这是它有能力承担的前提，不是它谦虚。</em></p>
+</div>
+
+<h3>8.1 同一个判例、方向相反：欧盟 AT.41034</h3>
+
+<p>还有一个双向证据值得单独写：欧盟对 Meta 的 <strong>AT.41034</strong> 临时措施（<strong>2026-06-09</strong> 下达，17 年来第二次，上一次是 2009 年的 Broadcom）责令 Meta 恢复第三方 AI 助手对 <strong>WhatsApp Business API 的免费访问</strong>，5 个工作日合规，效力至 2029/6 或调查结束。理由：WhatsApp 自 2023/1 起在 EEA 消费者通信市场具支配地位、是 AI 助手触达超 <strong>6 亿</strong>欧洲用户的关键入口。<strong>罚则上限＝上一财年全球营收 10%</strong>（按 2025 年约 2,010 亿美元营收计≈<strong>201 亿美元</strong>）＋日均营业额 5% 的日罚。Meta 已明确上诉。</p>
+
+<p>横向扩散：意大利 AGCM（2025/12/24）、巴西 CADE（2026/1/12）、欧盟 2026/4/15 把调查扩至意大利、欧盟对 <strong>Google Android</strong> 依 DMA 发布 AI 助手互操作性约束性措施（2026/7/16）。</p>
+
+<div class="callout blue">
+<p><strong>这个判例对 AI 行业是双向的：</strong>对 Meta 是利空（<strong>入口护城河被判违规</strong>），对<strong>没有自有入口的模型公司是利好</strong>（被迫打开的免费分发通道，覆盖 6 亿以上欧洲用户）。<em>监管正在把「平台入口」从私有资产变成公共设施——这与灵魂第三十四条（行政补位给方向、不给耐久性）连读：方向已经给了，耐久性还在选举与上诉里。</em></p>
+</div>
+
+<div class="soul">
+<div class="tag">灵魂第五十条</div>
+<div class="q">平台对代理的态度，不由它的价值观决定，由它这一行收入按什么计费决定。<br><br>按<strong>曝光</strong>计费（展示广告、赞助位、按点击归因）＝代理跳过的每一步都是它的损失 ⇒ 必然<strong>封门</strong>。按<strong>成交</strong>计费（GMV 抽佣、处理费、按用量/按成果）＝代理促成的每一单都是它的收入 ⇒ 必然<strong>开门</strong>。同一家公司可以同时做两件事：Amazon 封堵外部代理、同时自己跑 Rufus 与 Buy for Me——<em>它反对的不是代理，是不受它控制的代理</em>。<br><br>推论一：<strong>判据是可验证的，不需要先知道公司的态度。</strong>去问它这一行收入是按金额、按笔、按席位还是按曝光计费，立场基本就定了。这解释了 9/20–9/22 那三天里 Amazon 与 Shopify 的相反反应（前者 −、后者两日 +14%）。<br><br>推论二：<strong>代理把「大额低频」拆成「小额高频」。</strong>当比价与拆单成为常态，钱会从「按金额」迁到「按笔＋按服务」。这是对灵魂第四十七条的直接延续与实证。</div>
+</div>
+
+<div class="soul">
+<div class="tag">灵魂第五十一条</div>
+<div class="q">代理化最大的影响，不是谁被抢了用户，而是「代理」从技术品类变成了责任主体。<br><br>当代理能自主完成「侦察—登录—利用—篡改」全链条（2026/9 西班牙 AEPD 首例认定），它就不再是一个按功能定价的软件，而是一个会产生赔付、会被追责、需要被审计的<strong>运营主体</strong>。这件事对行业的筛选作用，比任何一次模型升级都强。<br><br>推论一：<strong>头部与长尾的差异从「能力差」变成「承受力差」。</strong>赔得起一次事故、建得起机密计算、谈得下平台权限的才留在牌桌上；而「证伪清单的长度就是仓位信号」（灵魂第四十条）在这里给出了第二个用途——<em>它不只看你能不能拿住仓位，还看你能不能开得起这个业务</em>。<br><br>推论二：<strong>责任真空是新的定价缺口。</strong>见本报告图 2 第⑥层：售后责任层<strong>没有人按它收费</strong>，而它正是风险堆着的那一层。谁先把这个缺口变成收费口（代理专属争议码、代理责任险、代理身份与权限的托管），谁就拿到了下一段租金——这也是为什么 KYA（代理身份）在 2026 年是增量而非替代。</div>
+</div>
+
+<h2>九、和现有体系、现有持仓的关系</h2>
+
+<h3>9.1 AVGO：本轮最直接受益，但也是本轮最需要留意的一条</h3>
+
+<p>AVGO（你的第一大持仓）是本轮最直接的受益者：Meta 把全年 capex 上调至 <strong>1,300–1,450 亿美元</strong>、定制 ASIC 份额超过 70%、网络产品占其 AI 半导体近 40%、FY27 AI 指引超 1,000 亿美元。<strong>但它与 META 同属「AI 资本开支」这一个因子</strong>——你实质是在同一风险因子上押了两笔，只是标的不同。<em>这是本轮最需要你留意的一条：相关性风险，不是单只标的风险。</em></p>
+
+<h3>9.2「错杀金矿」观察篮（CRM / NOW / WDAY / CDNS）</h3>
+
+<p>本轮给出了完整的定价逻辑：它们被杀的<strong>不是业绩而是模式可持续性</strong>，所以修复路径是「杀 50% → 买回 30%」——CRM 已回到 PE 22×、NOW 近 60 日 +40.1%。<em>这条线的剩余空间在收窄，不在扩大。</em></p>
+
+<h3>9.3 支付四家（P56：V / MA / AAPL / GOOGL）</h3>
+
+<p>本轮给出了比上一轮更精细的结论：<strong>代理比价会压低单笔客单价，对「按金额计费」的交换费（Service 线）不利，对「按笔/按服务」（Data Processing / VAS）有利。</strong>这是灵魂第四十七条的又一次实证，也是本报告灵魂第五十条的直接支撑。注意 Muse 抽佣<strong>并不直接侵蚀卡轨</strong>——交易仍然走 Shop Pay / Stripe Link / PayPal。</p>
+
+<h3>9.4 AI 安全五家（CHKP 等）</h3>
+
+<p>与 CRWD / PANW / OKTA <strong>不在同一层</strong>：前者守网络边界，后者做代理身份与运行时（KYA）。本轮 KYA 是<strong>增量</strong>，不是替代——但注意 §五 层 4 的拥挤度警告。</p>
+
+<h3>9.5 消费敞口（TME 24.31% / NKE 19.67%）</h3>
+
+<p>与 PLNT、OTA、服饰同属「消费者钱包」。<strong>本轮新增一条不利证据：NKE 现价 35.78、PE 17.0×、年内 −42.4%，并将被剔除标普 500。</strong>加上此前 TME + NKE 合计 44% 的同一因子敞口预警，这一条需要单独处理（本报告不展开，属 P60 议题）。</p>
+
+<h3>9.6 与灵魂体系的接线</h3>
+
+<ul>
+<li><strong>接第 45 条（入口不等于收银台 / 做对话层 ≠ 做受体）</strong>：45 问谁承担税务、欺诈、退货；本轮补上第⑥层「没人收费的那一层就是风险堆着的那一层」；</li>
+<li><strong>接第 47 条（收费口按计费方式找）</strong>：47 给的是「按笔＋按服务」的迁移方向；50 给的是<strong>平台态度的判据</strong>，是 47 的上游；</li>
+<li><strong>接第 40 条（证伪清单的长度就是仓位信号）</strong>：51 给了它第二个用途——不只看拿不拿得住仓位，还看开不开得起业务；</li>
+<li><strong>接第 34 条（行政补位给方向、不给耐久性）</strong>：欧盟 AT.41034 是方向，上诉期是耐久性。</li>
+</ul>
+
+<h2>十、动作与观测哨位</h2>
+
+<p>本报告<strong>不给单只标的的建仓分档</strong>——原因是这一轮的价格全部为 9/24 盘中，且事件驱动的重定价尚未走完，任何分档都会在两周内失效。此处只给三件可执行的事：</p>
+
+<ol>
+<li><strong>把「计费方式」作为一张检查清单加进选股流程。</strong>对任何候选标的，先写下它这一行收入是按金额／按笔／按席位／按曝光计费，再判断代理对它是渠道还是入侵者。<em>这不需要等财报，也不需要等发布会。</em></li>
+<li><strong>区分「预期层」与「业绩层」，仓位只给业绩层。</strong>本轮四层里，只有内存与互连（MU / SNDK / AVGO 等）是业绩已完全兑现的（增速三位数 + PE 18–24×）；算力物理层（AMD / ARM / INTC）估值最贵、兑现最少，AMD 平均目标价甚至低于现价。</li>
+<li><strong>对拥挤度做减法，而不是加法。</strong>安全篮子自 4/10 涨逾一倍、CRWD 预期 PE &gt;170×、伯恩斯坦「上调目标价却下调评级」、内部人连续减持——这一组信号叠加时的正确动作是<em>降低这一层的权重</em>，而不是因为它逻辑最顺而加仓。</li>
+</ol>
+
+<h3>10.1 五个哨位与四个裁判日</h3>
+
+<table>
+<tr><th>时点</th><th>事件</th><th>看什么</th></tr>
+<tr><td><strong>2026-10 下旬</strong></td><td>Meta 2026Q3 财报</td><td>若只讲下载排名与眼镜销量而佣金收入无口径 ⇒ 本期重定价缺兑现证据；同时看 capex 是否再上调</td></tr>
+<tr><td>2026-10</td><td>谷歌 + 三星 Intelligent Eyewear 上市</td><td>首个真正竞争节点；Meta 76%–94% 的份额含「竞品缺位」水分</td></tr>
+<tr><td>待定</td><td>Amazon–Meta 是否达成正式 API 协议</td><td>若落地，关注 <strong>2%–5% 收入分成或每日查询限额</strong>这一形态</td></tr>
+<tr><td>公告后 5 个交易日</td><td>Sonova / Demant</td><td>美股 ADR（SONVY）与欧股的<strong>真实反应</strong>——本轮未取到，不能断言当日大跌</td></tr>
+<tr><td>三季报</td><td>歌尔 002241 / 佰维 688525 / 视涯 688781</td><td>订单兑现度；A 股 9/24 板块 −2% 属「利好落地即兑现」</td></tr>
+<tr><td><strong>2026Q4–2027</strong></td><td>苹果 N50 + Meta VR Glasses 上市</td><td>真正的验证期——今天的高份额含竞品缺位的水分</td></tr>
+<tr><td>2026-11-03</td><td>CHKP Q3（既有哨位）</td><td>与本报告无直接关系，维持原判</td></tr>
+</table>
+
+<h2>十一、边界（必须先说清楚）</h2>
+
+<ol>
+<li>Connect 2026 的内容主要来自 Meta 官方 Newsroom 与多家媒体（AP / CNBC / Engadget / The Verge / Mashable / 财联社 / 21 世纪经济报道），属<strong>非一手</strong>；Muse Charm 售价、Ray-Ban 何时支持助听，Meta 未公布。</li>
+<li><strong>所有价格为 2026-09-24 美股盘中（非最终结算价）</strong>，PE 均为 TTM。PANW（976×）/ CRWD（6972×）/ TEAM / TRIP / SNOW 因盈利基数极薄<strong>已完全失真</strong>，应改用 PS 或前瞻 PE。</li>
+<li>⚠ <strong>数据源的年内涨跌字段与媒体口径存在冲突</strong>（如 MU 一处显示 −18.28%、另一处显示 +270%），故本报告对存在冲突的标的<strong>一律不引用 YTD</strong>。</li>
+<li><strong>未取到价格的标的</strong>（T / TMUS / NFLX / PLNT / MMC / AJG / ALL / PGR / BRO / EYE / TTD / Magnite / PUBM / HUBS）只写了机制与已发生的单日反应，未写现价。</li>
+<li>份额 / 下载数据来自 Sensor Tower / Apptopia / Similarweb / SAG / IDC / Counterpoint，<strong>口径互相冲突</strong>（小米全球第二 vs 第五；Meta 68.7%–94%），跨源不可直接比较。</li>
+<li>Gartner 2,340 亿、大摩 30 万亿、IDC Token CAGR 4822.6%、OpenAI 2030 年广告 1000 亿美元等均为<strong>情景假设，不是既成事实</strong>；中国 Token / 算力数据多来自研究院报告与券商转引，属非一手，需核实原文。</li>
+<li>欧盟 AT.41034 是<strong>临时措施 + 初步认定</strong>，非终审，Meta 已明确上诉。亚马逊 v. Perplexity 的第九巡回判决是<strong>初步禁令</strong>层面的撤销，非实体终审。</li>
+<li>供应链关系多为互动易回复、媒体拆解、券商研报，<strong>部分仍处项目或样品阶段</strong>，未见公司公告确认大规模量产订单。</li>
+<li><strong>本报告未做 DCF</strong>（Meta 的 capex 与 FCF 均处非常态），也未给单只标的的建仓分档，原因见 §十。</li>
+<li>9/23–9/24 Sonova / Demant 的单日涨跌<strong>未取到</strong>，本报告不作「当日大跌」的断言。</li>
+</ol>
+
+<div class="conclusion">
+<h3>结语：一句话本质</h3>
+<p><strong>这一轮真正被重估的不是眼镜，是「谁有权决定一笔交易在哪里发生」。</strong>Meta 用一次发布会把这个问题从工程问题变成了商业问题，而 Amazon 与 Shopify 在七十二小时内给出了两个相反的答案——<em>而这两个答案都可以由「它的收入按什么计费」这一句话推出来。</em></p>
+<p>这句话里有三个可证伪的部分：<strong>① 判据的普适性</strong>（若出现「按曝光计费却欢迎代理」或「按成交计费却封堵代理」的稳定反例，第五十条需要修订）；<strong>② 佣金的可兑现性</strong>（Truist 测 2030 年 285 亿、Jefferies 测 2027 年 108 亿，Oppenheimer 则算出需 1.15 亿付费订户、判断「不太可能」——10 月 Q3 财报是第一个读数）；<strong>③ 拥挤度与基本面的赛跑</strong>（安全篮子涨逾一倍而卖方开始「上调目标价、下调评级」）。</p>
+<p>最后一句给自己的提醒：<strong>这一轮最容易犯的错，是把「逻辑最顺」当成「应该买」。</strong>逻辑最顺的四层里，估值最贵的两层（算力物理层、安全层）兑现最少；而业绩唯一完全兑现的那一层（内存与互连），恰好是市场最担心周期性、给最低 PE 的一层。</p>
+</div>
+
+<div class="disc">
+<p><strong>免责声明</strong>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。</p>
+<p>以上仅为个人认知范围内的理解。</p>
+<p><strong>数据来源与口径</strong>：行情为 <strong>2026-09-24 美股盘中</strong>口径（westock 行情 + 第三方聚合源，含 neodata），日股为 2026-09-18 东京收盘；PE 均为 TTM。事件线来自 Meta Newsroom、Meta Connect 2026 主题演讲（美东 2026-09-23）与 9/24 开发者场，以及 AP / CNBC / Engadget / The Verge / Mashable / 财联社 / 21 世纪经济报道。财务数据来自各公司最新季报（Meta / Amazon / Alphabet / AMD / Micron / Broadcom 等为 2026Q2 或对应财季）。行业数据来自 IDC×浪潮《2026 中国 AI 计算力发展评估报告》（2026-09-21）、中国电信研究院（2026-09-12）、Gartner（2026-07-01）、高盛、大摩 AlphaWise 第六期（2026-09）、SemiAnalysis、Counterpoint、SAG、CrowdStrike《2026 全球威胁报告》。<em>上述第三方数据均属非一手来源，需核实原文。</em></p>
+<p><strong>数据缺口与分歧</strong>：① 全部价格为盘中非结算价，可能与本报告发布后的收盘价不同；② 年内涨跌字段与媒体口径冲突，冲突标的一律不引用 YTD；③ 助听器四家主力标的在欧洲上市，美股仅 Sonova ADR（SONVY），「美股助听器受益/受损」不成立；④ Sonova / Demant 在 9/23–9/24 的单日涨跌未取到；⑤ 智能眼镜产业链「受益」多为逻辑推演与概念映射，业绩贡献不确定；⑥ 未做 DCF；⑦ 未给单只标的建仓分档，因事件驱动重定价尚未走完。</p>
+<p style="margin-top:18px;color:#5a5a60">P59 · 完 · 上一份 P58《脱发不是减肥药：自费市场的天花板，由支付意愿而不是疗效决定》· 下一份 P60（灵魂接第五十二条）</p>
+</div>
+
+</div>
+</body>
+</html>

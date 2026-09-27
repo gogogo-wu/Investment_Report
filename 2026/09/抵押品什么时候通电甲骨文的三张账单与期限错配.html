@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抵押品什么时候通电：甲骨文的三张账单与期限错配</title>
+<style>
+:root{
+  --bg:#0a0a0c; --panel:#101013; --panel2:#141417; --line:#1f1f23;
+  --tx:#d1d1d6; --tx2:#86868b; --hd:#f5f5f7;
+  --up:#ff453a; --dn:#30d158; --blue:#5ac8fa; --amber:#ff9f0a; --purple:#bf5af2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans','Yu Gothic',sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:48px 26px 90px}
+h1{font-size:30px;line-height:1.35;margin:0 0 14px;color:var(--hd);font-weight:700;letter-spacing:-.4px}
+h1 .g{background:linear-gradient(96deg,#f5f5f7 12%,#8e8e93 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 20px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.badge{display:inline-block;padding:4px 11px;border:1px solid var(--line);border-radius:20px;
+  font-size:12px;color:var(--tx2);background:var(--panel);white-space:nowrap}
+.badge.k{color:var(--hd);border-color:#2c2c31}
+.badge.up{color:var(--up);border-color:rgba(255,69,58,.35)}
+.badge.dn{color:var(--dn);border-color:rgba(48,209,88,.35)}
+.badge.b{color:var(--blue);border-color:rgba(90,200,250,.35)}
+.badge.a{color:var(--amber);border-color:rgba(255,159,10,.35)}
+h2{font-size:20px;color:var(--hd);margin:52px 0 16px;font-weight:600;letter-spacing:-.2px;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;color:var(--hd);margin:30px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+strong{color:var(--hd);font-weight:600}
+em{font-style:normal;color:var(--amber);font-weight:600}
+code{background:#17171b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px;color:#e5e5ea}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:0 0 10px}
+.lead p:last-child{margin-bottom:0}
+.verdict{background:var(--panel2);border-left:3px solid var(--hd);border-radius:0 10px 10px 0;
+  padding:13px 18px;margin:0 0 22px;font-size:14.5px;color:var(--hd)}
+.verdict b{color:var(--amber)}
+.callout{background:var(--panel2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;font-size:14.5px}
+.callout.red{border-left-color:var(--up)}
+.callout.green{border-left-color:var(--dn)}
+.callout.blue{border-left-color:var(--blue)}
+.callout p:last-child{margin-bottom:0}
+.conclusion{background:linear-gradient(180deg,#131317,#0f0f12);border:1px solid #2c2c31;border-radius:14px;
+  padding:26px 28px;margin:34px 0}
+.conclusion h3{margin-top:0;color:var(--amber)}
+.soul{background:#0f0f12;border:1px dashed #3a3a40;border-radius:12px;padding:22px 24px;margin:36px 0}
+.soul .tag{color:var(--amber);font-size:12.5px;letter-spacing:.6px;margin-bottom:10px}
+.soul .q{color:var(--tx);font-size:14.5px;line-height:1.85}
+.disc{color:var(--tx2);font-size:12.5px;line-height:1.8;border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.disc p{margin:0 0 10px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--tx2);font-weight:500;font-size:12.5px;background:var(--panel)}
+td strong{color:var(--hd)}
+.up{color:var(--up);font-weight:600}
+.dn{color:var(--dn);font-weight:600}
+.fig{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 16px 10px;margin:26px 0}
+.fig .cap{color:var(--tx2);font-size:12.5px;text-align:center;margin:6px 0 4px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:7px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span class="g">抵押品什么时候通电：甲骨文的三张账单与期限错配</span></h1>
+<p class="sub">评级降到 BBB− · $180 亿项目贷款九折滞销 · 新墨西哥 2.45GW 项目发出不可抗力<br>基准：2026-09-25 美股收盘（9/26-9/27 休市）· 数据源：S&amp;P / Moody's / Fitch / 公司财报 / Reuters·Bloomberg·FT 转述</p>
+
+<div class="badge-row">
+  <span class="badge k">P63</span>
+  <span class="badge a">信用债研究</span>
+  <span class="badge up">S&amp;P BBB−</span>
+  <span class="badge up">CDS ~203bp</span>
+  <span class="badge up">贷款 89-91¢</span>
+  <span class="badge b">灵魂第五十六 / 五十七条</span>
+</div>
+
+<div class="lead">
+<p><strong>大白话总评：</strong>市场看甲骨文这件事，一开始找错了靶子。大家盯着「AI 需求还在不在」——这个问题的答案是<b>在</b>，而且很硬：云基础设施收入单季 <strong>+121%</strong>、剩余履约义务（RPO，已签约还没确认的收入）一个季度又多了 <strong>$260 亿</strong>、公司自己说产能利用率接近满产。</p>
+<p>但信用市场问的是另一个问题：<strong>这栋楼什么时候能通电？</strong>甲骨文签的是 15–19 年的数据中心租约，收的是大约 <strong>5 年</strong>的客户合同；它今天在花钱，收入要分四年才确认。这不是欺诈问题，是<b>期限反了</b>——而期限错配恰好是评级机构唯一真正在意的东西。</p>
+<p>于是三张账单同时到期：<strong>评级被降到距垃圾级只剩一档</strong>（BBB−）、<strong>$180 亿项目建设贷款在二级市场打九折还卖不掉</strong>、<strong>它自己向开发商发出了不可抗力通知</strong>。三件事是同一个基本面的三个投影，不是一个坏消息加两个坏消息。</p>
+</div>
+
+<div class="verdict">
+一句话定性：<b>这不是「AI 需求被证伪」，是「AI 资产在成熟之前就被拿去融资了」。</b>同一栋楼、同一个业主（Blue Owl），Meta 的项目发得出 A+ 债券，甲骨文的项目只能躺在银行账上打九折——差别不在楼，在<b>租户的资产负债表</b>。
+</div>
+
+<h2>一、三天里发生了什么</h2>
+
+<p>把时间轴钉死，因为这三件事常常被讲成一个模糊的「甲骨文出事了」。</p>
+
+<table>
+<tr><th>日期</th><th>事件</th><th>性质</th></tr>
+<tr><td>2026-07-09</td><td>S&amp;P 将甲骨文长期发行人评级由 <strong>BBB 下调至 BBB−</strong>（短期 A-2→A-3），展望稳定</td><td>评级动作（正式）</td></tr>
+<tr><td>2026-09-10</td><td>FY2027 Q1 财报（截至 8/31）：营收 $193.5 亿 +30%、RPO $6,640 亿、capex $285 亿、FCF <strong>−$54 亿</strong></td><td>财报</td></tr>
+<tr><td>2026-09-18</td><td>FT 报道：Jupiter 项目 $180 亿贷款报价 <strong>89–91 美分</strong>，分销停滞超 6 个月</td><td>二级市场定价</td></tr>
+<tr><td>2026-09-23</td><td>收盘 $144.56</td><td>—</td></tr>
+<tr><td>2026-09-24</td><td>甲骨文向 Blue Owl 旗下 <strong>Stack Infrastructure</strong> 发出<em>不可抗力通知</em>，理由是电力接入可能延误；收 $139.54，<span class="up">−3.47%</span></td><td>合同动作</td></tr>
+<tr><td>2026-09-25</td><td>收 <strong>$137.10</strong>，<span class="up">−1.75%</span>；Blue Owl 与 Bloom Energy 同步下挫</td><td>市场反应</td></tr>
+<tr><td>2026-09-25/26</td><td>甲骨文确认 <strong>Ellison 取消原计划出售最多 $75 亿股份</strong>；重申 2.4GW Bloom 燃料电池协议不变（BE 当日 +8.7%）</td><td>反向信号</td></tr>
+</table>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" width="100%" height="250" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="250" fill="#101013"/>
+  <line x1="60" y1="40" x2="640" y2="40" stroke="#1f1f23" stroke-width="1"/>
+  <line x1="60" y1="96.7" x2="640" y2="96.7" stroke="#1f1f23" stroke-width="1"/>
+  <line x1="60" y1="153.3" x2="640" y2="153.3" stroke="#1f1f23" stroke-width="1"/>
+  <line x1="60" y1="210" x2="640" y2="210" stroke="#1f1f23" stroke-width="1"/>
+  <text x="52" y="44" fill="#86868b" font-size="10.5" text-anchor="end">$170</text>
+  <text x="52" y="100" fill="#86868b" font-size="10.5" text-anchor="end">$150</text>
+  <text x="52" y="157" fill="#86868b" font-size="10.5" text-anchor="end">$130</text>
+  <text x="52" y="214" fill="#86868b" font-size="10.5" text-anchor="end">$110</text>
+  <line x1="60" y1="133.5" x2="640" y2="133.5" stroke="#ff453a" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="644" y="130" fill="#ff453a" font-size="10.5" text-anchor="end">$137 证伪线（P32/P38 立档）</text>
+  <line x1="60" y1="197.2" x2="640" y2="197.2" stroke="#5ac8fa" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="644" y="194" fill="#5ac8fa" font-size="10.5" text-anchor="end">52 周低 $114.50</text>
+  <polyline points="60,85.3 205,96.7 350,112.1 495,126.3 640,133.2" fill="none" stroke="#f5f5f7" stroke-width="2.2"/>
+  <circle cx="60" cy="85.3" r="3.6" fill="#f5f5f7"/>
+  <circle cx="205" cy="96.7" r="3.6" fill="#f5f5f7"/>
+  <circle cx="350" cy="112.1" r="3.6" fill="#f5f5f7"/>
+  <circle cx="495" cy="126.3" r="3.6" fill="#ff453a"/>
+  <circle cx="640" cy="133.2" r="4.6" fill="#ff453a"/>
+  <text x="60" y="75" fill="#86868b" font-size="10.5" text-anchor="middle">$154.00</text>
+  <text x="205" y="86" fill="#86868b" font-size="10.5" text-anchor="middle">$150.28</text>
+  <text x="350" y="102" fill="#86868b" font-size="10.5" text-anchor="middle">$144.56</text>
+  <text x="495" y="116" fill="#ff453a" font-size="10.5" text-anchor="middle">$139.54</text>
+  <text x="628" y="126" fill="#ff453a" font-size="11" font-weight="700" text-anchor="middle">$137.10</text>
+  <text x="60" y="236" fill="#86868b" font-size="10.5" text-anchor="middle">9/3</text>
+  <text x="205" y="236" fill="#86868b" font-size="10.5" text-anchor="middle">9/11</text>
+  <text x="350" y="236" fill="#86868b" font-size="10.5" text-anchor="middle">9/23</text>
+  <text x="495" y="236" fill="#86868b" font-size="10.5" text-anchor="middle">9/24 不可抗力</text>
+  <text x="640" y="236" fill="#86868b" font-size="10.5" text-anchor="middle">9/25</text>
+</svg>
+<div class="cap">图 1 · 收盘价轨迹与事件位置（2026-09-25 收盘为最新；9/26–9/27 美股休市）</div>
+</div>
+
+<p>请特别注意图 1 里那条红线：<strong>9/25 收 $137.10，距 P32/P38 立档的「收破 $137 = 证伪」只差 0.07%</strong>。这条线原本的设定是「9/16-18 双端挤压才是它的第一次真考」，现在考完了——<b>没破，但缓冲垫基本用光</b>。这一点放在第十节单独处理。</p>
+
+<h2>二、第一张账单：评级降到 BBB−</h2>
+
+<p>先讲清评级是什么。评级不是对股价的判断，是对<strong>「这家公司能不能按时还本付息」</strong>的判断。它不看需求叙事，只看四个东西：杠杆、利息覆盖、现金转换、交易对手集中度。</p>
+
+<table>
+<tr><th>机构</th><th>评级</th><th>展望</th><th>关键话术</th></tr>
+<tr><td><strong>S&amp;P</strong>（2026-07-09）</td><td class="up">BBB−</td><td>稳定</td><td>距投机级仅<b>一档</b>；若调整后杠杆持续 &gt;4.5× 再降；基准情形两年内峰值约 4.4×</td></tr>
+<tr><td><strong>Moody's</strong></td><td>Baa2</td><td class="up">负面</td><td>杠杆可能暂时逼近 <b>5×</b>；警告数据中心<b>不能出售或质押</b>——因为甲骨文不拥有它们</td></tr>
+<tr><td><strong>Fitch</strong></td><td>BBB</td><td>—</td><td>含租赁杠杆 &gt;4× 将触发负面行动</td></tr>
+</table>
+
+<p>S&amp;P 下调列了四条理由，四条都指向同一件事：</p>
+
+<ol>
+<li><strong>资本开支激增</strong>——FY2027 指引由约 $600 亿上调至 <strong>$900–950 亿</strong>，净额（扣除客户预付）仍约 $700 亿；</li>
+<li><strong>现金流赤字扩大</strong>——FY2027 自由经营现金流赤字预计约 <strong>−$420 亿</strong>（此前预测约 −$240 亿），几乎翻倍；</li>
+<li><strong>杠杆高企</strong>——调整后债务/EBITDA 将停留在 4 倍以上；</li>
+<li><strong>客户高度集中</strong>——<strong>OpenAI 约占 6,380 亿美元 RPO 的一半</strong>，S&amp;P 直接点名它是「核心信用风险」。</li>
+</ol>
+
+<div class="callout red">
+<p><strong>同业对照是本节的要点。</strong>甲骨文债务/EBITDA 约 <strong>4.3×</strong>，而 Alphabet、亚马逊、微软、Meta 同项均<strong>低于 1×</strong>。甲骨文是唯一一家评级这么低的大型美国云厂商（微软 AAA、Alphabet AA+、亚马逊 AA 区间）。Moody's 的说法更直白：<b>没有其他大型 AI 基础设施提供商是在同等高杠杆、同等负现金流的起点上进入这一轮投资周期的。</b></p>
+<p>也就是说，这不是「整个行业都这样」——<b>是甲骨文自己的起点不同</b>。它用更高的杠杆去追更快的速度，这是它的选择，也是它现在被单独定价的原因。</p>
+</div>
+
+<h2>三、第二张账单：信用市场已经按 B 级给它定价</h2>
+
+<p>评级是「官方口径」，信用市场是「真金白银的口径」。两边并不一致，市场走得更前。</p>
+
+<table>
+<tr><th>指标</th><th>甲骨文</th><th>对照</th></tr>
+<tr><td>5 年期 CDS（违约保护成本）</td><td class="up">约 <strong>203bp</strong>（2026-07 曾创收盘纪录 198.23bp，9/24 再创新高）</td><td>同业约 80bp</td></tr>
+<tr><td>10 年期债券收益率</td><td class="up">约 <strong>6.4–6.5%</strong>（另有口径 7–8%）</td><td>同评级 BBB 曲线约 5.7%；同业 2.5–3.5%</td></tr>
+<tr><td>2056 年到期、票面 6.7% 债券</td><td class="up">收益率<strong>首次突破 8%</strong></td><td>B2/B 级中段垃圾债均值约 7.5%</td></tr>
+<tr><td>在彭博美国投资级公司债指数中的存量</td><td><strong>约 $1,170–1,200 亿</strong></td><td><b>金融业以外最大的发债主体</b></td></tr>
+</table>
+
+<div class="callout">
+<p><strong>这里才是「降级」真正的杀伤力所在，而不是利息。</strong>如果甲骨文再被下调一档进入投机级，约 <strong>$1,200 亿</strong>债券会被剔出投资级指数——而大量只被允许持有投资级的机构必须被动卖出。这是机械抛压，不涉及判断。</p>
+<p>规模感：$1,200 亿约相当于甲骨文当前市值的三成。而与此同时，公司还计划在 FY2027 通过债务加股权再融资 <strong>$400 亿以上</strong>（含已宣布的 $200 亿 ATM 股权发行）。<b>一边要卖，一边要买——这就是为什么 Ellison 取消 $75 亿卖股是个真实信号</b>：创始人不在这个价格上给市场加压。</p>
+</div>
+
+<p>华尔街已经把它单独拎出来做工具了：摩根大通推出了一个涵盖甲骨文在内的<strong>五大超大规模云厂商 CDS 篮子</strong>，供机构对冲或做空 AI 相关信用风险；高盛公开表示对大型科技债<strong>低配</strong>；Michael Burry 点名质疑甲骨文的云收入预测与数据中心相关减记。</p>
+
+<h2>四、第三张账单：$180 亿贷款为什么卖不掉</h2>
+
+<p>这是本轮最实体、最不含叙事成分的一条。Jupiter 项目的融资结构大致是：约 20 家银行组成的银团提供 <strong>$180 亿</strong>建设贷款（Santander 与 Jefferies 牵头，分四笔各 $45 亿，定价 <strong>S+250bp</strong>），Blue Owl 出资约 <strong>$30 亿</strong>股权。</p>
+
+<table>
+<tr><th>观测</th><th>读数</th><th>含义</th></tr>
+<tr><td>二级市场报价</td><td class="up"><strong>面值的 89–91 美分</strong></td><td>约 10% 折价；另有「低于 90 美分」「80 多美分区间」的口径差异</td></tr>
+<tr><td>分销状态</td><td class="up"><strong>停滞超过 6 个月</strong></td><td>银行被迫持有超出原计划的敞口</td></tr>
+<tr><td>账面损失量级</td><td>$180 亿 × 10% ≈ <strong>$18 亿</strong></td><td>谁被迫卖出，谁承担</td></tr>
+<tr><td>隐含定价性质</td><td>接近<strong>单一 B 级</strong>信用</td><td>而当初承销假设是「投资级信用条件」</td></tr>
+<tr><td>同业对照</td><td>微软 / Alphabet 相关超大规模融资仍能<b>接近面值</b>出清</td><td>差距不在资产类别</td></tr>
+</table>
+
+<p>为什么卖不掉？一位固定收益研究机构欧洲信用策略主管的说法最准确：<strong>贷款机构关注的已经不是 OpenAI 合同本身，而是建设进度——在新墨西哥州设施通电并开始计费之前，抵押品主要是硬件设备与许可证。</strong></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" width="100%" height="250" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="250" fill="#101013"/>
+  <text x="20" y="26" fill="#f5f5f7" font-size="13" font-weight="600">抵押品的四个成熟阶段 —— 融资价格由「什么时候开始收钱」决定</text>
+  <rect x="20" y="48" width="150" height="64" rx="8" fill="#17171b" stroke="#1f1f23"/>
+  <text x="95" y="72" fill="#86868b" font-size="11.5" text-anchor="middle">④ 已签约未开工</text>
+  <text x="95" y="90" fill="#d1d1d6" font-size="11" text-anchor="middle">一张纸</text>
+  <text x="95" y="105" fill="#ff453a" font-size="10.5" text-anchor="middle">定价最贵</text>
+  <rect x="186" y="48" width="150" height="64" rx="8" fill="#231417" stroke="#ff453a" stroke-width="1.6"/>
+  <text x="261" y="72" fill="#ff453a" font-size="11.5" font-weight="700" text-anchor="middle">③ 在建</text>
+  <text x="261" y="90" fill="#d1d1d6" font-size="11" text-anchor="middle">钢铁 + 许可证</text>
+  <text x="261" y="105" fill="#ff453a" font-size="10.5" text-anchor="middle">← Jupiter 在这里</text>
+  <rect x="352" y="48" width="150" height="64" rx="8" fill="#17171b" stroke="#1f1f23"/>
+  <text x="427" y="72" fill="#ff9f0a" font-size="11.5" text-anchor="middle">② 建成未通电</text>
+  <text x="427" y="90" fill="#d1d1d6" font-size="11" text-anchor="middle">准抵押品</text>
+  <text x="427" y="105" fill="#ff9f0a" font-size="10.5" text-anchor="middle">仍在等待</text>
+  <rect x="518" y="48" width="142" height="64" rx="8" fill="#12251a" stroke="#30d158" stroke-width="1.6"/>
+  <text x="589" y="72" fill="#30d158" font-size="11.5" font-weight="700" text-anchor="middle">① 通电并计费</text>
+  <text x="589" y="90" fill="#d1d1d6" font-size="11" text-anchor="middle">现金流资产</text>
+  <text x="589" y="105" fill="#30d158" font-size="10.5" text-anchor="middle">定价最便宜</text>
+  <line x1="340" y1="128" x2="600" y2="128" stroke="#5ac8fa" stroke-width="1.4" marker-end="url(#ar1)"/>
+  <defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#5ac8fa"/></marker></defs>
+  <text x="470" y="146" fill="#5ac8fa" font-size="11" text-anchor="middle">同一份合同往前走一步，融资价格可差 200bp 以上</text>
+  <rect x="20" y="168" width="640" height="62" rx="10" fill="#141417" stroke="#1f1f23"/>
+  <text x="38" y="192" fill="#ff453a" font-size="12" font-weight="700">判据</text>
+  <text x="38" y="214" fill="#d1d1d6" font-size="11.5">问这笔钱买的是什么阶段的资产 —— 而不是问它的用途有多重要。</text>
+</svg>
+<div class="cap">图 2 · 抵押品成熟度阶梯：定价对象是「通电日期」，不是「需求强弱」</div>
+</div>
+
+<p>换个说法：<strong>贷款人买的不是甲骨文的 AI 故事，是那栋楼通电的那一天。</strong>而在通电之前，那张资产负债表上躺着的是一堆钢铁和许可——所以九折不是对 OpenAI 的怀疑，是对<b>工期</b>的定价。</p>
+
+<h2>五、同一个业主、同一个资产类别，只差租户评级</h2>
+
+<p>这一节是整份报告最有解释力的一组对照。甲骨文的开发商 Stack Infrastructure 属于 Blue Owl；而 Blue Owl 在 2025 年 10 月也做了 Meta 的 Hyperion 项目。两次交易，同一个业主，同一个资产类别，结果差一个信用等级。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" width="100%" height="230" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="230" fill="#101013"/>
+  <text x="20" y="26" fill="#f5f5f7" font-size="13" font-weight="600">同一业主（Blue Owl）· 同一资产类别 —— 差别只在租户的资产负债表</text>
+  <rect x="20" y="46" width="310" height="160" rx="10" fill="#12251a" stroke="#30d158" stroke-width="1.4"/>
+  <text x="42" y="74" fill="#30d158" font-size="13" font-weight="700">Meta · Hyperion（2025-10）</text>
+  <text x="42" y="100" fill="#d1d1d6" font-size="11.5">发行 $273 亿、6.581%、2049 到期债券</text>
+  <text x="42" y="122" fill="#d1d1d6" font-size="11.5">定价 T+225bp　·　评级 A+（仅低于 Meta 一档）</text>
+  <text x="42" y="144" fill="#d1d1d6" font-size="11.5">破产隔离载体 Beignet Investor</text>
+  <text x="42" y="166" fill="#d1d1d6" font-size="11.5">Meta 只签 4 年初始租约</text>
+  <text x="42" y="188" fill="#30d158" font-size="11.5" font-weight="600">→ 投资者买的是 Meta 的资产负债表，附赠一栋楼</text>
+  <rect x="350" y="46" width="310" height="160" rx="10" fill="#231417" stroke="#ff453a" stroke-width="1.4"/>
+  <text x="372" y="74" fill="#ff453a" font-size="13" font-weight="700">甲骨文 · Jupiter（2026）</text>
+  <text x="372" y="100" fill="#d1d1d6" font-size="11.5">约 20 家银行提供 $180 亿建设贷款</text>
+  <text x="372" y="122" fill="#d1d1d6" font-size="11.5">定价 S+250bp　·　躺在银行账上 89–91 美分</text>
+  <text x="372" y="144" fill="#d1d1d6" font-size="11.5">分销停滞 6 个月以上</text>
+  <text x="372" y="166" font-size="11.5"><tspan fill="#d1d1d6">租约</tspan><tspan fill="#ff453a" font-weight="700">在任何情况下都不能终止</tspan></text>
+  <text x="372" y="188" fill="#ff453a" font-size="11.5" font-weight="600">→ 贷款人买的是甲骨文的资产负债表，附赠一栋楼</text>
+</svg>
+<div class="cap">图 3 · 融资价格里最大的成分是租户评级，不是建筑本身（来源：IFR / FT / Reuters 转述，需核实原文）</div>
+</div>
+
+<p>更有意思的是反过来的那一点：<strong>甲骨文在合同上比 Meta 更难走开</strong>（Meta 只签 4 年初始租约，甲骨文的 Jupiter 租约不可终止），但 Meta 的债是投资级债券、甲骨文的债是银行账上的九折贷款。<b>结构上「更安全」的一方拿到了更差的价格</b>——这说明定价里真正的变量不是合同条款的刚性，而是<em>签字那个人的信用</em>。</p>
+
+<h2>六、不可抗力到底做了什么：把「时间」从负债方转给资产方</h2>
+
+<p>这一节要先把一个流传很广的误解拆掉。部分二次传播把这件事讲成「甲骨文停工」「项目停摆」——<strong>这是错的</strong>。看一手口径：</p>
+
+<table>
+<tr><th>谁</th><th>原话 / 事实</th></tr>
+<tr><td>甲骨文</td><td>「<strong>Project Jupiter remains on our planned schedule</strong>」「不可抗力通知是此类规模项目的常规做法，通常用于保留合同权利；<b>它们本身不构成项目延误，也不改变交付预期</b>」</td></tr>
+<tr><td>Blue Owl / Stack</td><td>「该通知<b>不改变</b>这个多年期项目的财务承诺」，双方「<b>完全一致</b>」</td></tr>
+<tr><td>Reuters（信源）</td><td>甲骨文<b>不打算退出主要租户身份</b>；确认<b>取得电力是甲骨文的合同责任</b>；确认<b>甲骨文在任何情况下都不能终止租约</b>；Blue Owl 股权约 $30 亿，<b>甲骨文承担债务成本</b></td></tr>
+<tr><td>Bloomberg（信源）</td><td>若双方认定发生与供电承诺相关的不可抗力事件，甲骨文可获<b>最长 3 年的租金支付延后</b>；期间仍须承担其他成本，租期开始后仍须支付全租期租金</td></tr>
+<tr><td>信源补充</td><td>该通知<b>不构成融资协议下的违约事件</b></td></tr>
+</table>
+
+<div class="callout blue">
+<p><strong>所以不可抗力的功能是「把时间从负债方转移给资产方」，不是取消义务。</strong>甲骨文不能终止租约，它唯一能动的杠杆就是<b>付款时点</b>。这件事反过来暴露了它的位置：<b>它连「走开」这个选项都没有。</b></p>
+<p>Bloomberg 的说法「甲骨文并非试图退出，而是试图推迟付款」被很多标题读成了坏消息；但把它翻过来看——<b>一家公司如果连退出权都没有，说明它的杠杆不在资产负债表上，在合同条款里。</b>这才是真正该记下来的东西。</p>
+</div>
+
+<h3>卡点是一条 17 英里的管道</h3>
+
+<p>延误的物理原因很清楚，而且和芯片完全无关：</p>
+
+<ul>
+<li>项目设计为燃料自给——2.45GW 由 <strong>Bloom Energy 天然气燃料电池</strong>现场微电网供电，绕开漫长的电网并网排队；但代价是把风险从「并网许可」转移到了「燃气许可」。</li>
+<li>供气依赖 Energy Transfer 的 <strong>Green Chile 管线，17 英里</strong>（约 27 公里）；新墨西哥州土地局在 <strong>3 月与 7 月两次否决</strong>其穿越州信托土地的路线（理由涉水耗与排放）。</li>
+<li>路线改道后，投运日由原定 2026 年 8–9 月推迟近 6 个月至 <strong>2027-02-01</strong>。</li>
+<li>燃料电池的<strong>空气质量许可仍未获批</strong>；新墨西哥州最高法院 9/17 裁定暂停相关程序后允许继续，环境部门决策截止日为 <strong>2026-11-23</strong>。</li>
+<li>综合结果：首期工程较原定时间<strong>延误至少 7 个月</strong>，原计划 2026 年 11 月投运已不可能；知情信源给出的整体滑期约 <strong>1 年</strong>（2028 → 2029）。</li>
+</ul>
+
+<h3>为什么期限制约比需求更致命</h3>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" width="100%" height="260" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="260" fill="#101013"/>
+  <text x="20" y="26" fill="#f5f5f7" font-size="13" font-weight="600">负债端的期限 vs 收入端的期限</text>
+  <text x="20" y="56" fill="#86868b" font-size="11.5">数据中心租约（负债）</text>
+  <rect x="200" y="44" width="440" height="20" rx="4" fill="#ff453a" opacity="0.75"/>
+  <text x="420" y="59" fill="#0a0a0c" font-size="11.5" font-weight="700" text-anchor="middle">15 – 19 年 · 固定 · 不可终止</text>
+  <text x="20" y="96" fill="#86868b" font-size="11.5">主要 AI 客户合同（收入）</text>
+  <rect x="200" y="84" width="118" height="20" rx="4" fill="#30d158" opacity="0.8"/>
+  <text x="259" y="99" fill="#0a0a0c" font-size="11.5" font-weight="700" text-anchor="middle">约 5 年</text>
+  <line x1="318" y1="76" x2="318" y2="112" stroke="#ff9f0a" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="330" y="126" fill="#ff9f0a" font-size="11.5" font-weight="700">缺口 10 – 14 年：租约还在跑，合同已经续不上了</text>
+  <text x="20" y="164" fill="#86868b" font-size="11.5">RPO 转化节奏（$6,640 亿）</text>
+  <rect x="200" y="152" width="80" height="20" rx="4" fill="#5ac8fa" opacity="0.85"/>
+  <text x="240" y="167" fill="#0a0a0c" font-size="11" font-weight="700" text-anchor="middle">12%</text>
+  <rect x="284" y="152" width="226" height="20" rx="4" fill="#5ac8fa" opacity="0.55"/>
+  <text x="397" y="167" fill="#0a0a0c" font-size="11" font-weight="700" text-anchor="middle">34%</text>
+  <rect x="514" y="152" width="126" height="20" rx="4" fill="#5ac8fa" opacity="0.3"/>
+  <text x="577" y="167" fill="#d1d1d6" font-size="11" font-weight="700" text-anchor="middle">54%</text>
+  <text x="240" y="188" fill="#86868b" font-size="10.5" text-anchor="middle">未来 12 个月</text>
+  <text x="397" y="188" fill="#86868b" font-size="10.5" text-anchor="middle">13 – 36 个月</text>
+  <text x="577" y="188" fill="#86868b" font-size="10.5" text-anchor="middle">36 个月以后</text>
+  <rect x="20" y="206" width="640" height="42" rx="8" fill="#141417" stroke="#1f1f23"/>
+  <text x="38" y="232" fill="#ff9f0a" font-size="11.5">错配 = 长、固定、不可协商的租金账单　对　短、可取消、高度集中的收入流</text>
+</svg>
+<div class="cap">图 4 · 期限错配的量级：租约 15–19 年 vs 客户合同约 5 年（来源：S&amp;P / 公司披露 / 信源转述）</div>
+</div>
+
+<p>把总负债侧的量级摊开看，会更清楚：未开始租赁承诺约 <strong>$2,600 亿</strong>，加已确认经营租赁约 $300 亿，加表内借款，<strong>总义务已超过 $4,000 亿</strong>——而股东权益大约只有 <strong>$430 亿</strong>。</p>
+
+<div class="callout red">
+<p><strong>这是整件事的核心算术：$4,000 亿的义务 对 $430 亿的权益。</strong>而这条义务链的偿付能力，压在「约五年期、可取消、且近一半集中在一个 2025 年经营亏损约 $209 亿的客户身上」的收入流上。</p>
+<p>所以评级机构反复绕圈的从来不是「甲骨文有没有造假」，而是这个<b>不匹配</b>。这不是道德问题，是数学问题。</p>
+</div>
+
+<h2>七、两个必须拆开的混淆</h2>
+
+<table>
+<tr><th>容易被混为一谈</th><th>实际是</th><th>为什么要拆</th></tr>
+<tr><td>「$180 亿贷款打折」= 甲骨文公司债打折</td><td>那是 <strong>Jupiter 项目公司层面的项目融资贷款</strong>，不是甲骨文直接发行的公司债</td><td>两者信用主体不同、追索路径不同；但甲骨文是核心承租方，其滞销会加深市场对甲骨文租赁承诺的担忧</td></tr>
+<tr><td>「甲骨文停工了」</td><td>是<strong>不可抗力通知</strong>（保留权利），不是终止、不是违约、也不是官方确认的工期延误</td><td>部分二次传播把它写成「halted construction」「ordered a halt to all site work」，与一手口径不符；<b>这类失真本身就是信号</b></td></tr>
+<tr><td>「评级被降」= 已经变垃圾债</td><td>BBB− 仍是<strong>投资级</strong>，但已是投资级最低档</td><td>真正的分界线不是评级本身，是<b>指数资格</b>——降一档才触发 $1,200 亿的机械卖盘</td></tr>
+<tr><td>「贷款 S+250bp」= 不算贵</td><td>利差本身不高，<strong>贵在卖不掉</strong></td><td>定价与流动性是两件事；分销停滞 6 个月说明市场对「时间」的定价不在票息里，在折价里</td></tr>
+</table>
+
+<div class="callout">
+<p><strong>顺带记录一组真实存在的口径分歧</strong>（这些数字在不同来源间不一致，引用时务必带上限定）：</p>
+<ul>
+<li>贷款规模：多数源 <strong>$180 亿</strong>（四笔各 $45 亿）；另有源称「最高 $200 亿」；</li>
+<li>贷款报价：FT 口径 <strong>89–91 美分</strong>（9/18）；另有「低于 90 美分」「80 多美分区间」；</li>
+<li>OpenAI 与甲骨文的合约规模：<strong>$3,000 亿</strong> 与 <strong>$4,000 亿</strong> 两个口径并存；</li>
+<li>项目总投资：有源称最高 <strong>$165 亿</strong>，也有源称 <strong>$1,650 亿</strong>，量级差异达十倍，<b>未能核实</b>；</li>
+<li>总债务口径：含租赁义务约 <strong>$2,190 亿</strong>；应付票据口径约 <strong>$1,250 亿</strong>。差异来自是否合并租赁，引用时须注明。</li>
+</ul>
+</div>
+
+<h2>八、谁在真正付钱</h2>
+
+<p>这个问题比「谁被套了」更有用。三层的成本分担完全不同：</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" width="100%" height="240" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="240" fill="#101013"/>
+  <text x="20" y="26" fill="#f5f5f7" font-size="13" font-weight="600">延期一年的成本落在谁身上</text>
+  <rect x="20" y="46" width="640" height="52" rx="8" fill="#231417" stroke="#ff453a" stroke-width="1.2"/>
+  <text x="38" y="68" fill="#ff453a" font-size="12.5" font-weight="700">银行（约 20 家组成银团）　账面损失最大</text>
+  <text x="38" y="88" fill="#d1d1d6" font-size="11.5">$180 亿 × 10 点折价 ≈ $18 亿 未实现亏损 —— 分销失败意味着这个损失从「别人的」变成「自己的」</text>
+  <rect x="20" y="106" width="640" height="52" rx="8" fill="#1a1712" stroke="#ff9f0a" stroke-width="1.2"/>
+  <text x="38" y="128" fill="#ff9f0a" font-size="12.5" font-weight="700">Blue Owl（股权）　直接成本很小</text>
+  <text x="38" y="148" font-size="11.5"><tspan fill="#d1d1d6">$30 亿股权 × 约 2 个百分点 ≈ 每年 $6,000 万；开发期收益 9%、完工后杠杆收益约 11% —— 只是</tspan><tspan fill="#ff9f0a" font-weight="700">晚拿到</tspan></text>
+  <rect x="20" y="166" width="640" height="52" rx="8" fill="#12251a" stroke="#30d158" stroke-width="1.2"/>
+  <text x="38" y="188" fill="#30d158" font-size="12.5" font-weight="700">甲骨文（租户）　拿到的是「时间」</text>
+  <text x="38" y="208" fill="#d1d1d6" font-size="11.5">承担债务成本 + 供电责任，换来最长 3 年租金递延 —— 风险不是没发生，是被推迟了</text>
+</svg>
+<div class="cap">图 5 · 同一笔延期，三层承担者的性质完全不同（来源：Reuters/Bloomberg 信源、FT、WSJ 转述，需核实原文）</div>
+</div>
+
+<div class="callout green">
+<p><strong>这一节值得反复看。</strong>很多人把不可抗力理解成甲骨文的坏消息；但在成本分担上，<b>甲骨文其实是这一轮里唯一拿到「时间」的一方</b>——它承担债务成本（这个跑不掉），但换来了最长三年的付款递延。而<b>银行拿到的是已实现的市场折价</b>（分销失败＝必须自己持有），<b>Blue Owl 拿到的是收益率曲线被拉长</b>。</p>
+<p>换句话说：<b>电力风险在合同里归甲骨文，资产风险在市场里归银行与 Blue Owl。</b>谁承担什么，是合同和市场一起分的工，不是叙事的情绪。</p>
+</div>
+
+<h2>九、传导层：从甲骨文到别人</h2>
+
+<p>这一层容易被漏掉，但它决定了「这件事对我看别的标的有什么意义」。</p>
+
+<table>
+<tr><th>方向</th><th>对象</th><th>机制</th><th>我的判断</th></tr>
+<tr><td class="up">风险</td><td>中长交期中压电气设备</td><td>ABB / 施耐德 / 西门子：MV 设备可能已按项目下单，延期直接冲击订单簿。叠加此前得州等地的电网连接暂停令，<em>「延期数据点正在增加」</em></td><td>订单风险<b>具体且有时滞</b>；但这是延期不是取消</td></tr>
+<tr><td class="up">风险</td><td>Blue Owl（OWL）等项目融资股权方</td><td>其商业模式建立在「长期限、有合同背书的基础设施，按大型企业租户信用承销」之上；租户义务一旦被暂停，现金流确定性下降</td><td>它的定价依赖的正是<b>租户评级</b>——这是这次被重新定价的核心</td></tr>
+<tr><td class="up">二阶</td><td>甲骨文印度子公司 OFSS</td><td>9/25 单日 <span class="up">−4%</span>（报 ₹10,460）</td><td>纯粹的母公司情绪传导，无基本面含义</td></tr>
+<tr><td class="dn">受益表象</td><td>Bloom Energy（BE）</td><td>9/24 盘中最深 <span class="up">−6~8.6%</span>；但 9/26 甲骨文重申 <strong>2.4GW 燃料电池协议不变</strong>，BE 反弹 <span class="dn">+8.7%</span></td><td><b>受益但非因果</b>——它是被延期的供应方，不是受益方；反弹来自合同重申，不来自项目加速</td></tr>
+<tr><td>反向</td><td>微软 / Alphabet</td><td>同期超大规模数据中心融资仍能接近面值出清</td><td>同一资产类别里的<b>相对赢家</b>：「钱在往信用好的租户走」</td></tr>
+<tr><td>行业</td><td>整体 AI 融资通道</td><td>美国五大云厂商 2026 年 capex 指引合计 &gt;$7,500 亿，2027 年预计突破 $1.1 万亿；摩根大通预计未来五年 IG 市场需为数据中心提供 &gt;$2.1 万亿融资，HY 与杠杆贷款再贡献约 $3,500 亿；Moody's 称五大厂商约 <strong>$2.8 万亿</strong>承诺未计入资产负债表</td><td>约束已经从「需求够不够」换成<b>「市场承接能力够不够」</b></td></tr>
+</table>
+
+<div class="callout">
+<p><strong>把这些串起来，会得到一个比「甲骨文出事」更大的判断：</strong>AI 基建的瓶颈已经从芯片 → 电力 → <b>融资通道</b>，走到了第三段。项目贷款的九折和分销停滞，是这条通道第一次出现「新发行的资产卖不动」的实证。而这条通道的另一端接着的是 $2.1 万亿的融资需求。</p>
+<p>这与 P51《电与冷六层》的判断是一条线的延伸：<b>交期越长、资本越重、越靠项目融资的环节，越先被重新定价。</b></p>
+</div>
+
+<h2>十、落回账户：$137 线要重新审视</h2>
+
+<p>这是本次真正的可执行部分。先把既有的立档摆出来（这些是以前写的，不改）：</p>
+
+<table>
+<tr><th>项</th><th>原立档（P32 / P38）</th><th>现状（2026-09-25）</th></tr>
+<tr><td>持仓</td><td>9/8 已清仓，卖价 $170（成本 $135.98，<strong>+25%</strong>），<b>无持仓，仅观察</b></td><td>不变，仍无持仓</td></tr>
+<tr><td>价格证伪线</td><td><strong>收破 $137 = 证伪</strong>，下方重估区 $114</td><td>$137.10，<span class="up">距线仅 +0.07%</span>，<b>未破但缓冲耗尽</b></td></tr>
+<tr><td>原立档的下方判断</td><td><strong>$114–125 =「为什么便宜」能回答的研究区</strong>，前提是「AI 需求证据仍在，只是融资被错杀」</td><td class="up">这个前提<b>需要修正</b>（见下）</td></tr>
+<tr><td>原立档的三条定价变量</td><td>利率 / 发债利差 / RPO 转化验证</td><td>三条全部<b>朝不利方向</b>动过一次：CDS 203bp 新高、贷款九折、不可抗力</td></tr>
+</table>
+
+<div class="callout red">
+<p><strong>必须先认错的一件事：验型公司没有上涨叙事、只有「别出事」——而这三周里，它「出了事」。</strong></p>
+<p>P38 给 $114–125 那个「研究区」挂了一个前提：<b>需求证据仍在、只是融资被错杀</b>。现在要正面回答这个问题：<b>这到底是「融资被错杀」，还是「融资在被正确定价」？</b></p>
+<p>我的判断是<b>后者</b>。理由是：错杀的定义是「价格偏离基本面、且信息含量低」；而这三周发生的每一件事——评级下调、CDS 创新高、项目贷款九折、不可抗力——都是<b>同一个基本面（期限错配）的不同投影</b>，信息含量极高，且互相印证。当多条独立通道同时给出同一个方向，那就不是错杀，是<b>重定价的中间过程</b>。</p>
+</div>
+
+<h3>修正后的判断</h3>
+
+<table>
+<tr><th>情形</th><th>条件</th><th>性质</th></tr>
+<tr><td class="dn">需求真、融资也被错杀</td><td>FCF 赤字实质收窄（不是指引、是季度实测）+ RPO 转化率达到 12% 指引 + 贷款在 90 美分附近完成分销</td><td>这才配得上「$114–125 研究区」；<b>但需要证据，不是需要价格</b></td></tr>
+<tr><td class="up">需求真、融资被正确定价</td><td>需求指标继续好（IaaS 增速、RPO 绝对值）<b>同时</b>信用指标继续坏（CDS、利差、评级）——这就是当下的状态</td><td><b>股权是这份资产负债表上最劣后的一层。</b>信用在修补之前，估值便宜这个结论无效</td></tr>
+<tr><td class="up">需求转弱</td><td>RPO 环比转平或转负、或 OpenAI 相关合约出现重谈</td><td>原立档的「坍缩」情形，改判为结构性逆风（灵魂第四十八条）</td></tr>
+</table>
+
+<div class="callout blue">
+<p><strong>为什么「便宜」在这里失效。</strong>按 FY2027 调整后 EPS 指引 $8.10 计算，$137.10 对应前瞻约 <strong>16.9×</strong>——看起来不贵。但这是<b>把「股权排在最前面」的算法</b>。而实际上，$4,000 亿义务对 $430 亿权益的结构里，<b>股权的现金流顺序在债权人之后</b>：利息、租约、项目债先拿钱，股东拿剩下的。<b>用 PE 给这样一份资本结构定价，等于用最乐观那一层的分母去算最劣后那一层的价格。</b></p>
+<p>再叠加一句灵魂第三十九条的镜像用法（这次是给「便宜」做并购滤镜）：<strong>把「比同业便宜」减掉「比同业承担了多少额外风险」，剩下的才是真便宜。</strong>甲骨文比微软便宜的那部分，几乎等于它多背的那部分杠杆。</p>
+</div>
+
+<h3>可执行的三件事</h3>
+
+<ol>
+<li><b>现在什么都不做。</b>无持仓，$137.10 压线但未破。证伪线是<b>收盘价口径</b>——「收破」才触发，盘中不算。这条纪律不变。</li>
+<li><b>把「研究区」的触发条件从价格改成证据。</b>$114–125 不再自动等于研究区；进入研究状态的<b>前置条件</b>是三条同时成立：① 单季 FCF 赤字较上一季实质收窄（实测数，非指引）② 项目贷款在 90 美分附近完成分销 ③ 穆迪 Baa2 负面展望被移除或转为稳定。<b>三条缺一，价格再低也只是「继续下跌的中途站」。</b></li>
+<li><b>把它当温度计用，而不是当标的用。</b>甲骨文是 AI 资本开支因子里<b>最脆弱的一环</b>（P59 已记：AVGO 与 META 同属 AI 资本开支因子）。它的 CDS 价差和项目贷款报价，是「AI 基建融资通道还通不通」的<b>直接读数</b>——比任何需求叙事都领先。</li>
+</ol>
+
+<h2>十一、体系位置</h2>
+
+<p>这次事件把几条既有条款串成了一条链，值得记清分工：</p>
+
+<table>
+<tr><th>灵魂条款</th><th>本次的读数</th></tr>
+<tr><td><strong>第五条</strong> 卖铲人垫钱买铲 + 担保客户 + 下场发债</td><td>甲骨文同时是三者：给 OpenAI 供算力（卖铲）、垫付 $900–950 亿 capex（垫钱买铲）、FY2026 发债 $430 亿 + 股权 $50 亿（下场发债）。<b>只差一个客户违约</b>——而那个客户 2025 年经营亏损约 $209 亿</td></tr>
+<tr><td><strong>第二十六条</strong> 重资产生意的钱从哪来</td><td>FCF 为负、靠 ATM 股权 + 项目融资 + 客户预付 → 落在「证券化 + 循环融资」档。<b>看 FCF 符号</b>这条判据完美适用</td></tr>
+<tr><td><strong>第七条</strong> 方向由债市投票，时间表由政治日历决定</td><td>方向＝评级机构（S&amp;P / Moody's / Fitch）；时间表＝新墨西哥州土地局、最高法院、环境部门（<b>11/23 空气许可裁决</b>）。<b>一次完美的双证</b></td></tr>
+<tr><td><strong>第四十一条</strong> 交期就是定价权</td><td>反过来用：<b>交期也是杠杆的发条</b>。变压器 48 个月、燃机 42 个月，现在加上管线许可 12 个月以上——而利息按月计息。<b>交期越长，债务跑得越远</b></td></tr>
+<tr><td><strong>第四十七条</strong> 没人收费的那一层就是风险堆着的那层</td><td>这次「没人收费的那一层」是<em>延期</em>：卖方说「不是退出信号」、公司说「不改变承诺」、Blue Owl 说「财务承诺不变」——<b>但没有人给「延期一年值多少钱」定价</b>。最后由贷款人（$18 亿）和股权人（每年 $6,000 万）按 9:1 分担</td></tr>
+</table>
+
+<h2>十二、新条款</h2>
+
+<div class="soul">
+<div class="tag">体系灵魂第五十六条</div>
+<div class="q"><strong>抵押品的成熟时间决定融资价格，不决定需求真假。</strong><br>
+一份资产的融资价格不由它的用途决定，由「它什么时候能开始收钱」决定。当交期长于债务的持有期时，融资价格里最大的成分是<em>延期概率</em>，不是需求强度。<br><br>
+判据：<b>问这笔钱买的是什么阶段的资产</b>——① 通电并计费（现金流资产）② 已建成未通电（准抵押品）③ 在建（钢铁 + 许可证）④ 已签约未开工（一张纸）。同一份合同从 ④ 走到 ①，融资价格可以差 200bp 以上。<br><br>
+推论：① 同一栋楼、同一个业主，<b>租户评级决定融资价格</b>（Meta 的 Hyperion 发得出 A+，甲骨文的 Jupiter 躺在银行账上打九折）；② <b>不可抗力条款的真实功能是把「时间」从负债方转给资产方</b>，而不是取消义务；③ <b>「没人收费的那一层」在项目融资里就是「延期」</b>——卖方、公司、业主都说「不变」，但没人给延期定价，最后由贷款人和股权人按 9:1 分担。</div>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第五十七条</div>
+<div class="q"><strong>杠杆的位置不在资产负债表上，在合同条款里。</strong><br>
+判断一家公司的杠杆，不要只算债务/EBITDA，要问一句：<em>负债的终止权在谁手里？</em><br><br>
+本次读数：甲骨文的数据中心租约 <strong>15–19 年</strong>、固定、不可终止；而主要 AI 客户合同约 <strong>5 年</strong>。缺口 10–14 年。当负债期限长于收入期限、且负债方<strong>连「走开」的选项都没有</strong>时，它的真实杠杆不在资产负债表的数字里，在合同条款的刚性里——<b>「不可抗力」成了唯一的减震器，而减震器只能挪时间，不能减金额。</b><br><br>
+推论：① 期限错配的量级 ≈ <b>（负债期限 − 收入期限）× 规模</b>；② 当两者方向相反时，评级机构看的不是覆盖率，是 <b>重置风险</b>（租约到期后还有没有客户接）；③ <b>一家公司如果连退出权都没有，就不要用它的股权价格去衡量它的安全边际</b>——股权是这份资本结构里最劣后的一层。</div>
+</div>
+
+<h2>十三、哨位与边界</h2>
+
+<h3>六个哨位（按日期排）</h3>
+
+<table>
+<tr><th>日期</th><th>哨位</th><th>为什么它重要</th></tr>
+<tr><td><strong>2026-11-23</strong></td><td>新墨西哥州环境部门对燃料电池空气许可的决策截止日</td><td>决定 Jupiter 能否保住供电路径；这是最硬的一个日期</td></tr>
+<tr><td><strong>2027-02-01</strong></td><td>Green Chile 管线改道路线的投运节点</td><td>保不住则 2028 上线基本无望</td></tr>
+<tr><td>持续</td><td><strong>穆迪 Baa2 负面展望</strong>的下一步动作</td><td>三家机构里唯一「展望负面」的一家；它是下一档降级的顺序领先者</td></tr>
+<tr><td>持续</td><td>$180 亿项目贷款能否在 <strong>90 美分附近企稳并完成分销</strong></td><td>这是「融资通道还通不通」的直接读数，比评级更快</td></tr>
+<tr><td>约 2027 年前五个月</td><td>甲骨文<b>下一轮债券 / 股权融资的定价</b></td><td>市场普遍预计它在这之前不会再发债——这个窗口一开，就是真考</td></tr>
+<tr><td><strong>2026-12-14</strong></td><td>甲骨文 FY2027 Q2 财报（预期日）</td><td>看三个数：RPO 转化率、FCF 赤字是否收窄、软件业务是否企稳</td></tr>
+</table>
+
+<h3>边界八条</h3>
+
+<ol>
+<li>本文所有评级、利差、债券价格与项目贷款报价均来自<b>公开报道转述</b>（Reuters / Bloomberg / FT / WSJ / S&amp;P 等），部分是阶段性报价<b>而非官方结算价</b>；引用需核实原文。</li>
+<li>不可抗力通知的<b>完整文本未公开</b>，其精确合同范围无法独立核实；「最长 3 年租金递延」来自匿名信源转述，<b>非公司确认</b>。</li>
+<li>甲骨文官方口径明示通知「本身不构成项目延误」；<b>本文不采信</b>任何「已停工」「已取消」的说法，并将其列为二次传播失真。</li>
+<li>$180 亿是<b>项目公司层面的建设贷款</b>，不等同于甲骨文直接发行的公司债，追索结构不同。</li>
+<li>贷款规模、报价区间、OpenAI 合约金额（$3,000 亿 / $4,000 亿）、项目总投资（$165 亿 / $1,650 亿）<b>均存在来源间口径分歧</b>，本文已逐项标注，未择一断言。</li>
+<li>股价为 2026-09-25 收盘（9/26–9/27 美股休市）；市值口径在 $4,145–4,220 亿区间存在分歧，另有源报 $5,610 亿属明显偏离，已剔除。52 周高点在 $319.45–$330 间有分歧。</li>
+<li>PE 口径分歧较大（TTM 约 21.5× 与 36.6× 并存，源于是否采用调整后 EPS）；本文使用「FY2027 调整后 EPS 指引 $8.10」这一<b>公司口径</b>做前瞻测算，并已注明。</li>
+<li>本文<b>不构成任何一档操作区间（Z1/Z2/Z3）的新立档</b>：无持仓、证伪线未破，且原立档的三条定价变量已被本次事件改动，<b>需要证据而非价格来重新确认</b>。任何新立档应等第六节所列前置条件出现。</li>
+</ol>
+
+<div class="conclusion">
+<h3>把这份报告压缩成五句话</h3>
+<ol>
+<li><strong>问题不是需求，是期限。</strong>需求指标（IaaS +121%、RPO 单季 +$260 亿）在变好；信用指标（评级、CDS、贷款折价）在变坏——两者同时成立，因为它们是同一件事的两面：<b>资产还没成熟就被拿去融资了</b>。</li>
+<li><strong>$180 亿贷款九折卖不掉，定价的不是 OpenAI，是通电日期。</strong>抵押品在通电前只是钢铁和许可证。</li>
+<li><strong>同一栋楼、同一个业主，Meta 发得出 A+、甲骨文只能躺在银行账上打九折——差别在租户的资产负债表。</strong></li>
+<li><strong>不可抗力不是赖账，是锁权；它的功能是转移「时间」，不是取消义务。</strong>而甲骨文连退出的选项都没有——<b>它的杠杆在合同条款里</b>。</li>
+<li><strong>对账户：仍无持仓，$137.10 压线未破，什么都不做。</strong>但「$114–125 研究区」的前提（只是融资被错杀）站不住了——<b>这是重定价的中间过程，不是错杀</b>。研究状态的门槛从价格改成证据。</li>
+</ol>
+</div>
+
+<div class="disc">
+<p><strong>数据来源与口径</strong>：评级、信用利差、债券价格、项目贷款报价来自 S&amp;P Global Ratings / Moody's / Fitch 及 Reuters、Bloomberg、Financial Times、Wall Street Journal 的公开报道转述（<b>非一手来源，需核实原文</b>）；财务数据以甲骨文公司财报（FY2026 全年截至 2026-05-31；FY2027 Q1 截至 2026-08-31，2026-09-10 发布）为准；股价为 2026-09-25 美股收盘。文中所有口径分歧均已逐项标注，未择一断言。</p>
+<p>P63 · 完 · 上一份 P62《谁在给谁计时》· 下一份 P64（灵魂接第五十八条）</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

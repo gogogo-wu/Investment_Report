@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谁在收租：高利率环境下受益方的三种成色</title>
+<style>
+:root{
+  --bg:#0a0a0c; --panel:#101013; --panel2:#141417; --line:#1f1f23;
+  --tx:#d1d1d6; --tx2:#86868b; --hd:#f5f5f7;
+  --up:#ff453a; --dn:#30d158; --blue:#5ac8fa; --amber:#ff9f0a; --purple:#bf5af2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans','Yu Gothic',sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:48px 26px 90px}
+h1{font-size:30px;line-height:1.35;margin:0 0 14px;color:var(--hd);font-weight:700;letter-spacing:-.4px}
+h1 .g{background:linear-gradient(96deg,#f5f5f7 12%,#8e8e93 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 20px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.badge{display:inline-block;padding:4px 11px;border:1px solid var(--line);border-radius:20px;
+  font-size:12px;color:var(--tx2);background:var(--panel);white-space:nowrap}
+.badge.k{color:var(--hd);border-color:#2c2c31}
+.badge.up{color:var(--up);border-color:rgba(255,69,58,.35)}
+.badge.dn{color:var(--dn);border-color:rgba(48,209,88,.35)}
+.badge.b{color:var(--blue);border-color:rgba(90,200,250,.35)}
+.badge.a{color:var(--amber);border-color:rgba(255,159,10,.35)}
+h2{font-size:20px;color:var(--hd);margin:52px 0 16px;font-weight:600;letter-spacing:-.2px;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;color:var(--hd);margin:30px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+strong{color:var(--hd);font-weight:600}
+em{font-style:normal;color:var(--amber);font-weight:600}
+code{background:#17171b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px;color:#e5e5ea}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:0 0 10px}
+.lead p:last-child{margin-bottom:0}
+.verdict{background:var(--panel2);border-left:3px solid var(--hd);border-radius:0 10px 10px 0;
+  padding:13px 18px;margin:0 0 22px;font-size:14.5px;color:var(--hd)}
+.verdict b{color:var(--amber)}
+.callout{background:var(--panel2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;font-size:14.5px}
+.callout.red{border-left-color:var(--up)}
+.callout.green{border-left-color:var(--dn)}
+.callout.blue{border-left-color:var(--blue)}
+.callout p:last-child{margin-bottom:0}
+.fix{background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.28);border-radius:10px;
+  padding:15px 18px;margin:0 0 26px;font-size:14px}
+.fix .h{color:var(--blue);font-size:12.5px;letter-spacing:.5px;margin-bottom:8px}
+.fix p:last-child{margin-bottom:0}
+.conclusion{background:linear-gradient(180deg,#131317,#0f0f12);border:1px solid #2c2c31;border-radius:14px;
+  padding:26px 28px;margin:34px 0}
+.conclusion h3{margin-top:0;color:var(--amber)}
+.soul{background:#0f0f12;border:1px dashed #3a3a40;border-radius:12px;padding:22px 24px;margin:36px 0}
+.soul .tag{color:var(--amber);font-size:12.5px;letter-spacing:.6px;margin-bottom:10px}
+.soul .q{color:var(--tx);font-size:14.5px;line-height:1.85}
+.disc{color:var(--tx2);font-size:12.5px;line-height:1.8;border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.disc p{margin:0 0 10px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--tx2);font-weight:500;font-size:12.5px;background:var(--panel)}
+td strong{color:var(--hd)}
+.up{color:var(--up);font-weight:600}
+.dn{color:var(--dn);font-weight:600}
+.fig{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 16px 10px;margin:26px 0}
+.fig .cap{color:var(--tx2);font-size:12.5px;text-align:center;margin:6px 0 4px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:7px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span class="g">谁在收租：高利率环境下受益方的三种成色</span></h1>
+<p class="sub">美 10 年期 5.18% · 货币基金 7.94 万亿美元（ICI）· 日本银行年内 +50.2% · 30 年期美债 5.48%<br>基准：2026-09-23 至 09-28（行情以各市场最近收盘为准）· 数据源：ICI / CME 公司公告 / 各公司财报 / WGC / LBMA / Finviz / ICE BofA</p>
+
+<div class="badge-row">
+  <span class="badge k">P65</span>
+  <span class="badge a">宏观跨资产</span>
+  <span class="badge b">受益方地图</span>
+  <span class="badge b">灵魂第六十 / 六十一 / 六十二条</span>
+</div>
+
+<div class="lead">
+<p><strong>大白话总评：</strong>上一份（P64）回答的是「法币是不是在贬值」，答案是不在——因为这一轮长端利率上升的主体是<strong>实际利率</strong>而不是通胀预期，「钱变贵了」不等于「钱变毛了」。你现在问的是另一半：<strong>那钱去哪了？</strong></p>
+<p>答案要先换一个问法。高利率不是一场灾难，是一次<strong>转移</strong>：从债务人手里，转到债权人手里。所以正确的问法不是「什么资产好」，而是——<em>谁手里的合同能重定价，谁手里的合同被锁死了？</em></p>
+<p>按这个问法筛出来的名单，<strong>分成三档，成色完全不同</strong>：第一档<b>已经进了利润表</b>（交易所、货币基金、日本银行的息差）；第二档<b>还在慢慢来的路上</b>（寿险的再投资，以年计）；第三档<b>看起来在受益、其实是假的</b>（券商的净息差在收窄、银行的量增和价差背离、交易所股价被监管竞争压过）。</p>
+<p>三档混在一起看，最典型的后果是：<strong>在最高点买最贵的那一个</strong>。</p>
+</div>
+
+<div class="verdict">
+一句话定性：<b>利率上升的受益方不是「低估值股」，是「现金流能重定价的资产负债表」。</b>最纯的受益者不是最便宜的，而是那些<b>别人把钱存在它那里、而它自己不用为此付息</b>的机构——货币基金、交易所的抵押品池、保险浮存金。判据只有一个：<b>利差是否走阔</b>，不是余额是否变大，更不是估值是否便宜。
+</div>
+
+<h2>一、先把「受益」两个字钉死：这是一次从债务人到债权人的转移</h2>
+
+<p>「利好哪些资产」这个问题容易答错，是因为它默认利率上升是个单向的宏观事件。实际上它的传导是<strong>逐份合同</strong>发生的：每一张浮息借据、每一笔到期再投资、每一次央行议息，都在把一部分现金流从甲方挪到乙方。</p>
+
+<table>
+<tr><th>谁在付钱</th><th>谁在收钱</th><th>判据（看这一个数就够）</th></tr>
+<tr><td>政府再融资（美国联邦债务已破 <strong>$40 万亿</strong>，年内到期逾 <strong>$8.4 万亿</strong>）</td><td>短端现金持有者（货币基金、T-bill、T-bill 阶梯）</td><td>3M T-bill 收益率 <strong>3.74–4.08%</strong>（口径见边界节）</td></tr>
+<tr><td>高杠杆企业（浮息债、快到期的固定债）</td><td>银行（存贷利差）</td><td>日本三大行国内存贷利差 <strong>扩 20–23bp</strong>；美国大行 NII 增速</td></tr>
+<tr><td>长久期资产持有者（公用事业、REITs、长久期成长股）</td><td>交易所与清算所（对波动收费 + 抵押品浮存金）</td><td>CME 抵押品池毛收益 <strong>$52.5 亿</strong> vs 固定利率债务 $34.5 亿（47:1）</td></tr>
+<tr><td>旧保单持有人（当年锁定的低保证利率）</td><td>保险公司的股东（再投资收益率）</td><td>日本第一生命正利差 <strong>+31%</strong>；美国寿险净投资收益率 <strong>4.6%</strong></td></tr>
+</table>
+
+<div class="fig">
+<svg viewBox="0 0 680 272" width="100%" height="272" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="272" fill="#101013"/>
+  <rect x="30" y="42" width="212" height="196" rx="10" fill="#141417" stroke="#1f1f23"/>
+  <text x="136" y="70" fill="#f5f5f7" font-size="13" text-anchor="middle" font-weight="600">付钱的一方</text>
+  <text x="48" y="102" fill="#d1d1d6" font-size="11.5">政府再融资（$40 万亿）</text>
+  <text x="48" y="132" fill="#d1d1d6" font-size="11.5">高杠杆企业（浮息债）</text>
+  <text x="48" y="162" fill="#d1d1d6" font-size="11.5">长久期资产持有者</text>
+  <text x="48" y="192" fill="#d1d1d6" font-size="11.5">旧保单（低保证利率）</text>
+  <text x="48" y="222" fill="#86868b" font-size="10.5">利率上升让他们的成本先动</text>
+  <line x1="252" y1="140" x2="404" y2="140" stroke="#ff9f0a" stroke-width="2"/>
+  <polygon points="404,140 392,133 392,147" fill="#ff9f0a"/>
+  <text x="328" y="122" fill="#ff9f0a" font-size="12" text-anchor="middle" font-weight="600">利率上升 = 转移</text>
+  <text x="328" y="164" fill="#86868b" font-size="10.5" text-anchor="middle">总量不增，只换手</text>
+  <rect x="432" y="42" width="218" height="196" rx="10" fill="#141417" stroke="#1f1f23"/>
+  <text x="541" y="70" fill="#f5f5f7" font-size="13" text-anchor="middle" font-weight="600">收租的一方</text>
+  <text x="450" y="102" fill="#d1d1d6" font-size="11.5">短端现金 / T-bill / 货币基金</text>
+  <text x="450" y="132" fill="#d1d1d6" font-size="11.5">银行（存贷利差）</text>
+  <text x="450" y="162" fill="#d1d1d6" font-size="11.5">交易所（波动 + 抵押品）</text>
+  <text x="450" y="192" fill="#d1d1d6" font-size="11.5">险企股东（再投资）</text>
+  <text x="450" y="222" fill="#86868b" font-size="10.5">他们的收入先动，成本滞后</text>
+  <text x="340" y="258" fill="#86868b" font-size="10.5" text-anchor="middle">同一个利率，对这两栏是两次方向相反的事件</text>
+</svg>
+<div class="cap">图 1：利率上升的转移方向——名单要从「谁的成本先动」反向找</div>
+</div>
+
+<div class="callout blue">
+<p><strong>这里有一个必须同时看的第二个变量：久期。</strong>「收益率高」和「在收租」是两件事。一只股息率 5% 的 REIT，在 5.18% 的无风险利率面前，安全垫是 <strong>负的</strong>——它不是在收租，它是在跟国债抢钱。所以下面所有名单都要配一个问题：<em>这笔现金流的久期有多长？</em></p>
+</div>
+
+<h2>二、第一成色：已经进了利润表（交易所、货币基金、日本银行）</h2>
+
+<p>这一档质量最高，因为它不需要预测——报表上已经有数了。买入的风险不在「逻辑成不成立」，而在「价格反映到什么程度」（这一层留到第七节）。</p>
+
+<h3>① 交易所：对波动收费，且拿着别人的钱</h3>
+
+<p>交易所的商业模式在这个环境里是双份受益：<strong>交易量本身随利率波动放大</strong>，同时它<strong>代持了巨额客户抵押品</strong>，在高利率下产生本不属于交易业务的投资收益。</p>
+
+<table>
+<tr><th>指标（CME，2026 年 8 月）</th><th>读数</th><th>同比</th></tr>
+<tr><td>全品种日均成交量（ADV）</td><td><strong>2,970 万张</strong>（史上第二高）</td><td><span class="up">+6%</span></td></tr>
+<tr><td>利率类 ADV</td><td>1,670 万张（最大业务线）</td><td><span class="up">+3%</span></td></tr>
+<tr><td>美国国债期货与期权 ADV</td><td>1,180 万张</td><td><span class="up">+15%</span></td></tr>
+<tr><td><strong>30 年期美债期货 ADV</strong></td><td>85.2 万张（曲线长端最敏感）</td><td><span class="up">+37%</span></td></tr>
+<tr><td>Ultra 美债期货 ADV</td><td>79.1 万张（<strong>该品种历史纪录</strong>）</td><td>—</td></tr>
+<tr><td>BrokerTec 日均名义成交</td><td><strong>$1.059 万亿</strong></td><td><span class="up">+16%</span></td></tr>
+</table>
+
+<p class="sub" style="margin-top:-6px">来源：CME Group 2026-09-02 月度成交量公告（一手来源）。</p>
+
+<p>更被忽略的是抵押品那条腿：CME 的客户保证金抵押品滚动三个月均值（至 2026 年 7 月）为<strong>现金 $1,470 亿 + 非现金 $1,660 亿</strong>；此前一个完整年度口径显示抵押品池约 <strong>$1,641 亿</strong>，产生毛投资收益 <strong>$52.5 亿</strong>（隐含收益率约 <strong>3.95%</strong>），而公司固定利率债务仅 <strong>$34.5 亿</strong>——<strong>47:1</strong>。也就是说，利率上行的这部分收益，<em>几乎全部留在交易所自己口袋里</em>。</p>
+
+<h3>② 货币基金：这次转移最纯粹的容器</h3>
+
+<p>钱确实动了，而且看得到：美国货币市场基金总资产（ICI 口径）在 9 月一路维持在 <strong>$7.9 万亿上方</strong>——9/2 为 $7.979 万亿、9/9 为 $7.973 万亿、9/16 为 $7.921 万亿、<strong>9/23 为 $7.936 万亿</strong>（周环比 +$150 亿）。其中<strong>政府型基金占 $6.53 万亿</strong>（约 82%），零售 $3.11 万亿、机构 $4.82 万亿。</p>
+
+<p>头部零售基金收益率：VMFXX 约 <strong>4.1%</strong>，SPAXX / SWVXX 相近；6 个月期国库券拍卖约 <strong>4.2%（且免州税）</strong>，12 个月期大额存单约 <strong>4.4%</strong>。放在 0.4% 左右的全国平均储蓄利率旁边，这是二十年来第一次「什么都不做也在拿钱」。</p>
+
+<div class="callout">
+<p><strong>但必须提前说一句：这个受益自带到期日。</strong>货币基金的收益率几乎完全跟随政策利率，联储一转向，几周内就消失。所以正确的动作不是「持有现金」，而是<strong>管理现金的到期日</strong>——用 3 / 6 个月 T-bill 阶梯把今天 4.2–4.3% 的水平锁住一段时间。这一条在第六节展开。</p>
+</div>
+
+<h3>③ 日本银行：这一轮最干净的「从 0 到 1」</h3>
+
+<p>美国银行是「从 5 到 5」的边际重定价，日本银行是「从 0 到 1」的一代人才有一次的重定价。硬数据已经在报表里：</p>
+
+<table>
+<tr><th>公司</th><th>FY2026 Q1 净利润</th><th>国内存贷利差</th><th>ROE</th><th>PBR（9 月）</th></tr>
+<tr><td>三菱日联 8306.T</td><td><strong>¥8,094 亿</strong>（<span class="up">+48.2%</span>）</td><td>0.95% → <strong>1.15%</strong></td><td>10.78% → <strong>14.40%</strong></td><td>约 <strong>1.82×</strong></td></tr>
+<tr><td>三井住友 8316.T</td><td><strong>¥5,014 亿</strong>（<span class="up">+33%</span>）</td><td>1.08% → <strong>1.31%</strong></td><td>—</td><td>约 1.7×（估）</td></tr>
+<tr><td>瑞穗 8411.T</td><td><strong>¥4,229 亿</strong>（<span class="up">+45.5%</span>）</td><td>1.10% → <strong>1.26%</strong></td><td>—</td><td>约 1.15×（估）</td></tr>
+</table>
+<p class="sub" style="margin-top:-6px">口径：FY2026 Q1 = 2026 年 4–6 月；ROE 为东证基准口径；PBR 以 2026-09-01 至 09-11 收盘为基础，三井住友与瑞穗为第三方估算（<b>非一手，需核实</b>）。来源：各公司 FY2026 Q1 财报 + 日经 / Bloomberg 转述。</p>
+
+<p>机制的颗粒度可以看三井住友：<strong>贷款平均收益率一年上行 32bp 至 1.34%，而存款成本只上行 14bp 至 0.20%</strong>，利差扩到 1.14%。公司给的敏感度指引是：<em>日银每加息 0.25%，中长期利息收入约增加 ¥1,500 亿</em>。</p>
+
+<div class="fix">
+<div class="h">⚠ 同一档里的例外，必须先看</div>
+<p>上述是<strong>利润表</strong>的成色，不是<strong>股价</strong>的成色。日本银行指数年内已 <strong>+50.23%</strong>、保险 <strong>+40.83%</strong>（至 9/18），TOPIX 银行过去 12 个月总回报约 <strong>78%</strong>（同期 TOPIX 约 38%）。三菱日联 PBR 从历史常态的「1 倍以下」抬到 1.82×。<strong>故事已经被发现了，而且付了钱。</strong>第七节用一个公式把这件事算清楚。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 288" width="100%" height="288" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="288" fill="#101013"/>
+  <line x1="72" y1="252" x2="648" y2="252" stroke="#1f1f23"/>
+  <line x1="72" y1="62" x2="72" y2="252" stroke="#1f1f23"/>
+  <line x1="187" y1="62" x2="187" y2="252" stroke="#17171b"/>
+  <line x1="302" y1="62" x2="302" y2="252" stroke="#17171b"/>
+  <line x1="417" y1="62" x2="417" y2="252" stroke="#17171b"/>
+  <line x1="532" y1="62" x2="532" y2="252" stroke="#17171b"/>
+  <text x="72" y="268" fill="#86868b" font-size="10.5" text-anchor="middle">0</text>
+  <text x="187" y="268" fill="#86868b" font-size="10.5" text-anchor="middle">1 年</text>
+  <text x="302" y="268" fill="#86868b" font-size="10.5" text-anchor="middle">2 年</text>
+  <text x="417" y="268" fill="#86868b" font-size="10.5" text-anchor="middle">3 年</text>
+  <text x="532" y="268" fill="#86868b" font-size="10.5" text-anchor="middle">4 年</text>
+  <text x="648" y="268" fill="#86868b" font-size="10.5" text-anchor="middle">5 年</text>
+  <text x="66" y="86" fill="#5ac8fa" font-size="12" text-anchor="end" font-weight="600">第一成色</text>
+  <text x="66" y="103" fill="#86868b" font-size="10" text-anchor="end">已进利润表</text>
+  <line x1="72" y1="96" x2="110" y2="96" stroke="#5ac8fa" stroke-width="2"/>
+  <circle cx="110" cy="96" r="5" fill="#5ac8fa"/>
+  <text x="122" y="93" fill="#d1d1d6" font-size="11">货币基金 / T-bill 收益率（即时）</text>
+  <line x1="72" y1="126" x2="187" y2="126" stroke="#5ac8fa" stroke-width="2"/>
+  <circle cx="187" cy="126" r="5" fill="#5ac8fa"/>
+  <text x="199" y="123" fill="#d1d1d6" font-size="11">银行 NII / 存贷利差（0–2 个季度）</text>
+  <line x1="72" y1="156" x2="115" y2="156" stroke="#5ac8fa" stroke-width="2"/>
+  <circle cx="115" cy="156" r="5" fill="#5ac8fa"/>
+  <text x="127" y="153" fill="#d1d1d6" font-size="11">交易所成交量 + 抵押品收益（即时）</text>
+  <text x="66" y="188" fill="#bf5af2" font-size="12" text-anchor="end" font-weight="600">第二成色</text>
+  <text x="66" y="205" fill="#86868b" font-size="10" text-anchor="end">慢变量</text>
+  <line x1="72" y1="198" x2="470" y2="198" stroke="#bf5af2" stroke-width="2" stroke-dasharray="5 4"/>
+  <circle cx="470" cy="198" r="5" fill="#bf5af2"/>
+  <text x="482" y="195" fill="#d1d1d6" font-size="11">寿险再投资收益率（2–5 年）</text>
+  <text x="66" y="230" fill="#ff453a" font-size="12" text-anchor="end" font-weight="600">第三成色</text>
+  <text x="66" y="247" fill="#86868b" font-size="10" text-anchor="end">看起来是假的</text>
+  <line x1="72" y1="240" x2="130" y2="240" stroke="#ff453a" stroke-width="2"/>
+  <circle cx="130" cy="240" r="5" fill="none" stroke="#ff453a" stroke-width="2"/>
+  <text x="142" y="237" fill="#ff453a" font-size="11">券商 NIM 收窄 / 银行量增价差背离</text>
+  <text x="360" y="42" fill="#86868b" font-size="11" text-anchor="middle">横轴 = 这笔收益落到利润表的年份（示意）；纵轴 = 成色分档</text>
+</svg>
+<div class="cap">图 2：同一份名单，落到利润表的时间差可以横跨五年</div>
+</div>
+
+<h2>三、第二成色：慢变量——寿险的再投资时钟</h2>
+
+<p>寿险是本文最容易被高估的一档。它的逻辑无可挑剔：先收保费、后赔付，中间那笔钱（浮存金）配置在久期匹配的债券上，到期滚到更高收益，利差自然扩大。问题在于<strong>它只能通过到期滚动实现</strong>——你不能把当年 1% 买的债券卖掉再买 5% 的，那会立刻实现巨额资本损失。</p>
+
+<table>
+<tr><th>标的</th><th>读数</th><th>时点 / 口径</th></tr>
+<tr><td>大都会人寿 MET</td><td>净投资收益率 <strong>5.3%</strong>（2024 年 4.77%）；投资组合约 $4,500 亿，逾 85% 为固收 + 按揭</td><td>2026 Q2</td></tr>
+<tr><td>保德信 PRU</td><td>投资组合约 $4,500 亿，约 73% 为债券</td><td>2026 Q1 / Q2</td></tr>
+<tr><td><strong>美国寿险业整体</strong></td><td>净投资收益率升至 <strong>4.6%</strong>（前值 4.5%）</td><td>2025 年（行业口径）</td></tr>
+<tr><td>第一生命 8750.T</td><td>正利差（投资收益率 − 保证利率）扩大 <strong>¥540 亿至 ¥2,269 亿（+31%）</strong>；投资收益率 2.7% → <strong>3.2%</strong>；股息 <span class="up">+32%</span></td><td>FY2026 Q1 / 全年指引</td></tr>
+<tr><td>日本寿险业（代价面）</td><td>净资本赤字从 <strong>$28 亿扩大至 $126 亿</strong>（证券处置损失）；Nippon Life ESR 195% → 190%</td><td>FY2025，日本金融厅口径</td></tr>
+</table>
+
+<div class="callout red">
+<p><strong>这一档最容易犯的错，是把「慢」当成「快」。</strong>两个反向证据必须并排放：</p>
+<p>① 大都会人寿 Q2 的<strong>总利差只有 97bp，低于它自己 100–120bp 的指引区间</strong>（公司解释为私募股权回报滞后）；GAAP 净利润仅 +1%，而调整后盈利 +15%——差额来自市值波动的会计损失。真正拉动它近期盈利的是<strong>死亡率改善、承保纪律和业务量</strong>，不是利率。</p>
+<p>② 日本寿险在资产端受益的同时，<strong>负债端的退保风险（mass lapse risk）在上升</strong>——高利率让旧保单失去竞争力，而日本寿险的<strong>权益资产占比高达 16–17%（住友生命 16%、明治安田约 17%）</strong>，远高于美欧同业。<em>这是同一条利率消息的两面：资产端在变好，负债端和资本充足率在变差。</em></p>
+</div>
+
+<h2>四、第三成色：假受益——三个反例</h2>
+
+<p>这一节是本文最实用的部分。三家公司，报表数字都在涨，但<strong>如果只看「涨」就买，会买到最贵的那一种</strong>。</p>
+
+<table>
+<tr><th>反例</th><th>看起来在受益</th><th>实际读数</th><th>为什么是假的</th></tr>
+<tr><td><strong>① 券商</strong><br>盈透证券 IBKR</td><td>Q2 净利息收入 <strong>$10.6 亿</strong>（<span class="up">+23%</span>），占营收约 54%；客户闲置现金 <strong>$1,824 亿</strong>；客户权益 $9,303 亿（+40%）；保证金贷款 $1,085 亿（+67%）</td><td>净息差从 <strong>2.07% 收窄至 1.93%</strong>；客户保证金贷收益率从 4.67% <strong>降至 4.10%</strong></td><td>增长来自<b>余额扩大</b>（客户数 +34%、资产 +40%），不是<b>利差走阔</b>。这是规模故事，不是利率故事。每 25bp 加息约 +$8,100 万年化 NII——赚的是量</td></tr>
+<tr><td><strong>② 银行</strong><br>富国银行 WFC</td><td>Q2 净利润 <strong>$64.07 亿</strong>（<span class="up">+17%</span>）</td><td>净息差从 <strong>2.68% 降至 2.43%</strong></td><td>量增而价差缩。同一行业里 JPM 的 NII +10%、BAC +9%、SCHW 净息差 2.66%→3.00%，说明<b>「加息利好银行」不是行业属性，是公司属性</b></td></tr>
+<tr><td><strong>③ 交易所股价</strong><br>CME / ICE / NDAQ</td><td>成交量创纪录（见第二节），抵押品收益结构性抬升</td><td>年内股价：CME <span class="up">+0.56%</span>、NDAQ <span class="dn">−2.70%</span>、ICE <span class="dn">−3.74%</span>（CBOE +3.57%）</td><td>市场在给<b>长期竞争</b>定价——CFTC 批准 Kalshi 与 Coinbase 的永续加密期货。业务在变好、估值在被重新分配，两者不是同一件事</td></tr>
+</table>
+
+<div class="callout red">
+<p><strong>三个反例共用一个判据：看利差，不看余额。</strong>余额扩大可以是客户数增长、可以是市场上涨、可以是会计并表；只有<strong>单位资产的收益率差在走阔</strong>，才证明这次转移真的落到了它头上。</p>
+</div>
+
+<h2>五、被误认为受益的三类：久期陷阱</h2>
+
+<p>名单的另一侧不是「没受益」，而是<strong>看着像受益、实际在付钱</strong>。它们的共同特征：<em>名字听着像收息，现金流久期却最长。</em></p>
+
+<h3>① 公用事业与 REITs：收入理由已经输了</h3>
+
+<table>
+<tr><th>板块（至 2026-09-23）</th><th>当日</th><th>近一月</th><th>近一季</th><th>年内</th></tr>
+<tr><td><strong>公用事业</strong></td><td><span class="dn">−1.83%</span></td><td><span class="dn">−6.82%</span></td><td><span class="dn">−12.23%</span>（全行业最差）</td><td><span class="dn">−6.69%</span></td></tr>
+<tr><td>房地产（REITs 为主）</td><td><span class="dn">−1.50%</span></td><td><span class="dn">−7.37%</span></td><td><span class="dn">−5.79%</span></td><td><span class="up">+3.37%</span></td></tr>
+<tr><td>必需消费</td><td><span class="dn">−0.35%</span></td><td><span class="dn">−3.47%</span></td><td><span class="dn">−2.72%</span></td><td><span class="up">+5.34%</span></td></tr>
+</table>
+<p class="sub" style="margin-top:-6px">来源：Finviz 板块口径（2026-09-23）。公用事业远期 PE 15.04×、P/B 1.91×，但未来五年 EPS 增速预期仅 <strong>10.70%</strong>，为各行业最低之一。</p>
+
+<p>算一遍就清楚了：公用事业类基金的分红率约 <strong>2.8%</strong>，而 10 年期美债 <strong>5.18%</strong>、30 年期 <strong>5.48%</strong>。这不是「便宜」，这是<strong>负安全垫 −2.4pp</strong>。杜克能源一档的分红率约 3.6%，仍低于无风险利率。公用事业还多挨一刀：它是最重资产的行业，高利率同时抬高折现率<em>和</em>融资成本。</p>
+
+<div class="callout blue">
+<p><strong>但不能一刀切，要按「谁承担成本」拆开：</strong>受管制的电力（NEE / SO / DUK / AEP 这类）本质上是<strong>债券替代品</strong>，AI 用电故事排在第二位；merchant 或已签长约的独立发电（核电 PPA 型）更接近<strong>AI 合同故事</strong>，对 25bp 不敏感；电网设备是<strong>工业贝塔</strong>，不是公用事业久期。同一波 AI 电力需求里，铀行业近一月 <span class="dn">−13.04%</span>——<strong>合同在变多，估值在被久期惩罚</strong>。这与 P41/P51 的「电与冷的卡点」结论不冲突：那讲的是合同的量，这讲的是现金流被折现的方式。</p>
+</div>
+
+<h3>② 黄金：方向对，时机未到（P64 结论的延续与强化）</h3>
+
+<p>P64 已定过这个判断，本轮补上了更硬的证据——而且证据的方向是<strong>反向</strong>的：</p>
+
+<table>
+<tr><th>指标</th><th>读数</th><th>含义</th></tr>
+<tr><td>现货金价</td><td>$4,215–4,286（09-26 至 09-28）</td><td>较 1/29 的纪录 $5,405 回撤约 <strong>21%</strong>，按常规定义已进入熊市</td></tr>
+<tr><td>10 年期 TIPS 实际利率</td><td><strong>2.83–2.85%</strong>（09-24 收 2.85%）</td><td>2008-11 以来最高——黄金的分母在剧烈恶化</td></tr>
+<tr><td>央行购金（Q2 2026）</td><td>288.9 吨（<span class="up">+62%</span>，史上最强 Q2）</td><td>表面利多</td></tr>
+<tr><td><strong>央行购金（H1 2026）</strong></td><td><strong>345 吨 = 2022 年以来最弱上半年</strong></td><td>把单季当常态是定价错误：同比 2025 同期约 160 吨（已报告口径）对今年约 130 吨</td></tr>
+<tr><td>Q1 数据修订</td><td>初值 244 吨 → 重分类为 OTC 后<strong>下修至 57 吨</strong></td><td>所谓「结构性买盘」的可观测性比表面差</td></tr>
+<tr><td>黄金 ETF</td><td>Q2 净流出 <strong>45 吨</strong></td><td>价格敏感的增量买家在撤</td></tr>
+<tr><td>成本支撑</td><td>$4,400 约为成本支撑的 <strong>2 倍</strong></td><td>回收金增加、矿山重启、新项目推进——供给是慢杠杆但方向已定</td></tr>
+</table>
+
+<p>结论不变，且更明确：<strong>黄金的分子（货币信用）没被定价，分母（实际利率 2.83%）在恶化。</strong>发令枪是实际利率见顶；更强的情景是「央行在通胀没解决时被迫投降」。在发令枪响之前，「实际利率创新高、金价却创新低」的组合会继续。</p>
+
+<div class="callout">
+<p><strong>一句话概括这一节：30 年期美债 5.48% 已经跑赢了大多数人「为收息而买」的股票。</strong>这不是让人去买 30 年债（它的久期风险是本篇批评的对象），而是说——<em>当你为收息付钱时，先问一句：它的现金流久期，配得上这个收益率吗？</em></p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" width="100%" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="300" fill="#101013"/>
+  <line x1="70" y1="252" x2="650" y2="252" stroke="#1f1f23"/>
+  <line x1="70" y1="61.6" x2="650" y2="61.6" stroke="#ff453a" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="654" y="58" fill="#ff453a" font-size="10.5" text-anchor="end">10 年期美债 5.18% —— 收息的替代品价格</text>
+  <rect x="85" y="97.3" width="60" height="154.7" fill="#5ac8fa" opacity="0.85"/>
+  <text x="115" y="88" fill="#5ac8fa" font-size="11" text-anchor="middle">4.20%</text>
+  <text x="115" y="270" fill="#86868b" font-size="10.5" text-anchor="middle">6M T-bill</text>
+  <text x="115" y="284" fill="#86868b" font-size="9.5" text-anchor="middle">久期≈0</text>
+  <rect x="175" y="140.4" width="60" height="111.6" fill="#ff453a" opacity="0.85"/>
+  <text x="205" y="131" fill="#ff453a" font-size="11" text-anchor="middle">3.10%</text>
+  <text x="205" y="270" fill="#86868b" font-size="10.5" text-anchor="middle">公用事业股息</text>
+  <text x="205" y="284" fill="#86868b" font-size="9.5" text-anchor="middle">久期最长</text>
+  <rect x="265" y="121.1" width="60" height="130.9" fill="#ff9f0a" opacity="0.85"/>
+  <text x="295" y="112" fill="#ff9f0a" font-size="11" text-anchor="middle">3.60%</text>
+  <text x="295" y="270" fill="#86868b" font-size="10.5" text-anchor="middle">杜克能源一档</text>
+  <text x="295" y="284" fill="#86868b" font-size="9.5" text-anchor="middle">受管制</text>
+  <rect x="355" y="70.2" width="60" height="181.8" fill="#bf5af2" opacity="0.85"/>
+  <text x="385" y="61" fill="#bf5af2" font-size="11" text-anchor="middle">5.05%</text>
+  <text x="385" y="270" fill="#86868b" font-size="10.5" text-anchor="middle">净租 REIT</text>
+  <text x="385" y="284" fill="#86868b" font-size="9.5" text-anchor="middle">久期长+杠杆</text>
+  <rect x="445" y="61.6" width="60" height="190.4" fill="#f5f5f7" opacity="0.9"/>
+  <text x="475" y="52" fill="#f5f5f7" font-size="11" text-anchor="middle">5.18%</text>
+  <text x="475" y="270" fill="#86868b" font-size="10.5" text-anchor="middle">10Y 美债</text>
+  <text x="475" y="284" fill="#86868b" font-size="9.5" text-anchor="middle">久期中</text>
+  <rect x="535" y="50.7" width="60" height="201.3" fill="#f5f5f7" opacity="0.55"/>
+  <text x="565" y="41" fill="#d1d1d6" font-size="11" text-anchor="middle">5.48%</text>
+  <text x="565" y="270" fill="#86868b" font-size="10.5" text-anchor="middle">30Y 美债</text>
+  <text x="565" y="284" fill="#86868b" font-size="9.5" text-anchor="middle">久期最长</text>
+  <text x="360" y="26" fill="#86868b" font-size="11" text-anchor="middle">红线以下 = 对无风险利率的负安全垫（公用事业 −2.08pp）</text>
+</svg>
+<div class="cap">图 3：收息资产的「安全垫」——分红率减去无风险利率</div>
+</div>
+
+<h2>六、被忽略的受益方：现金（但它自带到期日）</h2>
+
+<p>这一节直接落在账户上。持有现金在这轮环境里<strong>不是「没上车」，而是名单里排名第一、且零久期风险的那一档</strong>——P64 已经点过，这里把它变成可执行的三件事。</p>
+
+<table>
+<tr><th>工具</th><th>收益率</th><th>久期风险</th><th>流动性与税</th></tr>
+<tr><td>货币市场基金（VMFXX / SPAXX / SWVXX）</td><td>约 <strong>4.1%</strong></td><td>无</td><td>T+1 可取；证券账户保护而非存款保险</td></tr>
+<tr><td>3–6 个月国库券（T-bill）</td><td>约 <strong>4.2%</strong>（拍卖口径）</td><td>无（持有到期）</td><td><strong>免州税</strong>；到期前卖出有微小价格风险</td></tr>
+<tr><td>12 个月大额存单（CD）</td><td>约 <strong>4.4%</strong></td><td>无</td><td>锁定今天水平；提前支取有罚息</td></tr>
+<tr><td>10 年期 TIPS</td><td><strong>实际 2.65–2.83%</strong></td><td>中高（利率风险）</td><td>这才是「抗购买力贬值」的正版工具，但<b>不是现金</b></td></tr>
+<tr><td>长久期国债（TLT / ZROZ 型）</td><td>票息约 4.6%，但<strong>资本损失远大于票息</strong></td><td>极高</td><td>参考：TLT 年内 <span class="dn">−6.06%</span>、ZROZ <span class="dn">−9.68%</span>，而短端现金类 <span class="up">+2.59%</span></td></tr>
+</table>
+
+<div class="callout red">
+<p><strong>唯一需要主动管理的是「到期日」，不是「买什么」。</strong>现金的收益率几乎完全跟随政策利率——这个受益<strong>自带日历</strong>。用 3 / 6 个月 T-bill 阶梯，把今天 4.2–4.3% 的水平锁住 3–6 个月，比猜联储下次动作划算得多；同时保留随时可动的那一层（货币基金）。<em>代价是明确的：如果联储转向降息，这些收益率会在几周内消失——这就是持有现金的机会成本，不是「贬值」。</em></p>
+</div>
+
+<h2>七、美日不对称：决定受益强度的不是终点，是起点</h2>
+
+<p>同一件事（长端利率高企）在日本和美国，是两种性质完全不同的事件。<strong>判断受益强度，看的应该是「起点在哪」，而不是「现在多高」。</strong></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 256" width="100%" height="256" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="256" fill="#101013"/>
+  <text x="176" y="44" fill="#86868b" font-size="10.5" text-anchor="end">日本 · 政策利率</text>
+  <line x1="180" y1="52" x2="620" y2="52" stroke="#1f1f23"/>
+  <rect x="180" y="36" width="120" height="16" fill="#5ac8fa" opacity="0.9"/>
+  <rect x="300" y="36" width="72" height="16" fill="none" stroke="#5ac8fa" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="180" y="28" fill="#86868b" font-size="10">起点 0%（负利率时代）</text>
+  <text x="240" y="76" fill="#5ac8fa" font-size="11" text-anchor="middle">已走 1.25pp</text>
+  <text x="336" y="76" fill="#5ac8fa" font-size="11" text-anchor="middle">余 0.75pp</text>
+  <text x="392" y="76" fill="#86868b" font-size="10" text-anchor="start">（至市场讨论的 2%）</text>
+  <text x="176" y="140" fill="#86868b" font-size="10.5" text-anchor="end">美国 · 联邦基金利率</text>
+  <line x1="180" y1="148" x2="620" y2="148" stroke="#1f1f23"/>
+  <rect x="180" y="132" width="372" height="16" fill="#ff9f0a" opacity="0.9"/>
+  <rect x="552" y="132" width="22" height="16" fill="none" stroke="#ff9f0a" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="180" y="124" fill="#86868b" font-size="10">起点 0%（2022-03）</text>
+  <text x="366" y="172" fill="#ff9f0a" font-size="11" text-anchor="middle">已走 3.75–4.00pp</text>
+  <text x="586" y="172" fill="#ff9f0a" font-size="11" text-anchor="end">余 0.1–0.35pp（点阵图 4.1%）</text>
+  <line x1="180" y1="196" x2="620" y2="196" stroke="#2c2c31"/>
+  <text x="180" y="218" fill="#d1d1d6" font-size="11.5">股价已反映的幅度</text>
+  <text x="180" y="238" fill="#ff453a" font-size="11.5">日本：银行 +50.2% / 保险 +40.8%（年内，至 9-18）</text>
+  <text x="440" y="238" fill="#86868b" font-size="11.5">美国：JPM +8.0% / BAC +4.8% / C +16.8%</text>
+</svg>
+<div class="cap">图 4：起点决定剩余空间——同样的 25bp，对日本是「世代事件」，对美国是「边际调整」</div>
+</div>
+
+<h3>用 42 / 43 号灵魂的尺子量一遍日本银行</h3>
+
+<p>这里的核对不是可选项。P52 的教训（「破净不是期权，是 ROE 的读数」）反过来同样成立：<strong>贵也要能回答为什么贵。</strong></p>
+
+<table>
+<tr><th>三菱日联的算式</th><th>数值</th><th>说明</th></tr>
+<tr><td>ROE（东证基准，FY2026 Q1）</td><td><strong>14.40%</strong></td><td>公司财报口径，同比由 10.78% 上行</td></tr>
+<tr><td>股东资本成本的假设区间</td><td><strong>8.5–9.0%</strong></td><td><em>本文自设</em>，非公司披露；用于开启算式</td></tr>
+<tr><td>ROE ÷ COE = 可持续 PBR</td><td><strong>1.60–1.69×</strong></td><td>14.40 / 9.0 与 14.40 / 8.5</td></tr>
+<tr><td>当前 PBR</td><td><strong>1.82×</strong>（9 月）</td><td>来源：IR Bank / Yahoo Finance，多源交叉</td></tr>
+<tr><td><strong>结论：安全垫</strong></td><td><strong>≈ 0 或略负</strong></td><td>股价已把「ROE 继续上行」这件事提前兑现了</td></tr>
+</table>
+
+<div class="callout red">
+<p><strong>这正是这篇报告最重要的一句「不」。</strong>日本银行是本轮最干净的基本面受益者，<em>但它已经不是最干净的买入对象</em>——它的受益已经写进了利润表，也写进了股价。要继续向上，需要三件尚未发生的事：<strong>① 利差继续走阔快于存款成本</strong>（存款成本传递率已约 40% 且竞争在加剧）；<strong>② 信用成本不上行</strong>（借款人再融资成本在升）；<strong>③ ROE 从 14.4% 继续往上走</strong>（有机构预计三菱日联自 FY2027 起利润增速回落至约 5%，理由是全球降息与海外权益贡献下降——三井住友约三分之一的贷款在海外）。<em>缺一件，1.82× 的 PBR 就是天花板而不是起点。</em></p>
+</div>
+
+<h2>八、钱的流向：谁在给谁付钱（可观测的痕迹）</h2>
+
+<table>
+<tr><th>观察到的动作</th><th>读数</th><th>它说明什么</th></tr>
+<tr><td>货币基金规模</td><td>9 月维持在 <strong>$7.9 万亿上方</strong>（9/2 峰值 $7.979 万亿）</td><td>30 年期 5.48% 抬高了「收息」的机会成本，收入型资金被抽到短端</td></tr>
+<tr><td>公用事业被卖</td><td>近一季 <span class="dn">−12.23%</span>（全行业最差）</td><td>不是需求崩了，是它的分红在 5.18% 面前失去竞争力</td></tr>
+<tr><td>日本投资者</td><td>2026 Q1 净卖出约 <strong>$296 亿</strong>美国债券</td><td>本国收益率抬升后，最不需要美元久期的买家在回流</td></tr>
+<tr><td>伯克希尔的动作</td><td>Q2 末（2026-06-30）：T-bill <strong>$3,249 亿</strong> + 现金 <strong>$406 亿</strong> = <strong>$3,655 亿</strong>；按 3M 收益率 3.74% 计，T-bill 年化毛利息<strong>约 $120 亿</strong>（另一源按 4.08% 计约 $149 亿）</td><td>连续 14 个季度净卖出股票。这笔「不动的现金」本身就在产生超过多数标普成分股全年净利的收入</td></tr>
+<tr><td>A 股 / 中国资产</td><td>富时罗素 9 月调整 A50：纳入半导体（中微、生益），剔除消费与周期白马</td><td>高利率环境下被动资金也在「卖久期、买现金流兑现更近的硬资产」</td></tr>
+</table>
+<p class="sub" style="margin-top:-6px">伯克希尔的 T-bill 与现金数额为其 Q2 2026 10-Q（截至 2026-06-30）的一手口径；Q1 2026 曾达历史峰值 <strong>$3,974 亿</strong>。年化利息为按当时短端收益率推算，<b>非公司披露</b>。另有源报 Q2 末「约 $3,590 亿」，差异源于统计范围与日期不同。</p>
+
+<div class="callout green">
+<p><strong>一条容易被忽略的对照：这条链上真正「越等越值钱」的只有现金。</strong>伯克希尔从 2023 到 2025 年平均持有约 $2,500 亿现金，拿到的 T-bill 利息约 $340 亿；同期若投标普 500，对应收益约 $1,550 亿——<strong>差额约 $1,210 亿是「等待的机会成本」</strong>。所以持有现金在这轮环境里是<em>有价格的正确</em>，不是免费的：它的收益是 4%，它的成本是踏空。</p>
+</div>
+
+<h2>九、落回账户：这四块各自站在哪一边</h2>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" width="100%" height="240" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="240" fill="#101013"/>
+  <text x="340" y="30" fill="#86868b" font-size="11" text-anchor="middle">利率上升的方向——谁是收租的，谁在付钱</text>
+  <rect x="28" y="52" width="146" height="120" rx="9" fill="#141417" stroke="#ff453a" stroke-width="1.2"/>
+  <text x="101" y="78" fill="#f5f5f7" font-size="13" text-anchor="middle" font-weight="600">AVGO 25.8%</text>
+  <text x="101" y="100" fill="#ff453a" font-size="11.5" text-anchor="middle">逆风 · 长久期</text>
+  <text x="101" y="124" fill="#d1d1d6" font-size="10.5" text-anchor="middle">折现率就是它的估值分母</text>
+  <text x="101" y="142" fill="#d1d1d6" font-size="10.5" text-anchor="middle">AI 资本开支因子</text>
+  <text x="101" y="160" fill="#86868b" font-size="10" text-anchor="middle">与 META 同一因子（P59）</text>
+  <rect x="186" y="52" width="146" height="120" rx="9" fill="#141417" stroke="#ff453a" stroke-width="1.2"/>
+  <text x="259" y="78" fill="#f5f5f7" font-size="13" text-anchor="middle" font-weight="600">TME 24.31%</text>
+  <text x="259" y="100" fill="#ff453a" font-size="11.5" text-anchor="middle">逆风 · 可选消费</text>
+  <text x="259" y="124" fill="#d1d1d6" font-size="10.5" text-anchor="middle">大中华消费敞口</text>
+  <text x="259" y="142" fill="#d1d1d6" font-size="10.5" text-anchor="middle">实际利率压制消费信贷</text>
+  <text x="259" y="160" fill="#86868b" font-size="10" text-anchor="middle">非防守股（魂 17）</text>
+  <rect x="344" y="52" width="146" height="120" rx="9" fill="#141417" stroke="#ff453a" stroke-width="1.2"/>
+  <text x="417" y="78" fill="#f5f5f7" font-size="13" text-anchor="middle" font-weight="600">NKE 19.67%</text>
+  <text x="417" y="100" fill="#ff453a" font-size="11.5" text-anchor="middle">逆风 · 可选消费</text>
+  <text x="417" y="124" fill="#d1d1d6" font-size="10.5" text-anchor="middle">信贷敏感型消费</text>
+  <text x="417" y="142" fill="#d1d1d6" font-size="10.5" text-anchor="middle">大中华区同样占比重</text>
+  <text x="417" y="160" fill="#86868b" font-size="10" text-anchor="middle">成本 39.03</text>
+  <rect x="502" y="52" width="146" height="120" rx="9" fill="#141417" stroke="#30d158" stroke-width="1.4"/>
+  <text x="575" y="78" fill="#f5f5f7" font-size="13" text-anchor="middle" font-weight="600">现金 30.2%</text>
+  <text x="575" y="100" fill="#30d158" font-size="11.5" text-anchor="middle">顺风 · 零久期</text>
+  <text x="575" y="124" fill="#d1d1d6" font-size="10.5" text-anchor="middle">短端 4%+，本轮唯一</text>
+  <text x="575" y="142" fill="#d1d1d6" font-size="10.5" text-anchor="middle">确定的受益者</text>
+  <text x="575" y="160" fill="#86868b" font-size="10" text-anchor="middle">受益自带到期日</text>
+  <text x="340" y="200" fill="#86868b" font-size="11" text-anchor="middle">三块权益同向承压，只有现金在收租——但现金的租约随时会到期</text>
+  <text x="340" y="222" fill="#86868b" font-size="10.5" text-anchor="middle">敞口结构（2026-09-12 口径）：AVGO 25.8% / TME 24.31% / NKE 19.67% / 现金约 30.2%</text>
+</svg>
+<div class="cap">图 5：四块持仓在这条链上的位置</div>
+</div>
+
+<table>
+<tr><th>板块</th><th>在这条链上的位置</th><th>需要盯的数</th></tr>
+<tr><td>AVGO 25.8%</td><td><strong>付钱的一方</strong>：它是 AI 资本开支的融资需求制造者之一（与 P63 甲骨文、P59 的 META 同一因子），同时自身是长久期成长资产，折现率上行直接压它的估值分母</td><td>长端利率；AI 资本开支指引；实际利率是否见顶</td></tr>
+<tr><td>TME 24.31%</td><td><strong>旁观的承压方</strong>：可选消费 + 大中华区，与实际利率、消费信贷、美元强弱都相关；已在 P50 改判为「非防守股」</td><td>内生增速（+1%）；回购是否继续；5.83 硬止</td></tr>
+<tr><td>NKE 19.67%</td><td><strong>信贷敏感的消费方</strong>：利率上升对可选消费是双重压制（消费信贷 + 库存融资）</td><td>大中华区收入；毛利率；34–36 条件单</td></tr>
+<tr><td>现金 ~30.2%</td><td><strong>收租方</strong>：本轮名单里排名第一、零久期风险，且是唯一确定的受益者</td><td>短端收益率（现在 4.1–4.2%）；<strong>到期日管理</strong>比选币种重要</td></tr>
+</table>
+
+<div class="callout">
+<p><strong>本篇不因为「利率受益方名单」增加任何仓位。</strong>理由有三条，都很硬：① 名单里最干净的日本银行，PBR 已到 1.82× 而 ROE 支撑只到 1.60–1.69×，<strong>安全垫≈0</strong>；② 银行与交易所都是<strong>顺周期信用暴露</strong>，与「稳健防守」的立档风格相反，且与现有三块权益同属风险资产因子；③ 名单里最没风险的那一档（现金）<strong>账户里已经有了，而且仓位是 30%</strong>。</p>
+<p>真正可执行的动作只有一件，且与选股无关：<strong>把约三成现金的「到期日」当成一个仓位来管</strong>——用 3 / 6 个月 T-bill 阶梯锁住今天 4.2–4.3% 的水平，同时保留随时可动的货币基金层。<em>这不是新仓位，是把已有仓位的收益率从「浮动」改成「锁定」。</em></p>
+</div>
+
+<h2>十、这份报告在体系里的位置</h2>
+
+<p>它不是一份新主题，而是把已经存在的几条线拧到同一个时点上：</p>
+
+<table>
+<tr><th>已有条款</th><th>本报告对它的应用</th></tr>
+<tr><td>灵魂第四十二条（破净不是期权，是 ROE 的读数）</td><td><strong>反向使用</strong>：MUFG PBR 1.82× ÷ ROE 14.40% ⇒ 隐含 COE ≈ 7.9%，低于合理区间 8.5–9.0% ⇒ 安全垫为零</td></tr>
+<tr><td>灵魂第四十三条（两把尺子打架时看 ROIC − WACC 的符号）</td><td>银行用 ROE ÷ COE；「每股收益涨」不是判据，「利差走阔」才是</td></tr>
+<tr><td>灵魂第四十七条（收费口按计费方式找）</td><td>交易所按「成交笔数 + 抵押品余额」双层收费，是这条链上唯一同时收<b>波动</b>和<b>浮存金</b>的位置</td></tr>
+<tr><td>灵魂第五十六条（抵押品成熟时间决定融资价格）</td><td>同一逻辑的另一面：公用事业的分红是「未成熟」的现金流，市场给它打折；货币基金的 4.1% 是「已成熟」的现金流，市场给满价</td></tr>
+<tr><td>灵魂第五十八条（利率的性质决定货币方向）</td><td>本轮主体是实际利率 ⇒ 受益方是<b>债权人</b>，不是黄金、不是实物</td></tr>
+<tr><td>灵魂第二十条（便宜要能回答为什么便宜）</td><td>公用事业便宜，是因为它的久期输给了国债；这个「为什么」解释了便宜，也否掉了买入</td></tr>
+</table>
+
+<p>与 P63（甲骨文）的关系也值得点明：<strong>它们是同一件事的两面。</strong>AI 资本开支的巨额融资需求推高了长端利率与期限溢价；而被抬高的长端利率，反过来惩罚了所有靠久期吃饭的资产——包括公用事业、REITs、长久期成长股，也包括那些还没通电就被拿去融资的数据中心。</p>
+
+<h2>十一、本报告新增的三条灵魂</h2>
+
+<div class="soul">
+<div class="tag">体系灵魂第六十条</div>
+<div class="q"><strong>高利率是一次从债务人到债权人的转移，不是一次普遍的好消息。</strong><br>
+所以「利好哪些资产」这个问法本身就是错的——正确的问法是：<em>谁手里的合同能重定价，谁手里的合同被锁死了？</em><br><br>
+受益方名单＝<b>净债权人 + 浮息资产 + 对波动收费的收费口 + 能随通胀重定价的实物现金流</b>。<br>
+判据只有一个：<b>利差是否走阔</b>（不是余额是否变大，不是估值是否便宜，更不是股价是否已经涨）。<br><br>
+推论：① 「看起来便宜」和「在收租」是两件事，前者常是后者的反面（公用事业的分红率 2.8% 对无风险利率 5.18%）；② 名单必须<b>同时标注久期</b>，因为收息的替代品是国债，不是另一个收息的股票；③ 每一次这样的大转移里，都有三分之一的名字是<b>假受益</b>——识别方法就是利差。</div>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第六十一条</div>
+<div class="q"><strong>同一个利率，对不同市场是不同的事件——重定价的空间由起点决定，不由终点决定。</strong><br>
+日本政策利率从 0% 到 1.25%，是「从 0 到 1」；美国联邦基金利率从 0% 到 3.75–4.00%，是「从 0 到 4」。同样的 25bp，对前者是世代事件，对后者是边际调整。<br><br>
+判据：<b>先量「起点到现在的距离」，再量「现在到终点的剩余距离」</b>。日本剩余约 0.75pp（至市场讨论的 2%），美国剩余约 0.1–0.35pp（至点阵图 4.1%）。<br><br>
+推论：① 空间的判断不能看绝对水平（4% 很高但已走完），要看<b>已走距离 ÷ 起点</b>；② 更要紧的是把「空间」和「股价已反映的幅度」并排——日本银行年内 +50.2%，美国银行 +5% 到 +17%，<b>同样的基本面改善，付出的是完全不同的价格</b>；③ 起点低的市场里，第一年赚的是「重定价」，第二年起赚的是「盈利兑现」——<em>两者需要完全不同的证据</em>。</div>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第六十二条</div>
+<div class="q"><strong>别人存在你这里的钱，收益率与你自己的资产负债久期无关。</strong><br>
+这是货币基金、交易所抵押品池、保险浮存金共同的机制：利率上行时，这笔钱的再投资收益立即改善，而它们不必为此多付一分钱利息。<br><br>
+但这同时是最大的陷阱：<b>「余额变大」不等于「利差走阔」</b>。<br>
+- 券商（盈透）净利息收入 +23%，是因为客户闲置现金和保证金余额在涨；<b>而它的净息差是从 2.07% 收窄到 1.93%</b>。<br>
+- 银行（富国）净利润 +17%，<b>而它的净息差从 2.68% 降到 2.43%</b>。<br><br>
+判别式：<em>余额增长是规模故事，利差走阔才是利率故事。</em>把这条用错，会在「利率受益」的名义下买入一家靠扩表赚钱、而单位盈利能力在下降的公司。<br><br>
+附带一条：这份受益<b>自带到期日</b>。它的收益率跟随政策利率，政策转向后数周内消失——所以持有它的正确方式是管理到期日，而不是假设它会一直在。</div>
+</div>
+
+<h2>十二、哨位与边界</h2>
+
+<h3>按日期排的六个哨位</h3>
+
+<table>
+<tr><th>日期</th><th>哨位</th><th>看什么</th></tr>
+<tr><td><strong>2026-10-27 / 28</strong></td><td>FOMC 议息（市场此前定价加息概率约 64–68%）</td><td>这是「现金受益」这条腿的定价开关；也是长端利率的方向开关</td></tr>
+<tr><td>2026-10 中旬起</td><td>美国 Q3 财报季（银行打头）</td><td>逐家看 <strong>NII 指引 + 净息差方向 + 信用成本</strong>——三个数必须同向，才算真受益</td></tr>
+<tr><td>2026-11</td><td>日本银行中报（FY2026 上半年）</td><td>看存款成本传递率是否突破 40%；利差继续走阔 vs 开始见顶</td></tr>
+<tr><td>持续</td><td>10 年期 TIPS 实际利率能否站上 <strong>3.0%</strong></td><td>站上 = 黄金的「时机未到」继续；见顶回落 = 发令枪</td></tr>
+<tr><td>持续</td><td>日本寿险的 <strong>ESR / 净资本赤字</strong>披露</td><td>资产端受益与负债端退保风险，谁跑得更快</td></tr>
+<tr><td>持续</td><td>公用事业分红率与 10 年期美债的利差</td><td>负安全垫收敛（分红率追上利率）才是这一档的转折信号，不是股价跌多少</td></tr>
+</table>
+
+<h3>边界与口径分歧（必读）</h3>
+
+<ol>
+<li><strong>个股价格与估值多为第三方汇总数据，非一手行情。</strong>本报告中除日本三大行的 PBR（多源交叉：IR Bank / Yahoo Finance / 日经）与 CME 成交量（公司公告）外，其余个股价格、PE/PB、年内涨幅来自检索工具的汇总回传（标注 westock-data 等），<b>需核实原文</b>；本文据此得出的结论均以「机制 + 可交叉验证的财务数」为主，<strong>不据此设定任何操作价位</strong>。</li>
+<li><strong>货币基金口径分歧</strong>：ICI 官方口径 2026-09-23 为 <strong>$7.936 万亿</strong>（9/2 峰值 $7.979 万亿）；另有 Crane Data 口径 <strong>$7.5 万亿</strong>、部分报道称「近 $8 万亿」。本文采用 <strong>ICI 一手数据</strong>，并在此并列其他口径。</li>
+<li><strong>短端收益率分歧</strong>：3 个月期国库券在同期被分别报为 <strong>3.74%</strong>（8 月口径）与 <strong>4.08%</strong>（9 月下旬口径）。差异或来自 9/16 加息前后与报价时点不同，本文按 <strong>3.74–4.08%</strong> 区间表述，未择一。</li>
+<li><strong>黄金年内收益口径分歧</strong>：P64 记 <strong>−0.4%</strong>，另有源记 <strong>−1.9%</strong>（基准日/结算价口径不同）。两源对「较 1/29 纪录回撤约 21%」一致，本文以回撤幅度为锚。</li>
+<li><strong>30 年期美债分歧</strong>：本文用 09-25 <strong>5.48%</strong>；P64 记 09-26 盘中一度触及 <strong>5.53%</strong>；两处均为同一段时点的不同采样。</li>
+<li><strong>伯克希尔的现金与利息</strong>：T-bill $3,249 亿 + 现金 $406 亿（2026-06-30 的 10-Q 口径）为<b>一手数据</b>；年化利息 $120 亿（按 3.74%）或 $149 亿（按 4.08%）为<b>按当时收益率的推算，非公司披露</b>。同期另有源报 Q2 末「约 $3,590 亿」、Q1 峰值「$3,974 亿」，差异源于统计范围与日期不同，已并列。</li>
+<li><strong>CME 抵押品口径不可直接比</strong>：本文引用的 $1,641 亿池与 $52.5 亿毛收益为<b>一个完整年度口径</b>；公司披露的 2026 年 7 月滚动三个月均值为<b>现金 $1,470 亿 + 非现金 $1,660 亿</b>。两者统计范围不同，比值（3.95%）与 47:1 的杠杆率均为<b>基于年度口径的推算</b>。</li>
+<li><strong>日本银行的 COE 假设（8.5–9.0%）为本文自设</strong>，用于把「PBR = ROE ÷ COE」这条恒等式打开；它不是公司披露、也不是市场共识。假设变动 0.5pp，可持续 PBR 会变动约 ±0.1×，结论方向不变（1.82× 已无安全垫）。</li>
+<li><strong>韩国市场本轮未取到足够硬数据</strong>，故本文未列具体标的与数字——不猜测、不用训练数据填充。</li>
+<li>本文<b>不新立任何操作区间（Z1/Z2/Z3）</b>，不构成对任何标的的买卖建议。第九节的三条理由已经写明。</li>
+</ol>
+
+<div class="conclusion">
+<h3>把这份报告压缩成五句话</h3>
+<ol>
+<li><strong>「利好哪些资产」问错了。</strong>高利率是一次从债务人到债权人的转移，正确的问法是<em>谁的合同能重定价、谁的被锁死</em>。</li>
+<li><strong>名单有三档成色：已进利润表（货币基金、交易所、日本银行）、慢变量（寿险，2–5 年）、假受益（券商 NIM 收窄、银行量增价差背离、交易所股价被监管竞争压过）。</strong>判据只有一个——<b>利差是否走阔</b>。</li>
+<li><strong>最纯的收租者不是最便宜的，是「别人把钱存在它那里、且不用为此付息」的机构</strong>：货币基金 4.1%、交易所抵押品池 3.95%（47:1）、保险浮存金。</li>
+<li><strong>名单的另一侧不是「没受益」，是「看着像受益」</strong>：公用事业分红率 2.8% 对 10 年期 5.18%，负安全垫 −2.4pp；黄金较 1/29 回撤 21% 而实际利率 2.83% 创 2008-11 以来最高。</li>
+<li><strong>对账户：不因这份名单加仓。</strong>最干净的日本银行 PBR 1.82× 而 ROE 支撑只到 1.60–1.69×（安全垫≈0）；账户里唯一确定受益的那一档（现金 30.2%）已经有了。<b>唯一可执行的动作是把现金的到期日当仓位管——用 3 / 6 个月 T-bill 阶梯锁住 4.2–4.3%，保留货币基金层随时可动。</b></li>
+</ol>
+</div>
+
+<div class="disc">
+<p><strong>数据来源与口径</strong>：货币基金规模与结构为 ICI 官方周度数据（2026-09-02 / 09-09 / 09-16 / 09-23）；CME 成交量与抵押品为公司月度公告与财报（一手）；伯克希尔现金与 T-bill 为其 2026 Q2 10-Q；日本三大行与第一生命数据来自各公司 FY2026 Q1 财报（2026 年 4–6 月）及日经 / Bloomberg / 时事通信转述；美国银行、券商、寿险的 NII / NIM / 投资收益率来自各公司季报及 Zacks / Nasdaq 等公开转述（<b>非一手，需核实原文</b>）；板块涨跌为 Finviz 口径（2026-09-23）；金价、央行购金与 ETF 流量来自 LBMA / WGC / gold-api 转述；信用利差为 ICE BofA 指数口径。文中所有口径分歧与数据缺口均已在「边界与口径分歧」节逐项标注，未择一断言、未以训练数据补充。</p>
+<p><strong>免责声明</strong>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。</p>
+<p>P65 · 完 · 上一份 P64《谁在贬值：国债利率创新高，法币却在升值》· 下一份 P66（灵魂接第六十三条）</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

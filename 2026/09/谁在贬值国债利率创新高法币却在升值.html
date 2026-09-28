@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谁在贬值：国债利率创新高，法币却在升值</title>
+<style>
+:root{
+  --bg:#0a0a0c; --panel:#101013; --panel2:#141417; --line:#1f1f23;
+  --tx:#d1d1d6; --tx2:#86868b; --hd:#f5f5f7;
+  --up:#ff453a; --dn:#30d158; --blue:#5ac8fa; --amber:#ff9f0a; --purple:#bf5af2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans','Yu Gothic',sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:48px 26px 90px}
+h1{font-size:30px;line-height:1.35;margin:0 0 14px;color:var(--hd);font-weight:700;letter-spacing:-.4px}
+h1 .g{background:linear-gradient(96deg,#f5f5f7 12%,#8e8e93 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 20px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.badge{display:inline-block;padding:4px 11px;border:1px solid var(--line);border-radius:20px;
+  font-size:12px;color:var(--tx2);background:var(--panel);white-space:nowrap}
+.badge.k{color:var(--hd);border-color:#2c2c31}
+.badge.up{color:var(--up);border-color:rgba(255,69,58,.35)}
+.badge.dn{color:var(--dn);border-color:rgba(48,209,88,.35)}
+.badge.b{color:var(--blue);border-color:rgba(90,200,250,.35)}
+.badge.a{color:var(--amber);border-color:rgba(255,159,10,.35)}
+h2{font-size:20px;color:var(--hd);margin:52px 0 16px;font-weight:600;letter-spacing:-.2px;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;color:var(--hd);margin:30px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+strong{color:var(--hd);font-weight:600}
+em{font-style:normal;color:var(--amber);font-weight:600}
+code{background:#17171b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px;color:#e5e5ea}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:0 0 10px}
+.lead p:last-child{margin-bottom:0}
+.verdict{background:var(--panel2);border-left:3px solid var(--hd);border-radius:0 10px 10px 0;
+  padding:13px 18px;margin:0 0 22px;font-size:14.5px;color:var(--hd)}
+.verdict b{color:var(--amber)}
+.callout{background:var(--panel2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;font-size:14.5px}
+.callout.red{border-left-color:var(--up)}
+.callout.green{border-left-color:var(--dn)}
+.callout.blue{border-left-color:var(--blue)}
+.callout p:last-child{margin-bottom:0}
+.conclusion{background:linear-gradient(180deg,#131317,#0f0f12);border:1px solid #2c2c31;border-radius:14px;
+  padding:26px 28px;margin:34px 0}
+.conclusion h3{margin-top:0;color:var(--amber)}
+.soul{background:#0f0f12;border:1px dashed #3a3a40;border-radius:12px;padding:22px 24px;margin:36px 0}
+.soul .tag{color:var(--amber);font-size:12.5px;letter-spacing:.6px;margin-bottom:10px}
+.soul .q{color:var(--tx);font-size:14.5px;line-height:1.85}
+.disc{color:var(--tx2);font-size:12.5px;line-height:1.8;border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.disc p{margin:0 0 10px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--tx2);font-weight:500;font-size:12.5px;background:var(--panel)}
+td strong{color:var(--hd)}
+.up{color:var(--up);font-weight:600}
+.dn{color:var(--dn);font-weight:600}
+.fig{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 16px 10px;margin:26px 0}
+.fig .cap{color:var(--tx2);font-size:12.5px;text-align:center;margin:6px 0 4px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:7px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span class="g">谁在贬值：国债利率创新高，法币却在升值</span></h1>
+<p class="sub">美 10 年期 5.18%（2007-07 以来最高）· 英 30 年期 5.93%（1998 以来最高）· 日 10 年期 3.04%（1996 以来最高）<br>同期美元指数创 13 个月新高 · 黄金年内负收益 · 基准：2026-09-25 至 09-28 · 数据源：美国财政部 / FRED / ICE BofA / NY Fed ACM / 央行公告</p>
+
+<div class="badge-row">
+  <span class="badge k">P64</span>
+  <span class="badge a">宏观跨资产</span>
+  <span class="badge b">实际利率 2.83%</span>
+  <span class="badge">DXY 101.07</span>
+  <span class="badge dn">黄金 YTD −0.4%</span>
+  <span class="badge up">灵魂第五十八 / 五十九条</span>
+</div>
+
+<h2>一、大白话总评</h2>
+
+<div class="lead">
+<p>你的问题里藏着一个前提：<strong>利率创新高 → 印钞 → 法币贬值</strong>。这一轮的数据不支持这条链，至少不支持它的前半段。</p>
+<p>把同一周发生的两件事并排放：一边是美、英、日长端国债收益率同创数十年新高；另一边是<strong>美元指数从 9 月初低点上涨 1.9%、创 13 个月新高</strong>，同时<strong>黄金年内是负收益、距 1 月历史高点跌了 21.8%</strong>。</p>
+<p>如果法币真的在贬值，美元不该同时走强，黄金不该同时走弱。所以「利率创新高」这件事，必须先问一句：<em>是哪一种利率在上升？</em></p>
+</div>
+
+<div class="verdict">
+<b>一句话结论</b>：长端利率上升有两种性质，方向相反。<b>实际利率驱动</b>＝紧缩在保卫货币（货币升值）；<b>风险溢价驱动</b>＝信用在重新定价（货币贬值）。这一轮的主体是前者、边缘是后者——所以现在的组合不是「法币贬值」，是<b>主权信用分层</b>。
+</div>
+
+<p>拆开讲三件事：</p>
+<ol>
+<li><strong>这一轮利率上升，主体是「钱变贵了」，不是「钱变毛了」。</strong>五年多来 10 年期美债名义收益率涨了 392 个基点，其中实际利率贡献 <strong>395bp</strong>，通胀补偿贡献 <strong>−3bp</strong>。实际利率 2.83% 是 2008 年 11 月以来最高。这条判据几乎排除了「通胀失控」的解释。</li>
+<li><strong>真正的「贬值」发生在边缘主权身上，而且是信用贬值，不是货币贬值。</strong>法国 10 年期国债借得比意大利和希腊还贵，法德利差破 100bp（2012 欧债危机以来首次）；英国 30 年期 5.93%；日本 10 年期 3.04%。同一货币联盟内部都能分三层，说明市场在给「财政」定价，不是在给「欧元」定价。</li>
+<li><strong>最值得警惕的不是贬值，是一个错位。</strong>无风险端在五年期的 99 分位紧绷，信用端（IG/HY 利差、VIX）却在 21–29 分位松弛——但最弱那一层（CCC 及以下利差 1,053bp 以上、私募信贷违约率 6.3%）已经在流血。<em>风险没有消失，它被压缩到了指数看不到的地方。</em></li>
+</ol>
+
+<p>至于「利好什么」：如果按确定性排序，第一位是<strong>短端现金类与通胀挂钩债</strong>（锁定 2.65% 的实际回报，18 年最好）——不是黄金。黄金的方向对、<strong>时机未到</strong>，这一点后面单开一节说清楚，因为它是最容易做反的一笔。</p>
+
+<h2>二、先把「创新高」量化</h2>
+
+<p>「创新高」是三个字，但它背后是三条不同的曲线。先把读数摆出来，才可以谈性质。</p>
+
+<h3>美债（一手：美国财政部 / FRED）</h3>
+<table>
+<thead><tr><th>期限</th><th>水平</th><th>时点</th><th>历史对照</th></tr></thead>
+<tbody>
+<tr><td>2 年期</td><td>4.71–4.85%</td><td>09-24 / 09-25</td><td>—</td></tr>
+<tr><td><strong>10 年期</strong></td><td><strong>5.163–5.18%</strong>（峰值 5.045% 于 09-15）</td><td>09-25</td><td><span class="up">2007-07-06 以来最高</span></td></tr>
+<tr><td><strong>30 年期</strong></td><td><strong>5.40%</strong>，09-26 盘中触 5.53%</td><td>09-25</td><td><span class="up">2004 以来最高</span>（09-24 触 5.44%）</td></tr>
+<tr><td><strong>10 年期 TIPS 实际利率</strong></td><td><strong>2.83%</strong>（09-24 收 2.85%）</td><td>09-25</td><td><span class="up">2008-11 以来最高</span></td></tr>
+<tr><td>10 年期盈亏平衡通胀率</td><td>2.33–2.35%</td><td>09-25</td><td>基本持平（关键，见第五节）</td></tr>
+<tr><td>10 年期期限溢价（ACM）</td><td>0.64–0.76%</td><td>09-18 日度 / 08 月月度</td><td>2024-10 以来持续为正</td></tr>
+<tr><td>2s10s 利差</td><td>25–26bp</td><td>09-24</td><td>曲线偏平</td></tr>
+</tbody>
+</table>
+
+<h3>欧日（媒体转述，非一手）</h3>
+<table>
+<thead><tr><th>国家</th><th>10 年期</th><th>30 年期</th><th>历史对照</th></tr></thead>
+<tbody>
+<tr><td>德国</td><td>3.60%</td><td>3.843%</td><td><span class="up">2008-09 以来最高</span>（09-01 时 3.339%）</td></tr>
+<tr><td><strong>法国</strong></td><td><strong>4.69%</strong></td><td><strong>5.2292%</strong></td><td><span class="up">2008-06 以来最高</span>；<em>30 年期高于意大利 5.0529% 与希腊</em></td></tr>
+<tr><td><strong>英国</strong></td><td><strong>5.38%</strong></td><td><strong>5.93%</strong></td><td><span class="up">2007-06 / 1998 以来最高</span></td></tr>
+<tr><td>意大利</td><td>4.54%</td><td>5.0529%</td><td>2023-11 以来最高</td></tr>
+<tr><td>日本</td><td>3.04%</td><td>4.16%</td><td><span class="up">1996 以来最高</span>（30 年新高）</td></tr>
+</tbody>
+</table>
+
+<p>注意这张表里的一个异常：<strong>法国的 30 年期（5.2292%）高于意大利（5.0529%）</strong>。意大利曾经是欧债危机里最脆弱的那一环，希腊更是重灾区——现在市场愿意用更低的利率借钱给它们，而不是借给法国。这不是一个关于「欧元」的读数，这是一个关于「法国财政」的读数。第八节展开。</p>
+
+<h3>信用（一手：ICE BofA，经 FRED 发布）</h3>
+<table>
+<thead><tr><th>指标</th><th>水平</th><th>时点</th><th>历史分位</th></tr></thead>
+<tbody>
+<tr><td>投资级（IG）OAS</td><td>77–79bp</td><td>09-24 / 09-25</td><td>25 年中位数约 130bp → <span class="dn">历史极低位</span></td></tr>
+<tr><td>高收益（HY）OAS</td><td>268–280bp</td><td>09-24 / 09-25</td><td>20 年均值约 490bp → <span class="dn">极紧</span></td></tr>
+<tr><td>BB 级 OAS</td><td>153–164bp</td><td>09-24</td><td>贴近历史低位</td></tr>
+<tr><td><strong>CCC 及以下 OAS</strong></td><td><strong>1,053–1,112bp</strong></td><td>09-24 / 09-25</td><td><span class="up">2023 年以来 100 分位（最宽）</span></td></tr>
+<tr><td>IG 有效收益率</td><td>5.53–5.90%</td><td>09-01 / 09-24</td><td>高票息几乎全部由无风险利率贡献</td></tr>
+<tr><td>MOVE 指数（债市波动率）</td><td>104.58（单日 +9.6%）</td><td>09-25</td><td>抬升中</td></tr>
+<tr><td>私募信贷违约率</td><td><strong>6.3%</strong>（纪录）</td><td>08 月（Fitch）</td><td>约 1,300 家借款主体</td></tr>
+</tbody>
+</table>
+
+<div class="callout blue">
+<p><strong>把这三张表合起来读，出现一个非常别扭的组合</strong>：无风险利率在数十年高位，信用利差却在历史极低位。这两件事在教科书里不该同时出现——除非你想到了那个解释：<em>定价的科目换了。</em>市场不再按「增长」给风险定价，改为按「流动性 + 强者资产负债表」定价（对应灵魂第十七条）。这个错位在第十节展开。</p>
+</div>
+
+<h2>三、第一个反直觉：美元也在创新高</h2>
+
+<p>假设「利率创新高 ⇒ 法币贬值」成立，那么收益率集体走高的这一周，美元应该走弱、黄金应该走强。实际发生的正好相反。</p>
+
+<table>
+<thead><tr><th>资产</th><th>读数</th><th>方向</th><th>口径</th></tr></thead>
+<tbody>
+<tr><td>美元指数（DXY）</td><td>101.07</td><td><span class="up">自 9 月初低点 +1.9%；09-15 前后触 100.4150（13 个月高点）</span></td><td>09-28（StreetStats）</td></tr>
+<tr><td>欧元 / 美元</td><td>1.1390–1.1399</td><td><span class="dn">9 月初 1.160 跌下来；连续第三周下跌</span></td><td>09-25 / 09-26</td></tr>
+<tr><td>英镑 / 美元</td><td>1.3243–1.3252</td><td><span class="dn">当周 −1.1%</span></td><td>09-25 / 09-26</td></tr>
+<tr><td>美元 / 日元</td><td>157.14–157.28</td><td><span class="dn">日元 09-26 单日 −0.99%（技术性反弹）</span></td><td>09-26</td></tr>
+<tr><td>美元 / 瑞郎</td><td>0.8282–0.8284</td><td>基本持平</td><td>09-25 / 09-26</td></tr>
+<tr><td><strong>黄金（现货）</strong></td><td><strong>$4,286.20</strong></td><td><span class="dn">当周 −2.27%，过去五周跌四周；<strong>年内 −0.4%</strong>；距 1 月高点 $5,608.35 跌 <strong>21.8%</strong></span></td><td>09-25 收盘</td></tr>
+</tbody>
+</table>
+
+<p>换个说法：<strong>在这一轮「利率创新高」里，美元是升值的、黄金是亏钱的、欧元英镑日元是贬值的。</strong>如果你在 9 月初因为「利率创新高」这个理由去买黄金抗贬值，到今天你已经亏了 2% 以上，而同时美元指数涨了近 2%。</p>
+
+<div class="callout red">
+<p><strong>口径提示（必须标注的分歧）</strong>：DXY 在个别快讯源上出现过 <code>113.15</code> 的读数，与主流的 <code>100.97–101.07</code> 显著冲突，且与「美元指数创 13 个月新高」的表述自相矛盾。本报告采信格隆汇（09-25 收 100.971）、StreetStats（09-28 报 101.07）与彭博美元即期指数（1212.63）的相互印证，视为口径错乱，不采信 113.15。</p>
+</div>
+
+<h2>四、原理：利率上升有两种性质，货币方向相反</h2>
+
+<p>要解释上面这个反直觉，得回到一个最基本的分解。名义利率不是一整块，它可以拆：</p>
+
+<p style="text-align:center;color:var(--hd);font-size:14.5px"><strong>名义利率 = 实际利率 + 通胀补偿</strong>（费雪方程）</p>
+<p style="text-align:center;color:var(--tx2);font-size:13px">更完整的写法：名义利率 = 预期实际短率路径 + 通胀预期 + 期限溢价</p>
+
+<p>关键在于：同一个 5% 的十年期收益率，可以有两种完全不同的成因，而它们对货币的影响<strong>方向相反</strong>。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect x="36" y="118" width="170" height="64" rx="10" fill="#141417" stroke="#2c2c31"/>
+  <text x="121" y="145" text-anchor="middle" font-size="13" fill="#f5f5f7" font-weight="600">名义利率上升</text>
+  <text x="121" y="165" text-anchor="middle" font-size="11" fill="#86868b">先问：谁来解释它</text>
+
+  <path d="M206 136 L 350 76" stroke="#5ac8fa" stroke-width="1.6" fill="none"/>
+  <path d="M206 164 L 350 226" stroke="#ff453a" stroke-width="1.6" fill="none"/>
+  <path d="M350 76 L 342 72 L 342 80 Z" fill="#5ac8fa"/>
+  <path d="M350 226 L 342 222 L 342 230 Z" fill="#ff453a"/>
+
+  <rect x="352" y="44" width="294" height="66" rx="10" fill="#101013" stroke="#1f5f7a"/>
+  <text x="368" y="68" font-size="13" fill="#5ac8fa" font-weight="700">A 类 · 实际利率驱动</text>
+  <text x="368" y="89" font-size="11.5" fill="#d1d1d6">紧缩政策 / 增长强劲</text>
+  <text x="368" y="104" font-size="11.5" fill="#5ac8fa">→ 资本流入 → 货币升值</text>
+
+  <rect x="352" y="194" width="294" height="66" rx="10" fill="#101013" stroke="#7a3a34"/>
+  <text x="368" y="218" font-size="13" fill="#ff453a" font-weight="700">B 类 · 风险溢价驱动</text>
+  <text x="368" y="239" font-size="11.5" fill="#d1d1d6">通胀预期 / 期限溢价上升</text>
+  <text x="368" y="254" font-size="11.5" fill="#ff453a">→ 要求更高补偿 → 货币贬值</text>
+
+  <text x="36" y="289" font-size="12" fill="#86868b">判据：看长端利率与汇率是否同向 —— 同向＝A 类（紧缩定价），反向＝B 类（信用定价）</text>
+</svg>
+<div class="cap">图 1：同一个利率数字，两种性质，货币方向相反</div>
+</div>
+
+<p>为什么 A 类会推升货币？因为<strong>货币的价格就是利率</strong>。当一国的实际利率上升（钱变贵），持有该货币的回报提高，资本流入，货币升值。这是教科书第一性原理：紧缩货币升值、宽松货币贬值。</p>
+
+<p>为什么 B 类会压低货币？因为当利率上升的原因变成「债务可持续性被质疑」，投资者要求的补偿里就多了一项<strong>风险溢价</strong>。此时利率是「风险的价格」而非「钱的价格」——收益率越高，说明信用越差，资本越要走。这就是新兴市场的典型形态：<strong>高利率与弱货币并存</strong>。</p>
+
+<div class="callout">
+<p><strong>一个容易踩的坑</strong>：很多人把「利率上升」直接等同于「央行在印钞」——因果链反了。印钞确实最终会推高通胀与名义利率，但<strong>当下的利率上升如果是央行主动加息的结果，那是「在保卫货币」，不是「在毁灭货币」。</strong>把这两者混为一谈，就会在央行加息的枪口上做空本币。</p>
+</div>
+
+<h2>五、判据一：五年 392 个基点里，实际利率贡献了 395 个</h2>
+
+<p>上面是原理，现在验证。判断这一轮属于 A 类还是 B 类，最干净的读数是<strong>把名义收益率的涨幅拆成「实际利率」和「通胀补偿」两部分</strong>。美国财政部每天同时发布这两条曲线，所以这是观测值，不是模型估计。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <text x="24" y="26" font-size="13" fill="#f5f5f7" font-weight="600">2021-01 → 2026-09-23：10 年期美债收益率变化的归因（单位：基点）</text>
+
+  <text x="24" y="79" font-size="12" fill="#d1d1d6">名义收益率</text>
+  <rect x="150" y="62" width="392" height="26" rx="4" fill="#3a3a40"/>
+  <text x="554" y="80" font-size="12.5" fill="#f5f5f7" font-weight="700">+392 bp</text>
+
+  <text x="24" y="134" font-size="12" fill="#5ac8fa">实际利率</text>
+  <rect x="150" y="117" width="395" height="26" rx="4" fill="#5ac8fa"/>
+  <text x="557" y="135" font-size="12.5" fill="#5ac8fa" font-weight="700">+395 bp</text>
+
+  <text x="24" y="189" font-size="12" fill="#30d158">通胀补偿</text>
+  <circle cx="152" cy="175" r="5" fill="#30d158"/>
+  <text x="168" y="180" font-size="12.5" fill="#30d158" font-weight="700">−3 bp（几乎没动）</text>
+
+  <line x1="150" y1="218" x2="640" y2="218" stroke="#1f1f23" stroke-width="1"/>
+  <text x="24" y="243" font-size="12" fill="#86868b">名义涨幅 <tspan fill="#f5f5f7" font-weight="700">392bp</tspan> 中，实际利率贡献 <tspan fill="#5ac8fa" font-weight="700">395bp</tspan>、通胀补偿 <tspan fill="#30d158" font-weight="700">−3bp</tspan></text>
+  <text x="24" y="259" font-size="11.5" fill="#86868b">2026 年内同样：名义 +93bp，通胀补偿仅贡献 10bp，实际利率贡献 83bp。</text>
+</svg>
+<div class="cap">图 2：这轮收益率上升几乎 100% 由实际利率解释</div>
+</div>
+
+<p>这个分解的含义非常强：<strong>五年多来的这轮重定价，几乎没有一分钱是「通胀预期」贡献的。</strong>10 年期盈亏平衡通胀率从 2.38% 变成 2.35%——五年里只动了 3 个基点。实际利率却从 −1.19% 升到 +2.76%。</p>
+
+<p>实际利率是什么意思？就是「你在通胀之上还能拿到的确定回报」。当它从负变正、再升到 18 年最高，等于告诉全世界：<em>钱变贵了。</em>钱变贵，货币升值——逻辑闭合。</p>
+
+<div class="callout green">
+<p><strong>顺手给出一个直接结论</strong>：现在买 10 年期 TIPS，锁定的是 <strong>2.65% 的实际回报</strong>（09-17 拍卖得标 2.653%，2008 年 10 月以来最高）。这才是「抗购买力贬值」的正版工具——它按 CPI 调整本金，你赚的是通胀之上的部分。<strong>名义收益率高不等于你能抗通胀，实际收益率高才是。</strong>很多人把这两件事混了。</p>
+</div>
+
+<h2>六、判据二：拍卖现场，边际买家在退场</h2>
+
+<p>二级市场的收益率是结果，一级市场的拍卖是体温计。这两场拍卖值得单独看，因为它们暴露了「需求结构」而不只是「价格水平」。</p>
+
+<table>
+<thead><tr><th>拍卖</th><th>得标利率</th><th>投标倍数</th><th>投标人结构</th><th>读数</th></tr></thead>
+<tbody>
+<tr><td>20 年期（09-15，$130 亿重开）</td><td><strong>5.420%</strong><br><span class="up">该期限历史新高</span>（破 2023-10 的 5.245%）</td><td>2.57<br>（近期均值约 2.65）</td><td>间接投标人（含外国 / 国际账户）<strong>52.5%</strong>，<span class="up">该期限历史最低</span>；一级交易商升至 12.2%</td><td>尾部 2.0bp；<strong>长期与外国买家在退，做市商被迫接货</strong></td></tr>
+<tr><td>10 年期 TIPS（09-17，$190 亿重开）</td><td>实际 <strong>2.653%</strong><br><span class="up">2008-10 以来最高</span>（当时 2.850%）</td><td><strong>2.24</strong><br>（该期限一年最低）</td><td>间接 59.1%、直接 28.7%、一级交易商 12.2%</td><td>得标高出 pre-market 约 1.9bp ⇒ <strong>需求不足，要更多补偿才肯接</strong></td></tr>
+</tbody>
+</table>
+
+<p>把这两行合起来看：<strong>不是没人买国债，是买家结构在换人。</strong>外国央行和长期资金在降低接货比例，一级交易商（必须接盘的那一方）比例上升——这是「边际买家退场」的经典形态。同期 MOVE 指数单日跳升 9.6% 至 104.58，债市波动率也在配合这个读数。</p>
+
+<p>但注意：<strong>这只是「需求在降温」，还不是「需求在断裂」。</strong>投标倍数 2.24 意味着每个单位供应仍有 2.24 倍的认购，仍然是供不应求的市场，只是议价权在向买家倾斜。区分这两件事，是不要过早喊「美债违约」的关键。</p>
+
+<h2>七、分岔口：同一张债市报表，三种货币三种命运</h2>
+
+<p>现在回到最初的问题。既然利率上升有两种性质，那么「谁在贬值」就有答案了——<strong>看汇率和长端利率是同向还是反向</strong>。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <line x1="120" y1="30" x2="120" y2="272" stroke="#3a3a40" stroke-width="1.2"/>
+  <line x1="120" y1="272" x2="648" y2="272" stroke="#3a3a40" stroke-width="1.2"/>
+  <text x="128" y="24" font-size="11.5" fill="#86868b">本币走强 ↑</text>
+  <text x="560" y="292" font-size="11.5" fill="#86868b">长端利率上升 →</text>
+
+  <text x="140" y="50" font-size="12" fill="#5ac8fa" font-weight="700">利率 ↑ 且 货币 ↑ ＝ 紧缩定价</text>
+  <text x="140" y="262" font-size="12" fill="#ff453a" font-weight="700">利率 ↑ 但 货币 ↓ ＝ 信用定价</text>
+
+  <circle cx="430" cy="86" r="7" fill="#5ac8fa"/>
+  <text x="444" y="90" font-size="12" fill="#f5f5f7">美元 · DXY 101.07 <tspan fill="#5ac8fa">↑</tspan></text>
+
+  <circle cx="358" cy="172" r="7" fill="#ff453a"/>
+  <text x="372" y="176" font-size="12" fill="#f5f5f7">法国 · OAT 4.69% <tspan fill="#ff453a">↑</tspan> / 欧元 <tspan fill="#30d158">↓</tspan></text>
+
+  <circle cx="300" cy="212" r="7" fill="#ff453a"/>
+  <text x="314" y="216" font-size="12" fill="#f5f5f7">日本 · JGB 3.04% <tspan fill="#ff453a">↑</tspan> / 日元 <tspan fill="#30d158">↓</tspan></text>
+
+  <circle cx="452" cy="240" r="7" fill="#ff453a"/>
+  <text x="466" y="244" font-size="12" fill="#f5f5f7">英国 · 30Y 5.93% <tspan fill="#ff453a">↑</tspan> / 英镑 <tspan fill="#30d158">↓</tspan></text>
+
+  <line x1="120" y1="155" x2="648" y2="155" stroke="#1f1f23" stroke-width="1" stroke-dasharray="4 4"/>
+</svg>
+<div class="cap">图 3：同样的「利率上升」，落在不同的货币上，方向相反</div>
+</div>
+
+<table>
+<thead><tr><th>货币</th><th>长端利率</th><th>汇率</th><th>性质</th><th>市场在定价什么</th></tr></thead>
+<tbody>
+<tr><td><strong>美元</strong></td><td>10Y 5.18%（2007 以来最高）</td><td>DXY 101.07，<span class="up">13 个月新高</span></td><td><strong>A 类</strong></td><td>Fed 主动加息 + 利差优势 + 避险需求</td></tr>
+<tr><td>欧元</td><td>德 10Y 3.60%（2008 以来最高）</td><td>1.139，<span class="dn">自 1.160 下跌</span></td><td>B 类偏重</td><td>ECB 加息给了支撑，但能源成本压制增长</td></tr>
+<tr><td>英镑</td><td>10Y 5.38% / 30Y 5.93%</td><td>1.325，<span class="dn">当周 −1.1%</span></td><td><strong>B 类</strong></td><td>财政赤字 + 弱劳动力市场，市场仍在定价 BOE 额外紧缩</td></tr>
+<tr><td>日元</td><td>10Y 3.04%（1996 以来最高）</td><td>157，<span class="dn">接近历史弱区</span></td><td><strong>B 类</strong></td><td>利率上行速度追不上美日利差；首相公开称「日元被低估是个问题」</td></tr>
+<tr><td>法郎（法国资产）</td><td>10Y 4.69% / 30Y 5.2292%</td><td>欧元计价，但法德利差破 100bp</td><td><strong>B 类最重</strong></td><td>财政可持续性本身</td></tr>
+</tbody>
+</table>
+
+<div class="verdict">
+一句话概括这张表：<b>美元的高利率是「加息的结果」，法英日的高利率是「信用被重新定价的结果」。</b>前者推升货币，后者压低货币。把它们都归到「法币贬值」这个筐里，就丢掉了全部信息量。
+</div>
+
+<h2>八、法国：借得比意大利和希腊还贵</h2>
+
+<p>欧债危机时，法国是「核心国」，意大利和希腊是「边缘国」。现在这个排序被推翻了，而且不是小幅。</p>
+
+<table>
+<thead><tr><th>读数</th><th>数值</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>法国 30 年期国债</td><td><strong>5.2292%</strong></td><td>高于意大利 5.0529%、也高于希腊</td></tr>
+<tr><td>法德 10 年期利差</td><td><strong>突破 100bp</strong>（09-18 当周），09-21 收窄至 99.4bp</td><td><span class="up">2012 年欧债危机顶峰以来首次</span></td></tr>
+<tr><td>评级动作</td><td>Scope 下调至 <strong>A+</strong>（展望转稳定）；DBRS 展望降至负面（维持 AA）</td><td>两家机构同期动手</td></tr>
+<tr><td>2026 财政赤字</td><td>预期 <strong>5.4% GDP</strong>（原目标 5%）</td><td>没达标</td></tr>
+<tr><td>公共债务</td><td>2026 预期 <strong>119.3% GDP</strong> → 2027 预期 <strong>121.7%</strong></td><td>仍在上升</td></tr>
+<tr><td>政治日程</td><td>2027 预算 10 月初提交，最终表决 <strong>11-17</strong></td><td>少数派政府，前两年各倒阁一次</td></tr>
+</tbody>
+</table>
+
+<p>这里有一个极其重要的观察：<strong>法国和德国用的是同一种货币。所以「法德利差」不能解释成汇率问题——它只能被解释成信用问题。</strong>市场不是在做空欧元，是在给「法国的财政」单独定价。ING 利率策略团队的表述很直接：「时间不是法国国债的朋友」——因为 2027 预算之后，市场注意力会立刻转向总统选举、议会选举、以及又一轮组阁。</p>
+
+<div class="callout red">
+<p><strong>这一节就是「法币贬值」这个问题的正确答案所在。</strong>真正的风险从来不是「所有法币一起变毛」，而是<b>某一种主权信用在同一个货币联盟里被单独降级</b>。前者是货币现象，后者是财政现象——两者的对冲工具、时间尺度、可预测性完全不同。把法国的问题说成「欧元贬值」，会让你买错东西。</p>
+</div>
+
+<h2>九、「法币贬值」的三种含义</h2>
+
+<p>到这一步可以正面回答你的问题了。但首先必须把「贬值」这个词拆开——它在日常语言里是三个完全不同的东西。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="46" width="600" height="62" rx="10" fill="#101013" stroke="#2c2c31"/>
+  <text x="58" y="72" font-size="13" fill="#f5f5f7" font-weight="700">① 对彼此贬值（汇率）</text>
+  <text x="58" y="93" font-size="11.5" fill="#86868b">零和 · 可在账户内互换 · 不创造净购买力损失 · 现在正在发生的是这一种</text>
+
+  <rect x="40" y="124" width="600" height="62" rx="10" fill="#101013" stroke="#2c2c31"/>
+  <text x="58" y="150" font-size="13" fill="#f5f5f7" font-weight="700">② 对实物贬值（购买力）</text>
+  <text x="58" y="171" font-size="11.5" fill="#86868b">可对冲（TIPS / 实物资产）· 黄金年内 −0.4%、油在涨 · 目前是局部而非全面</text>
+
+  <rect x="40" y="202" width="600" height="62" rx="10" fill="#101013" stroke="#7a3a34"/>
+  <text x="58" y="228" font-size="13" fill="#ff453a" font-weight="700">③ 对未来的自己贬值（财政）</text>
+  <text x="58" y="249" font-size="11.5" fill="#86868b">不可逆 · 只能定价、无法对冲 · 美债付息 $1.40 万亿 / 法国债务 119.3% GDP</text>
+
+  <text x="40" y="290" font-size="12" fill="#ff9f0a">你问的往往是第三种，但看到的数据是第一种 —— 混为一谈会把交易做反</text>
+</svg>
+<div class="cap">图 4：同一个词，三个对象，三套玩法</div>
+</div>
+
+<h3>第一种：对彼此贬值（汇率）</h3>
+<p>美元升、欧元跌。这是<strong>零和</strong>的——对持有美元的人，欧元跌甚至是一种收益。它不改变全球的实物购买力总量，只改变分配。<strong>现在正在发生的主要是这一种。</strong>把它当成「贬值」去做对冲，你会去买一个不存在的东西。</p>
+
+<h3>第二种：对实物贬值（购买力）</h3>
+<p>这才是通常意义上的「钱变毛了」。判据要看一篮子商品：黄金年内 −0.4%（没有发生）、原油在涨（Brent 破 $100，局部发生）、美国官方 CPI 3.4% 而 Truflation 日读 2.45%（口径分歧，但都高于 2% 目标）。<strong>目前是局部现象，不是全面现象。</strong>而且这一种<strong>有正版工具</strong>——TIPS 锁定的就是这个。</p>
+
+<h3>第三种：对未来的自己贬值（财政）</h3>
+<p>这才是真正不可逆的那一种，也是「法币长期贬值」这个说法的实质。读数：</p>
+<table>
+<thead><tr><th>指标</th><th>读数</th><th>时点</th></tr></thead>
+<tbody>
+<tr><td>美国公共债务总额</td><td><strong>$40.10 万亿</strong>（同比 +7.1%）</td><td>09-24</td></tr>
+<tr><td>美国年付息（gross）</td><td><strong>$1.40 万亿</strong>（同比 <span class="up">+10.8%</span>）</td><td>09-24</td></tr>
+<tr><td>美国国债加权平均利率</td><td>3.49%（同比 +0.12pp）</td><td>09-24</td></tr>
+<tr><td>一年内到期美债</td><td>约 <strong>$10.77 万亿</strong></td><td>再融资风险敞口</td></tr>
+<tr><td>法国公共债务</td><td>119.3% GDP（2026E）→ 121.7%（2027E）</td><td>法国经济部</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<p><strong>这里有一个必须点破的时序逻辑</strong>：第三种贬值（财政侵蚀）<strong>最先表现为利率上升</strong>，而利率上升在初期<strong>反而会支撑货币</strong>（因为利差吸引资本）。所以「财政恶化 → 货币贬值」这条链，中段是货币升值——这正好解释了当下「利率创新高 + 美元创新高」这个别扭的组合。</p>
+<p>换句话说：<em>现在的高利率不是法币贬值的原因，而是各国央行在用利率阻止法币贬值。</em>真正的长期贬值压力被推迟到了付息负担爆表、央行不敢再加息的那一刻。这就是本报告灵魂第五十九条要说的：<strong>离开时间尺度谈「贬值」，等于什么都没说。</strong></p>
+</div>
+
+<h2>十、最值得警惕的错位：无风险端 99 分位，信用端 23–29 分位</h2>
+
+<p>本报告最有价值的一个发现，不是「利率创新高」，而是<strong>利率创新的高，只发生在无风险端</strong>。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <text x="24" y="26" font-size="13" fill="#f5f5f7" font-weight="600">各指标在五年区间中的分位（0 = 最低，100 = 最高）</text>
+
+  <line x1="200" y1="40" x2="200" y2="226" stroke="#1f1f23" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="226" stroke="#1f1f23" stroke-width="1"/>
+  <line x1="400" y1="40" x2="400" y2="226" stroke="#1f1f23" stroke-width="1"/>
+  <line x1="500" y1="40" x2="500" y2="226" stroke="#1f1f23" stroke-width="1"/>
+  <line x1="600" y1="40" x2="600" y2="226" stroke="#1f1f23" stroke-width="1"/>
+
+  <text x="24" y="66" font-size="11.5" fill="#d1d1d6">10Y 美债收益率</text>
+  <rect x="200" y="52" width="396" height="24" rx="3" fill="#ff453a"/>
+  <text x="606" y="68" font-size="11.5" fill="#ff453a" font-weight="700">99%</text>
+
+  <text x="24" y="118" font-size="11.5" fill="#d1d1d6">HY 信用利差</text>
+  <rect x="200" y="104" width="92" height="24" rx="3" fill="#30d158"/>
+  <text x="300" y="120" font-size="11.5" fill="#30d158" font-weight="700">23%</text>
+
+  <text x="24" y="170" font-size="11.5" fill="#d1d1d6">VIX 波动率</text>
+  <rect x="200" y="156" width="84" height="24" rx="3" fill="#30d158"/>
+  <text x="292" y="172" font-size="11.5" fill="#30d158" font-weight="700">21%</text>
+
+  <text x="24" y="222" font-size="11.5" fill="#d1d1d6">CCC 及以下利差</text>
+  <rect x="200" y="208" width="400" height="24" rx="3" fill="#ff453a"/>
+  <text x="610" y="224" font-size="11.5" fill="#ff453a" font-weight="700">100%</text>
+
+  <text x="24" y="256" font-size="12" fill="#86868b">无风险端紧绷、宽基信用端松弛，但<tspan fill="#ff453a" font-weight="700">最弱那一层已经在最宽</tspan></text>
+  <text x="24" y="274" font-size="11.5" fill="#86868b">风险没有消失，只是被压缩到了指数看不到的地方。</text>
+</svg>
+<div class="cap">图 5：同一个市场的两个体温</div>
+</div>
+
+<p>为什么会错位？因为<strong>指数的成分被强者稀释了</strong>：</p>
+<ul>
+<li>现在能大规模发债的是 AI 超大规模企业（hyperscalers），它们的平均总杠杆率约 1.8×、利息覆盖率 64.4×——这种资产负债表几乎不构成信用风险。它们已占美国 IG 指数约 5%，两年翻倍，<em>技术性供给把指数利差压紧了</em>（这与 P63 的甲骨文是同一件事的两面）。</li>
+<li>真正脆弱的那一层被挤到了指数外面：CCC 及以下利差 <strong>1,053–1,112bp</strong>（2023 年以来最宽）；私募信贷违约率 <strong>6.3%</strong> 创纪录，其中 EBITDA 低于 $2,500 万的借款人违约率高达 <strong>12.0%</strong>，医疗和工业制造各 9.9%。</li>
+</ul>
+
+<div class="callout red">
+<p><strong>这个错位的实战含义</strong>：宽基信用利差在 23–29 分位，意味着几乎没有安全垫——一旦增长放缓，从「极紧」走向「正常」就已经是很大的资本损失，而「正常」对 HY 来说是 265bp 到 490bp 的距离。同时，私募信贷是浮动利率为主，政策利率每上一档，它的借款人利息成本立刻上升——<em>这是唯一一个把「高利率」直接翻译成「违约」的通道。</em></p>
+</div>
+
+<h2>十一、那么利好什么：按「确定性」排序的五档</h2>
+
+<p>先纠正问题本身。「利率创新高」不是一个能直接推导出板块的方向——<strong>必须带上「哪一类利率」和「哪个主权」这两个限定</strong>。带上之后，答案如下。</p>
+
+<table>
+<thead><tr><th>档位</th><th>方向</th><th>为什么是它</th><th>关键判据 / 风险</th></tr></thead>
+<tbody>
+<tr><td><strong>一档<br>（最确定）</strong></td><td><strong>短端现金类</strong><br>短期国债 / 货币基金 / 短久期 IG</td><td>直接吃到 4% 左右的名义收益，<strong>零久期风险</strong>——这是十多年来最好的现金回报</td><td>BIL 年内 +2.59%，而 TLT −6.06%、ZROZ −9.68%；风险是<b>再投资风险</b>（利率见顶后这 4% 拿不长）</td></tr>
+<tr><td><strong>二档</strong></td><td><strong>通胀挂钩债（TIPS）</strong></td><td>锁定 <strong>2.65% 的实际回报</strong>（09-17 拍卖，18 年最高）——这才是「抗购买力贬值」的正版工具</td><td>10Y TIPS 实际利率 2.83%；它保 CPI，不保资产价格</td></tr>
+<tr><td>三档</td><td><strong>实物现金流资产</strong><br>电力 / 管道 / 收费路 / 农田</td><td>名义现金流随通胀调整，抗「折现率上升」的能力强于纯债券替代品</td><td>定价权来自费率机制或交期（灵魂第四十一条）；<b>纯公用事业要小心</b>——它是债券替代品，利率上升压估值</td></tr>
+<tr><td>四档<br>（方向对、时机未到）</td><td><strong>黄金</strong></td><td>央行购金是结构性底（Q2 净买 288.9 吨、同比 +62%；中国连续 22 个月增持）</td><td>但实际利率 2.83% 压制机会成本；年内 −0.4%。<b>发令枪 ＝ 实际利率见顶</b>，见下节</td></tr>
+<tr><td>五档<br>（要看性质）</td><td><strong>银行 / 保险</strong></td><td>A 类（经济好）→ 净息差扩大，利好；B 类（信用恶化）→ 坏账与债券持仓亏损吃掉息差，利空</td><td>判据＝信用利差是否从 23–29 分位开始走阔</td></tr>
+</tbody>
+</table>
+
+<h3>利空清单</h3>
+<ul>
+<li><strong>长久期债券</strong>——已经在亏（TLT 年内 −6.06%、ZROZ −9.68%），且期限溢价转正后这一项不再是拖累而是常态。</li>
+<li><strong>高估值、长久期成长股</strong>——实际利率就是折现率。用一句直白的话：<em>一笔十年后的现金流，按 5% 折现值 61 分，按 8% 折现值 46 分。企业什么都没变，估值掉三成。</em>实际利率从 −1.19% 走到 +2.76%，这个压力是系统性的。</li>
+<li><strong>高杠杆 REITs / 地产</strong>——分子（租金）与分母（估值）同时受压。</li>
+<li><strong>高负债主权的本币资产</strong>——法国、英国的首要观察名单。</li>
+</ul>
+
+<div class="callout green">
+<p><strong>顺便纠正一句流行话</strong>：「现金是垃圾」在当下是错的。短期现金名义收益约 4%，是 2007 年以来最好的现金回报。真正的风险不是「贬值」，是<b>再投资风险</b>——如果央行停止加息、短端回落，这 4% 就到期了。所以这一档的正确姿势不是「逃离现金」，而是<strong>把到期的钱按原利率滚动续上（锁长久期一点的短端），而不是去买长久期债赌降息</strong>。</p>
+</div>
+
+<h2>十二、黄金的真相：方向对、时机未到</h2>
+
+<p>这一节单独写，因为它是「抗法币贬值」主题里最容易做反的一笔。</p>
+
+<p>教科书逻辑是对的：法币信用受损 → 利好黄金。<strong>但黄金没有一个「法币信用」指标可以交易，它交易的是两个东西：</strong></p>
+
+<div class="verdict">
+黄金价格的 <b>分母</b>＝实际利率（持有黄金的机会成本）；<b>分子</b>＝货币信用（对法币的信心）。<br>现在分母在剧烈恶化（实际利率 18 年最高），所以金价跌——<b>分子还没被市场定价。</b>
+</div>
+
+<table>
+<thead><tr><th>力量</th><th>当前读数</th><th>对金价</th></tr></thead>
+<tbody>
+<tr><td>实际利率（机会成本）</td><td>2.83%，2008-11 以来最高</td><td><span class="up">强压制</span></td></tr>
+<tr><td>美元（计价货币）</td><td>DXY 101.07，13 个月新高</td><td><span class="up">压制非美需求</span></td></tr>
+<tr><td>央行购金（不看利率的那只手）</td><td>Q2 净买 288.9 吨（同比 +62%，Q2 历史新高）；中国连续 22 个月，8 月 +约 20 吨，储备约 2,346 吨</td><td><span class="dn">结构性托底</span></td></tr>
+<tr><td>地缘风险</td><td>伊朗 / 霍尔木兹</td><td>托底但不主导</td></tr>
+<tr><td>价格结果</td><td>$4,286.20（09-25），年内 −0.4%，距 1 月高点 −21.8%</td><td>—</td></tr>
+</tbody>
+</table>
+
+<p>所以正确的说法是：<strong>黄金是「抗货币信用」的期权，不是「抗利率」的现货。</strong>现在买它，你是在用「央行会投降」的预期对抗「央行正在坚定加息」的现实。</p>
+
+<div class="callout">
+<p><strong>那什么情况下黄金才真正启动？</strong>不是「通胀高」，而是<strong>「实际利率回落 + 财政继续恶化」同时成立</strong>——也就是央行在通胀还没解决时就被迫转向（财政主导 / fiscal dominance）。那个组合才是这个主题的核心情景，也是唯一能让黄金突破 1 月那个 $5,608 高点的路径。</p>
+<p>反过来说：<em>如果通胀真的回落、实际利率见顶，金价会涨；但同时「法币贬值」的叙事也弱了。</em>这两件事不会同时给你送来最强的信号——这是做这个主题必须接受的代价。</p>
+</div>
+
+<h2>十三、落回账户</h2>
+
+<p>把上面的结论映射到现有结构（不含具体标的的建议，只看暴露）：</p>
+
+<table>
+<thead><tr><th>暴露</th><th>在这个环境里的读法</th></tr></thead>
+<tbody>
+<tr><td><strong>现金层（约三成）</strong></td><td>它不是「贬值受害者」，而是<strong>当下唯一确定的受益者</strong>（短端名义约 4%）。要防的是再投资风险，不是贬值。真要动手，方向是把到期的钱滚上短端，而不是去买长久期债赌降息。</td></tr>
+<tr><td><strong>AI 资本开支因子（第一重仓，含 AVGO）</strong></td><td>实际利率 2.85% 是折现率的直接压力；而且这与 P63 的甲骨文信用重定价是<strong>同一件事的两面</strong>（IG 指数被超大规模企业发债压紧＝技术性供给）。⚠ 注意 AVGO 与 META 同属该因子，不是分散。</td></tr>
+<tr><td><strong>大中华消费（TME）</strong></td><td>美元走强的直接含义是人民币承压，这类敞口面临汇率与估值的双重摩擦；同时记住它的非防守股定性（灵魂第十七条），仓位上限已有约束。</td></tr>
+<tr><td><strong>可选消费（NKE）</strong></td><td>成本端受益于强美元（海外采购成本折算更低），需求端取决于美国消费；对实际利率的敏感度明显低于 AI 成长股。</td></tr>
+<tr><td><strong>工资流（真正的压舱层）</strong></td><td>如果法币对内购买力下降，<strong>工资购买力才是小资金最真实的「贬值」</strong>。但要注意：只要名义工资随通胀调整，实际购买力未必受损——关键看工资增速 vs 实际通胀。这比资产端的「贬值」更值得跟踪。</td></tr>
+</tbody>
+</table>
+
+<div class="callout red">
+<p><strong>本轮的明确动作：不因为「法币贬值」这个理由增加任何仓位。</strong>理由很简单——这个判断的前半段（利率升 ⇒ 货币贬）在当下数据里不成立：现在是美元升值 + 黄金负收益 + 实际利率 18 年最高。用一个被数据否定了一半的理由去做交易，风险与收益是不对称的。</p>
+</div>
+
+<h2>十四、体系位置</h2>
+
+<ul>
+<li><strong>灵魂第七条（方向由债市投票，时间表由政治日历决定）</strong>：债市已经在投票——长端收益率创数十年新高、期限溢价转正、拍卖出现「边际买家退场」。但什么时候兑现，取决于日历：10-28 FOMC、10-29 ECB、10-30 BOJ，以及 11-17 法国预算表决。</li>
+<li><strong>灵魂第十七条（评分科目会换）</strong>：这条原本用来讲甲骨文（从利润表换到信用表），现在<strong>整层升到了主权</strong>——市场给法国定价时看的是财政，不是增长。</li>
+<li><strong>灵魂第二十九条（利率敏感＝时序错配，逆风即时到账、补偿滞后 1–3 年）</strong>：<em>这条是本报告的核心机制</em>。实际利率上升的逆风当天就到账（估值分母立刻变），而「财政侵蚀 → 货币贬值」的补偿要等付息负担爆表那一刻，滞后以年计。用户问的正是那个「迟到的补偿」，但看到的是「即时到账的逆风」。</li>
+<li><strong>灵魂第五十六条（P63，抵押品的成熟时间决定融资价格）</strong>：同一机制在主权层面重演——法国被定价得比意大利贵，差别不在「欧元」，在「财政的成熟度」。</li>
+<li><strong>灵魂第四十七条（收费口按计费方式找）</strong>：TIPS 是唯一按「实际购买力」计价的收费口——想对冲第二种贬值，工具就在那里，不用去黄金那边绕。</li>
+</ul>
+
+<h2>十五、本报告新增的两条灵魂条款（第五十八条、第五十九条）</h2>
+
+<div class="soul">
+<div class="tag">体系灵魂第五十八条</div>
+<div class="q"><strong>利率上升的性质决定货币方向——实际利率驱动则货币升值，风险溢价驱动则货币贬值。</strong><br>判据：看长端利率与汇率是否<strong>同向</strong>。同向＝紧缩定价（央行在保卫货币）；反向＝信用定价（主权信用被抛售）。同一个 5% 的十年期收益率，是两种完全不同的东西；把两者都叫「利率上升」，就丢掉了全部信息量。</div>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第五十九条</div>
+<div class="q"><strong>「法币贬值」必须指明对象——对彼此贬值（汇率，零和，不创造净购买力损失）、对实物贬值（购买力，可对冲，TIPS 就是正版工具）、对未来的自己贬值（财政，不可逆，只能定价无法对冲）。</strong><br>三种混为一谈，会把交易做反：在央行用加息保卫货币的时候去买「贬值对冲」，是在逆着枪口下注。更精确地说——<strong>离开时间尺度谈贬值，等于什么都没说</strong>；财政侵蚀的最先表现是利率上升，而利率上升在初期反而支撑货币，所以这条链的中段是升值，不是贬值。</div>
+</div>
+
+<h2>十六、哨位与边界</h2>
+
+<h3>九个哨位</h3>
+<ol>
+<li><strong>10-28 FOMC</strong>：点阵图 2026 中位数 4.1%（区间已 3.75–4.00%），10 月是否再加一档。</li>
+<li><strong>10-29 ECB</strong>：存款便利 2.50% 之后的路径。</li>
+<li><strong>10-30 BOJ</strong>：日元与 JGB 3.04% 的下一步。</li>
+<li><strong>实际利率是否见顶</strong>：10Y TIPS 从 2.83% 回落至 2.60% 以下——这是风险偏好反转的第一信号。</li>
+<li><strong>DXY 是否突破 101.5–102</strong>：突破则「美元强势」成为独立主线，非美资产压力加大。</li>
+<li><strong>IG / HY 利差是否从 23–29 分位开始走阔</strong>：走阔＝B 类从边缘向核心扩散，银行档位从利好转利空。</li>
+<li><strong>CCC 及以下利差 1,053bp 是否继续走高</strong>：最弱一层的读数，也是「私募信贷 6.3%」是否扩散的先行。</li>
+<li><strong>11-17 法国 2027 预算最终表决</strong>：倒阁风险与法德利差。</li>
+<li><strong>美国财政部拍卖结构</strong>：间接投标人比例是否继续下滑、一级交易商比例是否继续上升。</li>
+</ol>
+
+<h3>六条边界与口径分歧</h3>
+<ol>
+<li><strong>DXY 口径分歧</strong>：个别快讯源出现 <code>113.15</code>，与主流 <code>100.97–101.07</code> 显著冲突且自相矛盾，本报告不采信（见第三节）。</li>
+<li><strong>BOJ 政策利率口径分歧</strong>：一源报 1.00%（09-18 未变），另一口径为 1.25%（09-18 加息）——<strong>未核实到一手公告，引用时须注明</strong>。</li>
+<li><strong>期限溢价是模型估计</strong>：本报告采用 NY Fed ACM 标准序列（0.64–0.76%）；另有来源报 2.66%，属方法学口径不同，不混用。</li>
+<li><strong>欧债与信用利差多为转述</strong>：非一手拍卖公告，属「需核实原文」层级；美债收益率与 TIPS 实际利率为财政部 / FRED 一手。</li>
+<li><strong>黄金年内 −0.4% 为 09-18 口径</strong>，距高点 −21.8% 系与 1 月 $5,608.35 对照。</li>
+<li><strong>布伦特油价口径不一致</strong>：09-25 前后一源报跌破 $105（−2.24%），另一源 WTI 收 $92.41，属不同标的不同时点，不可直接比较。</li>
+</ol>
+
+<h2>十七、把这份报告压缩成五句话</h2>
+
+<div class="conclusion">
+<h3>五句话</h3>
+<ol>
+<li><strong>利率创新高，货币不必然贬值——这一轮美元在升值、黄金在亏钱。</strong>五年多来 10 年期美债名义涨 392bp，实际利率贡献 395bp、通胀补偿 −3bp：这是「钱变贵了」，不是「钱变毛了」。</li>
+<li><strong>真正在贬值的不是货币，是边缘主权的信用。</strong>法国借得比意大利和希腊还贵、法德利差破 100bp——同一个欧元内部的分层，证明这是财政问题不是货币问题。</li>
+<li><strong>「法币贬值」要分开三种：对彼此（零和）、对实物（可对冲，正版工具是 TIPS 不是黄金）、对未来的自己（不可逆）。</strong>你问的是第三种，看到的数据是第一种。</li>
+<li><strong>最确定的受益者是短端现金与 TIPS，不是黄金。</strong>黄金方向对、时机未到——它的发令枪是「实际利率见顶」，而更强的情景是「央行在通胀没解决时被迫投降」。</li>
+<li><strong>最该警惕的是一个错位：无风险端 99 分位紧绷、信用端 23–29 分位松弛、而最弱一层已在最宽。</strong>风险没有消失，只是被压缩到了指数看不到的地方——私募信贷违约率 6.3% 就是它的读数。</li>
+</ol>
+</div>
+
+<div class="disc">
+<p><strong>数据来源与口径</strong>：美债收益率、TIPS 实际利率、债务与付息数据来自美国财政部与 FRED（一手，2026-09-24 / 09-25）；信用利差（IG / HY / CCC OAS）来自 ICE BofA 指数经 FRED 发布（一手）；期限溢价来自纽约联储 ACM 模型（模型估计值）；欧日国债收益率、汇率、黄金、油价、评级动作、拍卖结果来自 Reuters、Bloomberg、Financial Times、Wall Street Journal、Morningstar / Dow Jones、格隆汇等公开报道转述（<b>非一手来源，需核实原文</b>）；央行政策利率以 Fed / ECB 公告与媒体报道为准，BOJ 存在口径分歧已在正文标注。所有价格均为 2026-09-25 至 09-28 的公开读数，市场休市时段除外。文中口径分歧均已逐项标注，未择一断言。</p>
+<p>P64 · 完 · 上一份 P63《抵押品什么时候通电》· 下一份 P65（灵魂接第六十条）</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

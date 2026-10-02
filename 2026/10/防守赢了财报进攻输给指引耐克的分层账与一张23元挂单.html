@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防守赢了财报，进攻输给指引：耐克的分层账与一张 23 元挂单</title>
+<style>
+:root{
+  --bg:#0a0a0c; --panel:#101013; --panel2:#141417; --line:#1f1f23;
+  --tx:#d1d1d6; --tx2:#86868b; --hd:#f5f5f7;
+  --up:#ff453a; --dn:#30d158; --blue:#5ac8fa; --amber:#ff9f0a; --purple:#bf5af2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans','Yu Gothic',sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:48px 26px 90px}
+h1{font-size:30px;line-height:1.35;margin:0 0 14px;color:var(--hd);font-weight:700;letter-spacing:-.4px}
+h1 .g{background:linear-gradient(96deg,#f5f5f7 12%,#8e8e93 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 20px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.badge{display:inline-block;padding:4px 11px;border:1px solid var(--line);border-radius:20px;
+  font-size:12px;color:var(--tx2);background:var(--panel);white-space:nowrap}
+.badge.k{color:var(--hd);border-color:#2c2c31}
+.badge.up{color:var(--up);border-color:rgba(255,69,58,.35)}
+.badge.dn{color:var(--dn);border-color:rgba(48,209,88,.35)}
+.badge.b{color:var(--blue);border-color:rgba(90,200,250,.35)}
+.badge.a{color:var(--amber);border-color:rgba(255,159,10,.35)}
+h2{font-size:20px;color:var(--hd);margin:52px 0 16px;font-weight:600;letter-spacing:-.2px;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;color:var(--hd);margin:30px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+strong{color:var(--hd);font-weight:600}
+em{font-style:normal;color:var(--amber);font-weight:600}
+code{background:#17171b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px;color:#e5e5ea}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:0 0 10px}
+.lead p:last-child{margin-bottom:0}
+.verdict{background:var(--panel2);border-left:3px solid var(--hd);border-radius:0 10px 10px 0;
+  padding:13px 18px;margin:0 0 22px;font-size:14.5px;color:var(--hd)}
+.verdict b{color:var(--amber)}
+.callout{background:var(--panel2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;font-size:14.5px}
+.callout.red{border-left-color:var(--up)}
+.callout.green{border-left-color:var(--dn)}
+.callout.blue{border-left-color:var(--blue)}
+.callout p:last-child{margin-bottom:0}
+.conclusion{background:linear-gradient(180deg,#131317,#0f0f12);border:1px solid #2c2c31;border-radius:14px;
+  padding:26px 28px;margin:34px 0}
+.conclusion h3{margin-top:0;color:var(--amber)}
+.soul{background:#0f0f12;border:1px dashed #3a3a40;border-radius:12px;padding:22px 24px;margin:36px 0}
+.soul .tag{color:var(--amber);font-size:12.5px;letter-spacing:.6px;margin-bottom:10px}
+.soul .q{color:var(--tx);font-size:14.5px;line-height:1.85}
+.disc{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:20px 22px;margin:40px 0 0;font-size:13.5px;color:var(--tx2)}
+.disc strong{color:var(--tx)}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+th{text-align:left;color:var(--tx2);font-weight:500;font-size:12.5px;letter-spacing:.3px;
+  padding:9px 10px;border-bottom:1px solid #2c2c31}
+td{padding:10px;border-bottom:1px solid var(--line);color:var(--tx);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.up{color:var(--up)}.dn{color:var(--dn)}.mut{color:var(--tx2)}
+svg{display:block;width:100%;height:auto;margin:22px 0}
+.lg{font-size:12px;color:var(--tx2);margin:-12px 0 24px}
+ul{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:7px}
+.zone{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.zc{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.zc .t{font-size:12px;color:var(--tx2);margin-bottom:6px}
+.zc .v{font-size:16px;color:var(--hd);font-weight:600;font-variant-numeric:tabular-nums}
+.zc .n{font-size:12px;color:var(--tx2);margin-top:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span class="g">防守赢了财报，进攻输给指引：耐克的分层账与一张 23 元挂单</span></h1>
+<p class="sub">数据基准：耐克 FY27Q1 财报（SEC 8-K，2026-10-01 盘后发布，报告期截至 2026-08-31）·
+财报电话会实录（10/1）· 卖方评级汇总（9/30-10/2）· 行情：NKE 10/1 收盘 35.15 美元、10/2 盘前约 31.6 美元 ·
+成稿于 2026-10-02（美股开盘前）</p>
+<div class="badge-row">
+  <span class="badge k">P70 · 消费 · 持仓复盘</span>
+  <span class="badge dn">第二大持仓 19.67%</span>
+  <span class="badge up">盘前 -10%</span>
+  <span class="badge a">灵魂三条：第七十四 / 七十五 / 七十六条</span>
+  <span class="badge b">接 P57 低位三分法 · 魂 17 · 魂 3</span>
+</div>
+
+<div class="lead">
+<p>耐克 FY27Q1 财报发布后，市场上流行两种截然相反的说法：一种说「利润超预期」，一种说「财报暴雷」。两者都对，也都不全对——<strong>这份财报的利润端与收入端在朝相反的方向走</strong>：毛利率 +60bp、经营利润持平微增、EPS 超预期 9-10%；同时营收 -4%、大中华区连续第九个季度下滑、全年指引下修到「高个位数下滑」。股价盘前跌超 10%，逼近 12 年低位。</p>
+<p>本报告把这笔账拆开分层算清楚：哪一层在涨、哪一层在跌、管理层拿什么稳信心、23 美元这个新补仓价位靠什么锚住——以及为什么旧挂单 34-36 必须作废。它同时是 P57「低位三种成色」判别框架与魂 17「成本价不在定价公式里」的一次完整案例演练，而案例就发生在自己的第二大持仓上。</p>
+</div>
+
+<div class="verdict">
+<b>一句话定性：</b>这是一份<strong>防守成功、进攻乏力</strong>的财报——利润率是成本省出来的，收入还在失血，指引亲手宣布 Q1 的好组合不可延续。市场罚的不是这一季，是未来三季。而「12 年新低」不等于便宜：按新指引，32 美元对应前瞻 PE 约 26 倍。补仓价位表必须随分母一起重锚——旧 34-36 作废，新锚 23。
+</div>
+
+<h2>一、一份被误读的财报</h2>
+<p>财报当晚最容易看到的三个标题互相矛盾：「耐克利润超预期」「耐克财报暴雷」「耐克 EPS 不及预期」。矛盾不来自数据，来自<strong>口径</strong>——三个标题各自站住了利润表的不同一层。把它拆成六层（SEC 8-K 一手数字，报告期截至 2026-08-31）：</p>
+
+<svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, PingFang SC, sans-serif">
+  <rect width="680" height="330" fill="#0a0a0c"/>
+  <text x="24" y="30" fill="#f5f5f7" font-size="16" font-weight="600">利润表的六层：三层在涨，两层在跌，一层超预期</text>
+  <text x="24" y="52" fill="#86868b" font-size="12">FY27Q1（截至 2026-08-31）vs 上年同期 · 数据源：SEC 8-K</text>
+  <rect x="24" y="70" width="200" height="54" rx="8" fill="#1c2a1e" stroke="#4a7a55"/>
+  <text x="124" y="92" fill="#d8f5dd" font-size="13" text-anchor="middle">毛利率 42.2% → 42.8%</text>
+  <text x="124" y="110" fill="#8fbb98" font-size="12" text-anchor="middle">+60bp ✅ 成本省出来的</text>
+  <rect x="240" y="70" width="200" height="54" rx="8" fill="#1c2a1e" stroke="#4a7a55"/>
+  <text x="340" y="92" fill="#d8f5dd" font-size="13" text-anchor="middle">SG&amp;A 39.1 亿美元</text>
+  <text x="340" y="110" fill="#8fbb98" font-size="12" text-anchor="middle">-3% ✅ 行政 -6% 营销 +5%</text>
+  <rect x="456" y="70" width="200" height="54" rx="8" fill="#1c2a1e" stroke="#4a7a55"/>
+  <text x="556" y="92" fill="#d8f5dd" font-size="13" text-anchor="middle">EBIT 约 9.07 亿</text>
+  <text x="556" y="110" fill="#8fbb98" font-size="12" text-anchor="middle">vs 9.0 亿 ✅ 持平微增约 1%</text>
+  <rect x="24" y="140" width="312" height="54" rx="8" fill="#2a1c1c" stroke="#8a4444"/>
+  <text x="180" y="162" fill="#ffb4b4" font-size="13" text-anchor="middle">净利润 7.27 → 7.12 亿美元（-2%）</text>
+  <text x="180" y="180" fill="#cc9999" font-size="12" text-anchor="middle">有效税率 21.1% → 22.7%（海外税务审计结算 +160bp）</text>
+  <rect x="344" y="140" width="312" height="54" rx="8" fill="#2a1c1c" stroke="#8a4444"/>
+  <text x="500" y="162" fill="#ffb4b4" font-size="13" text-anchor="middle">稀释 EPS 0.49 → 0.48（-2%）</text>
+  <text x="500" y="180" fill="#cc9999" font-size="12" text-anchor="middle">但超一致预期 0.43-0.44 约 9-10%</text>
+  <rect x="24" y="214" width="632" height="46" rx="8" fill="#1a2230" stroke="#3a5a8a"/>
+  <text x="340" y="234" fill="#bcd4f0" font-size="12.5" text-anchor="middle">「超预期」与「同比上涨」是两个维度：EPS 比华尔街预期高 10%，比去年同期低 2%</text>
+  <text x="340" y="251" fill="#8ba3c4" font-size="11.5" text-anchor="middle">另一个易混入口径：FY26Q4 净利 +406% 是重组费用基数效应，与本季无关</text>
+  <rect x="24" y="280" width="632" height="34" rx="6" fill="#16161c"/>
+  <text x="340" y="302" fill="#8f8f99" font-size="11.5" text-anchor="middle">结论：涨的是利润率，持平的是经营利润，微降的是税后净利——「利润上涨」最多只对了一层半</text>
+</svg>
+
+<h3>那张容易看错的 +406%</h3>
+<p>如果你在财报季看到「耐克净利大增 406%」的字样，那是上一季（FY26Q4，截至 2026 年 5 月）——上年同期计提了大额重组费用垫高基数。本季（FY27Q1）的税后数字是 -2%。<strong>分层账算完，用户的直觉「利润似乎上涨了」对应的是毛利率与 EBIT 层；「暴雷」的直觉对应的是净利、指引与股价。</strong>两个直觉都是真的，只是不在同一层。</p>
+
+<h2>二、收入端：还在失血</h2>
+<p>利润端守住靠的是成本纪律，收入端的数字则没有任何一层是好的：</p>
+<table>
+<tr><th>科目</th><th>FY27Q1</th><th>口径</th><th>判读</th></tr>
+<tr><td>总营收</td><td class="num">112.1 亿美元</td><td>-4%（预期约 113.2 亿）</td><td class="dn">不及预期</td></tr>
+<tr><td>大中华区</td><td class="num">固定汇率 -26%</td><td>连续第 9 个季度下滑；区 EBIT -34%</td><td class="up">最重的伤口</td></tr>
+<tr><td>Converse</td><td class="num">-28%</td><td>第二品牌失速</td><td class="up">恶化</td></tr>
+<tr><td>数字渠道</td><td class="num">-13%</td><td>自营 DTC 也在缩</td><td class="up">恶化</td></tr>
+<tr><td>Dunk 单品</td><td class="num">约砍一半</td><td>约 2 亿美元逆风</td><td class="mut">主动去泡沫</td></tr>
+<tr><td>批发渠道</td><td class="num">低个位数增长</td><td>重回批发是「Win Now」策略核心</td><td class="dn">唯一亮色</td></tr>
+</table>
+<p>把这行数字与另一笔持仓并排看：同一天（10/1-10/2），腾讯音乐隔夜跌超 1%。我们既有体系里的第一条组合级预警——<strong>TME 24.31% + NKE 19.67% ≈ 44% 押在同一个「大中华区 / 可选消费」因子</strong>——在这份财报里<strong>双向兑现</strong>了：耐克大中华区 -26% 是这个因子的美股读数，TME 的阴跌是这个因子的中概读数。这不是巧合，是同一个宏观因子在两个市场同时收租（负的租）。</p>
+
+<h2>三、指引才是真正的雷</h2>
+<p>本季实际数字再差也只是「差一个季度」；让盘后股价跌 8-10% 的，是管理层自己给出的全年口径：</p>
+<table>
+<tr><th>指引项</th><th>管理层口径</th><th>市场预期</th><th>落差</th></tr>
+<tr><td>FY27 全年营收</td><td class="num">「高个位数下滑」（约 -7~9%）</td><td class="num">约 -2%</td><td class="up">大幅下修</td></tr>
+<tr><td>FY27 调整后 EPS</td><td class="num">1.15-1.35 美元</td><td class="num">1.65-1.68 美元</td><td class="up">-20~30%</td></tr>
+<tr><td>FY27 EBIT vs 营收</td><td colspan="3">明说「EBIT 降幅将大于营收降幅」——固定成本去杠杆，Q1「营收降、利润率升」的组合被亲手否掉</td></tr>
+<tr><td>隐含未来三季 EPS</td><td class="num">约 0.77 美元（1.25 中值 - 本季 0.48）</td><td>—</td><td class="up">同比约 -29%</td></tr>
+<tr><td>派息率（中值口径）</td><td class="num">约 121-143%</td><td>—</td><td class="up">股息 > 净利</td></tr>
+</table>
+<p>第三行是整份指引里最狠的一句：管理层主动承认<strong>本季「利润率涨」的组合不可持续</strong>——因为毛利率的改善来自仓储物流成本下降与费用控制，而固定成本的去杠杆效应会在营收继续下滑时反过来吃掉利润率。「防守赢了一季、进攻输给一年」的判词，出处就是这一行。</p>
+
+<h2>四、管理层的四条稳信心措施</h2>
+<p>电话会（10/1 盘后，新 CFO Matt Denton 首次主持——8/17 从辉瑞到任）摆出四条措施。但把生效时间画在一条轴上，立刻能看出问题：<strong>没有一条是为「本周的股价」设计的</strong>。</p>
+
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, PingFang SC, sans-serif">
+  <rect width="680" height="300" fill="#0a0a0c"/>
+  <text x="24" y="30" fill="#f5f5f7" font-size="16" font-weight="600">四条措施的时间轴：现在（2026Q4）到 FY2031</text>
+  <line x1="40" y1="170" x2="640" y2="170" stroke="#3a3a44" stroke-width="2"/>
+  <polygon points="640,165 652,170 640,175" fill="#3a3a44"/>
+  <rect x="60" y="120" width="10" height="100" fill="#5ac8fa" opacity="0.7"/>
+  <text x="65" y="112" fill="#bcd4f0" font-size="11.5" text-anchor="middle">现在</text>
+  <text x="65" y="284" fill="#8ba3c4" font-size="11" text-anchor="middle">① 分红承诺</text>
+  <text x="65" y="298" fill="#8ba3c4" font-size="10.5" text-anchor="middle">本季 6.1 亿 +3%</text>
+  <rect x="180" y="130" width="10" height="80" fill="#ff9f0a" opacity="0.7"/>
+  <text x="185" y="122" fill="#ffd479" font-size="11.5" text-anchor="middle">2026/11</text>
+  <text x="185" y="284" fill="#8ba3c4" font-size="11" text-anchor="middle">④ 投资者日</text>
+  <text x="185" y="298" fill="#8ba3c4" font-size="10.5" text-anchor="middle">11/16-17 五年算法</text>
+  <rect x="300" y="140" width="10" height="60" fill="#bf5af2" opacity="0.7"/>
+  <text x="305" y="132" fill="#d9b8f5" font-size="11.5" text-anchor="middle">FY27-28</text>
+  <text x="305" y="284" fill="#8ba3c4" font-size="11" text-anchor="middle">③ Pace 重组</text>
+  <text x="305" y="298" fill="#8ba3c4" font-size="10.5" text-anchor="middle">10 亿费用·组织并区</text>
+  <rect x="470" y="150" width="80" height="40" fill="#30d158" opacity="0.5"/>
+  <text x="510" y="142" fill="#8fbb98" font-size="11.5" text-anchor="middle">FY2029-2031</text>
+  <text x="510" y="284" fill="#8ba3c4" font-size="11" text-anchor="middle">③ 节省集中兑现</text>
+  <text x="510" y="298" fill="#8ba3c4" font-size="10.5" text-anchor="middle">25 亿累计节省</text>
+  <rect x="24" y="60" width="632" height="30" rx="6" fill="#16161c"/>
+  <text x="340" y="80" fill="#8f8f99" font-size="11.5" text-anchor="middle">② 回购：授权剩约 59 亿但 FY26 全年仅执行 1.23 亿——整条时间轴上它不在任何位置</text>
+</svg>
+
+<table>
+<tr><th>措施</th><th>内容</th><th>生效时间</th><th>成色</th></tr>
+<tr><td>① 分红优先</td><td>CFO 原话「所有情景下都有能力维持并最终提升派息」；本季已派 6.1 亿（+3%）。被分析师当面追问派息率超 100% 仍坚持</td><td>现在</td><td class="up">承诺的财务底子不硬（见下节）</td></tr>
+<tr><td>② 回购冻结</td><td>180 亿授权（2026/6 重批）剩约 59 亿；FY26 全年只回购 1.23 亿（FY23 是 55 亿）；本季因经营现金流不足暂停，仅留「未来可能恢复」</td><td>无时间表</td><td class="mut">反面教材（见第六节）</td></tr>
+<tr><td>③ Pace 重组</td><td>25 亿累计节省（到 FY2031）、10 亿税前费用（FY27 先确认 3 亿）；四区并三区（大中华区降级并入 APGC，FY28 生效）、班加罗尔新园区、裁员年内第三轮（通知 2027 日历年才发）</td><td>结构 FY28 / 节省 FY29-30</td><td class="dn">方向对、太远</td></tr>
+<tr><td>④ 沟通改革</td><td>首次全年指引＋承诺逐季更新；11/16-17 投资者日给「财务算法」与未来五年框架（Jefferies、Guggenheim 列为潜在转折催化）</td><td>11 月中</td><td class="dn">最值得等的一条</td></tr>
+</table>
+
+<h2>五、股息的账：用本金付的分红</h2>
+<p>23 美元价位的多头论点几乎全压在股息上，所以这笔账必须算到骨头：</p>
+<div class="zone">
+  <div class="zc"><div class="t">FY26 经营现金流</div><div class="v">28.68 亿</div><div class="n">美元</div></div>
+  <div class="zc"><div class="t">减：资本开支</div><div class="v">-6.84 亿</div><div class="n">美元</div></div>
+  <div class="zc"><div class="t">可用自由现金流</div><div class="v">≈21.8 亿</div><div class="n">美元</div></div>
+  <div class="zc"><div class="t">全年派息</div><div class="v">≈24.07 亿</div><div class="n">美元 · 超出 FCF 约 2.3 亿</div></div>
+  <div class="zc"><div class="t">缺口靠账上现金补</div><div class="v">84 亿</div><div class="n">美元存量 · 每年往下掉</div></div>
+</div>
+<p>这就是魂 3「收租的房子着不了火」的反面案例：一座房子如果租金收不回维护费，靠变卖门板付租金，它就不是收租房，是<strong>在清算中的资产</strong>。按新指引中值算，派息率 121-143%——管理层承诺「维持并最终提升」，账上现金够撑几个季度，但<strong>这已经不是安全垫，是待证伪的承诺</strong>。4.7%（35 美元价位）与 7.1%（23 美元价位）的股息率，本质是市场对这个承诺打的折。</p>
+
+<h2>六、回购：一本反面教材</h2>
+<p>管理层没把回购当稳价工具是有原因的：<strong>历史回购均价约 97.57 美元，现价 35。</strong>过去四个财年回购花掉的钱（FY23 一年 55 亿）基本蒸发。这与我们 P45 见顶监控第五项「回购缩水」形成了教科书级对照——多数公司是见顶后回购缩水，耐克是<strong>回购在顶部放量、在底部没钱</strong>。也给魂 8「策略写在笔记、风险长在账户」补了一个公司版：回购授权写在公告里，现金流才是账户。</p>
+
+<h2>七、沟通策略：坏消息一次说清</h2>
+<p>这份指引的口径值得单独肯定：白纸黑字写着「假设中国本财年会变得更差」「Sportswear/Jordan 的调整会压制到 FY28 上半年」。管理层<strong>主动放弃了用话术稳短期股价，去换「指引可信度」这个长期资产</strong>——对比 8 月的腾讯音乐财报（Q2 停止披露用户数据被市场惩罚），方向相反。坏处是短期没有缓冲（盘后照跌 8-10%）；好处是 11 月投资者日给出的任何数字都会更可信。对我们而言，这意味着<strong>裁判日的信号质量更高</strong>：11/16-17 的五年财务算法，可信度比普通财报指引高一档。</p>
+
+<h2>八、估值：12 年新低不等于便宜</h2>
+<p>P57「低位三种成色」的判别框架里，这是<strong>基本面恶化型</strong>低位的教科书样本（盈利在下修途中）：</p>
+<table>
+<tr><th>价位</th><th>前瞻 PE（指引中值 1.25）</th><th>前瞻 PE（FY28 街道恢复 1.6）</th><th>股息率（1.64/年）</th><th>判读</th></tr>
+<tr><td class="num">35（10/1 收盘）</td><td class="num">28.0x</td><td class="num">21.9x</td><td class="num">4.7%</td><td class="mut">成长股定价 · 不便宜</td></tr>
+<tr><td class="num">32（盘前）</td><td class="num">25.6x</td><td class="num">20.0x</td><td class="num">5.1%</td><td class="mut">仍不便宜</td></tr>
+<tr><td class="num">28-30</td><td class="num">22.4-24.0x</td><td class="num">17.5-18.8x</td><td class="num">5.5-5.9%</td><td class="dn">试错仓档</td></tr>
+<tr><td class="num">23（新挂单）</td><td class="num">18.4x</td><td class="num">14.4x</td><td class="num">7.1%</td><td class="dn">确认仓档</td></tr>
+<tr><td class="num">22（证伪线）</td><td class="num">17.6x</td><td class="num">13.8x</td><td class="num">7.5%</td><td class="up">破线转止损评估</td></tr>
+</table>
+<p>「股价创 12 年新低」是价格现象；「前瞻 PE 26 倍」是结构读数。<strong>两者并存时，后者才是裁判</strong>（周期股 PE 悖论的镜像：盈利下修途中的低 PE 才是陷阱，高 PE 的新低价位反而可能是估值没到位的证据）。卖方结构佐证这不是共识性错误定价：33 家目标价均价 40.69，但近 6 个月买入占比从 46% 降到 27%、卖出从 5% 升到 14%；大摩减持 TP 31、美银跑输大市 TP 30、摩根大通减持 TP 40——最低 19、最高 70，是真实的方向之争。背景还在恶化：9/21 被剔出标普 100（18 年来首次）、华尔街整体评级至少 25 年最低、姆巴佩 9 月转投 On。</p>
+
+<h2>九、体系位置：三个老条款的现场演练</h2>
+<ul>
+<li><strong>魂 17（成本价不在定价公式里）</strong>：持仓成本 39.03，旧 C 档预挂单 34-36 基于 FY26 约 2.10 的 EPS 分母；新指引 1.15-1.35 把分母砍掉约 40%。<strong>价位表随分母一起换</strong>——旧单作废不是因为「跌穿了丢人」，是因为它的估值前提没了。</li>
+<li><strong>P57 低位三分法</strong>：P57 把 52 周低位分「估值型 / 叙事杀估值型 / 基本面恶化型」，判别判据是「谁在卖」。本例是第三型——利润率防守住了，但收入与指引都在下修途中，8-10% 的跌幅是基本面重定价，不是情绪错杀。有日历的等价格（11/16 投资者日、12 月中 Q2），没日历的等结构。</li>
+<li><strong>魂 3（收租的房子着不了火）的反面</strong>：股息不被 FCF 覆盖的「收租股」不是收租房——按第五节的账，耐克当下的 7.1% 股息率是清算式收益率，不是租金收益率。想要收租逻辑成立，前提是 FCF−派息转正，这要等 Pace 节省在 FY29-30 兑现。</li>
+</ul>
+
+<h2>十、补仓决策：23 的三把尺子与三条撤单线</h2>
+<p>决策已定（2026-10-02）：撤旧单 34-36，改挂 <strong>23 附近、仓位上限 3%（组合口径）</strong>。这个价位的合规性与风险边界如下：</p>
+
+<svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, PingFang SC, sans-serif">
+  <rect width="680" height="320" fill="#0a0a0c"/>
+  <text x="24" y="30" fill="#f5f5f7" font-size="16" font-weight="600">价位标尺：从盘前到证伪线</text>
+  <line x1="60" y1="200" x2="620" y2="200" stroke="#3a3a44" stroke-width="2"/>
+  <rect x="380" y="185" width="240" height="30" fill="#2a1c1c" opacity="0.55"/>
+  <text x="500" y="178" fill="#cc9999" font-size="11" text-anchor="middle">不补区 31-36（PE 25-29x）</text>
+  <rect x="300" y="185" width="80" height="30" fill="#1a2230" opacity="0.7"/>
+  <text x="340" y="178" fill="#8ba3c4" font-size="11" text-anchor="middle">28-30 试错仓</text>
+  <rect x="160" y="185" width="140" height="30" fill="#1c2a1e" opacity="0.7"/>
+  <text x="230" y="178" fill="#8fbb98" font-size="11" text-anchor="middle">22-25 确认仓</text>
+  <line x1="390" y1="190" x2="390" y2="210" stroke="#ff453a" stroke-width="2"/>
+  <text x="390" y="232" fill="#ff6b6b" font-size="11" text-anchor="middle">35.15 · 10/1 收盘</text>
+  <line x1="332" y1="185" x2="332" y2="215" stroke="#ff9f0a" stroke-width="2.5"/>
+  <text x="332" y="232" fill="#ffd479" font-size="11" text-anchor="middle">~31.6 盘前</text>
+  <line x1="240" y1="182" x2="240" y2="218" stroke="#30d158" stroke-width="3"/>
+  <text x="240" y="232" fill="#30d158" font-size="11.5" font-weight="600" text-anchor="middle">23 · 新挂单</text>
+  <line x1="160" y1="190" x2="160" y2="210" stroke="#ff453a" stroke-width="2"/>
+  <text x="160" y="232" fill="#ff6b6b" font-size="11" text-anchor="middle">22 · 证伪线</text>
+  <rect x="24" y="252" width="632" height="52" rx="8" fill="#16161c"/>
+  <text x="340" y="272" fill="#8f8f99" font-size="11.5" text-anchor="middle">23 的三把尺子：前瞻 PE 18.4x（指引中值 1.25）· FY28 恢复口径 14.4x（1.6）· 股息率 7.1%（未验证）</text>
+  <text x="340" y="292" fill="#8f8f99" font-size="11.5" text-anchor="middle">仓位账：跌至 23 时存量权重 19.67% → 约 12.9%，补 3% 后约 15.6%；消费因子 TME+NKE 约 39-40%</text>
+</svg>
+
+<h3>核心悖论：盲挂 23，最可能的成交原因恰恰是坏消息</h3>
+<p>从 31.5 到 23 需要再跌约 27%。无消息阴跌到这个位置的概率不高——大概率是因为<strong>股息被砍、或指引再降</strong>，而这两件事正是「不该买」的信号。预挂单本身分不清「系统性错杀」和「个股继续恶化」，所以三条撤单线必须人工盯（挂单零成本的前提是人还在看）：</p>
+<table>
+<tr><th>撤单线</th><th>触发动作</th><th>逻辑</th></tr>
+<tr><td>① 股息削减或冻结公告</td><td>立即撤单</td><td>23 价位多头论点全压在 1.64 美元/年上；派息率已 121-143%</td></tr>
+<tr><td>② 12 月中 Q2 指引再降，或大中华区降幅未收窄</td><td>立即撤单</td><td>「确认仓」的前置条件是营收止跌信号，指引反向即作废</td></tr>
+<tr><td>③ 收盘跌破 22 且无拐点</td><td>撤单，转存量止损评估</td><td>证伪线；跌破意味着恢复叙事失败</td></tr>
+</table>
+<p>两个强制复核日（到日重估挂单，无论价格在哪）：<strong>11/16-17 投资者日</strong>（财务算法是否支撑 FY28 EPS ≥1.5——不支撑则估值锚下移）与<strong>12 月中 FY27Q2 财报</strong>（含 400bp 营收逆风，指引方向是裁判）。时间止损同步设定：2027 年 6 月前若仍无任何收入企稳证据，承认恢复叙事失败，讨论的不是补仓，是存量仓位怎么办。</p>
+<p>仓位上限 3% 的原因：跌到 23 时存量权重自然缩到约 12.9%，补 3% 后约 15.6%——单票闸过了，但 TME+NKE 消费因子仍约 39-40%，高于舒适线。所以<strong>过闸不加码</strong>：这不是 NKE 一家的事，是同一个因子上两笔持仓的总预算。</p>
+
+<h2>十一、哨位清单</h2>
+<ul>
+<li><strong>今晚（10/2）</strong>：20:30 北京时间 9 月非农（共识 +8.4 万）；21:30 美股开盘——<strong>开盘前撤旧单 34-36 是今天唯一必须动手的动作</strong>（跳空后若仍挂着，会以约 31-32 的开盘价被动成交）。</li>
+<li><strong>11/16-17 投资者日</strong>：五年财务算法。FY28 EPS ≥1.5 有依据 → 23 的锚成立；无依据 → 锚下移、挂单重估。</li>
+<li><strong>12 月中 FY27Q2 财报</strong>：营收降幅、大中华区降幅是否收窄、派息是否维持。</li>
+<li><strong>2027 年 3 月 FY28 指引</strong>：恢复叙事第一个可验证点。</li>
+<li><strong>股息公告</strong>：任何「冻结」措辞都是撤单线 ① 触发。</li>
+</ul>
+
+<h2>十二、边界与口径分歧</h2>
+<ul>
+<li>本季「利润涨跌」依口径分层：毛利率与 EBIT 层微涨、净利与 EPS 层 -2%、超预期口径 +9-10%——三个说法各有出处，报告以 8-K 一手数字为准。</li>
+<li>FY28 街道恢复预期 EPS 约 1.6 为多源均值，非公司指引；「指引中值 1.25」取 1.15-1.35 区间中点。</li>
+<li>派息率 121-143% 的区间来自指引上下限；FCF 缺口约 2.3 亿为 FY26 口径外推，FY27 实际值待 Q2 数据。</li>
+<li>Pace 节省 25 亿「到 FY2031」与「集中 FY2029-2030 兑现」两个口径并存（管理层两处表述），取后者为财务影响口径。</li>
+<li>盘前价约 31.6 为 10/2 早间快照，开盘实际成交区间可能不同；「12 年低位」以日线收盘口径衡量。</li>
+<li>仓位账（12.9% → 15.6%）以 10/1 收盘 35.15 与其他持仓不变为假设的粗估，实际权重随全组合市值波动。</li>
+</ul>
+
+<div class="conclusion">
+<h3>五句话总结</h3>
+<p>1. 这份财报<strong>防守赢了一季（毛利率 +60bp、EPS 超预期 10%），进攻输给一年（指引砍 20-30%）</strong>——市场罚的是后者，罚得对。</p>
+<p>2. 「12 年新低」是价格现象，「前瞻 PE 26 倍」是结构读数——<strong>基本恶化型低位不便宜，价位表必须随分母重锚</strong>：旧 34-36 作废，新锚 23。</p>
+<p>3. 管理层四条稳信心措施全部瞄准 FY2028-2031，唯一即时的「分红承诺」财务底子不硬——<strong>派息率超 FCF 覆盖的股息不是安全垫，是待证伪的承诺</strong>。</p>
+<p>4. 23 元挂单立得住（三把尺子交叉），但<strong>盲挂的低价单最容易在证伪信号里成交</strong>——三条撤单线与挂单同时生效，两个人工复核日（11/16-17、12 月中）强制重估。</p>
+<p>5. 组合层面真正的教训在因子：TME+NKE≈44% 大中华区/可选消费因子<strong>双向兑现</strong>，补仓上限 3% 不是对 NKE 的判断，是对同一个赌注总预算的纪律。</p>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第七十四条</div>
+<div class="q">成本驱动的超预期不是需求的拐点。涨的是利润率、跌的是收入时，裁判看收入方向——防守成功改变不了进攻的时间表；判据是「利润率改善来自需求还是来自省钱」，省钱改善的利润率在营收继续下滑时会被固定成本去杠杆吃回去。</div>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第七十五条</div>
+<div class="q">用本金付的股息是延期的新股。派息超出自由现金流覆盖时，股息从安全垫变成待证伪的承诺——高股息率不是折价券，是市场给这个承诺打的折；判据是 FCF 减派息的符号，不是股息率的百分比。收租的房子着不了火，前提是租金收得回维护费。</div>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第七十六条</div>
+<div class="q">盲挂的低价单，最容易在证伪信号里成交。预挂单分不清「系统性错杀」与「个股恶化」——跌到挂单价的最可能原因，恰是你当初不敢想的那个坏消息；撤单规则必须与挂单同时生效，预挂单零成本的前提是人还在看。</div>
+</div>
+
+<div class="disc">
+<strong>数据与免责说明</strong>：本报告基于公开信息（SEC 8-K、财报电话会实录、卖方评级汇总、10/1-10/2 行情快照）与个人持仓记录写成，其中仓位与成本为用户实际账户口径。文中所有价位、档位与撤单线均为个人研究框架的推演，不构成投资建议；开盘前请自行确认券商委托状态。市场有风险，投资需谨慎；任何投资决策应结合个人风险承受能力、资金状况与投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。<br><br>
+以上仅为个人认知范围内的理解。
+</div>
+
+<p class="sub" style="margin-top:30px">P70 · 完 · 上一份 P69《不方便的租客：甲骨文、腾讯与一扇正在关闭的门》· 下一份 P71（灵魂接第七十七条）</p>
+
+</div>
+</body>
+</html>

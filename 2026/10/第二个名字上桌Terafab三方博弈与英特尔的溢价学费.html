@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二个名字上桌：Terafab 三方博弈与英特尔的溢价学费</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141418; --line:#2a2a30;
+    --txt:#d1d1d6; --sub:#86868b; --head:#f5f5f7;
+    --up:#e5484d; --down:#30a46c; --gold:#c9a227; --blue:#6cb6ff; --purple:#b98cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 64px}
+  h1.g{font-size:27px;line-height:1.35;color:var(--head);font-weight:800;background:linear-gradient(90deg,#f5f5f7,#a8a8ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+  .sub{color:var(--sub);font-size:12.5px;margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .badge{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--sub)}
+  .badge.hl{color:var(--gold);border-color:#4a3f1d}
+  section{margin-bottom:38px}
+  h2{font-size:19px;color:var(--head);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  h3{font-size:15.5px;color:var(--head);font-weight:700;margin:20px 0 10px}
+  p{margin-bottom:14px}
+  .muted{color:var(--sub)}
+  em{font-style:normal;color:var(--gold)}
+  strong{color:var(--head)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+  th{color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid #1c1c22;vertical-align:top}
+  td.up{color:var(--up)} td.down{color:var(--down)}
+  .callout{background:var(--panel);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .callout.blue{border-left-color:var(--blue)}
+  .verdict{background:linear-gradient(135deg,#1a1a20,#141418);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:26px 0;font-size:15px}
+  .verdict .vt{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+  .conclusion{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:28px 0}
+  .conclusion .ct{color:var(--head);font-weight:700;margin-bottom:10px}
+  .soul{background:linear-gradient(135deg,#1c1810,#141218);border:1px solid #4a3f1d;border-radius:12px;padding:24px;margin:28px 0}
+  .soul .tag{display:inline-block;font-size:12px;color:var(--gold);border:1px solid #4a3f1d;border-radius:99px;padding:3px 12px;margin-bottom:14px}
+  .soul .sn{color:var(--head);font-weight:700;font-size:16px;margin-bottom:10px}
+  .soul p{color:#d8cfa8;font-size:14px}
+  .disc{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:var(--sub);font-size:12.5px}
+  .fix{background:#1a1418;border-left:3px solid var(--down);border-radius:8px;padding:14px 16px;margin:18px 0;font-size:13.5px;color:#c9a0a8}
+  svg{max-width:100%;height:auto;display:block;margin:20px auto}
+  .fig-cap{text-align:center;color:var(--sub);font-size:12px;margin-top:-8px;margin-bottom:20px}
+  ul{margin:0 0 14px 20px} li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1 class="g">第二个名字上桌：Terafab 三方博弈与英特尔的溢价学费</h1>
+<div class="sub">P72 · 发散笔记 · 2026-10-05 成稿 · 数据口径：2026-10-02/05 公开报道（Culpium / Reuters 转述 / Investing.com / 科创板日报 / 中时新闻等，均为二手转述源，文中分级标注）</div>
+<div class="badge-row">
+  <span class="badge">P72</span><span class="badge">AI 硬件</span><span class="badge">Terafab 三方博弈</span><span class="badge hl">事件→原理→判据</span><span class="badge">观察位报告（无持仓无新区间）</span>
+</div>
+
+<div class="verdict">
+  <div class="vt">大白话总评</div>
+  <p>马斯克在给他的德州超级芯片工厂找「第二个施工队」，英特尔跌的 4% 不是丢了订单，而是丢了「独家」这块溢价。Terafab 今年 4 月把英特尔 14A 工艺定为唯一点名的制造伙伴，英特尔股价过去一个月涨约 25%、10/3 收 119.33 美元——其中相当一块是「马斯克独家订单」的叙事溢价。现在台积电坐上谈判桌，哪怕马斯克补一句「台积电是补充英特尔、不是取代」，市场也开始给「独家」打折。而台积电只涨 1%、特斯拉只涨 1%（还是周五交付超预期的余温）——疼的只有英特尔一家，因为只有它把别人画的饼计入了身价。英特尔的回应不在新闻里，在 10 月下旬的 Q3 财报和 14A PDK 交付文件里；它今年真正的布局也不在 14A 前段，而在后段先进封装那条腿上。</p>
+</div>
+
+<section>
+<h2>一、事实清单：先把发生的事钉死</h2>
+<p>这件事的证据链全部是<strong>二手转述</strong>（原发 Culpium 通讯付费墙内、马斯克帖子经媒体转引），先列骨架再分级，防止叙事混进事实层：</p>
+<table>
+<tr><th>时间</th><th>事项</th><th>证据级别</th></tr>
+<tr><td>2026-04</td><td>英特尔宣布加入 Terafab，为首个点名制造伙伴；14A 为唯一点名工艺（马斯克当时口径：等 Terafab 上量时 14A「预计已较成熟」）</td><td>双方公开宣布</td></tr>
+<tr><td>2026-06</td><td>前英特尔晶圆厂厂长 Gary Jiang 加入特斯拉，任 Terafab 项目总监（当时被解读为给英特尔合作铺路）</td><td>媒体报道</td></tr>
+<tr><td>2026-08-06</td><td>Terafab 落地德州 Grimes County：一期 168 亿美元、约 3,000 个岗位；县备案文件显示全部建成上限约 1,190 亿美元；目标约 1 太瓦/年算力；产出仅供 Tesla / SpaceX / xAI 三家；规划 2029 年左右启动硅片制造</td><td>官方公告+备案</td></tr>
+<tr><td>2026-10-02</td><td>Culpium（前彭博专栏作家 Tim Culpan）独家：台积电探讨参与 Terafab；最可能结构＝台积电持有并运营新厂、Terafab 锚定客户（复制日本 JASM / 德国 ESMC 模式）；次选＝Terafab 持多数股权、台积电出技术与运营经验占小股</td><td>独家通讯（转述）</td></tr>
+<tr><td>2026-10-03/04</td><td>马斯克在 X 两条帖子：①「只是讨论，但可能有结果」；②转发网友「台积电只是补充性质」的评论并反驳——「量变会引发质变。单细胞的细菌，与拥有 35 万亿细胞的人类，有着巨大的差异」</td><td>原帖经中文媒体转述</td></tr>
+<tr><td>2026-10-05 盘前</td><td class="down">INTC -4.2% 至约 114.4 美元（前收 119.33）；TSM ADR +1%（台湾股收盘 +3%）；TSLA 约 +0.2%（周五交付 486,532 辆超预期后余温，10/2 收 370.59）</td><td>盘前行情快照</td></tr>
+<tr><td>同日叠加</td><td>Susquehanna 研报：Intel Q3 CPU 型号份额续降——笔记本 68.1%（环比 -3.9pp）、桌面约 76%（2023Q2 以来最低）；AMD 升至 29.3%；高通笔记本 2.2% 创新高</td><td>卖方估计（三等）</td></tr>
+<tr><td>回应状况</td><td>台积电对路透「不予置评」；英特尔截至 10/5 <strong>零公开回应</strong></td><td>缺席本身是信息</td></tr>
+</table>
+<p class="muted">注：本文所有价格均为带日期快照；盘前价格为 10/5 美东盘前读数，收盘价以当日实际为准。INTC 52 周区间 32.89–142.35 美元（过去一年最大涨幅约 2.6 倍）。</p>
+</section>
+
+<section>
+<h2>二、跌的是什么：独家溢价，不是订单</h2>
+<p>先把「损失」的科目算清楚。英特尔在 Terafab 里的<strong>合同现实</strong>是什么？没有签约金额、没有采购担保、没有投产时间表——4 月那次官宣的本质是「被点名」，不是「拿到订单」。14A 的量产时间表是 2027 下半年风险试产、2028 年高容量量产（7 月 Q2 电话会官方口径），而 Terafab 自己 2029 年才出硅片——两边都还在图纸上。</p>
+<p>那 -4% 跌的是什么？是过去一个月 +25% 涨幅里那块「独家叙事」的重定价。用本体系的老尺子（灵魂第二十七条「谁在卖」）看今天的卖单构成：一块是叙事重定价（机构把「独家」改成「主供待定」），另一块是<strong>获利了结</strong>——一年 2.6 倍的涨幅，任何可信的负面催化都会触发兑现盘。后者不是「有人知道了什么」，是涨多了的正常卖压。</p>
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="300" fill="#0a0a0c" rx="10"/>
+  <text x="340" y="30" text-anchor="middle" fill="#f5f5f7" font-size="15" font-weight="700">「独家溢价」被剥掉的三个月</text>
+  <line x1="60" y1="230" x2="640" y2="230" stroke="#2a2a30" stroke-width="1.5"/>
+  <circle cx="110" cy="230" r="6" fill="#c9a227"/>
+  <text x="110" y="258" text-anchor="middle" fill="#86868b" font-size="11">4 月</text>
+  <text x="110" y="274" text-anchor="middle" fill="#d1d1d6" font-size="11">被点名「独家」</text>
+  <text x="110" y="290" text-anchor="middle" fill="#c9a227" font-size="11">+溢价入账</text>
+  <circle cx="300" cy="230" r="6" fill="#6cb6ff"/>
+  <text x="300" y="258" text-anchor="middle" fill="#86868b" font-size="11">6 月</text>
+  <text x="300" y="274" text-anchor="middle" fill="#d1d1d6" font-size="11">厂长被挖走</text>
+  <text x="300" y="290" text-anchor="middle" fill="#6cb6ff" font-size="11">人才单向流动</text>
+  <circle cx="490" cy="230" r="6" fill="#e5484d"/>
+  <text x="490" y="258" text-anchor="middle" fill="#86868b" font-size="11">10 月</text>
+  <text x="490" y="274" text-anchor="middle" fill="#d1d1d6" font-size="11">台积电上桌</text>
+  <text x="490" y="290" text-anchor="middle" fill="#e5484d" font-size="11">溢价蒸发 -4%</text>
+  <rect x="70" y="60" width="180" height="64" rx="8" fill="#141418" stroke="#2a2a30"/>
+  <text x="160" y="86" text-anchor="middle" fill="#86868b" font-size="11">4 月官宣后</text>
+  <text x="160" y="106" text-anchor="middle" fill="#d1d1d6" font-size="11">市场按「订单」定价</text>
+  <rect x="250" y="60" width="180" height="64" rx="8" fill="#141418" stroke="#2a2a30"/>
+  <text x="340" y="86" text-anchor="middle" fill="#86868b" font-size="11">实际合同现实</text>
+  <text x="340" y="106" text-anchor="middle" fill="#d1d1d6" font-size="11">零签约·零金额·零排期</text>
+  <rect x="430" y="60" width="180" height="64" rx="8" fill="#1a1418" stroke="#3a2228"/>
+  <text x="520" y="86" text-anchor="middle" fill="#86868b" font-size="11">10/5 差额兑现</text>
+  <text x="520" y="106" text-anchor="middle" fill="#e5484d" font-size="11">盘前 -4.2%</text>
+  <line x1="250" y1="92" x2="430" y2="92" stroke="#3a2228" stroke-width="1.5" stroke-dasharray="5,4"/>
+</svg>
+<div class="fig-cap">图 1：溢价的时间线——被点名即入账，第二个名字出现即对账</div>
+</section>
+
+<section>
+<h2>三、马斯克为什么找第二个施工队</h2>
+<p>把「良品率不行所以换人」这个传播版本拆开，动机至少有三层，良率顶多排第三：</p>
+<h3>① 单一故障点（最硬的一层）</h3>
+<p>把约 1 太瓦/年产能押在一家<strong>从未运营过尖端晶圆厂、且该工艺 2028 年才量产</strong>的伙伴上——对马斯克是不可接受的单一故障点。Terafab 要供的是 Optimus、Cybercab、xAI 训练集群、SpaceX 数据中心，任何一环断供都直接掐住产品线。hwbusters 那篇点得很准：「盖楼是钱能解决的问题；把亚 2 纳米工艺做出良率，需要几千名有经验的工艺工程师和多年迭代——这恰恰是台积电比谁都卖得好的东西」。路透 4 月就报过特斯拉在从台湾挖半导体工程师——缺口马斯克自己最清楚。</p>
+<h3>② 专利雷区（中文媒体普遍漏掉的一层）</h3>
+<p>英特尔与台积电之间有<strong>广泛的专利交叉授权</strong>（2022 年协议互相许可特定专利），但 Terafab 本身不在这层保护伞内。用英特尔 14A 工艺自己投产芯片，理论上可能踩台积电关键技术专利——把台积电拉进利益共同体，本身就是绕开法律风险的最优解。这条结构因素跟良率无关：<strong>哪怕 14A 良率完美，马斯克也有理由让台积电上桌。</strong></p>
+<h3>③ 工艺未验证（被压缩成「良率差」的那层）</h3>
+<p>14A 的问题是「未经验证」，不是「验证了、不行」——这两个的判据完全不同（下一节展开）。</p>
+<p>再看马斯克怎么对待英特尔的<strong>人</strong>：6 月把英特尔晶圆厂厂长挖来当 Terafab 项目总监。合起来读，这是一套标准打法——<strong>人才要英特尔的，产能风险找台积电分摊</strong>。他要的是确定性本身，不忠于任何供应商。这不是背叛叙事，是买家叙事：马斯克此刻是这三家里唯一纯粹的甲方。</p>
+</section>
+
+<section>
+<h2>四、两条帖子的读法：细菌梗比「补充说」更诚实</h2>
+<p>马斯克发了两条立场表面相反的帖子：一条说台积电「是补充英特尔、不是取代」；另一条转发「只是补充性质」的网友评论并直接反驳——<strong>「量变会引发质变。单细胞的细菌，与拥有 35 万亿细胞的人类，有着巨大的差异，尽管两者都是由细胞构成。」</strong></p>
+<p>两句话合起来读：台积电进来的量，大到会改变项目的<strong>质</strong>。第一条是给市场稳定情绪的外交辞令，第二条是给懂行的人的实话。对英特尔的 14A 叙事，第二条更致命——它等于承认台积电的参与不是边角料，而是会重塑整个项目结构的力量。</p>
+<p>用灵魂第二十四条（信号真伪看愿意付的代价）过一遍：马斯克这两条帖子付出的代价是<strong>零</strong>——没有条款、没有金额、随时可以谈崩。所以这两条帖子本身证明不了 14A 有问题，也证明不了台积电一定会进。它们只证明一件事：<strong>英特尔的「独家」已经没了，剩下的「主供」地位待定。</strong>定成什么，不在马斯克嘴里，在接下来谁签合同、谁动工。</p>
+<table>
+<tr><th>结局</th><th>结构</th><th>对 INTC</th></tr>
+<tr><td>A</td><td>台积电持有并运营新厂（报道中的主要方案，JASM 模式）</td><td class="down">伤害最大——第二货源坐实，14A 份额被物理性挤占（晶圆厂按工艺设计，无法对半分）</td></tr>
+<tr><td>B</td><td>SpaceX 持多数股权、台积电出技术与运营经验占小股</td><td>伤害有限——「顾问角色」，英特尔保留既有安排的空间</td></tr>
+<tr><td>C</td><td>谈崩</td><td>持有人为一场谈话付了 4% 的学费（部分收回）</td></tr>
+</table>
+<p class="muted">还有一种混合方案被中文产业人士提出：前端 14A 由英特尔在 Terafab 生产、后段先进封装借台积电技术在德州完成——即「双轨」。注意这与英特尔自己在后段的布局（第六节）存在直接竞争关系：封装这块肉，英特尔自己也想要。</p>
+</section>
+
+<section>
+<h2>五、「良品率不行」的证据分级</h2>
+<p>「Intel 良品率不佳导致马斯克换人」是今天传播最广的版本，把三层东西压缩成了一个故事。逐层验尸：</p>
+<table>
+<tr><th>层</th><th>说法</th><th>证据等级</th></tr>
+<tr><td>18A 现状</td><td>台积电 N2 初期良率约 65–70% vs 英特尔 18A 约 55–60%，2027 年才到行业标准</td><td><strong>三等</strong>——第三方拆解与行业估计，方向可信、数字是估的</td></tr>
+<tr><td>14A 「良率」</td><td>——</td><td><strong>不成立</strong>——14A 尚未上产线（0.9 版 PDK 本月才交付外部客户、2027H2 风险试产），没有「良率」科目可考；它的问题是「未经验证」</td></tr>
+<tr><td>因果归因</td><td>良率差 → 马斯克换人</td><td><strong>三等推演</strong>——专利结构、单一故障点、排期错配（2028 量产 vs 2029 出硅片只留一年缓冲）都排在良率前面或并列</td></tr>
+</table>
+<p>而英特尔沉默的背景恰恰是一组<strong>反向的一等转述证据</strong>——7 月 Q2 电话会官方口径：14A 缺陷密度与晶体管性能<strong>优于同期 18A 的表现</strong>；18A 产量超预期 25%、环比 +50%。为什么此刻不吭声？因为 10 月它正要把 14A 的 0.9 版 PDK 交到外部客户手里——这个节骨眼上跟马斯克的推文打口水仗，等于当着所有潜在客户的面承认自己被挑剔了。跟客户的仗不打在 X 上，打在 PDK 交付和财报里。</p>
+<div class="callout">
+行话解释：<strong>PDK（工艺设计套件）</strong>是代工厂交给芯片设计客户的「工艺说明书+工具包」，客户拿它才能把自己的电路设计映射到该工艺上。PDK 版本号从 0.5 走到 1.0 的过程，就是工艺从「能用」走到「能量产」的过程——交付外部客户的节点，是外界判断工艺成熟度的少数硬里程碑之一。
+</div>
+</section>
+
+<section>
+<h2>六、英特尔的另一条腿：后段布子，前段挨打</h2>
+<p>今天挨打的是前段（14A 制程叙事），但英特尔今年真正下功夫的是后段——<strong>先进封装</strong>。这条线被 Terafab 新闻完全遮住了，成色反而更硬：</p>
+<svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="320" fill="#0a0a0c" rx="10"/>
+  <text x="340" y="28" text-anchor="middle" fill="#f5f5f7" font-size="15" font-weight="700">英特尔的「双腿」：前段挨打，后段布子</text>
+  <rect x="40" y="50" width="290" height="240" rx="10" fill="#1a1418" stroke="#3a2228"/>
+  <text x="185" y="78" text-anchor="middle" fill="#e5484d" font-size="13" font-weight="700">前段：制程（今天挨打）</text>
+  <text x="185" y="106" text-anchor="middle" fill="#d1d1d6" font-size="11">14A 唯一点名（4 月）</text>
+  <text x="185" y="128" text-anchor="middle" fill="#d1d1d6" font-size="11">台积电上桌 → 独家蒸发</text>
+  <text x="185" y="150" text-anchor="middle" fill="#d1d1d6" font-size="11">对手：台积电 N2/A16</text>
+  <text x="185" y="172" text-anchor="middle" fill="#86868b" font-size="11">正面拼良率爬坡</text>
+  <text x="185" y="200" text-anchor="middle" fill="#c9a0a8" font-size="11">18A 良率 55-60%（估计）</text>
+  <text x="185" y="222" text-anchor="middle" fill="#c9a0a8" font-size="11">外部客户仅占代工收入 5%</text>
+  <text x="185" y="250" text-anchor="middle" fill="#86868b" font-size="11">量产：2027H2 试产</text>
+  <rect x="350" y="50" width="290" height="240" rx="10" fill="#101410" stroke="#22301f"/>
+  <text x="495" y="78" text-anchor="middle" fill="#30a46c" font-size="13" font-weight="700">后段：封装（今年布子）</text>
+  <text x="495" y="106" text-anchor="middle" fill="#d1d1d6" font-size="11">李锡熙掌门（6/18，独立部门）</text>
+  <text x="495" y="128" text-anchor="middle" fill="#d1d1d6" font-size="11">谷歌 TPU 封装预订（有争议）</text>
+  <text x="495" y="150" text-anchor="middle" fill="#d1d1d6" font-size="11">海力士 HBM base die 接触</text>
+  <text x="495" y="172" text-anchor="middle" fill="#86868b" font-size="11">EMIB-T / HBI 技术路线</text>
+  <text x="495" y="200" text-anchor="middle" fill="#a8d8b0" font-size="11">错位竞争：不拼前段良率</text>
+  <text x="495" y="222" text-anchor="middle" fill="#a8d8b0" font-size="11">拼系统整合（换收费口）</text>
+  <text x="495" y="250" text-anchor="middle" fill="#86868b" font-size="11">军令状：代工 2027 底盈亏平衡</text>
+  <text x="340" y="310" text-anchor="middle" fill="#86868b" font-size="11">前段输一阵不致命；后段赢了才有第二根支柱</text>
+</svg>
+<div class="fig-cap">图 2：双腿结构——今天的新闻打在左腿，今年的人事与客户都落在右腿</div>
+<h3>李锡熙：建衙门，不是添人手</h3>
+<p>6 月 18 日官宣：前 SK 海力士 CEO（2018-2022，任内主导 90 亿美元收购英特尔 NAND 业务即 Solidigm）→ 前 SK On CEO（2023-2026）<strong>李锡熙（Seok-Hee Lee）</strong>出任 Intel Foundry 执行副总裁，直接向陈立武汇报，统筹先进封装、系统集成、后段技术开发与制造——<strong>先进封装升格为独立业务部门，他是首任掌门</strong>。同时组织重切：原代工大总管 Chandrasekaran 收缩到前段（18A/14A 量产爬坡），37 年老将 Shahriari 退休。</p>
+<p>三个细节说明这不是普通挖角：①他是<strong>回锅人</strong>——2000-2010 在英特尔波特兰研发部干了十年良率与工艺整合，拿过 3 次英特尔成就奖，空降磨合成本为零；②韩系分析员的一致解读是他真正的任务是<strong>后段良率与放量</strong>（他在 SK On 的功劳就是稳住大型电池厂的良率），正是英特尔后段最缺的东西；③他带来「嫁妆」——SK 海力士关系。</p>
+<h3>后段的客户线索</h3>
+<ul>
+<li><strong>谷歌 TPU</strong>：据报道预订英特尔 2028 年封装超 300 万颗——JPMorgan 泼冷水说芯片前段可能仍由台积电造、英特尔只接封装。<strong>即便按冷水版本，封装环节本身也是 AI 链里的真金白银</strong>——这正是 P66「换了单位」的逻辑在代工战场的重演：摩尔定律越走越贵，价值正往「怎么把多颗芯片拼成一个系统」搬家。</li>
+<li><strong>SK 海力士 HBM base die</strong>：海力士在考虑把 HBM4E 代的 base die 交给英特尔造——动机＝分散对台积电的单一依赖＋台积电 2027 年先进节点拟涨价 5-10%。李锡熙到任被明确点为「两家公司之间的新通道」。若落地，这是「外部大客户」叙事的第一块真砖（现在外部客户只占代工收入 5%，约 2.93 亿/58 亿美元）。</li>
+<li><strong>苹果</strong>：6 月 18 日同日，川普宣布苹果同意与英特尔合作在美设计制造芯片（政治口径，细节未披露，成色存疑但方向一致）。</li>
+</ul>
+<div class="callout blue">
+把两条腿合起来读：Terafab 谈判打的是英特尔 14A 前段叙事的<strong>独占性</strong>；但英特尔今年真下功夫的，是把后段做成跟台积电<strong>错位竞争</strong>的第二战场（EMIB-T/HBI 对台积电 CoWoS 路线）。前段输一阵不致命——后段这一仗要是赢了（谷歌封装落地、海力士 base die 进门），代工翻身故事就有了第二根支柱。4 月还有一笔同样被遮住的旧账：挖来三星代工老将 Shawn Han 扩客户版图。</div>
+</section>
+
+<section>
+<h2>七、台积电的账：为什么只涨 1%</h2>
+<p>台积电的增量逻辑是真的：亚利桑那 2,650 亿美元/12 座厂之外再添德州版图（据报道考虑的是含最多 6 座厂、单厂最高 200 亿美元的新园区）、政府关系加深、马斯克系客户入门。但市场只给 +1%（台湾股 +3%）——这是理性定价，因为刺也很清楚：</p>
+<ul>
+<li><strong>客户集中度的刺</strong>：这家厂产出只服务三家马斯克公司，利用率完全绑定马斯克系的资本开支周期与产品排期——等于把「单一因子」做成了实体工厂。这跟本体系反复提醒的 TME+NKE 同一消费因子是同构问题，只是方向相反：那是买方怕集中，这是卖方怕集中。</li>
+<li><strong>客户的刺</strong>：马斯克时间表激进、公开谈判、计划多变，跟台积电出了名的保守作风相性很差（hwbusters 语）。魏哲家 6 月股东会被问马斯克自建厂时的回答是「我唯一的结论是祝福他」——现在回看，「祝福他」的潜台词就是「等他来找我」。他 4 月法说会还有一句更硬的：「晶圆代工没有捷径可走，建厂 2-3 年、量产爬坡再 1-2 年」。</li>
+<li><strong>结构的刺</strong>：报道中的次选方案（SpaceX 持多数股权、台积电当少数股权技术顾问）对台积电是「出了力赚不到大头」——拥有运营 vs 输出经验的抉择，本质是<strong>控制权与资本的取舍</strong>。台积电历史上选的从来是前者（JASM/ESMC 都是台积电主导）。</li>
+</ul>
+<p>另一个背景值得记一笔：台积电赴德州扩产有一个硬性前提被中文报道点出——美国国会须延长先进制造业税收抵免（源自 2022 年芯片法案、已提高至 35%、今年底到期）。<strong>行政给的优惠有时钟，这跟 P68「签名与法律」的判据同款：能扛过选举的是法律，不是一笔带期限的税收优惠。</strong></p>
+</section>
+
+<section>
+<h2>八、与既有体系的接口</h2>
+<table>
+<tr><th>接点</th><th>本报告的延伸</th></tr>
+<tr><td>灵魂第五条（卖铲人垫钱买铲+担保客户）</td><td>Terafab 是它的镜像版——甲方出钱和需求、施工方出工艺和运营，交付风险甩给最有能力扛的人；马斯克两条推文的代价为零，正是「只差一个客户违约」的反向保险</td></tr>
+<tr><td>P63 甲骨文（抵押品的成熟时间）</td><td>同款分层：英特尔 14A 属「已点名未开工」，比甲骨文的「已签约未开工」还早一层；四层分类里越靠前，融资故事越虚、判据越要等文件</td></tr>
+<tr><td>灵魂第二十四条（真伪看愿意付的代价）</td><td>马斯克零成本发声 vs 英特尔零回应——两边都没付费；付费的证据只可能是签约、资本开支、采购担保三件套</td></tr>
+<tr><td>灵魂第二十七条（谁在卖）</td><td>今天 INTC 的卖单＝叙事重定价 + 一年 2.6 倍后的获利了结，不是知情者的坏签</td></tr>
+<tr><td>灵魂第三十一条（方向可给、时间表不能给）</td><td>本事件的升级版：连方向都只在两个人嘴上——三件套一件没有，就一件都不算</td></tr>
+<tr><td>P66（换了单位）</td><td>价值往封装搬家的代工版：英特尔在后段选了不跟台积电正面拼良率、拼系统整合的差异化战场</td></tr>
+<tr><td>P68（签名与法律）</td><td>台积电德州扩产挂在 35% 税收抵免延期上——优惠有时钟，法律才是耐久层</td></tr>
+</table>
+</section>
+
+<section>
+<h2>九、前瞻：哨位与裁判日</h2>
+<table>
+<tr><th>时点</th><th>事件</th><th>看什么</th></tr>
+<tr><td>2026-10 中旬</td><td>台积电法说会</td><td>对德州/Terafab 是空泛「评估」还是谈选址与客户结构——后者才证明事情是真的</td></tr>
+<tr><td>2026-10 下旬</td><td><strong>英特尔 Q3 财报（本月最重要裁判日）</strong></td><td>① 14A 措辞是否变软、Terafab 是否不再被点名；② 0.9 版 PDK 是否如期交付；③ 封装业务是否单列披露收入；④ Susquehanna 份额数据被官方数字验证或推翻</td></tr>
+<tr><td>2026-10</td><td>14A PDK 0.9 交付窗口</td><td>外部客户开始拿工具包——工艺成熟度的硬里程碑</td></tr>
+<tr><td>未定</td><td>Terafab 谈判走向</td><td>结局 A（台积电 own/operate）/B（技术顾问）/C（谈崩）；任何「签约、资本开支披露、采购担保、选址动工」都是硬证据，出现一件记一件</td></tr>
+<tr><td>~2027</td><td>SK 海力士 HBM4E base die 供应商决定</td><td>李锡熙「嫁妆」的试金石——若进门，英特尔代工外部客户叙事的第一块真砖</td></tr>
+<tr><td>2026-11-03</td><td>美国选举</td><td>台积电德州前提（税收抵免延期）的政治时钟</td></tr>
+</table>
+<p>顺带记一笔当日盘面：存储股逆势走强（STX +2.5%、WDC +1.7%，AI 服务器需求继续抽紧内存供需、Q3 财报季在即）——灵魂第十一条「内存合同价先于故事见顶」的温度计继续在升，与 Terafab 新闻同日发生但属另一条线。</p>
+</section>
+
+<section>
+<h2>十、操作含义：观察位，零动作</h2>
+<p>本报告为观察位报告：<strong>不新立操作区间、不调仓、不追热点。</strong>落到执行层面只有三句话：</p>
+<ul>
+<li><strong>INTC：不追、不抄。</strong>现价约 114-119 美元（10/5 盘前/10/3 收盘快照），既定加仓区间 70-80/55-65 美元（P16/P24 既有档位）在脚底下很远。这场 Terafab 叙事正是把 INTC 从 70-80 推上 119 的燃料之一——现在燃料少了一桶，但离可执行距离还远，等它自己走下来。今晚收盘 -4% 是放大还是收回，只当温度计读数。</li>
+<li><strong>TSM：区间不动。</strong>加仓触发 287/240 美元（P16/P24 既有档位）不受本消息影响——台积电 +1% 的定价已经把这件事当增量小事处理。</li>
+<li><strong>真正要盯的是裁判日清单</strong>（第九节），尤其 10 月下旬英特尔 Q3 财报——那是「独家溢价蒸发」和「后段布子成色」两条线共同的第一个官方对账点。</li>
+</ul>
+</section>
+
+<section>
+<h2>十一、边界与口径说明</h2>
+<ul>
+<li>本报告全部事实来自二手转述源（Culpium 原发通讯在付费墙内、马斯克帖子经媒体转引），已按第三节证据分级标注；「细菌梗」原帖为中文媒体转述，比喻具体、可信度较高，但非原文直读。</li>
+<li>良率数字（18A 55-60% vs N2 65-70%）为第三方估计，方向可信、数字不精确；14A 「缺陷密度优于同期 18A」为英特尔 7 月 Q2 电话会官方口径的转述。</li>
+<li>谷歌 TPU 封装订单有争议（JPMorgan 冷水版本：前段仍台积电）；苹果合作细节未披露、宣布口径来自白宫政治场合——两者均按「方向一致、成色待验」处理。</li>
+<li>盘前价格非收盘价；INTC/TSM/TSLA 均无持仓，本报告不构成任何买卖建议。</li>
+</ul>
+</section>
+
+<section>
+<h2>十二、体系灵魂第八十条</h2>
+<div class="soul">
+  <div class="tag">体系灵魂第八十条</div>
+  <div class="sn">点名不是订单</div>
+  <p>「被指定为合作伙伴」没有签约、金额、时间表时，市场已按订单给它定价——第二个名字上桌那天，溢价当场蒸发。回应也不在嘴上，在下一份交付文件里（PDK、财报、采购担保）。判据＝签约、资本开支、采购担保三件套，一件没有就一件不算；甲方零成本的发声（推文、点名、意向）一律当作免费期权读，不当资产读。</p>
+  <p class="muted" style="font-size:12.5px;margin-top:10px">接：灵魂第三十一条（方向可给、时间表不能给）——本条把「时间表」再往前推一层：连方向都要等付费证据；灵魂第二十四条（真伪看愿意付的代价）——点名与推文都是零代价信号。</p>
+</div>
+</section>
+
+<div class="conclusion">
+  <div class="ct">收束</div>
+  <p>四月的「独家」、六月的厂长、十月的第二个名字——英特尔的溢价在三个月里被一层层剥掉，而它的反击不在任何一条新闻里，在 10 月下旬的 Q3 财报和 PDK 交付文件里。这条线与本体系的关系：它给灵魂第二十七条的「谁在卖」加了一层新样本（获利盘+叙事重定价的混合卖压），给 P63 的抵押品四层分类加了一个更靠前的层级（已点名未开工），给 P66 的「换单位」添了代工战场的镜像（价值往封装搬家）。下一份报告的裁判日清单里，英特尔 Q3 财报是最高优先级。</p>
+</div>
+
+<div class="disc">
+以上仅为个人认知范围内的理解。本报告不构成投资建议；文中所有价格均为标注日期的快照，市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况与投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。
+</div>
+
+<p class="muted" style="text-align:center;font-size:12px;margin-top:24px">P72 · 完 · 上一份 P71《被迫的对冲与拥挤的收租：期权如何推动股价》 · 下一份 P73（灵魂接第八十一条）</p>
+
+</div>
+</body>
+</html>

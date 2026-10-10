@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>零本金的节点：AI 融资六层栈、涨价的钱从哪来、谁先下桌</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141418; --line:#2a2a30;
+    --txt:#d1d1d6; --sub:#86868b; --head:#f5f5f7;
+    --up:#e5484d; --down:#30a46c; --gold:#c9a227; --blue:#6cb6ff; --purple:#b98cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 64px}
+  h1.g{font-size:27px;line-height:1.35;color:var(--head);font-weight:800;background:linear-gradient(90deg,#f5f5f7,#a8a8ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+  .sub{color:var(--sub);font-size:12.5px;margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .badge{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--sub)}
+  .badge.hl{color:var(--gold);border-color:#4a3f1d}
+  section{margin-bottom:38px}
+  h2{font-size:19px;color:var(--head);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  h3{font-size:15.5px;color:var(--head);font-weight:700;margin:20px 0 10px}
+  p{margin-bottom:14px}
+  .muted{color:var(--sub)}
+  em{font-style:normal;color:var(--gold)}
+  strong{color:var(--head)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+  th{color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid #1c1c22;vertical-align:top}
+  td.up{color:var(--up)} td.down{color:var(--down)}
+  .callout{background:var(--panel);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .callout.blue{border-left-color:var(--blue)}
+  .callout.red{border-left-color:var(--up)}
+  .verdict{background:linear-gradient(135deg,#1a1a20,#141418);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:26px 0;font-size:15px}
+  .verdict .vt{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+  .conclusion{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:28px 0}
+  .conclusion .ct{color:var(--head);font-weight:700;margin-bottom:10px}
+  .soul{background:linear-gradient(135deg,#1c1810,#141218);border:1px solid #4a3f1d;border-radius:12px;padding:24px;margin:28px 0}
+  .soul .tag{display:inline-block;font-size:12px;color:var(--gold);border:1px solid #4a3f1d;border-radius:99px;padding:3px 12px;margin-bottom:14px}
+  .soul .sn{color:var(--head);font-weight:700;font-size:16px;margin-bottom:10px}
+  .soul p{color:#d8cfa8;font-size:14px}
+  .disc{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:var(--sub);font-size:12.5px}
+  svg{max-width:100%;height:auto;display:block;margin:20px auto}
+  .fig-cap{text-align:center;color:var(--sub);font-size:12px;margin-top:-8px;margin-bottom:20px}
+  ul{margin:0 0 14px 20px} li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1 class="g">零本金的节点：AI 融资六层栈、涨价的钱从哪来、谁先下桌</h1>
+<div class="sub">P76 · 发散笔记 · 2026-10-10 成稿（周六休市，行情为 10/9 周五收盘＝现价）· 数据口径：美日股为 10/9 收盘；AI 硬件模块涨幅为 Wind 指数口径截至 10/7；融资与债务数字为公开研报与媒体转述（ICICI／Goldman／Morgan Stanley／S&amp;P／BIS），非一手终端数据</div>
+<div class="badge-row">
+  <span class="badge">P76</span><span class="badge">AI 融资结构</span><span class="badge">信用 · 利率 · 资本开支</span><span class="badge hl">六层资金栈</span><span class="badge">观察位报告（无持仓变动）</span>
+</div>
+
+<div class="verdict">
+  <div class="vt">大白话总评</div>
+  <p>这一份的问题从一个很朴素的地方开始：<strong>这半年这么多涨价——内存 4 轮、覆铜板 7 轮、MLCC 2 轮——买方多付的那些钱，从哪来？</strong>答案不是「卖方多赚了」，而是<em>买方开始借钱付</em>。抬价的人不创造钱，钱得有人掏；当掏钱的人自己的现金流盖不住，涨价就变成了一张欠条。</p>
+  <p>把这张欠条拆开，是一套<strong>六层资金栈</strong>：自有现金流 → 股权／可转债 → 公开企业债 → 私募信贷 → SPV 离表 → 供应商融资。越往下，离真实现金流越远。链条上<strong>最后一个「不用自己的钱」的人，是 AI 实验室（OpenAI／Anthropic）</strong>——连买芯片的本金都是供应商垫的（博通借 Anthropic 最高 420 亿去买博通的 TPU）。</p>
+  <p>但结论在这儿拐了个弯，而且这是本报告最值钱的一句：<strong>零本金不是最脆的那个。</strong>零本金的玩家被整条链保护着（供应商不想确认坏账、股东不想计提减值），反而最后倒；<em>自己的钱先见底、又没人肯再接盘的，才先下桌</em>。今天排在最前面的名字，是甲骨文。</p>
+</div>
+
+<section>
+<h2>一、事实底座：本周美日股的三条线</h2>
+<p>今天周六休市，所以「大事」是 10/9 周五收盘与本周累积。行情全部带日期标签；10/9 距今 1 天，按现价处理。</p>
+<table>
+<tr><th>线索</th><th>读数（10/9 收盘）</th><th>对美日股的含义</th></tr>
+<tr><td>① 分母端</td><td>10Y 美债 5.24%（盘中曾 5.35%，2002 年来最高）、30Y 5.599%；10Y JGB 约 3.035%（1996 年来高位）；Brent 104.4／WTI 91.85</td><td>美日股共同的压力源：折现率与能源进口成本同时被顶住</td></tr>
+<tr><td>② AI 体温计</td><td>费半 10/8 -3.39%；英特尔 -5.34%、超微 -4.83%、博通 -4%、AMD -3.9%、台积电 -3.01%；存储链美光 -4.79%、闪迪 -4.9%、SK 海力士 -4.35%</td><td>导火索＝FT 称 OpenAI 9 月底年化营收约 500 亿、低于市场预期的 700 亿</td></tr>
+<tr><td>③ 日本开关</td><td>日经 69,030.92（-0.02%，连跌三日，盘中一度跌逾 800 点后收复）；TOPIX 4,104.81（+0.33%）；USD/JPY 约 158</td><td>日股芯片股同跌（软银盘中 -7.28%、铠侠 -4.5%、瑞萨 -4.1%）；外资上周净买入 TSE Prime 约 7,290 亿日元</td></tr>
+</table>
+<p>三条线里只有一条是「新的」——不是 AI 股价跌（P74 时间窗里就在发生），而是<strong>OpenAI 的 200 亿是「会计口径差」而非需求缺口</strong>：Anthropic 把云伙伴收入计入营收、OpenAI 没这么算。这正是 P75 灵魂第九十条的现场版——<em>先问数字换过口径没有，再问需求变没变</em>。日本那边的新信息是首相高市早苗明确「充分尊重日本央行自主决策权」、淡化「再通胀派」标签，市场给 10 月加息仅约 18% 概率、多数押 12 月。</p>
+<div class="callout blue">
+<strong>先把一个易混点钉死</strong>：本周 AI 芯片股的跌，是「口径差 ＋ 拥挤度」的溢价回吐，判据仍是 P74 灵魂第八十六条的「上修链断没断」，不是需求拐点。而真正需要新动作的触发器是<em>日元急升</em>或<em>科技 CDS 继续走阔</em>，不是日线。
+</div>
+</section>
+
+<section>
+<h2>二、涨价榜：涨幅第一的模块，恰恰没有涨价</h2>
+<p>要问「涨价的钱从哪来」，先看清楚涨的是哪个环节。截至 10/7，五大 AI 硬件模块的年内涨幅与实打实的涨价轮次是这样的（Wind 指数口径，A 股相关指数）：</p>
+<table>
+<tr><th>模块</th><th>年内涨幅</th><th>涨价轮次</th><th>性质</th></tr>
+<tr><td>光模块（CPO）</td><td class="up">+83.99%</td><td>0 轮（未见可核验的全行业统一涨价）</td><td>预期溢价 ＋ 盈利增长，估值驱动</td></tr>
+<tr><td>光纤</td><td class="up">+72.47%</td><td>3 轮</td><td>量价混合</td></tr>
+<tr><td>电路板 PCB（含上游覆铜板）</td><td class="up">+63.30%</td><td>7 轮（多集中在上游覆铜板）</td><td>真涨价，轮次最多</td></tr>
+<tr><td>MLCC</td><td class="up">+56.84%</td><td>2 轮</td><td>受访者认为涨价逻辑最「硬」</td></tr>
+<tr><td>存储器</td><td class="up">+39.91%</td><td>4 轮</td><td>涨幅垫底但涨价最硬</td></tr>
+</table>
+<p>这就是 P74 那把「两把尺子」的实盘：<strong>涨幅最高的模块没有涨价支撑，涨价最硬的两个模块涨幅反而垫底。</strong>光模块是「股价跑在涨价前面」（贵在预期），存储是「涨价跑在股价前面」（贵在现金）。美股侧印证一致——年内涨幅冠军在存储链（SanDisk 一度是标普 500 表现最佳股、涨超 500%，戴尔／美光／希捷紧随），但最近三天资金在换边：存储链集体回调，同日光通信逆势拉升（康宁 +6.04%、Marvell +5.81%、博通 +3.67%）；支撑这条切换的硬证据是 Lumentum 光学元件订单排到 2029 年售罄。</p>
+<div class="callout">
+<strong>所以「涨价」这个词要拆成两半看</strong>：一半是真的有人多付了钱（存储、覆铜板、MLCC、光纤），另一半是市场提前替它假设了涨价（光模块）。<em>本报告接下来要追的「钱从哪来」，是前一半——因为它对应真实的现金流支出。</em>
+</div>
+</section>
+
+<section>
+<h2>三、涨价的钱从哪来：先算买方的分母</h2>
+<p>涨价是卖方的事，付钱是买方的事。而买方是同五家巨头（Amazon／Alphabet／Microsoft／Meta／Oracle）。它们的资本开支 ÷ 经营现金流，正在走一条很陡的曲线：</p>
+
+<svg viewBox="0 0 680 300" role="img" aria-label="五巨头资本开支占经营现金流比例的历史变化">
+<title>五巨头资本开支 ÷ 经营现金流</title>
+<desc>该比例从 2018-2021 年的约 33% 升至 2022-2025 年的 45%，2026 年预计 90%，2027 年预计 104%，即资本开支将超过经营现金流。</desc>
+<line x1="80" y1="66" x2="640" y2="66" stroke="#4a3f1d" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="80" y="58" font-size="12" fill="#c9a227">100% ＝ 赚的钱刚好够花</text>
+<line x1="80" y1="230" x2="640" y2="230" stroke="#2a2a30" stroke-width="1"/>
+<rect x="122" y="176" width="70" height="54" rx="3" fill="#4a4a52"/>
+<text x="157" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#d1d1d6">33%</text>
+<rect x="257" y="156" width="70" height="74" rx="3" fill="#4a4a52"/>
+<text x="292" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#d1d1d6">45%</text>
+<rect x="392" y="83" width="70" height="147" rx="3" fill="#c9a227"/>
+<text x="427" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#f5f5f7">90%</text>
+<rect x="527" y="60" width="70" height="170" rx="3" fill="#e5484d"/>
+<text x="562" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#f5f5f7">104%</text>
+<text x="157" y="252" text-anchor="middle" font-size="12" fill="#86868b">2018–21</text>
+<text x="292" y="252" text-anchor="middle" font-size="12" fill="#86868b">2022–25</text>
+<text x="427" y="252" text-anchor="middle" font-size="12" fill="#86868b">2026</text>
+<text x="562" y="252" text-anchor="middle" font-size="12" fill="#86868b">2027E</text>
+</svg>
+<div class="fig-cap">五巨头资本开支 ÷ 经营现金流：从「三分之一」走到「超过全部」</div>
+
+<p>这条曲线的意思是：<strong>到 2027 年，五巨头自己赚的经营现金流将盖不住 AI 资本开支。</strong>2026 年它们的资本开支约 <strong>7,290 亿美元</strong>（Goldman 口径约 8,000 亿，几乎是 2025 年 4,130 亿的两倍），而经营现金流增长赶不上——因为 AI 投资的回报要几年才落地。缺口只能靠外部融资。</p>
+<p>债务占资本开支的比例，已经从 FY24 的约 <strong>9% 升到 2026 年中的 32%</strong>；五巨头 2026 年举债约 <strong>2,200 亿美元</strong>，Goldman 预测 2027 年升至约 4,000 亿。而 S&amp;P 的判断更直接：<em>主要超大规模云厂将在 2026–2027 年全部处于负自由现金流，转折点要到 2028–29</em>。</p>
+<div class="callout red">
+<strong>这就是本报告的第一条承重墙</strong>：涨价链条的强弱，不取决于卖方毛利率，取决于<em>买方的现金流覆盖率</em>。现在这个覆盖率在 2026 年是 90%、2027 年预计 104%——也就是说，<strong>从明年起，这些涨价里有一部分是「借来的钱付的」</strong>。
+</div>
+</section>
+
+<section>
+<h2>四、六层资金栈：钱不是只有「企业债」一层</h2>
+<p>问「钱从哪来」，只答「企业债」会漏掉后面三层。完整栈是这样的，越往下杠杆越重：</p>
+
+<svg viewBox="0 0 680 392" role="img" aria-label="AI 资本开支的六层资金来源">
+<title>AI 资本开支的六层资金来源</title>
+<desc>从经营现金流、可转债、公开企业债、私募信贷、SPV 离表结构到供应商循环融资，杠杆逐层变重，最后一层最危险。</desc>
+<rect x="40" y="38" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="59" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">① 经营现金流（自有现金）</text>
+<text x="622" y="59" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">2027 起 capex 超过现金流</text>
+<rect x="40" y="90" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="111" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">② 股权 / 可转债</text>
+<text x="622" y="111" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">2026 美国可转债发行中 AI 占 44%</text>
+<rect x="40" y="142" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="163" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">③ 公开企业债（投资级）</text>
+<text x="622" y="163" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">2026 或达 2.3 万亿美元（纪录）</text>
+<rect x="40" y="194" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="215" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">④ 私募信贷（Apollo / Blackstone / KKR）</text>
+<text x="622" y="215" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">1.5 万亿缺口里约 8,000 亿</text>
+<rect x="40" y="246" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="267" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">⑤ SPV / 离表结构</text>
+<text x="622" y="267" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">芯片抵押 SPV 约 3,000 亿</text>
+<rect x="40" y="298" width="600" height="42" rx="8" fill="#1c1010" stroke="#4a1d1d" stroke-width="0.5"/>
+<text x="58" y="319" dominant-baseline="central" font-size="13" font-weight="700" fill="#f0b0b0">⑥ 供应商融资（循环融资）</text>
+<text x="622" y="319" text-anchor="end" dominant-baseline="central" font-size="12" fill="#e5484d">博通借 Anthropic 最高 420 亿</text>
+<text x="40" y="366" font-size="12" fill="#86868b">每一层的规模都是公开源转述，用于比较量级与方向，不做精算。</text>
+</svg>
+<div class="fig-cap">六层资金栈：从上到下，用得越少的是自己的钱，越多的是别人对你未来的信任</div>
+
+<table>
+<tr><th>层</th><th>规模与证据（公开源转述）</th></tr>
+<tr><td>③ 公开企业债</td><td>美国投资级 2026 年发行量或达 2.3 万亿（纪录）；AI 相关约占美国 IG 净新增供给的近三分之一；五巨头 IG 债市占率从 2022–24 年的约 2% 升到 2026 年的约 9%；今年已出现 9 笔 250 亿美元以上的高评级交易，为史上最多，多数来自科技</td></tr>
+<tr><td>④ 私募信贷</td><td>Morgan Stanley 测算：到 2028 年全球数据中心投资约 2.9 万亿，云厂现金流可覆盖约 1.4 万亿，<strong>缺口约 1.5 万亿</strong>——其中约 8,000 亿来自私募信贷、2,000 亿来自 IG 科技债、1,500 亿来自数据中心 ABS／CMBS</td></tr>
+<tr><td>⑤ SPV / 离表</td><td>芯片抵押 SPV 已累计约 3,000 亿。Alphabet 的数据中心<strong>担保</strong>半年从 169 亿升至 438 亿，但<strong>上表不到 2%</strong>；Anthropic 相关 SPV 在约 60 天内累积约 710 亿芯片租赁债；Amazon 据报在谈约 80 亿的 Grace Blackwell SPV（买入后租回）</td></tr>
+</table>
+
+<div class="callout">
+<strong>反向挤出——借钱的人自己抬高了借钱的价钱。</strong>AI 同期限（20–30 年）发债约 <strong>5,000 亿美元</strong>，超过美国财政部同期限净发行 <strong>4,240 亿</strong>。私人和政府在抢同一批长端资金，结果就是把长端利率顶上去——而利率正是给它们自己估值和再融资定价的分母。这就是 P75 灵魂第八十九条「生产端的融资会抬高自己分母上的利率」的量化版本。
+</div>
+<p>还要留意一个「看不见」的问题：<strong>杠杆被挪到了合同条款和表外。</strong>Alphabet 担保 438 亿、上表不到 2%，就是最直白的例子。只看资产负债表，会系统性<em>低估</em>这些公司的真实承诺——对应 P63 灵魂第五十七条「杠杆的位置不在资产负债表上、在合同条款里」。</p>
+</section>
+
+<section>
+<h2>五、循环融资：1990 年代电信泡沫的翻版</h2>
+<p>资金栈的第六层最危险，因为它的付钱方向是<strong>反的</strong>——不是买家向外面借钱，而是<em>卖家借钱给买家，让买家来买自己的货</em>：</p>
+<ul>
+<li><strong>博通</strong>借给 Anthropic 最高 <strong>420 亿美元</strong>（五年期），支撑一笔约 <strong>1,252 亿</strong>的 TPU 租赁安排，且带转股权——博通可能因此拿到 Anthropic 的股权。此外博通为 OpenAI 定制芯片（内部代号 Nexus）安排 <strong>500 亿以上</strong>融资，Apollo、Blackstone 参与早期洽谈。</li>
+<li><strong>英伟达</strong>联合金融机构搭了<strong>超过 5,000 亿</strong>的专用算力融资平台，实质是「帮客户借钱买自己的芯片」；英伟达本身还持有 SpaceX 约 210 亿股权。</li>
+<li><strong>SpaceX</strong> 洽谈约 400 亿债务（约 300 亿投资级债 ＋ 100 亿银行贷款）去买英伟达芯片。</li>
+</ul>
+<div class="callout red">
+<strong>国际清算银行（BIS）的警告说得很准</strong>：<em>「当供应商给客户融资时，供应商报告的收入增长里，有一部分来自它自己的资本投入，而不是终端的真实需求——这让投资人、贷款人和监管者都更难判断，当前 AI 繁荣里有多大比例来自有机需求。」</em>它并直接类比 1990 年代末的电信泡沫：设备商给运营商融资买自己的设备，运营商收入一旦不达预期，设备商<strong>同时承担坏账与订单消失</strong>。对应本体系灵魂第十二条「循环融资审计日」与灵魂第五条「卖铲人垫钱买铲＋担保客户＋下场发债」。
+</div>
+</section>
+
+<section>
+<h2>六、谁在用谁的钱：零本金的那一个节点</h2>
+<p>把链条按「离真实收入有多远」排一遍，就能看出谁在用自己的钱、谁在用别人的信任：</p>
+
+<svg viewBox="0 0 680 288" role="img" aria-label="AI 资金链上各角色用的是谁的钱">
+<title>AI 资金链上各角色用的是谁的钱</title>
+<desc>从终端客户到债主，逐层远离真实收入；AI 实验室是唯一连本金都由他人垫付的节点。</desc>
+<rect x="40" y="24" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="45" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">终端客户（企业 / 开发者）</text>
+<text x="622" y="45" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">用自己的预算</text>
+<rect x="40" y="76" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="97" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">云厂（MSFT / GOOGL / AMZN / META）</text>
+<text x="622" y="97" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">自己的现金流为主</text>
+<rect x="40" y="128" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="149" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">二线云（Oracle / CoreWeave）</text>
+<text x="622" y="149" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">转为借来的钱</text>
+<rect x="40" y="180" width="600" height="42" rx="8" fill="#1c1010" stroke="#4a1d1d" stroke-width="0.5"/>
+<text x="58" y="201" dominant-baseline="central" font-size="13" font-weight="700" fill="#f0b0b0">AI 实验室（OpenAI / Anthropic）</text>
+<text x="622" y="201" text-anchor="end" dominant-baseline="central" font-size="12" fill="#e5484d">一分本金都没有</text>
+<rect x="40" y="232" width="600" height="42" rx="8" fill="#141418" stroke="#2a2a30" stroke-width="0.5"/>
+<text x="58" y="253" dominant-baseline="central" font-size="13" font-weight="700" fill="#f5f5f7">债主（保险 / 养老金 / 散户）</text>
+<text x="622" y="253" text-anchor="end" dominant-baseline="central" font-size="12" fill="#86868b">自己的钱，但离真相最远</text>
+</svg>
+<div class="fig-cap">钱的实际流向是反的：债主出钱 → AI 实验室买货 → 终端客户用货还钱</div>
+
+<p><strong>答案：OpenAI 与 Anthropic。</strong>链上其他环节多少都有自己的钱——终端客户花自己的预算，云厂用自己的现金流（虽然明年起不够），连甲骨文也还有现金流在顶着（虽然是负的）。<strong>只有 AI 实验室这一环，是纯粹的「用别人的钱做自己的事」</strong>：Anthropic 用博通借它的钱去买博通的 TPU，付出去的是一张「未来收入」的欠条。</p>
+<p>但「最后一个」其实有<b>两个读法</b>，分开答才清楚：</p>
+<table>
+<tr><th>读法</th><th>答案</th><th>含义</th></tr>
+<tr><td>谁在花钱但自己根本不赚钱？</td><td>AI 实验室（OpenAI / Anthropic）</td><td>没有覆盖承诺的现金流，靠「供应商垫资 ＋ 私募信贷 ＋ 未来股权」维持——这是<b>钱的末端</b></td></tr>
+<tr><td>谁最后出钱、用的却不是自己的判断？</td><td>保险、养老金、散户</td><td>Blackstone / Apollo 的钱最终来自保单与退休金。他们出的<em>确实是自己的钱</em>，但买的是贴着「投资级」标签的 SPV 债与 ABS，抵押品是会快速折旧的芯片——这是<b>人的末端</b></td></tr>
+</table>
+</section>
+
+<section>
+<h2>七、谁先下桌：判据不是杠杆高低，是终止权</h2>
+<p>这里有个反直觉的点，也是这份报告真正想留下的东西：<strong>「不用自己的钱」不等于「最先倒下」。</strong>Anthropic 零本金，但它<em>最难死</em>——因为整条链都在保它：供应商不想确认坏账、股东不想计提减值、客户倒了上游的收入也没了。<strong>零本金反而成了护身符。</strong></p>
+<p>真正先出事的，是「自己的钱快用完、又没人肯再接盘」的那个。按本体系灵魂第五十七条（杠杆在合同条款里）的三问，名单就出来了：<strong>① 谁被评级下调会触发抵押品追加？② 谁的合同里有 covenant 或追加保证金？③ 谁的门是单向的（一过线就必须卖）？</strong></p>
+<table>
+<tr><th>主体</th><th>硬信号（公开源转述）</th><th>位置</th></tr>
+<tr><td>甲骨文 Oracle</td><td>总债务从约 995 亿（2024/11）升至约 <strong>1,690 亿</strong>（2026/8）；FY26 自由现金流约 <strong>-237 亿</strong>；Project Jupiter 数据中心相关贷款报价 89–91 美分、银行难以分销；正探索「第三方买芯片再租回」的离表结构；5Y CDS 261bp（隐含五年违约概率超 20%）</td><td>链上<b>第一个断点</b></td></tr>
+<tr><td>SpaceX</td><td>5Y CDS 升至约 195bp（6 月以来新高）；400 亿债务包在谈</td><td>跟随者</td></tr>
+<tr><td>AI 实验室</td><td>零本金，但供应商与股东双重保护</td><td>反而靠后</td></tr>
+<tr><td>保险 / 养老金</td><td>出真钱，退出机制最差（赎回条款＋抵押品折旧）</td><td>最后被套</td></tr>
+</table>
+<div class="callout red">
+<strong>一句话区分两个位置</strong>：<em>「不用自己的钱」是最后一个上桌的；「自己的钱不够用」是第一个下桌的。</em>这两件事在链条上是两个不同的位置——所以盯着「谁借得最多」永远排不出先后，得盯「谁被逼出一个必须卖的动作」。
+</div>
+</section>
+
+<section>
+<h2>八、和自家体系的关系：接 P75 的那一端</h2>
+<p>P75 讲的是「股价与 CDS 打架时先信 CDS」——<strong>信用买家不分享上涨、所以先翻脸</strong>。本报告是同一根链条的另一头：<em>当信用开始变贵，先看谁手里有终止权。</em></p>
+<table>
+<tr><th>环节</th><th>判据</th><th>本报告新增</th></tr>
+<tr><td>P75（体温计）</td><td>信用利差先动，是信号不是发动机</td><td>继续有效，未触及 P45 的 120–150bp 阈值</td></tr>
+<tr><td>本报告（承重墙）</td><td>涨价的钱由买方付，买方现金流覆盖率是承重墙</td><td>新增灵魂第九十二条</td></tr>
+<tr><td>本报告（层级）</td><td>资金栈往下走＝离真实现金流越远</td><td>新增灵魂第九十三条</td></tr>
+<tr><td>本报告（先后）</td><td>零本金不是最脆；危险＝缓冲耗尽 ＋ 接盘者消失</td><td>新增灵魂第九十四条</td></tr>
+</table>
+</section>
+
+<section>
+<h2>九、观察位与哨位</h2>
+<table>
+<tr><th>观察项</th><th>当前读数</th><th>判据 / 触发</th></tr>
+<tr><td>科技 CDS 与 IG OAS</td><td>甲骨文 261bp、博通 136bp、英伟达 45→81bp</td><td>P45 阈值 120–150bp：未触及，但方向已确认</td></tr>
+<tr><td>五巨头资本开支指引</td><td>2026 约 7,290 亿；债务占 capex 9%→32%</td><td>Q3 财报指引是否继续上修——决定 AI 债发行何时见顶</td></tr>
+<tr><td>甲骨文 FCF 与分销能力</td><td>FY26 FCF 约 -237 亿；Jupiter 贷款 89–91 美分</td><td>项目贷款若跌破 85 美分，视为链上第一声断裂</td></tr>
+<tr><td>SPV 上表比例</td><td>Alphabet 担保上表不到 2%</td><td>若出现大额 SPV 并表，视为会计口径转向保守</td></tr>
+<tr><td>内存合同价</td><td>年内 4 轮涨价</td><td>灵魂第十一条：合同价顶先于故事见顶（哨位 2026Q4–27）</td></tr>
+<tr><td>日元与套息</td><td>USD/JPY 约 158；10 月加息概率约 18%</td><td>日元急升＝套息平仓触发器，对日股是双刃剑</td></tr>
+<tr><td>总敞口提醒</td><td>AVGO ＋ AI 后道测试观察篮（P74）＋ 内存链（灵魂第十一条）同属「AI 资本开支」一个因子</td><td>真到动手时先算总敞口</td></tr>
+</table>
+
+<h3>操作</h3>
+<div class="conclusion">
+<div class="ct">不追、不砍、不改区间</div>
+<ul>
+<li><strong>本报告是结构报告，不是交易信号</strong>：C 档预挂单（AVGO 272／222、NKE 23×2–3%）维持不变，撤单线见 P70。</li>
+<li><strong>P74 观察篮</strong>（爱德万／DISCO／TEL）随链回落，裁判日不变：10/22 → 10/28 → 10/30。</li>
+<li><strong>新增两条哨位</strong>：① 甲骨文项目贷款利率是否跌破 85 美分；② 五巨头 Q3 财报的资本开支指引——这两条一个管「链上何时断」，一个管「长端最大新变量何时松动」。</li>
+<li><strong>本周 AI 芯片股的回调不构成动作</strong>：按 P74 灵魂第八十六条，判据是「上修链断没断」，不是日线。</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>十、边界与口径分歧</h2>
+<table>
+<tr><th>项</th><th>分歧</th><th>本报告采信</th></tr>
+<tr><td>五巨头 2026 资本开支</td><td>ICICI 口径约 7,290 亿；Goldman 口径约 8,000 亿；另有约 9,400 亿的全口径估算</td><td>三家并列，主表用 ICICI 的 7,290 亿（列为「五家」定义最明确），并标注 Goldman 的 8,000 亿</td></tr>
+<tr><td>AI 相关债务总额</td><td>4,890–5,700 亿（宽口径，含全部 AI 相关发行）</td><td>按宽口径引用，并与财政部 20–30 年档 4,240 亿<strong>并列而不混算</strong>——量级对比成立，「精确倍数」不成立</td></tr>
+<tr><td>SPV 总规模</td><td>约 3,000 亿（芯片抵押口径）／另有含数据中心担保的更大口径 7,000–8,000 亿</td><td>取 3,000 亿「芯片抵押」口径，口径边界写死</td></tr>
+<tr><td>可转债 AI 占比</td><td>44%（截至 2026 年 9 月中）</td><td>单一源，按方向使用</td></tr>
+<tr><td>日股 AI 链跌幅</td><td>软银 -5.8%（收盘）／-7.28%（盘中）；铠侠 -4.5%／-5% 以上（盘中）</td><td>收盘与盘中分开标注，不混用</td></tr>
+<tr><td>CDS 与债务数字</td><td>均为媒体与研报转述，非终端一手</td><td>按「三等证据」对待，只用于方向与相对位置判断</td></tr>
+</table>
+<div class="callout blue">
+<strong>一个必须说明的边界</strong>：CDS 报价因期限、重组条款不同而不可直接比较；<b>本报告只取「方向与相对位置」</b>。另外，AI 硬件模块涨幅是 A 股相关指数（Wind 口径）的年内表现，与美股个股涨幅不能直接横向比较——两者只在「排序形状」上有可比性。
+</div>
+</section>
+
+<section class="soul">
+  <div class="tag">体系灵魂第九十二条</div>
+  <div class="sn">涨价先问买方的分母，不看卖方的毛利率</div>
+  <p>同一个涨价，卖方看到的是利润率，买方看到的是资本开支占现金流的比例。抬价的人不创造钱，钱得有人掏——<strong>涨价链条的承重墙，砌在买方的现金流覆盖率上。</strong>判据：算买方 capex ÷ 经营现金流，别算卖方毛利率。当这个比例越过 100%，涨价的一部分就变成了欠条。</p>
+</section>
+
+<section class="soul">
+  <div class="tag">体系灵魂第九十三条</div>
+  <div class="sn">资金来源每往下一层，离真实现金流越远</div>
+  <p>六层栈：经营现金流、股权与可转债、公开企业债、私募信贷、SPV 离表、供应商融资。<strong>看一个人站在哪一层，就知道他是在用自己的钱，还是在用别人对他未来的信任。</strong>判据：找到这条链上最后一个不出本金的人——他的位置，就是这轮繁荣的定价权所在。链尾出钱的人（保单、退休金）出的确实是自己的钱，但离真相最远。</p>
+</section>
+
+<section class="soul">
+  <div class="tag">体系灵魂第九十四条</div>
+  <div class="sn">零本金不是最脆，现金见底又无人接盘才先下桌</div>
+  <p>危险不由杠杆高低定义，由「缓冲还在不在」与「接盘者在不在场」两个条件<strong>同时成立</strong>来定义。零本金的玩家被整条链保护，反而最后倒；自己的钱先见底、又没人肯再垫的，先下桌。<strong>判据：问谁被评级下调、契约线或赎回条款逼出一个必须卖的动作。</strong>这是灵魂第五十七条「终止权在谁手里」在融资链上的应用，也是灵魂第八十二条「挤兑是会计动作」的上游。</p>
+</section>
+
+<div class="conclusion">
+<div class="ct">一句话收口</div>
+<p>这轮 AI 的涨价，正在从「现金流付」变成「借钱付」；而借钱这件事本身，又把它的分母（利率）顶得更高。<strong>所以真正的判据从来不是「谁借得最多」，而是「谁被逼出一个必须卖的动作」。</strong>对你的含义很朴素——<em>不用自己的钱的人是最后上桌的，自己的钱不够用的人是第一个下桌的</em>；先把这两个位置的名字记住（前者是 AI 实验室，后者是甲骨文），再等第一个信号。</p>
+</div>
+
+<div class="disc">
+<p><strong>免责声明</strong>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。本报告所引 CDS 报价、债务发行规模、资本开支与融资结构均为公开研报与媒体转述（ICICI／Goldman／Morgan Stanley／S&amp;P／BIS 等），非一手终端数据，仅用于方向判断。</p>
+<p>P76 · 完 · 上一份 P75《先翻脸的人：AI 债务潮、期限溢价与油价的硬约束》· 下一份 P77（灵魂接第九十五条）</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

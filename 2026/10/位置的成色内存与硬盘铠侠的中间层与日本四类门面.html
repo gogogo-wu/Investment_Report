@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>位置的成色：内存与硬盘之争、铠侠的中间层、日本半导体的四类门面</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141418; --line:#2a2a30;
+    --txt:#d1d1d6; --sub:#86868b; --head:#f5f5f7;
+    --up:#e5484d; --down:#30a46c; --gold:#c9a227; --blue:#6cb6ff; --purple:#b98cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 64px}
+  h1.g{font-size:27px;line-height:1.35;color:var(--head);font-weight:800;background:linear-gradient(90deg,#f5f5f7,#a8a8ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+  .sub{color:var(--sub);font-size:12.5px;margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .badge{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--sub)}
+  .badge.hl{color:var(--gold);border-color:#4a3f1d}
+  section{margin-bottom:38px}
+  h2{font-size:19px;color:var(--head);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  h3{font-size:15.5px;color:var(--head);font-weight:700;margin:20px 0 10px}
+  p{margin-bottom:14px}
+  .muted{color:var(--sub)}
+  em{font-style:normal;color:var(--gold)}
+  strong{color:var(--head)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+  th{color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid #1c1c22;vertical-align:top}
+  td.up{color:var(--up)} td.down{color:var(--down)}
+  .callout{background:var(--panel);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .callout.blue{border-left-color:var(--blue)}
+  .callout.red{border-left-color:var(--up)}
+  .verdict{background:linear-gradient(135deg,#1a1a20,#141418);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:26px 0;font-size:15px}
+  .verdict .vt{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+  .conclusion{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:28px 0}
+  .conclusion .ct{color:var(--head);font-weight:700;margin-bottom:10px}
+  .soul{background:linear-gradient(135deg,#1c1810,#141218);border:1px solid #4a3f1d;border-radius:12px;padding:24px;margin:28px 0}
+  .soul .tag{display:inline-block;font-size:12px;color:var(--gold);border:1px solid #4a3f1d;border-radius:99px;padding:3px 12px;margin-bottom:14px}
+  .soul .sn{color:var(--head);font-weight:700;font-size:16px;margin-bottom:10px}
+  .soul p{color:#d8cfa8;font-size:14px}
+  .disc{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:var(--sub);font-size:12.5px}
+  svg{max-width:100%;height:auto;display:block;margin:20px auto}
+  .fig-cap{text-align:center;color:var(--sub);font-size:12px;margin-top:-8px;margin-bottom:20px}
+  ul{margin:0 0 14px 20px} li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1 class="g">位置的成色：内存与硬盘之争、铠侠的中间层、日本半导体的四类门面</h1>
+<div class="sub">P77 · 发散笔记 · 2026-10-11 成稿（周日休市；日股行情为 10 月初快照，逐项标日期）· 数据口径：多为行业机构与卖方研报转述（TrendForce／CFM／花旗／摩根大通／野村／岩井 Cosmo／公司 IR 等），非一手终端数据；存储价格与份额按各机构原口径注明，不跨口径混算</div>
+<div class="badge-row">
+  <span class="badge">P77</span><span class="badge">存储 · 卡点 · 位置分层</span><span class="badge">日本半导体</span><span class="badge hl">四类门面</span><span class="badge">观察位报告（无持仓变动）</span>
+</div>
+
+<div class="verdict">
+  <div class="vt">大白话总评</div>
+  <p>这一份从一个很朴素的问题开始：<strong>内存和硬盘，谁在 AI 里的增长空间更大？</strong>答案取决于你问的是哪一种增长空间——论「钱」（收入池），内存压倒性地大；论「容量」（位元），硬盘的量同样暴涨，但它没有「提价的技术杠杆」。</p>
+  <p>但真正值钱的一层在后面：把内存、硬盘、铠侠、设备厂、瑞萨、Lasertec 摆到同一张图上，你会发现<strong>决定命运的从来不是「在哪个行业」，而是「站在链条的哪一层」</strong>。同一波 AI，站在不同层上的人，拿到的东西完全不同：有人拿到「堆层数就涨价」的杠杆，有人只拿到一次性短缺溢价；有人是唯一，有人是领先，有人只能随行就市。</p>
+  <p>铠侠是这套分层里最典型的<em>中间层样本</em>：技术上它是祖师爷（发明了 NAND），商业上它掉到第四／第五名，结构上它是头部厂里唯一「只有一条腿」的那家——<strong>它同时站在涨价的两侧，既要卖 NAND，又要买 DRAM 做缓存。</strong></p>
+  <p>本报告新增四条灵魂条款：涨价净效果要看两侧权重、低资本开支证明的是供给纪律而非成本地位、不可反悔的承诺等于把选择权卖掉、位置分四层且每层的尺子不同。</p>
+</div>
+
+<section>
+<h2>一、问题的形状：为什么「谁增长空间大」是个坏问题</h2>
+<p>「内存和硬盘谁的增长空间更大」这句话，把两种不同的东西放在一条轴上比了。有效的拆法是先分口径，再回答：</p>
+<table>
+<tr><th>问法</th><th>答案</th><th>理由</th></tr>
+<tr><td>论<strong>「钱」（收入池）</strong></td><td>内存（HBM／DRAM）压倒性更大</td><td>量 × 价 × 技术代际<strong>三重叠加</strong></td></tr>
+<tr><td>论<strong>「容量」（位元）</strong></td><td>硬盘的量同样暴涨</td><td>AI 温数据／归档／检查点把机械盘拉回主力</td></tr>
+<tr><td>论<strong>「提价的技术杠杆」</strong></td><td>只有内存有</td><td>硬盘每 TB 成本长期仍下行，涨价是短缺溢价</td></tr>
+</table>
+<p>先记住一句定性，后面所有判断都从这里长出来：<strong>内存是「算力的器官」，硬盘是「算力的仓库」。</strong>器官随算力等比长，仓库随数据量长——而数据量的增速比算力慢一档。</p>
+</section>
+
+<section>
+<h2>二、内存与硬盘：两种增长引擎</h2>
+<svg viewBox="0 0 680 282" xmlns="http://www.w3.org/2000/svg">
+<text x="40" y="24" font-size="14" fill="#d1d1d6" font-weight="700">内存与硬盘：两种增长引擎</text>
+<text x="40" y="44" font-size="12" fill="#86868b">左边三重叠加，右边只有一重——这就是「钱」的增长空间差别的来源</text>
+<rect x="40" y="60" width="290" height="200" rx="12" fill="#141418" stroke="#2a2a30"/>
+<text x="58" y="88" font-size="13" fill="#6cb6ff" font-weight="700">内存（HBM / DRAM）</text>
+<line x1="58" y1="98" x2="312" y2="98" stroke="#2a2a30"/>
+<text x="58" y="124" font-size="12" fill="#d1d1d6">量：DRAM 单机 1,032 → 1,432GB</text>
+<text x="58" y="150" font-size="12" fill="#d1d1d6">价：HBM4 12 层 $2 → $4–5/Gb</text>
+<text x="58" y="176" font-size="12" fill="#d1d1d6">代际：HBM5 20 层突破 $4,000/颗</text>
+<line x1="58" y1="192" x2="312" y2="192" stroke="#2a2a30"/>
+<text x="58" y="216" font-size="12.5" fill="#c9a227" font-weight="700">合计：出货量 +55%，收入 +246%</text>
+<text x="58" y="240" font-size="11.5" fill="#86868b">差额几乎全部来自 ASP</text>
+<rect x="350" y="60" width="290" height="200" rx="12" fill="#141418" stroke="#2a2a30"/>
+<text x="368" y="88" font-size="13" fill="#c9a227" font-weight="700">硬盘（近线 HDD）</text>
+<line x1="368" y1="98" x2="622" y2="98" stroke="#2a2a30"/>
+<text x="368" y="124" font-size="12" fill="#d1d1d6">量：WD 2026 售罄、希捷锁到 2029</text>
+<text x="368" y="150" font-size="12" fill="#d1d1d6">价：30TB 报价 $495 → $1,216</text>
+<text x="368" y="176" font-size="12" fill="#d1d1d6">代际：面密度 HAMR，物理上快不了</text>
+<line x1="368" y1="192" x2="622" y2="192" stroke="#2a2a30"/>
+<text x="368" y="216" font-size="12.5" fill="#e5484d" font-weight="700">合计：只有量的增长</text>
+<text x="368" y="240" font-size="11.5" fill="#86868b">涨价＝供给纪律＋一次性短缺溢价</text>
+</svg>
+<div class="fig-cap">图 1 · 两种增长引擎的解剖：内存是「量 × 价 × 代际」，硬盘只有「量」</div>
+
+<h3>内存：三重叠加的具体数字</h3>
+<ul>
+<li><strong>量</strong>：单台 AI 服务器 DRAM 搭载量 1,032GB → 1,432GB（+39%）</li>
+<li><strong>价</strong>：HBM4 12 层单价 2027 年从约 $2/Gb 涨到 $4–5/Gb（<strong>+100~150%</strong>）</li>
+<li><strong>技术代际</strong>：这是最狠的一条——层数堆叠让单颗价格指数级上升。HBM4 16 层 $1,664/颗 → HBM4E 16 层 $2,396 → <strong>HBM5 20 层突破 $4,000/颗</strong>。一颗芯片比一台旗舰手机还贵。</li>
+</ul>
+<div class="callout blue">
+<strong>一个数字说清全部差别</strong>：2027 年 HBM <strong>出货量只涨 55%，收入涨 246%</strong>——差额几乎全部来自 ASP。<em>硬盘永远做不到这件事</em>，因为它没有「堆层数」这个杠杆。
+</div>
+<p>机构口径（各家分歧较大，仅供量级参考）：2026 年 HBM 市场 546–608 亿美元（+58~63%）；摩根大通给 2027 年 1,600–2,820 亿；花旗算供需缺口从 2027 年 −21% 扩到 2028 年 <strong>−36%</strong>，营业利润率维持 60–70%。HBM 占 DRAM 产量的比特比：12%（2025）→ 15%（2026）→ <strong>30%（2027）</strong>。</p>
+</section>
+
+<section>
+<h2>三、硬盘被低估的两件事，和它涨价的另一种性质</h2>
+<h3>第一件：AI 把机械盘重新拉回了主力</h3>
+<p>这是最反直觉的地方。逻辑是：AI 要处理 PB 级的温数据、训练集归档、检查点，用 SSD 存太贵（<strong>每 TB 成本差近 10 倍</strong>），所以数据中心被迫回到机械盘。硬证据很难否认：</p>
+<table>
+<tr><th>主体</th><th>硬事实</th></tr>
+<tr><td>西部数据</td><td>2026 年产能全部售罄；前七大客户已预签 2027／2028 供货协议；消费级只占其营收约 5%</td></tr>
+<tr><td>希捷</td><td>近线产能锁到 2026 年底，<strong>部分大客户已锁定 2029 年</strong>；交期从几周拉长到 12–18 个月</td></tr>
+<tr><td>价格</td><td>30TB 近线 HDD 报价 $495 → <strong>$1,216</strong>（一年多涨一倍多）；零售端德国口径 +129%</td></tr>
+<tr><td>利润率</td><td>希捷毛利率 37% → <strong>52%</strong>；股价一年 +300%</td></tr>
+</table>
+<h3>第二件：但它的涨价是另一种性质</h3>
+<div class="callout red">
+硬盘的价格上涨是<strong>「供给纪律＋短缺溢价」，不是技术溢价</strong>。它的每 TB 成本长期仍然往下走——一旦 NAND 产能追上、QLC SSD 降价，被抢走的高端需求会回吐。这是它和 HBM 最本质的区别：<em>HBM 是「越新越贵」，HDD 是「暂时缺货所以贵」</em>。
+</div>
+</section>
+
+<section>
+<h2>四、三条判据（可以背下来）</h2>
+<table>
+<tr><th>判据</th><th>内存</th><th>硬盘</th></tr>
+<tr><td>增长来自「价」还是「量」</td><td>价 + 量双涨</td><td>量涨 + 一次性短缺溢价</td></tr>
+<tr><td>天花板在哪</td><td>晶圆产能与良率（<strong>可扩</strong>，只是慢；EUV 设备是瓶颈）</td><td><strong>面密度爬坡（HAMR）</strong>，物理上就快不了</td></tr>
+<tr><td>有没有干净的哨位</td><td>有——「内存合同价顶」</td><td>没有公开价格哨位，只能看交期与锁单</td></tr>
+</table>
+<p>落到风格上的提示：<strong>内存／HBM 是典型动量＋拥挤</strong>（涨幅最猛、共识最强、预装倍数最高，正踩灵魂第八十六条）；<strong>硬盘是典型周期股</strong>（涨了 300% 后进入 PE 悖论区，判据不是价格而是上修链断没断）。两者<strong>共用同一个分母</strong>——都是「AI 资本开支」这一个因子。</p>
+</section>
+
+<section>
+<h2>五、铠侠的坐标：技术祖师爷、商业第五名、结构上最脆</h2>
+<p>铠侠这条线正好落在内存与硬盘中间那条缝上——<strong>它既不是内存派，也不是硬盘派，它是「硬盘的掘墓人」那一派</strong>。</p>
+<table>
+<tr><th>维度</th><th>事实</th></tr>
+<tr><td>它做什么</td><td>100% 是 NAND 闪存公司：BiCS FLASH（3D NAND）与基于 NAND 的 SSD。<strong>不做 DRAM、不做机械硬盘</strong></td></tr>
+<tr><td>重心已搬走</td><td>SSD &amp; 存储分部 FY26Q1 营收 ¥1.17 万亿（环比 +96%），其中<strong>数据中心／企业级已超 60%</strong>——名义上是「存储」，实际收入来源已经跟着 AI 走</td></tr>
+<tr><td>技术侧（强）</td><td>发明了 NAND（东芝时代）；岩井 Cosmo 称其生产成本比对手<strong>低 20~30%</strong>；BiCS10 用 332 层做到面密度 &gt;29 Gb/mm²（业界领先，用更少层数出更多位元）</td></tr>
+<tr><td>商业侧（弱）</td><td>2016 年（东芝时期）份额约 20% → 2026Q2 <strong>13.4%</strong>，被美光、长江存储接连超越</td></tr>
+<tr><td>最硬的病根</td><td>头部厂里<strong>唯一「只有一条腿」</strong>（无 DRAM）</td></tr>
+</table>
+<div class="callout">
+<strong>「一条腿」派生三个结构性劣势</strong>：① 没有打包能力（云厂从 PCIe 4.0 转 5.0 时，能同时供 DRAM＋NAND 的厂商成首选）；② 没有内部补贴（对手可用 HBM 暴利补贴 NAND 扩产，它每一分扩产都得自己掏）；③ <strong>它自己被上游抽成本</strong>——SSD 需要 DRAM 做缓存，而「它的 DRAM 卖家，就是它最大的股东兼最大的对手 SK 海力士」。
+</div>
+<p class="muted">口径分歧要记：CFM 口径铠侠仍第四（14.4%），TrendForce 口径第五（13.4%）。差别在长江存储——它出货量（位元）已进前三，但集中在消费级，按收入只排第五；铠侠刚好卡在这个位置上被来回挤。</p>
+</section>
+
+<section>
+<h2>六、最要命的一张图：高利润段全面低配</h2>
+<svg viewBox="0 0 680 344" xmlns="http://www.w3.org/2000/svg">
+<text x="40" y="24" font-size="14" fill="#d1d1d6" font-weight="700">2026Q2：整体 NAND 份额 vs 企业级 SSD 份额</text>
+<text x="40" y="44" font-size="12" fill="#86868b">铠侠是唯一「企业级份额低于自家整体份额」的头部厂（份额差为正＝在厚利段超配）</text>
+<rect x="100" y="56" width="10" height="10" rx="2" fill="#6b6b73"/>
+<text x="116" y="65" font-size="11.5" fill="#86868b">整体 NAND 份额</text>
+<rect x="238" y="56" width="10" height="10" rx="2" fill="#6cb6ff"/>
+<text x="254" y="65" font-size="11.5" fill="#86868b">企业级 SSD 份额</text>
+<text x="600" y="65" font-size="11.5" fill="#86868b">差额</text>
+<line x1="130" y1="80" x2="590" y2="80" stroke="#2a2a30"/>
+<line x1="130" y1="80" x2="130" y2="308" stroke="#1c1c22"/>
+<line x1="245" y1="80" x2="245" y2="308" stroke="#1c1c22"/>
+<line x1="360" y1="80" x2="360" y2="308" stroke="#1c1c22"/>
+<line x1="475" y1="80" x2="475" y2="308" stroke="#1c1c22"/>
+<line x1="590" y1="80" x2="590" y2="308" stroke="#1c1c22"/>
+<text x="130" y="76" font-size="10.5" fill="#5f5e5a" text-anchor="middle">0</text>
+<text x="245" y="76" font-size="10.5" fill="#5f5e5a" text-anchor="middle">10%</text>
+<text x="360" y="76" font-size="10.5" fill="#5f5e5a" text-anchor="middle">20%</text>
+<text x="475" y="76" font-size="10.5" fill="#5f5e5a" text-anchor="middle">30%</text>
+<text x="590" y="76" font-size="10.5" fill="#5f5e5a" text-anchor="middle">40%</text>
+<rect x="96" y="230" width="548" height="32" rx="4" fill="#1a1a20"/>
+<text x="124" y="110" font-size="11.5" fill="#d1d1d6" text-anchor="end">三星</text>
+<rect x="130" y="96" width="330" height="12" rx="2" fill="#6b6b73"/>
+<rect x="130" y="112" width="404" height="12" rx="2" fill="#6cb6ff"/>
+<text x="466" y="105" font-size="10.5" fill="#86868b">28.7</text>
+<text x="540" y="121" font-size="10.5" fill="#6cb6ff">35.1</text>
+<text x="600" y="112" font-size="11.5" fill="#30a46c">+6.4</text>
+<text x="124" y="156" font-size="11.5" fill="#d1d1d6" text-anchor="end">SK 海力士</text>
+<rect x="130" y="142" width="205" height="12" rx="2" fill="#6b6b73"/>
+<rect x="130" y="158" width="243" height="12" rx="2" fill="#6cb6ff"/>
+<text x="341" y="151" font-size="10.5" fill="#86868b">17.8</text>
+<text x="379" y="167" font-size="10.5" fill="#6cb6ff">21.1</text>
+<text x="600" y="158" font-size="11.5" fill="#30a46c">+3.3</text>
+<text x="124" y="202" font-size="11.5" fill="#d1d1d6" text-anchor="end">美光</text>
+<rect x="130" y="188" width="170" height="12" rx="2" fill="#6b6b73"/>
+<rect x="130" y="204" width="197" height="12" rx="2" fill="#6cb6ff"/>
+<text x="306" y="197" font-size="10.5" fill="#86868b">14.8</text>
+<text x="333" y="213" font-size="10.5" fill="#6cb6ff">17.1</text>
+<text x="600" y="204" font-size="11.5" fill="#30a46c">+2.3</text>
+<text x="124" y="248" font-size="11.5" fill="#c9a227" font-weight="700" text-anchor="end">铠侠</text>
+<rect x="130" y="234" width="154" height="12" rx="2" fill="#6b6b73"/>
+<rect x="130" y="250" width="130" height="12" rx="2" fill="#e5484d"/>
+<text x="290" y="243" font-size="10.5" fill="#86868b">13.4</text>
+<text x="266" y="259" font-size="10.5" fill="#e5484d">11.3</text>
+<text x="600" y="250" font-size="11.5" fill="#e5484d" font-weight="700">−2.1</text>
+<text x="124" y="294" font-size="11.5" fill="#d1d1d6" text-anchor="end">闪迪</text>
+<rect x="130" y="280" width="129" height="12" rx="2" fill="#6b6b73"/>
+<rect x="130" y="296" width="84" height="12" rx="2" fill="#e5484d"/>
+<text x="265" y="289" font-size="10.5" fill="#86868b">11.2</text>
+<text x="220" y="305" font-size="10.5" fill="#e5484d">7.3</text>
+<text x="600" y="296" font-size="11.5" fill="#e5484d" font-weight="700">−3.9</text>
+</svg>
+<div class="fig-cap">图 2 · 别人都在最赚钱的那一段超配，铠侠在最赚钱的那一段低配</div>
+<p>根因是 TrendForce 的三个词：<strong>企业级 SSD 竞争力弱、超大规模客户认证滞后、产能配置保守</strong>。翻译过来就是——它把货卖到了消费级（薄利），而不是数据中心（厚利）。</p>
+<p>一条旁证：<strong>eSSD 已占全球 NAND 出货量的 48%</strong>（去年同期仅 26%）——<em>市场重心已经搬到铠侠最弱的那一段</em>。它 218 层产品正在陆续通过北美主要云客户认证，这是它在补的课，但比对手晚。</p>
+<h3>它手上真有牌（三条，都是长周期）</h3>
+<ul>
+<li><strong>成本护城河</strong>：低 20~30% 的生产成本——比「份额」实在，因为它能穿越周期</li>
+<li><strong>产能补位</strong>：北上 Fab3 最快 2028 年 4 月投产、2029 财年规模化；六年超 5 万亿日元投资；资本开支每年稳投 4,700 亿日元；与闪迪合资延长至 2034 年 12 月（闪迪现金付 11.65 亿美元）</li>
+<li><strong>技术越界（唯一跨侧动作）</strong>：<strong>CXL 内存扩展模组（XL-FLASH + XL1）</strong>，定位存储级内存，宣称「同成本容量翻倍、性能 +30%」。三条硬限制：NAND 写入是微秒级（DRAM 是纳秒级）、只能做冷数据扩展；CXL 自身引入 100–200ns 额外延迟；<strong>必须靠生态 design win</strong>。行业定性是「补充战略，不是核心设计方向」——为什么是它？因为它是主要存储厂里唯一没有 DRAM 组合的那家。</li>
+</ul>
+</section>
+
+<section>
+<h2>七、三条线拆解</h2>
+
+<h3>① 两重身份谁赢：卖方压倒性赢</h3>
+<table>
+<tr><th>指标</th><th>FY26Q1（2026 年 4–6 月）</th><th>环比</th><th>同比</th></tr>
+<tr><td>营收</td><td>¥1.7671 万亿</td><td>+76%</td><td class="up">+416%</td></tr>
+<tr><td>营业利润</td><td>¥1.27 万亿</td><td>+113%</td><td class="up">+27 倍</td></tr>
+<tr><td>毛利率</td><td><strong>78%</strong>（上上季 64%、去年同期 21%）</td><td>—</td><td>—</td></tr>
+<tr><td>营业利润率</td><td><strong>72%</strong>（去年同期 13%）</td><td>—</td><td>—</td></tr>
+</table>
+<p><strong>最关键的一行：NAND 售价（美元计）环比 +70%，而位元出货量只增 1~4%。</strong>这是纯粹的价格事件，不是需求事件。</p>
+<table>
+<tr><th>身份</th><th>对应价格</th><th>涨幅</th><th>对它</th></tr>
+<tr><td>NAND <strong>卖方</strong></td><td>NAND 合约价</td><td>Q1 +55~60%、Q2 +70~75%</td><td class="up">收入端受益</td></tr>
+<tr><td>DRAM <strong>买方</strong>（SSD 缓存）</td><td>DRAM 合约价</td><td>Q2 +58~63%、Q4 再 +10~15%</td><td class="down">成本端受损</td></tr>
+</table>
+<p><strong>答案是卖方赢，理由是权重不对称，不是涨幅</strong>：涨幅其实差不多（NAND +70% vs DRAM +60%），方向相反；但一条企业级 SSD 里 NAND 是成本主体、DRAM 缓存只占小头，乘上权重后侵蚀有限。净结果可观测：<strong>毛利率从 64% 扩到 78%</strong>——如果买方身份赢了，毛利率应该收窄而不是创历史极值。</p>
+<p class="muted">⚠ 口径提醒：本报告记的 78% 毛利率是历史极值（去年同期 21%），所以「铠侠 PE 19x 便宜吗」这个问题本身是坏的——同一个 PE，在 21% 和 78% 毛利率下不是一回事。另外 PE 口径分歧：P74 记 19x，8 月底另有口径算 trailing PE 39.14x（5 年中位数 21.65x），10 月初 trailing 约 20–23x、<strong>forward 仅 5.3x</strong>。用 PE 判它之前必须先锁定「哪天的价、哪个口径的 E」。</p>
+<h3>CEO 在 9/9 做了一件罕见的事</h3>
+<p>太田裕雄对彭博说：<strong>「NAND 价格已经涨够了」</strong>，已要求销售团队不要主动争取更高价格，理由是怕伤害 AI 的长期需求，并说「单季再涨 70% 不太可能重演，即便是超大规模云厂，预算也是有限的」。这是<strong>首个主要存储供应商公开给自家定价权设上限</strong>——没有卡特尔、没有监管、没有客户造反，供应商单方面宣布。配套动作是 ¥8,000 亿回购（占股本 5.5%，8/3–10/30）＋ 1:3 股票分割（10/1 生效）＋ IPO 后首次派息。结合它筹划赴美上市，我倾向读作：<em>管理层在把「周期红利」转译成「长期叙事」，为上市铺路。</em></p>
+
+<h3>② SK 海力士那 14.19%：用途不是「买入」，是「否决」</h3>
+<p>要读懂它，得先看它<strong>已经被用过一次</strong>：2023 年 10 月，铠侠与西部数据的合并谈判，正是因 SK 海力士反对而告吹——SK 的理由是「可能影响其对铠侠的投资价值」。<strong>这是整条线的题眼：</strong>那笔 14.19% 与其说是一个「想买入」的头寸，不如说是一张<strong>否决票</strong>——它不需要达到 15%，只需要卡在门槛下，就可以阻止任何它不喜欢的交易（同灵魂第五十七条：杠杆的位置在合同条款里）。</p>
+<table>
+<tr><th>身份</th><th>具体</th><th>对铠侠的含义</th></tr>
+<tr><td>股东</td><td>可转债 → 14.19%，SPC 为最大股东（2026 年 8 月起）</td><td>治理尴尬：铠侠自己承认「SK 行使表决权时可能与普通股东利益分歧」</td></tr>
+<tr><td>对手</td><td>NAND 直接竞争</td><td>它有你最大的对手当你的股东</td></tr>
+<tr><td>供应商</td><td>铠侠部分 SSD 用的 DRAM 由 SK 海力士供应</td><td><strong>成本端被人掐着，而掐它的人拿着它的股权</strong></td></tr>
+</table>
+<p>而这条线正在变坏：9/2 崔泰源说联合生产是「一种选项」，并加了一句威胁——「若无法建立更深合作，不排除退出投资」；9/9 太田裕雄把这扇门当场关上（两个障碍：反垄断——两家合计 NAND 份额约 36%，超过三星的 25%；以及四日市／北上厂是与闪迪的 50/50 合资，2026 年 1 月刚延长至 2034 年 12 月，插不进第三家），并说「不清楚崔泰源为何这么说」。市场当天的解读很关键：「该持股失去了任何战略性理由」。</p>
+<div class="callout">
+<strong>三情景 + 一个日期共振</strong>：走 A（整合）→ 合计份额约 36%，格局更寡头，定价纪律更强；走 B（维持）→ 竞争强度不变，但治理隐患长期挂着；走 C（退出）→ 集中度不变但<strong>信号极坏</strong>（连最大的产业股东都撤了，比单纯抛压更伤叙事）。⚠ <strong>15% 门槛协议到期（2028 年）</strong> 与 <strong>「2028 年 NAND 供需反转」预期</strong>撞在同一年——两个开关同年到期，值得单独挂哨位。反向风险：谈不成，SK 可能赴日自建 NAND 产能（崔泰源称日本「极具吸引力」、已收到多地招商邀请）。
+</div>
+
+<h3>③ 「成本低 20–30%」能不能验证：一半能验，一半是伪证据</h3>
+<p>这个具体数字<strong>无法直接验证</strong>（来源是岩井 Cosmo 的卖方观点），但方向有两层独立的代理证据支持；同时有一条常被拿来当证据的东西，其实是伪证据。</p>
+<table>
+<tr><th>证据</th><th>内容</th><th>成色</th></tr>
+<tr><td>50/50 合资结构</td><td>铠侠能与闪迪分担 fab 设备资本开支，<strong>以一半的资本负担部署先进洁净室产能</strong></td><td class="down">真证据（结构性成本优势）</td></tr>
+<tr><td>面密度业界领先</td><td>BiCS10 用 <strong>332 层</strong>做到面密度 &gt;29 Gb/mm²——<strong>用更少的层数做到更高的面密度，就是同晶圆出更多位元</strong></td><td class="down">真证据（间接但可核）</td></tr>
+<tr><td>capex 只占营收 7%</td><td>铠侠 2026 资本开支约 ¥4,700 亿/年，单季自由现金流（¥8,272 亿）就能覆盖一年</td><td class="up">伪证据——见下</td></tr>
+</table>
+<div class="callout red">
+<strong>为什么 capex 低是伪证据</strong>：它测量的是<em>供给纪律</em>，不是<em>成本优势</em>。因为对手 capex 的大头去了 HBM／DRAM，<strong>根本不在同一个东西上比</strong>。低 capex 证明的是铠侠在主动管理稀缺性（CEO 原话：「不会单纯为了市场份额而追逐市场份额」「产能增速只略快于行业，避免淹没市场」）。<br><br>
+<strong>分家判据</strong>：想知道它成本低不低 → 看<strong>面密度 + 50/50 合资结构</strong>；想知道它会不会淹掉市场 → 看 <strong>capex 强度</strong>。这两件事经常被混为一谈，而它们回答的是完全不同的问题。
+</div>
+<p class="muted">⚠ 两条未核实口径，用前必须锁：① 铠侠 capex 数字本身有分歧——¥4,700 亿/年（中期计划口径）vs 有报道称本财年 $45 亿、同比 +41%；② 有行业追踪称「2027 年 NAND 产能约比 2022 年峰值低 40%」——口径可疑，<strong>先当未核实项挂着，不要当结论用</strong>。</p>
+</section>
+
+<section>
+<h2>八、它自己的伤疤：不可反悔的承诺＝卖掉的选择权</h2>
+<div class="callout">
+<strong>2023 年，瑞萨预付 20 亿美元给 Wolfspeed，锁定碳化硅晶圆产能。</strong>随后电动车需求下滑 → 大额资产损失 → 拖出 2025 年六年首次净亏损（¥-517.8 亿）。2026 年 8 月，它连 Wolfspeed 董事席位都退掉了。
+</div>
+<p>这笔 $20 亿定金是不可退的——<strong>它卖掉的是自己的「撤单权」</strong>。这正是灵魂第七十八条的镜像：那条讲的是「卖 put 的人用撤单线换定金」，瑞萨这条是「<em>买方用现金换产能保证，结果周期一反转撤不掉</em>」。<strong>两头的道理是同一个：任何一笔不可反悔的承诺，本质都是把选择权卖出去了。</strong></p>
+<p>它显然学到了——现在把<strong>库存目标上调到 150 天</strong>，从「让客户恐慌下单造成订单泡沫」改成「原厂持库存做缓冲」。这也解释了它为什么敢把产线稼动率压在 <strong>58%</strong>：它在用纪律换周期长度。</p>
+</section>
+
+<section>
+<h2>九、日本半导体的四类门面</h2>
+<svg viewBox="0 0 680 402" xmlns="http://www.w3.org/2000/svg">
+<text x="40" y="24" font-size="14" fill="#d1d1d6" font-weight="700">日本半导体的四种门面：驱动力完全不同</text>
+<text x="40" y="44" font-size="12" fill="#86868b">同一张地图上的四个位置，不能用同一把尺子</text>
+<rect x="40" y="60" width="290" height="152" rx="12" fill="#141418" stroke="#2a2a30"/>
+<text x="58" y="88" font-size="13" fill="#c9a227" font-weight="700">① 周期型</text>
+<text x="58" y="110" font-size="11.5" fill="#86868b">铠侠 285A · ¥31.4 万亿</text>
+<line x1="58" y1="124" x2="312" y2="124" stroke="#2a2a30"/>
+<text x="58" y="148" font-size="12" fill="#d1d1d6">卖什么：标准化 NAND</text>
+<text x="58" y="172" font-size="12" fill="#d1d1d6">涨幅来源：周期重定价 +959%</text>
+<text x="58" y="196" font-size="12" fill="#d1d1d6">判据：内存合同价顶没顶</text>
+<rect x="350" y="60" width="290" height="152" rx="12" fill="#141418" stroke="#2a2a30"/>
+<text x="368" y="88" font-size="13" fill="#6cb6ff" font-weight="700">② 卡点型</text>
+<text x="368" y="110" font-size="11.5" fill="#86868b">东京电子 / 爱德万 / Lasertec</text>
+<line x1="368" y1="124" x2="622" y2="124" stroke="#2a2a30"/>
+<text x="368" y="148" font-size="12" fill="#d1d1d6">卖什么：不可跳过的工序</text>
+<text x="368" y="172" font-size="12" fill="#d1d1d6">涨幅来源：稳健重估 +100~150%</text>
+<text x="368" y="196" font-size="12" fill="#d1d1d6">判据：资本开支强度会不会停</text>
+<rect x="40" y="228" width="290" height="152" rx="12" fill="#141418" stroke="#2a2a30"/>
+<text x="58" y="256" font-size="13" fill="#b98cff" font-weight="700">③ 国家队</text>
+<text x="58" y="278" font-size="11.5" fill="#86868b">Rapidus（未上市）</text>
+<line x1="58" y1="292" x2="312" y2="292" stroke="#2a2a30"/>
+<text x="58" y="316" font-size="12" fill="#d1d1d6">卖什么：2nm 代工（未量产）</text>
+<text x="58" y="340" font-size="12" fill="#d1d1d6">涨幅来源：无二级市场定价</text>
+<text x="58" y="364" font-size="12" fill="#d1d1d6">判据：2027 财年下半年量产</text>
+<rect x="350" y="228" width="290" height="152" rx="12" fill="#185FA5" stroke="#185FA5"/>
+<text x="368" y="256" font-size="13" fill="#ffffff" font-weight="700">④ 存量经济的锚</text>
+<text x="368" y="278" font-size="11.5" fill="rgba(255,255,255,.8)">瑞萨 6723 · ¥6.0 万亿</text>
+<line x1="368" y1="292" x2="622" y2="292" stroke="rgba(255,255,255,.35)"/>
+<text x="368" y="316" font-size="12" fill="#ffffff">卖什么：汽车／工业 MCU ＋ 电源</text>
+<text x="368" y="340" font-size="12" fill="#ffffff">涨幅来源：低基数修复 +87%</text>
+<text x="368" y="364" font-size="12" fill="#ffffff">判据：汽车客户是否重启回补</text>
+</svg>
+<div class="fig-cap">图 3 · 四类门面：周期型（铠侠）／卡点型（设备四家）／国家队（Rapidus）／存量经济（瑞萨）</div>
+
+<table>
+<tr><th>公司</th><th>市值</th><th>一年涨幅</th><th>前瞻 PE</th></tr>
+<tr><td>铠侠 285A</td><td>¥31.4 万亿</td><td class="up">+959%</td><td>5.3x（E 在顶）</td></tr>
+<tr><td>东京电子 8035</td><td>¥28.6 万亿</td><td class="up">+126%</td><td>28.0x</td></tr>
+<tr><td>爱德万 6857</td><td>¥27.2 万亿</td><td class="up">+150%</td><td>40.7x</td></tr>
+<tr><td>迪思科 6146</td><td>¥6.6 万亿</td><td>+18%</td><td>37.5x</td></tr>
+<tr><td>瑞萨 6723</td><td>¥6.0 万亿</td><td class="up">+87%</td><td>15.5x</td></tr>
+<tr><td>Lasertec 6920</td><td>¥3.7 万亿</td><td class="up">+129%</td><td>TTM 53x ／ 前瞻 41x</td></tr>
+</table>
+<p class="muted">均取 10 月初快照。Rapidus 未上市：北海道千岁 2nm 厂，政府累计研发援助 2.354 万亿日元（今年再追加 ¥1,500 亿），总投资往 5 万亿日元／350 亿美元走；2027 财年下半年量产目标，月产能 6,000 → 2.5 万片；定价约 $20,000/片，比台积电传闻的 $30,000 低近 $10,000；10 月 5 日成立 Rapidus CORE 拉 17 家设计伙伴。铠侠本身是 Rapidus 八家股东之一。</p>
+<p>「门面」分三种性质，铠侠只占其中一种。<strong>周期型门面（铠侠）</strong>的市值第一是 NAND 超级周期给的，会跟着周期走；<strong>卡点型门面</strong>（Lasertec／东京电子／爱德万／迪思科，加上信越化学、SUMCO）一年只涨 +100~150%，不「性感」但更难过时；<strong>国家战略门面</strong>扛旗的是 Rapidus，不是铠侠。而瑞萨是第四种——它甚至不在 AI 这条链上。</p>
+</section>
+
+<section>
+<h2>十、位置分层：唯一／领先／周期／存量</h2>
+<svg viewBox="0 0 680 292" xmlns="http://www.w3.org/2000/svg">
+<text x="40" y="24" font-size="14" fill="#d1d1d6" font-weight="700">同一张图上的四条刻度：位置决定你用哪把尺子</text>
+<text x="40" y="44" font-size="12" fill="#86868b">「不随周期翻转」说的是需求与毛利率，不是订单量</text>
+<line x1="40" y1="62" x2="640" y2="62" stroke="#2a2a30"/>
+<text x="52" y="82" font-size="11.5" fill="#86868b">位置 · 代表</text>
+<text x="212" y="82" font-size="11.5" fill="#86868b">判据</text>
+<text x="472" y="82" font-size="11.5" fill="#86868b">估值位置</text>
+<line x1="40" y1="94" x2="640" y2="94" stroke="#2a2a30"/>
+<text x="52" y="114" font-size="12.5" fill="#6cb6ff" font-weight="700">唯一</text>
+<text x="52" y="130" font-size="11" fill="#86868b">Lasertec · EUV 光罩检测</text>
+<text x="212" y="122" font-size="12" fill="#d1d1d6">订单能否连续两季兑现</text>
+<text x="472" y="122" font-size="11.5" fill="#c9a227">TTM 53x ／ 前瞻 41x</text>
+<line x1="40" y1="138" x2="640" y2="138" stroke="#1c1c22"/>
+<text x="52" y="158" font-size="12.5" fill="#b98cff" font-weight="700">领先</text>
+<text x="52" y="174" font-size="11" fill="#86868b">东京电子 · 爱德万 · 迪思科</text>
+<text x="212" y="166" font-size="12" fill="#d1d1d6">资本开支强度会不会停</text>
+<text x="472" y="166" font-size="11.5" fill="#c9a227">28–40x</text>
+<line x1="40" y1="182" x2="640" y2="182" stroke="#1c1c22"/>
+<text x="52" y="202" font-size="12.5" fill="#c9a227" font-weight="700">周期</text>
+<text x="52" y="218" font-size="11" fill="#86868b">铠侠 · 标准 NAND</text>
+<text x="212" y="210" font-size="12" fill="#d1d1d6">内存合同价顶没顶</text>
+<text x="472" y="210" font-size="11.5" fill="#c9a227">前瞻 5.3x（E 在顶）</text>
+<line x1="40" y1="226" x2="640" y2="226" stroke="#1c1c22"/>
+<text x="52" y="246" font-size="12.5" fill="#86868b" font-weight="700">存量</text>
+<text x="52" y="262" font-size="11" fill="#86868b">瑞萨 · 车规 MCU 与电源</text>
+<text x="212" y="254" font-size="12" fill="#d1d1d6">汽车客户是否重启回补</text>
+<text x="472" y="254" font-size="11.5" fill="#c9a227">前瞻 15.5x</text>
+<line x1="40" y1="270" x2="640" y2="270" stroke="#2a2a30"/>
+</svg>
+<div class="fig-cap">图 4 · 四种位置、四把尺子——「唯一」并不自动等于「好买点」</div>
+
+<h3>先纠一处：「唯一」的边界比听起来窄</h3>
+<table>
+<tr><th>细分</th><th>竞争状况</th></tr>
+<tr><td><strong>actinic（13.5nm 原生波长）EUV 光罩检测</strong>（ACTIS）</td><td><strong>约 100% 份额——唯一</strong></td></tr>
+<tr><td>EUV 光罩空白检测（MAGICS）</td><td>唯一（2017 年全球首创）</td></tr>
+<tr><td>DUV 光罩检测（MATRICS）</td><td>有竞争：KLA（Teron／TeraScan）、应用材料（Aera 6）、NuFlare（NPI-8000）</td></tr>
+<tr><td>量检测整体市场</td><td>它<strong>只占约 5.6%</strong>；KLA 占约 50%（总收入 $9–10B，是它的 6 倍以上）</td></tr>
+</table>
+<p>壁垒机制值得单独记：它从 2011 年起与台积电、英特尔、三星<strong>共同研发</strong>（EIDEC），连年获英特尔 EPIC 杰出供应商奖、2023 年首获台积电卓越表现奖。<strong>这意味着对手即使砸钱，也拿不到「和头部客户一起验证下一代制程」的窗口。</strong></p>
+<h3>Lasertec 的涨幅与业绩是背离的——原因在订单与营收的时差</h3>
+<table>
+<tr><th>指标</th><th>FY6/2025</th><th>FY6/2026</th><th>变化</th></tr>
+<tr><td>订单（受注）</td><td>¥1,052 亿</td><td><strong>¥2,375 亿</strong></td><td class="up">+125.7%</td></tr>
+<tr><td>营收</td><td>¥2,514 亿</td><td>¥2,305 亿</td><td class="down">−8.3%</td></tr>
+<tr><td>营业利润</td><td>¥1,228 亿</td><td>¥1,053 亿</td><td class="down">−14.3%（率 45.7%）</td></tr>
+<tr><td>服务收入</td><td>¥430 亿</td><td><strong>¥586 亿</strong></td><td class="up">+36.5%（占比 17% → 25%）</td></tr>
+</table>
+<p><strong>营收和利润是五年首次年度回落，但订单翻了一倍多。</strong>机制是：订单 → 出货要一年多 → 营收在客户验收时才确认。所以 FY6/2026 那张难看的报表，反映的是 FY6/2025 只有 ¥1,052 亿的弱订单；FY6/2026 的强订单，要变成 FY6/2027 及以后的收入。</p>
+<div class="callout red">
+<strong>8/6 财报后两天股价 −19.8%</strong>（¥46,680 → ¥37,460）。原因是这个<strong>「创纪录的指引」低于市场一致预期</strong>（市场要 ¥2,928 亿营收／¥1,400 亿营业利润，公司给 ¥2,900 亿／¥1,250 亿）。<em>创纪录的指引也被卖——这就是「预装倍数」的现场：市场替你假设的增长，比你自己的指引还高。</em>路径感：8/28 跌到 ¥34,640，10/1 回到 ¥45,710，五周 +32%。
+</div>
+<h3>它和铠侠正好是「相反的两种贵」</h3>
+<table>
+<tr><th></th><th>铠侠</th><th>Lasertec</th></tr>
+<tr><td>PE（TTM）</td><td>约 20–23x</td><td><strong>约 53x</strong></td></tr>
+<tr><td>PE（前瞻）</td><td><strong>约 5.3x</strong></td><td>约 41x（一致）／46x（公司指引）</td></tr>
+<tr><td><strong>E 在什么位置</strong></td><td><strong>历史顶</strong>（78% 毛利率）</td><td><strong>周期谷</strong>（五年首次回落）</td></tr>
+<tr><td>高／低 PE 的原因</td><td>市场<strong>拒绝相信</strong>峰值 E 能持续</td><td>市场<strong>假设</strong>增长会回来（分母小）</td></tr>
+<tr><td>共识增速 vs 公司指引</td><td>—</td><td>共识 EPS <strong>+30%</strong> vs 公司指引 <strong>+16%</strong></td></tr>
+</table>
+<p><strong>灵魂第八十七条在这里是活体样本：5.3x 和 53x 不能直接比大小——因为一个的分母在顶、一个的分母在谷。</strong>反过来说更清楚：Lasertec 的高 PE 里，有一部分不是「分子贵」，是「分母小」。</p>
+<h3>瑞萨：它不在这条链上</h3>
+<p>按花旗 10/1 报告的分部口径：<strong>汽车芯片 ¥6,397 亿 → ¥7,380 亿（+15%）</strong>；<strong>基础设施芯片（AI 相关）¥1,980 亿 → ¥3,140 亿（+59%，但基数不到汽车一半）</strong>。公司口径的「AI 业务占比约一成」，分部口径「基础设施约两成」——两个数差在口径宽窄，用前先锁。</p>
+<p>它的 AI 敞口是<strong>「电」不是「存储／算力」</strong>：数字电源、GaN／SiC（650V 双面散热 GaN 面向 800VDC，<strong>量产计划 2027 年年中＝晚到者</strong>）、ASIC、memory interface——属「电力层」，不是存储层。⚠ 8/11 Navitas 起诉其 GaN 专利侵权。</p>
+<p>它 2026 的<strong>主线其实是资产负债表</strong>：7/1 卖掉时钟芯片业务给 SiTime（$15 亿现金 ＋ 359 万股 SiTime 约 $23.4 亿）；净债务／EBITDA 目标降到 0.6x；内生 FCF 约 ¥4,000 亿，可能重启 ¥500–1,000 亿回购。花旗 10/1 把目标价从 ¥5,200 <strong>下调到 ¥4,000</strong>、维持中性，理由是「AI 基建红利难掩汽车芯片疲态」。<strong>这些改善有一半来自「卖资产」，不是「需求变强」。</strong></p>
+<p>护城河在哪：<strong>MCU 的生态粘性 ＋ 车规认证壁垒</strong>（design-in 周期长、换供应商成本高），加一个「物理 AI 期权」（RH850/U2B、RZ/V2N 的 DRP-AI 15 TOPS、RA8P1 的 Ethos-U55 NPU）。用那把尺子量：<strong>它介于「随行就市」和「不可跳过工序」之间</strong>——有粘性但非垄断，价格仍随汽车周期走。风险是 M&amp;A 惯犯（Dialog／Intersil／IDT／Altium 一路买过来），花旗把「是否再次大额现金并购」列为未来主要扰动。</p>
+</section>
+
+<section>
+<h2>十一、判据表与操作</h2>
+<table>
+<tr><th>对象</th><th>落地位置</th><th>判据（唯一动作）</th></tr>
+<tr><td>内存 / HBM</td><td>存储链（观察篮）</td><td>内存合同价顶没顶（哨位 2026Q4–27）</td></tr>
+<tr><td>硬盘（希捷／西数）</td><td>存储链（观察篮）</td><td>交期与锁单是否松动（无公开价格哨位）</td></tr>
+<tr><td>铠侠 285A</td><td>存储链（观察篮）</td><td>① 内存合同价拐点 ② <strong>XL1 的第一个公开 design win（目前为零）</strong> ③ 2028 年「SK 15% 门槛到期 ∩ 供需反转」日期共振</td></tr>
+<tr><td>Lasertec 6920</td><td>后道／量检测（P74 同基因）</td><td>ACTIS 领先逻辑厂订单能否连续两季兑现；下一裁判日 <strong>10/29–30</strong></td></tr>
+<tr><td>瑞萨 6723</td><td><strong>归「日股汽车／工业周期」，不归 AI 硬件</strong></td><td>汽车客户是否重启实质性库存回补</td></tr>
+<tr><td>总敞口提醒</td><td>AVGO ＋ AI 后道测试观察篮（P74）＋ 内存链（本报告）＋ AI 融资栈（P76）</td><td><strong>本质是同一个「AI 资本开支」因子；真到动手时先算总敞口</strong></td></tr>
+</table>
+<h3>操作</h3>
+<div class="conclusion">
+<div class="ct">不追、不砍、不改区间</div>
+<ul>
+<li><strong>本报告是结构报告，不是交易信号</strong>：C 档预挂单（AVGO 272／222、NKE 23×2–3%）维持不变，撤单线见 P70。</li>
+<li><strong>不新立买入区间</strong>：本报告涉及的四类标的（铠侠、Lasertec、瑞萨、硬盘双雄）<strong>全部不在「等崩盘捡便宜」的射程内</strong>——铠侠是周期重定价、Lasertec 是动量、瑞萨是成熟周期股。</li>
+<li><strong>新增三条哨位</strong>：① 铠侠 XL1 的首个 design win；② Lasertec 的 ACTIS 逻辑侧订单（10/29–30 财报）；③ 2028 年「SK 15% 门槛到期 ∩ NAND 供需反转」。</li>
+<li><strong>观察篮归属修正</strong>：把「瑞萨」放进「日股汽车／工业周期」，不要放进「AI 硬件」——这是本报告最实用的一条操作结论。</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>十二、边界与口径分歧</h2>
+<table>
+<tr><th>项</th><th>分歧</th><th>本报告采信</th></tr>
+<tr><td>铠侠 NAND 份额</td><td>CFM 口径 14.4%（第四）／TrendForce 口径 13.4%（第五，按收入；YMTC 位元已进前三但集中消费级）</td><td>并列两源，主表用 TrendForce 的 13.4% 并注明 CFM 的 14.4%——差别在长江存储的位元／收入口径</td></tr>
+<tr><td>铠侠估值</td><td>trailing 20–23x（10 月初）／39.14x（8 月底，5 年中位数 21.65x）／前瞻 5.3x（9 月中旬）</td><td>三个并列，明确「哪天的价、哪个口径的 E」；不再用「19x」这个单一数字</td></tr>
+<tr><td>铠侠 capex</td><td>¥4,700 亿/年（中期计划）／报道称本财年 $45 亿、+41%</td><td><strong>两条都列、不替它统一</strong>；任何依赖 capex 强度的推论先挂起</td></tr>
+<tr><td>NAND 产能</td><td>有行业追踪称「2027 年产能约比 2022 年峰值低 40%」</td><td>口径可疑，列为<strong>未核实项</strong>，不当结论用</td></tr>
+<tr><td>铠侠毛利率与 PE</td><td>78% 毛利率为 FY26Q1 单季；PE 随股价剧烈变化</td><td>毛利率与 PE 分开表述，绝不并列成「便宜」的论据</td></tr>
+<tr><td>瑞萨 AI 收入占比</td><td>公司口径「约一成」／分部口径「基础设施约两成」</td><td>两口径并列，说明差异来自是否含工业 IoT</td></tr>
+<tr><td>Lasertec market cap</td><td>¥3.7 万亿（10/1 TipRanks）／¥4.19–4.35 万亿（Yahoo 口径）</td><td>取 10/1 的 ¥3.7 万亿，注明口径随快照日浮动</td></tr>
+<tr><td>份额与价格数据</td><td>均为机构与媒体转述，非一手终端</td><td>按「三等证据」对待，只用于方向与相对位置判断</td></tr>
+</table>
+<div class="callout blue">
+<strong>一个必须说明的边界</strong>：本报告里的「份额」是<strong>收入口径</strong>（企业级 SSD 营收份额），不是位元口径。两者在长江存储与美光身上分化很大——用错口径会得到完全相反的排序。另外，日本半导体市值与涨幅为 10 月初快照，且同日不同源的统计区间不同（一年／YTD），本报告只在「排序形状」上使用它们。
+</div>
+</section>
+
+<section class="soul">
+  <div class="tag">体系灵魂第九十五条</div>
+  <div class="sn">同一环涨价的净效果，等于两侧涨幅乘各自权重之差</div>
+  <p>灵魂第八十五条说「同一环涨价，先看它站在哪一侧」——本报告补一层：<strong>还要看两侧的权重。</strong>铠侠同时是 NAND 的卖方（受益）和 DRAM 的买方（受损），涨幅其实差不多（+70% vs +60%），但 NAND 在一条企业级 SSD 里是成本主体、DRAM 缓存只占小头，乘上权重后净效果为强正（毛利率 64% → 78%）。<strong>判据：算「两边的涨幅 × 各自成本权重」，而不是只看谁涨得多。</strong>买方身份只有在「买的那部分占自己成本结构足够大」时才构成实质侵蚀。</p>
+</section>
+
+<section class="soul">
+  <div class="tag">体系灵魂第九十六条</div>
+  <div class="sn">低资本开支证明的是供给纪律，不是成本地位</div>
+  <p>铠侠 capex 只占营收 7%，常被拿来当「成本低 20~30%」的证据——这是伪证据。它的对手（三星、SK 海力士、美光）capex 的大头去了 HBM／DRAM，<strong>根本不在同一个东西上比</strong>；低 capex 证明的是它在主动管理稀缺性。<strong>判据：想知道成本低不低，看面密度与合资结构；想知道会不会淹掉市场，看 capex 强度。</strong>这两件事经常被混为一谈，而它们回答的是完全不同的问题——一个问「你的地位」，一个问「你的意图」。</p>
+</section>
+
+<section class="soul">
+  <div class="tag">体系灵魂第九十七条</div>
+  <div class="sn">不可反悔的承诺，本质是把选择权卖出去了</div>
+  <p>瑞萨 2023 年预付 20 亿美元给 Wolfspeed 锁碳化硅晶圆，随后电动车需求下滑、大额减记、2025 年六年首次净亏损。卖方卖 put 换定金（灵魂第七十八条），买方付定金换产能保证——<strong>同一件事的两面：任何一笔不可退的承诺，都是把「以后还能改主意」这个权利卖掉了。</strong>判据：签之前先问「如果周期反转，我能撤吗」。不能撤的那部分，就是你为此付的真实价格。</p>
+</section>
+
+<section class="soul">
+  <div class="tag">体系灵魂第九十八条</div>
+  <div class="sn">位置分四层，每层的尺子不同；「不随周期翻转」说的是需求，不是订单量</div>
+  <p>同一张地图上有四种位置：<strong>唯一</strong>（Lasertec，份额约 100%）、<strong>领先</strong>（东京电子／爱德万／迪思科）、<strong>周期</strong>（铠侠）、<strong>存量</strong>（瑞萨）。灵魂第八十四条那句「卖复杂度的人不随周期翻转」要加边界：<strong>不翻转的是需求与毛利率（Lasertec 营业利润率仍 45.7%），翻转的是订单量（¥1,052 亿 ↔ ¥2,375 亿，差一倍多）。</strong>判据：先定位置，再选尺子——唯一看订单兑现、领先看资本开支强度、周期看合同价拐点、存量看终端补库。「唯一」不自动等于「好买点」。</p>
+</section>
+
+<div class="conclusion">
+<div class="ct">一句话收口</div>
+<p>本报告摆上桌的四个对象，其实在回答同一个问题：<strong>涨价能不能落到你头上，取决于你站在链条的哪一层、以及那一层的权重有多大。</strong>内存站在「堆层数就涨价」的那一侧，硬盘只拿到一次性短缺溢价；铠侠是中间层，两头都要挨；Lasertec 站在唯一的位置上，却要等订单兑现。对你的含义很朴素——<em>这四类标的没有一个在你「等崩盘捡便宜」的射程里</em>；真正该记下来的不是它们的价格，而是它们的<strong>判据各自不同</strong>：合同价、交期、订单兑现、汽车补库。先把这四把尺子记住，价格到时候自己会说话。</p>
+</div>
+
+<div class="disc">
+<p><strong>免责声明</strong>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。本报告所引份额、价格、资本开支与估值数据均为公开行业机构与卖方研报转述（TrendForce／CFM／花旗／摩根大通／野村／岩井 Cosmo／公司 IR 等），非一手终端数据，仅用于方向与相对位置判断；存储价格与份额存在多口径分歧，已在第十二节逐项列明，不跨口径混算。</p>
+<p>P77 · 完 · 上一份 P76《零本金的节点：AI 融资六层栈、涨价的钱从哪来、谁先下桌》· 下一份 P78（灵魂接第九十九条）</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

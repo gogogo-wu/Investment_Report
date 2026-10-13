@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抵制的形状：硬件利润池倒挂、三种替代与三个开关</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141418; --line:#2a2a30;
+    --txt:#d1d1d6; --sub:#86868b; --head:#f5f5f7;
+    --up:#e5484d; --down:#30a46c; --gold:#c9a227; --blue:#6cb6ff; --purple:#b98cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 64px}
+  h1.g{font-size:27px;line-height:1.35;color:var(--head);font-weight:800;background:linear-gradient(90deg,#f5f5f7,#a8a8ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+  .sub{color:var(--sub);font-size:12.5px;margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .badge{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--sub)}
+  .badge.hl{color:var(--gold);border-color:#4a3f1d}
+  section{margin-bottom:38px}
+  h2{font-size:19px;color:var(--head);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  h3{font-size:15.5px;color:var(--head);font-weight:700;margin:20px 0 10px}
+  p{margin-bottom:14px}
+  .muted{color:var(--sub)}
+  em{font-style:normal;color:var(--gold)}
+  strong{color:var(--head)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+  th{color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid #1c1c22;vertical-align:top}
+  td.up{color:var(--up)} td.down{color:var(--down)}
+  .callout{background:var(--panel);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .callout.blue{border-left-color:var(--blue)}
+  .callout.red{border-left-color:var(--up)}
+  .verdict{background:linear-gradient(135deg,#1a1a20,#141418);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:26px 0;font-size:15px}
+  .verdict .vt{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+  .conclusion{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:28px 0}
+  .conclusion .ct{color:var(--head);font-weight:700;margin-bottom:10px}
+  .soul{background:linear-gradient(135deg,#1c1810,#141218);border:1px solid #4a3f1d;border-radius:12px;padding:24px;margin:28px 0}
+  .soul .tag{display:inline-block;font-size:12px;color:var(--gold);border:1px solid #4a3f1d;border-radius:99px;padding:3px 12px;margin-bottom:14px}
+  .soul .sn{color:var(--head);font-weight:700;font-size:16px;margin-bottom:10px}
+  .soul p{color:#d8cfa8;font-size:14px}
+  .disc{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:var(--sub);font-size:12.5px}
+  svg{max-width:100%;height:auto;display:block;margin:20px auto}
+  .fig-cap{text-align:center;color:var(--sub);font-size:12px;margin-top:-8px;margin-bottom:20px}
+  ul{margin:0 0 14px 20px} li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1 class="g">抵制的形状：硬件利润池倒挂、三种替代与三个开关</h1>
+<div class="sub">P78 · 发散笔记 · 2026-10-13 成稿（美股 10/13 盘中，日韩股 10/13 收盘）· 数据口径：厂商指引与高管发言来自 DBS 亚洲前瞻峰会（10/12）转述，利润率拆解来自 Apollo 转述，债务结构来自 WSJ／FT 转述，均为非一手来源，需核实原文；同一指标多源冲突时已在第十节并列标注，不跨口径混算</div>
+<div class="badge-row">
+  <span class="badge">P78</span><span class="badge">利润分配 · 议价权 · 融资</span><span class="badge">AI 硬件</span><span class="badge hl">反制的形式是替代</span><span class="badge">观察位报告（无持仓变动）</span>
+</div>
+
+<div class="verdict">
+  <div class="vt">大白话总评</div>
+  <p>这一份从一个很直白的疑问开始：<strong>硬件赚走了 AI 链上大部分利润，买方会不会联合起来抵制涨价？</strong>答案是不会——但这个「不会」有两层，第二层才是重点。</p>
+  <p>第一层：<strong>喊「硬件赚太多」的不是买方，是硬件公司自己的 CEO。</strong>博通的陈福阳和 Intel 的陈立武 10/12 在同一个台上说 AI 像赌场、说「只有卖铲子的人赚钱不可持续」——他们不是要联合砍价，他们是在自曝：这套循环的钱是自己垫的，你们最好别违约。</p>
+  <p>第二层：<strong>抵制需要团结，替代只需要各自动手。</strong>而超大规模云彼此是死敌，永远团结不起来；所以买方真正的反制从来不长成「抵制」的样子，而是长成三种替代——<em>自研芯片、开源模型、融资分层</em>。这三种已经在发生，而且都不需要谈判。</p>
+  <p>但真正的判官不是买方也不是卖方，是日历：<strong>涨价被推翻的顺序是「产能 → 替代 → 抵制」</strong>，新产能一放，涨价不是被反抗掉的，是自己结束的。本报告新增三条灵魂条款（第九十九条、第一百条、第一百零一条），把「反制的形式」「利润率的真伪」「推翻的次序」三件事各自钉成一把尺子。</p>
+</div>
+
+<section>
+<h2>一、问题的形状：为什么「抵制」这个词用错了</h2>
+<p>先把这件事的三方摆清楚，因为绝大多数讨论把它们混成了一团：</p>
+<table>
+<tr><th>角色</th><th>是谁</th><th>此刻在做什么</th></tr>
+<tr><td><strong>卖方</strong>（上游硬件）</td><td>英伟达／博通／台积电／存储原厂／设备</td><td>涨价、扩产、<strong>同时替客户垫资</strong></td></tr>
+<tr><td><strong>买方</strong>（下游算力与模型）</td><td>超大规模云／AI 实验室</td><td>照单全收、转嫁客户、<strong>同时自研替代</strong></td></tr>
+<tr><td><strong>终端</strong>（最终付钱的人）</td><td>企业 IT 预算／消费者</td><td>被动接受，只在最弱的品类上拒签</td></tr>
+</table>
+<p>关键错位在第一行和第二行之间：<strong>说「硬件赚太多」的话，是卖方自己说的。</strong>这不是买方请愿，是卖方风险披露。而按灵魂第十条（听发言先问立场），就得问一句——他们说这话，对自己有什么好处？</p>
+<div class="callout blue">
+<strong>先说结论再说理由</strong>：买方不会「集体抵制」，因为① 抵制需要卡特尔，而买方互为竞争对手；② 买方的真正武器是<em>重新定义供应</em>，不是谈判价格；③ 唯一会真的抵制的是最弱势的终端品类，而它们没有议价权，只能被动拒签。所以本报告要回答的不是「会不会抵制」，而是<strong>「替代会从哪一层先咬穿」</strong>。
+</div>
+<p>顺带说明本报告与相邻两份的分工：<strong>P76 讲「涨价的钱从哪一层来」（融资六层栈）；本报告讲「这些钱最后赚到谁手里、以及买方的反制长成什么形状」。</strong>两份合起来才是完整的循环——P76 是进水管，本报告是出水管和阀门。而 P75 的「CDS 先于股价」是这套循环的压力表。</p>
+</section>
+
+<section>
+<h2>二、利润池倒挂：钱在谁手里</h2>
+<p>「硬件赚走大部分利润」不是情绪，是能算出来的。Apollo 首席经济学家 Torsten Slok 按产业链四层做了等权平均的营业利润率拆解（2026Q2）：</p>
+<svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+<title>AI 价值链四层平均营业利润率</title>
+<desc>硅片与设备正 41%，能源与电网正 17%，算力与云正 10%，模型与应用负 59%</desc>
+<text x="40" y="24" font-size="14" fill="#d1d1d6" font-weight="700">AI 价值链四层：平均营业利润率（2026Q2，等权口径）</text>
+<text x="40" y="44" font-size="12" fill="#86868b">柱长按同一比例尺换算；上游赚的是下游融来的钱</text>
+<line x1="455" y1="64" x2="455" y2="240" stroke="#2a2a30"/>
+<text x="104" y="86" font-size="12.5" fill="#d1d1d6" text-anchor="end">硅片与设备</text>
+<text x="180" y="86" font-size="12.5" fill="#6cb6ff" text-anchor="end">+41%</text>
+<rect x="455" y="77" width="184" height="18" rx="3" fill="#6cb6ff" opacity="0.85"/>
+<text x="104" y="128" font-size="12.5" fill="#d1d1d6" text-anchor="end">能源与电网</text>
+<text x="180" y="128" font-size="12.5" fill="#6cb6ff" text-anchor="end">+17%</text>
+<rect x="455" y="119" width="76" height="18" rx="3" fill="#6cb6ff" opacity="0.7"/>
+<text x="104" y="170" font-size="12.5" fill="#d1d1d6" text-anchor="end">算力与云</text>
+<text x="180" y="170" font-size="12.5" fill="#6cb6ff" text-anchor="end">+10%</text>
+<rect x="455" y="161" width="45" height="18" rx="3" fill="#6cb6ff" opacity="0.55"/>
+<text x="104" y="212" font-size="12.5" fill="#d1d1d6" text-anchor="end">模型与应用</text>
+<text x="180" y="212" font-size="12.5" fill="#e5484d" text-anchor="end">−59%</text>
+<rect x="190" y="203" width="265" height="18" rx="3" fill="#e5484d" opacity="0.8"/>
+</svg>
+<div class="fig-cap">图 1 · 利润池倒挂：上游 +41%，下游 −59%——差额由下游融来的资本支付</div>
+<table>
+<tr><th>层级</th><th>代表公司</th><th>平均营业利润率</th></tr>
+<tr><td>硅片与设备（最上游）</td><td>英伟达／AMD／博通／台积电／SK 海力士／美光</td><td class="up">+41%</td></tr>
+<tr><td>能源与电网</td><td>Constellation／Vistra／Vertiv／Eaton</td><td>+17%</td></tr>
+<tr><td>算力与云</td><td>AWS／Azure／Google Cloud／CoreWeave</td><td>+10%</td></tr>
+<tr><td>模型与应用（最下游）</td><td>OpenAI／Anthropic</td><td class="down">−59%</td></tr>
+</table>
+<p>Slok 的关键论断是这一句：<strong>「AI 繁荣的利润目前由投资者出资，而非由客户创造。」</strong>上游那 +41% 是真实的利润率，但它对应的现金流，有相当一部分不是终端客户掏的钱，而是下游亏损层从资本市场融来的钱——<em>这是本报告最核心的一个结构</em>，也是灵魂第一百条的来源。</p>
+<p>把镜头拉近到单点，倒挂更刺眼（各家披露口径与财年不同，仅作量级对照）：</p>
+<table>
+<tr><th>环节</th><th>代表</th><th>最近披露季的盈利指标</th></tr>
+<tr><td>存储原厂</td><td>美光</td><td>毛利率 <strong>84.6%</strong>、净利率 68.1%</td></tr>
+<tr><td>AI 芯片</td><td>英伟达</td><td>毛利率约 75%（最新季 73.4%）</td></tr>
+<tr><td>定制芯片与网络</td><td>博通</td><td>毛利率 67.5%、净利率 44.2%</td></tr>
+<tr><td>代工</td><td>台积电</td><td>毛利率约 66%</td></tr>
+<tr><td>数据中心网络</td><td>Arista</td><td>毛利率约 64%</td></tr>
+<tr><td>模型层</td><td>OpenAI</td><td>调整后营业利润率 <strong>−122%</strong>（2026Q1）</td></tr>
+<tr><td>二线算力云</td><td>CoreWeave</td><td>净利率 <strong>−35.6%</strong></td></tr>
+<tr><td>模型层</td><td>Anthropic</td><td>毛利率 −94%（2024）→ 约 60%（2026）</td></tr>
+</table>
+<div class="callout">
+<strong>一个反直觉的细节</strong>：本轮里<em>存储原厂的毛利率反超了 AI 芯片</em>（美光 84.6% vs 英伟达 75%）。这说明「硬件赚走利润」这句话今天已经不够精确——真正的收租人是<strong>物理卡点</strong>那一层，而不是名单上名字最大的那一家。这与 P77 的「位置分四层、每层尺子不同」是同一张地图。
+</div>
+</section>
+
+<section>
+<h2>三、为什么「抵制」喊不出口</h2>
+<h3>原因一：买方不是同业公会，是死敌</h3>
+<p>抵制（联合砍价、集体停购）的前提是买方能形成卡特尔。而超大规模云的现实是：谁先不买，谁先把份额和模型进度让给对手。2026 年四大云资本开支合计约 <strong>7,250 亿美元（同比 +77%）</strong>——没有一家在减。它们的选择不是砍价，是<strong>转嫁</strong>。</p>
+<h3>原因二：涨价已经成功传导出去了</h3>
+<table>
+<tr><th>买方</th><th>动作</th><th>幅度</th></tr>
+<tr><td>AWS</td><td>部分 EC2 GPU 容量块提价</td><td>最高 <strong>+38%</strong></td></tr>
+<tr><td>AWS</td><td>机器学习实例提价</td><td>+15%</td></tr>
+<tr><td>阿里云</td><td>部分产品提价</td><td>最高 +34%</td></tr>
+<tr><td>CoreWeave</td><td>部分服务提价</td><td>+25%</td></tr>
+</table>
+<p>传导链已经跑通：<strong>原厂涨价 → 云厂商提价 → 企业 IT 预算承接</strong>。当买方能把成本原样转出去时，它就没有动力去组织抵制——<em>抵制是买方的损失，转嫁是买方的生意</em>。</p>
+<h3>原因三：只有最弱者真的在「抵制」，而它们没有议价权</h3>
+<p>真正的拒签只发生在传导最困难的那一段——终端消费品。内存占手机物料成本的比例已经从 15% 升到 <strong>40~50%</strong>，于是出现了两件相反的事：</p>
+<table>
+<tr><th>买方</th><th>做法</th><th>结果</th></tr>
+<tr><td>OPPO／vivo</td><td>拒绝签三星 2026Q3 涨价报价</td><td>该季 DRAM 合约价涨幅被压到 13~18%</td></tr>
+<tr><td>苹果</td><td>靠长期协议锁价</td><td>把涨幅压在 10% 以内</td></tr>
+</table>
+<div class="callout red">
+<strong>这就是「抵制」的真实形态</strong>：不在买方联盟里，在最弱势品类的被动拒签里；不是谈判，是<em>买不起就不买</em>。强弱一目了然——苹果能锁在 10% 以内，是因为它有长约与规模；OPPO／vivo 只能拒签，是因为它没有。所以「抵制」是议价权<strong>结果</strong>，不是议价权<strong>工具</strong>。
+</div>
+</section>
+
+<section>
+<h2>四、替代之一：自研芯片（最有效的价格抵抗）</h2>
+<p>这是三条替代里唯一已经在财务上见效的一条。逻辑很朴素：<strong>既然毛利在你手里，那把这一层做进自己家。</strong></p>
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+<title>买方对硬件涨价的三条替代路径</title>
+<desc>自研芯片、开源模型、融资分层，以及产能释放这一真正的终点</desc>
+<text x="40" y="24" font-size="14" fill="#d1d1d6" font-weight="700">买方的三条反制路径：都不是「抵制」</text>
+<text x="40" y="44" font-size="12" fill="#86868b">三条都不需要谈判，也都已经在发生</text>
+<rect x="40" y="64" width="186" height="148" rx="10" fill="#141418" stroke="#2a2a30"/>
+<text x="133" y="94" font-size="14" fill="#6cb6ff" font-weight="700" text-anchor="middle">自研芯片</text>
+<text x="133" y="126" font-size="12" fill="#d1d1d6" text-anchor="middle">自研 ASIC 增速 44.6%</text>
+<text x="133" y="152" font-size="12" fill="#d1d1d6" text-anchor="middle">vs GPU 服务器 16.1%</text>
+<text x="133" y="178" font-size="12" fill="#86868b" text-anchor="middle">局限：同样绕不开 HBM</text>
+<rect x="247" y="64" width="186" height="148" rx="10" fill="#141418" stroke="#2a2a30"/>
+<text x="340" y="94" font-size="14" fill="#c9a227" font-weight="700" text-anchor="middle">开源模型</text>
+<text x="340" y="126" font-size="12" fill="#d1d1d6" text-anchor="middle">约占 token 用量 60%</text>
+<text x="340" y="152" font-size="12" fill="#d1d1d6" text-anchor="middle">压的是价格弹性</text>
+<text x="340" y="178" font-size="12" fill="#86868b" text-anchor="middle">陈立武罕见点名认可</text>
+<rect x="454" y="64" width="186" height="148" rx="10" fill="#141418" stroke="#2a2a30"/>
+<text x="547" y="94" font-size="14" fill="#e5484d" font-weight="700" text-anchor="middle">融资分层</text>
+<text x="547" y="126" font-size="12" fill="#d1d1d6" text-anchor="middle">涨价不消失，变成欠条</text>
+<text x="547" y="152" font-size="12" fill="#d1d1d6" text-anchor="middle">博通约 $1,450 亿债务</text>
+<text x="547" y="178" font-size="12" fill="#86868b" text-anchor="middle">Firmus 撤回 $55 亿 IPO</text>
+<rect x="40" y="232" width="600" height="48" rx="10" fill="#141418" stroke="#2a2a30"/>
+<text x="340" y="256" font-size="12.5" fill="#d1d1d6" text-anchor="middle">替代比抵制快；产能比替代更快——新产能 2027H2–2028 释放，涨价自动结束</text>
+</svg>
+<div class="fig-cap">图 2 · 三条替代路径，以及真正让涨价结束的那一个变量</div>
+<p>2026 年云厂商自研加速器（ASIC）的出货增速约 <strong>44.6%</strong>，而通用 GPU 服务器只有 <strong>16.1%</strong>——差了近三倍。微软在 OCP 峰会发布的 Maia 300 是最清楚的样本：96 芯片机箱、吞吐约为上一代的 7 倍、每兆瓦 token 提升 40%，而且<strong>只服务自家 Copilot 与 GitHub，不对外售卖</strong>。</p>
+<div class="callout blue">
+<strong>为什么自研是最有效的「价格抵抗」</strong>：租自家设计的芯片，毛利率比转卖别人的 GPU 高 20~30 个百分点。这不是「少付一点钱」，而是<em>把这一层的毛利整段搬回自己报表</em>。所以它的性质不是议价，是<strong>纵向一体化</strong>——用重资产换定价权。
+</div>
+<p>但它有硬边界，而且边界恰好又指回上游：</p>
+<ul>
+<li><strong>自研芯片同样要买 HBM。</strong>内存税躲不掉——你把 GPU 的毛利省下来了，HBM 那一段还是得按原厂的价格付。这解释了为什么存储原厂的毛利率反超了 AI 芯片（见第二节）。</li>
+<li><strong>软件生态迁移慢。</strong>约 70% 的 Azure AI 仍跑在英伟达上；CUDA 的迁移成本是自研芯片最贵的隐性账单。</li>
+<li><strong>自研只解决自家固定负载。</strong>波动的、第三方的、需要通用编程环境的负载，仍然得回到通用 GPU。</li>
+</ul>
+</section>
+
+<section>
+<h2>五、替代之二：开源模型（侵蚀定价权的合法武器）</h2>
+<p>这条替代不直接作用于硬件价格，它作用于<strong>需求的价格弹性</strong>。开源模型目前已占 token 使用量的约 <strong>60%</strong>，它的效果是压低「每 token 成本」——当便宜且够用的方案随手可得时，「必须买最贵算力」的叙事就撑不住了。</p>
+<p>值得注意的是谁在说这件事。陈立武在同一个台上罕见地点名认可中国的开源前沿模型（DeepSeek／Kimi／GLM），说它们的 token 成本「显著更低」而性能「令人满意」，并自认是开源的坚定支持者。<strong>一位卖硬件的人夸开源，等于承认：当闭源太贵，便宜够用的方案会啃掉高端定价权。</strong></p>
+<div class="callout">
+<strong>为什么它算「替代」而不算「抵制」</strong>：它没有让任何一家买方停止采购，它只是让<em>钱包的替代选项变多</em>。需求没有被谈判掉，是被更高性价比的方案分流掉了——这是价格弹性的作用方式，也是灵魂第九十九条所说的「各自动手」。
+</div>
+</section>
+
+<section>
+<h2>六、替代之三：融资分层（涨价变成欠条）</h2>
+<p>这是三条里最隐蔽、也最像 P76 的一条。当买方自己的现金流转不过来时，涨价不会消失，它会<strong>改成欠条</strong>。顺着 P76 的六层栈往下看，就能看到今天的钱在第几层：</p>
+<table>
+<tr><th>层</th><th>工具</th><th>今天的位置</th></tr>
+<tr><td>1 · 现金流</td><td>经营现金流</td><td>四大云 2026 资本开支约 $7,250 亿（+77%），AWS Q1 自由现金流同比 <strong>−95%</strong>（约 259 亿 → 12 亿美元区间）</td></tr>
+<tr><td>2 · 股权</td><td>增发／IPO</td><td>英伟达背书的澳洲数据中心 Firmus 10/9 <strong>撤回 $55 亿 ASX IPO</strong></td></tr>
+<tr><td>3 · 公开债</td><td>公司债</td><td>云厂与 AI 实验室持续发债</td></tr>
+<tr><td>4 · 私募信贷</td><td>Apollo／Blackstone</td><td>6 月成立 Big Sky（AI XPV）平台，锚定 $350 亿，目标 2028 年前超 20GW</td></tr>
+<tr><td>5 · SPV</td><td>项目公司</td><td>为 OpenAI 的定制芯片项目（代号 Nexus，芯片代次 Jalape&#241;o／Serrano）安排融资</td></tr>
+<tr><td>6 · 供应商融资</td><td>卖方垫资</td><td>博通为 OpenAI 安排 &gt;$500 亿、为 Anthropic 安排 $600 亿，累计约 <strong>$1,450 亿</strong>芯片抵押债务</td></tr>
+</table>
+<p>请把最后一行和第一行连起来读：<strong>卖方在替买方付钱买自己的产品。</strong>这就是灵魂第五条「卖铲人垫钱买铲＋担保客户＋下场发债＝只差一个客户违约」的完全体。也正因为它，陈福阳那句「很多投资人根本不知道自己在投什么」才不是看空，而是<em>风险披露</em>——同一场对话里，他把 AI 芯片收入指引上调到了 FY2027 约 <strong>$1,150 亿</strong>、FY2028 约 <strong>$2,300 亿</strong>。</p>
+<div class="callout red">
+<strong>融资分层的意义</strong>：它让「涨价成功」和「需求为真」这两件事脱钩。当付款来自第四到第六层时，报表上依然记着收入——但<em>那笔收入的对手方，是同一个循环里的另一张欠条</em>。所以判断涨价能不能持续，不能只看涨价本身，要看它由哪一层的钱支付（灵魂第一百条）。
+</div>
+</section>
+
+<section>
+<h2>七、三个开关：什么时候真的会翻脸</h2>
+<p>既然不靠抵制，那涨价什么时候会真的停？盯着三个带日历的开关，比盯着抱怨的声量有用得多：</p>
+<svg viewBox="0 0 680 184" xmlns="http://www.w3.org/2000/svg">
+<title>决定涨价能否持续的三个开关</title>
+<desc>买方分母、应用层裁判日、产能日历</desc>
+<text x="40" y="24" font-size="14" fill="#d1d1d6" font-weight="700">三个带日历的开关：声量不在排序里</text>
+<text x="40" y="44" font-size="12" fill="#86868b">越靠右越硬；左两个决定节奏，最右一个决定终局</text>
+<line x1="70" y1="112" x2="610" y2="112" stroke="#2a2a30"/>
+<circle cx="140" cy="112" r="7" fill="#6cb6ff"/>
+<circle cx="340" cy="112" r="7" fill="#c9a227"/>
+<circle cx="540" cy="112" r="7" fill="#e5484d"/>
+<text x="140" y="92" font-size="12.5" fill="#d1d1d6" text-anchor="middle">开关一：买方分母</text>
+<text x="140" y="142" font-size="12" fill="#86868b" text-anchor="middle">capex ÷ 经营现金流</text>
+<text x="140" y="164" font-size="12" fill="#86868b" text-anchor="middle">AWS Q1 FCF 同比 −95%</text>
+<text x="340" y="92" font-size="12.5" fill="#d1d1d6" text-anchor="middle">开关二：应用层裁判日</text>
+<text x="340" y="142" font-size="12" fill="#86868b" text-anchor="middle">OpenAI / Anthropic IPO</text>
+<text x="340" y="164" font-size="12" fill="#86868b" text-anchor="middle">感恩节前后 · $2 万亿量级</text>
+<text x="540" y="92" font-size="12.5" fill="#d1d1d6" text-anchor="middle">开关三：产能日历</text>
+<text x="540" y="142" font-size="12" fill="#86868b" text-anchor="middle">新产能释放</text>
+<text x="540" y="164" font-size="12" fill="#86868b" text-anchor="middle">2027H2–2028</text>
+</svg>
+<div class="fig-cap">图 3 · 三个开关：前两个决定节奏，第三个决定终局</div>
+<table>
+<tr><th>开关</th><th>判据（可执行）</th><th>当前位置</th></tr>
+<tr><td>① 买方分母</td><td>买方资本开支 ÷ 经营现金流；越过 100% 后，涨价从「收入」变「欠条」</td><td>内存占云资本开支比重 2026 约 30% → 2027 约 36%</td></tr>
+<tr><td>② 应用层裁判日</td><td>前沿实验室的 IPO 定价与单位经济</td><td>OpenAI／Anthropic 计划感恩节前后上市，$2 万亿量级</td></tr>
+<tr><td>③ 产能日历</td><td>DRAM 与先进封装新产能的释放节奏</td><td>2026 全球 DRAM 晶圆产能净增仅约 1%；新产能 2027H2–2028</td></tr>
+</table>
+<p>把三个开关排个序：<strong>产能 &gt; 替代 &gt; 抵制。</strong>前两个开关决定「什么时候开始松」，第三个开关决定「什么时候结束」。所以真正给这轮涨价判死刑的，不是任何一次买方抗议，而是<em>一条产能投产时间表</em>——这是本报告最想留下的一句话，也是灵魂第一百零一条。</p>
+</section>
+
+<section>
+<h2>八、谁最脆弱：三层的抗替代能力</h2>
+<p>把前六节合起来，可以给链条上的位置做一次「抗替代」体检。判据是两条：<strong>① 这一层能不能被跳过；② 需求是刚性的还是可切换的。</strong></p>
+<table>
+<tr><th>位置</th><th>代表</th><th>能被跳过吗</th><th>抗替代能力</th></tr>
+<tr><td>物理卡点</td><td>先进代工／HBM／先进封装</td><td>几乎不能（要建厂、要良率、要时间）</td><td class="up">强</td></tr>
+<tr><td>领先通用</td><td>通用 GPU／定制 ASIC</td><td>能，但慢（软件生态是护城河）</td><td>中——自研正在啃</td></tr>
+<tr><td>周期中间层</td><td>通用 DRAM／服务器 NAND（铠侠）</td><td>能（架构与产能替代）</td><td class="down">弱——涨价受益、抗替代最弱</td></tr>
+<tr><td>下游承压层</td><td>二线算力云／模型层</td><td>本身就是被替代方</td><td class="down">最弱——先下桌</td></tr>
+</table>
+<div class="callout">
+<strong>这张表要连着 P77 一起读</strong>：P77 把位置分成「唯一／领先／周期／存量」，本报告在同一张图上加了第二把尺子——<strong>抗替代能力</strong>。两把尺子合起来才是完整判断：铠侠是典型的<em>周期中间层</em>，涨价时它受益（P77 口径），替代来时它最脆（本报告口径）。同一个标的，两句话都对，差别在问的是哪一个时间尺度。
+</div>
+<p>再补一句反向的提醒：<strong>抗替代能力强 ≠ 值得买。</strong>物理卡点那一层（先进代工、HBM）的抗替代能力最强，但它们的价格也早已反映了这一点——本报告所有分层都只是<em>位置判断</em>，不含估值判断。</p>
+</section>
+
+<div class="soul">
+<div class="tag">体系灵魂第九十九条</div>
+<div class="sn">反制的形式是替代，不是抵制——抵制需要团结，替代只要各自动手</div>
+<p>买方的反制从来不长得像「联合抵制」，因为抵制需要卡特尔，而买方互为死敌。它长得像<strong>三条替代</strong>：自研芯片（把毛利搬回自己报表）、开源模型（压低价格弹性）、融资分层（把涨价变成欠条）。三条都不需要谈判，也都已经在发生。判据：看到「买方抗议涨价」的新闻时，不要问「他们会联合吗」，要问<strong>「这一层能不能被跳过、以及谁已经在动手」</strong>。灵魂第八十五条说同一环涨价要看站在哪一侧；本条的补层是——看站在哪一侧之后，还要看<em>那一侧有没有绕开这条路的能力</em>。</p>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第一百条</div>
+<div class="sn">上游的利润率有多真，看它由客户现金流支付，还是由下游融资支付</div>
+<p>利润池倒挂（上游 +41%、下游 −59%）是真实的数字，但它回答不了一个问题：那 +41% 对应的现金，是谁掏的。答案分两种——<strong>由终端客户的现金流支付</strong>（可持续）与<strong>由下游亏损层融来的资本支付</strong>（不可持续，且随时可能断）。判据：把买方的资本开支除以它的经营现金流，再追一遍这笔钱来自 P76 六层栈的第几层。<em>层数越深，涨价越像欠条</em>。这是灵魂第九十二条（涨价先问买方分母）的补层：第九十二条问「分母够不够」，本条问「分子是谁出的」。</p>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第一百零一条</div>
+<div class="sn">涨价被推翻的次序是「产能 → 替代 → 抵制」，声量不在排序里</div>
+<p>三个开关的硬度不同：产能是物理的（新厂投产日写在施工表上），替代是工程的（自研芯片与开源模型的进度可以跟踪），抵制是政治的（需要买方团结）。<strong>越硬的那个越先起作用，而最软的「抵制」排在最后、且常常根本没轮到。</strong>判据：判断涨价何时结束，盯产能投产时间表，而不是盯抱怨的声量。声量是温度计，不是开关（灵魂第三十条）。本条也是灵魂第九十四条（谁先下桌）的时间轴版本：<em>下桌的顺序，由每层的硬约束排出，不由情绪排出</em>。</p>
+</div>
+
+<div class="conclusion">
+<div class="ct">一句话收口</div>
+<p>这份报告要回答的那个问题——「会不会集体抵制硬件涨价」——正确答案是<strong>「不会，但涨价照样会停」</strong>。因为真正给涨价判死刑的，从来不是买方的团结，而是<em>产能日历、替代进度、和买方自己那本现金流账</em>。所以对你的含义很朴素：与其盯着「谁在抱怨硬件赚太多」，不如盯三张表——<strong>云厂商的资本开支除以经营现金流、前沿实验室的 IPO 定价、以及存储新产能的投产时间表</strong>。第一张表告诉你钱够不够，第二张表告诉你循环的裁判日，第三张表告诉你这轮涨价还有多久。至于那两位 CEO 的抱怨，请把它读成一句风险披露：<strong>说这话的人，正是垫钱的那个人。</strong></p>
+</div>
+
+<section>
+<h2>九、对组合的含义与哨位</h2>
+<h3>先说不做什么</h3>
+<p>本报告<strong>不新立区间、不调整仓位</strong>。它提供的是「判断涨价何时结束」的框架，以及「谁在替代里更脆」的分类，不是买卖依据。</p>
+<h3>再说三件要盯的事</h3>
+<ul>
+<li><strong>AVGO（组合最大持仓）</strong>：陈福阳的「赌场论」是风险披露，不是看空自己——他在同一场对话里给了上修指引。判据仍走 P63／P69 的甲骨文那一支：<strong>看债务分销进度，不看嘴</strong>。约 $1,450 亿这笔债若出现分销滞销，才是真信号。</li>
+<li><strong>内存链（美光／SK 海力士／铠侠）</strong>：涨价的终点不是需求变小，而是<em>买方分母见顶</em>或<em>产能放松</em>。这两条比「长鑫会不会成」更早触发，也更可跟踪。</li>
+<li><strong>铠侠的中间层属性再次被验证</strong>：它在涨价里受益、在替代里最脆（BOM 通用层）。10/13 的 −13.28% 属于灵魂第三条「被隔壁着火疏散的」一类，但仍<strong>不构成介入理由</strong>——灵魂第七十九条提醒：收租的拥挤度就是保费的薄度，此刻存储链拥挤度极高。</li>
+</ul>
+<h3>四条新哨位</h3>
+<table>
+<tr><th>哨位</th><th>观察什么</th><th>大致时点</th></tr>
+<tr><td>① 买方分母</td><td>AWS／微软的 Q3 资本开支 ÷ 经营现金流</td><td>10 月底起财报季</td></tr>
+<tr><td>② 循环裁判日</td><td>OpenAI／Anthropic 的 IPO 定价与单位经济</td><td>感恩节前后</td></tr>
+<tr><td>③ 拒签是否扩散</td><td>OPPO／vivo 拒签后，三星是否对消费类跟降</td><td>Q4 合约价谈判</td></tr>
+<tr><td>④ 债务分销</td><td>博通约 $1,450 亿结构的认购与滞销情况</td><td>持续</td></tr>
+</table>
+</section>
+
+<section>
+<h2>十、边界与口径分歧</h2>
+<p>本项目铁律要求把口径打架的地方摆出来，不静默选一个版本。本报告涉及的六处分歧如下：</p>
+<table>
+<tr><th>指标</th><th>版本 A</th><th>版本 B</th><th>本报告采信</th></tr>
+<tr><td>英伟达最新季收入与毛利率</td><td>数据中心 $890 亿、毛利率 75.0%（部分转述）</td><td>另一口径最新季收入约 $570 亿、毛利率 73.4%</td><td>仅用「毛利率约 75% 量级」，<strong>不引用单季收入绝对值</strong>，待公司披露核实</td></tr>
+<tr><td>四大云 2026 资本开支</td><td>约 $7,250 亿（+77%）</td><td>约 $8,300 亿（+79%，另一转述）</td><td>并列标注，仅取「+77~79% 的量级」</td></tr>
+<tr><td>博通 AI 芯片收入指引</td><td>FY2027 约 $1,150 亿</td><td>FY2028 约 $2,300 亿</td><td>两者为<strong>不同财年</strong>的目标，非冲突，同时列出</td></tr>
+<tr><td>记忆体价格涨幅</td><td>2026Q1 DRAM 合约价 +90~95%</td><td>「上半年涨 50~200%（分产品）」</td><td>采信 TrendForce 分季口径，因可分季核对</td></tr>
+<tr><td>「AI 硬件短缺」的持续时间</td><td>陈立武：2~3 年（另有「至少到 2029」的转述）</td><td>—</td><td>两说并列；均为发言转述，需核实原文</td></tr>
+<tr><td>利润率拆解的统计方法</td><td>Apollo：等权平均营业利润率</td><td>市值加权会得出很不同的图</td><td>明确标注为<strong>等权口径</strong>；这是「层级平均」不是「行业总额」</td></tr>
+</table>
+<div class="callout">
+<strong>三个最需要保留的怀疑</strong>：① 高管发言是「有立场的公开表述」，不是审计数据——本次两位 CEO 都同时存在<em>喊风险</em>与<em>给上修指引</em>的双面表述，只引用一面就会读反；② 利润率的「层级平均」受样本选择影响很大，换成市值加权，倒挂的幅度会显著收窄；③ 自研芯片的替代速度是<strong>推测量</strong>，不同来源给出的份额侵蚀曲线差异很大，本报告只用增速差（44.6% vs 16.1%）这个相对量，不用绝对份额。
+</div>
+</section>
+
+<div class="disc">
+<p><strong>免责声明</strong>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。本报告所引高管发言（DBS 亚洲前瞻峰会 2026-10-12）、利润率拆解（Apollo 转述）、债务结构（WSJ／FT 转述）、资本开支与毛利率数据（媒体与机构转述）均为<strong>非一手来源，需核实原文</strong>；财务口径以公司正式披露为准，多源分歧已在第十节逐项并列，不跨口径混算。</p>
+<p>P78 · 完 · 上一份 P77《位置的成色：内存与硬盘之争、铠侠的中间层、日本半导体的四类门面》· 下一份 P79（灵魂接第一百零二条）</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

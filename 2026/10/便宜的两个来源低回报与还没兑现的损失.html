@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>便宜的两个来源：低回报、还没兑现的损失</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141418; --line:#2a2a30;
+    --txt:#d1d1d6; --sub:#86868b; --head:#f5f5f7;
+    --up:#e5484d; --down:#30a46c; --gold:#c9a227; --blue:#6cb6ff; --purple:#b98cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 64px}
+  h1.g{font-size:27px;line-height:1.35;color:var(--head);font-weight:800;background:linear-gradient(90deg,#f5f5f7,#a8a8ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+  .sub{color:var(--sub);font-size:12.5px;margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .badge{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--sub)}
+  .badge.hl{color:var(--gold);border-color:#4a3f1d}
+  section{margin-bottom:38px}
+  h2{font-size:19px;color:var(--head);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  h3{font-size:15.5px;color:var(--head);font-weight:700;margin:20px 0 10px}
+  p{margin-bottom:14px}
+  .muted{color:var(--sub)}
+  em{font-style:normal;color:var(--gold)}
+  strong{color:var(--head)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+  th{color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid #1c1c22;vertical-align:top}
+  td.up{color:var(--up)} td.down{color:var(--down)}
+  .callout{background:var(--panel);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .callout.blue{border-left-color:var(--blue)}
+  .callout.red{border-left-color:var(--up)}
+  .verdict{background:linear-gradient(135deg,#1a1a20,#141418);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:26px 0;font-size:15px}
+  .verdict .vt{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+  .conclusion{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:28px 0}
+  .conclusion .ct{color:var(--head);font-weight:700;margin-bottom:10px}
+  .soul{background:linear-gradient(135deg,#1c1810,#141218);border:1px solid #4a3f1d;border-radius:12px;padding:24px;margin:28px 0}
+  .soul .tag{display:inline-block;font-size:12px;color:var(--gold);border:1px solid #4a3f1d;border-radius:99px;padding:3px 12px;margin-bottom:14px}
+  .soul .sn{color:var(--head);font-weight:700;font-size:16px;margin-bottom:10px}
+  .soul p{color:#d8cfa8;font-size:14px}
+  .disc{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:var(--sub);font-size:12.5px}
+  svg{max-width:100%;height:auto;display:block;margin:20px auto}
+  .fig-cap{text-align:center;color:var(--sub);font-size:12px;margin-top:-8px;margin-bottom:20px}
+  ul{margin:0 0 14px 20px} li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1 class="g">便宜的两个来源：低回报、还没兑现的损失</h1>
+<div class="sub">P79 · 发散笔记 · 2026-10-14 成稿（美股 10/14 盘中，日韩股 10/14 收盘）· 数据口径：估值与行情来自 westock／neodata（2026-10-14 盘中），ROE 由 PB÷PE 恒等式反推并已与已知口径交叉校验；策略与前瞻来自大摩（10/12 转引）、高盛 3Q26 地区银行与消费金融前瞻（10/5）、美银全球研究／德银（9 月下旬转引），均为非一手来源，需核实原文；多源冲突已在第十节并列标注，不跨口径混算</div>
+<div class="badge-row">
+  <span class="badge">P79</span><span class="badge">金融股 · 估值 · 信用周期</span><span class="badge">观察位报告（无持仓变动）</span><span class="badge hl">便宜有两个来源</span><span class="badge">横向筛选</span>
+</div>
+
+<div class="verdict">
+  <div class="vt">大白话总评</div>
+  <p>这一份接着前一份花旗的结论往下走。问的是同一个问题，但换成了横截面：<strong>美股金融板块跌进「低位」了，哪几家真的值得继续看？</strong></p>
+  <p>先说结论：整个板块确实跌进了低位——KBW 银行指数自 8 月中高点跌超 12%，14 日 RSI 掉到 27，而标普 500 的 RSI 还在 60 以上，<em>33 点的背离是 1993 年以来最极端的一次</em>；板块远期市盈率已跌破近十年中位。但这是<strong>「相对自身历史」的低位，不是「绝对便宜」的低位</strong>。</p>
+  <p>我把一把尺子拿出来量了全名单（<strong>合理市净率 ≈ ROE ÷ 股权成本</strong>），结果把「便宜」劈成了性质完全相反的两类：</p>
+  <p><strong>第一类，E 已经掉下来了。</strong>JPM +42%、C +34%、BAC +25%、HBAN +18%、WFC +17%、TFC +6%——它们<em>全部高于</em>自己 ROE 推导出的合理市净率。所谓「破净折价」，本质是在给一个低于股权成本的回报率定价。<strong>这不是错杀，是定价。</strong></p>
+  <p><strong>第二类，E 还没掉下来。</strong>SLM −37%、OZK −26%、SYF −24%、ZION −21%、WAL −17%、OMF −15%、ALLY −11%——用滚动盈利算出的低市盈率看着便宜，但这是<em>市场提前给未来的信用损失定价</em>；一旦净核销率上行、E 下修，这份「便宜」会自己消失。</p>
+  <p>所以「适合继续观察」的名单不该按谁跌得多排，得按<strong>你观察的是哪一种信号</strong>排。本报告新增两条灵魂条款（第一百零二条、第一百零三条），把「便宜的两个来源」和「两个估值数就能量出合理价」各自钉成一把尺子。</p>
+</div>
+
+<section>
+<h2>一、问题的形状：同一个「低位」标签，贴在三种完全不同的生意上</h2>
+<p>先摆事实。这轮金融股的下跌，在指标上确实够得上「极端」：</p>
+<table>
+<tr><th>指标</th><th>读数</th><th>对照</th></tr>
+<tr><td>KBW 银行指数</td><td>自 8 月中高点<strong>跌超 12%</strong></td><td>标普 500 同期接近高位</td></tr>
+<tr><td>银行股 14 日 RSI</td><td><strong>27</strong></td><td>标普 500 的 RSI 仍在 <strong>60 以上</strong>；33 点背离为 <strong>1993 年以来最极端</strong></td></tr>
+<tr><td>板块远期 PE</td><td>已<strong>跌破近十年中位</strong>（约 11.9 倍）</td><td>KBW 约 12 倍预期 PE 对 20 倍的标普，<strong>折价约 40%</strong></td></tr>
+<tr><td>10 年期美债收益率</td><td><strong>5.30%</strong></td><td>2002 年以来最高</td></tr>
+<tr><td>CCC 级信用利差</td><td><strong>突破 1,000bp</strong>（2023 年以来最宽）</td><td>处 1994 年以来<strong>第 77 百分位</strong></td></tr>
+<tr><td>整体高收益利差</td><td>仅处<strong>第 16 百分位</strong></td><td>裂缝集中<strong>在最弱借款人处</strong>，不在整体</td></tr>
+</table>
+<p>把最后两行放在一起看，是本轮最有信息量的一处：<strong>整体不紧，最弱的一档紧到 1994 年以来第 77 百分位。</strong>大摩指出 CCC÷HY 利差比已升至<em>有记录以来的最高</em>，而该比值历史上常在「更差的信用周期到来之前」触顶。</p>
+<p>但指标极端只说明「跌得多」，不说明「便宜」。真正的陷阱在下一步：<strong>市场把三种性质完全不同的逆风，打包成了一个「金融股利空」标签，贴在商业模式毫无共同点的公司身上。</strong></p>
+</section>
+
+<section>
+<h2>二、三场雨，不是一场</h2>
+<p>这轮砸金融股的不是一场雨，是三场同时下在不同田里的雨：</p>
+<h3>第一场｜利率的雨（方向不明的一把双刃）</h3>
+<p>10 年期美债 5.30%，2002 年以来最高。对银行来说这<strong>同时是利好和利空</strong>：资产端重定价快于负债成本是利好，证券久期浮亏、存款竞争加剧、再融资成本上升是利空；而曲线陡峭化本身对银行是<strong>有利</strong>的。所以这一条现在<strong>方向不确定</strong>——任何拿「利率高＝银行不行」当结论的推演，都是把双刃读成了单刃。</p>
+<h3>第二场｜信用的雨（这一条是真风险）</h3>
+<p>CCC 级利差破 1,000bp、处 1994 年以来第 77 百分位，而整体高收益利差只在第 16 百分位。意思是：<strong>这不是普遍的信用收缩，是最弱的一批借款人先开裂。</strong>这正是灵魂第八十八条的地盘——给债务买保险的人不分享上涨，所以先翻脸。</p>
+<h3>第三场｜AI 代理叙事的雨（这一条是叙事）</h3>
+<p>导火索是 Meta 的「Muse」，两周下载超 250 万次。它打击的是一门很具体的生意：<em>「把钱留在低息活期账户」的惯性</em>——那是零售大行与地区银行的命根子（低成本存款特许权），却几乎打不到交易所。美银全球研究称这是面对新产品时的「膝反射」，目前尚无迹象显示用户愿意把账户权限交给代理。</p>
+
+<svg viewBox="0 0 680 396" role="img" aria-label="三场逆风对金融子板块的命中强度矩阵">
+  <text x="340" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#f5f5f7">三场逆风 × 五个子板块：命中强度矩阵</text>
+  <text x="140" y="52" text-anchor="end" font-size="11.5" fill="#86868b">子板块</text>
+  <text x="232" y="52" text-anchor="middle" font-size="11.5" fill="#86868b">利率的雨</text>
+  <text x="408" y="52" text-anchor="middle" font-size="11.5" fill="#86868b">信用的雨</text>
+  <text x="584" y="52" text-anchor="middle" font-size="11.5" fill="#86868b">AI 代理的雨</text>
+
+  <text x="140" y="86" text-anchor="end" font-size="12.5" fill="#d1d1d6">零售大行</text>
+  <rect x="152" y="68" width="160" height="30" rx="6" fill="#8f3a3e"/>
+  <text x="232" y="88" text-anchor="middle" font-size="12" fill="#f5d5d5">中 · 双刃</text>
+  <rect x="328" y="68" width="160" height="30" rx="6" fill="#a84247"/>
+  <text x="408" y="88" text-anchor="middle" font-size="12" fill="#f5d5d5">中 · 信用卡</text>
+  <rect x="504" y="68" width="160" height="30" rx="6" fill="#e5484d"/>
+  <text x="584" y="88" text-anchor="middle" font-size="12" fill="#ffffff">高 · 存款特许权</text>
+
+  <text x="140" y="142" text-anchor="end" font-size="12.5" fill="#d1d1d6">地区银行</text>
+  <rect x="152" y="124" width="160" height="30" rx="6" fill="#e5484d"/>
+  <text x="232" y="144" text-anchor="middle" font-size="12" fill="#ffffff">高 · 久期浮亏</text>
+  <rect x="328" y="124" width="160" height="30" rx="6" fill="#e5484d"/>
+  <text x="408" y="144" text-anchor="middle" font-size="12" fill="#ffffff">高 · 商业地产</text>
+  <rect x="504" y="124" width="160" height="30" rx="6" fill="#e5484d"/>
+  <text x="584" y="144" text-anchor="middle" font-size="12" fill="#ffffff">高 · 存款特许权</text>
+
+  <text x="140" y="198" text-anchor="end" font-size="12.5" fill="#d1d1d6">消费金融</text>
+  <rect x="152" y="180" width="160" height="30" rx="6" fill="#8f3a3e"/>
+  <text x="232" y="200" text-anchor="middle" font-size="12" fill="#f5d5d5">中 · 融资成本</text>
+  <rect x="328" y="180" width="160" height="30" rx="6" fill="#e5484d"/>
+  <text x="408" y="200" text-anchor="middle" font-size="12" fill="#ffffff">高 · 净核销率</text>
+  <rect x="504" y="180" width="160" height="30" rx="6" fill="#25252b"/>
+  <text x="584" y="200" text-anchor="middle" font-size="12" fill="#86868b">低</text>
+
+  <text x="140" y="254" text-anchor="end" font-size="12.5" fill="#d1d1d6">保险与资管</text>
+  <rect x="152" y="236" width="160" height="30" rx="6" fill="#a84247"/>
+  <text x="232" y="256" text-anchor="middle" font-size="12" fill="#f5d5d5">中高 · 负债端</text>
+  <rect x="328" y="236" width="160" height="30" rx="6" fill="#8f3a3e"/>
+  <text x="408" y="256" text-anchor="middle" font-size="12" fill="#f5d5d5">中</text>
+  <rect x="504" y="236" width="160" height="30" rx="6" fill="#25252b"/>
+  <text x="584" y="256" text-anchor="middle" font-size="12" fill="#86868b">低</text>
+
+  <text x="140" y="310" text-anchor="end" font-size="12.5" fill="#d1d1d6">交易所</text>
+  <rect x="152" y="292" width="160" height="30" rx="6" fill="#8f3a3e"/>
+  <text x="232" y="312" text-anchor="middle" font-size="12" fill="#f5d5d5">中 · 波动率</text>
+  <rect x="328" y="292" width="160" height="30" rx="6" fill="#25252b"/>
+  <text x="408" y="312" text-anchor="middle" font-size="12" fill="#86868b">低</text>
+  <rect x="504" y="292" width="160" height="30" rx="6" fill="#25252b"/>
+  <text x="584" y="312" text-anchor="middle" font-size="12" fill="#86868b">极低</text>
+
+  <text x="340" y="356" text-anchor="middle" font-size="11.5" fill="#86868b">红深浅＝命中强度（深红高／中红中／炭灰低）｜「存款特许权」＝低成本活期存款的黏性</text>
+  <text x="340" y="378" text-anchor="middle" font-size="11.5" fill="#86868b">同一场雨，打在交易所身上几乎无事，打在地区银行身上是三面受敌</text>
+</svg>
+<div class="fig-cap">图 1｜同一个「金融股利空」标签，命中强度在子板块之间差了一个量级。这就是错杀与定价的分岔口。</div>
+<p>这张矩阵解释了一件事：<strong>「AI 颠覆银行」这个叙事，最痛的地方是「低成本活期存款的黏性」——它只打在零售大行与地区银行身上，而交易所基本免疫。</strong>所以「金融股跌了」这句话如果不带子板块，等于什么都没说。</p>
+</section>
+
+<section>
+<h2>三、一把尺子：合理市净率 ≈ ROE ÷ 股权成本</h2>
+<p>银行的估值有一条恒等近似，是这份报告所有判断的地基：</p>
+<div class="callout blue">
+<strong>合理市净率 ≈ ROE ÷ 股权成本</strong>。银行的股权成本大致在 <strong>10%</strong> 一线。于是：ROE 10% → 合理 PB 约 1.0 倍；ROE 8% → 约 0.8 倍；ROE 14% → 约 1.4 倍。<br>
+<strong>含义</strong>：一家银行交易在 1 倍账面价值以下，<span style="color:#c9a227">不代表它便宜</span>——如果它的 ROE 同样在 10% 以下，那个「破净」只是<strong>在给一个不创造价值的回报率定价</strong>（灵魂第四十二条）。
+</div>
+<p>但这里有个实际困难：多数标的拿不到实时的 ROE。于是这轮我用了一个替代路径——<strong>ROE ≈ PB ÷ PE</strong>。市净率和市盈率这两个到处都有的数，除一下就能反推 ROE，再倒算出合理 PB。<strong>校验过了：与 6 家已知 ROE 逐家比对，偏差在 1 个百分点以内，方法可用。</strong></p>
+<p>用这把尺子量完 13 家，结果分成了干净的两组——正偏离的一组（贵于自己 ROE 支撑的值）和负偏离的一组（便宜于它）。这两组的差别不是程度，是<strong>性质</strong>：</p>
+
+<svg viewBox="0 0 680 436" role="img" aria-label="各金融标的实际市净率相对其ROE推导合理市净率的偏离率">
+  <text x="340" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#f5f5f7">实际市净率相对「ROE 推导合理市净率」的偏离率</text>
+  <text x="96" y="44" font-size="11.5" fill="#e5484d">← 贵于合理值（E 已经掉下来了）</text>
+  <text x="664" y="44" text-anchor="end" font-size="11.5" fill="#30a46c">便宜于合理值（E 还没掉下来）→</text>
+
+  <text x="360" y="60" text-anchor="middle" font-size="10.5" fill="#86868b">0</text>
+  <line x1="360" y1="66" x2="360" y2="386" stroke="#4a4a52" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <text x="88" y="86" text-anchor="end" font-size="12.5" fill="#d1d1d6">JPM</text>
+  <rect x="360" y="72" width="90" height="20" rx="4" fill="#e5484d"/>
+  <text x="458" y="87" font-size="11.5" fill="#e5484d">+42%</text>
+
+  <text x="88" y="112" text-anchor="end" font-size="12.5" fill="#d1d1d6">C</text>
+  <rect x="360" y="98" width="73" height="20" rx="4" fill="#e5484d"/>
+  <text x="441" y="113" font-size="11.5" fill="#e5484d">+34%</text>
+
+  <text x="88" y="138" text-anchor="end" font-size="12.5" fill="#d1d1d6">BAC</text>
+  <rect x="360" y="124" width="54" height="20" rx="4" fill="#e5484d"/>
+  <text x="422" y="139" font-size="11.5" fill="#e5484d">+25%</text>
+
+  <text x="88" y="164" text-anchor="end" font-size="12.5" fill="#d1d1d6">HBAN</text>
+  <rect x="360" y="150" width="39" height="20" rx="4" fill="#c04247"/>
+  <text x="407" y="165" font-size="11.5" fill="#c04247">+18%</text>
+
+  <text x="88" y="190" text-anchor="end" font-size="12.5" fill="#d1d1d6">WFC</text>
+  <rect x="360" y="176" width="37" height="20" rx="4" fill="#c04247"/>
+  <text x="405" y="191" font-size="11.5" fill="#c04247">+17%</text>
+
+  <text x="88" y="216" text-anchor="end" font-size="12.5" fill="#d1d1d6">TFC</text>
+  <rect x="360" y="202" width="13" height="20" rx="4" fill="#8f3a3e"/>
+  <text x="381" y="217" font-size="11.5" fill="#a85a5e">+6%</text>
+
+  <text x="88" y="242" text-anchor="end" font-size="12.5" fill="#86868b">ALLY</text>
+  <rect x="336" y="228" width="24" height="20" rx="4" fill="#3f8f66"/>
+  <text x="330" y="243" text-anchor="end" font-size="11.5" fill="#30a46c">−11%</text>
+
+  <text x="88" y="268" text-anchor="end" font-size="12.5" fill="#86868b">OMF</text>
+  <rect x="327" y="254" width="33" height="20" rx="4" fill="#39966a"/>
+  <text x="321" y="269" text-anchor="end" font-size="11.5" fill="#30a46c">−15%</text>
+
+  <text x="88" y="294" text-anchor="end" font-size="12.5" fill="#86868b">WAL</text>
+  <rect x="322" y="280" width="38" height="20" rx="4" fill="#39966a"/>
+  <text x="316" y="295" text-anchor="end" font-size="11.5" fill="#30a46c">−17%</text>
+
+  <text x="88" y="320" text-anchor="end" font-size="12.5" fill="#86868b">ZION</text>
+  <rect x="313" y="306" width="47" height="20" rx="4" fill="#2f9a6a"/>
+  <text x="307" y="321" text-anchor="end" font-size="11.5" fill="#30a46c">−21%</text>
+
+  <text x="88" y="346" text-anchor="end" font-size="12.5" fill="#86868b">SYF</text>
+  <rect x="307" y="332" width="53" height="20" rx="4" fill="#2f9a6a"/>
+  <text x="301" y="347" text-anchor="end" font-size="11.5" fill="#30a46c">−24%</text>
+
+  <text x="88" y="372" text-anchor="end" font-size="12.5" fill="#86868b">OZK</text>
+  <rect x="302" y="358" width="58" height="20" rx="4" fill="#2f9a6a"/>
+  <text x="296" y="373" text-anchor="end" font-size="11.5" fill="#30a46c">−26%</text>
+
+  <text x="88" y="398" text-anchor="end" font-size="12.5" fill="#86868b">SLM</text>
+  <rect x="277" y="384" width="83" height="20" rx="4" fill="#30a46c"/>
+  <text x="271" y="399" text-anchor="end" font-size="11.5" fill="#30a46c">−37%</text>
+
+  <text x="340" y="422" text-anchor="middle" font-size="11.5" fill="#86868b">ROE 由 PB÷PE 反推（已与 6 家已知口径交叉校验，偏差 ≤1pp）｜合理 PB ＝ ROE ÷ 10%</text>
+</svg>
+<div class="fig-cap">图 2｜正偏离组是「E 已经掉下来了」（真的低回报），负偏离组是「E 还没掉下来」（市场提前定价未来损失）。两组不能用同一句话概括。</div>
+</section>
+
+<section>
+<h2>四、个案：花旗是「低回报型便宜」的标准样本</h2>
+<p>先看个案，再看全名单。花旗刚在 10/13 出财报，数据最新，而且它把「低回报型便宜」这件事演示得最清楚。</p>
+<table>
+<tr><th>财年</th><th>总收入($B)</th><th>归母净利($B)</th><th>稀释 EPS($)</th><th>ROE</th><th>RoTCE</th><th>股价涨跌</th></tr>
+<tr><td>2021</td><td>71.9</td><td>21.8</td><td>10.14</td><td>10.9%</td><td>—</td><td class="down">−2.1%</td></tr>
+<tr><td>2022</td><td>75.8</td><td>15.0</td><td>7.00</td><td>7.4%</td><td>—</td><td class="down">−25.1%</td></tr>
+<tr><td>2023</td><td>78.1</td><td>9.0</td><td>4.04</td><td>4.5%</td><td>—</td><td class="up">+13.7%</td></tr>
+<tr><td>2024</td><td>80.7</td><td>12.5</td><td>5.94</td><td>6.0%</td><td>—</td><td class="up">+36.8%</td></tr>
+<tr><td>2025</td><td>85.2</td><td>14.1</td><td>6.99</td><td>6.7%</td><td><strong>7.7%</strong></td><td class="up">+65.8%</td></tr>
+<tr><td>2026 前九个月</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>12.6%</strong>（年化）</td><td class="up">YTD +8.3%</td></tr>
+</table>
+<p>银行不看 ROE 单数，看 <strong>RoTCE</strong>（有形普通股权益回报率，分母剔除商誉与无形资产），对标物是股权成本（约 10%）。<strong>2025 年 7.7%、剔除特殊项 8.8%——都在股权成本线之下。</strong>目标阶梯是：2026 年 10–11% → 2027–28 年 11–13% → 中期（2029–31）14–15%。</p>
+<h3>为什么 10/13 财报超预期，股价却跌 5.6%</h3>
+<p>前九个月 RoTCE 年化 12.6%、第三季单季 11.5%，看着已经站上目标上沿。但首席财务官明确说<strong>全年只会「高于 11%」</strong>，并预告第四季市场收入环比可能降约 <strong>20%</strong>。市场立刻反算：第四季单季 RoTCE 得掉到 6–7%，才能把全年拉回 11%。叠加管理层对回购节奏的谨慎措辞——<strong>「超预期 + 指引不上调 + 前瞻偏软」三件套</strong>，这就是逾五年最差财报日的来由。</p>
+<h3>估值修复的斜率，陡于盈利修复的斜率</h3>
+<table>
+<tr><th>年份</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>当前</th></tr>
+<tr><td>市净率 PB</td><td>0.65</td><td><strong>0.48</strong></td><td>0.52</td><td>0.69</td><td>1.06</td><td><strong>1.09</strong></td></tr>
+<tr><td>市盈率 PE(TTM)</td><td>5.95</td><td>6.47</td><td>12.72</td><td>11.84</td><td>16.69</td><td>13.42</td></tr>
+</table>
+<p>市净率从 0.48 涨到 1.09（<strong>+127%</strong>），而同期 ROE 只从 7.4% 修到约 9%。<strong>估值修复的斜率明显陡于盈利修复的斜率。</strong>用第一节那把尺子量：花旗 ROE 约 9% → 合理 PB 约 0.91 倍，而它交易在 <strong>1.09 倍</strong>。多出来的 0.19 倍，就是市场提前给出的「RoTCE 会走到 11–13%」的定价。<strong>若 2027–28 目标兑现不了，1.09 这个数没有安全垫。</strong></p>
+<h3>同业横比：为什么它 PB 最低、PE 反而不最低</h3>
+<table>
+<tr><th>指标（2026 年第三季）</th><th>花旗 C</th><th>摩根大通</th><th>美国银行</th><th>富国 WFC</th></tr>
+<tr><td>ROE</td><td><strong>9.06%</strong></td><td><strong>17.93%</strong></td><td>11.25%</td><td>12.87%</td></tr>
+<tr><td>PB</td><td><strong>1.09</strong>（四家最低）</td><td>2.49</td><td>1.37</td><td>1.48</td></tr>
+<tr><td>PE(TTM)</td><td>13.42</td><td>14.20</td><td>12.46</td><td><strong>11.74</strong>（最低）</td></tr>
+</table>
+<p>这是全篇最容易漏的一处：花旗的 PB 是四家最低（市场不给它净资产溢价），但 PE <strong>反而高于</strong>富国和美国银行——因为<strong>它的盈利基数太低，低到连折价的股价都撑不出便宜的市盈率</strong>。两个指标打架时的裁判，是 ROE 与股权成本的方向。</p>
+<div class="callout">
+<strong>所以花旗的定性是：低回报 + 低估值的「基本面折价」，不是错杀便宜。</strong>它不符合「等崩盘捡被隔壁着火疏散的」那类场景——5.6% 的回调是<strong>定价修正</strong>，不是流动性错杀。买它等于买管理层把 RoTCE 从 8% 拉到 12% 以上的执行力；从 0.48 到 1.09 这段最肥的估值钱已经赚完了。
+</div>
+</section>
+
+<section>
+<h2>五、A 型：E 已经掉下来了——真的便宜，但不创造价值</h2>
+<p>这一组的共同特征：<strong>ROE 本身就低（8–9%），低于约 10% 的股权成本</strong>。它们看着「破净」，其实是市场在如实定价一个不创造价值的回报率。</p>
+<table>
+<tr><th>标的</th><th>ROE(2026Q3)</th><th>ROE 推导合理 PB</th><th>实际 PB</th><th>溢价</th></tr>
+<tr><td>JPM 摩根大通</td><td>17.93%</td><td>1.79</td><td>2.49</td><td class="up">+39%</td></tr>
+<tr><td>WFC 富国</td><td>12.87%</td><td>1.29</td><td>1.48</td><td class="up">+15%</td></tr>
+<tr><td>BAC 美国银行</td><td>11.25%</td><td>1.13</td><td>1.37</td><td class="up">+21%</td></tr>
+<tr><td>C 花旗</td><td>9.06%</td><td>0.91</td><td>1.09</td><td class="up">+20%</td></tr>
+<tr><td>HBAN 亨廷顿</td><td>9.00%</td><td>0.90</td><td>1.04</td><td class="up">+16%</td></tr>
+<tr><td>TFC 信托金融</td><td>8.14%</td><td>0.81</td><td>0.96</td><td class="up">+19%</td></tr>
+</table>
+<p><strong>六家全部高于自己 ROE 推导的合理市净率——包括市净率只有 0.96 的信托金融和 1.04 的亨廷顿。</strong>这就是「破净 ≠ 便宜」的全部道理。</p>
+<p>但要给这组补一句公道话：<strong>如果这些银行的 ROE 正处于周期低点并会回升，前瞻的合理 PB 会更高</strong>——上面用的是当期 ROE，属于简化式，忽略了增长项与均值回归。<strong>所以准确的说法不是「它们都贵」，而是「它们都不存在当下可兑现的安全垫」。</strong>这个区别决定了它们是「等修复」还是「等成长」。</p>
+</section>
+
+<section>
+<h2>六、B 型：E 还没掉下来——便宜会自己蒸发</h2>
+<p>这一组看着更诱人：市盈率个位数、破净、有的股息率 7%。但它们便宜的原因是<strong>市场在给还没发生的信用损失提前定价</strong>。</p>
+<table>
+<tr><th>标的</th><th>偏离率</th><th>表面指标</th><th>便宜的来源</th></tr>
+<tr><td><strong>OZK</strong></td><td class="down">−26%</td><td>PB <strong>0.83</strong>、PE <strong>7.44</strong>（全名单破净最深、PE 最低）</td><td>贷款高度集中在<strong>商业地产</strong>——市场在给 CRE 风险定价，不是在犯错</td></tr>
+<tr><td><strong>SLM</strong></td><td class="down">−37%</td><td>PE 6.32</td><td>学生贷款集中度 + 政策不确定性</td></tr>
+<tr><td><strong>SYF</strong></td><td class="down">−24%</td><td>PE 7.55</td><td>消费信贷净核销率敏感</td></tr>
+<tr><td><strong>ZION</strong></td><td class="down">−21%</td><td>—</td><td>地区银行：久期 + 商业地产双敞口</td></tr>
+<tr><td><strong>WAL</strong></td><td class="down">−17%</td><td>ROE 12.86%、PB 1.07、PE 8.32</td><td>商业地产集中度 + 存款结构</td></tr>
+<tr><td><strong>OMF</strong></td><td class="down">−15%</td><td>PE 8.46、股息 <strong>7.49%</strong></td><td>次级消费信贷</td></tr>
+<tr><td><strong>ALLY</strong></td><td class="down">−11%</td><td>PB <strong>0.85</strong></td><td>汽车贷款信用成本</td></tr>
+</table>
+<div class="callout red">
+<strong>这一组必须记住的一句话</strong>：用<strong>滞后盈利</strong>算出的低市盈率，是信用周期里最危险的读数。市场不是算错了，是在提前算。一旦净核销率上行、E 下修，这份「便宜」会随 E 一起消失——你以为的折价会变成<em>分子的缩小</em>。这正是灵魂第八十七条的活体，也是第四十四条的活体：市盈率只在同一盈利位置上可比，而周期股「最像机会」的时候常常最贵。
+</div>
+<p>WAL 是个特例，也是全名单<strong>唯一</strong>同时满足三条的标的：ROE 12.86% 高于股权成本 ∩ 实际 PB 1.07 低于合理 1.286（−17%）∩ 年内下跌约 −11%。但我必须把话说清楚：<strong>它便宜的原因大概率是信用（商业地产集中度 + 存款结构），不是情绪错杀。所以——观察它的信贷成本表，不是观察它的股价。</strong>这一条决定它是机会还是陷阱。</p>
+</section>
+
+<section>
+<h2>七、观察名单：按「观察哪一种信号」分三组</h2>
+<h3>A 组｜观察「叙事有没有基本面支撑」（最干净的观察对象）</h3>
+<p>这两家是全板块里少见的「ROE 高于股权成本 + 年内明显下跌」的零售大行——跌的是标签，不是生意。</p>
+<table>
+<tr><th>标的</th><th>ROE</th><th>PB</th><th>PE</th><th>股息率</th><th>YTD</th><th>逆风性质</th></tr>
+<tr><td><strong>WFC</strong> 富国</td><td>12.87% &gt; 10%</td><td>1.48</td><td>11.74</td><td>2.29%</td><td class="down">−11.9%</td><td>叙事（AI 代理抢存款）</td></tr>
+<tr><td><strong>BAC</strong> 美国银行</td><td>11.25% &gt; 10%</td><td>1.37</td><td>12.46</td><td>2.15%</td><td class="down">−0.3%</td><td>叙事 + 利率弹性最大</td></tr>
+</table>
+<p><strong>观察什么（三栏，缺一不可）</strong>：① 存款余额 ② 存款成本（beta）③ 净利息收入指引。<strong>逻辑</strong>：AI 代理若要真实伤害银行，只可能从「低成本活期存款流失」这条路走——这条路的唯一硬化证据就在上面三栏里。叙述再热，这三栏没动，就还是膝反射。</p>
+<div class="callout">
+<strong>⚠ 一句必须说的</strong>：WFC 与 BAC 是<strong>同一注赌注</strong>（都是「存款特许权 + 利率弹性」），别当两个标的配。挑一个就够，符合集中持仓的习惯。
+</div>
+<h3>B 组｜当「信用周期的温度计」用——不是买点</h3>
+<p><strong>SYF（−24%）／COF（年内 −17.3%）／OMF（−15%，股息 7.49%）／ALLY（−11%，PB 0.85）</strong></p>
+<p><strong>观察什么</strong>：净核销率、拨备覆盖率、逾期率。<strong>用途不是买它们，而是替消费因子提前报警。</strong>如果核销率<em>见顶</em>，这批才是真正「被隔壁着火疏散的」；如果继续上行，它们的「便宜」会随 E 一起蒸发。<strong>这个岔路口，比任何一家银行的估值都重要。</strong></p>
+<h3>C 组｜崩盘清单（等信用事件，不是现在）</h3>
+<p><strong>OZK（PB 0.83／PE 7.44）</strong>——归入「等崩盘捡」篮子，不放观察清单。同理 <strong>FNB（0.89）／VLY（0.92）</strong> 也放这里：它们的折价有明确原因（商业地产），市场没有犯错。</p>
+</section>
+
+<section>
+<h2>八、明确不观察的（这条和名单一样重要）</h2>
+<table>
+<tr><th>排除对象</th><th>理由</th></tr>
+<tr><td>TFC（+6%）／HBAN（+18%）／FNB／VLY</td><td>已接近 ROE 推导的合理值——「便宜」这个理由被解释殆尽了。<strong>没有变量的观察＝没有观察价值。</strong>信托金融唯一的变量是「赌 RoTCE 上台阶」，那是赌执行，不是等修复</td></tr>
+<tr><td>TROW（PB 1.97／PE 10.18）／PRU（PB 1.24／PE 10.28）</td><td>定价基本合理（反推 ROE 分别约 19.4%／12.1%），只能当<strong>对照组</strong>——用来做「剔除 AI 叙事噪音后的纯利率与信用定价」参照</td></tr>
+<tr><td>BX（YTD −26.4%／PB <strong>9.16</strong>）／KKR（−31.2%／PB 2.74）／APO（−18.7%／PE 41.4）／GS（−22%／PB 2.37）／MS（−19%／PB 2.75）／SPGI（−16.5%／PE 24.95）</td><td><strong>不是低位，是高位重挫</strong>。跌得多不等于起点低（灵魂第四十八条：低位是起点，但它们的起点根本不在这）</td></tr>
+<tr><td>AGNC（PB 0.97／股息 <strong>16.72%</strong>）／NLY（PB 0.91／股息 15.97%）</td><td><strong>高息陷阱</strong>——灵魂第七十五条「用本金付的股息是延期的新股」，且自带杠杆 + 利率双敞口</td></tr>
+</table>
+<p>最后一行值得单独说：<strong>15–17% 的股息率不是收益，是风险报价。</strong>这类 mREIT 的股息来自本金与杠杆，而不是可持续的自由现金流；用「股息率 ÷ 股价」看它们，等于把价格的下跌读成了收益的上升。</p>
+</section>
+
+<section>
+<h2>九、跨线交叉：这是同一阵风</h2>
+<p>这份报告里有一条线索，和前面几轮的结论直接接上——必须单独标出来：</p>
+<div class="callout blue">
+<strong>「油价线」与「美国消费金融线」是同一阵风。</strong>高油价 → 美国消费 K 型分化 + 密歇根消费者信心处 <strong>1952 年有记录以来最低</strong> → 直接砸<strong>消费信贷质量</strong>。而消费金融赚的就是消费信贷质量。
+</div>
+<p>这条交叉的落点在两处：</p>
+<ul>
+<li><strong>对这份名单</strong>：B 组（SYF／COF／OMF／ALLY）的净核销率，是这条宏观线索最灵敏的读数盘。</li>
+<li><strong>对既有持仓</strong>：它与 TME+NKE 约 44% 的消费因子敞口<strong>方向完全一致</strong>——两个消费仓位的宏观逆风，和这里说的是同一阵风（模板见 AGENTS 第 5 节）。</li>
+</ul>
+<p>另记一条一定会被忽略的：<strong>对冲基金金融板块净敞口占北美 10.9%，处过去一年第 100 百分位</strong>——拥挤度已经打满。灵魂第七十九条：收租的拥挤度就是保费的薄度。<strong>在这个位置介入，等于在人最多的时候买保险。</strong></p>
+</section>
+
+<div class="soul">
+<div class="tag">体系灵魂第一百零二条</div>
+<div class="sn">便宜有两个来源：低回报与还没兑现的损失</div>
+<p>同一个「低位」标签下，藏着两种性质相反的便宜。<strong>第一种是「E 已经掉下来了」</strong>——盈利本身低，低于股权成本，所以折价是真实的低回报，不是错杀；用当期 ROE 量它，它高于自己应有的价。<strong>第二种是「E 还没掉下来」</strong>——盈利还在高位，市场用低估值提前给未来的信用损失定价；这种便宜会自己蒸发，因为减值一确认，分子就缩了。</p>
+<p>判据不是「跌了多少」，而是<strong>ROE 相对股权成本的方向 + 盈利下修链有没有启动</strong>。周期股下跌途中市盈率会先升后降，<em>「最像机会」的那一刻常常是最贵的那一刻</em>（延伸第四十四条与第八十七条）。买入前先回答一句：这一份便宜，是已经实现的，还是还没兑现的？</p>
+</div>
+
+<div class="soul">
+<div class="tag">体系灵魂第一百零三条</div>
+<div class="sn">ROE ≈ PB ÷ PE：两个估值数就能量出全名单的合理价</div>
+<p>多数标的拿不到实时 ROE，但市净率与市盈率随处可得，两者相除即得 ROE，再除以股权成本（约 10%）就是合理市净率。<strong>于是「破净」与「错杀」可以被分开：折价是不是被低盈利解释掉了，一眼可判。</strong></p>
+<p>校验方式是关键一步：先用有 ROE 数据的样本（本轮 6 家）验证方法，偏差 ≤1 个百分点才可用。<strong>这把尺子的边界也要记住</strong>：它是简化式、忽略增长项；用它得出的「贵」只说明<em>当下没有可兑现的安全垫</em>，不排除 ROE 从周期低点回升后前瞻合理价更高。判据永远配一句：分母用的是哪一期的盈利？</p>
+</div>
+
+<div class="conclusion">
+<div class="ct">一句话收口</div>
+<p>这轮金融板块的下跌是<strong>三场雨同时落在五个不同的田里</strong>，而市场把它们打包成了一个「金融股利空」标签。分开看之后，名单自然分成三组：<strong>观察叙事的（WFC／BAC 二选一）、观察信用温度的（消费金融核销率）、等崩盘的（OZK 类）</strong>。而量完尺子之后最该记住的一句是——<strong>这份「低位」只相对于它们自己的历史，不相对于它们的 ROE。</strong></p>
+<p>最近的裁判日就是本周：银行股财报季已开打（美国银行 10/14，高盛／摩根大通／花旗／富国／摩根士丹利陆续跟进）。四项判据：① 净利息收入指引 ② 拨备与净核销率 ③ RoTCE 目标是否维持 ④ 存款成本与余额。</p>
+</div>
+
+<section>
+<h2>十、边界与口径分歧</h2>
+<table>
+<tr><th>指标</th><th>版本 A</th><th>版本 B</th><th>本报告采信</th></tr>
+<tr><td>美国银行 BAC 价格</td><td>$52.07（盘前）</td><td>$53.96（收盘）／$59.47（另一聚合源）</td><td><strong>不引用绝对价</strong>，只用比例类指标（PB／PE／YTD）；引用时必须连时点标注（灵魂第九十条）</td></tr>
+<tr><td>美国银行 PE</td><td>11.74</td><td>12.46／14.17</td><td>表格统一采用 <strong>12.46</strong>（收盘口径），其余并列</td></tr>
+<tr><td>富国 WFC 的 ROE</td><td>12.87%（结构化财务）</td><td>12.6%（另一表述）</td><td>采信 <strong>12.87%</strong>，不影响「高于股权成本」的定性</td></tr>
+<tr><td>偏离率的计算基础</td><td>直接采用已知 ROE（6 家）</td><td>采用 PB÷PE 反推 ROE（全名单）</td><td>统一采用<strong>反推口径</strong>，因两组数字在同一口径下才可比；差异源于方法而非事实</td></tr>
+<tr><td>PB 与 PE 的期间</td><td>PB 为最近报告期</td><td>PE 为滚动十二个月</td><td>明确标注<strong>存在期间错配</strong>，是这把尺子的固有误差来源</td></tr>
+</table>
+<div class="callout">
+<strong>三个最需要保留的怀疑</strong>：① 合理市净率是<em>简化式</em>（ROE ÷ 股权成本），忽略增长项——高增长银行的前瞻合理值会更高，本报告的「溢价」结论对这类银行偏严厉；② ROE 由 PB÷PE 反推，分母口径不一致会带来几个百分点的误差，因此报告只用它做<em>分组</em>，不用它做精确排序；③ 银行财报数字以公司正式披露为准，本报告所引的季度与年度数据来自聚合与转述，<strong>均非一手来源</strong>。
+</div>
+</section>
+
+<div class="disc">
+<p><strong>免责声明</strong>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。本报告所引估值与行情数据（westock／neodata，2026-10-14 盘中）、策略与前瞻（大摩 10/12 转引、高盛 3Q26 地区银行与消费金融前瞻 10/5、美银全球研究与德银 9 月下旬转引）均为<strong>非一手来源，需核实原文</strong>；财务口径以公司正式披露为准，多源分歧已在第十节逐项并列，不跨口径混算。板块指数点位与个股指标时效性极强，以交易所实时行情为准。</p>
+<p>P79 · 完 · 上一份 P78《抵制的形状：硬件利润池倒挂、三种替代与三个开关》· 下一份 P80（灵魂接第一百零四条）</p>
+<p>以上仅为个人认知范围内的理解。</p>
+</div>
+
+</div>
+</body>
+</html>

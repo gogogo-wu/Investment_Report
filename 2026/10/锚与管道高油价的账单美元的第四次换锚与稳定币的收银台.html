@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>锚与管道：高油价的账单、美元的第四次换锚与稳定币的收银台</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141418; --line:#2a2a30;
+    --txt:#d1d1d6; --sub:#86868b; --head:#f5f5f7;
+    --up:#e5484d; --down:#30a46c; --gold:#c9a227; --blue:#6cb6ff; --purple:#b98cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 64px}
+  h1.g{font-size:27px;line-height:1.35;color:var(--head);font-weight:800;background:linear-gradient(90deg,#f5f5f7,#a8a8ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+  .sub{color:var(--sub);font-size:12.5px;margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .badge{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--sub)}
+  .badge.hl{color:var(--gold);border-color:#4a3f1d}
+  section{margin-bottom:38px}
+  h2{font-size:19px;color:var(--head);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  h3{font-size:15.5px;color:var(--head);font-weight:700;margin:20px 0 10px}
+  p{margin-bottom:14px}
+  .muted{color:var(--sub)}
+  em{font-style:normal;color:var(--gold)}
+  strong{color:var(--head)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+  th{color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid #1c1c22;vertical-align:top}
+  td.up{color:var(--up)} td.down{color:var(--down)}
+  .callout{background:var(--panel);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .callout.blue{border-left-color:var(--blue)}
+  .callout.red{border-left-color:var(--up)}
+  .verdict{background:linear-gradient(135deg,#1a1a20,#141418);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:26px 0;font-size:15px}
+  .verdict .vt{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+  .conclusion{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:28px 0}
+  .conclusion .ct{color:var(--head);font-weight:700;margin-bottom:10px}
+  .soul{background:linear-gradient(135deg,#1c1810,#141218);border:1px solid #4a3f1d;border-radius:12px;padding:24px;margin:28px 0}
+  .soul .tag{display:inline-block;font-size:12px;color:var(--gold);border:1px solid #4a3f1d;border-radius:99px;padding:3px 12px;margin-bottom:14px}
+  .soul .sn{color:var(--head);font-weight:700;font-size:16px;margin-bottom:10px}
+  .soul p{color:#d8cfa8;font-size:14px}
+  .disc{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:var(--sub);font-size:12.5px}
+  svg{max-width:100%;height:auto;display:block;margin:20px auto}
+  .fig-cap{text-align:center;color:var(--sub);font-size:12px;margin-top:-8px;margin-bottom:20px}
+  ul{margin:0 0 14px 20px} li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1 class="g">锚与管道：高油价的账单、美元的第四次换锚与稳定币的收银台</h1>
+<div class="sub">P87 · 发散笔记 · 2026-10-24 成稿（讨论跨 10/22–10/24 三轮；稳定币规模为 DefiLlama 10 月 22 日读数与 5 月 17 日峰值；Tether 为 2026 年第一、二季度鉴证；Circle 与 Coinbase 为 2026 年第二季报；OCC 最终规则为 10 月 21 日发布、10 月 23 日出版、2027 年 1 月 18 日生效；油价与债市为 10 月 22–23 日盘中读数；SPR 为 10 月读数；LNG 与欧洲气价为 2026 年口径）· 数据口径：公司鉴证与季报、监管原文、BIS／IMF／英格兰银行工作论文经媒体转述。<strong>以上均为非一手来源，需核实原文</strong>；多源冲突已在第十二节并列标注，不跨口径混算</div>
+<div class="badge-row">
+  <span class="badge">P87</span><span class="badge">宏观 · 能源 · 货币体系</span><span class="badge">观察位报告（无持仓变动）</span><span class="badge hl">锚与管道不是一回事</span><span class="badge">收银台在渠道手上</span><span class="badge">美国是高油价的成本方</span>
+</div>
+
+<div class="verdict">
+  <div class="vt">大 白 话 总 评</div>
+  <p><strong>这三天聊的四件事，其实是同一件事的四个切面：美国正在为一场自己定价的高油价买单，同时把美元这根锚从石油挪到美债、再往算力与稳定币上接，而稳定币在这条链上的角色不是新锚，是管道。</strong></p>
+  <p>先把最容易搞反的一件事钉住：<strong>美国不是高油价的受益方，是成本承担方。</strong>汽油 4.45 美元、柴油 6.50 美元、9 月 CPI +3.7%，战储只剩约 3,140 万桶的可动空间，财政部长自己把战后目标定在 40–50 美元——一个受益方不会急着把价格打下去。它之所以还要持续在霍尔木兹动手，是因为它买的是<strong>相对优势</strong>：对手的现金流通道被掐、盟友的能源依赖被锁、欧洲的产能被抽、美元清算权被护住。付的是绝对成本，赚的是相对位次。</p>
+  <p>顺着这条线走到货币层，就碰上"稳定币是新锚"这个说法。<strong>我的结论是：不是。</strong>锚回答的是"别人为什么必须持有"，管道回答的是"美元怎么到你手上"。锚仍然落在美债上——更精确地说，落在 93 天以内的短端美债上；稳定币做的是把全球民间对美元的需求，用法律焊死在美债的前端。判据很硬：<em>GENIUS 法案禁止发行人向持币人付息</em>，那笔准备金的利息归 Tether 与 Circle，不归用户。一个让人只愿意路过、不愿意持有的东西，构不成锚。</p>
+  <p>再往下走一层，是最反直觉的部分：<strong>造币这件事没有护城河，被接受才有，但收租的位置既不在造币的人手上，也不在被接受这件事本身上，而在渠道手上。</strong>Circle 每 100 元储备收入留下 21 元，付给 Coinbase 们 62 元；Coinbase 拿到手之后再付给客户 18 元作为奖励，自己留 26 元。Tether 同样是发币，因为渠道是自己在交易所里长出来的，留存接近 89%。<em>这是"入口不等于收银台"最干净的一个案例。</em></p>
+  <p>对组合的结论不变：<strong>全篇观察级，不新立区间、不调仓。</strong>稳定币这条链上最值得盯的不是任何一个标的，而是一个数字——Circle 的分销成本占储备收入的比例能否从 62% 往下走。</p>
+</div>
+
+<section>
+<h2>一、四条线为什么是同一条</h2>
+<p>10 月 22 日到 24 日这三天，讨论表面上换了四个话题：美股盘后跳水与亚洲反弹的时序、债券价格与收益率为什么反着走、美国在霍尔木兹持续行动的目的、稳定币到底是新锚还是新管道。它们共用一个骨架：<strong>谁在为同一件事付成本，谁在收这笔钱的租金。</strong></p>
+<ul>
+<li><strong>油价那一层</strong>，付成本的是美国消费者与美国财政（汽油、柴油、战储、债息），收租金的是掐住通道的一方——但通道不是管道，掐住的同时也在教全世界造替代品。</li>
+<li><strong>债市那一层</strong>，收益率下行不是宽松信号，是避险信号；市场在同一天把油价推高、把加息概率砍掉，定价的是增长受损，不是通胀失控。</li>
+<li><strong>货币那一层</strong>，美元把锚从石油换成美债，正在接上算力与稳定币；稳定币把美元的分发成本压到接近零，同时把控制权从代理行转移到发行人地址。</li>
+<li><strong>产业那一层</strong>，稳定币这门生意的租金分配，与"谁造的"无关，与"谁掌握入口"有关——这跟电力链、算力链上的收租逻辑是同一把尺子。</li>
+</ul>
+<p>本报告按这个顺序往下写，最后落到一条对组合最有用的判据。</p>
+</section>
+
+<section>
+<h2>二、美国是高油价的成本方，不是受益方</h2>
+<p>战争起点是 2026 年 2 月 28 日美以空袭伊朗，到 10 月已约 8 个月；9 月 7 日伊朗宣布封锁霍尔木兹（执行有限），美方在霍尔木兹与阿曼湾实施海上封锁。判断"谁在付账"要看三组读数。</p>
+<table>
+<tr><th>账本</th><th>读数</th><th>含义</th></tr>
+<tr><td>消费者</td><td>汽油 4.45 美元/加仑（较战前 +50%）、柴油 6.50（历史高位 +70%）</td><td>汽油月涨 9.1%，占 9 月 CPI 月度涨幅一半以上；这是选票红线</td></tr>
+<tr><td>财政</td><td>9 月 CPI +3.7%；40 万亿美元联邦债务</td><td>贝森特称利率与油价相关性「史上最高」——油价经由通胀进入收益率，再进入利息支出</td></tr>
+<tr><td>工具箱</td><td>SPR 2.827 亿桶（1982 年 10 月以来最低），法定非紧急释放下限 2.524 亿桶</td><td>只剩约 <strong>3,140 万桶</strong>空间；GAO 称逾四分之一原油不可用，实际抽取能力仅设计值的 61%</td></tr>
+</table>
+<div class="callout red">
+<p><strong>压价工具箱有物理终点。</strong>末批 4,000 万桶在 11–12 月交付后，战储逼近法定线，常规压价工具到期。6 月首次招标时企业只肯借出 50 万桶——商业端自己判断油价还会更高。所以"美国想把油价压到多少"这个问题，答案不是一个价格，而是<strong>三个约束的交点</strong>：政治约束（11 月 3 日选前必压）／弹药约束（战储触线，11–12 月）／目标约束（伊朗屈服，最慢）。</p>
+</div>
+<p>还有一个常被忽略的背景：美国产量 1,383 万桶/日创纪录，Permian 达 680 万桶/日，但钻机数 598（Permian 270），资本纪律没有放松。 <strong>高油价没有换来增产冲刺，所以高价对美国的边际好处比想象中有限。</strong>EIA 预测 Brent 2026 年均价 91 美元、2027 年 74 美元——官方自己也不认为高价会持续。</p>
+<h3>打法的演变：从打产能到掐现金流</h3>
+<p>开战初期油价暴涨反而给伊朗输血：日出口 240–280 万桶、收入约战前两倍、九成以上流向中国。解法是把打击目标从石油设施改成出口通道——纽约时报披露的"选后三天打击"计划里，<em>炼油厂与石油基础设施被明确排除在目标之外</em>，理由是避免汽油价格进一步飙升。真正的绞索是海上封锁：伊朗海上浮仓 1.3 亿桶售罄，封锁抹去约 250 亿美元收入；8 月海湾内日均装载 25.5 万桶，较 2–4 月均值下降 85%；陆路替代日均不超过 4 万桶。石油占伊朗政府收入 30–40%。</p>
+</section>
+
+<section>
+<h2>三、那它为什么还要打：四本账与一本自伤账</h2>
+<p>遏制伊朗与中国只是第一本账。把视野拉到全球，至少还有三本。</p>
+<table>
+<tr><th>账本</th><th>硬数据</th><th>收回的是什么</th></tr>
+<tr><td>① 掐对手现金流</td><td>伊朗浮仓售罄、抹去约 250 亿美元；对华原油日均从约 120 万桶降至 8 月的 53.4 万桶（2025 年均值 140 万）</td><td>掐的是中国的折扣油源与补库成本，不是中国的总进口</td></tr>
+<tr><td>② 锁盟友能源</td><td>美国 LNG 占欧盟进口 2025 年约 58% → 2026 年约 62%；欧洲已签 15–20 年长约，部分延续到 2040 年代；TTF 9 月约 74 欧元，Henry Hub 约 3 美元（约 9 欧元）</td><td>锁的是未来十几年的采购义务，不是今年的价差</td></tr>
+<tr><td>③ 抽欧洲产能</td><td>欧盟企业电价为美国 2–3 倍、气价 4–5 倍；巴斯夫削减路德维希港产能、英力士关停赫尔三家乙酰工厂（4,000 岗位）</td><td>半个多世纪以来最严重的欧洲产业资本外流之一，配合 IRA 形成推拉</td></tr>
+<tr><td>④ 护美元清算权</td><td>中东对华原油人民币结算占比 2026 年 3 月已达 41%（超欧元居第二），美元降到 52%；2026 年 6 月外国持有美债较 2 月高点减少约 1,904 亿至 9.299 万亿</td><td>护的是"美元准入权"，用 OFAC 制裁与二级制裁维持</td></tr>
+</table>
+<p><strong>核心机制一句话：美国付的是绝对成本，赚的是相对优势。</strong>自家气价 9 欧元对欧洲 74 欧元；自家汽油 4.45 美元是政治成本，但对手现金流被掐、盟友依赖被加深、欧洲产能被抽走。</p>
+<div class="callout">
+<p><strong>对称地说，风险也是真的。</strong>第一，手段的副产品会被当成目的——封锁推高油价，而高油价本身在损耗自己的政治资本与战储。第二，每把美元武器化一次，就推走一分去美元化（这是第四本账内在的悖论）。第三，盟友会被压出反噬：欧洲多国 10 月同步骚乱，法国 55 万人、比利时 9 月通胀 4.5%。第四，中国是稳定器而非放大器——战略与商业储备约 12–13 亿桶（约 130–180 天），经霍尔木兹进口仅占约三分之一，进口来源四五十国并有陆上管道，二季度主动压进口约 390 万桶/日，把全球约 800 万桶净缺口压掉近一半。</p>
+</div>
+</section>
+
+<section>
+<h2>四、霸权怎么延续：靠换锚，不靠守锚</h2>
+<p>这个问题容易被问成"美元还能撑多久"，但更该问的是"它的锚换过几次、下一次在哪"。美元的国际化从来不靠守住某一个锚，而靠在旧锚松动之前把新锚接上。</p>
+<svg viewBox="0 0 680 186" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>美元的四次换锚</title>
+<desc>从 1971 年黄金、1974 年石油、1980 年代美债到 2020 年代算力与稳定币的四次锚切换。</desc>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<rect x="40" y="40" width="130" height="76" rx="8" fill="#141418" stroke="#3a3a44" stroke-width="0.5"/>
+<text x="105" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#f5f5f7">1971 黄金</text>
+<text x="105" y="82" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">布雷顿森林解体</text>
+<text x="105" y="100" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">锚＝兑付承诺</text>
+<path d="M174 78 L191 78" fill="none" stroke="#5a5a66" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="195" y="40" width="130" height="76" rx="8" fill="#141418" stroke="#3a3a44" stroke-width="0.5"/>
+<text x="260" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#f5f5f7">1974 石油</text>
+<text x="260" y="82" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">美沙协议</text>
+<text x="260" y="100" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">锚＝必需品的计价单位</text>
+<path d="M329 78 L346 78" fill="none" stroke="#5a5a66" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="350" y="40" width="130" height="76" rx="8" fill="#141418" stroke="#3a3a44" stroke-width="0.5"/>
+<text x="415" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#f5f5f7">1980s 美债</text>
+<text x="415" y="82" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">深度与流动性</text>
+<text x="415" y="100" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">锚＝安全资产存量</text>
+<path d="M484 78 L501 78" fill="none" stroke="#c9a227" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="505" y="40" width="130" height="76" rx="8" fill="#241d0e" stroke="#c9a227" stroke-width="0.5"/>
+<text x="570" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#e8d9a8">2020s 算力＋稳定币</text>
+<text x="570" y="82" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#c9a227">锚仍在短端美债</text>
+<text x="570" y="100" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#c9a227">新增的是分发网络</text>
+<text x="40" y="146" font-size="12" fill="#86868b">判据不是份额斜率，是「旧锚松动时新锚是否已就位」——1971 年黄金松动时石油尚未就位，美元跌了十年；1974 年接上后重新走强</text>
+<text x="40" y="166" font-size="12" fill="#86868b">当前状态：石油这根锚在松（非美元结算原油占比 2020 年约 4% → 2026 年约 18%），美债与稳定币这两段是否接得住，是未来十年的题</text>
+</svg>
+<div class="fig-cap">图一：美元的四种锚。稳定币落在最右一格，但它补的是分发，不是锚本身</div>
+<p>支撑"还没到断崖"的读数仍然是四维主导：储备 56.7%、SWIFT 支付 50.99%、贸易融资 79.86%、外汇交易 89.2%（BIS 口径）。三根绳互相咬合——石油、美债、结算网——而且<strong>至今没有替代品</strong>：欧元碎片化、人民币资本账户不开放、金砖没有统一货币。</p>
+<p>真实的裂缝是四个：特里芬难题（当储备货币就必须持续逆差）、武器化的自反性（每用一次就推对手造替代）、政治极化削弱政策连续性、40 万亿美元债务的利息成本（但以本币计价，违约是政治选择不是经济必然）。时间单位应该是十年与代际，不是事件——英镑从 1815 到 1944 用了 130 年。</p>
+</section>
+
+<section>
+<h2>五、债市为什么反着走：价格、收益率与这次的性质</h2>
+<p>先把原理说死：<strong>债券价格与收益率是同一枚硬币的两面，价格涨，收益率必然跌。</strong>票面是固定的，你花 101 元买一张一年后还 100 元、付息 5 元的债，实际回报必然低于 5%。这不是市场情绪，是算术。价格对收益率的敏感度叫久期，10 年期美债在 5% 附近的修正久期约 7.5–8，意思是收益率变动 1 个基点，价格反向变动约 0.075%–0.08%；凸性则在大幅波动时提供一点非线性缓冲。</p>
+<p>拆开名义收益率，它由三块组成：<em>实际利率＋通胀预期＋期限溢价</em>。所以"收益率下行"至少有两种成因，必须先分辨，否则会把避险读成宽松。</p>
+<table>
+<tr><th>日期与指标</th><th>读数</th><th>成因判断</th></tr>
+<tr><td>10/22 债市</td><td>10Y −9bp 至 5.048%、2Y −9bp 至 4.733%、30Y −3bp 至 5.38%（9 月 23 日以来最低）</td><td>当日油价 Brent +2% 至 111——<strong>避险买盘压过通胀担忧</strong></td></tr>
+<tr><td>10/23 债市</td><td>10Y <strong>−17bp 至 4.953%</strong>，逾三年最大单日跌幅，跌破 5%</td><td>油价同日创新高（Brent 12 月合约 +1.1% 至 114，五个月新高），但加息概率反被砍</td></tr>
+<tr><td>加息定价</td><td>12 月加息概率 88% → 85%，不再被完全定价；明年被剥离近一整个 25bp</td><td>市场在定价<strong>增长受损</strong>，不是通胀失控</td></tr>
+</table>
+<div class="callout blue">
+<p><strong>这一处是 10 月 23 日最关键的一次切换。</strong>油价在推高通胀预期，债市却在砍加息预期——两者同日反向，说明定价的是"AI 退潮拖累增长"，而不是滞胀。这与 10 月 22 日写下的"滞胀交易"口径发生了切换，值得单独留档。<strong>判据：看收益率下行与油价、加息概率是否同向。</strong>同向（油价跌＋概率降）＝宽松预期；反向（油价涨＋概率降）＝避险与增长担忧。</p>
+</div>
+<p>顺带记下 10 月 22 日那次跳水的性质：纳指 −2.60%、费半 −6.72%，而道指 +0.02%、罗素 2000 约 +0.1%，VIX 19.03 未破 20。<strong>这是 AI 内部的出清，不是全市场风险事件</strong>——防守股同日走强（P&amp;G 有机销售 +4%，为近三年最佳）。而 10 月 23 日亚洲的"反弹"是跌深收复：KOSPI 早盘一度 −4% 收 +0.3%，日经早盘跌超 1,400 点收 −0.3%，沪深 300 +1.7%。<em>时序差来自时区与资金结构，不来自信息差。</em></p>
+</section>
+
+<section>
+<h2>六、一级融资窗口正在关闭：真因往往不在声明里</h2>
+<p>10 月 23 日最硬的一条新料：SK 海力士叫停 Solidigm 赴美 IPO。公司声明的理由是"资本市场状况与股价走势"，但<strong>真实约束另有其物</strong>——韩国金融监管机构 FSS 称这笔交易可能违反双重上市规则（保护少数股东），并从 10 月 20 日起审查。</p>
+<table>
+<tr><th>标的</th><th>动作</th><th>官方理由 vs 真实约束</th></tr>
+<tr><td>Solidigm（SK 海力士旗下，NAND/SSD）</td><td>叫停赴美 IPO</td><td>声明"市场状况"；FSS 更早就在查双重上市规则</td></tr>
+<tr><td>Firmus（英伟达支持的澳洲数据中心）</td><td>撤回 50 亿美元 IPO</td><td>认购不足，转私募</td></tr>
+<tr><td>Oura</td><td>推迟美国 IPO</td><td>—</td></tr>
+<tr><td>Elice（韩国 AI 云）</td><td>上市首日 −32%（认购 400 倍），次日 +30%</td><td>定价与需求脱节</td></tr>
+<tr><td>全球 IPO 申报美元规模</td><td>9 月同比 <strong>−33%</strong>（RBC）</td><td>窗口层面而非个股层面</td></tr>
+</table>
+<p>背景读数：SK 海力士股价一个月 −32.59%；7 月刚通过纳斯达克 ADR 融资 265 亿美元；8 月批准 40 万亿韩元回购注销。Solidigm 现有产能不足以满足 AI 存储需求、需建美国新厂，IPO 是它的融资渠道——<strong>现在关了，替代方案未定</strong>。</p>
+<div class="callout">
+<p><strong>一级市场的窗口比二级市场更早关闭，也更晚打开。</strong>判据是看取消或推迟上市的是不是景气最好的那几家——景气最好的公司最先放弃，说明问题不在公司基本面，在窗口本身。对内存链而言，这条读数比任何需求端表态都硬：黄仁勋"2029 年前存储不会供过于求"是买方立场的需求端表态，不能替代融资端读数。<strong>哨位：Solidigm IPO 是否重启。</strong></p>
+</div>
+</section>
+
+<section>
+<h2>七、稳定币不是新锚，是新管道</h2>
+<p>这是本轮最重要的一次口径修正。判断标准很简单：<strong>锚回答"别人为什么必须持有"，管道回答"东西怎么到你手上"。</strong>按这个标准，稳定币落在第二格——锚仍然是美债，且更精确地说是 93 天以内的短端美债。</p>
+<p>最硬的判据是法律设计：<em>GENIUS 法案禁止发行人向持币人支付利息或收益</em>。这意味着那笔准备金的利息归 Tether 与 Circle，不归用户。一个让人只愿意路过、不愿意持有的东西，构不成价值储存的锚；它的价值捕获发生在通道费与利差上，不在持有端。</p>
+<svg viewBox="0 0 680 308" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>石油美元的旧闭环、稳定币新管道与非美元旁路</title>
+<desc>三条路径对比：石油美元经官方储备回流长端美债；石油收款绕开美元结算但仍换成美元稳定币并进入 93 天以内短债；卢布币与人民币比特币收费则走出美元闭环。</desc>
+<defs>
+<marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<text x="40" y="68" dominant-baseline="central" font-size="12" fill="#86868b">旧闭环</text>
+<rect x="120" y="40" width="140" height="56" rx="8" fill="#1c1c22" stroke="#3a3a44" stroke-width="0.5"/>
+<text x="190" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#d8d8de">石油美元结算</text>
+<text x="190" y="78" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">计价与清算同一条</text>
+<path d="M262 68 L278 68" fill="none" stroke="#5a5a66" stroke-width="1.5" marker-end="url(#ar2)"/>
+<rect x="282" y="40" width="140" height="56" rx="8" fill="#1c1c22" stroke="#3a3a44" stroke-width="0.5"/>
+<text x="352" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#d8d8de">官方储备回流</text>
+<text x="352" y="78" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">央行买长端</text>
+<path d="M424 68 L440 68" fill="none" stroke="#5a5a66" stroke-width="1.5" marker-end="url(#ar2)"/>
+<rect x="444" y="40" width="140" height="56" rx="8" fill="#1c1c22" stroke="#3a3a44" stroke-width="0.5"/>
+<text x="514" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#d8d8de">财政拿到长钱</text>
+<text x="514" y="78" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#86868b">期限溢价的受益人</text>
+
+<text x="40" y="164" dominant-baseline="central" font-size="12" fill="#86868b">新管道</text>
+<rect x="120" y="136" width="140" height="56" rx="8" fill="#10243a" stroke="#6cb6ff" stroke-width="0.5"/>
+<text x="190" y="156" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#9ccfff">结算层被绕开</text>
+<text x="190" y="174" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#6cb6ff">本币 · 人民币 · 易货</text>
+<path d="M262 164 L278 164" fill="none" stroke="#6cb6ff" stroke-width="1.5" marker-end="url(#ar2)"/>
+<rect x="282" y="136" width="140" height="56" rx="8" fill="#10243a" stroke="#6cb6ff" stroke-width="0.5"/>
+<text x="352" y="156" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#9ccfff">计价层没绕开</text>
+<text x="352" y="174" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#6cb6ff">收款换成美元稳定币</text>
+<path d="M424 164 L440 164" fill="none" stroke="#6cb6ff" stroke-width="1.5" marker-end="url(#ar2)"/>
+<rect x="444" y="136" width="140" height="56" rx="8" fill="#10243a" stroke="#6cb6ff" stroke-width="0.5"/>
+<text x="514" y="156" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#9ccfff">发行商买短债</text>
+<text x="514" y="174" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#6cb6ff">93 天内，不看价格</text>
+
+<text x="40" y="260" dominant-baseline="central" font-size="12" fill="#86868b">旁路</text>
+<rect x="120" y="232" width="140" height="56" rx="8" fill="#241d0e" stroke="#c9a227" stroke-width="0.5"/>
+<text x="190" y="252" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#e8d9a8">卢布币 A7A5</text>
+<text x="190" y="270" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#c9a227">累计过千亿美元</text>
+<path d="M262 260 L278 260" fill="none" stroke="#c9a227" stroke-width="1.5" marker-end="url(#ar2)"/>
+<rect x="282" y="232" width="140" height="56" rx="8" fill="#241d0e" stroke="#c9a227" stroke-width="0.5"/>
+<text x="352" y="252" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#e8d9a8">霍尔木兹收费</text>
+<text x="352" y="270" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#c9a227">稳定币 · 人民币 · 比特币</text>
+<path d="M424 260 L440 260" fill="none" stroke="#c9a227" stroke-width="1.5" marker-end="url(#ar2)"/>
+<rect x="444" y="232" width="140" height="56" rx="8" fill="#241d0e" stroke="#c9a227" stroke-width="0.5"/>
+<text x="514" y="252" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#e8d9a8">走出美元闭环</text>
+<text x="514" y="270" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#c9a227">代价是被冻结与制裁</text>
+</svg>
+<div class="fig-cap">图二：石油美元的三条路。中间那条才是稳定币真正所处的位置</div>
+<h3>规模：管道建好了，水没有变多</h3>
+<p>美元稳定币总量 <strong>3,038 亿美元</strong>（DefiLlama，10 月 22 日），峰值 3,155 亿（5 月 17 日），12 个月 <strong>−0.7%</strong>。2026 年 1 月 1 日是 3,059 亿——<em>十个月零增长，中间冲高一轮又回到原点。</em>集中度极高：USDT 1,826 亿（60.1%）、USDC 726 亿（30 天 −4.1%），两家约 82%，赫芬达尔指数约 4,244。</p>
+<h3>立法时间表：法律已定，细则未定</h3>
+<p>GENIUS 法案 2025 年 7 月 18 日签署，生效日取「2027 年 1 月 18 日」与「主要联邦监管机构发布最终规则后 120 天」两者中较早者。各机构进度：OCC 拟议规则 2 月 25 日（3 月 2 日见报）、最终规则 10 月 21 日；美联储拟议规则 9 月 24 日（评论截止 11 月 30 日）；NCUA 补充提案 5 月 18 日；财政部拟议规则 8 月 18 日（评论 10 月 19 日截止）与州认证临时最终规则 9 月 30 日（评论 11 月 30 日截止）。<strong>联邦机构已整体错过 7 月 18 日的最终规则法定截止</strong>，因此生效大概率落在 2027 年 1 月 18 日。</p>
+<h3>美债侧：锚的那一层有多厚</h3>
+<table>
+<tr><th>项目</th><th>读数</th><th>口径</th></tr>
+<tr><td>Tether 美债敞口</td><td>约 <strong>1,410 亿美元</strong>（直接国库券 1,170 亿＋国债抵押逆回购 240 亿）</td><td>2026 年第一季度鉴证，全球第 17 大持有者，超过德国与阿联酋</td></tr>
+<tr><td>Tether 资产负债表</td><td>总资产 1,917.7 亿／代币负债 1,834.4 亿／超额 82.3 亿（Q1）；Q2 超额降至 41.1 亿</td><td>Q2 黄金与比特币各跌约 15%，抹去约 37 亿</td></tr>
+<tr><td>Circle 储备结构</td><td>33.6% 直接国债＋50.8% 国债抵押逆回购＋14.2% 银行存款</td><td>贝莱德管理、纽约梅隆托管，按 CUSIP 每日披露</td></tr>
+<tr><td>两家净买入</td><td>2025 年约 330 亿（BIS 口径）；2024 年 6 月–2025 年 6 月买入 566 亿，为当年第 6 大新增需求源</td><td>排在日本、新加坡、挪威之前</td></tr>
+<tr><td>对短债收益率的影响</td><td>USDT＋USDC 市值每 +1% → 1 个月国库券 −0.42bp、3 个月 −0.50bp</td><td>IMF 工作论文 WP/2026/044；第 24 周累计约 −1.9bp，长端无响应</td></tr>
+</table>
+<div class="callout">
+<p><strong>量级必须诚实。</strong>稳定币发行商合计持有约 1,950–2,000 亿美元美债，而 2026 年净国库券发行预测约 8,270 亿美元（高盛）——占比约 4%。它是<strong>边际买家，不是决定性买家</strong>。渣打曾估 2028 年前可带来最多 1 万亿美元新增国库券需求、Apollo 曾估 2 万亿美元稳定币市场，这些是情景不是事实，本报告不把它们计入基准。</p>
+</div>
+</section>
+
+<section>
+<h2>八、与石油、美元的三层新关系</h2>
+<h3>第一层：结算层被绕开，计价层没被绕开</h3>
+<p>非美元结算的原油占比从 2020 年约 4% 升到 2026 年约 18%（CFR 估算），但收款方最终落袋的仍然是美元计价资产。<strong>美元从"结算货币"退到"计价与储值货币"。</strong>这条要与第九十一条灵魂一起读：那里说"换了单位就是换了定价权"，而这里单位根本没换，换的只是通道——所以定价权没丢，丢的是可见性与执行路径。</p>
+<h3>第二层：稳定币不是去美元化工具，是"可冻结的美元"</h3>
+<p>委内瑞拉国家石油公司 2024 年起要求 USDT 预付款，有时达货值一半；到 2025 年底可能高达 80% 的石油收入走稳定币。但 2026 年美国接管后，收款又改回受监管银行账户——<em>这是一次反向实证：管道能被掐回去。</em></p>
+<p>Tether 累计冻结约 49 亿美元，其中 2026 年涉伊朗约 5.5 亿；区块链分析机构还发现伊朗央行地址持有超过 5 亿美元 USDT。伊朗在霍尔木兹设分级通行费（大船约 200 万美元/次），只收人民币、土曼或稳定币。<strong>控制权从代理行转移到了发行人地址——分界不在密钥强度，在谁握有冻结权。</strong></p>
+<h3>第三层：这是高油价环境下美国唯一的正反馈</h3>
+<p>油价高 → 产油国顺差上升 → 其中一部分不走官方储备、改走民间美元稳定币 → 回流被压进 93 天以内。回流路径变短、变前端、变价格不敏感，正好对冲第二节里"美国是高油价成本方"的那一侧。但量级只有约 4%，是对冲不是逆转。</p>
+<div class="callout red">
+<p><strong>对称性风险必须并列写。</strong>第一，冻结权是双刃——每用一次就教会全世界"美元计价资产可被单点冻结"，直接催生 A7A5、霍尔木兹人民币收费与 mBridge。第二，银行存款分流，21 家银行联盟本质上就是防御动作。第三，新兴市场货币替代，IMF 指出约四分之一成员国仍依赖资本管制，稳定币直接打穿。第四，<strong>反向检验是头号判据</strong>：如果稳定币的钱是从货币市场基金搬来的，对美债的净新增需求就很小，这个锚就是虚的——要盯资金从哪来，不盯总量。</p>
+</div>
+</section>
+
+<section>
+<h2>九、护城河要分三层看：发行、被接受、收租</h2>
+<p>"美元稳定币只要和美债绑定就能发行，护城河几乎为零"——<strong>这个判断在发行这一层完全成立，但不能外推到整条链。</strong></p>
+<table>
+<tr><th>环节</th><th>壁垒</th><th>硬证据</th></tr>
+<tr><td>发行（能不能造出来）</td><td><strong>约等于零</strong></td><td>铸造一个 ERC-20 技术上零成本；GENIUS 的门槛只是牌照＋1:1＋月度鉴证＋高管签字。欧元稳定币拿齐 MiCA 全套授权，合计仍只有 <strong>8.05 亿</strong>（EURC 4.7 亿、EURCV 1.85 亿），对美元 3,038 亿是 1:380。PayPal 手握 4 亿用户，PYUSD 做了两年只有 28.9 亿</td></tr>
+<tr><td>被接受（有没有人要）</td><td><strong>极高</strong></td><td>HHI 约 4,244，两家约 82%，十个月里没有任何新进入者突破 50 亿</td></tr>
+<tr><td>收租（能不能留下利润）</td><td><strong>最薄</strong></td><td>GENIUS 禁止付息给持币人，产品无法用"收益更高"做差异，唯一竞争维度剩渠道；而渠道方抽走大头</td></tr>
+</table>
+<div class="callout">
+<p><strong>决定性实证是 BUSD。</strong>2021 年初约 10 亿 → 2022 年 11 月 12 日峰值 <strong>233.6 亿</strong>，一年多靠币安渠道被凭空造出来的第三名。2023 年 2 月 13 日纽约州金融服务局一纸停铸令加上 SEC 的 Wells 通知——<em>它从头到尾没有脱锚、始终 1:1 足额，照样归零</em>，今天只剩约 4,000 万，而结果是 USDT 更强，正好是监管意图的反面。一件事同时证明两端：渠道能造出规模，但渠道是租来的，出租方被监管一击，租户归零。</p>
+</div>
+<p>非美一侧的进展都在，但量级差两个数量级：香港 4 月 10 日发出首批两张发行人牌照（汇丰、渣打主导的 Anchorpoint），8 月 12 日港元币 HKDAP 进入公测，累计 36 份申请；日本《资金结算法》修正案 6 月 13 日生效，三菱日联、三井住友、瑞穗三家目标 2027 年 3 月前联合发行日元稳定币；新加坡金管局支付服务法修订咨询 10 月 16 日截止；Qivalis 的 37 家银行欧元稳定币计划 2026 年下半年推出；中国大陆境内禁止人民币稳定币，走数字人民币与 mBridge；俄罗斯 A7A5 累计交易超过 1,000 亿美元，2026 年 7 月 1 日合法化，随后被欧盟第 19 轮制裁禁止。</p>
+<p>还有一支值得单独记的力量：<strong>21 家金融机构联盟</strong>（2026 年 9 月 1 日宣布），成员横跨北美、欧洲、东亚、中东与非洲，包括美国银行、花旗、高盛、富国、瑞银、德意志银行、桑坦德、三菱日联等。计划 2026 年下半年成立公司、2027 年上半年推出美元币，欧元为下一站，设计同时满足 GENIUS 与 MiCA。<strong>银行从"被分流的受害者"转为"发币方"，动机是防御——把存款留在受监管围栏内，同时把准备金的利息留在自己手里。</strong></p>
+</section>
+
+<section>
+<h2>十、每一百元储备收入的最终归属：Coinbase 比 Circle 好吗</h2>
+<p>在 USDC 这条价值链上，Coinbase 的位置确实优于 Circle，但要分清它好在哪一段。以 Circle 2026 年第二季度的储备收入 6.677 亿美元折算成一百元：</p>
+<svg viewBox="0 0 680 172" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>USDC 每一百元储备收入在各方之间的最终分配</title>
+<desc>以 Circle 2026 年第二季度 6.677 亿美元储备收入为 100，Coinbase 净留约 26，Circle 留存约 21，付给客户奖励约 18，其他渠道伙伴约 18，Circle 运营成本约 17。</desc>
+<rect x="120" y="40" width="103" height="48" rx="4" fill="#123a5e" stroke="#6cb6ff" stroke-width="0.5"/>
+<text x="171" y="64" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#cfe6ff">Circle 21</text>
+<rect x="225" y="40" width="80" height="48" rx="4" fill="#2a2a30" stroke="#3a3a44" stroke-width="0.5"/>
+<text x="265" y="64" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#a0a0a8">成本 17</text>
+<rect x="307" y="40" width="122" height="48" rx="4" fill="#3a2a5c" stroke="#b98cff" stroke-width="0.5"/>
+<text x="368" y="64" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#e0d0ff">Coinbase 26</text>
+<rect x="431" y="40" width="84" height="48" rx="4" fill="#332a12" stroke="#c9a227" stroke-width="0.5"/>
+<text x="473" y="64" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#e8d9a8">客户奖励 18</text>
+<rect x="517" y="40" width="83" height="48" rx="4" fill="#1e1e24" stroke="#3a3a44" stroke-width="0.5"/>
+<text x="558" y="64" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#909098">其他渠道 18</text>
+<text x="120" y="112" font-size="12" fill="#86868b">口径：储备收入 6.677 亿＝100；分销与交易成本 4.104 亿，其中 Coinbase 稳定币收入 2.921 亿、付给客户奖励 1.191 亿</text>
+<text x="120" y="132" font-size="12" fill="#86868b">Tether 同期净营业利润约 15 亿、分销成本接近零，留存接近 89%——差别不在技术与合规，在渠道是不是自己的</text>
+<text x="120" y="152" font-size="12" fill="#86868b">结论：Coinbase 净留下的绝对额确实多于 Circle，但两家都不是最大的一块</text>
+</svg>
+<div class="fig-cap">图三：每一百元储备收入的去向。收银台既不在造币的人手上，也不在被接受这件事本身上</div>
+<p>协议细节决定了这个分配：Coinbase 拿平台上 USDC 储备收入的 <strong>100%</strong>，外加平台外剩余部分的 <strong>50%</strong>。2024 年 Circle 付给 Coinbase 9.079 亿美元分销费，<em>比 Circle 自己的净利润还高</em>；2026 年 8 月 5 日协议自动续约，条款没变。</p>
+<h3>三个反直觉的点</h3>
+<ul>
+<li><strong>Coinbase 在平台上那条线几乎不赚钱。</strong>第二季度 2.921 亿稳定币收入里，约 1.46 亿来自平台外的 USDC（不用付任何奖励），约 1.46 亿来自客户放在平台上的余额——而为此付给客户 1.191 亿奖励（同比 +16%），<strong>平台上收入的 82% 又还回去了</strong>，折算年化约 2.8%。它真正赚的是"放在别人那儿的 USDC"那一半。奖励一旦被迫取消，吸力消失，平台外那 1.46 亿也会慢慢失血。</li>
+<li><strong>它的主业在萎缩，稳定币线是在补窟窿。</strong>同期交易收入 5.992 亿（同比 −21.6%），总营收 12.2 亿（−18.5%），<strong>经营亏损 1.135 亿</strong>；稳定币收入占净收入 25.3%、占订阅与服务板块 53%。这不是多元化成功，是拿利率利差填交易的坑。而利差是双刃：降息时它缩水，只有降息同时推高加密成交量、交易收入才补得上——那又把它打回"加密价格方向的杠杆赌注"。</li>
+<li><strong>它的独占性正在边际稀释。</strong>Circle 付给 Coinbase 的分销费同比少了 770 万，原因写得很直白——"Coinbase 占总平均在平台 USDC 余额的份额下降"，而付给其他分销伙伴的钱在涨。同时 Circle 自 2026 年 7 月 24 日起拥有受 OCC 直接监管的 Circle National Trust，开始补自建渠道这块短板。</li>
+</ul>
+<p><strong>所以答案不是二选一谁更好，而是这条链上四个位置</strong>：Tether（自有渠道、留存约 89%、但你买不到）＞ Coinbase（收租且不承担发行人风险，但主业亏损、利差两头夹）＞ Circle（持牌照与合规身份，被抽 62%，正在自建渠道）＞ 其他发行商（发行端无壁垒）。</p>
+<p>用第一百一十九条灵魂收口——<strong>谁承担了不可反悔的代价却没拿到收银台，谁就是输家</strong>：Circle 承担了牌照、资本、赎回义务与高管个人认证，收银台却在 Coinbase 手上；Coinbase 承担了刚性奖励承诺换来了租金，但这份租金随时可能被认定为规避。两家都没拿到定价权——利率在美联储，规则在 OCC 与财政部，渠道租金取决于份额守不守得住。</p>
+</section>
+
+<section>
+<h2>十一、OCC 10 月 21 日最终规则：删了推定，留下反规避</h2>
+<p>这是成稿前三天发生的事，也是这条链上最新的制度节点。OCC 于 <strong>2026 年 10 月 21 日</strong>发布 GENIUS 法案最终规则（10 月 23 日出版，<strong>2027 年 1 月 18 日生效</strong>）。结果两分：</p>
+<ul>
+<li><strong>保留并重述付息禁令</strong>——写入 12 CFR 15.10(c)(4)，几乎逐字复述法定条文：不得"仅因持有、使用或保留"稳定币而向持有人支付任何形式的利息或收益。OCC 拒绝定义"利息"或"收益"，理由写得极直白：<em>"利息不会因为换了个名字就不是利息。"</em>叫 reward 不改变经济实质。</li>
+<li><strong>删除了关联方奖励的可反驳推定</strong>——3 月提案曾拟设：发行人与关联方或相关第三方有安排去支付利息的，先推定为违规。最终规则以"市场尚处初期，该推定可能既过宽又过窄"为由删除，改为逐案监管审查。</li>
+</ul>
+<div class="callout red">
+<p><strong>删除推定不等于放行。</strong>第一，OCC 明确保留反规避授权（15.10(c)(6) 与法案第 4 条），并指出"发行人只是付钱给另一实体去支付它自己不能支付的收益"构成明显规避。第二，所有安全港均被拒绝：无微量豁免、无白标豁免、无整改期、无祖父条款，且明确不推定 GENIUS 之前的奖励计划合规。第三，<strong>监管是分裂的</strong>——美联储 9 月 24 日提案与 NCUA 5 月 18 日补充提案仍然保留 OCC 刚删除的那个推定。<strong>Circle 每季度 4.104 亿美元的分销成本，很可能成为全市场第一个测试案例。</strong></p>
+</div>
+<p>时间表：OCC 至 10 月 23 日仍未接受许可申请（表格需 OMB 批准，评论期至 11 月 22 日）；美联储提案评论截止 11 月 30 日；2027 年 1 月 18 日生效后，不合规可能带来刑事处罚。</p>
+</section>
+
+<section>
+<h2>十二、边界与口径分歧</h2>
+<ul>
+<li><strong>稳定币总量有两套口径</strong>：DefiLlama 只统计美元锚定，10 月 22 日为 3,038 亿；CoinMarketCap 全口径含其他币种，10 月约 3,160–3,200 亿。本报告统一采用 DefiLlama 口径，不跨口径混算。</li>
+<li><strong>"稳定币持有美债"有三个数</strong>：Tether 单家敞口约 1,410 亿（含直接与间接）、两家合计约 1,500 亿（BIS 2025 年末口径）、全行业约 1,950–2,000 亿。三者不是同一口径，本报告分别标注来源。</li>
+<li><strong>Tether 的"超额储备"波动极大</strong>：第一季度 82.3 亿、第二季度 41.1 亿，差额主要来自黄金与比特币的市值变动，不是经营亏损。不要把这两个数字当作趋势。</li>
+<li><strong>非美元结算原油占比 18%</strong>为 CFR 估算，与 SWIFT 支付份额（美元 2026 年 2 月超 57%）不是同一指标，不能互相印证也不能互相推翻。</li>
+<li><strong>贝森特"战后 40–50 美元"是目标表述</strong>，不是预测区间；EIA 的 2026 年均价 91、2027 年 74 才是官方预测。两者并列，本报告不做加权。</li>
+<li><strong>本报告的稳定币与监管部分依赖媒体对监管原文的转述</strong>，最终规则的页码与条款号来自解读性来源，需以联邦公报原文为准。</li>
+</ul>
+</section>
+
+<section>
+<h2>十三、对组合的含义与哨位</h2>
+<p><strong>全篇观察级，不新立区间、不调仓。</strong>AVGO 272 那一档仍不提前打——CoreWeave 的债端与 CDS 门槛（债回 90 美分、CDS 自 1,000bp 回落）不仅未达标，还在恶化（月内跌幅一度扩大至 36%）。加密笼子规则不变：单标的 1–2%、零操作，LINK 的硬信号仍是净供给转负。</p>
+<p>新增两个"只观察不进篮"的名字：Circle 与 Coinbase。理由分别是——Circle 的利润三样都不在自己手里（利差由美联储定、留存比例由渠道定、合规边界由监管机构定）；Coinbase 是高 beta 加密交易股，与稳健防守的风格正面冲突，且稳定币这条线本身是利率利差加刚性营销承诺的组合。它手里还有一个按零定价的技术期权（二季度链上代理商务 99% 以上用 USDC、90% 以上跑在 Base、97% 以上走 x402 协议），但收入几乎为零，不构成买入理由。</p>
+<div class="conclusion">
+<div class="ct">哨位清单</div>
+<ul>
+<li>稳定币总量能否重回 3,200 亿以上——现在 3,038 亿，横盘十个月，破位方向即需求方向</li>
+<li><strong>Circle 分销成本占储备收入的比例能否从 62% 往下走</strong>——这是全链唯一能自证转折的数字</li>
+<li>21 家银行联盟 2027 年上半年的首发规模；Qivalis 欧元币 2026 年下半年；日本三大行 2027 年 3 月</li>
+<li>OCC 是否在 11 月 22 日后开始受理许可申请；美联储 11 月 30 日提案的最终形态是否仍保留奖励推定</li>
+<li>稳定币季度持有国库券的增量（BIS 口径，2025 年净买入约 330 亿）</li>
+<li>Tether 冻结累计与 OFAC 地址数；霍尔木兹收费是否进一步稳定币化；委内瑞拉是否恢复稳定币收款</li>
+<li>油价与债市是否继续反向：Brent 能否站稳 114、10Y 能否重回 5% 上方</li>
+<li><strong>Solidigm IPO 是否重启</strong>（一级融资窗口的最直接读数）</li>
+<li>SPR 是否触及 2.524 亿桶法定线；汽油是否守住 4.45 美元</li>
+<li>11 月 3 日之后伊朗打击是否真落地（这是 10 月 22 日先验修正的验证点）</li>
+</ul>
+</div>
+</section>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百二十六条</div>
+  <div class="sn">锚与管道不是一回事</div>
+  <p>锚回答"别人为什么必须持有"，管道回答"东西怎么到你手上"。稳定币补的是后者，锚仍然落在短端美债上。判据＝看价值捕获发生在持有端还是通道端：GENIUS 禁止发行人向持币人付息，利息归发行商不归用户——一个让人只愿意路过、不愿意持有的东西，构不成锚。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百二十七条</div>
+  <div class="sn">发行权是准入证，收银台在渠道手上</div>
+  <p>能造出来没有壁垒，被接受才有壁垒，但收租的位置既不在造币的人手上，也不在被接受这件事本身上。判据＝看分销成本占毛收入的比例：Circle 每百元储备收入付给渠道 62 元、自留 21 元，Tether 因为渠道是自己在交易所长出来的，留存接近 89%。同一个行业、同一套监管，租金归谁由渠道归属决定，不由技术或合规决定。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百二十八条</div>
+  <div class="sn">渠道是租来的，出租方被监管一击，租户归零</div>
+  <p>凭渠道造出来的规模，也会凭渠道消失。判据＝看需求来自自有渠道还是单一合作方：BUSD 从 10 亿做到 233.6 亿只用一年多，纽约州一纸停铸令后归零到约 4,000 万，全程没有脱锚、始终 1:1 足额。足值不等于存活，可赎回不等于不会被关停。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百二十九条</div>
+  <div class="sn">霸权延续靠换锚，不靠守锚</div>
+  <p>判断储备货币的寿命不该看份额斜率，该看旧锚松动时新锚是否已就位。判据＝列出每一次换锚的时点并比较两者的间隔：黄金 1971、石油 1974、美债 1980 年代、算力与稳定币 2020 年代。1971 年黄金松动时石油尚未接上，美元跌了十年；1974 年接上后重新走强。份额下降不等于退出，从压倒性降到主导性仍是主导。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十条</div>
+  <div class="sn">压价工具箱有物理终点</div>
+  <p>判断一个压制动作能持续多久，看工具的剩余量，不看使用者的意愿。判据＝把工具的可动用额度与法定下限并列：战储 2.827 亿桶对法定下限 2.524 亿桶，只剩约 3,140 万桶，且实际抽取能力仅设计值的 61%。意愿可以反复表态，额度用完就是用完，终点由物理约束给出，不由政治声明给出。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十一条</div>
+  <div class="sn">一级市场的窗口比二级市场更早关闭，也更晚打开</div>
+  <p>二级市场还在定价时，一级市场往往已经关了门。判据＝看取消或推迟上市的是不是景气最好的那几家：叫停的是 Solidigm（AI 存储最紧的环节）、撤回的是 Firmus（英伟达支持的数据中心），说明问题不在公司基本面而在窗口本身。景气最好的公司最先放弃，是最硬的关闭信号；它们重新排队，才是最硬的重开信号。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十二条</div>
+  <div class="sn">官方理由与真实约束往往是两件事</div>
+  <p>公司声明解释的是它愿意说的话，监管动作暴露的是它必须守的规则。判据＝看两者的时间先后：SK 海力士把叫停归因于"资本市场状况"，而韩国 FSS 对双重上市规则的审查更早就在进行。先发生的那个才是原因，后说的那个只是措辞。</p>
+</div>
+
+<div class="disc">
+<p>以上仅为个人认知范围内的理解，数据来源为公开披露与媒体转述，非一手核实，不构成投资建议。本报告全篇为观察位记录，不含任何买卖区间与仓位建议；历史价格与决策树数字按成稿当时口径保留，不因后续行情改写。</p>
+<p class="muted">P87 · 完 · 上一份 P86《不造机器人的人：英伟达的物理 AI 棋局、内存的下一个需求端与铠侠这道题》· 下一份 P88（灵魂接第一百三十三条）</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谁在卖：CoreWeave 的信用读数、定价重置与一把三成仓位的清醒赌局</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141418; --line:#2a2a30;
+    --txt:#d1d1d6; --sub:#86868b; --head:#f5f5f7;
+    --up:#e5484d; --down:#30a46c; --gold:#c9a227; --blue:#6cb6ff; --purple:#b98cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 64px}
+  h1.g{font-size:27px;line-height:1.35;color:var(--head);font-weight:800;background:linear-gradient(90deg,#f5f5f7,#a8a8ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+  .sub{color:var(--sub);font-size:12.5px;margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .badge{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--sub)}
+  .badge.hl{color:var(--gold);border-color:#4a3f1d}
+  section{margin-bottom:38px}
+  h2{font-size:19px;color:var(--head);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  h3{font-size:15.5px;color:var(--head);font-weight:700;margin:20px 0 10px}
+  p{margin-bottom:14px}
+  .muted{color:var(--sub)}
+  em{font-style:normal;color:var(--gold)}
+  strong{color:var(--head)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+  th{color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid #1c1c22;vertical-align:top}
+  td.up{color:var(--up)} td.down{color:var(--down)}
+  .callout{background:var(--panel);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .callout.blue{border-left-color:var(--blue)}
+  .callout.red{border-left-color:var(--up)}
+  .verdict{background:linear-gradient(135deg,#1a1a20,#141418);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:26px 0;font-size:15px}
+  .verdict .vt{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+  .soul{background:linear-gradient(135deg,#1c1810,#141218);border:1px solid #4a3f1d;border-radius:12px;padding:24px;margin:28px 0}
+  .soul .tag{display:inline-block;font-size:12px;color:var(--gold);border:1px solid #4a3f1d;border-radius:99px;padding:3px 12px;margin-bottom:14px}
+  .soul .sn{color:var(--head);font-weight:700;font-size:16px;margin-bottom:10px}
+  .soul p{color:#d8cfa8;font-size:14px}
+  .disc{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:var(--sub);font-size:12.5px}
+  svg{max-width:100%;height:auto;display:block;margin:20px auto}
+  .fig-cap{text-align:center;color:var(--sub);font-size:12px;margin-top:-8px;margin-bottom:20px}
+  ul{margin:0 0 14px 20px} li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1 class="g">谁在卖：CoreWeave 的信用读数、定价重置与一把三成仓位的清醒赌局</h1>
+<div class="sub">P88 · 发散笔记 · 2026-10-25 成稿（讨论跨 10/25 一天五轮；指数与油价为 10 月 23 日周五收盘读数；CoreWeave 债价为 10 月 22–24 日报价、CDS 为 10 月 24 日读数；股东与内部人数据来自 13F 与 Form 4，13F 为季度末快照、最多滞后 45 天；持仓成本与仓位为本组合 10 月 25 日告知口径）· 数据口径：监管文件、13F／Form 4、券商研报与预测市场经媒体转述。<strong>以上均为非一手来源，需核实原文</strong>；多源冲突已在第十一节并列标注，不跨口径混算</div>
+<div class="badge-row">
+  <span class="badge">P88</span><span class="badge">市场结构 · 信用 · 仓位管理实战</span><span class="badge">含持仓处置记录</span><span class="badge hl">定价重置不是没钱</span><span class="badge">下跌按久期排序</span><span class="badge">知情钱撤 · 不分辨钱接</span>
+</div>
+
+<div class="verdict">
+  <div class="vt">大 白 话 总 评</div>
+  <p><strong>这一周的下跌，跌回去的是「AI 那一段」，不是全市场；它不是「市场没钱了」，是给外部融资定价的手收回去了；而 CoreWeave 是这条裂缝上最亮的那盏信号灯——信号灯本身不是捡便宜的对象，被它连坐错杀的才是。</strong></p>
+  <p>先纠口径：周线看，标普只跌 0.47%、纳指跌 0.71%，道指整周还涨 0.41%。真正把 10 月中旬那波反弹抹掉的是 10 月 22 日一根：纳指单日 −2.60%、费城半导体 −6.72%、纳指 100 蒸发约 1.2 万亿美元。驱动按因果排序是五条：Meta 那份 8,250 亿美元支出承诺的监管文件与转负的自由现金流、霍尔木兹油轮触雷把 Brent 推上 116.72、利率先避险后被油价反噬、财报进入「花多花少都被罚」阶段、以及一轮严格按融资依赖度排序的轮动。</p>
+  <p>「市场没钱了」这个直觉方向对、用词错。钱没消失，只是搬了位：10 月 22 日十年期收益率单日 −19.3bp（SVB 以来最大跌幅）说明避险资金在冲进国债，美元指数只跌 0.2–0.3%，房建股整周涨 6–8%。<strong>这是定价重置，不是流动性危机</strong>——前者死一类资产，后者死所有资产，两者的处置完全不同。</p>
+  <p>CoreWeave 的信用读数是这次裂缝的刻度尺：四只美元债全部跌破 84 美分，2031 年 10 月到期那只报 79.46 美分、收益率约 15.8%；五年期 CDS 从 10 月 6 日的 368bp 一路到 10 月 24 日的 1,195bp 创历史新高；标普降到 B、穆迪降到 B1。谁在卖？套现逾 23 亿的三位联创、抛售逾 55 亿的 Magnetar；谁在买？BlackRock、Vanguard 这类不分辨的被动钱；英伟达一股没卖，但它是被供应商加股东加订单背书的三重身份锁死在结构里的，「不卖」不等于「看好」。</p>
+  <p>最后三节是一次实战记录：<strong>本组合在 10 月 25 日以 57.33 的成本买入了 CoreWeave，占比三成，组合由此接近满仓、现金压舱层清零。</strong>这笔买入与本报告前九节的分析方向相反，但决定已经做出且知情接受失败——所以报告的后半部分不再争论该不该，只记录怎么管：止损、止盈、裁判日、破例三件套，以及一个比输赢更重要的提醒——一把赌局最大的风险，是对体系的腐蚀。</p>
+</div>
+
+<section>
+<h2>一、先把口径钉住：跌回去的是「AI 那一段」，不是全市场</h2>
+<p>「基本都将之前的反弹跌回去了」这个描述，对 AI 与半导体成立，对全市场不成立。把周线与单日拆开看：</p>
+<table>
+<tr><th>口径</th><th>标普 500</th><th>纳指</th><th>道指</th><th>费城半导体</th></tr>
+<tr><td>周线（截至 10/23）</td><td class="down">−0.47%（7,623.68）</td><td class="down">−0.71%（25,955.34）</td><td class="up">+0.41%（52,215.16）</td><td>—</td></tr>
+<tr><td>10/22 单日</td><td class="down">−1.21%</td><td class="down">−2.60%</td><td>+0.02%</td><td class="down">−6.72%</td></tr>
+<tr><td>10/23 单日</td><td class="down">−0.52%</td><td class="down">−0.21%</td><td class="down">−1.23%</td><td class="up">+0.44%</td></tr>
+</table>
+<p>三个读数值得单独拎出来。其一，10 月 22 日纳指 100 单日 −2.9%，约 1.2 万亿美元市值蒸发，<strong>跌掉的正是 10 月中旬那波反弹的涨幅</strong>；其二，道指整周是涨的——资金没有离场，在换位置；其三，周五费半逆势 +0.44%（美光 +2.46%、Marvell +2.26%、AMD +1.74%、英特尔 +1.72%、台积电 ADR +1.49%）——周四 −6.72%、周五 +0.44%，说明市场在同一天之内区别对待「靠债养着的」与「订单真实的」，<em>卖的是融资端，不是需求端</em>。这个区分决定后续是杀估值还是杀故事。</p>
+</section>
+
+<section>
+<h2>二、五个驱动，按因果权重排序</h2>
+<h3>① AI 融资链裂缝——主跌因，跌的是现金流不是估值</h3>
+<p>最硬的一条不是股价，是 Meta 的监管文件：<strong>未来多年度租赁与合同支出承诺 8,250 亿美元</strong>（7 月披露时约 7,000 亿），其中未起租承诺约 3,557 亿、不可取消合同义务约 4,545 亿；同期 Q3 <strong>自由现金流转负 21.2 亿</strong>，2026 年资本开支指引下限上调至 1,350 亿。信用市场当天投票：Meta 五年期 CDS 报 119.3bp，为该合约有交易以来新高。</p>
+<p>而且不止 Meta：甲骨文 CDS 突破 340bp（隐含五年违约概率约 24%，其合同未来收入 6,380 亿、约一半来自 OpenAI），博通 159bp、英伟达 101bp、SpaceX 241bp。量级更能说明问题：<strong>2026 年至今 AI 相关债券发行 4,660 亿美元，去年同期只有 1,010 亿</strong>；七家超大厂 CDS 周成交量较 7 月翻四倍至 95 亿；十大超大规模厂商与芯片商 CDS 总成交同比 +691% 至 1,400 亿。一级市场同步打折：OpenAI 把 300 亿融资轮的目标估值从 1.4 万亿下调到 1.25 万亿。</p>
+<h3>② 霍尔木兹：从通胀担忧升级为供给中断</h3>
+<p>10 月 23 日伊朗称两艘超大型油轮在霍尔木兹海峡南部触雷爆炸；特朗普放话可能对伊朗再来一次小规模「史诗怒火」行动。Brent 12 月合约收 <strong>116.72</strong>（+3.14%）创七个月新高，WTI 103.27（+3.82%）。配一个容易忽略的动作看：卡塔尔能源与切尼尔签了两份长约，每年最多 400 万吨 LNG、2031 年起交付直到 2054 年、挂钩美国 Henry Hub——霍尔木兹是卡塔尔 LNG 出口的必经通道，<em>买方已经开始为「绕开这条通道」付钱</em>，与 P87 写的「锁盟友能源」同向推进。</p>
+<h3>③ 利率：先避险，第二天被通胀反噬</h3>
+<p>周四 10Y <strong>−19.3bp 至 4.952%</strong>，是 2023 年 3 月 SVB 倒闭以来最大单日跌幅——那是避险；周五立刻反过来，2Y +4bp 至 4.680%、10Y +4.15bp 至 4.995%、30Y 5.320%——那是油价反推通胀。按灵魂第一百零四条，通胀是油价与利率之间的缝合线，判据是看传导链上哪一环先动；这一周两环各自先动过一次，<strong>说明市场自己也没选定方向</strong>——这才是真正的不确定性。</p>
+<h3>④ 财报：花多花少都被罚</h3>
+<p>Meta EPS 7.40 远超预期 6.54、营收 646 亿，照跌 7%——罚资本开支；Tesla 把全年资本开支从 250 亿以上砍到 200 亿，也跌 3.08%——罚 AI 部署时间线推迟；Netflix 广告指引砍 10%，跌 5.3%；设备端 Lam Research 因洁净室与零部件跟不上跌 11.76%，AMAT −8.15%、Coherent −12.51%、Lumentum −11.54%、nVent −12.63%。<strong>两边都挨打，说明裁判已经不看「你花多少」，只看你的现金流方向。</strong></p>
+<h3>⑤ 轮动：卖借来的钱，买自己赚的钱</h3>
+<p>涨的是现金流已落袋的：宝洁 +5.58%、强生 +3.81%、Conagra +7.34%、卡夫亨氏 +6.77%；10Y 跌破 5% 还带起一拨利率敏感资产（D.R. Horton +6.25%、Meritage +7.27%、Zillow +8.53%）；网安 CRWD +8.25%、PANW +7.22%。跌的是贵金属（金周 −4.1%、银 −5.8%）、航空、食品饮料，中概金龙指数周 −3.92%。另有一个信号值得记：<strong>美国运通宣布裁减约 5% 全球员工，理由写的是「为 AI 做准备」，股价跌超 3%</strong>——AI 叙事第一次以「成本侧砍人」的形式出现在蓝筹上，是需求故事转向利润表故事的信号。</p>
+</section>
+
+<section>
+<h2>三、定价重置，不是「没钱」</h2>
+<p>「感觉就是市场没钱了，靠外部融资的企业最先被抛弃」——这个直觉的内核对，但有一个字必须换掉：<strong>不是没钱，是给外部融资定价的手收回去了。</strong>换完之后，这句话才从感觉变成可检验的判断。</p>
+<p>如果真是流动性危机（钱消失），会同时看到四样东西：美元指数暴涨、短期回购利率异常、高收益债利差爆炸、避险资产与信用资产一起崩。实际发生的全部相反：</p>
+<table>
+<tr><th>读数</th><th>实际值</th><th>含义</th></tr>
+<tr><td>10Y 美债收益率</td><td>10/22 单日 −19.3bp（SVB 以来最大）</td><td>避险资金冲进国债——钱没消失，从信用搬到无风险</td></tr>
+<tr><td>美元指数</td><td>仅 −0.2~0.3%</td><td>不是抢美元的流动性危机</td></tr>
+<tr><td>道指</td><td>整周 +0.41%</td><td>钱还在市场里，换了地方</td></tr>
+<tr><td>房建股</td><td>+6~8%</td><td>对利率仍有反应——钱在选方向，不是枯竭</td></tr>
+</table>
+<p>这就是灵魂第一百零九条的直接应用：盘面与资金流是两件事，判据是看流量数据动没动，不看价格跌了多少。<strong>定价重置与流动性危机的处置完全不同</strong>：前者只需避开被重估的那一类，后者会把现金以外的所有资产一起拖下去。切换的检验标准也写下：哪天看到 SOFR 回购利率异常上冲、HY OAS 破 400、IG OAS 上 150、美元指数单日暴涨，才从「定价重置」切换成「流动性危机」——目前四个读数一个都没出现。</p>
+</section>
+
+<section>
+<h2>四、下跌按久期排序，不按基本面排序</h2>
+<p>为什么偏偏先砸「靠外部融资的」那一层？三个机制叠加：</p>
+<ul>
+<li><strong>久期错配。</strong>外部融资依赖型是长久期资产——现在的投入换五到十年后的现金流；现金流确定型是短久期——现在就有钱。利率卡在 5% 附近、油价把通胀预期往上顶，长端被双重挤压，短端几乎不动。这是灵魂第二十九条：利率敏感等于时序错配，逆风即时到账、补偿滞后一到三年。CoreWeave 与宝洁的跌涨分化，底层就是同一条。</li>
+<li><strong>融资窗口先关。</strong>二级还在交易，一级已经给「新钱」定完价：Solidigm 叫停 IPO、Firmus 撤 50 亿、OpenAI 估值降 1,500 亿。灵魂第一百三十一条：一级市场窗口比二级更早关也更晚开。二级现在看到的下跌，是一级早就投过的票传过来而已。</li>
+<li><strong>信用先行。</strong>给债务买保险的人不分享上涨，所以先翻脸（灵魂第八十八条）。这次的顺序是：CDS 创新高 → 一级估值下调 → 债价破 80 美分 → 才轮到股价。「先被抛弃」的顺序没错，但裁判在信用端，不在股票端。</li>
+</ul>
+<div class="callout red">
+<p><strong>两处防误判——感觉对了之后最容易踩的坑。</strong>其一，不是所有 AI 都被抛弃：周五费半 +0.44%，市场在同一天里区别对待；反例最值钱——Lam Research 是供给跟不上（洁净室与零部件缺，订单是真的）也跌 11.76%，<strong>这是错杀，也是未来「捡被隔壁着火疏散的」的候选来源</strong>。其二，涨的也不全是现金流驱动：房建涨是利率触发、网安涨是 PHP 漏洞事件驱动，真正按现金流重估的只有防御性消费与医药那一小撮。把三种驱动全概括成「现金流受青睐」，下一次就会用错这条规则。</p>
+</div>
+</section>
+
+<section>
+<h2>五、CoreWeave 的信用读数：债市在说什么</h2>
+<p>四只美元无担保债，最新报价全部跌破 84 美分：</p>
+<table>
+<tr><th>债券</th><th>最新价（每 1 美元面值）</th><th>到期收益率</th><th>对照</th></tr>
+<tr><td>9.75% · 2031/10 到期（27.5 亿）</td><td class="up"><strong>79.46 美分</strong>（10/24）</td><td class="up">约 15.8%</td><td>10/13 曾 82.69 / 14.78%</td></tr>
+<tr><td>9.00% · 2031/2 到期（17.5 亿）</td><td>约 83 美分（10/22）</td><td>14.44%</td><td>9/22 时 89.88 / 12.05%</td></tr>
+<tr><td>9.25% · 2030/6 到期（20 亿）</td><td>83.10 美分（10/24）</td><td>—</td><td>9/22 时 93.88 / 11.32%</td></tr>
+<tr><td>9.625% · 2032/7 到期（12.5 亿）</td><td>80.5 美分（10/22）</td><td>14.68%</td><td>8/21 平台报价 YTM 仅 10.95%</td></tr>
+</table>
+<svg viewBox="0 0 680 300" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>CoreWeave 五年期 CDS 走势</title>
+<desc>从 10 月 6 日 368 个基点到 10 月 24 日 1195 个基点创历史新高。</desc>
+<rect x="0" y="0" width="680" height="300" fill="#141418" rx="10"/>
+<text x="340" y="28" text-anchor="middle" fill="#f5f5f7" font-size="14" font-weight="700">CoreWeave 5Y CDS（bp）· 2026 年 10 月</text>
+<line x1="70" y1="250" x2="630" y2="250" stroke="#2a2a30" stroke-width="1"/>
+<line x1="70" y1="193" x2="630" y2="193" stroke="#1c1c22" stroke-width="1"/>
+<line x1="70" y1="136" x2="630" y2="136" stroke="#1c1c22" stroke-width="1"/>
+<line x1="70" y1="79" x2="630" y2="79" stroke="#1c1c22" stroke-width="1"/>
+<text x="60" y="254" text-anchor="end" fill="#86868b" font-size="11">0</text>
+<text x="60" y="197" text-anchor="end" fill="#86868b" font-size="11">400</text>
+<text x="60" y="140" text-anchor="end" fill="#86868b" font-size="11">800</text>
+<text x="60" y="83" text-anchor="end" fill="#86868b" font-size="11">1200</text>
+<polyline points="90,197 200,107 275,79 370,93 480,91 590,79" fill="none" stroke="#e5484d" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="90" cy="197" r="4" fill="#e5484d"/>
+<circle cx="200" cy="107" r="4" fill="#e5484d"/>
+<circle cx="275" cy="79" r="4" fill="#e5484d"/>
+<circle cx="370" cy="93" r="4" fill="#e5484d"/>
+<circle cx="480" cy="91" r="4" fill="#e5484d"/>
+<circle cx="590" cy="79" r="5" fill="#e5484d" stroke="#f5f5f7" stroke-width="1.5"/>
+<text x="90" y="185" text-anchor="middle" fill="#d1d1d6" font-size="11">368</text>
+<text x="90" y="272" text-anchor="middle" fill="#86868b" font-size="11">10/6</text>
+<text x="200" y="95" text-anchor="middle" fill="#d1d1d6" font-size="11">首破 1,000</text>
+<text x="200" y="272" text-anchor="middle" fill="#86868b" font-size="11">10/14</text>
+<text x="275" y="67" text-anchor="middle" fill="#d1d1d6" font-size="11">1,194.5 盘中</text>
+<text x="275" y="272" text-anchor="middle" fill="#86868b" font-size="11">10/15</text>
+<text x="370" y="81" text-anchor="middle" fill="#d1d1d6" font-size="11">约 1,100</text>
+<text x="370" y="272" text-anchor="middle" fill="#86868b" font-size="11">10/19</text>
+<text x="480" y="79" text-anchor="middle" fill="#d1d1d6" font-size="11">1,115</text>
+<text x="480" y="272" text-anchor="middle" fill="#86868b" font-size="11">10/22</text>
+<text x="590" y="60" text-anchor="middle" fill="#e5484d" font-size="12" font-weight="700">1,195 历史新高</text>
+<text x="590" y="272" text-anchor="middle" fill="#86868b" font-size="11">10/24</text>
+</svg>
+<p class="fig-cap">图 1 · CDS 十八天涨逾三倍：10/6 的 368bp 到 10/24 的 1,195bp，隐含五年累计违约概率超过 60%（一年前约 30%）</p>
+<p>两个容易读错的地方。其一，<strong>15.8% 不是 CoreWeave 现在付的利息</strong>——9.75% 的票息发行时就锁死了，一分没变；15.8% 是今天花 79.46 美分买下、持有到 2031 年且假定全额兑付的回报。真正要命的是下一层：新债照着二级收益率定价，所以 15.8% 是它下次开口借钱的成本预览，不是上一笔的账单。其二，评级已经下移：<strong>标普从 B+ 降到 B，穆迪从 Ba3 降到 B1</strong>。</p>
+<p>基本面一行流：总债务约 500–510 亿；2030 年前到期 207 亿、其后还有 149 亿；DDTL 承诺 240 亿（已提 150 亿、未提 90 亿）；摩根大通预计自由现金流到 2030 年才转正；美银估计要把 1,290 亿 RPO 变成收入还需再融 200 亿；而高收益债市场此刻实际暂停，信贷人士称要等 11 月 3 日中期选举后才恢复。股价 10 月 24 日收约 54.75（52 周低 53.50），月内 −37%，较高点 141.79 跌 61%。</p>
+<div class="callout blue">
+<p><strong>判据对照（arch-1019 §1）：止血＝债回 90 美分＋CDS 回落。</strong>现在 79.46 美分与 1,195bp，两条都离得更远，不是更近。所以 AVGO 272 档继续不动——这是本报告前半部分对组合唯一的操作含义。</p>
+</div>
+</section>
+
+<section>
+<h2>六、谁在卖：三层筹码结构</h2>
+<p>「谁在卖」比「跌了多少」重要得多。答案分三层，合在一起给出的信号不好看。</p>
+<table>
+<tr><th>层</th><th>谁</th><th>动作</th><th>性质</th></tr>
+<tr><td class="up">卖方 · 最早的钱</td><td>三位联创（Intrator／Venturo／McBee）</td><td>2025/8 解禁以来累计套现逾 23 亿、持股 −25%</td><td>Venturo 一人卖超 11 亿，为今年全美内部人卖股金额第二；均走 10b5-1 预设计划</td></tr>
+<tr><td class="up">卖方 · 最早的钱</td><td>Magnetar（最大机构股东之一）</td><td>累计抛售逾 55 亿、持股近乎腰斩（13F Q2 −24.07% 至 9.45%）</td><td>IPO 时其管理合伙人还在电视上喊「AI 基础设施的黄金标准」</td></tr>
+<tr><td class="up">卖方 · 技术性</td><td>可转债对冲盘＋期权端</td><td>37 亿转债发行后做空股票对冲信用风险；10/30 到期 put/call 比 2.11、ATM 隐波 115%</td><td>巴克莱把转债对冲盘列为股价疲软的技术性主因之一</td></tr>
+<tr><td>锁死 · 动不了</td><td>英伟达</td><td>47.2M 股、约 8.3–8.6%，Q2 13F 显示 Unchanged，一股没卖</td><td><strong>结构性不能卖，不是信心信号</strong></td></tr>
+<tr><td class="down">买方 · 最晚的钱</td><td>BlackRock／Vanguard／Invesco／Citadel／BofA</td><td>+157%／+34%与+27%／+1150%／+56%／+46%；机构总数 1,125 家（+228），净流入 76.65M 股、+154.3 亿</td><td>指数基金、被动盘、多策略对冲——买是因为它在指数里、在策略池里，不分辨基本面</td></tr>
+</table>
+<svg viewBox="0 0 680 330" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>CoreWeave 筹码的三层结构</title>
+<desc>卖方是最早进场的知情钱，买方是最晚进场的不分辨钱，最大的产业股东被三重身份锁死。</desc>
+<rect x="0" y="0" width="680" height="330" fill="#141418" rx="10"/>
+<text x="340" y="28" text-anchor="middle" fill="#f5f5f7" font-size="14" font-weight="700">筹码转移：知情钱撤 · 不分辨钱接 · 产业股东被锁死</text>
+<rect x="30" y="55" width="270" height="150" rx="10" fill="#1c1414" stroke="#e5484d" stroke-width="1.5"/>
+<text x="165" y="80" text-anchor="middle" fill="#e5484d" font-size="13" font-weight="700">卖方：最早进来、成本最低</text>
+<text x="45" y="106" fill="#d1d1d6" font-size="12">三位联创套现逾 23 亿 · 持股 −25%</text>
+<text x="45" y="128" fill="#d1d1d6" font-size="12">Magnetar 抛售逾 55 亿 · 近乎腰斩</text>
+<text x="45" y="150" fill="#d1d1d6" font-size="12">可转债对冲盘做空（37 亿转债）</text>
+<text x="45" y="172" fill="#d1d1d6" font-size="12">期权 put/call 2.11 · IV 115%</text>
+<text x="45" y="194" fill="#86868b" font-size="11">离真相最近的钱，方向要单独加权</text>
+<rect x="380" y="55" width="270" height="150" rx="10" fill="#101a14" stroke="#30a46c" stroke-width="1.5"/>
+<text x="515" y="80" text-anchor="middle" fill="#30a46c" font-size="13" font-weight="700">买方：最晚进来、不分辨</text>
+<text x="395" y="106" fill="#d1d1d6" font-size="12">BlackRock +157% · Invesco +1150%</text>
+<text x="395" y="128" fill="#d1d1d6" font-size="12">Vanguard +34%/+27% · Citadel +56%</text>
+<text x="395" y="150" fill="#d1d1d6" font-size="12">机构 1,125 家（+228）· 持股升至 75.81%</text>
+<text x="395" y="172" fill="#d1d1d6" font-size="12">净流入 76.65M 股 / +154.3 亿</text>
+<text x="395" y="194" fill="#86868b" font-size="11">指数基金与被动盘，买不是因为便宜</text>
+<line x1="305" y1="130" x2="375" y2="130" stroke="#c9a227" stroke-width="2"/>
+<path d="M375 130 L363 124 L363 136 Z" fill="#c9a227"/>
+<text x="340" y="118" text-anchor="middle" fill="#c9a227" font-size="11">筹码转移</text>
+<rect x="150" y="230" width="380" height="76" rx="10" fill="#1c1810" stroke="#c9a227" stroke-width="1.5"/>
+<text x="340" y="256" text-anchor="middle" fill="#c9a227" font-size="13" font-weight="700">锁死在中间：英伟达 47.2M 股 · 一股没卖</text>
+<text x="340" y="278" text-anchor="middle" fill="#d1d1d6" font-size="12">供应商＋股东＋订单背书三重身份 → 「不卖」是被锁死，不是看好</text>
+<text x="340" y="297" text-anchor="middle" fill="#86868b" font-size="11">敞口已从 47 亿被动缩到 25.5 亿</text>
+</svg>
+<p class="fig-cap">图 2 · 最早的钱把筹码转给最晚的钱，中间最大的产业股东被自己的角色锁死——这不是底部结构</p>
+<p>卖方两类的共同点：都是 IPO 之前或 IPO 时进来的钱，成本极低，解禁后兑现的是 150% 以上的暴利。他们卖未必是「知道要出事」（10b5-1 是合规多元化），但<strong>他们是离真相最近、成本最低的钱，这类钱的方向要单独加权</strong>。英伟达的「没卖」同样不能读成利好——它在这里是 GPU 供应商加 8.6% 股东加订单背书方，一旦减持，自己的供应商-客户关系与市场信心会一起崩；这是灵魂第十二条的循环融资结构：投资人同时是供应商时，「不卖」不等于「看好」，等于被锁在结构里。</p>
+<p>用灵魂第二十七条的三种成色判这一次：估值型？不是，便宜能明确回答「为什么便宜」。叙事杀估值型？也不是，CDS 1,195bp、评级降至 B/B1、FCF 到 2030 才转正，基本面是真的在恶化。<strong>是第三种——基本面恶化型。</strong>年内低价恰恰不是买点的证据（P57 的规则就是为此写的）。CoreWeave 不是「等崩盘捡便宜」的对象，它是崩盘本身；要盯的是被它连坐的 Lam Research、美光、以及 AVGO 272 档，不是它本身。</p>
+</section>
+
+<section>
+<h2>七、把反向证据也摆上桌</h2>
+<p>本组合已经在这一笔上下了注，更要把不看好的理由与看好的理由同时摆平——只列一边，就是立场先行。</p>
+<table>
+<tr><th>方向</th><th>证据</th><th>分量</th></tr>
+<tr><td class="down">多</td><td>Polymarket「2028 年底前破产」概率 10/21 骤降 8pp 至 14%（触发＝SpaceX 三季报称算力供不应求）</td><td>真金白银的预测市场，但样本薄、波动大</td></tr>
+<tr><td class="down">多</td><td>CEO 称在手订单（backlog）覆盖全部债务；黄仁勋 10/16 公开力挺「实力每天都在增强，无需财务兜底」</td><td>立场性发言，按灵魂第十条先问立场——但黄的背书本身是其供应链利益的一部分</td></tr>
+<tr><td class="down">多</td><td>卖方分析师 90 天内 2 上调 0 下调；高盛 10/19 升 Buy、摩根大通 9/24 升增持（目标 125）、瑞银 10/23 维持 Buy（目标自 120 下调至 105）</td><td>评级方向偏多，但目标价在往下修</td></tr>
+<tr><td class="up">空</td><td>CDS 1,195bp 历史新高、四只债全部破 84 美分、标普降至 B／穆迪降至 B1</td><td>灵魂第八十八条：买保险的人不分享上涨，所以先翻脸——先信 CDS</td></tr>
+<tr><td class="up">空</td><td>FCF 到 2030 年才转正（JPM）；把 RPO 变成收入还需再融约 200 亿（BofA）；融资窗口实际关闭至 11/3 后</td><td>时间表是硬的：债主不等叙事</td></tr>
+<tr><td class="up">空</td><td>知情钱在撤（联创 23 亿＋Magnetar 55 亿），接住的是不分辨的被动钱</td><td>第六节的三层结构</td></tr>
+</table>
+<p>诚实的结论是：<strong>方向上，看空的判断可能是错的</strong>——需求侧的证据（SpaceX、黄仁勋、订单覆盖）是真的；<strong>但仓位上，三成的对错不取决于方向</strong>。这两件事必须拆开，这是第八节的前提。</p>
+</section>
+
+<section>
+<h2>八、实战：三成仓位押进去之后</h2>
+<p>10 月 25 日，本组合以 <strong>57.33</strong> 的成本买入 CoreWeave，占总资金 <strong>30%</strong>。时点在前五节的全部分析之后、浮亏约 4.5% 的状态下（10/24 收盘约 54.75），且是在两轮「别碰、它是崩盘本身」的明确提示之后。决定已经做出，持有人的表态是：<em>本身是稳健派，但这一次清醒地赌一把，可能失败，也能接受。</em></p>
+<p>这句话通过了「按零测试」——把这笔钱在心里直接按零算，仍然睡得着，就是清醒地下注而非逃避浮亏。那么讨论从「该不该」切换为「怎么管」。先把组合层面的后果摆出来：</p>
+<svg viewBox="0 0 680 300" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>买入前后的组合结构</title>
+<desc>买入前三成现金压舱，买入后接近满仓，现金垫清零。</desc>
+<rect x="0" y="0" width="680" height="300" fill="#141418" rx="10"/>
+<text x="340" y="28" text-anchor="middle" fill="#f5f5f7" font-size="14" font-weight="700">组合结构：现金压舱层被换成了一笔信用赌注</text>
+<text x="70" y="95" fill="#86868b" font-size="12">10/2 结构</text>
+<rect x="70" y="105" width="145" height="34" fill="#6cb6ff"/>
+<rect x="215" y="105" width="136" height="34" fill="#b98cff"/>
+<rect x="351" y="105" width="110" height="34" fill="#c9a227"/>
+<rect x="461" y="105" width="168" height="34" fill="#30a46c"/>
+<text x="142" y="126" text-anchor="middle" fill="#0a0a0c" font-size="11" font-weight="700">AVGO 25.8%</text>
+<text x="283" y="126" text-anchor="middle" fill="#0a0a0c" font-size="11" font-weight="700">TME 24.3%</text>
+<text x="406" y="126" text-anchor="middle" fill="#0a0a0c" font-size="11" font-weight="700">NKE 19.7%</text>
+<text x="545" y="126" text-anchor="middle" fill="#0a0a0c" font-size="11" font-weight="700">现金约 30%</text>
+<text x="70" y="185" fill="#86868b" font-size="12">10/25 结构</text>
+<rect x="70" y="195" width="145" height="34" fill="#6cb6ff"/>
+<rect x="215" y="195" width="136" height="34" fill="#b98cff"/>
+<rect x="351" y="195" width="110" height="34" fill="#c9a227"/>
+<rect x="461" y="195" width="168" height="34" fill="#e5484d"/>
+<text x="142" y="216" text-anchor="middle" fill="#0a0a0c" font-size="11" font-weight="700">AVGO 25.8%</text>
+<text x="283" y="216" text-anchor="middle" fill="#0a0a0c" font-size="11" font-weight="700">TME 24.3%</text>
+<text x="406" y="216" text-anchor="middle" fill="#0a0a0c" font-size="11" font-weight="700">NKE 19.7%</text>
+<text x="545" y="216" text-anchor="middle" fill="#0a0a0c" font-size="11" font-weight="700">CRWV 30%</text>
+<text x="340" y="262" text-anchor="middle" fill="#e5484d" font-size="12" font-weight="700">四只合计约 99.8%＝满仓 · 现金压舱层清零 · 「等崩盘捡便宜」的子弹没了</text>
+<text x="340" y="284" text-anchor="middle" fill="#86868b" font-size="11">尾部算术：30%×−60%（展期/重组）＝组合 −18%；30%×−80%（归零）＝组合 −24%</text>
+</svg>
+<p class="fig-cap">图 3 · 这不只是「一只票重了」，是整个组合从「稳健防守等崩盘」变成「满仓高 beta」</p>
+<h3>先承认两件事，再立规矩</h3>
+<p><strong>第一件，方向判断可能是错的。</strong>分析框架天然偏好可验证现金流与低杠杆，这会系统性低估高赔率赌注；需求侧证据（第七节）是真的。如果 CoreWeave 止血反弹，要公开承认方向看错。<strong>第二件，仓位对错不取决于方向。</strong>就算明天止血翻倍，三成这个决定依然是错的——赢了俄罗斯轮盘，不代表那一枪是对的；反过来，就算归零，错的也不是「看错方向」，是把近三分之一的组合押在一手二元赌注上。<em>方向是观点，可以争论；仓位是算术，不站队。</em></p>
+<p>「需要有赌博的心态」这句话本身对——完全不敢赌也是一种错。但要分清：赌博心态管的是敢不敢下注，不管下多大。Kelly 公式就是赌徒发明的，它存在的唯一目的就是回答「这把最多押多少」。职业赌徒最狠的恰恰是仓位控制。而这笔仓位的数学是现成的：ATM 隐波 115%、单日 ±13%，止损要不被噪音扫掉至少留 15–20% 空间，按单笔风险 0.5–1% 反推，仓位上限 2.5–6%——它天然只配笼子里的仓位，而笼子的单标的上限是 1–2%。</p>
+<h3>赌局卡片：把这一把设计成一张写得下来的纸</h3>
+<table>
+<tr><th>项目</th><th>内容</th></tr>
+<tr><td>赌的是什么</td><td>信用端止血＋11/3 后高收益债窗口重开＋算力需求真实（SpaceX／黄仁勋背书）→ 债回 90 美分＋CDS 回落 → 股价修复</td></tr>
+<tr><td>赌错的信号（止损）</td><td><strong>股价端：收盘跌破 53.50 全退</strong>（因仓位不降，从「减半」升级为「全退」）；<strong>信用端优先于股价端：CDS 破 1,500／债破 75 美分／评级进 CCC／出现「重组」「展期」「债务谈判」字眼 → 无条件全退，不看股价</strong></td></tr>
+<tr><td>赌对怎么办（止盈）</td><td>回到成本 +20%（约 69）先落 1/3；到 85 再落 1/3——止盈也要纪律化，否则三成涨上去不止盈、坐过山车跌回来等于白赌</td></tr>
+<tr><td>时间框</td><td>11/3 中期选举＋11 月 Q3 财报，两个裁判日见分晓，不是无限期持有</td></tr>
+<tr><td>三条铁律</td><td>① 不许补仓摊低成本；② 裁判日前不加仓；③ CRWV 的情绪不传染 AVGO／TME／NKE——跌时不割那三只去补，涨时不给那三只加杠杆</td></tr>
+<tr><td>破例三件套</td><td>① 额度：最多接受亏多少，写死、到线无条件走；② 期限：到哪个裁判日必须重评；③ 更严的退出：仓位越重，止损越不能松</td></tr>
+</table>
+<div class="callout red">
+<p><strong>止损为什么要信用端优先？</strong>因为股价会被空头回补与期权 gamma 骗出假反弹，信用端不会陪你演。结局分布不是「跌一点、磨一磨、涨回来」——CDS 1,195bp 隐含五年违约概率超 60%，分布是<strong>要么止血翻倍、要么展期重组砍到脚踝</strong>的二元形态，中间地带很窄。二元赌注的止损不能按连续波动的股票来设。</p>
+</div>
+</section>
+
+<section>
+<h2>九、这一把最大的风险不是输赢</h2>
+<p>是对体系的腐蚀。两种结局都可能把一个稳健派拉走，而且都发生在「我感觉良好」的时刻：</p>
+<ul>
+<li><strong>如果赢了</strong>——稳健派偶尔赌赢一次，最容易把「这次破例」变成「新的常态」，下一次仓位更大、更自信。<em>一次运气会悄悄改写几年建起来的体系。</em></li>
+<li><strong>如果输了</strong>——最容易想的不是认栽，是翻本，于是再赌一把把亏损捞回来。</li>
+</ul>
+<p>所以约定一条：<strong>这一把是一次性事件。结束那天——无论盈亏——写一份复盘，回答一个问题：「这到底是一次破例，还是我要换策略？」</strong>想清楚之前，仓位回到原来的笼子。不让一把的运气，替自己改写体系。</p>
+<p>这一把的盯盘清单也同时锁死：CDS、四只债价、评级、11/3 选举、11 月 Q3 财报。信号出来第一时间对照赌局卡片执行，不裹糖衣、不临场改规则。</p>
+</section>
+
+<section>
+<h2>十、哨位与对组合</h2>
+<table>
+<tr><th>哨位</th><th>读数/事件</th><th>含义</th></tr>
+<tr><td>CRWV 止血判据</td><td>债回 90 美分＋CDS 回落（现 79.46／1,195bp）</td><td>两条都更远 → AVGO 272 档继续不动</td></tr>
+<tr><td>CRWV 止损线</td><td>收破 53.50 全退；CDS>1,500／债破 75／入 CCC／重组字眼 → 无条件全退</td><td>本组合三成仓位的硬纪律</td></tr>
+<tr><td>ORCL CDS</td><td>能否回落 340bp 以下</td><td>若被降到投资级以下，强制只能持投资级的机构被迫抛售，形成第二波</td></tr>
+<tr><td>OpenAI 300 亿轮</td><td>最终定价（已自 1.4 万亿降至 1.25 万亿）</td><td>「有人愿意为真需求付多少钱」的直接读数</td></tr>
+<tr><td>AI 债月发行量</td><td>能否回到 9 月的 230 亿以上</td><td>融资窗口重开的第一个量化信号</td></tr>
+<tr><td>HY 市场</td><td>11/3 后是否重开</td><td>与上一项互校</td></tr>
+<tr><td>Brent</td><td>是否站上 120</td><td>油价向利率与 CPI 的传导加速线</td></tr>
+<tr><td>危机切换检验</td><td>SOFR 异常／HY OAS 破 400／IG OAS 上 150／DXY 单日暴涨</td><td>四个同现才从「定价重置」切换为「流动性危机」</td></tr>
+</table>
+<p>对组合的其余部分：AVGO、TME、NKE 各有各的纪律，与这一把无关，不因 CRWV 的涨跌做任何联动操作。AVGO 272 档维持不动。</p>
+</section>
+
+<section>
+<h2>十一、边界与口径分歧</h2>
+<ul>
+<li><strong>债价与 CDS 的时点不齐</strong>：四只债的最新报价分布在 10/22 与 10/24 两个交易日，CDS 取 10/24 读数；不同数据源的盘中与收盘口径存在差异，本报告并列标注、不跨口径混算。</li>
+<li><strong>13F 滞后</strong>：机构持仓为季度末快照，最多滞后 45 天；BlackRock／Vanguard 等的增持是「截至上季度末」的事实，不代表本周仍在买。</li>
+<li><strong>内部人减持口径</strong>：联创套现「逾 23 亿」与 Magnetar「逾 55 亿」为媒体汇总口径，均走 10b5-1 预设计划——合规的多元化与「知道要出事」在数据上分不开，本报告只取其方向、不揣测动机。</li>
+<li><strong>隐含违约概率</strong>：「五年累计违约概率超 60%」是由 CDS 利差按标准回收率假设推算的市场隐含值，不是实际违约概率。</li>
+<li><strong>Polymarket 样本</strong>：预测市场的破产概率（14%）流动性薄、单笔大单即可移动读数，只作旁证。</li>
+<li><strong>持仓口径</strong>：成本 57.33、占比 30% 为组合持有人 10/25 告知口径；现价 54.75 为 10/24 收盘，浮亏约 4.5% 据此计算。</li>
+</ul>
+</section>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十三条</div>
+  <div class="sn">定价重置与流动性危机是两件事</div>
+  <p>「市场没钱了」是感觉，不是判断。判据＝看美元指数、回购利率与信用利差是否同步暴动，不看价格跌了多少：10Y 单日 −19.3bp 说明钱在冲进国债而不是消失，DXY 只动 0.2–0.3% 说明没人抢美元，道指整周上涨说明钱在换位置。钱搬位死一类资产，钱消失死所有资产——前者避开被重估的那一类即可，后者现金以外的全部陪葬，处置完全不同，所以必须先验明是哪一种再动手。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十四条</div>
+  <div class="sn">下跌按久期排序，不按基本面排序</div>
+  <p>利率高企时，先被砸的不是基本面最差的，是现金流最远的。判据＝看跌幅与外部融资依赖度的相关性：靠发债养现金流的先跌（长久期），现金已落袋的后跌甚至涨（短久期）。副作用是错杀——Lam Research 订单真实、供给跟不上，照样跌 11.76%。久期排序制造的错杀，正是「捡被隔壁着火疏散的」的候选来源；但候选不是动作，要等反弹质量确认（灵魂第一百一十六条）。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十五条</div>
+  <div class="sn">大股东不卖，不等于看好</div>
+  <p>读内部人与大股东的持仓动作前，先问一句：他卖得了吗？判据＝看持股人有没有结构性卖出禁令。英伟达对 CoreWeave 一股没卖，但它是供应商加股东加订单背书方，减持等于亲手砸自己的客户关系与市场信心——「不卖」是被锁在结构里，不是信心投票。把结构性锁死读成背书，是循环融资结构里最贵的一种误读（与灵魂第十二条互校）。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十六条</div>
+  <div class="sn">筹码的三层结构，定低位的成色</div>
+  <p>低位是不是机会，看买卖双方的「分辨能力」，不看金额大小。判据＝把筹码拆成三层：卖的是不是最早进场、成本最低、离真相最近的钱（联创套现 23 亿、Magnetar 抛售 55 亿）；买的是不是不分辨的被动钱（指数基金与多策略盘，因为它在指数里所以买）；中间的大股东是不是被锁死。三者同现——知情钱撤、不分辨钱接、产业股东动不了——不是底部结构，是筹码转移结构。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十七条</div>
+  <div class="sn">方向是观点，仓位是算术</div>
+  <p>「我会不会错」与「该押多大」是两道题，必须拆开打分。方向可以争论——需求侧的证据与信用端的证据可以同时为真；仓位不站队——它只回答「这一把输了，组合还能不能按原样继续」。赢了俄罗斯轮盘不代表那一枪是对的，赌赢一次三成仓位，证明的是运气，不是结构。把方向上的自信换算成仓位上的加码，是把两道题的分数混在一起算。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十八条</div>
+  <div class="sn">破例要立字据：额度、期限、更严的退出</div>
+  <p>人不是机器，破例本身不丢人，不立字据的破例才是溃堤。三件套：破例额度（最多亏多少，写死，到线无条件走）、破例期限（到哪个裁判日必须重评，不是无限期）、更严的退出（不降仓则尾部敞口更大，止损反而要收紧——三成仓位下「破年内低减半」要升级成「全退」）。直觉上「不降仓」似乎可以配「松一点的止损」，算术上恰恰相反：仓位越重，越输不起那次尾部，止损越不能松。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百三十九条</div>
+  <div class="sn">一把赌局最大的风险，是对体系的腐蚀</div>
+  <p>赌局本身的输赢是一次性的，它对体系的腐蚀是永久的。赢了，容易把「这次破例」变成「新的常态」，下次仓位更大；输了，容易想的不是认栽而是翻本。两种结局都在「我感觉良好」的时刻把人拉离体系。判据与解法＝事先约定这是一次性事件：结束那天无论盈亏写复盘，回答「这是一次破例，还是我要换策略」，想清楚之前仓位回到笼子。不让一把的运气改写几年建起来的东西。</p>
+</div>
+
+<div class="disc">
+<p>以上仅为个人认知范围内的理解，数据来源为公开披露与媒体转述，非一手核实，不构成投资建议。本报告涉及的具体止损与止盈价位，是对本组合既有持仓的风险管理记录，不是建仓或加仓建议；历史价格与决策数字按成稿当时口径保留，不因后续行情改写。</p>
+<p class="muted">P88 · 完 · 上一份 P87《锚与管道：高油价的账单、美元的第四次换锚与稳定币的收银台》· 下一份 P89（灵魂接第一百四十条）</p>
+</div>
+
+</div>
+</body>
+</html>

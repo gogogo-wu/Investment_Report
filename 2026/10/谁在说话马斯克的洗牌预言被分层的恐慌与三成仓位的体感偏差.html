@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谁在说话：马斯克的洗牌预言、被分层的恐慌与三成仓位的体感偏差</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141418; --line:#2a2a30;
+    --txt:#d1d1d6; --sub:#86868b; --head:#f5f5f7;
+    --up:#e5484d; --down:#30a46c; --gold:#c9a227; --blue:#6cb6ff; --purple:#b98cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 64px}
+  h1.g{font-size:27px;line-height:1.35;color:var(--head);font-weight:800;background:linear-gradient(90deg,#f5f5f7,#a8a8ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+  .sub{color:var(--sub);font-size:12.5px;margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .badge{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--sub)}
+  .badge.hl{color:var(--gold);border-color:#4a3f1d}
+  section{margin-bottom:38px}
+  h2{font-size:19px;color:var(--head);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  h3{font-size:15.5px;color:var(--head);font-weight:700;margin:20px 0 10px}
+  p{margin-bottom:14px}
+  .muted{color:var(--sub)}
+  em{font-style:normal;color:var(--gold)}
+  strong{color:var(--head)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+  th{color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid #1c1c22;vertical-align:top}
+  td.up{color:var(--up)} td.down{color:var(--down)}
+  .callout{background:var(--panel);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .callout.blue{border-left-color:var(--blue)}
+  .callout.red{border-left-color:var(--up)}
+  .verdict{background:linear-gradient(135deg,#1a1a20,#141418);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:26px 0;font-size:15px}
+  .verdict .vt{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+  .soul{background:linear-gradient(135deg,#1c1810,#141218);border:1px solid #4a3f1d;border-radius:12px;padding:24px;margin:28px 0}
+  .soul .tag{display:inline-block;font-size:12px;color:var(--gold);border:1px solid #4a3f1d;border-radius:99px;padding:3px 12px;margin-bottom:14px}
+  .soul .sn{color:var(--head);font-weight:700;font-size:16px;margin-bottom:10px}
+  .soul p{color:#d8cfa8;font-size:14px}
+  .fix{background:#171310;border:1px dashed #5c4a1e;border-radius:10px;padding:16px 18px;margin:18px 0;font-size:14px}
+  .disc{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:var(--sub);font-size:12.5px}
+  svg{max-width:100%;height:auto;display:block;margin:20px auto}
+  .fig-cap{text-align:center;color:var(--sub);font-size:12px;margin-top:-8px;margin-bottom:20px}
+  ul{margin:0 0 14px 20px} li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1 class="g">谁在说话：马斯克的洗牌预言、被分层的恐慌与三成仓位的体感偏差</h1>
+<div class="sub">P89 · 发散笔记 · 2026-10-26 成稿（讨论为 10 月 26 日两轮；马斯克发言为 10 月 25 日周日 X 平台自述，周一 10 月 26 日美股盘前反应为当日盘中报价、非收盘价；信用利差与利差读数为 10 月 23 日至 24 日；VIX 为 10 月 23 日收盘与 10 月 20 日盘中两档；Gartner 报告发布于 10 月 14 日；持仓成本与仓位为本组合 10 月 25 日告知口径）· 数据口径：社交平台自述、研究机构新闻稿、第三方数据聚合与媒体转述。<strong>以上均为非一手来源，需核实原文</strong>；多源冲突已在第十一节并列标注，不跨口径混算</div>
+<div class="badge-row">
+  <span class="badge">P89</span><span class="badge">AI 基建 · 信用分层 · 市场结构</span><span class="badge hl">卖算力的人在说话</span><span class="badge">恐慌按信用栈排序</span><span class="badge">VIX 19.45 不叫恐慌</span><span class="badge">体感偏差</span>
+</div>
+
+<div class="verdict">
+  <div class="vt">大 白 话 总 评</div>
+  <p><strong>马斯克不是这场洗牌的扳机，是它的扩音器——而且他自己就站在这条产业链的卖方。更重要的一个纠偏是：市场整体并没有恐慌，VIX 只有 19.45，连担忧都算不上；真正崩的是信用栈最底下那一层，而本组合三成的 CoreWeave 恰好压在最底层。</strong></p>
+  <p>10 月 25 日周日，马斯克在 X 上说了三句话：会有大量算力滞留在没建完的数据中心里；过去几周债务市场几乎完全切断了对「没有 AI 数据中心之外实质收入」的公司的融资；SpaceX 刚完成 400 亿美元 GPU 债务融资，但它是投资级、有星链和发射收入——所以 200 多家新兴云厂商将迎来「孔雀鱼级别的死亡与整合」。周一盘前 CoreWeave 跌 4.4%、Nebius 跌 4.5%、IREN 跌 4.1%。</p>
+  <p>这段话要打折扣，但折扣只能打在「他为什么现在说」——因为 <em>SpaceX 自己运营数据中心并对外出售算力，是这些公司的直接竞争对手</em>。而「他说的是不是事实」这一层，有一个比他早 11 天的独立信源：Gartner 10 月 14 日算出，到 2030 年 AI 数据中心要累计创造 8.5 万亿美元收入才能覆盖支出与 12% 的资本回报，而实际可归因的 AI 收入最多只有 3.6 万亿。</p>
+  <p>但这段话里最值钱的不是唱空，是一个悖论：<strong>烂尾的算力越多，已通电的算力越贵</strong>——H100、B200、B300 的租赁价格已经涨了 2 到 3 倍。所以这场洗牌的形态不是「需求消失」，而是同一批资产里通电的那部分吃租金上涨、没通电的那部分吃债务成本。</p>
+  <p>后半部分是这次最需要记住的一条：把恐慌按信用栈分层看——国债收益率下行 17 个基点、投资级利差只动 1 个基点、高收益走阔 13 个基点、B 级 20 日走阔 60 个基点、CoreWeave 的 CDS 1,195 个基点创历史新高。<strong>恐慌不是传染的，是按杠杆和到期日排序的。</strong>而当一个仓位足以定义你对整个市场的感受时，它的权重已经大到会影响判断力了。</p>
+</div>
+
+<div class="fix">
+<p><strong>⚠ 2026-10-26 口径订正（针对本人在讨论中的表述，非针对 P88 正文）。</strong>此前多轮把 CoreWeave 的「10 月 24 日收盘约 54.75」当作行情读数使用，<strong>10 月 24 日为周六、美股无交易日</strong>，该数字不成立。本报告统一改用<strong>10 月 23 日周五收盘 55.00</strong>；52 周低点 53.50 与「月内跌幅约 37%」沿用 P88 口径。10 月 26 日盘前的 −4.4%（后收窄至 2% 至 3%）以 55.00 为基准起算，按 −3% 折算约 53.35，<strong>已低于 53.50 这条止损线</strong>；该读数为盘中报价，最终是否触发以当日收盘价为准。</p>
+</div>
+
+<section>
+<h2>一、他到底说了什么：三句话，两条被漏掉的上下文</h2>
+<p>先原样摆出来，一句都不能拆开读。10 月 25 日周日，马斯克在 X 平台写道：</p>
+<ul>
+<li><strong>「我认为我们会看到大量算力滞留在尚未完全建成的数据中心里。」</strong>（回应华盛顿大学研究员 Yuchen Jin 关于「提前锁定 GPU 产能、转租就能印钞」的帖文）</li>
+<li><strong>「过去几周，债务市场几乎已经完全切断了对任何没有独立于 AI 数据中心之外的实质收入来源的公司的资金渠道。」</strong></li>
+<li><strong>「SpaceX 完成了 400 亿美元的 GPU 债务融资，但我们是投资级，还有星链与发射收入。这意味着 200 多家新兴云厂商将迎来孔雀鱼级别的死亡与整合。有些能活下来，但不会太多。」</strong></li>
+</ul>
+<p>两条容易被漏掉的上下文。其一，当有人暗示他是在压低估值准备抄底收购时，他<strong>明确否认</strong>，说 SpaceX 不会收购任何新兴云厂商，理由是「毫无意义」。其二，这 400 亿并非干净利落地「已完成」：彭博社 10 月 23 日、路透社 10 月 25 日相继报道，该笔融资为<strong>表外特殊目的载体结构</strong>（高盛牵头与投资者沟通，阿波罗支持的 Atlas SP 管理融资载体，PIMCO 亦考虑参与），目的是让负债不直接计入 SpaceX 资产负债表；截至周日晚，<strong>定价谈判仍在进行、尚未最终定价</strong>。马斯克另补充说明：这主要是<strong>可赎回债务</strong>，对应 2027 年第一季度和第二季度交付的 GPU，对本季度影响不大。</p>
+<p>触发这轮讨论的还有 Social Capital 创始人 Chamath Palihapitiya 的帖文，他判断 2027 年将出现「大量部分闲置的算力和积压在库存里的算力」——这些资产「已被购置并付款，但回报低于总资本成本，或者正在积灰」；并称 2027 将是动荡之年，会淘汰一批错误押注，同时是少数玩家的整合之年。马斯克回复「基本如此」。</p>
+</section>
+
+<section>
+<h2>二、先问立场：说话的人在这条链的哪一侧收租</h2>
+<p>第 10 条灵魂说，听发言先问立场——跟签字画押的订单走。这里要问的是：<strong>他在产业链的哪一侧收租？</strong></p>
+<table>
+<tr><th>发言人</th><th>身份</th><th>与 neocloud 的关系</th><th>他的话该打几折</th></tr>
+<tr><td>马斯克</td><td>SpaceX / 特斯拉 CEO</td><td><strong>SpaceX 自建数据中心并对外出售算力，是直接竞争对手</strong>；同时刚宣布自己拿到了别人拿不到的钱</td><td>动机折价高，事实折价低</td></tr>
+<tr><td>黄仁勋</td><td>英伟达 CEO</td><td>GPU 供应商，且<strong>英伟达是多家 neocloud 的投资方</strong></td><td>同样利益相关，方向相反</td></tr>
+<tr><td>Nebius 高管</td><td>标的公司自己</td><td>当事人自辩</td><td>自证部分折价最高</td></tr>
+<tr><td>Gartner</td><td>第三方研究机构</td><td>无持仓，但有模型假设（12% 资本回报门槛）</td><td>假设要审，立场最干净</td></tr>
+</table>
+<p>所以处置方式是：<strong>把折扣打在「为什么在这个时点说」，不打在「说的是不是事实」。</strong>因为事实那一层有独立信源——而且比马斯克早 11 天。</p>
+</section>
+
+<section>
+<h2>三、洗牌需要被引发吗：三个已经发生的证据</h2>
+<p>这是本次第一层判断：<strong>洗牌不需要被引发，它已经在进行。</strong>马斯克开口之前，下面这些事全部已经发生了：</p>
+<table>
+<tr><th>环节</th><th>已发生的事实（均在 10 月 25 日之前）</th></tr>
+<tr><td>二级信用</td><td>CoreWeave 四只美元债全部跌破 84 美分，2031 年 10 月到期那只报 79.46 美分、收益率约 15.8%</td></tr>
+<tr><td>违约保险</td><td>CoreWeave 五年期 CDS 从 10 月 6 日的 368bp 到 10 月 23 日的 <strong>1,195bp</strong>，创历史新高，隐含五年累计违约概率约 63%</td></tr>
+<tr><td>评级</td><td>标普由 B+ 降至 <strong>B</strong>，穆迪由 Ba3 降至 <strong>B1</strong></td></tr>
+<tr><td>股价</td><td>过去一个月 CoreWeave 与 Nebius 均跌超 30%，IREN 跌逾 40%</td></tr>
+<tr><td>一级市场</td><td>Solidigm 叫停赴美 IPO、Firmus 撤回 50 亿 IPO、OpenAI 把 300 亿融资轮目标估值由 1.4 万亿下调至 1.25 万亿</td></tr>
+</table>
+<p>那马斯克的话起什么作用？起<strong>加速器</strong>的作用，而且方式很特殊——它会自我实现。融资端是有闸门的：信贷委员会的人读了这段话，更不愿意放款。这是「叙事到信用」的反馈环。但闸门<strong>只存在于融资端</strong>，需求端没有闸门，客户该训练还得训练。</p>
+</section>
+
+<section>
+<h2>四、Gartner 的硬账：8.5 万亿对 3.6 万亿</h2>
+<p>这份 10 月 14 日发布的预测，是把马斯克的比喻换成表格的版本：</p>
+<table>
+<tr><th>项目</th><th>数字</th></tr>
+<tr><td>2026 年 AI 基建支出</td><td>近 <strong>1 万亿美元</strong></td></tr>
+<tr><td>2027 至 2030 年追加</td><td>约 <strong>6 万亿美元</strong></td></tr>
+<tr><td>覆盖支出＋融资成本＋12% 投入资本回报所需的累计收入</td><td><strong>8.5 万亿美元</strong></td></tr>
+<tr><td>同期可归因于 AI 数据中心的企业与消费者 AI 收入</td><td>最多 <strong>3.6 万亿美元</strong></td></tr>
+<tr><td>缺口</td><td>约 <strong>4.9 万亿美元</strong></td></tr>
+<tr><td>面临减值风险的资产（2030 年底 / 延续至 2032 年）</td><td><strong>3.5 万亿 / 超 4 万亿</strong>美元</td></tr>
+<tr><td>到 2030 年停止独立运营的 neocloud</td><td>超过 <strong>80%</strong></td></tr>
+<tr><td>AI 优化 IaaS 支出</td><td>2027 年 660 亿 → 2030 年 1,740 亿美元</td></tr>
+</table>
+<p>两个细节值得单独拎出来。其一，Gartner 认为<strong>不到一半的 AI 收入会流向持有重资产的服务商</strong>——因为多数原生 AI 公司采用轻资产模式，钱不落到盖机房的人手里。其二，12% 的资本回报门槛要到 <strong>2032 年底才可能实现</strong>，也就是说这轮投入在会计意义上要横跨六年才勉强打平。这是第 26 条灵魂讲的：重资产生意先问钱从哪来、再看自由现金流的符号。</p>
+</section>
+
+<section>
+<h2>五、算力三态：同一句话的两个相反方向</h2>
+<p>把算力按状态拆成三类，马斯克那句话的含义会立刻分裂成两个相反的方向：</p>
+<svg viewBox="0 0 680 258" width="100%" role="img" aria-label="算力三种状态与马斯克发言的两个方向">
+<rect x="40" y="40" width="180" height="72" rx="8" fill="#27500A" stroke="#97C459" stroke-width="0.5"/>
+<text x="130" y="64" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#C0DD97">已通电投产</text>
+<text x="130" y="88" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#97C459">租金涨 2 至 3 倍</text>
+<rect x="250" y="40" width="180" height="72" rx="8" fill="#633806" stroke="#EF9F27" stroke-width="0.5"/>
+<text x="340" y="64" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#FAC775">在建未完工</text>
+<text x="340" y="88" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#EF9F27">马斯克：算力滞留</text>
+<rect x="460" y="40" width="180" height="72" rx="8" fill="#444441" stroke="#B4B2A9" stroke-width="0.5"/>
+<text x="550" y="64" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#D3D1C7">尚未开工</text>
+<text x="550" y="88" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#B4B2A9">摩根大通：60% 未动工</text>
+<text x="130" y="136" text-anchor="middle" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#97C459">供给稀缺 · 议价权升</text>
+<text x="340" y="136" text-anchor="middle" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#EF9F27">融资断供 · 可能烂尾</text>
+<text x="550" y="136" text-anchor="middle" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#B4B2A9">钱未花出 · 可撤退</text>
+<rect x="40" y="164" width="600" height="74" rx="8" fill="#04342C" stroke="#5DCAA5" stroke-width="0.5"/>
+<text x="60" y="190" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#9FE1CB">烂尾的算力越多，已通电的算力越贵</text>
+<text x="60" y="212" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#5DCAA5">判据是租金方向，不是开工数量</text>
+</svg>
+<div class="fig-cap">图一：算力三态与马斯克发言的两个方向（摩根大通 5 月分析：计划 2027 年前完工的美国数据中心中逾 60% 尚未开始建设，约 7% 项目进度延误）</div>
+<p>这个悖论是本次最有价值的一条：<strong>如果大量算力被困在半建好的机房里，那么在运营机房里的 GPU 就更稀缺、租金更贵。</strong>需求侧最硬的读数就在那儿——H100、B200、B300 的租赁价格已经上涨 2 至 3 倍。<em>如果算力真的过剩，租金不会涨。</em></p>
+<p>所以这场洗牌的真实形态不是「需求消失」，而是：<strong>同一批资产里，通电的那部分吃租金上涨，没通电的那部分吃债务成本。</strong>判据是租金方向，不是开工数量。</p>
+</section>
+
+<section>
+<h2>六、反向证据对称摆放：需求端没有闸门</h2>
+<p>不往一边站，把另一侧的证据也原样摆上：</p>
+<table>
+<tr><th>来源</th><th>说法</th><th>该怎么读</th></tr>
+<tr><td>黄仁勋（柏林 GTC，CNBC）</td><td>对 neocloud 的需求「爆表」；缺的是支撑增长的营运资本；资本需求远大于供给，「这个问题终将解决」</td><td>利益相关（英伟达是投资方），但「缺的是营运资本」这句与马斯克其实说的是同一件事</td></tr>
+<tr><td>Nebius 首席营收官</td><td>「我们没背 CoreWeave 那种债」；若 2027 年产能上线会卖光，2028 年可能同构</td><td><strong>最关键的一句</strong>：说明 neocloud 不是铁板一块，杠杆率才是分水岭</td></tr>
+<tr><td>IREN 联席 CEO</td><td>「客户侧什么都没变，需求还在」；明年在谈意向覆盖全部产能的数倍，2028 年已进入视野</td><td>需求端自述，与租金上涨同向</td></tr>
+<tr><td>租金市场</td><td>H100 / B200 / B300 租赁价涨 2 至 3 倍</td><td>唯一不撒谎的读数</td></tr>
+<tr><td>预测市场</td><td>CoreWeave 2028 年底前破产概率 10 月 21 日降至 14%</td><td>与 CDS 隐含的 63% 严重打架，二者量的是不同期限与不同事件</td></tr>
+</table>
+<p>两边都站着真金白银，所以正确的问法不是「谁说得对」，而是：<strong>这条链上哪一环的开关能被一句话拨动？</strong>融资端能（信贷委员会会读社交媒体），需求端不能（客户该训练还得训练）。这也就是为什么洗牌会从融资端开始、而不是从订单端开始。</p>
+</section>
+
+<section>
+<h2>七、为什么「突然」：四个来源，按因果排序</h2>
+<h3>① 三个日历撞在同一周</h3>
+<p>10 月 27 至 28 日美联储议息、10 月 28 日谷歌与微软与亚马逊财报、11 月 3 日中期选举——<strong>八个自然日内三个无法对冲的事件</strong>。做市商在事件前会主动收缩风险敞口，结果是盘口变薄：<em>同样的卖压，在薄流动性里造成两三倍的价格冲击</em>。这是「突然」最技术性的解释——不是卖得更多，是接得更少。</p>
+<h3>② 资金的价格换了锚</h3>
+<p>市场目前定价 12 月加息约 75% 至 85% 的概率，甚至定价到 2027 年 7 月累计三次 25 个基点。而 AI 基建是<strong>纯久期资产</strong>——现在花钱、五到十年后收钱。锚一变，这一层必然最先被重定价。</p>
+<h3>③ 恐慌的突然性来自会计动作，不来自情绪</h3>
+<p>评级下调会让只能持投资级的机构被迫抛售；抵押品价值下降会触发追加保证金；CDS 上涨会让对手方要求更多担保。这些是<strong>写死的阈值触发的机械动作</strong>（第 82 条、第 83 条灵魂），不是人害怕了。机械动作的特点就是：平时不动，一动就是跳崖。</p>
+<h3>④ 马斯克给了叙事一个锚</h3>
+<p>此前大家是「各自担心」，他一句话给了可以引用的权威说法，分散的担忧变成集体行动。</p>
+<div class="callout blue">
+<p><strong>还有一个容易被忽略的：波动早就藏在期权里了。</strong>10 月 20 日那天 VIX 只有 17.31，但<strong>偏度指数 SKEW 高达 160.40（偏高）</strong>，波动率期货曲线处于正价差，CoreWeave 的平值隐含波动率 115%。意思是：<em>尾部保险一直很贵，聪明钱早就买了，现货价格只是最后一个兑现的地方。</em>所以不是「突然恐慌」，是被压制的波动终于在现货兑现。</p>
+</div>
+</section>
+
+<section>
+<h2>八、恐慌是按信用栈层级排序的，不是传染的</h2>
+<p>这是本次第二层判断，也是最重要的一层。把 10 月 23 日至 24 日的读数按信用栈从上往下排：</p>
+<svg viewBox="0 0 680 312" width="100%" role="img" aria-label="信用栈五层的恐慌程度分层">
+<rect x="40" y="40" width="600" height="44" rx="8" fill="#085041" stroke="#5DCAA5" stroke-width="0.5"/>
+<text x="60" y="62" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#9FE1CB">美国国债 10 年</text>
+<text x="340" y="62" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#9FE1CB">4.96%</text>
+<text x="620" y="62" text-anchor="end" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#5DCAA5">收益率下行 17bp · 资金流入</text>
+<rect x="40" y="92" width="600" height="44" rx="8" fill="#0C447C" stroke="#85B7EB" stroke-width="0.5"/>
+<text x="60" y="114" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#B5D4F4">投资级 IG</text>
+<text x="340" y="114" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#B5D4F4">89bp</text>
+<text x="620" y="114" text-anchor="end" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#85B7EB">走阔 1bp · 几乎不动</text>
+<rect x="40" y="144" width="600" height="44" rx="8" fill="#633806" stroke="#EF9F27" stroke-width="0.5"/>
+<text x="60" y="166" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#FAC775">高收益 HY</text>
+<text x="340" y="166" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#FAC775">340bp</text>
+<text x="620" y="166" text-anchor="end" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#EF9F27">走阔 13bp · 20 日 +60bp</text>
+<rect x="40" y="196" width="600" height="44" rx="8" fill="#712B13" stroke="#F0997B" stroke-width="0.5"/>
+<text x="60" y="218" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#F5C4B3">B 级</text>
+<text x="340" y="218" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#F5C4B3">346bp</text>
+<text x="620" y="218" text-anchor="end" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#F0997B">20 日 +60bp · 86 分位</text>
+<rect x="40" y="248" width="600" height="44" rx="8" fill="#791F1F" stroke="#F09595" stroke-width="0.5"/>
+<text x="60" y="270" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#F7C1C1">CoreWeave 五年 CDS</text>
+<text x="340" y="270" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#F7C1C1">1,195bp</text>
+<text x="620" y="270" text-anchor="end" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="#F09595">历史新高 · 隐含违约率 63%</text>
+</svg>
+<div class="fig-cap">图二：信用栈五层的恐慌程度（10 月 23 日至 24 日读数；高收益与投资级的裂口已扩至 251bp，20 日走阔 50bp）</div>
+<p>上层几乎没动，底层在崩。一个补充细节能说明避险的性质：<strong>10 年期 TIPS 实际利率下行 12 个基点至 2.64%，而盈亏平衡通胀反而上行 2 个基点至 2.34%</strong>——这波买国债买的是「增长担忧」，不是「通胀下来了」。</p>
+<p>再看指数层面：<strong>VIX 10 月 23 日收 19.45，整周反而下跌 2.70%</strong>；周线标普跌 0.47%、纳指跌 0.71%，<strong>道指整周还涨 0.41%</strong>。这不是恐慌，这是温和担忧。</p>
+<svg viewBox="0 0 680 214" width="100%" role="img" aria-label="指数层面平静与个股层面撕裂的对照">
+<rect x="40" y="40" width="290" height="154" rx="12" fill="#0C447C" stroke="#378ADD" stroke-width="0.5"/>
+<text x="185" y="66" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#B5D4F4">指数层面：平静</text>
+<text x="60" y="100" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#85B7EB">VIX 19.45（整周 −2.70%）</text>
+<text x="60" y="126" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#85B7EB">标普周线 −0.47%</text>
+<text x="60" y="152" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#85B7EB">道指周线 +0.41%</text>
+<text x="60" y="178" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#85B7EB">纳指周线 −0.71%</text>
+<rect x="350" y="40" width="290" height="154" rx="12" fill="#791F1F" stroke="#E24B4A" stroke-width="0.5"/>
+<text x="495" y="66" text-anchor="middle" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#F7C1C1">个股层面：撕裂</text>
+<text x="370" y="100" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#F09595">IREN 月内 −40% 以上</text>
+<text x="370" y="126" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#F09595">CoreWeave 月内 −37%</text>
+<text x="370" y="152" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#F09595">Nebius 月内 −33%</text>
+<text x="370" y="178" dominant-baseline="central" font-family="-apple-system, PingFang SC, sans-serif" font-size="13" fill="#F09595">债价跌破 80 美分</text>
+</svg>
+<div class="fig-cap">图三：同一个星期，指数读数与个股读数的巨大落差</div>
+</section>
+
+<section>
+<h2>九、四件套检验：仍不是流动性危机（附欧洲的新裂缝）</h2>
+<p>第 133 条灵魂的检验标准原样搬过来：</p>
+<table>
+<tr><th>检验项</th><th>阈值</th><th>读数</th><th>判定</th></tr>
+<tr><td>高收益债利差 HY OAS</td><td>400（警戒）/ 600（危机）</td><td>340bp，处于 86 分位</td><td class="down">未破</td></tr>
+<tr><td>投资级利差 IG OAS</td><td>150</td><td>89bp，仅走阔 1bp</td><td class="down">未破</td></tr>
+<tr><td>回购与拆借压力</td><td>SOFR 与国库券利差异常为正</td><td><strong>−37bp（负值）</strong></td><td class="down">无压力</td></tr>
+<tr><td>美元指数</td><td>单日暴涨</td><td>震荡偏弱</td><td class="down">未抢美元</td></tr>
+</table>
+<p>结论仍是<strong>定价重置，不是流动性危机</strong>。但方向必须盯：高收益 20 日走阔 60bp、B 级走阔 60bp、高收益与投资级的裂口扩到 251bp（20 日 +50bp）——<em>裂缝在往上传，只是还没传到投资级</em>。</p>
+<div class="callout red">
+<p><strong>欧洲的裂缝比美国更值得看。</strong>法国与德国国债利差扩大到 <strong>172bp</strong>，为欧债危机以来最高；法国 10 年期国债收益率 22 年来首次升破 5%；穆迪被广泛预期下调其主权评级。欧洲高收益利差 20 日走阔 77bp、新兴市场公司债走阔 39bp，均快于美国同档。另有一条反向链路要记：<strong>如果欧洲先出事，回流的美元反而会压低美债收益率——这条链走的是另一个方向，不能简单当成「全球一起崩」。</strong></p>
+</div>
+</section>
+
+<section>
+<h2>十、体感偏差：当一个仓位足以定义你对市场的感受</h2>
+<p>本组合在 10 月 25 日以 57.33 的成本买入 CoreWeave、占比三成，组合由此接近满仓、现金压舱层清零（详见 P88 第八节）。这次讨论中出现的一个现象值得单独记下来：<strong>在 VIX 只有 19.45、标普周跌 0.47% 的一周里，感受到的是「市场突然很恐慌」。</strong></p>
+<p>这个偏差的来源很清楚——三成仓位押在信用栈最底层，而那里是唯一真正崩塌的地方。<strong>指数是平静的，撕裂发生在内部；而持仓位置决定了一个人看到的是哪一半。</strong></p>
+<p>这个偏差本身就是一条警告：当一个仓位足以定义你对整个市场的感受时，它的权重已经大到会影响判断力了。接下来这一周（议息会议 + 三大科技财报 + 中期选举）是薄流动性叠加三重事件，<strong>CoreWeave 的单日波动会被放大，15% 至 20% 的止损空间在事件周可能一根 K 线就走完</strong>。</p>
+<p>对既有纪律的影响只有一句话：<strong>不新立区间、不改规则、不临场放宽。</strong>股价端收盘跌破 53.50 全退；信用端四个信号（CDS 破 1,500、债破 75 美分、评级进 CCC、出现重组或展期字样）任一触发即无条件全退，不看股价。AVGO 272 档继续不动——马斯克这段话打击的是「靠债买 GPU 再租出去」的商业模式，博通坐在上游收别人的资本开支，但<em>如果新兴云厂商开始推迟交付或转售已购 GPU，那才是从融资端传染到订单端的第一个可见信号</em>。</p>
+</section>
+
+<section>
+<h2>十一、边界与口径分歧</h2>
+<ul>
+<li><strong>SpaceX 400 亿融资未经独立确认。</strong>马斯克称已完成，彭博社与路透社称定价谈判仍在进行、尚未定价。本报告并列两源，不作为既成事实使用。</li>
+<li><strong>破产概率两个口径严重打架。</strong>CDS 隐含五年累计违约概率约 63%，预测市场「2028 年底前破产」概率仅 14%。二者量的不是同一件事（期限不同、事件定义不同），不可混算。</li>
+<li><strong>CoreWeave 价格口径已订正。</strong>10 月 24 日为周六无交易日，本报告统一采用 10 月 23 日周五收盘 55.00；10 月 26 日盘前跌幅为盘中报价，最终触发与否以收盘价为准。</li>
+<li><strong>加息概率多源不一。</strong>12 月加息概率见 75% 与 85% 两档口径，本报告并列，不取单一值做推演。</li>
+<li><strong>Gartner 的 12% 资本回报门槛是假设值</strong>，非市场观测值；其收入预测基于「多数原生 AI 公司轻资产运营」，若商业模式转向重资产，结论会变。</li>
+<li><strong>利差读数为第三方数据聚合</strong>（ICE BofA 口径经二手转述），不同聚合源对同一日的取值存在 1 至 13bp 差异（如高收益 10 月 23 日见 327bp、10 月 24 日见 340bp），本报告按日期分别标注，不跨日混算。</li>
+</ul>
+</section>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百四十条</div>
+  <div class="sn">发言人的持仓是发言的一部分</div>
+  <p>听一段行业判断之前，先问他在产业链的哪一侧收租——马斯克卖算力，是新兴云厂商的直接竞争对手；黄仁勋卖 GPU 且是多家新兴云厂商的投资方。两人的话都要打折，但打折的位置不同：<strong>动机可以打折扣，事实不能因为动机而否认</strong>。判据是看有没有立场之外的独立信源能交叉验证——Gartner 比马斯克早 11 天算出同一件事，这才是该信的部分。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百四十一条</div>
+  <div class="sn">供给烂尾，对已投产者是涨价函</div>
+  <p>同一个「大量算力滞留」的预言，对在建者是噩耗，对已通电者是利好——因为在建的那部分退出供给，存量就更稀缺。<strong>判据是租金方向，不是开工数量</strong>：H100、B200、B300 租金涨 2 至 3 倍，说明需求端没有走弱，走弱的是融资端。看到「产能过剩」的论断时，先看它指的是在运还是在建。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百四十二条</div>
+  <div class="sn">预言会自我实现，但只在有闸门的地方</div>
+  <p>一句话能不能改变现实，取决于这一环有没有能被拨动的开关。<strong>融资端有闸门</strong>（信贷委员会读得到社交媒体，所以唱空会加速断供）；<strong>需求端没有闸门</strong>（客户该训练还得训练，唱空无效）。所以判断一条悲观预言的影响力，先问它打击的是哪一环——判据是看该环节的资金开关是否在少数人手里。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百四十三条</div>
+  <div class="sn">恐慌按信用栈层级排序，不按情绪传染</div>
+  <p>把恐慌当成一个整体数字是最容易犯的错。真实结构是分层的：国债收益率下行、投资级只走阔 1bp、高收益走阔 13bp、B 级 20 日走阔 60bp、单一名字的 CDS 创历史新高。<strong>判据是看投资级与高收益的利差变化之比，而不是看 VIX</strong>——VIX 19.45 会告诉你市场很平静，而平静是真话，崩塌也是真话，只是发生在不同的层。</p>
+</div>
+
+<div class="soul">
+  <div class="tag">体系灵魂第一百四十四条</div>
+  <div class="sn">「突然」往往是被压制波动的兑现</div>
+  <p>现货的跳崖很少是突发，因为风险通常先被定价在期权里：VIX 只有 17.31 的那天，偏度指数已高达 160.40，波动率曲线处于正价差。<strong>判据是看偏度与隐含波动率是否先于现货走高</strong>——若是，则「突然」只是最后一个兑现点，不是新信息。同理适用于个股：平值隐波 115%，就已经预告了单日 ±13% 的可能。</p>
+</div>
+
+<div class="disc">
+<p>以上仅为个人认知范围内的理解，数据来源为社交平台自述、研究机构新闻稿、第三方数据聚合与公开媒体转述，均非一手来源，需核实原文；不同时点与不同数据源的口径存在差异，已在第十一节并列标注，不跨口径混算。本文不构成投资建议。</p>
+<p style="margin-top:10px">P89 · 完 · 上一份 P88《谁在卖：CoreWeave 的信用读数、定价重置与一把三成仓位的清醒赌局》· 下一份 P90（灵魂接第一百四十五条）</p>
+</div>
+
+</div>
+</body>
+</html>
